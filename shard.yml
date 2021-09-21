@@ -1,0 +1,27 @@
+name: opentelemetry-api
+version: 0.1.0
+
+authors:
+  - Kirk Haines <wyhaines@gmail.com>
+
+crystal: ">1.1.0"
+
+license: "Apache 2.0"
+
+dependencies:
+  nbchannel:
+    github: wyhaines/nbchannel.cr
+    branch: main
+  csuuid:
+    github: wyhaines/csuuid.cr
+    branch: main
+  time-ext:
+    github: wyhaines/time-ext.cr
+    branch: main
+  protobuf:
+    github: jeromegn/protobuf.cr
+
+development_dependencies:
+  ameba:
+    github: crystal-ameba/ameba
+    version: ~> 0.14
