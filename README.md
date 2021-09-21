@@ -35,7 +35,75 @@ The API is not yet considered stable, and may change in the future.
 require "opentelemetry-api"
 ```
 
-TODO: Write usage instructions here
+## Global Tracer Provider
+-----
+
+```crystal
+OpenTelemetry.configure do |config|
+  config.service_name = "my_app_or_library"
+  config.service_version = "1.1.1"
+  config.exporter = OpenTelemetry::IOExporter.new(:STDOUT)
+end
+```
+
+```crystal
+tracer = OpenTelemetry.tracer_provider("my_app_or_library", "1.1.1")
+tracer = OpenTelemetry.tracer_provider do |tracer|
+  tracer.service_name = "my_app_or_library"
+  tracer.service_version = "1.1.1"
+end
+```
+
+## Tracer Providers as Objects With Unique Configuration
+-----
+
+```crystal
+provider_a = OpenTelemetry::TracerProvider.new("my_app_or_library", "1.1.1")
+provider_a.exporter = OpenTelemetry::IOExporter.new(:STDOUT)
+```
+
+```crystal
+provider_b = OpenTelementry::TracerProvider.new do |config|
+  config.service_name = "my_app_or_library"
+  config.service_version = "1.1.1"
+  config.exporter = OpenTelemetry::IOExporter.new(:STDOUT)
+end
+```
+
+## Getting a Tracer From a Provider Object
+-----
+
+```crystal
+tracer = provider_a.tracer # Inherit all configuration from the Provider Object
+```
+
+```crystal
+tracer = provider_a.tracer("microservice foo", "1.2.3") # Override the configuration
+```
+
+```crystal
+tracer = provider_a.tracer do |tracer|
+  tracer.service_name = "microservice foo"
+  tracer.service_version = "1.2.3"
+end
+```
+
+## Creating Spans Using a Tracer
+-----
+
+```crystal
+tracer.in_span("request") do |span|
+  span.set_attribute("verb", "GET")
+  span.set_attribute("url", "http://example.com/foo")
+  span.add_event("dispatching to handler")
+  tracer.in_span("handler") do |child_span|
+    child_span.add_event("handling request")
+    tracer.in_span("db") do |child_span|
+      child_span.add_event("querying database")
+    end
+  end
+end
+```
 
 ## Development
 
