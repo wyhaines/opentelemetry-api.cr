@@ -95,9 +95,10 @@ module OpenTelemetry
       service_name: service_name,
       service_version: service_version,
       exporter: exporter)
-
+pp provider
+pp @@config
     provider.configure(@@config)
-
+pp provider
     provider.tracer
   end
 end

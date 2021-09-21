@@ -7,10 +7,7 @@ require "./spec_helper"
 
 #
 
-# tracer = OpenTelemetry.tracer_provider do |tracer|
-#   tracer.service_name = "my_app_or_library"
-#   tracer.service_version = "1.1.1"
-# end
+
 #
 # ## Tracer Providers as Objects With Unique Configuration
 # ----------------------------------------------------------------
@@ -63,12 +60,22 @@ describe OpenTelemetry do
     OpenTelemetry.config.exporter.should be_a TestExporter
   end
 
-  it "can create a tracer with the class method" do
+  it "can create a tracer with arguments passed to the class method" do
     tracer = OpenTelemetry.tracer_provider(
       "my_app_or_library",
       "1.1.1",
       OpenTelemetry::NullExporter.new)
 
     tracer.service_name.should eq "my_app_or_library"
+    tracer.service_version.should eq "1.1.1"
+    tracer.exporter.should be_a OpenTelemetry::NullExporter
+  end
+
+  it "can create a tracer via a block passed to the class method" do
+    tracer = OpenTelemetry.tracer_provider do |tracer|
+      tracer.service_name = "my_app_or_library"
+      tracer.service_version = "1.1.1"
+      tracer.exporter = OpenTelemetry::NullExporter.new
+    end
   end
 end

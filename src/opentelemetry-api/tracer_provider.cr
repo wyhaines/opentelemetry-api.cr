@@ -35,9 +35,12 @@ module OpenTelemetry
 
     def configure(new_config)
       @config = Configuration::Factory.build(new_config) do |cfg|
-        cfg.service_name = @config.service_name.empty? ? new_config.service_name : @config.service_name
-        cfg.service_version = @config.service_version.empty? ? new_config.service_version : @config.service_version
-        cfg.exporter = @config.exporter.nil? || @config.exporter.is_a?(NullExporter) ? new_config.exporter : @config.exporter
+        cfg.service_name = new_config.service_name.empty? ? @config.service_name : new_config.service_name
+        cfg.service_version = new_config.service_version.empty? ? @config.service_version : new_config.service_version
+pp new_config
+pp cfg
+puts "#{new_config.exporter} ? #{@config.exporter} : #{new_config.exporter}"
+        cfg.exporter = new_config.exporter.nil? ? @config.exporter : new_config.exporter
       end
 
       self
