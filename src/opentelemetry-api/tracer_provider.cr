@@ -17,7 +17,7 @@ module OpenTelemetry
     end
 
     def initialize(
-      service_name : String,
+      service_name : String = "",
       service_version : String = "",
       exporter : Exporter = NullExporter.new
     )
@@ -33,14 +33,11 @@ module OpenTelemetry
       self
     end
 
-    def configure(new_config)
-      @config = Configuration::Factory.build(new_config) do |cfg|
-        cfg.service_name = new_config.service_name.empty? ? @config.service_name : new_config.service_name
-        cfg.service_version = new_config.service_version.empty? ? @config.service_version : new_config.service_version
-pp new_config
-pp cfg
-puts "#{new_config.exporter} ? #{@config.exporter} : #{new_config.exporter}"
-        cfg.exporter = new_config.exporter.nil? ? @config.exporter : new_config.exporter
+    def merge_configuration(secondary_config)
+      @config = Configuration::Factory.build(@config) do |cfg|
+        cfg.service_name = secondary_config.service_name if cfg.service_name.empty? || cfg.service_name =~ /service_[a-f\d]{8}-[a-f\d]{4}-[a-f\d]{4}-[a-f\d]{4}-[a-f\d]{12}/
+        cfg.service_version = secondary_config.service_version if cfg.service_version.empty?
+        cfg.exporter = secondary_config.exporter if cfg.exporter.nil? || cfg.exporter.is_a?(AbstractExporter)
       end
 
       self
@@ -53,8 +50,28 @@ puts "#{new_config.exporter} ? #{@config.exporter} : #{new_config.exporter}"
       new_trace
     end
 
+    # def tracer(
+    #   service_name : String = "",
+    #   service_version : String = "",
+    #   exporter : Exporter = AbstractExporter.new
+    # )
+    
+    # end
+
     def service_name
       @config.service_name
+    end
+
+    def service_name=(val)
+      @config = Configuration::Factory.build(@config) do |cfg|
+        cfg.service_name = val
+      end
+    end
+
+    def service_version=(val)
+      @config = Configuration::Factory.build(@config) do |cfg|
+        cfg.service_version = val
+      end
     end
 
     def service_version
@@ -63,6 +80,12 @@ puts "#{new_config.exporter} ? #{@config.exporter} : #{new_config.exporter}"
 
     def exporter
       @config.exporter
+    end
+
+    def exporter=(val)
+      @config = Configuration::Factory.build(@config) do |cfg|
+        cfg.exporter = val
+      end
     end
   end
 end

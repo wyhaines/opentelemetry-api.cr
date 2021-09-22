@@ -9,7 +9,7 @@ module OpenTelemetry
       class Factory
         property service_name : String = ""
         property service_version : String = ""
-        property exporter : Exporter = NullExporter.new
+        property exporter : Exporter = AbstractExporter.new
 
         # :nodoc:
         private def self._build(instance)
@@ -31,9 +31,9 @@ module OpenTelemetry
         end
 
         def self.build(
-          service_name = "service_#{CSUUID.unique}",
+          service_name = "service_#{CSUUID.unique.to_s}",
           service_version = "",
-          exporter = NullExporter.new
+          exporter = AbstractExporter.new
         )
           instance = Factory.allocate
           instance.initialize(service_name, service_version, exporter)
@@ -42,9 +42,9 @@ module OpenTelemetry
         end
 
         def self.build(
-          service_name = "service_#{CSUUID.unique}",
+          service_name = "service_#{CSUUID.unique.to_s}",
           service_version = "",
-          exporter = NullExporter.new
+          exporter = AbstractExporter.new
         )
           instance = Factory.allocate
           instance.initialize(service_name, service_version, exporter)

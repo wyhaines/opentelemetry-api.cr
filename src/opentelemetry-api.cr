@@ -81,7 +81,7 @@ module OpenTelemetry
       block.call(config)
     end
 
-    provider.configure(@@config)
+    provider.merge_configuration(@@config)
 
     provider.tracer
   end
@@ -89,16 +89,14 @@ module OpenTelemetry
   def self.tracer_provider(
     service_name : String,
     service_version : String = "",
-    exporter : Exporter = NullExporter.new
+    exporter = nil
   )
     provider = TracerProvider.new(
       service_name: service_name,
       service_version: service_version,
-      exporter: exporter)
-pp provider
-pp @@config
-    provider.configure(@@config)
-pp provider
+      exporter: exporter || AbstractExporter.new)
+    provider.merge_configuration(@@config)
+
     provider.tracer
   end
 end
