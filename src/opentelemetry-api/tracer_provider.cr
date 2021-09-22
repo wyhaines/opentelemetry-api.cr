@@ -44,19 +44,29 @@ module OpenTelemetry
     end
 
     def tracer
-      new_trace = Tracer.new
-      new_trace.provider = self
+      new_tracer = Tracer.new
+      new_tracer.provider = self
 
       new_trace
     end
 
-    # def tracer(
-    #   service_name : String = "",
-    #   service_version : String = "",
-    #   exporter : Exporter = AbstractExporter.new
-    # )
-    
-    # end
+    def tracer(
+      service_name = nil,
+      service_version = nil,
+      exporter = nil)
+      new_tracer = Tracer.new(service_name, service_version, exporter)
+      new_tracer.merge_configuration_from_provider = self
+
+      new_tracer
+    end
+
+    def tracer
+      new_tracer = tracer
+      new_tracer.provider = self
+      yield new_tracer
+
+      new_tracer
+    end
 
     def service_name
       @config.service_name
