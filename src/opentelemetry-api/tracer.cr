@@ -30,5 +30,9 @@ module OpenTelemetry
       self.exporter = val.exporter if self.exporter.nil? || self.exporter.is_a?(AbstractExporter)
       @provider = val
     end
+
+    def in_span
+    end
+    
   end
 end
