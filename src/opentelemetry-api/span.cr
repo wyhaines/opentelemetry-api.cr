@@ -4,9 +4,9 @@ module OpenTelemetry
   class Span
     property name : String = ""
     property start : Time::Monotonic = Time.monotonic
-    property wall_start : Time.utc
+    property wall_start : Time = Time.utc
     property finish : Time::Monotonic? = nil
-    property wall_finish : Time.utc? = nil
-    property events 
+    property wall_finish : Time? = nil
+    property events
   end
 end

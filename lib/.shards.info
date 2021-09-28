@@ -9,7 +9,7 @@ shards:
     version: 0.14.3
   csuuid:
     git: https://github.com/wyhaines/csuuid.cr.git
-    version: 0.2.2+git.commit.b9cdf1f837ca8ab4fb770301d2497c6bbe1c6539
+    version: 0.2.3+git.commit.9b56cca4b47b9080f30ff6eed21bb701c908206a
   time-ext:
     git: https://github.com/wyhaines/time-ext.cr.git
     version: 0.1.0+git.commit.175f658235fb6cdc9c804cb96da510fec27f4cd6

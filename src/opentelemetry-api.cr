@@ -77,8 +77,8 @@ module OpenTelemetry
   end
 
   def self.tracer_provider(&block : TracerProvider::Configuration::Factory ->)
-    provider = TracerProvider.new do |config|
-      block.call(config)
+    provider = TracerProvider.new do |cfg|
+      block.call(cfg)
     end
 
     provider.merge_configuration(@@config)

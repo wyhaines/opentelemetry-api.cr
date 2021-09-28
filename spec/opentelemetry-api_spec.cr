@@ -51,10 +51,10 @@ describe OpenTelemetry do
   end
 
   it "can create a tracer via a block passed to the class method" do
-    tracer = OpenTelemetry.tracer_provider do |tracer|
-      tracer.service_name = "my_app_or_library"
-      tracer.service_version = "1.2.3"
-      tracer.exporter = OpenTelemetry::NullExporter.new
+    tracer = OpenTelemetry.tracer_provider do |t|
+      t.service_name = "my_app_or_library"
+      t.service_version = "1.2.3"
+      t.exporter = OpenTelemetry::NullExporter.new
     end
 
     tracer.service_name.should eq "my_app_or_library"
@@ -63,8 +63,8 @@ describe OpenTelemetry do
   end
 
   it "substitutes the global provider configuration when values are not set via block initialization" do
-    tracer = OpenTelemetry.tracer_provider do |tracer|
-      tracer.service_version = "2.2.2"
+    tracer = OpenTelemetry.tracer_provider do |t|
+      t.service_version = "2.2.2"
     end
 
     tracer.service_name.should eq "my_app_or_library"
@@ -138,9 +138,9 @@ describe OpenTelemetry do
       service_name: "my_app_or_library",
       service_version: "1.1.1",
       exporter: OpenTelemetry::NullExporter.new)
-    tracer = provider.tracer do |tracer|
-      tracer.service_name = "microservice"
-      tracer.service_version = "1.2.3"
+    tracer = provider.tracer do |t|
+      t.service_name = "microservice"
+      t.service_version = "1.2.3"
     end
 
     tracer.is_a?(OpenTelemetry::Tracer).should be_true

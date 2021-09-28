@@ -1,3 +1,6 @@
+# Eep! I was looking at this to see how the Ruby SDK does things, and I accidentally committed this.  :/
+# In this commit after this one, this is going away.
+
 require "./context/key"
 
 module OpenTelemetry
@@ -45,7 +48,7 @@ module OpenTelemetry
     def detach(token)
       s = stack
       calls_matched = (token == s.size)
-      OpenTelemetry.handle_error(exception: DetachError.new('calls to detach should match corresponding calls to attach.')) unless calls_matched
+      OpenTelemetry.handle_error(exception: DetachError.new("calls to detach should match corresponding calls to attach.")) unless calls_matched
 
       s.pop
       calls_matched
@@ -111,10 +114,8 @@ module OpenTelemetry
       new(EMPTY_ENTRIES)
     end
 
-    private
-
     def stack
-      Thread.current[STACK_KEY] ||= []
+      Thread.current[STACK_KEY]# ||= []
     end
 
       # -----------------------------------
@@ -130,7 +131,7 @@ module OpenTelemetry
       @entries[key]
     end
 
-    alias [] value
+    #alias [] value
 
     # Returns a new Context where entries contains the newly added key and value
     #

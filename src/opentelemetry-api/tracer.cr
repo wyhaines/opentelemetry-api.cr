@@ -33,6 +33,6 @@ module OpenTelemetry
 
     def in_span
     end
-    
+
   end
 end

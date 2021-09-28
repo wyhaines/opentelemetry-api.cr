@@ -31,7 +31,7 @@ module OpenTelemetry
         end
 
         def self.build(
-          service_name = "service_#{CSUUID.unique.to_s}",
+          service_name = "service_#{CSUUID.unique}",
           service_version = "",
           exporter = AbstractExporter.new
         )
@@ -42,7 +42,7 @@ module OpenTelemetry
         end
 
         def self.build(
-          service_name = "service_#{CSUUID.unique.to_s}",
+          service_name = "service_#{CSUUID.unique}",
           service_version = "",
           exporter = AbstractExporter.new
         )
