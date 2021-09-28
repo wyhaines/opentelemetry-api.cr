@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 1.0.0">
+<meta name="crystal_docs.project_version" content="main">
+<meta name="crystal_docs.project_name" content="opentelemetry-api">
+
+
+
+<link href="../../css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../../js/doc.js"></script>
+
+  <meta name="repository-name" content="opentelemetry-api">
+  <title>OpenTelemetry::Proto::Resource - opentelemetry-api main</title>
+  <script type="text/javascript">
+    CrystalDocs.base_path = "../../";
+  </script>
+</head>
+<body>
+
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="project-summary">
+      <h1 class="project-name">
+        <a href="../../index.html">
+          opentelemetry-api
+        </a>
+      </h1>
+
+      <span class="project-version">
+        main
+      </span>
+    </div>
+  </div>
+
+  <div class="search-results hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class="parent open current" data-id="opentelemetry-api/OpenTelemetry" data-name="opentelemetry">
+      <a href="../../OpenTelemetry.html">OpenTelemetry</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Attribute" data-name="opentelemetry::attribute">
+      <a href="../../OpenTelemetry/Attribute.html">Attribute</a>
+      
+    </li>
+  
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Context" data-name="opentelemetry::context">
+      <a href="../../OpenTelemetry/Context.html">Context</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Context/Key" data-name="opentelemetry::context::key">
+      <a href="../../OpenTelemetry/Context/Key.html">Key</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Event" data-name="opentelemetry::event">
+      <a href="../../OpenTelemetry/Event.html">Event</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Exporter" data-name="opentelemetry::exporter">
+      <a href="../../OpenTelemetry/Exporter.html">Exporter</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/NullExporter" data-name="opentelemetry::nullexporter">
+      <a href="../../OpenTelemetry/NullExporter.html">NullExporter</a>
+      
+    </li>
+  
+  <li class="parent open current" data-id="opentelemetry-api/OpenTelemetry/Proto" data-name="opentelemetry::proto">
+      <a href="../../OpenTelemetry/Proto.html">Proto</a>
+      
+        <ul>
+  
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Proto/Collector" data-name="opentelemetry::proto::collector">
+      <a href="../../OpenTelemetry/Proto/Collector.html">Collector</a>
+      
+        <ul>
+  
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Proto/Collector/Logs" data-name="opentelemetry::proto::collector::logs">
+      <a href="../../OpenTelemetry/Proto/Collector/Logs.html">Logs</a>
+      
+        <ul>
+  
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Proto/Collector/Logs/V1" data-name="opentelemetry::proto::collector::logs::v1">
+      <a href="../../OpenTelemetry/Proto/Collector/Logs/V1.html">V1</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Proto/Collector/Logs/V1/ExportLogsServiceRequest" data-name="opentelemetry::proto::collector::logs::v1::exportlogsservicerequest">
+      <a href="../../OpenTelemetry/Proto/Collector/Logs/V1/ExportLogsServiceRequest.html">ExportLogsServiceRequest</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Proto/Collector/Logs/V1/ExportLogsServiceResponse" data-name="opentelemetry::proto::collector::logs::v1::exportlogsserviceresponse">
+      <a href="../../OpenTelemetry/Proto/Collector/Logs/V1/ExportLogsServiceResponse.html">ExportLogsServiceResponse</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Proto/Collector/Metrics" data-name="opentelemetry::proto::collector::metrics">
+      <a href="../../OpenTelemetry/Proto/Collector/Metrics.html">Metrics</a>
+      
+        <ul>
+  
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Proto/Collector/Metrics/V1" data-name="opentelemetry::proto::collector::metrics::v1">
+      <a href="../../OpenTelemetry/Proto/Collector/Metrics/V1.html">V1</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Proto/Collector/Metrics/V1/ExportMetricsServiceRequest" data-name="opentelemetry::proto::collector::metrics::v1::exportmetricsservicerequest">
+      <a href="../../OpenTelemetry/Proto/Collector/Metrics/V1/ExportMetricsServiceRequest.html">ExportMetricsServiceRequest</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Proto/Collector/Metrics/V1/ExportMetricsServiceResponse" data-name="opentelemetry::proto::collector::metrics::v1::exportmetricsserviceresponse">
+      <a href="../../OpenTelemetry/Proto/Collector/Metrics/V1/ExportMetricsServiceResponse.html">ExportMetricsServiceResponse</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Proto/Collector/Trace" data-name="opentelemetry::proto::collector::trace">
+      <a href="../../OpenTelemetry/Proto/Collector/Trace.html">Trace</a>
+      
+        <ul>
+  
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Proto/Collector/Trace/V1" data-name="opentelemetry::proto::collector::trace::v1">
+      <a href="../../OpenTelemetry/Proto/Collector/Trace/V1.html">V1</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Proto/Collector/Trace/V1/ExportTraceServiceRequest" data-name="opentelemetry::proto::collector::trace::v1::exporttraceservicerequest">
+      <a href="../../OpenTelemetry/Proto/Collector/Trace/V1/ExportTraceServiceRequest.html">ExportTraceServiceRequest</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Proto/Collector/Trace/V1/ExportTraceServiceResponse" data-name="opentelemetry::proto::collector::trace::v1::exporttraceserviceresponse">
+      <a href="../../OpenTelemetry/Proto/Collector/Trace/V1/ExportTraceServiceResponse.html">ExportTraceServiceResponse</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Proto/Common" data-name="opentelemetry::proto::common">
+      <a href="../../OpenTelemetry/Proto/Common.html">Common</a>
+      
+        <ul>
+  
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Proto/Common/V1" data-name="opentelemetry::proto::common::v1">
+      <a href="../../OpenTelemetry/Proto/Common/V1.html">V1</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Proto/Common/V1/AnyValue" data-name="opentelemetry::proto::common::v1::anyvalue">
+      <a href="../../OpenTelemetry/Proto/Common/V1/AnyValue.html">AnyValue</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Proto/Common/V1/ArrayValue" data-name="opentelemetry::proto::common::v1::arrayvalue">
+      <a href="../../OpenTelemetry/Proto/Common/V1/ArrayValue.html">ArrayValue</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Proto/Common/V1/InstrumentationLibrary" data-name="opentelemetry::proto::common::v1::instrumentationlibrary">
+      <a href="../../OpenTelemetry/Proto/Common/V1/InstrumentationLibrary.html">InstrumentationLibrary</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Proto/Common/V1/KeyValue" data-name="opentelemetry::proto::common::v1::keyvalue">
+      <a href="../../OpenTelemetry/Proto/Common/V1/KeyValue.html">KeyValue</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Proto/Common/V1/KeyValueList" data-name="opentelemetry::proto::common::v1::keyvaluelist">
+      <a href="../../OpenTelemetry/Proto/Common/V1/KeyValueList.html">KeyValueList</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Proto/Common/V1/StringKeyValue" data-name="opentelemetry::proto::common::v1::stringkeyvalue">
+      <a href="../../OpenTelemetry/Proto/Common/V1/StringKeyValue.html">StringKeyValue</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Proto/Logs" data-name="opentelemetry::proto::logs">
+      <a href="../../OpenTelemetry/Proto/Logs.html">Logs</a>
+      
+        <ul>
+  
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Proto/Logs/V1" data-name="opentelemetry::proto::logs::v1">
+      <a href="../../OpenTelemetry/Proto/Logs/V1.html">V1</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Proto/Logs/V1/InstrumentationLibraryLogs" data-name="opentelemetry::proto::logs::v1::instrumentationlibrarylogs">
+      <a href="../../OpenTelemetry/Proto/Logs/V1/InstrumentationLibraryLogs.html">InstrumentationLibraryLogs</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Proto/Logs/V1/LogRecord" data-name="opentelemetry::proto::logs::v1::logrecord">
+      <a href="../../OpenTelemetry/Proto/Logs/V1/LogRecord.html">LogRecord</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Proto/Logs/V1/LogRecordFlags" data-name="opentelemetry::proto::logs::v1::logrecordflags">
+      <a href="../../OpenTelemetry/Proto/Logs/V1/LogRecordFlags.html">LogRecordFlags</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Proto/Logs/V1/ResourceLogs" data-name="opentelemetry::proto::logs::v1::resourcelogs">
+      <a href="../../OpenTelemetry/Proto/Logs/V1/ResourceLogs.html">ResourceLogs</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Proto/Logs/V1/SeverityNumber" data-name="opentelemetry::proto::logs::v1::severitynumber">
+      <a href="../../OpenTelemetry/Proto/Logs/V1/SeverityNumber.html">SeverityNumber</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Proto/Metrics" data-name="opentelemetry::proto::metrics">
+      <a href="../../OpenTelemetry/Proto/Metrics.html">Metrics</a>
+      
+        <ul>
+  
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Proto/Metrics/Experimental" data-name="opentelemetry::proto::metrics::experimental">
+      <a href="../../OpenTelemetry/Proto/Metrics/Experimental.html">Experimental</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Proto/Metrics/Experimental/MetricConfigRequest" data-name="opentelemetry::proto::metrics::experimental::metricconfigrequest">
+      <a href="../../OpenTelemetry/Proto/Metrics/Experimental/MetricConfigRequest.html">MetricConfigRequest</a>
+      
+    </li>
+  
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Proto/Metrics/Experimental/MetricConfigResponse" data-name="opentelemetry::proto::metrics::experimental::metricconfigresponse">
+      <a href="../../OpenTelemetry/Proto/Metrics/Experimental/MetricConfigResponse.html">MetricConfigResponse</a>
+      
+        <ul>
+  
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Proto/Metrics/Experimental/MetricConfigResponse/Schedule" data-name="opentelemetry::proto::metrics::experimental::metricconfigresponse::schedule">
+      <a href="../../OpenTelemetry/Proto/Metrics/Experimental/MetricConfigResponse/Schedule.html">Schedule</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Proto/Metrics/Experimental/MetricConfigResponse/Schedule/Pattern" data-name="opentelemetry::proto::metrics::experimental::metricconfigresponse::schedule::pattern">
+      <a href="../../OpenTelemetry/Proto/Metrics/Experimental/MetricConfigResponse/Schedule/Pattern.html">Pattern</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Proto/Metrics/V1" data-name="opentelemetry::proto::metrics::v1">
+      <a href="../../OpenTelemetry/Proto/Metrics/V1.html">V1</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Proto/Metrics/V1/AggregationTemporality" data-name="opentelemetry::proto::metrics::v1::aggregationtemporality">
+      <a href="../../OpenTelemetry/Proto/Metrics/V1/AggregationTemporality.html">AggregationTemporality</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Proto/Metrics/V1/DataPointFlags" data-name="opentelemetry::proto::metrics::v1::datapointflags">
+      <a href="../../OpenTelemetry/Proto/Metrics/V1/DataPointFlags.html">DataPointFlags</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Proto/Metrics/V1/Exemplar" data-name="opentelemetry::proto::metrics::v1::exemplar">
+      <a href="../../OpenTelemetry/Proto/Metrics/V1/Exemplar.html">Exemplar</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Proto/Metrics/V1/ExponentialHistogram" data-name="opentelemetry::proto::metrics::v1::exponentialhistogram">
+      <a href="../../OpenTelemetry/Proto/Metrics/V1/ExponentialHistogram.html">ExponentialHistogram</a>
+      
+    </li>
+  
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Proto/Metrics/V1/ExponentialHistogramDataPoint" data-name="opentelemetry::proto::metrics::v1::exponentialhistogramdatapoint">
+      <a href="../../OpenTelemetry/Proto/Metrics/V1/ExponentialHistogramDataPoint.html">ExponentialHistogramDataPoint</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Proto/Metrics/V1/ExponentialHistogramDataPoint/Buckets" data-name="opentelemetry::proto::metrics::v1::exponentialhistogramdatapoint::buckets">
+      <a href="../../OpenTelemetry/Proto/Metrics/V1/ExponentialHistogramDataPoint/Buckets.html">Buckets</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Proto/Metrics/V1/Gauge" data-name="opentelemetry::proto::metrics::v1::gauge">
+      <a href="../../OpenTelemetry/Proto/Metrics/V1/Gauge.html">Gauge</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Proto/Metrics/V1/Histogram" data-name="opentelemetry::proto::metrics::v1::histogram">
+      <a href="../../OpenTelemetry/Proto/Metrics/V1/Histogram.html">Histogram</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Proto/Metrics/V1/HistogramDataPoint" data-name="opentelemetry::proto::metrics::v1::histogramdatapoint">
+      <a href="../../OpenTelemetry/Proto/Metrics/V1/HistogramDataPoint.html">HistogramDataPoint</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Proto/Metrics/V1/InstrumentationLibraryMetrics" data-name="opentelemetry::proto::metrics::v1::instrumentationlibrarymetrics">
+      <a href="../../OpenTelemetry/Proto/Metrics/V1/InstrumentationLibraryMetrics.html">InstrumentationLibraryMetrics</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Proto/Metrics/V1/IntDataPoint" data-name="opentelemetry::proto::metrics::v1::intdatapoint">
+      <a href="../../OpenTelemetry/Proto/Metrics/V1/IntDataPoint.html">IntDataPoint</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Proto/Metrics/V1/IntExemplar" data-name="opentelemetry::proto::metrics::v1::intexemplar">
+      <a href="../../OpenTelemetry/Proto/Metrics/V1/IntExemplar.html">IntExemplar</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Proto/Metrics/V1/IntGauge" data-name="opentelemetry::proto::metrics::v1::intgauge">
+      <a href="../../OpenTelemetry/Proto/Metrics/V1/IntGauge.html">IntGauge</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Proto/Metrics/V1/IntHistogram" data-name="opentelemetry::proto::metrics::v1::inthistogram">
+      <a href="../../OpenTelemetry/Proto/Metrics/V1/IntHistogram.html">IntHistogram</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Proto/Metrics/V1/IntHistogramDataPoint" data-name="opentelemetry::proto::metrics::v1::inthistogramdatapoint">
+      <a href="../../OpenTelemetry/Proto/Metrics/V1/IntHistogramDataPoint.html">IntHistogramDataPoint</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Proto/Metrics/V1/IntSum" data-name="opentelemetry::proto::metrics::v1::intsum">
+      <a href="../../OpenTelemetry/Proto/Metrics/V1/IntSum.html">IntSum</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Proto/Metrics/V1/Metric" data-name="opentelemetry::proto::metrics::v1::metric">
+      <a href="../../OpenTelemetry/Proto/Metrics/V1/Metric.html">Metric</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Proto/Metrics/V1/NumberDataPoint" data-name="opentelemetry::proto::metrics::v1::numberdatapoint">
+      <a href="../../OpenTelemetry/Proto/Metrics/V1/NumberDataPoint.html">NumberDataPoint</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Proto/Metrics/V1/ResourceMetrics" data-name="opentelemetry::proto::metrics::v1::resourcemetrics">
+      <a href="../../OpenTelemetry/Proto/Metrics/V1/ResourceMetrics.html">ResourceMetrics</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Proto/Metrics/V1/Sum" data-name="opentelemetry::proto::metrics::v1::sum">
+      <a href="../../OpenTelemetry/Proto/Metrics/V1/Sum.html">Sum</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Proto/Metrics/V1/Summary" data-name="opentelemetry::proto::metrics::v1::summary">
+      <a href="../../OpenTelemetry/Proto/Metrics/V1/Summary.html">Summary</a>
+      
+    </li>
+  
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Proto/Metrics/V1/SummaryDataPoint" data-name="opentelemetry::proto::metrics::v1::summarydatapoint">
+      <a href="../../OpenTelemetry/Proto/Metrics/V1/SummaryDataPoint.html">SummaryDataPoint</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Proto/Metrics/V1/SummaryDataPoint/ValueAtQuantile" data-name="opentelemetry::proto::metrics::v1::summarydatapoint::valueatquantile">
+      <a href="../../OpenTelemetry/Proto/Metrics/V1/SummaryDataPoint/ValueAtQuantile.html">ValueAtQuantile</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent open current" data-id="opentelemetry-api/OpenTelemetry/Proto/Resource" data-name="opentelemetry::proto::resource">
+      <a href="../../OpenTelemetry/Proto/Resource.html">Resource</a>
+      
+        <ul>
+  
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Proto/Resource/V1" data-name="opentelemetry::proto::resource::v1">
+      <a href="../../OpenTelemetry/Proto/Resource/V1.html">V1</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Proto/Resource/V1/Resource" data-name="opentelemetry::proto::resource::v1::resource">
+      <a href="../../OpenTelemetry/Proto/Resource/V1/Resource.html">Resource</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Proto/Trace" data-name="opentelemetry::proto::trace">
+      <a href="../../OpenTelemetry/Proto/Trace.html">Trace</a>
+      
+        <ul>
+  
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Proto/Trace/V1" data-name="opentelemetry::proto::trace::v1">
+      <a href="../../OpenTelemetry/Proto/Trace/V1.html">V1</a>
+      
+        <ul>
+  
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Proto/Trace/V1/ConstantSampler" data-name="opentelemetry::proto::trace::v1::constantsampler">
+      <a href="../../OpenTelemetry/Proto/Trace/V1/ConstantSampler.html">ConstantSampler</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Proto/Trace/V1/ConstantSampler/ConstantDecision" data-name="opentelemetry::proto::trace::v1::constantsampler::constantdecision">
+      <a href="../../OpenTelemetry/Proto/Trace/V1/ConstantSampler/ConstantDecision.html">ConstantDecision</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Proto/Trace/V1/InstrumentationLibrarySpans" data-name="opentelemetry::proto::trace::v1::instrumentationlibraryspans">
+      <a href="../../OpenTelemetry/Proto/Trace/V1/InstrumentationLibrarySpans.html">InstrumentationLibrarySpans</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Proto/Trace/V1/RateLimitingSampler" data-name="opentelemetry::proto::trace::v1::ratelimitingsampler">
+      <a href="../../OpenTelemetry/Proto/Trace/V1/RateLimitingSampler.html">RateLimitingSampler</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Proto/Trace/V1/ResourceSpans" data-name="opentelemetry::proto::trace::v1::resourcespans">
+      <a href="../../OpenTelemetry/Proto/Trace/V1/ResourceSpans.html">ResourceSpans</a>
+      
+    </li>
+  
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Proto/Trace/V1/Span" data-name="opentelemetry::proto::trace::v1::span">
+      <a href="../../OpenTelemetry/Proto/Trace/V1/Span.html">Span</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Proto/Trace/V1/Span/Event" data-name="opentelemetry::proto::trace::v1::span::event">
+      <a href="../../OpenTelemetry/Proto/Trace/V1/Span/Event.html">Event</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Proto/Trace/V1/Span/Link" data-name="opentelemetry::proto::trace::v1::span::link">
+      <a href="../../OpenTelemetry/Proto/Trace/V1/Span/Link.html">Link</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Proto/Trace/V1/Span/SpanKind" data-name="opentelemetry::proto::trace::v1::span::spankind">
+      <a href="../../OpenTelemetry/Proto/Trace/V1/Span/SpanKind.html">SpanKind</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Proto/Trace/V1/Status" data-name="opentelemetry::proto::trace::v1::status">
+      <a href="../../OpenTelemetry/Proto/Trace/V1/Status.html">Status</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Proto/Trace/V1/Status/DeprecatedStatusCode" data-name="opentelemetry::proto::trace::v1::status::deprecatedstatuscode">
+      <a href="../../OpenTelemetry/Proto/Trace/V1/Status/DeprecatedStatusCode.html">DeprecatedStatusCode</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Proto/Trace/V1/Status/StatusCode" data-name="opentelemetry::proto::trace::v1::status::statuscode">
+      <a href="../../OpenTelemetry/Proto/Trace/V1/Status/StatusCode.html">StatusCode</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Proto/Trace/V1/TraceConfig" data-name="opentelemetry::proto::trace::v1::traceconfig">
+      <a href="../../OpenTelemetry/Proto/Trace/V1/TraceConfig.html">TraceConfig</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Proto/Trace/V1/TraceIdRatioBased" data-name="opentelemetry::proto::trace::v1::traceidratiobased">
+      <a href="../../OpenTelemetry/Proto/Trace/V1/TraceIdRatioBased.html">TraceIdRatioBased</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Span" data-name="opentelemetry::span">
+      <a href="../../OpenTelemetry/Span.html">Span</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Tracer" data-name="opentelemetry::tracer">
+      <a href="../../OpenTelemetry/Tracer.html">Tracer</a>
+      
+    </li>
+  
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/TracerProvider" data-name="opentelemetry::tracerprovider">
+      <a href="../../OpenTelemetry/TracerProvider.html">TracerProvider</a>
+      
+        <ul>
+  
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/TracerProvider/Configuration" data-name="opentelemetry::tracerprovider::configuration">
+      <a href="../../OpenTelemetry/TracerProvider/Configuration.html">Configuration</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/TracerProvider/Configuration/Factory" data-name="opentelemetry::tracerprovider::configuration::factory">
+      <a href="../../OpenTelemetry/TracerProvider/Configuration/Factory.html">Factory</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/ValueArrays" data-name="opentelemetry::valuearrays">
+      <a href="../../OpenTelemetry/ValueArrays.html">ValueArrays</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">module</span> OpenTelemetry::Proto::Resource
+
+</h1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="defined-in" class="anchor" href="#defined-in">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Defined in:
+  </h2>
+  
+    
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/34edd3b6c81841c34ee53f416fe229cebcc8853b/src/proto/resource.pb.cr#L8" target="_blank">
+        proto/resource.pb.cr
+      </a>
+    
+    <br/>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="methods-inherited">
+  
+</div>
+
+
+
+
+
+
+
+
+
+</div>
+
+</body>
+</html>
