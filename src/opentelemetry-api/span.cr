@@ -3,9 +3,9 @@ module OpenTelemetry
   # with that measurement. A `Span` may nest other `Span` instances.
   class Span
     property name : String = ""
-    property start : Time::Monotonic = Time.monotonic
+    property start : Time::Span = Time.monotonic
     property wall_start : Time = Time.utc
-    property finish : Time::Monotonic? = nil
+    property finish : Time::Span? = nil
     property wall_finish : Time? = nil
     property events
   end
