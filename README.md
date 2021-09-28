@@ -1,3 +1,7 @@
+![OpenTelemetry CI](https://img.shields.io/github/workflow/status/wyhaines/opentelemetry-api/OpenTelemetry%20CI?style=for-the-badge&logo=GitHub)
+[![GitHub release](https://img.shields.io/github/release/wyhaines/opentelemetry-api.cr.svg?style=for-the-badge)](https://github.com/wyhaines/opentelemetry-api.cr/releases)
+![GitHub commits since latest release (by SemVer)](https://img.shields.io/github/commits-since/wyhaines/opentelemetry-api.cr/latest?style=for-the-badge)
+
 # OpenTelemetry-API
 
 This library provides the base functionality for implementing services that utilize
@@ -120,3 +124,6 @@ TODO: Write development instructions here
 ## Contributors
 
 - [Kirk Haines](https://github.com/your-github-user) - creator and maintainer
+
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/wyhaines/tracer.cr?style=for-the-badge)
+![GitHub issues](https://img.shields.io/github/issues/wyhaines/tracer.cr?style=for-the-badge)
