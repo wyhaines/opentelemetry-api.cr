@@ -3,7 +3,7 @@ module OpenTelemetry
     struct Key
       getter name : String
 
-      def initialize(@name = CSUUID.unique.to_s, @context = nil)
+      def initialize(@name = CSUUID.unique.to_s, context = nil)
 
       end
 
