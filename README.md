@@ -125,5 +125,5 @@ TODO: Write development instructions here
 
 - [Kirk Haines](https://github.com/your-github-user) - creator and maintainer
 
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/wyhaines/tracer.cr?style=for-the-badge)
-![GitHub issues](https://img.shields.io/github/issues/wyhaines/tracer.cr?style=for-the-badge)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/wyhaines/opentelemetry-api.cr?style=for-the-badge)
+![GitHub issues](https://img.shields.io/github/issues/wyhaines/opentelemetry-api.cr?style=for-the-badge)
