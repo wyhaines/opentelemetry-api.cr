@@ -1,4 +1,4 @@
-![OpenTelemetry CI](https://img.shields.io/github/workflow/status/wyhaines/opentelemetry-api/OpenTelemetry%20CI?style=for-the-badge&logo=GitHub)
+![OpenTelemetry CI](https://img.shields.io/github/workflow/status/wyhaines/opentelemetry-api.cr/OpenTelemetry%20CI?style=for-the-badge&logo=GitHub)
 [![GitHub release](https://img.shields.io/github/release/wyhaines/opentelemetry-api.cr.svg?style=for-the-badge)](https://github.com/wyhaines/opentelemetry-api.cr/releases)
 ![GitHub commits since latest release (by SemVer)](https://img.shields.io/github/commits-since/wyhaines/opentelemetry-api.cr/latest?style=for-the-badge)
 
