@@ -148,5 +148,4 @@ describe OpenTelemetry do
     tracer.service_version.should eq "1.2.3"
     tracer.exporter.should be_a OpenTelemetry::NullExporter
   end
-
 end

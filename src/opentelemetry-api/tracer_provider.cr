@@ -1,4 +1,5 @@
 require "./tracer_provider/configuration"
+require "./context"
 require "./tracer"
 
 module OpenTelemetry
@@ -53,7 +54,8 @@ module OpenTelemetry
     def tracer(
       service_name = nil,
       service_version = nil,
-      exporter = nil)
+      exporter = nil
+    )
       new_tracer = Tracer.new(service_name, service_version, exporter)
       new_tracer.merge_configuration_from_provider = self
 
