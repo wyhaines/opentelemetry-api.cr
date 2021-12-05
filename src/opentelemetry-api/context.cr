@@ -1,12 +1,20 @@
-# Eep! I was looking at this to see how the Ruby SDK does things, and I accidentally committed this.  :/
-# In this commit after this one, this is going away.
-
 require "./context/key"
+require "splay_tree_map"
 
 module OpenTelemetry
-  class Context
-    class_property current : Context = self.new
-    getter data : Hash(Key, String) = Hash(Key, String).new
+  struct Context
+    alias ContextContainer = SplayTreeMap(OpenTelemetry::Context::Key, String)
+
+    @@root : SplayTreeMap(Key, String) = SplayTreeMap(Key, String).new
+    @@stack : SplayTreeMap(Fiber, Array(SplayTreeMap(Key, String))) = SplayTreeMap(Fiber, Array(SplayTreeMap(Key, String))).new { |h, k| h[k] = [] of SplayTreeMap(Key, String) }
+
+    def self.stack
+      @@stack[Fiber.current]
+    end
+
+    def self.current
+      stack.empty? ? @@root : stack.last
+    end
 
     def self.create_key
       Key.new
@@ -15,120 +23,74 @@ module OpenTelemetry
     def self.create_key(name)
       Key.new(name)
     end
-    
-    def [](value)
-      @data[value]
+
+    def self.attach(context)
+      stack << context
+      context.object_id
     end
 
-    #   STACK_KEY = :__opentelemetry_context_storage__
-    #   DetachError = Class.new(OpenTelemetry::Error)
+    # Restores the previous Context associated with the current Fiber.
+    # The supplied token is used to check if the call to detach is balanced
+    # with a corresponding attach call. A warning is logged if the
+    # calls are unbalanced.
+    def self.detach(token)
+      ctxt = stack
+      calls_matched = (token == ctxt.object_id)
+      # OpenTelemetry.handle_error(exception: DetachError.new("calls to detach should match corresponding calls to attach.")) unless calls_matched
 
-    #   # Returns a key used to index a value in a Context
-    #   #
-    #   # @param [String] name The key name
-    #   # @return [Context::Key]
-    #   def create_key(name)
-    #     Key.new(name)
-    #   end
+      ctxt.pop
+      calls_matched
+    end
 
-    #   # Returns current context, which is never nil
-    #   #
-    #   # @return [Context]
-    #   def current
-    #     stack.last || ROOT
-    #   end
+    # Executes a block with ctx as the current context. It restores
+    # the previous context upon exiting.
+    def self.with_current(ctx)
+      token = attach(ctx)
+      yield ctx
+    ensure
+      detach(token)
+    end
 
-    #   # Associates a Context with the caller's current Fiber. Every call to
-    #   # this operation should be paired with a corresponding call to detach.
-    #   #
-    #   # Returns a token to be used with the matching call to detach
-    #   #
-    #   # @param [Context] context The new context
-    #   # @return [Object] A token to be used when detaching
-    #   def attach(context)
-    #     s = stack
-    #     s.push(context)
-    #     s.size
-    #   end
+    # Execute a block in a new context with key set to value. Restores the
+    # previous context after the block executes.
+    def self.with_value(key, value)
+      ctx = current.set_value(key, value)
+      token = attach(ctx)
+      yield ctx, value
+    ensure
+      detach(token)
+    end
 
-    #   # Restores the previous Context associated with the current Fiber.
-    #   # The supplied token is used to check if the call to detach is balanced
-    #   # with a corresponding attach call. A warning is logged if the
-    #   # calls are unbalanced.
-    #   #
-    #   # @param [Object] token The token provided by the matching call to attach
-    #   # @return [Boolean] True if the calls matched, false otherwise
-    #   def detach(token)
-    #     s = stack
-    #     calls_matched = (token == s.size)
-    #     OpenTelemetry.handle_error(exception: DetachError.new("calls to detach should match corresponding calls to attach.")) unless calls_matched
+    # Execute a block in a new context where its values are merged with the
+    # incoming values. Restores the previous context after the block executes.
 
-    #     s.pop
-    #     calls_matched
-    #   end
-
-    #   # Executes a block with ctx as the current context. It restores
-    #   # the previous context upon exiting.
-    #   #
-    #   # @param [Context] ctx The context to be made active
-    #   # @yield [context] Yields context to the block
-    #   def with_current(ctx)
-    #     token = attach(ctx)
-    #     yield ctx
-    #   ensure
-    #     detach(token)
-    #   end
-
-    #   # Execute a block in a new context with key set to value. Restores the
-    #   # previous context after the block executes.
-
-    #   # @param [String] key The lookup key
-    #   # @param [Object] value The object stored under key
-    #   # @param [Callable] Block to execute in a new context
-    #   # @yield [context, value] Yields the newly created context and value to
-    #   #   the block
-    #   def with_value(key, value)
-    #     ctx = current.set_value(key, value)
-    #     token = attach(ctx)
-    #     yield ctx, value
-    #   ensure
-    #     detach(token)
-    #   end
-
-    #   # Execute a block in a new context where its values are merged with the
-    #   # incoming values. Restores the previous context after the block executes.
-
-    #   # @param [String] key The lookup key
-    #   # @param [Hash] values Will be merged with values of the current context
-    #   #  and returned in a new context
-    #   # @param [Callable] Block to execute in a new context
-    #   # @yield [context, values] Yields the newly created context and values
-    #   #   to the block
-    #   def with_values(values)
-    #     ctx = current.set_values(values)
-    #     token = attach(ctx)
-    #     yield ctx, values
-    #   ensure
-    #     detach(token)
-    #   end
+    # @param [String] key The lookup key
+    # @param [Hash] values Will be merged with values of the current context
+    #  and returned in a new context
+    # @param [Callable] Block to execute in a new context
+    # @yield [context, values] Yields the newly created context and values
+    #   to the block
+    def self.with_values(values)
+      ctx = current.set_values(values)
+      token = attach(ctx)
+      yield ctx, values
+    ensure
+      detach(token)
+    end
 
     #   # Returns the value associated with key in the current context
     #   #
     #   # @param [String] key The lookup key
-    #   def value(key)
+    #   def self.value(key)
     #     current.value(key)
     #   end
 
-    #   def clear
-    #     stack.clear
-    #   end
+    def self.clear
+      stack.clear
+    end
 
-    #   def empty
+    #   def self.empty
     #     new(EMPTY_ENTRIES)
-    #   end
-
-    #   def stack
-    #     Thread.current[STACK_KEY]# ||= []
     #   end
 
     #     # -----------------------------------
@@ -144,7 +106,9 @@ module OpenTelemetry
     #     @entries[key]
     #   end
 
-    #   #alias [] value
+    def [](value)
+      stack[value]
+    end
 
     #   # Returns a new Context where entries contains the newly added key and value
     #   #

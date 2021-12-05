@@ -1,3 +1,4 @@
+require "./ext"
 require "csuuid"
 require "./proto/trace.pb"
 require "./proto/trace_service.pb"
@@ -98,5 +99,8 @@ module OpenTelemetry
     provider.merge_configuration(@@config)
 
     provider.tracer
+  end
+
+  def self.handle_error(error)
   end
 end

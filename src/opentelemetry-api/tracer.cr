@@ -1,9 +1,12 @@
+require "./span"
+
 module OpenTelemetry
   class Tracer
     property service_name : String = ""
     property service_version : String = ""
     property exporter : Exporter = AbstractExporter.new
     getter provider : TracerProvider = TracerProvider.new
+    getter span_stack : Array(Span) = [] of Span
 
     def initialize(
       service_name = nil,
@@ -31,7 +34,20 @@ module OpenTelemetry
       @provider = val
     end
 
-    def in_span
+    def in_span(span_name)
+      span = Span.new(span_name)
+      if !span_stack.empty?
+        span.parent = span_stack.last
+        span_stack << span
+      end
+
+      yield span
+
+      if span_stack.last == span
+        span_stack.pop
+      else
+        raise "Unexpected Error: Invalid Spans in the Span Stack. Expected #{span.inspect} but found #{span_stack.last.inspect}"
+      end
     end
   end
 end

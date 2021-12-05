@@ -1,0 +1,2 @@
+class OpenTelemetry::Attribute::List
+  

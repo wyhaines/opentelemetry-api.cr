@@ -1,20 +1,5 @@
 require "./spec_helper"
 
-#
-# ## Creating Spans Using a Tracer
-# ----------------------------------------------------------------
-#
-# tracer.in_span("request") do |span|
-#   span.set_attribute("verb", "GET")
-#   span.set_attribute("url", "http://example.com/foo")
-#   span.add_event("dispatching to handler")
-#   tracer.in_span("handler") do |child_span|
-#     child_span.add_event("handling request")
-#     tracer.in_span("db") do |child_span|
-#       child_span.add_event("querying database")
-#     end
-#   end
-# end
 describe OpenTelemetry do
   before_each do
     # Ensure that global state is always reset to a known starting point
@@ -148,4 +133,32 @@ describe OpenTelemetry do
     tracer.service_version.should eq "1.2.3"
     tracer.exporter.should be_a OpenTelemetry::NullExporter
   end
+
+  it "can create a span and set/get attributes on that span" do
+    span = OpenTelemetry::Span.new
+    verb = "GET"
+    url = "http://example.com/foo"
+    #  span.set_attribute("verb", verb)
+    #  span["url"] = url
+    #  span["verb"].should eq verb
+    #  span.get_attribute("url").should eq url
+    #  span["bools"] = true
+    #  span["bools"] = false
+  end
+
+  #
+  # ## Creating Spans Using a Tracer
+  # ----------------------------------------------------------------
+  #
+  # tracer.in_span("request") do |span|
+  #   span.set_attribute("verb", "GET")
+  #   span.set_attribute("url", "http://example.com/foo")
+  #   span.add_event("dispatching to handler")
+  #   tracer.in_span("handler") do |child_span|
+  #     child_span.add_event("handling request")
+  #     tracer.in_span("db") do |child_span|
+  #       child_span.add_event("querying database")
+  #     end
+  #   end
+  # end
 end
