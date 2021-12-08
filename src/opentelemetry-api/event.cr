@@ -6,7 +6,47 @@ module OpenTelemetry
     property name : String = ""
     property timestamp : Time::Span = Time.monotonic
     property wall_timestamp : Time = Time.utc
-    property attributes : Hash(String, AnyAttribute) = Hash(String, AnyAttribute).new
+    getter attributes : Hash(String, AnyAttribute) = {} of String => AnyAttribute
     property parent_span : Span? = nil
+
+    def initialize(@name)
+    end
+
+    def initialize(@name, attributes : Hash(String, _))
+      @attributes = {} of String => AnyAttribute
+      attributes.each do |k, v|
+        @attributes[k] = AnyAttribute.new(k, v)
+      end
+    end
+
+    def initialize(@name, @attributes : Hash(String, AnyAttribute))
+    end
+
+    def initialize(@name = "", &blk : Event ->)
+      yield self
+    end
+
+    def attributes=(attr : Hash(String, _))
+      @attributes = {} of String => AnyAttribute
+      attr.each do |k, v|
+        @attributes[k] = AnyAttribute.new(k, v)
+      end
+    end
+
+    def []=(key, value)
+      attributes[key] = AnyAttribute.new(key: key, value: value)
+    end
+
+    def set_attribute(key, value)
+      self[key] = value
+    end
+
+    def [](key)
+      attributes[key].value
+    end
+
+    def get_attribute(key)
+      attributes[key]
+    end
   end
 end

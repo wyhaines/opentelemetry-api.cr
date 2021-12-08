@@ -1,7 +1,7 @@
 module OpenTelemetry
   alias ValueType = String | Bool | Float64 | Int64 | Int32
   alias ValueArrays = Array(String) | Array(Bool) | Array(Float64) | Array(Int64) | Array(Int32)
-  alias ValueArray = Array(ValueType)
+  alias ValueTypes = ValueType | ValueArrays
   
   struct Attribute(K)
     getter key : String

@@ -158,6 +158,11 @@ describe OpenTelemetry do
     
   end
 
+  it "can use a tracer to create a span" do
+  end
+
+  it "can create nested spans" do
+  end
   
   #
   # ## Creating Spans Using a Tracer
