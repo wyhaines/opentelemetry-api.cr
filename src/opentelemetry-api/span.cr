@@ -10,17 +10,14 @@ module OpenTelemetry
     property finish : Time::Span? = nil
     property wall_finish : Time? = nil
     property events : Array(Event) = [] of Event
-    property attributes : Hash(String, Attribute) = {} of String => Attribute
+    property attributes : Hash(String, AnyAttribute) = {} of String => AnyAttribute
     property parent : Span? = nil
 
     def initialize(@name = "")
     end
 
     def []=(key, value)
-      unless attributes.has_key?(key)
-        attributes[key] = Attribute.new(key: key, value: ValueArray.new)
-      end
-      attributes[key].value << value
+      attributes[key] = AnyAttribute.new(key: key, value: value)
     end
 
     def set_attribute(key, value)
@@ -28,16 +25,10 @@ module OpenTelemetry
     end
 
     def [](key)
-      val = attributes[key].value
-      if val.size > 1
-        val
-      else
-        val.first
-      end
     end
 
     def get_attribute(key)
-      self[key]
+      attributes[key]
     end
   end
 end

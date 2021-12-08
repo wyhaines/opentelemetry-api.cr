@@ -138,12 +138,20 @@ describe OpenTelemetry do
     span = OpenTelemetry::Span.new
     verb = "GET"
     url = "http://example.com/foo"
-    #  span.set_attribute("verb", verb)
-    #  span["url"] = url
-    #  span["verb"].should eq verb
-    #  span.get_attribute("url").should eq url
-    #  span["bools"] = true
-    #  span["bools"] = false
+    span.set_attribute("verb", verb)
+    span["url"] = url
+    span["verb"].should eq verb
+    span["url"].should eq url
+    span.get_attribute("url").value.should eq url
+    span["bools"] = true
+    span["bools"] = false
+    span["bools"].should be_false
+    span.get_attribute("bools") << true
+    span["bools"].should eq [false, true]
+    span["headers"] = Array(String).new
+    span["headers"] << "Content-Type: text/plain"
+    span["headers"] << "Content-Length: 23"
+    span["headers"].should eq ["Content-Type: text/plain", "Content-Length: 23"]
   end
 
   #
