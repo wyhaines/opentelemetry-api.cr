@@ -25,6 +25,7 @@ module OpenTelemetry
     end
 
     def [](key)
+      attributes[key].value
     end
 
     def get_attribute(key)

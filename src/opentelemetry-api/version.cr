@@ -1,3 +1,5 @@
 module OpenTelemetry
-  VERSION = "0.1.0"
+  {% begin %}
+  VERSION = {{ `git describe --tags --always`.chomp.split(/-/).first.stringify }}
+  {% end %}
 end

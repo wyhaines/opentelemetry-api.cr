@@ -149,11 +149,16 @@ describe OpenTelemetry do
     span.get_attribute("bools") << true
     span["bools"].should eq [false, true]
     span["headers"] = Array(String).new
-    span["headers"] << "Content-Type: text/plain"
-    span["headers"] << "Content-Length: 23"
+    span.get_attribute("headers") << "Content-Type: text/plain"
+    span.get_attribute("headers") << "Content-Length: 23"
     span["headers"].should eq ["Content-Type: text/plain", "Content-Length: 23"]
   end
 
+  it "can set events on a span" do
+    
+  end
+
+  
   #
   # ## Creating Spans Using a Tracer
   # ----------------------------------------------------------------

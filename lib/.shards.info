@@ -18,7 +18,7 @@ shards:
     version: 2.2.3
   splay_tree_map:
     git: https://github.com/wyhaines/splay_tree_map.cr.git
-    version: 0.2.0
+    version: 0.2.2
   parse_date:
     git: https://github.com/wyhaines/parsedate.cr.git
     version: 0.1.2
