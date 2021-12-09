@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Crystal Docs 1.0.0">
+<meta name="generator" content="Crystal Docs 1.1.1">
 <meta name="crystal_docs.project_version" content="main">
 <meta name="crystal_docs.project_name" content="opentelemetry-api">
 
@@ -51,12 +51,32 @@
   <div class="types-list">
     <ul>
   
+  <li class=" " data-id="opentelemetry-api/Fiber" data-name="fiber">
+      <a href="../../../../Fiber.html">Fiber</a>
+      
+    </li>
+  
   <li class="parent open current" data-id="opentelemetry-api/OpenTelemetry" data-name="opentelemetry">
       <a href="../../../../OpenTelemetry.html">OpenTelemetry</a>
       
         <ul>
   
-  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Attribute" data-name="opentelemetry::attribute">
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/AnyAttribute" data-name="opentelemetry::anyattribute">
+      <a href="../../../../OpenTelemetry/AnyAttribute.html">AnyAttribute</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/AnyAttribute/Type" data-name="opentelemetry::anyattribute::type">
+      <a href="../../../../OpenTelemetry/AnyAttribute/Type.html">Type</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Attribute" data-name="opentelemetry::attribute(k)">
       <a href="../../../../OpenTelemetry/Attribute.html">Attribute</a>
       
     </li>
@@ -65,6 +85,11 @@
       <a href="../../../../OpenTelemetry/Context.html">Context</a>
       
         <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Context/ContextContainer" data-name="opentelemetry::context::contextcontainer">
+      <a href="../../../../OpenTelemetry/Context/ContextContainer.html">ContextContainer</a>
+      
+    </li>
   
   <li class=" " data-id="opentelemetry-api/OpenTelemetry/Context/Key" data-name="opentelemetry::context::key">
       <a href="../../../../OpenTelemetry/Context/Key.html">Key</a>
@@ -651,6 +676,16 @@
       
     </li>
   
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/ValueType" data-name="opentelemetry::valuetype">
+      <a href="../../../../OpenTelemetry/ValueType.html">ValueType</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/ValueTypes" data-name="opentelemetry::valuetypes">
+      <a href="../../../../OpenTelemetry/ValueTypes.html">ValueTypes</a>
+      
+    </li>
+  
 </ul>
 
       
@@ -712,7 +747,7 @@
   </h2>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/34edd3b6c81841c34ee53f416fe229cebcc8853b/src/proto/metrics.pb.cr#L59" target="_blank">
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/proto/metrics.pb.cr#L59" target="_blank">
         proto/metrics.pb.cr
       </a>
     
@@ -753,12 +788,12 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new(buf:Protobuf::Buffer)-class-method" class="signature"><strong>.new</strong>(buf : Protobuf::Buffer)</a>
+        <a href="#new%28buf%3AProtobuf%3A%3ABuffer%29-class-method" class="signature"><strong>.new</strong>(buf : Protobuf::Buffer)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#new(data_points:Array(NumberDataPoint)?=nil)-class-method" class="signature"><strong>.new</strong>(data_points : Array(NumberDataPoint)? = <span class="n">nil</span>)</a>
+        <a href="#new%28data_points%3AArray%28NumberDataPoint%29%3F%3Dnil%29-class-method" class="signature"><strong>.new</strong>(data_points : Array(NumberDataPoint)? = <span class="n">nil</span>)</a>
         
       </li>
     
@@ -777,7 +812,7 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#from_protobuf(io)-class-method" class="signature"><strong>.from_protobuf</strong>(io)</a>
+        <a href="#from_protobuf%28io%29-class-method" class="signature"><strong>.from_protobuf</strong>(io)</a>
         
       </li>
     
@@ -796,22 +831,22 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#[](key:String)-instance-method" class="signature"><strong>#[]</strong>(key : String)</a>
+        <a href="#%5B%5D%28key%3AString%29-instance-method" class="signature"><strong>#[]</strong>(key : String)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#data_points:Array(NumberDataPoint)?-instance-method" class="signature"><strong>#data_points</strong> : Array(NumberDataPoint)?</a>
+        <a href="#data_points%3AArray%28NumberDataPoint%29%3F-instance-method" class="signature"><strong>#data_points</strong> : Array(NumberDataPoint)?</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#data_points=(data_points:Array(NumberDataPoint)?)-instance-method" class="signature"><strong>#data_points=</strong>(data_points : Array(NumberDataPoint)?)</a>
+        <a href="#data_points%3D%28data_points%3AArray%28NumberDataPoint%29%3F%29-instance-method" class="signature"><strong>#data_points=</strong>(data_points : Array(NumberDataPoint)?)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#to_protobuf(io:IO,embedded=false)-instance-method" class="signature"><strong>#to_protobuf</strong>(io : IO, embedded = <span class="n">false</span>)</a>
+        <a href="#to_protobuf%28io%3AIO%2Cembedded%3Dfalse%29-instance-method" class="signature"><strong>#to_protobuf</strong>(io : IO, embedded = <span class="n">false</span>)</a>
         
       </li>
     
@@ -885,7 +920,7 @@
         
         def self.<strong>new</strong>(buf : Protobuf::Buffer)
 
-        <a class="method-permalink" href="#new(buf:Protobuf::Buffer)-class-method">#</a>
+        <a class="method-permalink" href="#new%28buf%3AProtobuf%3A%3ABuffer%29-class-method">#</a>
       </div>
       
       <br/>
@@ -899,7 +934,7 @@
         
         def self.<strong>new</strong>(data_points : Array(<a href="../../../../OpenTelemetry/Proto/Metrics/V1/NumberDataPoint.html">NumberDataPoint</a>)? = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#new(data_points:Array(NumberDataPoint)?=nil)-class-method">#</a>
+        <a class="method-permalink" href="#new%28data_points%3AArray%28NumberDataPoint%29%3F%3Dnil%29-class-method">#</a>
       </div>
       
       <br/>
@@ -925,7 +960,7 @@
         
         def self.<strong>from_protobuf</strong>(io)
 
-        <a class="method-permalink" href="#from_protobuf(io)-class-method">#</a>
+        <a class="method-permalink" href="#from_protobuf%28io%29-class-method">#</a>
       </div>
       
       <br/>
@@ -951,7 +986,7 @@
         
         def <strong>[]</strong>(key : String)
 
-        <a class="method-permalink" href="#[](key:String)-instance-method">#</a>
+        <a class="method-permalink" href="#%5B%5D%28key%3AString%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -965,7 +1000,7 @@
         
         def <strong>data_points</strong> : Array(<a href="../../../../OpenTelemetry/Proto/Metrics/V1/NumberDataPoint.html">NumberDataPoint</a>)?
 
-        <a class="method-permalink" href="#data_points:Array(NumberDataPoint)?-instance-method">#</a>
+        <a class="method-permalink" href="#data_points%3AArray%28NumberDataPoint%29%3F-instance-method">#</a>
       </div>
       
       <br/>
@@ -979,7 +1014,7 @@
         
         def <strong>data_points=</strong>(data_points : Array(<a href="../../../../OpenTelemetry/Proto/Metrics/V1/NumberDataPoint.html">NumberDataPoint</a>)?)
 
-        <a class="method-permalink" href="#data_points=(data_points:Array(NumberDataPoint)?)-instance-method">#</a>
+        <a class="method-permalink" href="#data_points%3D%28data_points%3AArray%28NumberDataPoint%29%3F%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -993,7 +1028,7 @@
         
         def <strong>to_protobuf</strong>(io : IO, embedded = <span class="n">false</span>)
 
-        <a class="method-permalink" href="#to_protobuf(io:IO,embedded=false)-instance-method">#</a>
+        <a class="method-permalink" href="#to_protobuf%28io%3AIO%2Cembedded%3Dfalse%29-instance-method">#</a>
       </div>
       
       <br/>

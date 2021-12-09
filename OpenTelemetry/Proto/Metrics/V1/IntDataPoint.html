@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Crystal Docs 1.0.0">
+<meta name="generator" content="Crystal Docs 1.1.1">
 <meta name="crystal_docs.project_version" content="main">
 <meta name="crystal_docs.project_name" content="opentelemetry-api">
 
@@ -51,12 +51,32 @@
   <div class="types-list">
     <ul>
   
+  <li class=" " data-id="opentelemetry-api/Fiber" data-name="fiber">
+      <a href="../../../../Fiber.html">Fiber</a>
+      
+    </li>
+  
   <li class="parent open current" data-id="opentelemetry-api/OpenTelemetry" data-name="opentelemetry">
       <a href="../../../../OpenTelemetry.html">OpenTelemetry</a>
       
         <ul>
   
-  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Attribute" data-name="opentelemetry::attribute">
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/AnyAttribute" data-name="opentelemetry::anyattribute">
+      <a href="../../../../OpenTelemetry/AnyAttribute.html">AnyAttribute</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/AnyAttribute/Type" data-name="opentelemetry::anyattribute::type">
+      <a href="../../../../OpenTelemetry/AnyAttribute/Type.html">Type</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Attribute" data-name="opentelemetry::attribute(k)">
       <a href="../../../../OpenTelemetry/Attribute.html">Attribute</a>
       
     </li>
@@ -65,6 +85,11 @@
       <a href="../../../../OpenTelemetry/Context.html">Context</a>
       
         <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Context/ContextContainer" data-name="opentelemetry::context::contextcontainer">
+      <a href="../../../../OpenTelemetry/Context/ContextContainer.html">ContextContainer</a>
+      
+    </li>
   
   <li class=" " data-id="opentelemetry-api/OpenTelemetry/Context/Key" data-name="opentelemetry::context::key">
       <a href="../../../../OpenTelemetry/Context/Key.html">Key</a>
@@ -651,6 +676,16 @@
       
     </li>
   
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/ValueType" data-name="opentelemetry::valuetype">
+      <a href="../../../../OpenTelemetry/ValueType.html">ValueType</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/ValueTypes" data-name="opentelemetry::valuetypes">
+      <a href="../../../../OpenTelemetry/ValueTypes.html">ValueTypes</a>
+      
+    </li>
+  
 </ul>
 
       
@@ -712,7 +747,7 @@
   </h2>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/34edd3b6c81841c34ee53f416fe229cebcc8853b/src/proto/metrics.pb.cr#L200" target="_blank">
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/proto/metrics.pb.cr#L200" target="_blank">
         proto/metrics.pb.cr
       </a>
     
@@ -753,12 +788,12 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new(buf:Protobuf::Buffer)-class-method" class="signature"><strong>.new</strong>(buf : Protobuf::Buffer)</a>
+        <a href="#new%28buf%3AProtobuf%3A%3ABuffer%29-class-method" class="signature"><strong>.new</strong>(buf : Protobuf::Buffer)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#new(labels:Array(OpenTelemetry::Proto::Common::V1::StringKeyValue)?=nil,start_time_unix_nano:UInt64?=nil,time_unix_nano:UInt64?=nil,value:Int64?=nil,exemplars:Array(IntExemplar)?=nil)-class-method" class="signature"><strong>.new</strong>(labels : Array(OpenTelemetry::Proto::Common::V1::StringKeyValue)? = <span class="n">nil</span>, start_time_unix_nano : UInt64? = <span class="n">nil</span>, time_unix_nano : UInt64? = <span class="n">nil</span>, value : Int64? = <span class="n">nil</span>, exemplars : Array(IntExemplar)? = <span class="n">nil</span>)</a>
+        <a href="#new%28labels%3AArray%28OpenTelemetry%3A%3AProto%3A%3ACommon%3A%3AV1%3A%3AStringKeyValue%29%3F%3Dnil%2Cstart_time_unix_nano%3AUInt64%3F%3Dnil%2Ctime_unix_nano%3AUInt64%3F%3Dnil%2Cvalue%3AInt64%3F%3Dnil%2Cexemplars%3AArray%28IntExemplar%29%3F%3Dnil%29-class-method" class="signature"><strong>.new</strong>(labels : Array(OpenTelemetry::Proto::Common::V1::StringKeyValue)? = <span class="n">nil</span>, start_time_unix_nano : UInt64? = <span class="n">nil</span>, time_unix_nano : UInt64? = <span class="n">nil</span>, value : Int64? = <span class="n">nil</span>, exemplars : Array(IntExemplar)? = <span class="n">nil</span>)</a>
         
       </li>
     
@@ -777,7 +812,7 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#from_protobuf(io)-class-method" class="signature"><strong>.from_protobuf</strong>(io)</a>
+        <a href="#from_protobuf%28io%29-class-method" class="signature"><strong>.from_protobuf</strong>(io)</a>
         
       </li>
     
@@ -796,52 +831,52 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#[](key:String)-instance-method" class="signature"><strong>#[]</strong>(key : String)</a>
+        <a href="#%5B%5D%28key%3AString%29-instance-method" class="signature"><strong>#[]</strong>(key : String)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#exemplars:Array(IntExemplar)?-instance-method" class="signature"><strong>#exemplars</strong> : Array(IntExemplar)?</a>
+        <a href="#exemplars%3AArray%28IntExemplar%29%3F-instance-method" class="signature"><strong>#exemplars</strong> : Array(IntExemplar)?</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#exemplars=(exemplars:Array(IntExemplar)?)-instance-method" class="signature"><strong>#exemplars=</strong>(exemplars : Array(IntExemplar)?)</a>
+        <a href="#exemplars%3D%28exemplars%3AArray%28IntExemplar%29%3F%29-instance-method" class="signature"><strong>#exemplars=</strong>(exemplars : Array(IntExemplar)?)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#labels:Array(OpenTelemetry::Proto::Common::V1::StringKeyValue)?-instance-method" class="signature"><strong>#labels</strong> : Array(OpenTelemetry::Proto::Common::V1::StringKeyValue)?</a>
+        <a href="#labels%3AArray%28OpenTelemetry%3A%3AProto%3A%3ACommon%3A%3AV1%3A%3AStringKeyValue%29%3F-instance-method" class="signature"><strong>#labels</strong> : Array(OpenTelemetry::Proto::Common::V1::StringKeyValue)?</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#labels=(labels:Array(OpenTelemetry::Proto::Common::V1::StringKeyValue)?)-instance-method" class="signature"><strong>#labels=</strong>(labels : Array(OpenTelemetry::Proto::Common::V1::StringKeyValue)?)</a>
+        <a href="#labels%3D%28labels%3AArray%28OpenTelemetry%3A%3AProto%3A%3ACommon%3A%3AV1%3A%3AStringKeyValue%29%3F%29-instance-method" class="signature"><strong>#labels=</strong>(labels : Array(OpenTelemetry::Proto::Common::V1::StringKeyValue)?)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#start_time_unix_nano:UInt64?-instance-method" class="signature"><strong>#start_time_unix_nano</strong> : UInt64?</a>
+        <a href="#start_time_unix_nano%3AUInt64%3F-instance-method" class="signature"><strong>#start_time_unix_nano</strong> : UInt64?</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#start_time_unix_nano=(start_time_unix_nano:UInt64?)-instance-method" class="signature"><strong>#start_time_unix_nano=</strong>(start_time_unix_nano : UInt64?)</a>
+        <a href="#start_time_unix_nano%3D%28start_time_unix_nano%3AUInt64%3F%29-instance-method" class="signature"><strong>#start_time_unix_nano=</strong>(start_time_unix_nano : UInt64?)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#time_unix_nano:UInt64?-instance-method" class="signature"><strong>#time_unix_nano</strong> : UInt64?</a>
+        <a href="#time_unix_nano%3AUInt64%3F-instance-method" class="signature"><strong>#time_unix_nano</strong> : UInt64?</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#time_unix_nano=(time_unix_nano:UInt64?)-instance-method" class="signature"><strong>#time_unix_nano=</strong>(time_unix_nano : UInt64?)</a>
+        <a href="#time_unix_nano%3D%28time_unix_nano%3AUInt64%3F%29-instance-method" class="signature"><strong>#time_unix_nano=</strong>(time_unix_nano : UInt64?)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#to_protobuf(io:IO,embedded=false)-instance-method" class="signature"><strong>#to_protobuf</strong>(io : IO, embedded = <span class="n">false</span>)</a>
+        <a href="#to_protobuf%28io%3AIO%2Cembedded%3Dfalse%29-instance-method" class="signature"><strong>#to_protobuf</strong>(io : IO, embedded = <span class="n">false</span>)</a>
         
       </li>
     
@@ -851,12 +886,12 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#value:Int64?-instance-method" class="signature"><strong>#value</strong> : Int64?</a>
+        <a href="#value%3AInt64%3F-instance-method" class="signature"><strong>#value</strong> : Int64?</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#value=(value:Int64?)-instance-method" class="signature"><strong>#value=</strong>(value : Int64?)</a>
+        <a href="#value%3D%28value%3AInt64%3F%29-instance-method" class="signature"><strong>#value=</strong>(value : Int64?)</a>
         
       </li>
     
@@ -925,7 +960,7 @@
         
         def self.<strong>new</strong>(buf : Protobuf::Buffer)
 
-        <a class="method-permalink" href="#new(buf:Protobuf::Buffer)-class-method">#</a>
+        <a class="method-permalink" href="#new%28buf%3AProtobuf%3A%3ABuffer%29-class-method">#</a>
       </div>
       
       <br/>
@@ -939,7 +974,7 @@
         
         def self.<strong>new</strong>(labels : Array(<a href="../../../../OpenTelemetry/Proto/Common/V1/StringKeyValue.html">OpenTelemetry::Proto::Common::V1::StringKeyValue</a>)? = <span class="n">nil</span>, start_time_unix_nano : UInt64? = <span class="n">nil</span>, time_unix_nano : UInt64? = <span class="n">nil</span>, value : Int64? = <span class="n">nil</span>, exemplars : Array(<a href="../../../../OpenTelemetry/Proto/Metrics/V1/IntExemplar.html">IntExemplar</a>)? = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#new(labels:Array(OpenTelemetry::Proto::Common::V1::StringKeyValue)?=nil,start_time_unix_nano:UInt64?=nil,time_unix_nano:UInt64?=nil,value:Int64?=nil,exemplars:Array(IntExemplar)?=nil)-class-method">#</a>
+        <a class="method-permalink" href="#new%28labels%3AArray%28OpenTelemetry%3A%3AProto%3A%3ACommon%3A%3AV1%3A%3AStringKeyValue%29%3F%3Dnil%2Cstart_time_unix_nano%3AUInt64%3F%3Dnil%2Ctime_unix_nano%3AUInt64%3F%3Dnil%2Cvalue%3AInt64%3F%3Dnil%2Cexemplars%3AArray%28IntExemplar%29%3F%3Dnil%29-class-method">#</a>
       </div>
       
       <br/>
@@ -965,7 +1000,7 @@
         
         def self.<strong>from_protobuf</strong>(io)
 
-        <a class="method-permalink" href="#from_protobuf(io)-class-method">#</a>
+        <a class="method-permalink" href="#from_protobuf%28io%29-class-method">#</a>
       </div>
       
       <br/>
@@ -991,7 +1026,7 @@
         
         def <strong>[]</strong>(key : String)
 
-        <a class="method-permalink" href="#[](key:String)-instance-method">#</a>
+        <a class="method-permalink" href="#%5B%5D%28key%3AString%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1005,7 +1040,7 @@
         
         def <strong>exemplars</strong> : Array(<a href="../../../../OpenTelemetry/Proto/Metrics/V1/IntExemplar.html">IntExemplar</a>)?
 
-        <a class="method-permalink" href="#exemplars:Array(IntExemplar)?-instance-method">#</a>
+        <a class="method-permalink" href="#exemplars%3AArray%28IntExemplar%29%3F-instance-method">#</a>
       </div>
       
       <br/>
@@ -1019,7 +1054,7 @@
         
         def <strong>exemplars=</strong>(exemplars : Array(<a href="../../../../OpenTelemetry/Proto/Metrics/V1/IntExemplar.html">IntExemplar</a>)?)
 
-        <a class="method-permalink" href="#exemplars=(exemplars:Array(IntExemplar)?)-instance-method">#</a>
+        <a class="method-permalink" href="#exemplars%3D%28exemplars%3AArray%28IntExemplar%29%3F%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1033,7 +1068,7 @@
         
         def <strong>labels</strong> : Array(<a href="../../../../OpenTelemetry/Proto/Common/V1/StringKeyValue.html">OpenTelemetry::Proto::Common::V1::StringKeyValue</a>)?
 
-        <a class="method-permalink" href="#labels:Array(OpenTelemetry::Proto::Common::V1::StringKeyValue)?-instance-method">#</a>
+        <a class="method-permalink" href="#labels%3AArray%28OpenTelemetry%3A%3AProto%3A%3ACommon%3A%3AV1%3A%3AStringKeyValue%29%3F-instance-method">#</a>
       </div>
       
       <br/>
@@ -1047,7 +1082,7 @@
         
         def <strong>labels=</strong>(labels : Array(<a href="../../../../OpenTelemetry/Proto/Common/V1/StringKeyValue.html">OpenTelemetry::Proto::Common::V1::StringKeyValue</a>)?)
 
-        <a class="method-permalink" href="#labels=(labels:Array(OpenTelemetry::Proto::Common::V1::StringKeyValue)?)-instance-method">#</a>
+        <a class="method-permalink" href="#labels%3D%28labels%3AArray%28OpenTelemetry%3A%3AProto%3A%3ACommon%3A%3AV1%3A%3AStringKeyValue%29%3F%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1061,7 +1096,7 @@
         
         def <strong>start_time_unix_nano</strong> : UInt64?
 
-        <a class="method-permalink" href="#start_time_unix_nano:UInt64?-instance-method">#</a>
+        <a class="method-permalink" href="#start_time_unix_nano%3AUInt64%3F-instance-method">#</a>
       </div>
       
       <br/>
@@ -1075,7 +1110,7 @@
         
         def <strong>start_time_unix_nano=</strong>(start_time_unix_nano : UInt64?)
 
-        <a class="method-permalink" href="#start_time_unix_nano=(start_time_unix_nano:UInt64?)-instance-method">#</a>
+        <a class="method-permalink" href="#start_time_unix_nano%3D%28start_time_unix_nano%3AUInt64%3F%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1089,7 +1124,7 @@
         
         def <strong>time_unix_nano</strong> : UInt64?
 
-        <a class="method-permalink" href="#time_unix_nano:UInt64?-instance-method">#</a>
+        <a class="method-permalink" href="#time_unix_nano%3AUInt64%3F-instance-method">#</a>
       </div>
       
       <br/>
@@ -1103,7 +1138,7 @@
         
         def <strong>time_unix_nano=</strong>(time_unix_nano : UInt64?)
 
-        <a class="method-permalink" href="#time_unix_nano=(time_unix_nano:UInt64?)-instance-method">#</a>
+        <a class="method-permalink" href="#time_unix_nano%3D%28time_unix_nano%3AUInt64%3F%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1117,7 +1152,7 @@
         
         def <strong>to_protobuf</strong>(io : IO, embedded = <span class="n">false</span>)
 
-        <a class="method-permalink" href="#to_protobuf(io:IO,embedded=false)-instance-method">#</a>
+        <a class="method-permalink" href="#to_protobuf%28io%3AIO%2Cembedded%3Dfalse%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1145,7 +1180,7 @@
         
         def <strong>value</strong> : Int64?
 
-        <a class="method-permalink" href="#value:Int64?-instance-method">#</a>
+        <a class="method-permalink" href="#value%3AInt64%3F-instance-method">#</a>
       </div>
       
       <br/>
@@ -1159,7 +1194,7 @@
         
         def <strong>value=</strong>(value : Int64?)
 
-        <a class="method-permalink" href="#value=(value:Int64?)-instance-method">#</a>
+        <a class="method-permalink" href="#value%3D%28value%3AInt64%3F%29-instance-method">#</a>
       </div>
       
       <br/>

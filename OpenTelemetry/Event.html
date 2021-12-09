@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Crystal Docs 1.0.0">
+<meta name="generator" content="Crystal Docs 1.1.1">
 <meta name="crystal_docs.project_version" content="main">
 <meta name="crystal_docs.project_name" content="opentelemetry-api">
 
@@ -51,12 +51,32 @@
   <div class="types-list">
     <ul>
   
+  <li class=" " data-id="opentelemetry-api/Fiber" data-name="fiber">
+      <a href="../Fiber.html">Fiber</a>
+      
+    </li>
+  
   <li class="parent open current" data-id="opentelemetry-api/OpenTelemetry" data-name="opentelemetry">
       <a href="../OpenTelemetry.html">OpenTelemetry</a>
       
         <ul>
   
-  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Attribute" data-name="opentelemetry::attribute">
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/AnyAttribute" data-name="opentelemetry::anyattribute">
+      <a href="../OpenTelemetry/AnyAttribute.html">AnyAttribute</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/AnyAttribute/Type" data-name="opentelemetry::anyattribute::type">
+      <a href="../OpenTelemetry/AnyAttribute/Type.html">Type</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Attribute" data-name="opentelemetry::attribute(k)">
       <a href="../OpenTelemetry/Attribute.html">Attribute</a>
       
     </li>
@@ -65,6 +85,11 @@
       <a href="../OpenTelemetry/Context.html">Context</a>
       
         <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Context/ContextContainer" data-name="opentelemetry::context::contextcontainer">
+      <a href="../OpenTelemetry/Context/ContextContainer.html">ContextContainer</a>
+      
+    </li>
   
   <li class=" " data-id="opentelemetry-api/OpenTelemetry/Context/Key" data-name="opentelemetry::context::key">
       <a href="../OpenTelemetry/Context/Key.html">Key</a>
@@ -651,6 +676,16 @@
       
     </li>
   
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/ValueType" data-name="opentelemetry::valuetype">
+      <a href="../OpenTelemetry/ValueType.html">ValueType</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/ValueTypes" data-name="opentelemetry::valuetypes">
+      <a href="../OpenTelemetry/ValueTypes.html">ValueTypes</a>
+      
+    </li>
+  
 </ul>
 
       
@@ -698,7 +733,7 @@
   </h2>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/34edd3b6c81841c34ee53f416fe229cebcc8853b/src/opentelemetry-api/event.cr#L4" target="_blank">
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/event.cr#L4" target="_blank">
         opentelemetry-api/event.cr
       </a>
     
@@ -708,6 +743,38 @@
 
 
 
+
+  <h2>
+    <a id="constructors" class="anchor" href="#constructors">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructors
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28name%2Cattributes%3AHash%28String%2CAnyAttribute%29%29-class-method" class="signature"><strong>.new</strong>(name, attributes : Hash(String, AnyAttribute))</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new%28name%2Cattributes%3AHash%28String%2C_%29%29-class-method" class="signature"><strong>.new</strong>(name, attributes : Hash(String, _))</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new%28name%29-class-method" class="signature"><strong>.new</strong>(name)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new%28name%3D%22%22%2C%26%29-class-method" class="signature"><strong>.new</strong>(name = <span class="s">&quot;&quot;</span>, &)</a>
+        
+      </li>
+    
+  </ul>
 
 
 
@@ -724,62 +791,82 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#attributes:Hash(String,Attribute)-instance-method" class="signature"><strong>#attributes</strong> : Hash(String, Attribute)</a>
+        <a href="#%5B%5D%28key%29-instance-method" class="signature"><strong>#[]</strong>(key)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#attributes=(attributes:Hash(String,Attribute))-instance-method" class="signature"><strong>#attributes=</strong>(attributes : Hash(String, Attribute))</a>
+        <a href="#%5B%5D%3D%28key%2Cvalue%29-instance-method" class="signature"><strong>#[]=</strong>(key, value)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#identifier:CSUUID-instance-method" class="signature"><strong>#identifier</strong> : CSUUID</a>
+        <a href="#attributes%3AHash%28String%2CAnyAttribute%29-instance-method" class="signature"><strong>#attributes</strong> : Hash(String, AnyAttribute)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#identifier=(identifier:CSUUID)-instance-method" class="signature"><strong>#identifier=</strong>(identifier : CSUUID)</a>
+        <a href="#attributes%3D%28attr%3AHash%28String%2C_%29%29-instance-method" class="signature"><strong>#attributes=</strong>(attr : Hash(String, _))</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#name:String-instance-method" class="signature"><strong>#name</strong> : String</a>
+        <a href="#get_attribute%28key%29-instance-method" class="signature"><strong>#get_attribute</strong>(key)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#name=(name:String)-instance-method" class="signature"><strong>#name=</strong>(name : String)</a>
+        <a href="#identifier%3ACSUUID-instance-method" class="signature"><strong>#identifier</strong> : CSUUID</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#parent_span:Span?-instance-method" class="signature"><strong>#parent_span</strong> : Span?</a>
+        <a href="#identifier%3D%28identifier%3ACSUUID%29-instance-method" class="signature"><strong>#identifier=</strong>(identifier : CSUUID)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#parent_span=(parent_span:Span?)-instance-method" class="signature"><strong>#parent_span=</strong>(parent_span : Span?)</a>
+        <a href="#name%3AString-instance-method" class="signature"><strong>#name</strong> : String</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#timestamp:Time::Span-instance-method" class="signature"><strong>#timestamp</strong> : Time::Span</a>
+        <a href="#name%3D%28name%3AString%29-instance-method" class="signature"><strong>#name=</strong>(name : String)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#timestamp=(timestamp:Time::Span)-instance-method" class="signature"><strong>#timestamp=</strong>(timestamp : Time::Span)</a>
+        <a href="#parent_span%3ASpan%3F-instance-method" class="signature"><strong>#parent_span</strong> : Span?</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#wall_timestamp:Time-instance-method" class="signature"><strong>#wall_timestamp</strong> : Time</a>
+        <a href="#parent_span%3D%28parent_span%3ASpan%3F%29-instance-method" class="signature"><strong>#parent_span=</strong>(parent_span : Span?)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#wall_timestamp=(wall_timestamp:Time)-instance-method" class="signature"><strong>#wall_timestamp=</strong>(wall_timestamp : Time)</a>
+        <a href="#set_attribute%28key%2Cvalue%29-instance-method" class="signature"><strong>#set_attribute</strong>(key, value)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#timestamp%3ATime%3A%3ASpan-instance-method" class="signature"><strong>#timestamp</strong> : Time::Span</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#timestamp%3D%28timestamp%3ATime%3A%3ASpan%29-instance-method" class="signature"><strong>#timestamp=</strong>(timestamp : Time::Span)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#wall_timestamp%3ATime-instance-method" class="signature"><strong>#wall_timestamp</strong> : Time</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#wall_timestamp%3D%28wall_timestamp%3ATime%29-instance-method" class="signature"><strong>#wall_timestamp=</strong>(wall_timestamp : Time)</a>
         
       </li>
     
@@ -814,6 +901,80 @@
 </div>
 
 
+  <h2>
+    <a id="constructor-detail" class="anchor" href="#constructor-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructor Detail
+  </h2>
+  
+    <div class="entry-detail" id="new(name,attributes:Hash(String,AnyAttribute))-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(name, attributes : Hash(String, <a href="../OpenTelemetry/AnyAttribute.html">AnyAttribute</a>))
+
+        <a class="method-permalink" href="#new%28name%2Cattributes%3AHash%28String%2CAnyAttribute%29%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/event.cr#L19" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(name,attributes:Hash(String,_))-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(name, attributes : Hash(String, _))
+
+        <a class="method-permalink" href="#new%28name%2Cattributes%3AHash%28String%2C_%29%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/event.cr#L22" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(name)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(name)
+
+        <a class="method-permalink" href="#new%28name%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/event.cr#L12" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(name=&quot;&quot;,&amp;)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(name = <span class="s">&quot;&quot;</span>, &)
+
+        <a class="method-permalink" href="#new%28name%3D%22%22%2C%26%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/event.cr#L15" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
 
 
 
@@ -827,34 +988,82 @@
     Instance Method Detail
   </h2>
   
-    <div class="entry-detail" id="attributes:Hash(String,Attribute)-instance-method">
+    <div class="entry-detail" id="[](key)-instance-method">
       <div class="signature">
         
-        def <strong>attributes</strong> : Hash(String, <a href="../OpenTelemetry/Attribute.html">Attribute</a>)
+        def <strong>[]</strong>(key)
 
-        <a class="method-permalink" href="#attributes:Hash(String,Attribute)-instance-method">#</a>
+        <a class="method-permalink" href="#%5B%5D%28key%29-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/34edd3b6c81841c34ee53f416fe229cebcc8853b/src/opentelemetry-api/event.cr#L9" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/event.cr#L44" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="attributes=(attributes:Hash(String,Attribute))-instance-method">
+    <div class="entry-detail" id="[]=(key,value)-instance-method">
       <div class="signature">
         
-        def <strong>attributes=</strong>(attributes : Hash(String, <a href="../OpenTelemetry/Attribute.html">Attribute</a>))
+        def <strong>[]=</strong>(key, value)
 
-        <a class="method-permalink" href="#attributes=(attributes:Hash(String,Attribute))-instance-method">#</a>
+        <a class="method-permalink" href="#%5B%5D%3D%28key%2Cvalue%29-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/34edd3b6c81841c34ee53f416fe229cebcc8853b/src/opentelemetry-api/event.cr#L9" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/event.cr#L36" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="attributes:Hash(String,AnyAttribute)-instance-method">
+      <div class="signature">
+        
+        def <strong>attributes</strong> : Hash(String, <a href="../OpenTelemetry/AnyAttribute.html">AnyAttribute</a>)
+
+        <a class="method-permalink" href="#attributes%3AHash%28String%2CAnyAttribute%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/event.cr#L9" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="attributes=(attr:Hash(String,_))-instance-method">
+      <div class="signature">
+        
+        def <strong>attributes=</strong>(attr : Hash(String, _))
+
+        <a class="method-permalink" href="#attributes%3D%28attr%3AHash%28String%2C_%29%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/event.cr#L29" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="get_attribute(key)-instance-method">
+      <div class="signature">
+        
+        def <strong>get_attribute</strong>(key)
+
+        <a class="method-permalink" href="#get_attribute%28key%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/event.cr#L48" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -864,13 +1073,13 @@
         
         def <strong>identifier</strong> : CSUUID
 
-        <a class="method-permalink" href="#identifier:CSUUID-instance-method">#</a>
+        <a class="method-permalink" href="#identifier%3ACSUUID-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/34edd3b6c81841c34ee53f416fe229cebcc8853b/src/opentelemetry-api/event.cr#L5" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/event.cr#L5" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -880,13 +1089,13 @@
         
         def <strong>identifier=</strong>(identifier : CSUUID)
 
-        <a class="method-permalink" href="#identifier=(identifier:CSUUID)-instance-method">#</a>
+        <a class="method-permalink" href="#identifier%3D%28identifier%3ACSUUID%29-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/34edd3b6c81841c34ee53f416fe229cebcc8853b/src/opentelemetry-api/event.cr#L5" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/event.cr#L5" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -896,13 +1105,13 @@
         
         def <strong>name</strong> : String
 
-        <a class="method-permalink" href="#name:String-instance-method">#</a>
+        <a class="method-permalink" href="#name%3AString-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/34edd3b6c81841c34ee53f416fe229cebcc8853b/src/opentelemetry-api/event.cr#L6" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/event.cr#L6" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -912,13 +1121,13 @@
         
         def <strong>name=</strong>(name : String)
 
-        <a class="method-permalink" href="#name=(name:String)-instance-method">#</a>
+        <a class="method-permalink" href="#name%3D%28name%3AString%29-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/34edd3b6c81841c34ee53f416fe229cebcc8853b/src/opentelemetry-api/event.cr#L6" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/event.cr#L6" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -928,13 +1137,13 @@
         
         def <strong>parent_span</strong> : <a href="../OpenTelemetry/Span.html">Span</a>?
 
-        <a class="method-permalink" href="#parent_span:Span?-instance-method">#</a>
+        <a class="method-permalink" href="#parent_span%3ASpan%3F-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/34edd3b6c81841c34ee53f416fe229cebcc8853b/src/opentelemetry-api/event.cr#L10" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/event.cr#L10" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -944,13 +1153,29 @@
         
         def <strong>parent_span=</strong>(parent_span : <a href="../OpenTelemetry/Span.html">Span</a>?)
 
-        <a class="method-permalink" href="#parent_span=(parent_span:Span?)-instance-method">#</a>
+        <a class="method-permalink" href="#parent_span%3D%28parent_span%3ASpan%3F%29-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/34edd3b6c81841c34ee53f416fe229cebcc8853b/src/opentelemetry-api/event.cr#L10" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/event.cr#L10" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="set_attribute(key,value)-instance-method">
+      <div class="signature">
+        
+        def <strong>set_attribute</strong>(key, value)
+
+        <a class="method-permalink" href="#set_attribute%28key%2Cvalue%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/event.cr#L40" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -960,13 +1185,13 @@
         
         def <strong>timestamp</strong> : Time::Span
 
-        <a class="method-permalink" href="#timestamp:Time::Span-instance-method">#</a>
+        <a class="method-permalink" href="#timestamp%3ATime%3A%3ASpan-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/34edd3b6c81841c34ee53f416fe229cebcc8853b/src/opentelemetry-api/event.cr#L7" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/event.cr#L7" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -976,13 +1201,13 @@
         
         def <strong>timestamp=</strong>(timestamp : Time::Span)
 
-        <a class="method-permalink" href="#timestamp=(timestamp:Time::Span)-instance-method">#</a>
+        <a class="method-permalink" href="#timestamp%3D%28timestamp%3ATime%3A%3ASpan%29-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/34edd3b6c81841c34ee53f416fe229cebcc8853b/src/opentelemetry-api/event.cr#L7" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/event.cr#L7" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -992,13 +1217,13 @@
         
         def <strong>wall_timestamp</strong> : Time
 
-        <a class="method-permalink" href="#wall_timestamp:Time-instance-method">#</a>
+        <a class="method-permalink" href="#wall_timestamp%3ATime-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/34edd3b6c81841c34ee53f416fe229cebcc8853b/src/opentelemetry-api/event.cr#L8" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/event.cr#L8" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1008,13 +1233,13 @@
         
         def <strong>wall_timestamp=</strong>(wall_timestamp : Time)
 
-        <a class="method-permalink" href="#wall_timestamp=(wall_timestamp:Time)-instance-method">#</a>
+        <a class="method-permalink" href="#wall_timestamp%3D%28wall_timestamp%3ATime%29-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/34edd3b6c81841c34ee53f416fe229cebcc8853b/src/opentelemetry-api/event.cr#L8" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/event.cr#L8" target="_blank">View source</a>]
         
       </div>
     </div>

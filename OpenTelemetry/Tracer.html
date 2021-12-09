@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Crystal Docs 1.0.0">
+<meta name="generator" content="Crystal Docs 1.1.1">
 <meta name="crystal_docs.project_version" content="main">
 <meta name="crystal_docs.project_name" content="opentelemetry-api">
 
@@ -51,12 +51,32 @@
   <div class="types-list">
     <ul>
   
+  <li class=" " data-id="opentelemetry-api/Fiber" data-name="fiber">
+      <a href="../Fiber.html">Fiber</a>
+      
+    </li>
+  
   <li class="parent open current" data-id="opentelemetry-api/OpenTelemetry" data-name="opentelemetry">
       <a href="../OpenTelemetry.html">OpenTelemetry</a>
       
         <ul>
   
-  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Attribute" data-name="opentelemetry::attribute">
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/AnyAttribute" data-name="opentelemetry::anyattribute">
+      <a href="../OpenTelemetry/AnyAttribute.html">AnyAttribute</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/AnyAttribute/Type" data-name="opentelemetry::anyattribute::type">
+      <a href="../OpenTelemetry/AnyAttribute/Type.html">Type</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Attribute" data-name="opentelemetry::attribute(k)">
       <a href="../OpenTelemetry/Attribute.html">Attribute</a>
       
     </li>
@@ -65,6 +85,11 @@
       <a href="../OpenTelemetry/Context.html">Context</a>
       
         <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Context/ContextContainer" data-name="opentelemetry::context::contextcontainer">
+      <a href="../OpenTelemetry/Context/ContextContainer.html">ContextContainer</a>
+      
+    </li>
   
   <li class=" " data-id="opentelemetry-api/OpenTelemetry/Context/Key" data-name="opentelemetry::context::key">
       <a href="../OpenTelemetry/Context/Key.html">Key</a>
@@ -651,6 +676,16 @@
       
     </li>
   
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/ValueType" data-name="opentelemetry::valuetype">
+      <a href="../OpenTelemetry/ValueType.html">ValueType</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/ValueTypes" data-name="opentelemetry::valuetypes">
+      <a href="../OpenTelemetry/ValueTypes.html">ValueTypes</a>
+      
+    </li>
+  
 </ul>
 
       
@@ -698,7 +733,7 @@
   </h2>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/34edd3b6c81841c34ee53f416fe229cebcc8853b/src/opentelemetry-api/tracer.cr#L2" target="_blank">
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/tracer.cr#L4" target="_blank">
         opentelemetry-api/tracer.cr
       </a>
     
@@ -720,7 +755,7 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new(service_name=nil,service_version=nil,exporter=nil,provider=nil)-class-method" class="signature"><strong>.new</strong>(service_name = <span class="n">nil</span>, service_version = <span class="n">nil</span>, exporter = <span class="n">nil</span>, provider = <span class="n">nil</span>)</a>
+        <a href="#new%28service_name%3Dnil%2Cservice_version%3Dnil%2Cexporter%3Dnil%2Cprovider%3Dnil%29-class-method" class="signature"><strong>.new</strong>(service_name = <span class="n">nil</span>, service_version = <span class="n">nil</span>, exporter = <span class="n">nil</span>, provider = <span class="n">nil</span>)</a>
         
       </li>
     
@@ -741,52 +776,57 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#exporter:Exporter-instance-method" class="signature"><strong>#exporter</strong> : Exporter</a>
+        <a href="#exporter%3AExporter-instance-method" class="signature"><strong>#exporter</strong> : Exporter</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#exporter=(exporter:Exporter)-instance-method" class="signature"><strong>#exporter=</strong>(exporter : Exporter)</a>
+        <a href="#exporter%3D%28exporter%3AExporter%29-instance-method" class="signature"><strong>#exporter=</strong>(exporter : Exporter)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#in_span-instance-method" class="signature"><strong>#in_span</strong></a>
+        <a href="#in_span%28span_name%2C%26%29-instance-method" class="signature"><strong>#in_span</strong>(span_name, &)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#merge_configuration_from_provider=(val)-instance-method" class="signature"><strong>#merge_configuration_from_provider=</strong>(val)</a>
+        <a href="#merge_configuration_from_provider%3D%28val%29-instance-method" class="signature"><strong>#merge_configuration_from_provider=</strong>(val)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#provider:TracerProvider-instance-method" class="signature"><strong>#provider</strong> : TracerProvider</a>
+        <a href="#provider%3ATracerProvider-instance-method" class="signature"><strong>#provider</strong> : TracerProvider</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#provider=(val)-instance-method" class="signature"><strong>#provider=</strong>(val)</a>
+        <a href="#provider%3D%28val%29-instance-method" class="signature"><strong>#provider=</strong>(val)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#service_name:String-instance-method" class="signature"><strong>#service_name</strong> : String</a>
+        <a href="#service_name%3AString-instance-method" class="signature"><strong>#service_name</strong> : String</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#service_name=(service_name:String)-instance-method" class="signature"><strong>#service_name=</strong>(service_name : String)</a>
+        <a href="#service_name%3D%28service_name%3AString%29-instance-method" class="signature"><strong>#service_name=</strong>(service_name : String)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#service_version:String-instance-method" class="signature"><strong>#service_version</strong> : String</a>
+        <a href="#service_version%3AString-instance-method" class="signature"><strong>#service_version</strong> : String</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#service_version=(service_version:String)-instance-method" class="signature"><strong>#service_version=</strong>(service_version : String)</a>
+        <a href="#service_version%3D%28service_version%3AString%29-instance-method" class="signature"><strong>#service_version=</strong>(service_version : String)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#span_stack%3AArray%28Span%29-instance-method" class="signature"><strong>#span_stack</strong> : Array(Span)</a>
         
       </li>
     
@@ -835,13 +875,13 @@
         
         def self.<strong>new</strong>(service_name = <span class="n">nil</span>, service_version = <span class="n">nil</span>, exporter = <span class="n">nil</span>, provider = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#new(service_name=nil,service_version=nil,exporter=nil,provider=nil)-class-method">#</a>
+        <a class="method-permalink" href="#new%28service_name%3Dnil%2Cservice_version%3Dnil%2Cexporter%3Dnil%2Cprovider%3Dnil%29-class-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/34edd3b6c81841c34ee53f416fe229cebcc8853b/src/opentelemetry-api/tracer.cr#L8" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/tracer.cr#L11" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -865,13 +905,13 @@
         
         def <strong>exporter</strong> : <a href="../OpenTelemetry/Exporter.html">Exporter</a>
 
-        <a class="method-permalink" href="#exporter:Exporter-instance-method">#</a>
+        <a class="method-permalink" href="#exporter%3AExporter-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/34edd3b6c81841c34ee53f416fe229cebcc8853b/src/opentelemetry-api/tracer.cr#L5" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/tracer.cr#L7" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -881,29 +921,29 @@
         
         def <strong>exporter=</strong>(exporter : <a href="../OpenTelemetry/Exporter.html">Exporter</a>)
 
-        <a class="method-permalink" href="#exporter=(exporter:Exporter)-instance-method">#</a>
+        <a class="method-permalink" href="#exporter%3D%28exporter%3AExporter%29-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/34edd3b6c81841c34ee53f416fe229cebcc8853b/src/opentelemetry-api/tracer.cr#L5" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/tracer.cr#L7" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="in_span-instance-method">
+    <div class="entry-detail" id="in_span(span_name,&amp;)-instance-method">
       <div class="signature">
         
-        def <strong>in_span</strong>
+        def <strong>in_span</strong>(span_name, &)
 
-        <a class="method-permalink" href="#in_span-instance-method">#</a>
+        <a class="method-permalink" href="#in_span%28span_name%2C%26%29-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/34edd3b6c81841c34ee53f416fe229cebcc8853b/src/opentelemetry-api/tracer.cr#L34" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/tracer.cr#L37" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -913,13 +953,13 @@
         
         def <strong>merge_configuration_from_provider=</strong>(val)
 
-        <a class="method-permalink" href="#merge_configuration_from_provider=(val)-instance-method">#</a>
+        <a class="method-permalink" href="#merge_configuration_from_provider%3D%28val%29-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/34edd3b6c81841c34ee53f416fe229cebcc8853b/src/opentelemetry-api/tracer.cr#L27" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/tracer.cr#L30" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -929,13 +969,13 @@
         
         def <strong>provider</strong> : <a href="../OpenTelemetry/TracerProvider.html">TracerProvider</a>
 
-        <a class="method-permalink" href="#provider:TracerProvider-instance-method">#</a>
+        <a class="method-permalink" href="#provider%3ATracerProvider-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/34edd3b6c81841c34ee53f416fe229cebcc8853b/src/opentelemetry-api/tracer.cr#L6" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/tracer.cr#L8" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -945,13 +985,13 @@
         
         def <strong>provider=</strong>(val)
 
-        <a class="method-permalink" href="#provider=(val)-instance-method">#</a>
+        <a class="method-permalink" href="#provider%3D%28val%29-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/34edd3b6c81841c34ee53f416fe229cebcc8853b/src/opentelemetry-api/tracer.cr#L20" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/tracer.cr#L23" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -961,13 +1001,13 @@
         
         def <strong>service_name</strong> : String
 
-        <a class="method-permalink" href="#service_name:String-instance-method">#</a>
+        <a class="method-permalink" href="#service_name%3AString-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/34edd3b6c81841c34ee53f416fe229cebcc8853b/src/opentelemetry-api/tracer.cr#L3" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/tracer.cr#L5" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -977,13 +1017,13 @@
         
         def <strong>service_name=</strong>(service_name : String)
 
-        <a class="method-permalink" href="#service_name=(service_name:String)-instance-method">#</a>
+        <a class="method-permalink" href="#service_name%3D%28service_name%3AString%29-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/34edd3b6c81841c34ee53f416fe229cebcc8853b/src/opentelemetry-api/tracer.cr#L3" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/tracer.cr#L5" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -993,13 +1033,13 @@
         
         def <strong>service_version</strong> : String
 
-        <a class="method-permalink" href="#service_version:String-instance-method">#</a>
+        <a class="method-permalink" href="#service_version%3AString-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/34edd3b6c81841c34ee53f416fe229cebcc8853b/src/opentelemetry-api/tracer.cr#L4" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/tracer.cr#L6" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1009,13 +1049,29 @@
         
         def <strong>service_version=</strong>(service_version : String)
 
-        <a class="method-permalink" href="#service_version=(service_version:String)-instance-method">#</a>
+        <a class="method-permalink" href="#service_version%3D%28service_version%3AString%29-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/34edd3b6c81841c34ee53f416fe229cebcc8853b/src/opentelemetry-api/tracer.cr#L4" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/tracer.cr#L6" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="span_stack:Array(Span)-instance-method">
+      <div class="signature">
+        
+        def <strong>span_stack</strong> : Array(<a href="../OpenTelemetry/Span.html">Span</a>)
+
+        <a class="method-permalink" href="#span_stack%3AArray%28Span%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/tracer.cr#L9" target="_blank">View source</a>]
         
       </div>
     </div>

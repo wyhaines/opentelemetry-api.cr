@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Crystal Docs 1.0.0">
+<meta name="generator" content="Crystal Docs 1.1.1">
 <meta name="crystal_docs.project_version" content="main">
 <meta name="crystal_docs.project_name" content="opentelemetry-api">
 
@@ -51,12 +51,32 @@
   <div class="types-list">
     <ul>
   
+  <li class=" " data-id="opentelemetry-api/Fiber" data-name="fiber">
+      <a href="../../../../Fiber.html">Fiber</a>
+      
+    </li>
+  
   <li class="parent open current" data-id="opentelemetry-api/OpenTelemetry" data-name="opentelemetry">
       <a href="../../../../OpenTelemetry.html">OpenTelemetry</a>
       
         <ul>
   
-  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Attribute" data-name="opentelemetry::attribute">
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/AnyAttribute" data-name="opentelemetry::anyattribute">
+      <a href="../../../../OpenTelemetry/AnyAttribute.html">AnyAttribute</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/AnyAttribute/Type" data-name="opentelemetry::anyattribute::type">
+      <a href="../../../../OpenTelemetry/AnyAttribute/Type.html">Type</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Attribute" data-name="opentelemetry::attribute(k)">
       <a href="../../../../OpenTelemetry/Attribute.html">Attribute</a>
       
     </li>
@@ -65,6 +85,11 @@
       <a href="../../../../OpenTelemetry/Context.html">Context</a>
       
         <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Context/ContextContainer" data-name="opentelemetry::context::contextcontainer">
+      <a href="../../../../OpenTelemetry/Context/ContextContainer.html">ContextContainer</a>
+      
+    </li>
   
   <li class=" " data-id="opentelemetry-api/OpenTelemetry/Context/Key" data-name="opentelemetry::context::key">
       <a href="../../../../OpenTelemetry/Context/Key.html">Key</a>
@@ -651,6 +676,16 @@
       
     </li>
   
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/ValueType" data-name="opentelemetry::valuetype">
+      <a href="../../../../OpenTelemetry/ValueType.html">ValueType</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/ValueTypes" data-name="opentelemetry::valuetypes">
+      <a href="../../../../OpenTelemetry/ValueTypes.html">ValueTypes</a>
+      
+    </li>
+  
 </ul>
 
       
@@ -712,7 +747,7 @@
   </h2>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/34edd3b6c81841c34ee53f416fe229cebcc8853b/src/proto/logs.pb.cr#L43" target="_blank">
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/proto/logs.pb.cr#L43" target="_blank">
         proto/logs.pb.cr
       </a>
     
@@ -753,12 +788,12 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new(buf:Protobuf::Buffer)-class-method" class="signature"><strong>.new</strong>(buf : Protobuf::Buffer)</a>
+        <a href="#new%28buf%3AProtobuf%3A%3ABuffer%29-class-method" class="signature"><strong>.new</strong>(buf : Protobuf::Buffer)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#new(resource:OpenTelemetry::Proto::Resource::V1::Resource?=nil,instrumentation_library_logs:Array(InstrumentationLibraryLogs)?=nil,schema_url:String?=nil)-class-method" class="signature"><strong>.new</strong>(resource : OpenTelemetry::Proto::Resource::V1::Resource? = <span class="n">nil</span>, instrumentation_library_logs : Array(InstrumentationLibraryLogs)? = <span class="n">nil</span>, schema_url : String? = <span class="n">nil</span>)</a>
+        <a href="#new%28resource%3AOpenTelemetry%3A%3AProto%3A%3AResource%3A%3AV1%3A%3AResource%3F%3Dnil%2Cinstrumentation_library_logs%3AArray%28InstrumentationLibraryLogs%29%3F%3Dnil%2Cschema_url%3AString%3F%3Dnil%29-class-method" class="signature"><strong>.new</strong>(resource : OpenTelemetry::Proto::Resource::V1::Resource? = <span class="n">nil</span>, instrumentation_library_logs : Array(InstrumentationLibraryLogs)? = <span class="n">nil</span>, schema_url : String? = <span class="n">nil</span>)</a>
         
       </li>
     
@@ -777,7 +812,7 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#from_protobuf(io)-class-method" class="signature"><strong>.from_protobuf</strong>(io)</a>
+        <a href="#from_protobuf%28io%29-class-method" class="signature"><strong>.from_protobuf</strong>(io)</a>
         
       </li>
     
@@ -796,42 +831,42 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#[](key:String)-instance-method" class="signature"><strong>#[]</strong>(key : String)</a>
+        <a href="#%5B%5D%28key%3AString%29-instance-method" class="signature"><strong>#[]</strong>(key : String)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#instrumentation_library_logs:Array(InstrumentationLibraryLogs)?-instance-method" class="signature"><strong>#instrumentation_library_logs</strong> : Array(InstrumentationLibraryLogs)?</a>
+        <a href="#instrumentation_library_logs%3AArray%28InstrumentationLibraryLogs%29%3F-instance-method" class="signature"><strong>#instrumentation_library_logs</strong> : Array(InstrumentationLibraryLogs)?</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#instrumentation_library_logs=(instrumentation_library_logs:Array(InstrumentationLibraryLogs)?)-instance-method" class="signature"><strong>#instrumentation_library_logs=</strong>(instrumentation_library_logs : Array(InstrumentationLibraryLogs)?)</a>
+        <a href="#instrumentation_library_logs%3D%28instrumentation_library_logs%3AArray%28InstrumentationLibraryLogs%29%3F%29-instance-method" class="signature"><strong>#instrumentation_library_logs=</strong>(instrumentation_library_logs : Array(InstrumentationLibraryLogs)?)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#resource:OpenTelemetry::Proto::Resource::V1::Resource?-instance-method" class="signature"><strong>#resource</strong> : OpenTelemetry::Proto::Resource::V1::Resource?</a>
+        <a href="#resource%3AOpenTelemetry%3A%3AProto%3A%3AResource%3A%3AV1%3A%3AResource%3F-instance-method" class="signature"><strong>#resource</strong> : OpenTelemetry::Proto::Resource::V1::Resource?</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#resource=(resource:OpenTelemetry::Proto::Resource::V1::Resource?)-instance-method" class="signature"><strong>#resource=</strong>(resource : OpenTelemetry::Proto::Resource::V1::Resource?)</a>
+        <a href="#resource%3D%28resource%3AOpenTelemetry%3A%3AProto%3A%3AResource%3A%3AV1%3A%3AResource%3F%29-instance-method" class="signature"><strong>#resource=</strong>(resource : OpenTelemetry::Proto::Resource::V1::Resource?)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#schema_url:String?-instance-method" class="signature"><strong>#schema_url</strong> : String?</a>
+        <a href="#schema_url%3AString%3F-instance-method" class="signature"><strong>#schema_url</strong> : String?</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#schema_url=(schema_url:String?)-instance-method" class="signature"><strong>#schema_url=</strong>(schema_url : String?)</a>
+        <a href="#schema_url%3D%28schema_url%3AString%3F%29-instance-method" class="signature"><strong>#schema_url=</strong>(schema_url : String?)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#to_protobuf(io:IO,embedded=false)-instance-method" class="signature"><strong>#to_protobuf</strong>(io : IO, embedded = <span class="n">false</span>)</a>
+        <a href="#to_protobuf%28io%3AIO%2Cembedded%3Dfalse%29-instance-method" class="signature"><strong>#to_protobuf</strong>(io : IO, embedded = <span class="n">false</span>)</a>
         
       </li>
     
@@ -905,7 +940,7 @@
         
         def self.<strong>new</strong>(buf : Protobuf::Buffer)
 
-        <a class="method-permalink" href="#new(buf:Protobuf::Buffer)-class-method">#</a>
+        <a class="method-permalink" href="#new%28buf%3AProtobuf%3A%3ABuffer%29-class-method">#</a>
       </div>
       
       <br/>
@@ -919,7 +954,7 @@
         
         def self.<strong>new</strong>(resource : <a href="../../../../OpenTelemetry/Proto/Resource/V1/Resource.html">OpenTelemetry::Proto::Resource::V1::Resource</a>? = <span class="n">nil</span>, instrumentation_library_logs : Array(<a href="../../../../OpenTelemetry/Proto/Logs/V1/InstrumentationLibraryLogs.html">InstrumentationLibraryLogs</a>)? = <span class="n">nil</span>, schema_url : String? = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#new(resource:OpenTelemetry::Proto::Resource::V1::Resource?=nil,instrumentation_library_logs:Array(InstrumentationLibraryLogs)?=nil,schema_url:String?=nil)-class-method">#</a>
+        <a class="method-permalink" href="#new%28resource%3AOpenTelemetry%3A%3AProto%3A%3AResource%3A%3AV1%3A%3AResource%3F%3Dnil%2Cinstrumentation_library_logs%3AArray%28InstrumentationLibraryLogs%29%3F%3Dnil%2Cschema_url%3AString%3F%3Dnil%29-class-method">#</a>
       </div>
       
       <br/>
@@ -945,7 +980,7 @@
         
         def self.<strong>from_protobuf</strong>(io)
 
-        <a class="method-permalink" href="#from_protobuf(io)-class-method">#</a>
+        <a class="method-permalink" href="#from_protobuf%28io%29-class-method">#</a>
       </div>
       
       <br/>
@@ -971,7 +1006,7 @@
         
         def <strong>[]</strong>(key : String)
 
-        <a class="method-permalink" href="#[](key:String)-instance-method">#</a>
+        <a class="method-permalink" href="#%5B%5D%28key%3AString%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -985,7 +1020,7 @@
         
         def <strong>instrumentation_library_logs</strong> : Array(<a href="../../../../OpenTelemetry/Proto/Logs/V1/InstrumentationLibraryLogs.html">InstrumentationLibraryLogs</a>)?
 
-        <a class="method-permalink" href="#instrumentation_library_logs:Array(InstrumentationLibraryLogs)?-instance-method">#</a>
+        <a class="method-permalink" href="#instrumentation_library_logs%3AArray%28InstrumentationLibraryLogs%29%3F-instance-method">#</a>
       </div>
       
       <br/>
@@ -999,7 +1034,7 @@
         
         def <strong>instrumentation_library_logs=</strong>(instrumentation_library_logs : Array(<a href="../../../../OpenTelemetry/Proto/Logs/V1/InstrumentationLibraryLogs.html">InstrumentationLibraryLogs</a>)?)
 
-        <a class="method-permalink" href="#instrumentation_library_logs=(instrumentation_library_logs:Array(InstrumentationLibraryLogs)?)-instance-method">#</a>
+        <a class="method-permalink" href="#instrumentation_library_logs%3D%28instrumentation_library_logs%3AArray%28InstrumentationLibraryLogs%29%3F%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1013,7 +1048,7 @@
         
         def <strong>resource</strong> : <a href="../../../../OpenTelemetry/Proto/Resource/V1/Resource.html">OpenTelemetry::Proto::Resource::V1::Resource</a>?
 
-        <a class="method-permalink" href="#resource:OpenTelemetry::Proto::Resource::V1::Resource?-instance-method">#</a>
+        <a class="method-permalink" href="#resource%3AOpenTelemetry%3A%3AProto%3A%3AResource%3A%3AV1%3A%3AResource%3F-instance-method">#</a>
       </div>
       
       <br/>
@@ -1027,7 +1062,7 @@
         
         def <strong>resource=</strong>(resource : <a href="../../../../OpenTelemetry/Proto/Resource/V1/Resource.html">OpenTelemetry::Proto::Resource::V1::Resource</a>?)
 
-        <a class="method-permalink" href="#resource=(resource:OpenTelemetry::Proto::Resource::V1::Resource?)-instance-method">#</a>
+        <a class="method-permalink" href="#resource%3D%28resource%3AOpenTelemetry%3A%3AProto%3A%3AResource%3A%3AV1%3A%3AResource%3F%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1041,7 +1076,7 @@
         
         def <strong>schema_url</strong> : String?
 
-        <a class="method-permalink" href="#schema_url:String?-instance-method">#</a>
+        <a class="method-permalink" href="#schema_url%3AString%3F-instance-method">#</a>
       </div>
       
       <br/>
@@ -1055,7 +1090,7 @@
         
         def <strong>schema_url=</strong>(schema_url : String?)
 
-        <a class="method-permalink" href="#schema_url=(schema_url:String?)-instance-method">#</a>
+        <a class="method-permalink" href="#schema_url%3D%28schema_url%3AString%3F%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1069,7 +1104,7 @@
         
         def <strong>to_protobuf</strong>(io : IO, embedded = <span class="n">false</span>)
 
-        <a class="method-permalink" href="#to_protobuf(io:IO,embedded=false)-instance-method">#</a>
+        <a class="method-permalink" href="#to_protobuf%28io%3AIO%2Cembedded%3Dfalse%29-instance-method">#</a>
       </div>
       
       <br/>

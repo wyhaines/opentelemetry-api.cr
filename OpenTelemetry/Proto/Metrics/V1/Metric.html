@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Crystal Docs 1.0.0">
+<meta name="generator" content="Crystal Docs 1.1.1">
 <meta name="crystal_docs.project_version" content="main">
 <meta name="crystal_docs.project_name" content="opentelemetry-api">
 
@@ -51,12 +51,32 @@
   <div class="types-list">
     <ul>
   
+  <li class=" " data-id="opentelemetry-api/Fiber" data-name="fiber">
+      <a href="../../../../Fiber.html">Fiber</a>
+      
+    </li>
+  
   <li class="parent open current" data-id="opentelemetry-api/OpenTelemetry" data-name="opentelemetry">
       <a href="../../../../OpenTelemetry.html">OpenTelemetry</a>
       
         <ul>
   
-  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Attribute" data-name="opentelemetry::attribute">
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/AnyAttribute" data-name="opentelemetry::anyattribute">
+      <a href="../../../../OpenTelemetry/AnyAttribute.html">AnyAttribute</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/AnyAttribute/Type" data-name="opentelemetry::anyattribute::type">
+      <a href="../../../../OpenTelemetry/AnyAttribute/Type.html">Type</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Attribute" data-name="opentelemetry::attribute(k)">
       <a href="../../../../OpenTelemetry/Attribute.html">Attribute</a>
       
     </li>
@@ -65,6 +85,11 @@
       <a href="../../../../OpenTelemetry/Context.html">Context</a>
       
         <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Context/ContextContainer" data-name="opentelemetry::context::contextcontainer">
+      <a href="../../../../OpenTelemetry/Context/ContextContainer.html">ContextContainer</a>
+      
+    </li>
   
   <li class=" " data-id="opentelemetry-api/OpenTelemetry/Context/Key" data-name="opentelemetry::context::key">
       <a href="../../../../OpenTelemetry/Context/Key.html">Key</a>
@@ -651,6 +676,16 @@
       
     </li>
   
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/ValueType" data-name="opentelemetry::valuetype">
+      <a href="../../../../OpenTelemetry/ValueType.html">ValueType</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/ValueTypes" data-name="opentelemetry::valuetypes">
+      <a href="../../../../OpenTelemetry/ValueTypes.html">ValueTypes</a>
+      
+    </li>
+  
 </ul>
 
       
@@ -712,7 +747,7 @@
   </h2>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/34edd3b6c81841c34ee53f416fe229cebcc8853b/src/proto/metrics.pb.cr#L41" target="_blank">
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/proto/metrics.pb.cr#L41" target="_blank">
         proto/metrics.pb.cr
       </a>
     
@@ -753,12 +788,12 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new(buf:Protobuf::Buffer)-class-method" class="signature"><strong>.new</strong>(buf : Protobuf::Buffer)</a>
+        <a href="#new%28buf%3AProtobuf%3A%3ABuffer%29-class-method" class="signature"><strong>.new</strong>(buf : Protobuf::Buffer)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#new(name:String?=nil,description:String?=nil,unit:String?=nil,int_gauge:IntGauge?=nil,gauge:Gauge?=nil,int_sum:IntSum?=nil,sum:Sum?=nil,int_histogram:IntHistogram?=nil,histogram:Histogram?=nil,exponential_histogram:ExponentialHistogram?=nil,summary:Summary?=nil)-class-method" class="signature"><strong>.new</strong>(name : String? = <span class="n">nil</span>, description : String? = <span class="n">nil</span>, unit : String? = <span class="n">nil</span>, int_gauge : IntGauge? = <span class="n">nil</span>, gauge : Gauge? = <span class="n">nil</span>, int_sum : IntSum? = <span class="n">nil</span>, sum : Sum? = <span class="n">nil</span>, int_histogram : IntHistogram? = <span class="n">nil</span>, histogram : Histogram? = <span class="n">nil</span>, exponential_histogram : ExponentialHistogram? = <span class="n">nil</span>, summary : Summary? = <span class="n">nil</span>)</a>
+        <a href="#new%28name%3AString%3F%3Dnil%2Cdescription%3AString%3F%3Dnil%2Cunit%3AString%3F%3Dnil%2Cint_gauge%3AIntGauge%3F%3Dnil%2Cgauge%3AGauge%3F%3Dnil%2Cint_sum%3AIntSum%3F%3Dnil%2Csum%3ASum%3F%3Dnil%2Cint_histogram%3AIntHistogram%3F%3Dnil%2Chistogram%3AHistogram%3F%3Dnil%2Cexponential_histogram%3AExponentialHistogram%3F%3Dnil%2Csummary%3ASummary%3F%3Dnil%29-class-method" class="signature"><strong>.new</strong>(name : String? = <span class="n">nil</span>, description : String? = <span class="n">nil</span>, unit : String? = <span class="n">nil</span>, int_gauge : IntGauge? = <span class="n">nil</span>, gauge : Gauge? = <span class="n">nil</span>, int_sum : IntSum? = <span class="n">nil</span>, sum : Sum? = <span class="n">nil</span>, int_histogram : IntHistogram? = <span class="n">nil</span>, histogram : Histogram? = <span class="n">nil</span>, exponential_histogram : ExponentialHistogram? = <span class="n">nil</span>, summary : Summary? = <span class="n">nil</span>)</a>
         
       </li>
     
@@ -777,7 +812,7 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#from_protobuf(io)-class-method" class="signature"><strong>.from_protobuf</strong>(io)</a>
+        <a href="#from_protobuf%28io%29-class-method" class="signature"><strong>.from_protobuf</strong>(io)</a>
         
       </li>
     
@@ -796,112 +831,112 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#[](key:String)-instance-method" class="signature"><strong>#[]</strong>(key : String)</a>
+        <a href="#%5B%5D%28key%3AString%29-instance-method" class="signature"><strong>#[]</strong>(key : String)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#description:String?-instance-method" class="signature"><strong>#description</strong> : String?</a>
+        <a href="#description%3AString%3F-instance-method" class="signature"><strong>#description</strong> : String?</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#description=(description:String?)-instance-method" class="signature"><strong>#description=</strong>(description : String?)</a>
+        <a href="#description%3D%28description%3AString%3F%29-instance-method" class="signature"><strong>#description=</strong>(description : String?)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#exponential_histogram:ExponentialHistogram?-instance-method" class="signature"><strong>#exponential_histogram</strong> : ExponentialHistogram?</a>
+        <a href="#exponential_histogram%3AExponentialHistogram%3F-instance-method" class="signature"><strong>#exponential_histogram</strong> : ExponentialHistogram?</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#exponential_histogram=(exponential_histogram:ExponentialHistogram?)-instance-method" class="signature"><strong>#exponential_histogram=</strong>(exponential_histogram : ExponentialHistogram?)</a>
+        <a href="#exponential_histogram%3D%28exponential_histogram%3AExponentialHistogram%3F%29-instance-method" class="signature"><strong>#exponential_histogram=</strong>(exponential_histogram : ExponentialHistogram?)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#gauge:Gauge?-instance-method" class="signature"><strong>#gauge</strong> : Gauge?</a>
+        <a href="#gauge%3AGauge%3F-instance-method" class="signature"><strong>#gauge</strong> : Gauge?</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#gauge=(gauge:Gauge?)-instance-method" class="signature"><strong>#gauge=</strong>(gauge : Gauge?)</a>
+        <a href="#gauge%3D%28gauge%3AGauge%3F%29-instance-method" class="signature"><strong>#gauge=</strong>(gauge : Gauge?)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#histogram:Histogram?-instance-method" class="signature"><strong>#histogram</strong> : Histogram?</a>
+        <a href="#histogram%3AHistogram%3F-instance-method" class="signature"><strong>#histogram</strong> : Histogram?</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#histogram=(histogram:Histogram?)-instance-method" class="signature"><strong>#histogram=</strong>(histogram : Histogram?)</a>
+        <a href="#histogram%3D%28histogram%3AHistogram%3F%29-instance-method" class="signature"><strong>#histogram=</strong>(histogram : Histogram?)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#int_gauge:IntGauge?-instance-method" class="signature"><strong>#int_gauge</strong> : IntGauge?</a>
+        <a href="#int_gauge%3AIntGauge%3F-instance-method" class="signature"><strong>#int_gauge</strong> : IntGauge?</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#int_gauge=(int_gauge:IntGauge?)-instance-method" class="signature"><strong>#int_gauge=</strong>(int_gauge : IntGauge?)</a>
+        <a href="#int_gauge%3D%28int_gauge%3AIntGauge%3F%29-instance-method" class="signature"><strong>#int_gauge=</strong>(int_gauge : IntGauge?)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#int_histogram:IntHistogram?-instance-method" class="signature"><strong>#int_histogram</strong> : IntHistogram?</a>
+        <a href="#int_histogram%3AIntHistogram%3F-instance-method" class="signature"><strong>#int_histogram</strong> : IntHistogram?</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#int_histogram=(int_histogram:IntHistogram?)-instance-method" class="signature"><strong>#int_histogram=</strong>(int_histogram : IntHistogram?)</a>
+        <a href="#int_histogram%3D%28int_histogram%3AIntHistogram%3F%29-instance-method" class="signature"><strong>#int_histogram=</strong>(int_histogram : IntHistogram?)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#int_sum:IntSum?-instance-method" class="signature"><strong>#int_sum</strong> : IntSum?</a>
+        <a href="#int_sum%3AIntSum%3F-instance-method" class="signature"><strong>#int_sum</strong> : IntSum?</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#int_sum=(int_sum:IntSum?)-instance-method" class="signature"><strong>#int_sum=</strong>(int_sum : IntSum?)</a>
+        <a href="#int_sum%3D%28int_sum%3AIntSum%3F%29-instance-method" class="signature"><strong>#int_sum=</strong>(int_sum : IntSum?)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#name:String?-instance-method" class="signature"><strong>#name</strong> : String?</a>
+        <a href="#name%3AString%3F-instance-method" class="signature"><strong>#name</strong> : String?</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#name=(name:String?)-instance-method" class="signature"><strong>#name=</strong>(name : String?)</a>
+        <a href="#name%3D%28name%3AString%3F%29-instance-method" class="signature"><strong>#name=</strong>(name : String?)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#sum:Sum?-instance-method" class="signature"><strong>#sum</strong> : Sum?</a>
+        <a href="#sum%3ASum%3F-instance-method" class="signature"><strong>#sum</strong> : Sum?</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#sum=(sum:Sum?)-instance-method" class="signature"><strong>#sum=</strong>(sum : Sum?)</a>
+        <a href="#sum%3D%28sum%3ASum%3F%29-instance-method" class="signature"><strong>#sum=</strong>(sum : Sum?)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#summary:Summary?-instance-method" class="signature"><strong>#summary</strong> : Summary?</a>
+        <a href="#summary%3ASummary%3F-instance-method" class="signature"><strong>#summary</strong> : Summary?</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#summary=(summary:Summary?)-instance-method" class="signature"><strong>#summary=</strong>(summary : Summary?)</a>
+        <a href="#summary%3D%28summary%3ASummary%3F%29-instance-method" class="signature"><strong>#summary=</strong>(summary : Summary?)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#to_protobuf(io:IO,embedded=false)-instance-method" class="signature"><strong>#to_protobuf</strong>(io : IO, embedded = <span class="n">false</span>)</a>
+        <a href="#to_protobuf%28io%3AIO%2Cembedded%3Dfalse%29-instance-method" class="signature"><strong>#to_protobuf</strong>(io : IO, embedded = <span class="n">false</span>)</a>
         
       </li>
     
@@ -911,12 +946,12 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#unit:String?-instance-method" class="signature"><strong>#unit</strong> : String?</a>
+        <a href="#unit%3AString%3F-instance-method" class="signature"><strong>#unit</strong> : String?</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#unit=(unit:String?)-instance-method" class="signature"><strong>#unit=</strong>(unit : String?)</a>
+        <a href="#unit%3D%28unit%3AString%3F%29-instance-method" class="signature"><strong>#unit=</strong>(unit : String?)</a>
         
       </li>
     
@@ -985,7 +1020,7 @@
         
         def self.<strong>new</strong>(buf : Protobuf::Buffer)
 
-        <a class="method-permalink" href="#new(buf:Protobuf::Buffer)-class-method">#</a>
+        <a class="method-permalink" href="#new%28buf%3AProtobuf%3A%3ABuffer%29-class-method">#</a>
       </div>
       
       <br/>
@@ -999,7 +1034,7 @@
         
         def self.<strong>new</strong>(name : String? = <span class="n">nil</span>, description : String? = <span class="n">nil</span>, unit : String? = <span class="n">nil</span>, int_gauge : <a href="../../../../OpenTelemetry/Proto/Metrics/V1/IntGauge.html">IntGauge</a>? = <span class="n">nil</span>, gauge : <a href="../../../../OpenTelemetry/Proto/Metrics/V1/Gauge.html">Gauge</a>? = <span class="n">nil</span>, int_sum : <a href="../../../../OpenTelemetry/Proto/Metrics/V1/IntSum.html">IntSum</a>? = <span class="n">nil</span>, sum : <a href="../../../../OpenTelemetry/Proto/Metrics/V1/Sum.html">Sum</a>? = <span class="n">nil</span>, int_histogram : <a href="../../../../OpenTelemetry/Proto/Metrics/V1/IntHistogram.html">IntHistogram</a>? = <span class="n">nil</span>, histogram : <a href="../../../../OpenTelemetry/Proto/Metrics/V1/Histogram.html">Histogram</a>? = <span class="n">nil</span>, exponential_histogram : <a href="../../../../OpenTelemetry/Proto/Metrics/V1/ExponentialHistogram.html">ExponentialHistogram</a>? = <span class="n">nil</span>, summary : <a href="../../../../OpenTelemetry/Proto/Metrics/V1/Summary.html">Summary</a>? = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#new(name:String?=nil,description:String?=nil,unit:String?=nil,int_gauge:IntGauge?=nil,gauge:Gauge?=nil,int_sum:IntSum?=nil,sum:Sum?=nil,int_histogram:IntHistogram?=nil,histogram:Histogram?=nil,exponential_histogram:ExponentialHistogram?=nil,summary:Summary?=nil)-class-method">#</a>
+        <a class="method-permalink" href="#new%28name%3AString%3F%3Dnil%2Cdescription%3AString%3F%3Dnil%2Cunit%3AString%3F%3Dnil%2Cint_gauge%3AIntGauge%3F%3Dnil%2Cgauge%3AGauge%3F%3Dnil%2Cint_sum%3AIntSum%3F%3Dnil%2Csum%3ASum%3F%3Dnil%2Cint_histogram%3AIntHistogram%3F%3Dnil%2Chistogram%3AHistogram%3F%3Dnil%2Cexponential_histogram%3AExponentialHistogram%3F%3Dnil%2Csummary%3ASummary%3F%3Dnil%29-class-method">#</a>
       </div>
       
       <br/>
@@ -1025,7 +1060,7 @@
         
         def self.<strong>from_protobuf</strong>(io)
 
-        <a class="method-permalink" href="#from_protobuf(io)-class-method">#</a>
+        <a class="method-permalink" href="#from_protobuf%28io%29-class-method">#</a>
       </div>
       
       <br/>
@@ -1051,7 +1086,7 @@
         
         def <strong>[]</strong>(key : String)
 
-        <a class="method-permalink" href="#[](key:String)-instance-method">#</a>
+        <a class="method-permalink" href="#%5B%5D%28key%3AString%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1065,7 +1100,7 @@
         
         def <strong>description</strong> : String?
 
-        <a class="method-permalink" href="#description:String?-instance-method">#</a>
+        <a class="method-permalink" href="#description%3AString%3F-instance-method">#</a>
       </div>
       
       <br/>
@@ -1079,7 +1114,7 @@
         
         def <strong>description=</strong>(description : String?)
 
-        <a class="method-permalink" href="#description=(description:String?)-instance-method">#</a>
+        <a class="method-permalink" href="#description%3D%28description%3AString%3F%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1093,7 +1128,7 @@
         
         def <strong>exponential_histogram</strong> : <a href="../../../../OpenTelemetry/Proto/Metrics/V1/ExponentialHistogram.html">ExponentialHistogram</a>?
 
-        <a class="method-permalink" href="#exponential_histogram:ExponentialHistogram?-instance-method">#</a>
+        <a class="method-permalink" href="#exponential_histogram%3AExponentialHistogram%3F-instance-method">#</a>
       </div>
       
       <br/>
@@ -1107,7 +1142,7 @@
         
         def <strong>exponential_histogram=</strong>(exponential_histogram : <a href="../../../../OpenTelemetry/Proto/Metrics/V1/ExponentialHistogram.html">ExponentialHistogram</a>?)
 
-        <a class="method-permalink" href="#exponential_histogram=(exponential_histogram:ExponentialHistogram?)-instance-method">#</a>
+        <a class="method-permalink" href="#exponential_histogram%3D%28exponential_histogram%3AExponentialHistogram%3F%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1121,7 +1156,7 @@
         
         def <strong>gauge</strong> : <a href="../../../../OpenTelemetry/Proto/Metrics/V1/Gauge.html">Gauge</a>?
 
-        <a class="method-permalink" href="#gauge:Gauge?-instance-method">#</a>
+        <a class="method-permalink" href="#gauge%3AGauge%3F-instance-method">#</a>
       </div>
       
       <br/>
@@ -1135,7 +1170,7 @@
         
         def <strong>gauge=</strong>(gauge : <a href="../../../../OpenTelemetry/Proto/Metrics/V1/Gauge.html">Gauge</a>?)
 
-        <a class="method-permalink" href="#gauge=(gauge:Gauge?)-instance-method">#</a>
+        <a class="method-permalink" href="#gauge%3D%28gauge%3AGauge%3F%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1149,7 +1184,7 @@
         
         def <strong>histogram</strong> : <a href="../../../../OpenTelemetry/Proto/Metrics/V1/Histogram.html">Histogram</a>?
 
-        <a class="method-permalink" href="#histogram:Histogram?-instance-method">#</a>
+        <a class="method-permalink" href="#histogram%3AHistogram%3F-instance-method">#</a>
       </div>
       
       <br/>
@@ -1163,7 +1198,7 @@
         
         def <strong>histogram=</strong>(histogram : <a href="../../../../OpenTelemetry/Proto/Metrics/V1/Histogram.html">Histogram</a>?)
 
-        <a class="method-permalink" href="#histogram=(histogram:Histogram?)-instance-method">#</a>
+        <a class="method-permalink" href="#histogram%3D%28histogram%3AHistogram%3F%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1177,7 +1212,7 @@
         
         def <strong>int_gauge</strong> : <a href="../../../../OpenTelemetry/Proto/Metrics/V1/IntGauge.html">IntGauge</a>?
 
-        <a class="method-permalink" href="#int_gauge:IntGauge?-instance-method">#</a>
+        <a class="method-permalink" href="#int_gauge%3AIntGauge%3F-instance-method">#</a>
       </div>
       
       <br/>
@@ -1191,7 +1226,7 @@
         
         def <strong>int_gauge=</strong>(int_gauge : <a href="../../../../OpenTelemetry/Proto/Metrics/V1/IntGauge.html">IntGauge</a>?)
 
-        <a class="method-permalink" href="#int_gauge=(int_gauge:IntGauge?)-instance-method">#</a>
+        <a class="method-permalink" href="#int_gauge%3D%28int_gauge%3AIntGauge%3F%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1205,7 +1240,7 @@
         
         def <strong>int_histogram</strong> : <a href="../../../../OpenTelemetry/Proto/Metrics/V1/IntHistogram.html">IntHistogram</a>?
 
-        <a class="method-permalink" href="#int_histogram:IntHistogram?-instance-method">#</a>
+        <a class="method-permalink" href="#int_histogram%3AIntHistogram%3F-instance-method">#</a>
       </div>
       
       <br/>
@@ -1219,7 +1254,7 @@
         
         def <strong>int_histogram=</strong>(int_histogram : <a href="../../../../OpenTelemetry/Proto/Metrics/V1/IntHistogram.html">IntHistogram</a>?)
 
-        <a class="method-permalink" href="#int_histogram=(int_histogram:IntHistogram?)-instance-method">#</a>
+        <a class="method-permalink" href="#int_histogram%3D%28int_histogram%3AIntHistogram%3F%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1233,7 +1268,7 @@
         
         def <strong>int_sum</strong> : <a href="../../../../OpenTelemetry/Proto/Metrics/V1/IntSum.html">IntSum</a>?
 
-        <a class="method-permalink" href="#int_sum:IntSum?-instance-method">#</a>
+        <a class="method-permalink" href="#int_sum%3AIntSum%3F-instance-method">#</a>
       </div>
       
       <br/>
@@ -1247,7 +1282,7 @@
         
         def <strong>int_sum=</strong>(int_sum : <a href="../../../../OpenTelemetry/Proto/Metrics/V1/IntSum.html">IntSum</a>?)
 
-        <a class="method-permalink" href="#int_sum=(int_sum:IntSum?)-instance-method">#</a>
+        <a class="method-permalink" href="#int_sum%3D%28int_sum%3AIntSum%3F%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1261,7 +1296,7 @@
         
         def <strong>name</strong> : String?
 
-        <a class="method-permalink" href="#name:String?-instance-method">#</a>
+        <a class="method-permalink" href="#name%3AString%3F-instance-method">#</a>
       </div>
       
       <br/>
@@ -1275,7 +1310,7 @@
         
         def <strong>name=</strong>(name : String?)
 
-        <a class="method-permalink" href="#name=(name:String?)-instance-method">#</a>
+        <a class="method-permalink" href="#name%3D%28name%3AString%3F%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1289,7 +1324,7 @@
         
         def <strong>sum</strong> : <a href="../../../../OpenTelemetry/Proto/Metrics/V1/Sum.html">Sum</a>?
 
-        <a class="method-permalink" href="#sum:Sum?-instance-method">#</a>
+        <a class="method-permalink" href="#sum%3ASum%3F-instance-method">#</a>
       </div>
       
       <br/>
@@ -1303,7 +1338,7 @@
         
         def <strong>sum=</strong>(sum : <a href="../../../../OpenTelemetry/Proto/Metrics/V1/Sum.html">Sum</a>?)
 
-        <a class="method-permalink" href="#sum=(sum:Sum?)-instance-method">#</a>
+        <a class="method-permalink" href="#sum%3D%28sum%3ASum%3F%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1317,7 +1352,7 @@
         
         def <strong>summary</strong> : <a href="../../../../OpenTelemetry/Proto/Metrics/V1/Summary.html">Summary</a>?
 
-        <a class="method-permalink" href="#summary:Summary?-instance-method">#</a>
+        <a class="method-permalink" href="#summary%3ASummary%3F-instance-method">#</a>
       </div>
       
       <br/>
@@ -1331,7 +1366,7 @@
         
         def <strong>summary=</strong>(summary : <a href="../../../../OpenTelemetry/Proto/Metrics/V1/Summary.html">Summary</a>?)
 
-        <a class="method-permalink" href="#summary=(summary:Summary?)-instance-method">#</a>
+        <a class="method-permalink" href="#summary%3D%28summary%3ASummary%3F%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1345,7 +1380,7 @@
         
         def <strong>to_protobuf</strong>(io : IO, embedded = <span class="n">false</span>)
 
-        <a class="method-permalink" href="#to_protobuf(io:IO,embedded=false)-instance-method">#</a>
+        <a class="method-permalink" href="#to_protobuf%28io%3AIO%2Cembedded%3Dfalse%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1373,7 +1408,7 @@
         
         def <strong>unit</strong> : String?
 
-        <a class="method-permalink" href="#unit:String?-instance-method">#</a>
+        <a class="method-permalink" href="#unit%3AString%3F-instance-method">#</a>
       </div>
       
       <br/>
@@ -1387,7 +1422,7 @@
         
         def <strong>unit=</strong>(unit : String?)
 
-        <a class="method-permalink" href="#unit=(unit:String?)-instance-method">#</a>
+        <a class="method-permalink" href="#unit%3D%28unit%3AString%3F%29-instance-method">#</a>
       </div>
       
       <br/>

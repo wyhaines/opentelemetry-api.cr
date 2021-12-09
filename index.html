@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Crystal Docs 1.0.0">
+<meta name="generator" content="Crystal Docs 1.1.1">
 <meta name="crystal_docs.project_version" content="main">
 <meta name="crystal_docs.project_name" content="opentelemetry-api">
 
@@ -51,12 +51,32 @@
   <div class="types-list">
     <ul>
   
+  <li class=" " data-id="opentelemetry-api/Fiber" data-name="fiber">
+      <a href="Fiber.html">Fiber</a>
+      
+    </li>
+  
   <li class="parent " data-id="opentelemetry-api/OpenTelemetry" data-name="opentelemetry">
       <a href="OpenTelemetry.html">OpenTelemetry</a>
       
         <ul>
   
-  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Attribute" data-name="opentelemetry::attribute">
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/AnyAttribute" data-name="opentelemetry::anyattribute">
+      <a href="OpenTelemetry/AnyAttribute.html">AnyAttribute</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/AnyAttribute/Type" data-name="opentelemetry::anyattribute::type">
+      <a href="OpenTelemetry/AnyAttribute/Type.html">Type</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Attribute" data-name="opentelemetry::attribute(k)">
       <a href="OpenTelemetry/Attribute.html">Attribute</a>
       
     </li>
@@ -65,6 +85,11 @@
       <a href="OpenTelemetry/Context.html">Context</a>
       
         <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Context/ContextContainer" data-name="opentelemetry::context::contextcontainer">
+      <a href="OpenTelemetry/Context/ContextContainer.html">ContextContainer</a>
+      
+    </li>
   
   <li class=" " data-id="opentelemetry-api/OpenTelemetry/Context/Key" data-name="opentelemetry::context::key">
       <a href="OpenTelemetry/Context/Key.html">Key</a>
@@ -651,6 +676,16 @@
       
     </li>
   
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/ValueType" data-name="opentelemetry::valuetype">
+      <a href="OpenTelemetry/ValueType.html">ValueType</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/ValueTypes" data-name="opentelemetry::valuetypes">
+      <a href="OpenTelemetry/ValueTypes.html">ValueTypes</a>
+      
+    </li>
+  
 </ul>
 
       
@@ -663,118 +698,97 @@
 
 
 <div class="main-content">
-<p><img src="https://img.shields.io/github/workflow/status/wyhaines/opentelemetry-api.cr/OpenTelemetry%20CI?style=for-the-badge&logo=GitHub" alt="OpenTelemetry CI"/>
-<a href="https://github.com/wyhaines/opentelemetry-api.cr/releases"><img src="https://img.shields.io/github/release/wyhaines/opentelemetry-api.cr.svg?style=for-the-badge" alt="GitHub release"/></a>
-<img src="https://img.shields.io/github/commits-since/wyhaines/opentelemetry-api.cr/latest?style=for-the-badge" alt="GitHub commits since latest release (by SemVer)"/></p>
-
+<p><img src="https://img.shields.io/github/workflow/status/wyhaines/opentelemetry-api.cr/OpenTelemetry%20CI?style=for-the-badge&amp;logo=GitHub" alt="OpenTelemetry CI" />
+<a href="https://github.com/wyhaines/opentelemetry-api.cr/releases"><img src="https://img.shields.io/github/release/wyhaines/opentelemetry-api.cr.svg?style=for-the-badge" alt="GitHub release" /></a>
+<img src="https://img.shields.io/github/commits-since/wyhaines/opentelemetry-api.cr/latest?style=for-the-badge" alt="GitHub commits since latest release (by SemVer)" /></p>
 <h1><a id="open-telemetry-api" class="anchor" href="#open-telemetry-api">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>OpenTelemetry-API</h1>
-
 <p>This library provides the base functionality for implementing services that utilize
 OpenTelemetry to send or receive metrics, traces, and logs. This library is intended to be focused specifically on OpenTelemetry itself, with most higher level functionality implemented by other libraries which use this library.</p>
-
 <p>As a general rule, naming conventions have been based on the standard glossary of OpenTelementry terms, as found at <a href="https://opentelemetry.io/docs/concepts/glossary/">https://opentelemetry.io/docs/concepts/glossary/</a></p>
-
 <p>The general architecture of the implementation is guided by this document:</p>
-
 <p><a href="https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/api.md">https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/api.md</a></p>
-
 <p>The TL;DR is that a <code>TraceProvider</code> is used to create a <code>Tracer</code>. A <code>Span</code> is created inside of the context of a <code>Tracer</code>, and one <code>Span</code> may nest inside of another.</p>
-
 <h2><a id="caveats" class="anchor" href="#caveats">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>Caveats</h2>
-
 <p>This implementation was built using the Ruby version for loose guideance, but that full implementation is complicated. At this time, this implementation is a best first attempt at producing something that generally conforms to the expected structure and terminology of OpenTelemetry, while remaining a simple MVP.</p>
-
 <p>The API is not yet considered stable, and may change in the future.</p>
-
 <h2><a id="installation" class="anchor" href="#installation">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>Installation</h2>
-
-<ol><li>Add the dependency to your <code>shard.yml</code>:</li></ol>
-
-<p><code></code>`yaml
-   dependencies:</p>
-
-<pre><code class="language-crystal"> otel:
-   github: wyhaines/opentelemetry-api.cr</code></pre>
-
-<p><code></code>`</p>
-
-<ol><li>Run <code>shards install</code></li></ol>
-
+<ol>
+<li>
+<p>Add the dependency to your <code>shard.yml</code>:</p>
+<pre><code class="language-yaml">dependencies:
+  otel:
+    github: wyhaines/opentelemetry-api.cr</code></pre>
+</li>
+<li>
+<p>Run <code>shards install</code></p>
+</li>
+</ol>
 <h2><a id="usage" class="anchor" href="#usage">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>Usage</h2>
-
 <pre><code class="language-crystal"><span class="k">require</span> <span class="s">&quot;opentelemetry-api&quot;</span></code></pre>
-
 <h2><a id="global-tracer-provider" class="anchor" href="#global-tracer-provider">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>Global Tracer Provider</h2>
-
-<hr/><pre><code class="language-crystal"><span class="t">OpenTelemetry</span>.configure <span class="k">do</span> <span class="o">|</span>config<span class="o">|</span>
+<hr />
+<pre><code class="language-crystal"><span class="t">OpenTelemetry</span>.configure <span class="k">do</span> <span class="o">|</span>config<span class="o">|</span>
   config.service_name <span class="o">=</span> <span class="s">&quot;my_app_or_library&quot;</span>
   config.service_version <span class="o">=</span> <span class="s">&quot;1.1.1&quot;</span>
   config.exporter <span class="o">=</span> <span class="t">OpenTelemetry</span><span class="t">::</span><span class="t">IOExporter</span>.<span class="k">new</span>(<span class="n">:STDOUT</span>)
 <span class="k">end</span></code></pre>
-
 <pre><code class="language-crystal">tracer <span class="o">=</span> <span class="t">OpenTelemetry</span>.tracer_provider(<span class="s">&quot;my_app_or_library&quot;</span>, <span class="s">&quot;1.1.1&quot;</span>)
 tracer <span class="o">=</span> <span class="t">OpenTelemetry</span>.tracer_provider <span class="k">do</span> <span class="o">|</span>tracer<span class="o">|</span>
   tracer.service_name <span class="o">=</span> <span class="s">&quot;my_app_or_library&quot;</span>
   tracer.service_version <span class="o">=</span> <span class="s">&quot;1.1.1&quot;</span>
 <span class="k">end</span></code></pre>
-
 <h2><a id="tracer-providers-as-objects-with-unique-configuration" class="anchor" href="#tracer-providers-as-objects-with-unique-configuration">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>Tracer Providers as Objects With Unique Configuration</h2>
-
-<hr/><pre><code class="language-crystal">provider_a <span class="o">=</span> <span class="t">OpenTelemetry</span><span class="t">::</span><span class="t">TracerProvider</span>.<span class="k">new</span>(<span class="s">&quot;my_app_or_library&quot;</span>, <span class="s">&quot;1.1.1&quot;</span>)
+<hr />
+<pre><code class="language-crystal">provider_a <span class="o">=</span> <span class="t">OpenTelemetry</span><span class="t">::</span><span class="t">TracerProvider</span>.<span class="k">new</span>(<span class="s">&quot;my_app_or_library&quot;</span>, <span class="s">&quot;1.1.1&quot;</span>)
 provider_a.exporter <span class="o">=</span> <span class="t">OpenTelemetry</span><span class="t">::</span><span class="t">IOExporter</span>.<span class="k">new</span>(<span class="n">:STDOUT</span>)</code></pre>
-
 <pre><code class="language-crystal">provider_b <span class="o">=</span> <span class="t">OpenTelementry</span><span class="t">::</span><span class="t">TracerProvider</span>.<span class="k">new</span> <span class="k">do</span> <span class="o">|</span>config<span class="o">|</span>
   config.service_name <span class="o">=</span> <span class="s">&quot;my_app_or_library&quot;</span>
   config.service_version <span class="o">=</span> <span class="s">&quot;1.1.1&quot;</span>
   config.exporter <span class="o">=</span> <span class="t">OpenTelemetry</span><span class="t">::</span><span class="t">IOExporter</span>.<span class="k">new</span>(<span class="n">:STDOUT</span>)
 <span class="k">end</span></code></pre>
-
 <h2><a id="getting-a-tracer-from-a-provider-object" class="anchor" href="#getting-a-tracer-from-a-provider-object">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>Getting a Tracer From a Provider Object</h2>
-
-<hr/><pre><code class="language-crystal">tracer <span class="o">=</span> provider_a.tracer <span class="c"># Inherit all configuration from the Provider Object</span></code></pre>
-
+<hr />
+<pre><code class="language-crystal">tracer <span class="o">=</span> provider_a.tracer <span class="c"># Inherit all configuration from the Provider Object</span></code></pre>
 <pre><code class="language-crystal">tracer <span class="o">=</span> provider_a.tracer(<span class="s">&quot;microservice foo&quot;</span>, <span class="s">&quot;1.2.3&quot;</span>) <span class="c"># Override the configuration</span></code></pre>
-
 <pre><code class="language-crystal">tracer <span class="o">=</span> provider_a.tracer <span class="k">do</span> <span class="o">|</span>tracer<span class="o">|</span>
   tracer.service_name <span class="o">=</span> <span class="s">&quot;microservice foo&quot;</span>
   tracer.service_version <span class="o">=</span> <span class="s">&quot;1.2.3&quot;</span>
 <span class="k">end</span></code></pre>
-
 <h2><a id="creating-spans-using-a-tracer" class="anchor" href="#creating-spans-using-a-tracer">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>Creating Spans Using a Tracer</h2>
-
-<hr/><pre><code class="language-crystal">tracer.in_span(<span class="s">&quot;request&quot;</span>) <span class="k">do</span> <span class="o">|</span>span<span class="o">|</span>
+<hr />
+<pre><code class="language-crystal">tracer.in_span(<span class="s">&quot;request&quot;</span>) <span class="k">do</span> <span class="o">|</span>span<span class="o">|</span>
   span.set_attribute(<span class="s">&quot;verb&quot;</span>, <span class="s">&quot;GET&quot;</span>)
   span.set_attribute(<span class="s">&quot;url&quot;</span>, <span class="s">&quot;http://example.com/foo&quot;</span>)
   span.add_event(<span class="s">&quot;dispatching to handler&quot;</span>)
@@ -785,33 +799,34 @@ provider_a.exporter <span class="o">=</span> <span class="t">OpenTelemetry</span
     <span class="k">end</span>
   <span class="k">end</span>
 <span class="k">end</span></code></pre>
-
 <h2><a id="development" class="anchor" href="#development">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>Development</h2>
-
 <p><span class="flag orange">TODO</span>  Write development instructions here</p>
-
 <h2><a id="contributing" class="anchor" href="#contributing">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>Contributing</h2>
-
-<ol><li>Fork it (&lt;https://github.com/your-github-user/otel/fork>)</li><li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li><li>Commit your changes (<code>git commit -am 'Add some feature'</code>)</li><li>Push to the branch (<code>git push origin my-new-feature</code>)</li><li>Create a new Pull Request</li></ol>
-
+<ol>
+<li>Fork it (<a href="https://github.com/your-github-user/otel/fork">https://github.com/your-github-user/otel/fork</a>)</li>
+<li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
+<li>Commit your changes (<code>git commit -am 'Add some feature'</code>)</li>
+<li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
+<li>Create a new Pull Request</li>
+</ol>
 <h2><a id="contributors" class="anchor" href="#contributors">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>Contributors</h2>
-
-<ul><li><a href="https://github.com/your-github-user">Kirk Haines</a> - creator and maintainer</li></ul>
-
-<p><img src="https://img.shields.io/github/languages/code-size/wyhaines/opentelemetry-api.cr?style=for-the-badge" alt="GitHub code size in bytes"/>
-<img src="https://img.shields.io/github/issues/wyhaines/opentelemetry-api.cr?style=for-the-badge" alt="GitHub issues"/></p>
+<ul>
+<li><a href="https://github.com/your-github-user">Kirk Haines</a> - creator and maintainer</li>
+</ul>
+<p><img src="https://img.shields.io/github/languages/code-size/wyhaines/opentelemetry-api.cr?style=for-the-badge" alt="GitHub code size in bytes" />
+<img src="https://img.shields.io/github/issues/wyhaines/opentelemetry-api.cr?style=for-the-badge" alt="GitHub issues" /></p>
 </div>
 </body>
 </html>

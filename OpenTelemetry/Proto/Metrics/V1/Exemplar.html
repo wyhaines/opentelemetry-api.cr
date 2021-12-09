@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Crystal Docs 1.0.0">
+<meta name="generator" content="Crystal Docs 1.1.1">
 <meta name="crystal_docs.project_version" content="main">
 <meta name="crystal_docs.project_name" content="opentelemetry-api">
 
@@ -51,12 +51,32 @@
   <div class="types-list">
     <ul>
   
+  <li class=" " data-id="opentelemetry-api/Fiber" data-name="fiber">
+      <a href="../../../../Fiber.html">Fiber</a>
+      
+    </li>
+  
   <li class="parent open current" data-id="opentelemetry-api/OpenTelemetry" data-name="opentelemetry">
       <a href="../../../../OpenTelemetry.html">OpenTelemetry</a>
       
         <ul>
   
-  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Attribute" data-name="opentelemetry::attribute">
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/AnyAttribute" data-name="opentelemetry::anyattribute">
+      <a href="../../../../OpenTelemetry/AnyAttribute.html">AnyAttribute</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/AnyAttribute/Type" data-name="opentelemetry::anyattribute::type">
+      <a href="../../../../OpenTelemetry/AnyAttribute/Type.html">Type</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Attribute" data-name="opentelemetry::attribute(k)">
       <a href="../../../../OpenTelemetry/Attribute.html">Attribute</a>
       
     </li>
@@ -65,6 +85,11 @@
       <a href="../../../../OpenTelemetry/Context.html">Context</a>
       
         <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Context/ContextContainer" data-name="opentelemetry::context::contextcontainer">
+      <a href="../../../../OpenTelemetry/Context/ContextContainer.html">ContextContainer</a>
+      
+    </li>
   
   <li class=" " data-id="opentelemetry-api/OpenTelemetry/Context/Key" data-name="opentelemetry::context::key">
       <a href="../../../../OpenTelemetry/Context/Key.html">Key</a>
@@ -651,6 +676,16 @@
       
     </li>
   
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/ValueType" data-name="opentelemetry::valuetype">
+      <a href="../../../../OpenTelemetry/ValueType.html">ValueType</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/ValueTypes" data-name="opentelemetry::valuetypes">
+      <a href="../../../../OpenTelemetry/ValueTypes.html">ValueTypes</a>
+      
+    </li>
+  
 </ul>
 
       
@@ -712,7 +747,7 @@
   </h2>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/34edd3b6c81841c34ee53f416fe229cebcc8853b/src/proto/metrics.pb.cr#L186" target="_blank">
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/proto/metrics.pb.cr#L186" target="_blank">
         proto/metrics.pb.cr
       </a>
     
@@ -753,12 +788,12 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new(buf:Protobuf::Buffer)-class-method" class="signature"><strong>.new</strong>(buf : Protobuf::Buffer)</a>
+        <a href="#new%28buf%3AProtobuf%3A%3ABuffer%29-class-method" class="signature"><strong>.new</strong>(buf : Protobuf::Buffer)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#new(filtered_attributes:Array(OpenTelemetry::Proto::Common::V1::KeyValue)?=nil,filtered_labels:Array(OpenTelemetry::Proto::Common::V1::StringKeyValue)?=nil,time_unix_nano:UInt64?=nil,as_double:Float64?=nil,as_int:Int64?=nil,span_id:Slice(UInt8)?=nil,trace_id:Slice(UInt8)?=nil)-class-method" class="signature"><strong>.new</strong>(filtered_attributes : Array(OpenTelemetry::Proto::Common::V1::KeyValue)? = <span class="n">nil</span>, filtered_labels : Array(OpenTelemetry::Proto::Common::V1::StringKeyValue)? = <span class="n">nil</span>, time_unix_nano : UInt64? = <span class="n">nil</span>, as_double : Float64? = <span class="n">nil</span>, as_int : Int64? = <span class="n">nil</span>, span_id : Slice(UInt8)? = <span class="n">nil</span>, trace_id : Slice(UInt8)? = <span class="n">nil</span>)</a>
+        <a href="#new%28filtered_attributes%3AArray%28OpenTelemetry%3A%3AProto%3A%3ACommon%3A%3AV1%3A%3AKeyValue%29%3F%3Dnil%2Cfiltered_labels%3AArray%28OpenTelemetry%3A%3AProto%3A%3ACommon%3A%3AV1%3A%3AStringKeyValue%29%3F%3Dnil%2Ctime_unix_nano%3AUInt64%3F%3Dnil%2Cas_double%3AFloat64%3F%3Dnil%2Cas_int%3AInt64%3F%3Dnil%2Cspan_id%3ASlice%28UInt8%29%3F%3Dnil%2Ctrace_id%3ASlice%28UInt8%29%3F%3Dnil%29-class-method" class="signature"><strong>.new</strong>(filtered_attributes : Array(OpenTelemetry::Proto::Common::V1::KeyValue)? = <span class="n">nil</span>, filtered_labels : Array(OpenTelemetry::Proto::Common::V1::StringKeyValue)? = <span class="n">nil</span>, time_unix_nano : UInt64? = <span class="n">nil</span>, as_double : Float64? = <span class="n">nil</span>, as_int : Int64? = <span class="n">nil</span>, span_id : Slice(UInt8)? = <span class="n">nil</span>, trace_id : Slice(UInt8)? = <span class="n">nil</span>)</a>
         
       </li>
     
@@ -777,7 +812,7 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#from_protobuf(io)-class-method" class="signature"><strong>.from_protobuf</strong>(io)</a>
+        <a href="#from_protobuf%28io%29-class-method" class="signature"><strong>.from_protobuf</strong>(io)</a>
         
       </li>
     
@@ -796,72 +831,72 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#[](key:String)-instance-method" class="signature"><strong>#[]</strong>(key : String)</a>
+        <a href="#%5B%5D%28key%3AString%29-instance-method" class="signature"><strong>#[]</strong>(key : String)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#as_double:Float64?-instance-method" class="signature"><strong>#as_double</strong> : Float64?</a>
+        <a href="#as_double%3AFloat64%3F-instance-method" class="signature"><strong>#as_double</strong> : Float64?</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#as_double=(as_double:Float64?)-instance-method" class="signature"><strong>#as_double=</strong>(as_double : Float64?)</a>
+        <a href="#as_double%3D%28as_double%3AFloat64%3F%29-instance-method" class="signature"><strong>#as_double=</strong>(as_double : Float64?)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#as_int:Int64?-instance-method" class="signature"><strong>#as_int</strong> : Int64?</a>
+        <a href="#as_int%3AInt64%3F-instance-method" class="signature"><strong>#as_int</strong> : Int64?</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#as_int=(as_int:Int64?)-instance-method" class="signature"><strong>#as_int=</strong>(as_int : Int64?)</a>
+        <a href="#as_int%3D%28as_int%3AInt64%3F%29-instance-method" class="signature"><strong>#as_int=</strong>(as_int : Int64?)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#filtered_attributes:Array(OpenTelemetry::Proto::Common::V1::KeyValue)?-instance-method" class="signature"><strong>#filtered_attributes</strong> : Array(OpenTelemetry::Proto::Common::V1::KeyValue)?</a>
+        <a href="#filtered_attributes%3AArray%28OpenTelemetry%3A%3AProto%3A%3ACommon%3A%3AV1%3A%3AKeyValue%29%3F-instance-method" class="signature"><strong>#filtered_attributes</strong> : Array(OpenTelemetry::Proto::Common::V1::KeyValue)?</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#filtered_attributes=(filtered_attributes:Array(OpenTelemetry::Proto::Common::V1::KeyValue)?)-instance-method" class="signature"><strong>#filtered_attributes=</strong>(filtered_attributes : Array(OpenTelemetry::Proto::Common::V1::KeyValue)?)</a>
+        <a href="#filtered_attributes%3D%28filtered_attributes%3AArray%28OpenTelemetry%3A%3AProto%3A%3ACommon%3A%3AV1%3A%3AKeyValue%29%3F%29-instance-method" class="signature"><strong>#filtered_attributes=</strong>(filtered_attributes : Array(OpenTelemetry::Proto::Common::V1::KeyValue)?)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#filtered_labels:Array(OpenTelemetry::Proto::Common::V1::StringKeyValue)?-instance-method" class="signature"><strong>#filtered_labels</strong> : Array(OpenTelemetry::Proto::Common::V1::StringKeyValue)?</a>
+        <a href="#filtered_labels%3AArray%28OpenTelemetry%3A%3AProto%3A%3ACommon%3A%3AV1%3A%3AStringKeyValue%29%3F-instance-method" class="signature"><strong>#filtered_labels</strong> : Array(OpenTelemetry::Proto::Common::V1::StringKeyValue)?</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#filtered_labels=(filtered_labels:Array(OpenTelemetry::Proto::Common::V1::StringKeyValue)?)-instance-method" class="signature"><strong>#filtered_labels=</strong>(filtered_labels : Array(OpenTelemetry::Proto::Common::V1::StringKeyValue)?)</a>
+        <a href="#filtered_labels%3D%28filtered_labels%3AArray%28OpenTelemetry%3A%3AProto%3A%3ACommon%3A%3AV1%3A%3AStringKeyValue%29%3F%29-instance-method" class="signature"><strong>#filtered_labels=</strong>(filtered_labels : Array(OpenTelemetry::Proto::Common::V1::StringKeyValue)?)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#span_id:Slice(UInt8)?-instance-method" class="signature"><strong>#span_id</strong> : Slice(UInt8)?</a>
+        <a href="#span_id%3ASlice%28UInt8%29%3F-instance-method" class="signature"><strong>#span_id</strong> : Slice(UInt8)?</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#span_id=(span_id:Slice(UInt8)?)-instance-method" class="signature"><strong>#span_id=</strong>(span_id : Slice(UInt8)?)</a>
+        <a href="#span_id%3D%28span_id%3ASlice%28UInt8%29%3F%29-instance-method" class="signature"><strong>#span_id=</strong>(span_id : Slice(UInt8)?)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#time_unix_nano:UInt64?-instance-method" class="signature"><strong>#time_unix_nano</strong> : UInt64?</a>
+        <a href="#time_unix_nano%3AUInt64%3F-instance-method" class="signature"><strong>#time_unix_nano</strong> : UInt64?</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#time_unix_nano=(time_unix_nano:UInt64?)-instance-method" class="signature"><strong>#time_unix_nano=</strong>(time_unix_nano : UInt64?)</a>
+        <a href="#time_unix_nano%3D%28time_unix_nano%3AUInt64%3F%29-instance-method" class="signature"><strong>#time_unix_nano=</strong>(time_unix_nano : UInt64?)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#to_protobuf(io:IO,embedded=false)-instance-method" class="signature"><strong>#to_protobuf</strong>(io : IO, embedded = <span class="n">false</span>)</a>
+        <a href="#to_protobuf%28io%3AIO%2Cembedded%3Dfalse%29-instance-method" class="signature"><strong>#to_protobuf</strong>(io : IO, embedded = <span class="n">false</span>)</a>
         
       </li>
     
@@ -871,12 +906,12 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#trace_id:Slice(UInt8)?-instance-method" class="signature"><strong>#trace_id</strong> : Slice(UInt8)?</a>
+        <a href="#trace_id%3ASlice%28UInt8%29%3F-instance-method" class="signature"><strong>#trace_id</strong> : Slice(UInt8)?</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#trace_id=(trace_id:Slice(UInt8)?)-instance-method" class="signature"><strong>#trace_id=</strong>(trace_id : Slice(UInt8)?)</a>
+        <a href="#trace_id%3D%28trace_id%3ASlice%28UInt8%29%3F%29-instance-method" class="signature"><strong>#trace_id=</strong>(trace_id : Slice(UInt8)?)</a>
         
       </li>
     
@@ -945,7 +980,7 @@
         
         def self.<strong>new</strong>(buf : Protobuf::Buffer)
 
-        <a class="method-permalink" href="#new(buf:Protobuf::Buffer)-class-method">#</a>
+        <a class="method-permalink" href="#new%28buf%3AProtobuf%3A%3ABuffer%29-class-method">#</a>
       </div>
       
       <br/>
@@ -959,7 +994,7 @@
         
         def self.<strong>new</strong>(filtered_attributes : Array(<a href="../../../../OpenTelemetry/Proto/Common/V1/KeyValue.html">OpenTelemetry::Proto::Common::V1::KeyValue</a>)? = <span class="n">nil</span>, filtered_labels : Array(<a href="../../../../OpenTelemetry/Proto/Common/V1/StringKeyValue.html">OpenTelemetry::Proto::Common::V1::StringKeyValue</a>)? = <span class="n">nil</span>, time_unix_nano : UInt64? = <span class="n">nil</span>, as_double : Float64? = <span class="n">nil</span>, as_int : Int64? = <span class="n">nil</span>, span_id : Slice(UInt8)? = <span class="n">nil</span>, trace_id : Slice(UInt8)? = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#new(filtered_attributes:Array(OpenTelemetry::Proto::Common::V1::KeyValue)?=nil,filtered_labels:Array(OpenTelemetry::Proto::Common::V1::StringKeyValue)?=nil,time_unix_nano:UInt64?=nil,as_double:Float64?=nil,as_int:Int64?=nil,span_id:Slice(UInt8)?=nil,trace_id:Slice(UInt8)?=nil)-class-method">#</a>
+        <a class="method-permalink" href="#new%28filtered_attributes%3AArray%28OpenTelemetry%3A%3AProto%3A%3ACommon%3A%3AV1%3A%3AKeyValue%29%3F%3Dnil%2Cfiltered_labels%3AArray%28OpenTelemetry%3A%3AProto%3A%3ACommon%3A%3AV1%3A%3AStringKeyValue%29%3F%3Dnil%2Ctime_unix_nano%3AUInt64%3F%3Dnil%2Cas_double%3AFloat64%3F%3Dnil%2Cas_int%3AInt64%3F%3Dnil%2Cspan_id%3ASlice%28UInt8%29%3F%3Dnil%2Ctrace_id%3ASlice%28UInt8%29%3F%3Dnil%29-class-method">#</a>
       </div>
       
       <br/>
@@ -985,7 +1020,7 @@
         
         def self.<strong>from_protobuf</strong>(io)
 
-        <a class="method-permalink" href="#from_protobuf(io)-class-method">#</a>
+        <a class="method-permalink" href="#from_protobuf%28io%29-class-method">#</a>
       </div>
       
       <br/>
@@ -1011,7 +1046,7 @@
         
         def <strong>[]</strong>(key : String)
 
-        <a class="method-permalink" href="#[](key:String)-instance-method">#</a>
+        <a class="method-permalink" href="#%5B%5D%28key%3AString%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1025,7 +1060,7 @@
         
         def <strong>as_double</strong> : Float64?
 
-        <a class="method-permalink" href="#as_double:Float64?-instance-method">#</a>
+        <a class="method-permalink" href="#as_double%3AFloat64%3F-instance-method">#</a>
       </div>
       
       <br/>
@@ -1039,7 +1074,7 @@
         
         def <strong>as_double=</strong>(as_double : Float64?)
 
-        <a class="method-permalink" href="#as_double=(as_double:Float64?)-instance-method">#</a>
+        <a class="method-permalink" href="#as_double%3D%28as_double%3AFloat64%3F%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1053,7 +1088,7 @@
         
         def <strong>as_int</strong> : Int64?
 
-        <a class="method-permalink" href="#as_int:Int64?-instance-method">#</a>
+        <a class="method-permalink" href="#as_int%3AInt64%3F-instance-method">#</a>
       </div>
       
       <br/>
@@ -1067,7 +1102,7 @@
         
         def <strong>as_int=</strong>(as_int : Int64?)
 
-        <a class="method-permalink" href="#as_int=(as_int:Int64?)-instance-method">#</a>
+        <a class="method-permalink" href="#as_int%3D%28as_int%3AInt64%3F%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1081,7 +1116,7 @@
         
         def <strong>filtered_attributes</strong> : Array(<a href="../../../../OpenTelemetry/Proto/Common/V1/KeyValue.html">OpenTelemetry::Proto::Common::V1::KeyValue</a>)?
 
-        <a class="method-permalink" href="#filtered_attributes:Array(OpenTelemetry::Proto::Common::V1::KeyValue)?-instance-method">#</a>
+        <a class="method-permalink" href="#filtered_attributes%3AArray%28OpenTelemetry%3A%3AProto%3A%3ACommon%3A%3AV1%3A%3AKeyValue%29%3F-instance-method">#</a>
       </div>
       
       <br/>
@@ -1095,7 +1130,7 @@
         
         def <strong>filtered_attributes=</strong>(filtered_attributes : Array(<a href="../../../../OpenTelemetry/Proto/Common/V1/KeyValue.html">OpenTelemetry::Proto::Common::V1::KeyValue</a>)?)
 
-        <a class="method-permalink" href="#filtered_attributes=(filtered_attributes:Array(OpenTelemetry::Proto::Common::V1::KeyValue)?)-instance-method">#</a>
+        <a class="method-permalink" href="#filtered_attributes%3D%28filtered_attributes%3AArray%28OpenTelemetry%3A%3AProto%3A%3ACommon%3A%3AV1%3A%3AKeyValue%29%3F%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1109,7 +1144,7 @@
         
         def <strong>filtered_labels</strong> : Array(<a href="../../../../OpenTelemetry/Proto/Common/V1/StringKeyValue.html">OpenTelemetry::Proto::Common::V1::StringKeyValue</a>)?
 
-        <a class="method-permalink" href="#filtered_labels:Array(OpenTelemetry::Proto::Common::V1::StringKeyValue)?-instance-method">#</a>
+        <a class="method-permalink" href="#filtered_labels%3AArray%28OpenTelemetry%3A%3AProto%3A%3ACommon%3A%3AV1%3A%3AStringKeyValue%29%3F-instance-method">#</a>
       </div>
       
       <br/>
@@ -1123,7 +1158,7 @@
         
         def <strong>filtered_labels=</strong>(filtered_labels : Array(<a href="../../../../OpenTelemetry/Proto/Common/V1/StringKeyValue.html">OpenTelemetry::Proto::Common::V1::StringKeyValue</a>)?)
 
-        <a class="method-permalink" href="#filtered_labels=(filtered_labels:Array(OpenTelemetry::Proto::Common::V1::StringKeyValue)?)-instance-method">#</a>
+        <a class="method-permalink" href="#filtered_labels%3D%28filtered_labels%3AArray%28OpenTelemetry%3A%3AProto%3A%3ACommon%3A%3AV1%3A%3AStringKeyValue%29%3F%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1137,7 +1172,7 @@
         
         def <strong>span_id</strong> : Slice(UInt8)?
 
-        <a class="method-permalink" href="#span_id:Slice(UInt8)?-instance-method">#</a>
+        <a class="method-permalink" href="#span_id%3ASlice%28UInt8%29%3F-instance-method">#</a>
       </div>
       
       <br/>
@@ -1151,7 +1186,7 @@
         
         def <strong>span_id=</strong>(span_id : Slice(UInt8)?)
 
-        <a class="method-permalink" href="#span_id=(span_id:Slice(UInt8)?)-instance-method">#</a>
+        <a class="method-permalink" href="#span_id%3D%28span_id%3ASlice%28UInt8%29%3F%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1165,7 +1200,7 @@
         
         def <strong>time_unix_nano</strong> : UInt64?
 
-        <a class="method-permalink" href="#time_unix_nano:UInt64?-instance-method">#</a>
+        <a class="method-permalink" href="#time_unix_nano%3AUInt64%3F-instance-method">#</a>
       </div>
       
       <br/>
@@ -1179,7 +1214,7 @@
         
         def <strong>time_unix_nano=</strong>(time_unix_nano : UInt64?)
 
-        <a class="method-permalink" href="#time_unix_nano=(time_unix_nano:UInt64?)-instance-method">#</a>
+        <a class="method-permalink" href="#time_unix_nano%3D%28time_unix_nano%3AUInt64%3F%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1193,7 +1228,7 @@
         
         def <strong>to_protobuf</strong>(io : IO, embedded = <span class="n">false</span>)
 
-        <a class="method-permalink" href="#to_protobuf(io:IO,embedded=false)-instance-method">#</a>
+        <a class="method-permalink" href="#to_protobuf%28io%3AIO%2Cembedded%3Dfalse%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1221,7 +1256,7 @@
         
         def <strong>trace_id</strong> : Slice(UInt8)?
 
-        <a class="method-permalink" href="#trace_id:Slice(UInt8)?-instance-method">#</a>
+        <a class="method-permalink" href="#trace_id%3ASlice%28UInt8%29%3F-instance-method">#</a>
       </div>
       
       <br/>
@@ -1235,7 +1270,7 @@
         
         def <strong>trace_id=</strong>(trace_id : Slice(UInt8)?)
 
-        <a class="method-permalink" href="#trace_id=(trace_id:Slice(UInt8)?)-instance-method">#</a>
+        <a class="method-permalink" href="#trace_id%3D%28trace_id%3ASlice%28UInt8%29%3F%29-instance-method">#</a>
       </div>
       
       <br/>

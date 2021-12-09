@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Crystal Docs 1.0.0">
+<meta name="generator" content="Crystal Docs 1.1.1">
 <meta name="crystal_docs.project_version" content="main">
 <meta name="crystal_docs.project_name" content="opentelemetry-api">
 
@@ -51,12 +51,32 @@
   <div class="types-list">
     <ul>
   
+  <li class=" " data-id="opentelemetry-api/Fiber" data-name="fiber">
+      <a href="../../../../Fiber.html">Fiber</a>
+      
+    </li>
+  
   <li class="parent open current" data-id="opentelemetry-api/OpenTelemetry" data-name="opentelemetry">
       <a href="../../../../OpenTelemetry.html">OpenTelemetry</a>
       
         <ul>
   
-  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Attribute" data-name="opentelemetry::attribute">
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/AnyAttribute" data-name="opentelemetry::anyattribute">
+      <a href="../../../../OpenTelemetry/AnyAttribute.html">AnyAttribute</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/AnyAttribute/Type" data-name="opentelemetry::anyattribute::type">
+      <a href="../../../../OpenTelemetry/AnyAttribute/Type.html">Type</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Attribute" data-name="opentelemetry::attribute(k)">
       <a href="../../../../OpenTelemetry/Attribute.html">Attribute</a>
       
     </li>
@@ -65,6 +85,11 @@
       <a href="../../../../OpenTelemetry/Context.html">Context</a>
       
         <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Context/ContextContainer" data-name="opentelemetry::context::contextcontainer">
+      <a href="../../../../OpenTelemetry/Context/ContextContainer.html">ContextContainer</a>
+      
+    </li>
   
   <li class=" " data-id="opentelemetry-api/OpenTelemetry/Context/Key" data-name="opentelemetry::context::key">
       <a href="../../../../OpenTelemetry/Context/Key.html">Key</a>
@@ -651,6 +676,16 @@
       
     </li>
   
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/ValueType" data-name="opentelemetry::valuetype">
+      <a href="../../../../OpenTelemetry/ValueType.html">ValueType</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/ValueTypes" data-name="opentelemetry::valuetypes">
+      <a href="../../../../OpenTelemetry/ValueTypes.html">ValueTypes</a>
+      
+    </li>
+  
 </ul>
 
       
@@ -712,7 +747,7 @@
   </h2>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/34edd3b6c81841c34ee53f416fe229cebcc8853b/src/proto/trace.pb.cr#L31" target="_blank">
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/proto/trace.pb.cr#L31" target="_blank">
         proto/trace.pb.cr
       </a>
     
@@ -753,12 +788,12 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new(buf:Protobuf::Buffer)-class-method" class="signature"><strong>.new</strong>(buf : Protobuf::Buffer)</a>
+        <a href="#new%28buf%3AProtobuf%3A%3ABuffer%29-class-method" class="signature"><strong>.new</strong>(buf : Protobuf::Buffer)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#new(trace_id:Slice(UInt8)?=nil,span_id:Slice(UInt8)?=nil,trace_state:String?=nil,parent_span_id:Slice(UInt8)?=nil,name:String?=nil,kind:Span::SpanKind?=nil,start_time_unix_nano:UInt64?=nil,end_time_unix_nano:UInt64?=nil,attributes:Array(OpenTelemetry::Proto::Common::V1::KeyValue)?=nil,dropped_attributes_count:UInt32?=nil,events:Array(Span::Event)?=nil,dropped_events_count:UInt32?=nil,links:Array(Span::Link)?=nil,dropped_links_count:UInt32?=nil,status:Status?=nil)-class-method" class="signature"><strong>.new</strong>(trace_id : Slice(UInt8)? = <span class="n">nil</span>, span_id : Slice(UInt8)? = <span class="n">nil</span>, trace_state : String? = <span class="n">nil</span>, parent_span_id : Slice(UInt8)? = <span class="n">nil</span>, name : String? = <span class="n">nil</span>, kind : Span::SpanKind? = <span class="n">nil</span>, start_time_unix_nano : UInt64? = <span class="n">nil</span>, end_time_unix_nano : UInt64? = <span class="n">nil</span>, attributes : Array(OpenTelemetry::Proto::Common::V1::KeyValue)? = <span class="n">nil</span>, dropped_attributes_count : UInt32? = <span class="n">nil</span>, events : Array(Span::Event)? = <span class="n">nil</span>, dropped_events_count : UInt32? = <span class="n">nil</span>, links : Array(Span::Link)? = <span class="n">nil</span>, dropped_links_count : UInt32? = <span class="n">nil</span>, status : Status? = <span class="n">nil</span>)</a>
+        <a href="#new%28trace_id%3ASlice%28UInt8%29%3F%3Dnil%2Cspan_id%3ASlice%28UInt8%29%3F%3Dnil%2Ctrace_state%3AString%3F%3Dnil%2Cparent_span_id%3ASlice%28UInt8%29%3F%3Dnil%2Cname%3AString%3F%3Dnil%2Ckind%3ASpan%3A%3ASpanKind%3F%3Dnil%2Cstart_time_unix_nano%3AUInt64%3F%3Dnil%2Cend_time_unix_nano%3AUInt64%3F%3Dnil%2Cattributes%3AArray%28OpenTelemetry%3A%3AProto%3A%3ACommon%3A%3AV1%3A%3AKeyValue%29%3F%3Dnil%2Cdropped_attributes_count%3AUInt32%3F%3Dnil%2Cevents%3AArray%28Span%3A%3AEvent%29%3F%3Dnil%2Cdropped_events_count%3AUInt32%3F%3Dnil%2Clinks%3AArray%28Span%3A%3ALink%29%3F%3Dnil%2Cdropped_links_count%3AUInt32%3F%3Dnil%2Cstatus%3AStatus%3F%3Dnil%29-class-method" class="signature"><strong>.new</strong>(trace_id : Slice(UInt8)? = <span class="n">nil</span>, span_id : Slice(UInt8)? = <span class="n">nil</span>, trace_state : String? = <span class="n">nil</span>, parent_span_id : Slice(UInt8)? = <span class="n">nil</span>, name : String? = <span class="n">nil</span>, kind : Span::SpanKind? = <span class="n">nil</span>, start_time_unix_nano : UInt64? = <span class="n">nil</span>, end_time_unix_nano : UInt64? = <span class="n">nil</span>, attributes : Array(OpenTelemetry::Proto::Common::V1::KeyValue)? = <span class="n">nil</span>, dropped_attributes_count : UInt32? = <span class="n">nil</span>, events : Array(Span::Event)? = <span class="n">nil</span>, dropped_events_count : UInt32? = <span class="n">nil</span>, links : Array(Span::Link)? = <span class="n">nil</span>, dropped_links_count : UInt32? = <span class="n">nil</span>, status : Status? = <span class="n">nil</span>)</a>
         
       </li>
     
@@ -777,7 +812,7 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#from_protobuf(io)-class-method" class="signature"><strong>.from_protobuf</strong>(io)</a>
+        <a href="#from_protobuf%28io%29-class-method" class="signature"><strong>.from_protobuf</strong>(io)</a>
         
       </li>
     
@@ -796,142 +831,142 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#[](key:String)-instance-method" class="signature"><strong>#[]</strong>(key : String)</a>
+        <a href="#%5B%5D%28key%3AString%29-instance-method" class="signature"><strong>#[]</strong>(key : String)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#attributes:Array(OpenTelemetry::Proto::Common::V1::KeyValue)?-instance-method" class="signature"><strong>#attributes</strong> : Array(OpenTelemetry::Proto::Common::V1::KeyValue)?</a>
+        <a href="#attributes%3AArray%28OpenTelemetry%3A%3AProto%3A%3ACommon%3A%3AV1%3A%3AKeyValue%29%3F-instance-method" class="signature"><strong>#attributes</strong> : Array(OpenTelemetry::Proto::Common::V1::KeyValue)?</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#attributes=(attributes:Array(OpenTelemetry::Proto::Common::V1::KeyValue)?)-instance-method" class="signature"><strong>#attributes=</strong>(attributes : Array(OpenTelemetry::Proto::Common::V1::KeyValue)?)</a>
+        <a href="#attributes%3D%28attributes%3AArray%28OpenTelemetry%3A%3AProto%3A%3ACommon%3A%3AV1%3A%3AKeyValue%29%3F%29-instance-method" class="signature"><strong>#attributes=</strong>(attributes : Array(OpenTelemetry::Proto::Common::V1::KeyValue)?)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#dropped_attributes_count:UInt32?-instance-method" class="signature"><strong>#dropped_attributes_count</strong> : UInt32?</a>
+        <a href="#dropped_attributes_count%3AUInt32%3F-instance-method" class="signature"><strong>#dropped_attributes_count</strong> : UInt32?</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#dropped_attributes_count=(dropped_attributes_count:UInt32?)-instance-method" class="signature"><strong>#dropped_attributes_count=</strong>(dropped_attributes_count : UInt32?)</a>
+        <a href="#dropped_attributes_count%3D%28dropped_attributes_count%3AUInt32%3F%29-instance-method" class="signature"><strong>#dropped_attributes_count=</strong>(dropped_attributes_count : UInt32?)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#dropped_events_count:UInt32?-instance-method" class="signature"><strong>#dropped_events_count</strong> : UInt32?</a>
+        <a href="#dropped_events_count%3AUInt32%3F-instance-method" class="signature"><strong>#dropped_events_count</strong> : UInt32?</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#dropped_events_count=(dropped_events_count:UInt32?)-instance-method" class="signature"><strong>#dropped_events_count=</strong>(dropped_events_count : UInt32?)</a>
+        <a href="#dropped_events_count%3D%28dropped_events_count%3AUInt32%3F%29-instance-method" class="signature"><strong>#dropped_events_count=</strong>(dropped_events_count : UInt32?)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#dropped_links_count:UInt32?-instance-method" class="signature"><strong>#dropped_links_count</strong> : UInt32?</a>
+        <a href="#dropped_links_count%3AUInt32%3F-instance-method" class="signature"><strong>#dropped_links_count</strong> : UInt32?</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#dropped_links_count=(dropped_links_count:UInt32?)-instance-method" class="signature"><strong>#dropped_links_count=</strong>(dropped_links_count : UInt32?)</a>
+        <a href="#dropped_links_count%3D%28dropped_links_count%3AUInt32%3F%29-instance-method" class="signature"><strong>#dropped_links_count=</strong>(dropped_links_count : UInt32?)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#end_time_unix_nano:UInt64?-instance-method" class="signature"><strong>#end_time_unix_nano</strong> : UInt64?</a>
+        <a href="#end_time_unix_nano%3AUInt64%3F-instance-method" class="signature"><strong>#end_time_unix_nano</strong> : UInt64?</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#end_time_unix_nano=(end_time_unix_nano:UInt64?)-instance-method" class="signature"><strong>#end_time_unix_nano=</strong>(end_time_unix_nano : UInt64?)</a>
+        <a href="#end_time_unix_nano%3D%28end_time_unix_nano%3AUInt64%3F%29-instance-method" class="signature"><strong>#end_time_unix_nano=</strong>(end_time_unix_nano : UInt64?)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#events:Array(Span::Event)?-instance-method" class="signature"><strong>#events</strong> : Array(Span::Event)?</a>
+        <a href="#events%3AArray%28Span%3A%3AEvent%29%3F-instance-method" class="signature"><strong>#events</strong> : Array(Span::Event)?</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#events=(events:Array(Span::Event)?)-instance-method" class="signature"><strong>#events=</strong>(events : Array(Span::Event)?)</a>
+        <a href="#events%3D%28events%3AArray%28Span%3A%3AEvent%29%3F%29-instance-method" class="signature"><strong>#events=</strong>(events : Array(Span::Event)?)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#kind:Span::SpanKind?-instance-method" class="signature"><strong>#kind</strong> : Span::SpanKind?</a>
+        <a href="#kind%3ASpan%3A%3ASpanKind%3F-instance-method" class="signature"><strong>#kind</strong> : Span::SpanKind?</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#kind=(kind:Span::SpanKind?)-instance-method" class="signature"><strong>#kind=</strong>(kind : Span::SpanKind?)</a>
+        <a href="#kind%3D%28kind%3ASpan%3A%3ASpanKind%3F%29-instance-method" class="signature"><strong>#kind=</strong>(kind : Span::SpanKind?)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#links:Array(Span::Link)?-instance-method" class="signature"><strong>#links</strong> : Array(Span::Link)?</a>
+        <a href="#links%3AArray%28Span%3A%3ALink%29%3F-instance-method" class="signature"><strong>#links</strong> : Array(Span::Link)?</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#links=(links:Array(Span::Link)?)-instance-method" class="signature"><strong>#links=</strong>(links : Array(Span::Link)?)</a>
+        <a href="#links%3D%28links%3AArray%28Span%3A%3ALink%29%3F%29-instance-method" class="signature"><strong>#links=</strong>(links : Array(Span::Link)?)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#name:String?-instance-method" class="signature"><strong>#name</strong> : String?</a>
+        <a href="#name%3AString%3F-instance-method" class="signature"><strong>#name</strong> : String?</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#name=(name:String?)-instance-method" class="signature"><strong>#name=</strong>(name : String?)</a>
+        <a href="#name%3D%28name%3AString%3F%29-instance-method" class="signature"><strong>#name=</strong>(name : String?)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#parent_span_id:Slice(UInt8)?-instance-method" class="signature"><strong>#parent_span_id</strong> : Slice(UInt8)?</a>
+        <a href="#parent_span_id%3ASlice%28UInt8%29%3F-instance-method" class="signature"><strong>#parent_span_id</strong> : Slice(UInt8)?</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#parent_span_id=(parent_span_id:Slice(UInt8)?)-instance-method" class="signature"><strong>#parent_span_id=</strong>(parent_span_id : Slice(UInt8)?)</a>
+        <a href="#parent_span_id%3D%28parent_span_id%3ASlice%28UInt8%29%3F%29-instance-method" class="signature"><strong>#parent_span_id=</strong>(parent_span_id : Slice(UInt8)?)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#span_id:Slice(UInt8)?-instance-method" class="signature"><strong>#span_id</strong> : Slice(UInt8)?</a>
+        <a href="#span_id%3ASlice%28UInt8%29%3F-instance-method" class="signature"><strong>#span_id</strong> : Slice(UInt8)?</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#span_id=(span_id:Slice(UInt8)?)-instance-method" class="signature"><strong>#span_id=</strong>(span_id : Slice(UInt8)?)</a>
+        <a href="#span_id%3D%28span_id%3ASlice%28UInt8%29%3F%29-instance-method" class="signature"><strong>#span_id=</strong>(span_id : Slice(UInt8)?)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#start_time_unix_nano:UInt64?-instance-method" class="signature"><strong>#start_time_unix_nano</strong> : UInt64?</a>
+        <a href="#start_time_unix_nano%3AUInt64%3F-instance-method" class="signature"><strong>#start_time_unix_nano</strong> : UInt64?</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#start_time_unix_nano=(start_time_unix_nano:UInt64?)-instance-method" class="signature"><strong>#start_time_unix_nano=</strong>(start_time_unix_nano : UInt64?)</a>
+        <a href="#start_time_unix_nano%3D%28start_time_unix_nano%3AUInt64%3F%29-instance-method" class="signature"><strong>#start_time_unix_nano=</strong>(start_time_unix_nano : UInt64?)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#status:Status?-instance-method" class="signature"><strong>#status</strong> : Status?</a>
+        <a href="#status%3AStatus%3F-instance-method" class="signature"><strong>#status</strong> : Status?</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#status=(status:Status?)-instance-method" class="signature"><strong>#status=</strong>(status : Status?)</a>
+        <a href="#status%3D%28status%3AStatus%3F%29-instance-method" class="signature"><strong>#status=</strong>(status : Status?)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#to_protobuf(io:IO,embedded=false)-instance-method" class="signature"><strong>#to_protobuf</strong>(io : IO, embedded = <span class="n">false</span>)</a>
+        <a href="#to_protobuf%28io%3AIO%2Cembedded%3Dfalse%29-instance-method" class="signature"><strong>#to_protobuf</strong>(io : IO, embedded = <span class="n">false</span>)</a>
         
       </li>
     
@@ -941,22 +976,22 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#trace_id:Slice(UInt8)?-instance-method" class="signature"><strong>#trace_id</strong> : Slice(UInt8)?</a>
+        <a href="#trace_id%3ASlice%28UInt8%29%3F-instance-method" class="signature"><strong>#trace_id</strong> : Slice(UInt8)?</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#trace_id=(trace_id:Slice(UInt8)?)-instance-method" class="signature"><strong>#trace_id=</strong>(trace_id : Slice(UInt8)?)</a>
+        <a href="#trace_id%3D%28trace_id%3ASlice%28UInt8%29%3F%29-instance-method" class="signature"><strong>#trace_id=</strong>(trace_id : Slice(UInt8)?)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#trace_state:String?-instance-method" class="signature"><strong>#trace_state</strong> : String?</a>
+        <a href="#trace_state%3AString%3F-instance-method" class="signature"><strong>#trace_state</strong> : String?</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#trace_state=(trace_state:String?)-instance-method" class="signature"><strong>#trace_state=</strong>(trace_state : String?)</a>
+        <a href="#trace_state%3D%28trace_state%3AString%3F%29-instance-method" class="signature"><strong>#trace_state=</strong>(trace_state : String?)</a>
         
       </li>
     
@@ -1025,7 +1060,7 @@
         
         def self.<strong>new</strong>(buf : Protobuf::Buffer)
 
-        <a class="method-permalink" href="#new(buf:Protobuf::Buffer)-class-method">#</a>
+        <a class="method-permalink" href="#new%28buf%3AProtobuf%3A%3ABuffer%29-class-method">#</a>
       </div>
       
       <br/>
@@ -1039,7 +1074,7 @@
         
         def self.<strong>new</strong>(trace_id : Slice(UInt8)? = <span class="n">nil</span>, span_id : Slice(UInt8)? = <span class="n">nil</span>, trace_state : String? = <span class="n">nil</span>, parent_span_id : Slice(UInt8)? = <span class="n">nil</span>, name : String? = <span class="n">nil</span>, kind : <a href="../../../../OpenTelemetry/Proto/Trace/V1/Span/SpanKind.html">Span::SpanKind</a>? = <span class="n">nil</span>, start_time_unix_nano : UInt64? = <span class="n">nil</span>, end_time_unix_nano : UInt64? = <span class="n">nil</span>, attributes : Array(<a href="../../../../OpenTelemetry/Proto/Common/V1/KeyValue.html">OpenTelemetry::Proto::Common::V1::KeyValue</a>)? = <span class="n">nil</span>, dropped_attributes_count : UInt32? = <span class="n">nil</span>, events : Array(<a href="../../../../OpenTelemetry/Proto/Trace/V1/Span/Event.html">Span::Event</a>)? = <span class="n">nil</span>, dropped_events_count : UInt32? = <span class="n">nil</span>, links : Array(<a href="../../../../OpenTelemetry/Proto/Trace/V1/Span/Link.html">Span::Link</a>)? = <span class="n">nil</span>, dropped_links_count : UInt32? = <span class="n">nil</span>, status : <a href="../../../../OpenTelemetry/Proto/Trace/V1/Status.html">Status</a>? = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#new(trace_id:Slice(UInt8)?=nil,span_id:Slice(UInt8)?=nil,trace_state:String?=nil,parent_span_id:Slice(UInt8)?=nil,name:String?=nil,kind:Span::SpanKind?=nil,start_time_unix_nano:UInt64?=nil,end_time_unix_nano:UInt64?=nil,attributes:Array(OpenTelemetry::Proto::Common::V1::KeyValue)?=nil,dropped_attributes_count:UInt32?=nil,events:Array(Span::Event)?=nil,dropped_events_count:UInt32?=nil,links:Array(Span::Link)?=nil,dropped_links_count:UInt32?=nil,status:Status?=nil)-class-method">#</a>
+        <a class="method-permalink" href="#new%28trace_id%3ASlice%28UInt8%29%3F%3Dnil%2Cspan_id%3ASlice%28UInt8%29%3F%3Dnil%2Ctrace_state%3AString%3F%3Dnil%2Cparent_span_id%3ASlice%28UInt8%29%3F%3Dnil%2Cname%3AString%3F%3Dnil%2Ckind%3ASpan%3A%3ASpanKind%3F%3Dnil%2Cstart_time_unix_nano%3AUInt64%3F%3Dnil%2Cend_time_unix_nano%3AUInt64%3F%3Dnil%2Cattributes%3AArray%28OpenTelemetry%3A%3AProto%3A%3ACommon%3A%3AV1%3A%3AKeyValue%29%3F%3Dnil%2Cdropped_attributes_count%3AUInt32%3F%3Dnil%2Cevents%3AArray%28Span%3A%3AEvent%29%3F%3Dnil%2Cdropped_events_count%3AUInt32%3F%3Dnil%2Clinks%3AArray%28Span%3A%3ALink%29%3F%3Dnil%2Cdropped_links_count%3AUInt32%3F%3Dnil%2Cstatus%3AStatus%3F%3Dnil%29-class-method">#</a>
       </div>
       
       <br/>
@@ -1065,7 +1100,7 @@
         
         def self.<strong>from_protobuf</strong>(io)
 
-        <a class="method-permalink" href="#from_protobuf(io)-class-method">#</a>
+        <a class="method-permalink" href="#from_protobuf%28io%29-class-method">#</a>
       </div>
       
       <br/>
@@ -1091,7 +1126,7 @@
         
         def <strong>[]</strong>(key : String)
 
-        <a class="method-permalink" href="#[](key:String)-instance-method">#</a>
+        <a class="method-permalink" href="#%5B%5D%28key%3AString%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1105,7 +1140,7 @@
         
         def <strong>attributes</strong> : Array(<a href="../../../../OpenTelemetry/Proto/Common/V1/KeyValue.html">OpenTelemetry::Proto::Common::V1::KeyValue</a>)?
 
-        <a class="method-permalink" href="#attributes:Array(OpenTelemetry::Proto::Common::V1::KeyValue)?-instance-method">#</a>
+        <a class="method-permalink" href="#attributes%3AArray%28OpenTelemetry%3A%3AProto%3A%3ACommon%3A%3AV1%3A%3AKeyValue%29%3F-instance-method">#</a>
       </div>
       
       <br/>
@@ -1119,7 +1154,7 @@
         
         def <strong>attributes=</strong>(attributes : Array(<a href="../../../../OpenTelemetry/Proto/Common/V1/KeyValue.html">OpenTelemetry::Proto::Common::V1::KeyValue</a>)?)
 
-        <a class="method-permalink" href="#attributes=(attributes:Array(OpenTelemetry::Proto::Common::V1::KeyValue)?)-instance-method">#</a>
+        <a class="method-permalink" href="#attributes%3D%28attributes%3AArray%28OpenTelemetry%3A%3AProto%3A%3ACommon%3A%3AV1%3A%3AKeyValue%29%3F%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1133,7 +1168,7 @@
         
         def <strong>dropped_attributes_count</strong> : UInt32?
 
-        <a class="method-permalink" href="#dropped_attributes_count:UInt32?-instance-method">#</a>
+        <a class="method-permalink" href="#dropped_attributes_count%3AUInt32%3F-instance-method">#</a>
       </div>
       
       <br/>
@@ -1147,7 +1182,7 @@
         
         def <strong>dropped_attributes_count=</strong>(dropped_attributes_count : UInt32?)
 
-        <a class="method-permalink" href="#dropped_attributes_count=(dropped_attributes_count:UInt32?)-instance-method">#</a>
+        <a class="method-permalink" href="#dropped_attributes_count%3D%28dropped_attributes_count%3AUInt32%3F%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1161,7 +1196,7 @@
         
         def <strong>dropped_events_count</strong> : UInt32?
 
-        <a class="method-permalink" href="#dropped_events_count:UInt32?-instance-method">#</a>
+        <a class="method-permalink" href="#dropped_events_count%3AUInt32%3F-instance-method">#</a>
       </div>
       
       <br/>
@@ -1175,7 +1210,7 @@
         
         def <strong>dropped_events_count=</strong>(dropped_events_count : UInt32?)
 
-        <a class="method-permalink" href="#dropped_events_count=(dropped_events_count:UInt32?)-instance-method">#</a>
+        <a class="method-permalink" href="#dropped_events_count%3D%28dropped_events_count%3AUInt32%3F%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1189,7 +1224,7 @@
         
         def <strong>dropped_links_count</strong> : UInt32?
 
-        <a class="method-permalink" href="#dropped_links_count:UInt32?-instance-method">#</a>
+        <a class="method-permalink" href="#dropped_links_count%3AUInt32%3F-instance-method">#</a>
       </div>
       
       <br/>
@@ -1203,7 +1238,7 @@
         
         def <strong>dropped_links_count=</strong>(dropped_links_count : UInt32?)
 
-        <a class="method-permalink" href="#dropped_links_count=(dropped_links_count:UInt32?)-instance-method">#</a>
+        <a class="method-permalink" href="#dropped_links_count%3D%28dropped_links_count%3AUInt32%3F%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1217,7 +1252,7 @@
         
         def <strong>end_time_unix_nano</strong> : UInt64?
 
-        <a class="method-permalink" href="#end_time_unix_nano:UInt64?-instance-method">#</a>
+        <a class="method-permalink" href="#end_time_unix_nano%3AUInt64%3F-instance-method">#</a>
       </div>
       
       <br/>
@@ -1231,7 +1266,7 @@
         
         def <strong>end_time_unix_nano=</strong>(end_time_unix_nano : UInt64?)
 
-        <a class="method-permalink" href="#end_time_unix_nano=(end_time_unix_nano:UInt64?)-instance-method">#</a>
+        <a class="method-permalink" href="#end_time_unix_nano%3D%28end_time_unix_nano%3AUInt64%3F%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1245,7 +1280,7 @@
         
         def <strong>events</strong> : Array(<a href="../../../../OpenTelemetry/Proto/Trace/V1/Span/Event.html">Span::Event</a>)?
 
-        <a class="method-permalink" href="#events:Array(Span::Event)?-instance-method">#</a>
+        <a class="method-permalink" href="#events%3AArray%28Span%3A%3AEvent%29%3F-instance-method">#</a>
       </div>
       
       <br/>
@@ -1259,7 +1294,7 @@
         
         def <strong>events=</strong>(events : Array(<a href="../../../../OpenTelemetry/Proto/Trace/V1/Span/Event.html">Span::Event</a>)?)
 
-        <a class="method-permalink" href="#events=(events:Array(Span::Event)?)-instance-method">#</a>
+        <a class="method-permalink" href="#events%3D%28events%3AArray%28Span%3A%3AEvent%29%3F%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1273,7 +1308,7 @@
         
         def <strong>kind</strong> : <a href="../../../../OpenTelemetry/Proto/Trace/V1/Span/SpanKind.html">Span::SpanKind</a>?
 
-        <a class="method-permalink" href="#kind:Span::SpanKind?-instance-method">#</a>
+        <a class="method-permalink" href="#kind%3ASpan%3A%3ASpanKind%3F-instance-method">#</a>
       </div>
       
       <br/>
@@ -1287,7 +1322,7 @@
         
         def <strong>kind=</strong>(kind : <a href="../../../../OpenTelemetry/Proto/Trace/V1/Span/SpanKind.html">Span::SpanKind</a>?)
 
-        <a class="method-permalink" href="#kind=(kind:Span::SpanKind?)-instance-method">#</a>
+        <a class="method-permalink" href="#kind%3D%28kind%3ASpan%3A%3ASpanKind%3F%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1301,7 +1336,7 @@
         
         def <strong>links</strong> : Array(<a href="../../../../OpenTelemetry/Proto/Trace/V1/Span/Link.html">Span::Link</a>)?
 
-        <a class="method-permalink" href="#links:Array(Span::Link)?-instance-method">#</a>
+        <a class="method-permalink" href="#links%3AArray%28Span%3A%3ALink%29%3F-instance-method">#</a>
       </div>
       
       <br/>
@@ -1315,7 +1350,7 @@
         
         def <strong>links=</strong>(links : Array(<a href="../../../../OpenTelemetry/Proto/Trace/V1/Span/Link.html">Span::Link</a>)?)
 
-        <a class="method-permalink" href="#links=(links:Array(Span::Link)?)-instance-method">#</a>
+        <a class="method-permalink" href="#links%3D%28links%3AArray%28Span%3A%3ALink%29%3F%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1329,7 +1364,7 @@
         
         def <strong>name</strong> : String?
 
-        <a class="method-permalink" href="#name:String?-instance-method">#</a>
+        <a class="method-permalink" href="#name%3AString%3F-instance-method">#</a>
       </div>
       
       <br/>
@@ -1343,7 +1378,7 @@
         
         def <strong>name=</strong>(name : String?)
 
-        <a class="method-permalink" href="#name=(name:String?)-instance-method">#</a>
+        <a class="method-permalink" href="#name%3D%28name%3AString%3F%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1357,7 +1392,7 @@
         
         def <strong>parent_span_id</strong> : Slice(UInt8)?
 
-        <a class="method-permalink" href="#parent_span_id:Slice(UInt8)?-instance-method">#</a>
+        <a class="method-permalink" href="#parent_span_id%3ASlice%28UInt8%29%3F-instance-method">#</a>
       </div>
       
       <br/>
@@ -1371,7 +1406,7 @@
         
         def <strong>parent_span_id=</strong>(parent_span_id : Slice(UInt8)?)
 
-        <a class="method-permalink" href="#parent_span_id=(parent_span_id:Slice(UInt8)?)-instance-method">#</a>
+        <a class="method-permalink" href="#parent_span_id%3D%28parent_span_id%3ASlice%28UInt8%29%3F%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1385,7 +1420,7 @@
         
         def <strong>span_id</strong> : Slice(UInt8)?
 
-        <a class="method-permalink" href="#span_id:Slice(UInt8)?-instance-method">#</a>
+        <a class="method-permalink" href="#span_id%3ASlice%28UInt8%29%3F-instance-method">#</a>
       </div>
       
       <br/>
@@ -1399,7 +1434,7 @@
         
         def <strong>span_id=</strong>(span_id : Slice(UInt8)?)
 
-        <a class="method-permalink" href="#span_id=(span_id:Slice(UInt8)?)-instance-method">#</a>
+        <a class="method-permalink" href="#span_id%3D%28span_id%3ASlice%28UInt8%29%3F%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1413,7 +1448,7 @@
         
         def <strong>start_time_unix_nano</strong> : UInt64?
 
-        <a class="method-permalink" href="#start_time_unix_nano:UInt64?-instance-method">#</a>
+        <a class="method-permalink" href="#start_time_unix_nano%3AUInt64%3F-instance-method">#</a>
       </div>
       
       <br/>
@@ -1427,7 +1462,7 @@
         
         def <strong>start_time_unix_nano=</strong>(start_time_unix_nano : UInt64?)
 
-        <a class="method-permalink" href="#start_time_unix_nano=(start_time_unix_nano:UInt64?)-instance-method">#</a>
+        <a class="method-permalink" href="#start_time_unix_nano%3D%28start_time_unix_nano%3AUInt64%3F%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1441,7 +1476,7 @@
         
         def <strong>status</strong> : <a href="../../../../OpenTelemetry/Proto/Trace/V1/Status.html">Status</a>?
 
-        <a class="method-permalink" href="#status:Status?-instance-method">#</a>
+        <a class="method-permalink" href="#status%3AStatus%3F-instance-method">#</a>
       </div>
       
       <br/>
@@ -1455,7 +1490,7 @@
         
         def <strong>status=</strong>(status : <a href="../../../../OpenTelemetry/Proto/Trace/V1/Status.html">Status</a>?)
 
-        <a class="method-permalink" href="#status=(status:Status?)-instance-method">#</a>
+        <a class="method-permalink" href="#status%3D%28status%3AStatus%3F%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1469,7 +1504,7 @@
         
         def <strong>to_protobuf</strong>(io : IO, embedded = <span class="n">false</span>)
 
-        <a class="method-permalink" href="#to_protobuf(io:IO,embedded=false)-instance-method">#</a>
+        <a class="method-permalink" href="#to_protobuf%28io%3AIO%2Cembedded%3Dfalse%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1497,7 +1532,7 @@
         
         def <strong>trace_id</strong> : Slice(UInt8)?
 
-        <a class="method-permalink" href="#trace_id:Slice(UInt8)?-instance-method">#</a>
+        <a class="method-permalink" href="#trace_id%3ASlice%28UInt8%29%3F-instance-method">#</a>
       </div>
       
       <br/>
@@ -1511,7 +1546,7 @@
         
         def <strong>trace_id=</strong>(trace_id : Slice(UInt8)?)
 
-        <a class="method-permalink" href="#trace_id=(trace_id:Slice(UInt8)?)-instance-method">#</a>
+        <a class="method-permalink" href="#trace_id%3D%28trace_id%3ASlice%28UInt8%29%3F%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1525,7 +1560,7 @@
         
         def <strong>trace_state</strong> : String?
 
-        <a class="method-permalink" href="#trace_state:String?-instance-method">#</a>
+        <a class="method-permalink" href="#trace_state%3AString%3F-instance-method">#</a>
       </div>
       
       <br/>
@@ -1539,7 +1574,7 @@
         
         def <strong>trace_state=</strong>(trace_state : String?)
 
-        <a class="method-permalink" href="#trace_state=(trace_state:String?)-instance-method">#</a>
+        <a class="method-permalink" href="#trace_state%3D%28trace_state%3AString%3F%29-instance-method">#</a>
       </div>
       
       <br/>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Crystal Docs 1.0.0">
+<meta name="generator" content="Crystal Docs 1.1.1">
 <meta name="crystal_docs.project_version" content="main">
 <meta name="crystal_docs.project_name" content="opentelemetry-api">
 
@@ -51,12 +51,32 @@
   <div class="types-list">
     <ul>
   
+  <li class=" " data-id="opentelemetry-api/Fiber" data-name="fiber">
+      <a href="../../../../Fiber.html">Fiber</a>
+      
+    </li>
+  
   <li class="parent open current" data-id="opentelemetry-api/OpenTelemetry" data-name="opentelemetry">
       <a href="../../../../OpenTelemetry.html">OpenTelemetry</a>
       
         <ul>
   
-  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Attribute" data-name="opentelemetry::attribute">
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/AnyAttribute" data-name="opentelemetry::anyattribute">
+      <a href="../../../../OpenTelemetry/AnyAttribute.html">AnyAttribute</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/AnyAttribute/Type" data-name="opentelemetry::anyattribute::type">
+      <a href="../../../../OpenTelemetry/AnyAttribute/Type.html">Type</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Attribute" data-name="opentelemetry::attribute(k)">
       <a href="../../../../OpenTelemetry/Attribute.html">Attribute</a>
       
     </li>
@@ -65,6 +85,11 @@
       <a href="../../../../OpenTelemetry/Context.html">Context</a>
       
         <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Context/ContextContainer" data-name="opentelemetry::context::contextcontainer">
+      <a href="../../../../OpenTelemetry/Context/ContextContainer.html">ContextContainer</a>
+      
+    </li>
   
   <li class=" " data-id="opentelemetry-api/OpenTelemetry/Context/Key" data-name="opentelemetry::context::key">
       <a href="../../../../OpenTelemetry/Context/Key.html">Key</a>
@@ -651,6 +676,16 @@
       
     </li>
   
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/ValueType" data-name="opentelemetry::valuetype">
+      <a href="../../../../OpenTelemetry/ValueType.html">ValueType</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/ValueTypes" data-name="opentelemetry::valuetypes">
+      <a href="../../../../OpenTelemetry/ValueTypes.html">ValueTypes</a>
+      
+    </li>
+  
 </ul>
 
       
@@ -712,7 +747,7 @@
   </h2>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/34edd3b6c81841c34ee53f416fe229cebcc8853b/src/proto/trace_config.pb.cr#L8" target="_blank">
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/proto/trace_config.pb.cr#L8" target="_blank">
         proto/trace_config.pb.cr
       </a>
     
@@ -753,12 +788,12 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new(buf:Protobuf::Buffer)-class-method" class="signature"><strong>.new</strong>(buf : Protobuf::Buffer)</a>
+        <a href="#new%28buf%3AProtobuf%3A%3ABuffer%29-class-method" class="signature"><strong>.new</strong>(buf : Protobuf::Buffer)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#new(constant_sampler:ConstantSampler?=nil,trace_id_ratio_based:TraceIdRatioBased?=nil,rate_limiting_sampler:RateLimitingSampler?=nil,max_number_of_attributes:Int64?=nil,max_number_of_timed_events:Int64?=nil,max_number_of_attributes_per_timed_event:Int64?=nil,max_number_of_links:Int64?=nil,max_number_of_attributes_per_link:Int64?=nil)-class-method" class="signature"><strong>.new</strong>(constant_sampler : ConstantSampler? = <span class="n">nil</span>, trace_id_ratio_based : TraceIdRatioBased? = <span class="n">nil</span>, rate_limiting_sampler : RateLimitingSampler? = <span class="n">nil</span>, max_number_of_attributes : Int64? = <span class="n">nil</span>, max_number_of_timed_events : Int64? = <span class="n">nil</span>, max_number_of_attributes_per_timed_event : Int64? = <span class="n">nil</span>, max_number_of_links : Int64? = <span class="n">nil</span>, max_number_of_attributes_per_link : Int64? = <span class="n">nil</span>)</a>
+        <a href="#new%28constant_sampler%3AConstantSampler%3F%3Dnil%2Ctrace_id_ratio_based%3ATraceIdRatioBased%3F%3Dnil%2Crate_limiting_sampler%3ARateLimitingSampler%3F%3Dnil%2Cmax_number_of_attributes%3AInt64%3F%3Dnil%2Cmax_number_of_timed_events%3AInt64%3F%3Dnil%2Cmax_number_of_attributes_per_timed_event%3AInt64%3F%3Dnil%2Cmax_number_of_links%3AInt64%3F%3Dnil%2Cmax_number_of_attributes_per_link%3AInt64%3F%3Dnil%29-class-method" class="signature"><strong>.new</strong>(constant_sampler : ConstantSampler? = <span class="n">nil</span>, trace_id_ratio_based : TraceIdRatioBased? = <span class="n">nil</span>, rate_limiting_sampler : RateLimitingSampler? = <span class="n">nil</span>, max_number_of_attributes : Int64? = <span class="n">nil</span>, max_number_of_timed_events : Int64? = <span class="n">nil</span>, max_number_of_attributes_per_timed_event : Int64? = <span class="n">nil</span>, max_number_of_links : Int64? = <span class="n">nil</span>, max_number_of_attributes_per_link : Int64? = <span class="n">nil</span>)</a>
         
       </li>
     
@@ -777,7 +812,7 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#from_protobuf(io)-class-method" class="signature"><strong>.from_protobuf</strong>(io)</a>
+        <a href="#from_protobuf%28io%29-class-method" class="signature"><strong>.from_protobuf</strong>(io)</a>
         
       </li>
     
@@ -796,82 +831,82 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#[](key:String)-instance-method" class="signature"><strong>#[]</strong>(key : String)</a>
+        <a href="#%5B%5D%28key%3AString%29-instance-method" class="signature"><strong>#[]</strong>(key : String)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#constant_sampler:ConstantSampler?-instance-method" class="signature"><strong>#constant_sampler</strong> : ConstantSampler?</a>
+        <a href="#constant_sampler%3AConstantSampler%3F-instance-method" class="signature"><strong>#constant_sampler</strong> : ConstantSampler?</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#constant_sampler=(constant_sampler:ConstantSampler?)-instance-method" class="signature"><strong>#constant_sampler=</strong>(constant_sampler : ConstantSampler?)</a>
+        <a href="#constant_sampler%3D%28constant_sampler%3AConstantSampler%3F%29-instance-method" class="signature"><strong>#constant_sampler=</strong>(constant_sampler : ConstantSampler?)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#max_number_of_attributes:Int64?-instance-method" class="signature"><strong>#max_number_of_attributes</strong> : Int64?</a>
+        <a href="#max_number_of_attributes%3AInt64%3F-instance-method" class="signature"><strong>#max_number_of_attributes</strong> : Int64?</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#max_number_of_attributes=(max_number_of_attributes:Int64?)-instance-method" class="signature"><strong>#max_number_of_attributes=</strong>(max_number_of_attributes : Int64?)</a>
+        <a href="#max_number_of_attributes%3D%28max_number_of_attributes%3AInt64%3F%29-instance-method" class="signature"><strong>#max_number_of_attributes=</strong>(max_number_of_attributes : Int64?)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#max_number_of_attributes_per_link:Int64?-instance-method" class="signature"><strong>#max_number_of_attributes_per_link</strong> : Int64?</a>
+        <a href="#max_number_of_attributes_per_link%3AInt64%3F-instance-method" class="signature"><strong>#max_number_of_attributes_per_link</strong> : Int64?</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#max_number_of_attributes_per_link=(max_number_of_attributes_per_link:Int64?)-instance-method" class="signature"><strong>#max_number_of_attributes_per_link=</strong>(max_number_of_attributes_per_link : Int64?)</a>
+        <a href="#max_number_of_attributes_per_link%3D%28max_number_of_attributes_per_link%3AInt64%3F%29-instance-method" class="signature"><strong>#max_number_of_attributes_per_link=</strong>(max_number_of_attributes_per_link : Int64?)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#max_number_of_attributes_per_timed_event:Int64?-instance-method" class="signature"><strong>#max_number_of_attributes_per_timed_event</strong> : Int64?</a>
+        <a href="#max_number_of_attributes_per_timed_event%3AInt64%3F-instance-method" class="signature"><strong>#max_number_of_attributes_per_timed_event</strong> : Int64?</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#max_number_of_attributes_per_timed_event=(max_number_of_attributes_per_timed_event:Int64?)-instance-method" class="signature"><strong>#max_number_of_attributes_per_timed_event=</strong>(max_number_of_attributes_per_timed_event : Int64?)</a>
+        <a href="#max_number_of_attributes_per_timed_event%3D%28max_number_of_attributes_per_timed_event%3AInt64%3F%29-instance-method" class="signature"><strong>#max_number_of_attributes_per_timed_event=</strong>(max_number_of_attributes_per_timed_event : Int64?)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#max_number_of_links:Int64?-instance-method" class="signature"><strong>#max_number_of_links</strong> : Int64?</a>
+        <a href="#max_number_of_links%3AInt64%3F-instance-method" class="signature"><strong>#max_number_of_links</strong> : Int64?</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#max_number_of_links=(max_number_of_links:Int64?)-instance-method" class="signature"><strong>#max_number_of_links=</strong>(max_number_of_links : Int64?)</a>
+        <a href="#max_number_of_links%3D%28max_number_of_links%3AInt64%3F%29-instance-method" class="signature"><strong>#max_number_of_links=</strong>(max_number_of_links : Int64?)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#max_number_of_timed_events:Int64?-instance-method" class="signature"><strong>#max_number_of_timed_events</strong> : Int64?</a>
+        <a href="#max_number_of_timed_events%3AInt64%3F-instance-method" class="signature"><strong>#max_number_of_timed_events</strong> : Int64?</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#max_number_of_timed_events=(max_number_of_timed_events:Int64?)-instance-method" class="signature"><strong>#max_number_of_timed_events=</strong>(max_number_of_timed_events : Int64?)</a>
+        <a href="#max_number_of_timed_events%3D%28max_number_of_timed_events%3AInt64%3F%29-instance-method" class="signature"><strong>#max_number_of_timed_events=</strong>(max_number_of_timed_events : Int64?)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#rate_limiting_sampler:RateLimitingSampler?-instance-method" class="signature"><strong>#rate_limiting_sampler</strong> : RateLimitingSampler?</a>
+        <a href="#rate_limiting_sampler%3ARateLimitingSampler%3F-instance-method" class="signature"><strong>#rate_limiting_sampler</strong> : RateLimitingSampler?</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#rate_limiting_sampler=(rate_limiting_sampler:RateLimitingSampler?)-instance-method" class="signature"><strong>#rate_limiting_sampler=</strong>(rate_limiting_sampler : RateLimitingSampler?)</a>
+        <a href="#rate_limiting_sampler%3D%28rate_limiting_sampler%3ARateLimitingSampler%3F%29-instance-method" class="signature"><strong>#rate_limiting_sampler=</strong>(rate_limiting_sampler : RateLimitingSampler?)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#to_protobuf(io:IO,embedded=false)-instance-method" class="signature"><strong>#to_protobuf</strong>(io : IO, embedded = <span class="n">false</span>)</a>
+        <a href="#to_protobuf%28io%3AIO%2Cembedded%3Dfalse%29-instance-method" class="signature"><strong>#to_protobuf</strong>(io : IO, embedded = <span class="n">false</span>)</a>
         
       </li>
     
@@ -881,12 +916,12 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#trace_id_ratio_based:TraceIdRatioBased?-instance-method" class="signature"><strong>#trace_id_ratio_based</strong> : TraceIdRatioBased?</a>
+        <a href="#trace_id_ratio_based%3ATraceIdRatioBased%3F-instance-method" class="signature"><strong>#trace_id_ratio_based</strong> : TraceIdRatioBased?</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#trace_id_ratio_based=(trace_id_ratio_based:TraceIdRatioBased?)-instance-method" class="signature"><strong>#trace_id_ratio_based=</strong>(trace_id_ratio_based : TraceIdRatioBased?)</a>
+        <a href="#trace_id_ratio_based%3D%28trace_id_ratio_based%3ATraceIdRatioBased%3F%29-instance-method" class="signature"><strong>#trace_id_ratio_based=</strong>(trace_id_ratio_based : TraceIdRatioBased?)</a>
         
       </li>
     
@@ -955,7 +990,7 @@
         
         def self.<strong>new</strong>(buf : Protobuf::Buffer)
 
-        <a class="method-permalink" href="#new(buf:Protobuf::Buffer)-class-method">#</a>
+        <a class="method-permalink" href="#new%28buf%3AProtobuf%3A%3ABuffer%29-class-method">#</a>
       </div>
       
       <br/>
@@ -969,7 +1004,7 @@
         
         def self.<strong>new</strong>(constant_sampler : <a href="../../../../OpenTelemetry/Proto/Trace/V1/ConstantSampler.html">ConstantSampler</a>? = <span class="n">nil</span>, trace_id_ratio_based : <a href="../../../../OpenTelemetry/Proto/Trace/V1/TraceIdRatioBased.html">TraceIdRatioBased</a>? = <span class="n">nil</span>, rate_limiting_sampler : <a href="../../../../OpenTelemetry/Proto/Trace/V1/RateLimitingSampler.html">RateLimitingSampler</a>? = <span class="n">nil</span>, max_number_of_attributes : Int64? = <span class="n">nil</span>, max_number_of_timed_events : Int64? = <span class="n">nil</span>, max_number_of_attributes_per_timed_event : Int64? = <span class="n">nil</span>, max_number_of_links : Int64? = <span class="n">nil</span>, max_number_of_attributes_per_link : Int64? = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#new(constant_sampler:ConstantSampler?=nil,trace_id_ratio_based:TraceIdRatioBased?=nil,rate_limiting_sampler:RateLimitingSampler?=nil,max_number_of_attributes:Int64?=nil,max_number_of_timed_events:Int64?=nil,max_number_of_attributes_per_timed_event:Int64?=nil,max_number_of_links:Int64?=nil,max_number_of_attributes_per_link:Int64?=nil)-class-method">#</a>
+        <a class="method-permalink" href="#new%28constant_sampler%3AConstantSampler%3F%3Dnil%2Ctrace_id_ratio_based%3ATraceIdRatioBased%3F%3Dnil%2Crate_limiting_sampler%3ARateLimitingSampler%3F%3Dnil%2Cmax_number_of_attributes%3AInt64%3F%3Dnil%2Cmax_number_of_timed_events%3AInt64%3F%3Dnil%2Cmax_number_of_attributes_per_timed_event%3AInt64%3F%3Dnil%2Cmax_number_of_links%3AInt64%3F%3Dnil%2Cmax_number_of_attributes_per_link%3AInt64%3F%3Dnil%29-class-method">#</a>
       </div>
       
       <br/>
@@ -995,7 +1030,7 @@
         
         def self.<strong>from_protobuf</strong>(io)
 
-        <a class="method-permalink" href="#from_protobuf(io)-class-method">#</a>
+        <a class="method-permalink" href="#from_protobuf%28io%29-class-method">#</a>
       </div>
       
       <br/>
@@ -1021,7 +1056,7 @@
         
         def <strong>[]</strong>(key : String)
 
-        <a class="method-permalink" href="#[](key:String)-instance-method">#</a>
+        <a class="method-permalink" href="#%5B%5D%28key%3AString%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1035,7 +1070,7 @@
         
         def <strong>constant_sampler</strong> : <a href="../../../../OpenTelemetry/Proto/Trace/V1/ConstantSampler.html">ConstantSampler</a>?
 
-        <a class="method-permalink" href="#constant_sampler:ConstantSampler?-instance-method">#</a>
+        <a class="method-permalink" href="#constant_sampler%3AConstantSampler%3F-instance-method">#</a>
       </div>
       
       <br/>
@@ -1049,7 +1084,7 @@
         
         def <strong>constant_sampler=</strong>(constant_sampler : <a href="../../../../OpenTelemetry/Proto/Trace/V1/ConstantSampler.html">ConstantSampler</a>?)
 
-        <a class="method-permalink" href="#constant_sampler=(constant_sampler:ConstantSampler?)-instance-method">#</a>
+        <a class="method-permalink" href="#constant_sampler%3D%28constant_sampler%3AConstantSampler%3F%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1063,7 +1098,7 @@
         
         def <strong>max_number_of_attributes</strong> : Int64?
 
-        <a class="method-permalink" href="#max_number_of_attributes:Int64?-instance-method">#</a>
+        <a class="method-permalink" href="#max_number_of_attributes%3AInt64%3F-instance-method">#</a>
       </div>
       
       <br/>
@@ -1077,7 +1112,7 @@
         
         def <strong>max_number_of_attributes=</strong>(max_number_of_attributes : Int64?)
 
-        <a class="method-permalink" href="#max_number_of_attributes=(max_number_of_attributes:Int64?)-instance-method">#</a>
+        <a class="method-permalink" href="#max_number_of_attributes%3D%28max_number_of_attributes%3AInt64%3F%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1091,7 +1126,7 @@
         
         def <strong>max_number_of_attributes_per_link</strong> : Int64?
 
-        <a class="method-permalink" href="#max_number_of_attributes_per_link:Int64?-instance-method">#</a>
+        <a class="method-permalink" href="#max_number_of_attributes_per_link%3AInt64%3F-instance-method">#</a>
       </div>
       
       <br/>
@@ -1105,7 +1140,7 @@
         
         def <strong>max_number_of_attributes_per_link=</strong>(max_number_of_attributes_per_link : Int64?)
 
-        <a class="method-permalink" href="#max_number_of_attributes_per_link=(max_number_of_attributes_per_link:Int64?)-instance-method">#</a>
+        <a class="method-permalink" href="#max_number_of_attributes_per_link%3D%28max_number_of_attributes_per_link%3AInt64%3F%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1119,7 +1154,7 @@
         
         def <strong>max_number_of_attributes_per_timed_event</strong> : Int64?
 
-        <a class="method-permalink" href="#max_number_of_attributes_per_timed_event:Int64?-instance-method">#</a>
+        <a class="method-permalink" href="#max_number_of_attributes_per_timed_event%3AInt64%3F-instance-method">#</a>
       </div>
       
       <br/>
@@ -1133,7 +1168,7 @@
         
         def <strong>max_number_of_attributes_per_timed_event=</strong>(max_number_of_attributes_per_timed_event : Int64?)
 
-        <a class="method-permalink" href="#max_number_of_attributes_per_timed_event=(max_number_of_attributes_per_timed_event:Int64?)-instance-method">#</a>
+        <a class="method-permalink" href="#max_number_of_attributes_per_timed_event%3D%28max_number_of_attributes_per_timed_event%3AInt64%3F%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1147,7 +1182,7 @@
         
         def <strong>max_number_of_links</strong> : Int64?
 
-        <a class="method-permalink" href="#max_number_of_links:Int64?-instance-method">#</a>
+        <a class="method-permalink" href="#max_number_of_links%3AInt64%3F-instance-method">#</a>
       </div>
       
       <br/>
@@ -1161,7 +1196,7 @@
         
         def <strong>max_number_of_links=</strong>(max_number_of_links : Int64?)
 
-        <a class="method-permalink" href="#max_number_of_links=(max_number_of_links:Int64?)-instance-method">#</a>
+        <a class="method-permalink" href="#max_number_of_links%3D%28max_number_of_links%3AInt64%3F%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1175,7 +1210,7 @@
         
         def <strong>max_number_of_timed_events</strong> : Int64?
 
-        <a class="method-permalink" href="#max_number_of_timed_events:Int64?-instance-method">#</a>
+        <a class="method-permalink" href="#max_number_of_timed_events%3AInt64%3F-instance-method">#</a>
       </div>
       
       <br/>
@@ -1189,7 +1224,7 @@
         
         def <strong>max_number_of_timed_events=</strong>(max_number_of_timed_events : Int64?)
 
-        <a class="method-permalink" href="#max_number_of_timed_events=(max_number_of_timed_events:Int64?)-instance-method">#</a>
+        <a class="method-permalink" href="#max_number_of_timed_events%3D%28max_number_of_timed_events%3AInt64%3F%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1203,7 +1238,7 @@
         
         def <strong>rate_limiting_sampler</strong> : <a href="../../../../OpenTelemetry/Proto/Trace/V1/RateLimitingSampler.html">RateLimitingSampler</a>?
 
-        <a class="method-permalink" href="#rate_limiting_sampler:RateLimitingSampler?-instance-method">#</a>
+        <a class="method-permalink" href="#rate_limiting_sampler%3ARateLimitingSampler%3F-instance-method">#</a>
       </div>
       
       <br/>
@@ -1217,7 +1252,7 @@
         
         def <strong>rate_limiting_sampler=</strong>(rate_limiting_sampler : <a href="../../../../OpenTelemetry/Proto/Trace/V1/RateLimitingSampler.html">RateLimitingSampler</a>?)
 
-        <a class="method-permalink" href="#rate_limiting_sampler=(rate_limiting_sampler:RateLimitingSampler?)-instance-method">#</a>
+        <a class="method-permalink" href="#rate_limiting_sampler%3D%28rate_limiting_sampler%3ARateLimitingSampler%3F%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1231,7 +1266,7 @@
         
         def <strong>to_protobuf</strong>(io : IO, embedded = <span class="n">false</span>)
 
-        <a class="method-permalink" href="#to_protobuf(io:IO,embedded=false)-instance-method">#</a>
+        <a class="method-permalink" href="#to_protobuf%28io%3AIO%2Cembedded%3Dfalse%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1259,7 +1294,7 @@
         
         def <strong>trace_id_ratio_based</strong> : <a href="../../../../OpenTelemetry/Proto/Trace/V1/TraceIdRatioBased.html">TraceIdRatioBased</a>?
 
-        <a class="method-permalink" href="#trace_id_ratio_based:TraceIdRatioBased?-instance-method">#</a>
+        <a class="method-permalink" href="#trace_id_ratio_based%3ATraceIdRatioBased%3F-instance-method">#</a>
       </div>
       
       <br/>
@@ -1273,7 +1308,7 @@
         
         def <strong>trace_id_ratio_based=</strong>(trace_id_ratio_based : <a href="../../../../OpenTelemetry/Proto/Trace/V1/TraceIdRatioBased.html">TraceIdRatioBased</a>?)
 
-        <a class="method-permalink" href="#trace_id_ratio_based=(trace_id_ratio_based:TraceIdRatioBased?)-instance-method">#</a>
+        <a class="method-permalink" href="#trace_id_ratio_based%3D%28trace_id_ratio_based%3ATraceIdRatioBased%3F%29-instance-method">#</a>
       </div>
       
       <br/>

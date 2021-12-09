@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Crystal Docs 1.0.0">
+<meta name="generator" content="Crystal Docs 1.1.1">
 <meta name="crystal_docs.project_version" content="main">
 <meta name="crystal_docs.project_name" content="opentelemetry-api">
 
@@ -13,7 +13,7 @@
 <script type="text/javascript" src="../js/doc.js"></script>
 
   <meta name="repository-name" content="opentelemetry-api">
-  <title>OpenTelemetry::Attribute - opentelemetry-api main</title>
+  <title>OpenTelemetry::Attribute(K) - opentelemetry-api main</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "../";
   </script>
@@ -51,12 +51,32 @@
   <div class="types-list">
     <ul>
   
+  <li class=" " data-id="opentelemetry-api/Fiber" data-name="fiber">
+      <a href="../Fiber.html">Fiber</a>
+      
+    </li>
+  
   <li class="parent open current" data-id="opentelemetry-api/OpenTelemetry" data-name="opentelemetry">
       <a href="../OpenTelemetry.html">OpenTelemetry</a>
       
         <ul>
   
-  <li class=" current" data-id="opentelemetry-api/OpenTelemetry/Attribute" data-name="opentelemetry::attribute">
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/AnyAttribute" data-name="opentelemetry::anyattribute">
+      <a href="../OpenTelemetry/AnyAttribute.html">AnyAttribute</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/AnyAttribute/Type" data-name="opentelemetry::anyattribute::type">
+      <a href="../OpenTelemetry/AnyAttribute/Type.html">Type</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" current" data-id="opentelemetry-api/OpenTelemetry/Attribute" data-name="opentelemetry::attribute(k)">
       <a href="../OpenTelemetry/Attribute.html">Attribute</a>
       
     </li>
@@ -65,6 +85,11 @@
       <a href="../OpenTelemetry/Context.html">Context</a>
       
         <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Context/ContextContainer" data-name="opentelemetry::context::contextcontainer">
+      <a href="../OpenTelemetry/Context/ContextContainer.html">ContextContainer</a>
+      
+    </li>
   
   <li class=" " data-id="opentelemetry-api/OpenTelemetry/Context/Key" data-name="opentelemetry::context::key">
       <a href="../OpenTelemetry/Context/Key.html">Key</a>
@@ -651,6 +676,16 @@
       
     </li>
   
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/ValueType" data-name="opentelemetry::valuetype">
+      <a href="../OpenTelemetry/ValueType.html">ValueType</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/ValueTypes" data-name="opentelemetry::valuetypes">
+      <a href="../OpenTelemetry/ValueTypes.html">ValueTypes</a>
+      
+    </li>
+  
 </ul>
 
       
@@ -665,12 +700,12 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">struct</span> OpenTelemetry::Attribute
+  <span class="kind">struct</span> OpenTelemetry::Attribute(K)
 
 </h1>
 
 
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="../OpenTelemetry/Attribute.html">OpenTelemetry::Attribute</a></li><li class="superclass">Struct</li><li class="superclass">Value</li><li class="superclass">Object</li></ul>
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../OpenTelemetry/Attribute.html">OpenTelemetry::Attribute(K)</a></li><li class="superclass">Struct</li><li class="superclass">Value</li><li class="superclass">Object</li></ul>
 
 
 
@@ -698,7 +733,7 @@
   </h2>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/34edd3b6c81841c34ee53f416fe229cebcc8853b/src/opentelemetry-api/attribute.cr#L3" target="_blank">
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/attribute.cr#L6" target="_blank">
         opentelemetry-api/attribute.cr
       </a>
     
@@ -720,13 +755,35 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new(key:String,value:String%7CBool%7CFloat64%7CInt64%7CValueArrays)-class-method" class="signature"><strong>.new</strong>(key : String, value : String | Bool | Float64 | Int64 | ValueArrays)</a>
+        <a href="#new%28key%2Cvalue%29-class-method" class="signature"><strong>.new</strong>(key, value)</a>
         
       </li>
     
   </ul>
 
 
+
+  <h2>
+    <a id="class-method-summary" class="anchor" href="#class-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#from_a%28ary%29-class-method" class="signature"><strong>.from_a</strong>(ary)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#from_h%28hash%29-class-method" class="signature"><strong>.from_h</strong>(hash)</a>
+        
+      </li>
+    
+  </ul>
 
 
 
@@ -741,22 +798,19 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#clone-instance-method" class="signature"><strong>#clone</strong></a>
+        <a href="#key%3AString-instance-method" class="signature"><strong>#key</strong> : String</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#copy_with(key_key=@key,value_value=@value)-instance-method" class="signature"><strong>#copy_with</strong>(key _key = @key, value _value = @value)</a>
+        <a href="#to_s%28io%3AIO%29%3ANil-instance-method" class="signature"><strong>#to_s</strong>(io : IO) : Nil</a>
+        
+          <div class="summary"><p>Same as <code>#inspect(io)</code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#key:String-instance-method" class="signature"><strong>#key</strong> : String</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#value:String%7CBool%7CFloat64%7CInt64%7CValueArrays-instance-method" class="signature"><strong>#value</strong> : String | Bool | Float64 | Int64 | ValueArrays</a>
+        <a href="#value%3AK-instance-method" class="signature"><strong>#value</strong> : K</a>
         
       </li>
     
@@ -810,24 +864,66 @@
     Constructor Detail
   </h2>
   
-    <div class="entry-detail" id="new(key:String,value:String|Bool|Float64|Int64|ValueArrays)-class-method">
+    <div class="entry-detail" id="new(key,value)-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(key : String, value : String | Bool | Float64 | Int64 | <a href="../OpenTelemetry/ValueArrays.html">ValueArrays</a>)
+        def self.<strong>new</strong>(key, value)
 
-        <a class="method-permalink" href="#new(key:String,value:String%7CBool%7CFloat64%7CInt64%7CValueArrays)-class-method">#</a>
+        <a class="method-permalink" href="#new%28key%2Cvalue%29-class-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/34edd3b6c81841c34ee53f416fe229cebcc8853b/src/opentelemetry-api/attribute.cr#L3" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/attribute.cr#L18" target="_blank">View source</a>]
         
       </div>
     </div>
   
 
 
+
+  <h2>
+    <a id="class-method-detail" class="anchor" href="#class-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="from_a(ary)-class-method">
+      <div class="signature">
+        
+        def self.<strong>from_a</strong>(ary)
+
+        <a class="method-permalink" href="#from_a%28ary%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/attribute.cr#L14" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="from_h(hash)-class-method">
+      <div class="signature">
+        
+        def self.<strong>from_h</strong>(hash)
+
+        <a class="method-permalink" href="#from_h%28hash%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/attribute.cr#L10" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
 
 
 
@@ -840,62 +936,59 @@
     Instance Method Detail
   </h2>
   
-    <div class="entry-detail" id="clone-instance-method">
-      <div class="signature">
-        
-        def <strong>clone</strong>
-
-        <a class="method-permalink" href="#clone-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/34edd3b6c81841c34ee53f416fe229cebcc8853b/src/opentelemetry-api/attribute.cr#L3" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="copy_with(key_key=@key,value_value=@value)-instance-method">
-      <div class="signature">
-        
-        def <strong>copy_with</strong>(key _key = @key, value _value = @value)
-
-        <a class="method-permalink" href="#copy_with(key_key=@key,value_value=@value)-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/34edd3b6c81841c34ee53f416fe229cebcc8853b/src/opentelemetry-api/attribute.cr#L3" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
     <div class="entry-detail" id="key:String-instance-method">
       <div class="signature">
         
         def <strong>key</strong> : String
 
-        <a class="method-permalink" href="#key:String-instance-method">#</a>
+        <a class="method-permalink" href="#key%3AString-instance-method">#</a>
       </div>
       
       <br/>
       <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/attribute.cr#L7" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="value:String|Bool|Float64|Int64|ValueArrays-instance-method">
+    <div class="entry-detail" id="to_s(io:IO):Nil-instance-method">
       <div class="signature">
         
-        def <strong>value</strong> : String | Bool | Float64 | Int64 | <a href="../OpenTelemetry/ValueArrays.html">ValueArrays</a>
+        def <strong>to_s</strong>(io : IO) : Nil
 
-        <a class="method-permalink" href="#value:String%7CBool%7CFloat64%7CInt64%7CValueArrays-instance-method">#</a>
+        <a class="method-permalink" href="#to_s%28io%3AIO%29%3ANil-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+            <div class="doc-inherited">
+              Description copied from struct Struct
+            </div>
+          
+          <p>Same as <code>#inspect(io)</code>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/attribute.cr#L25" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="value:K-instance-method">
+      <div class="signature">
+        
+        def <strong>value</strong> : K
+
+        <a class="method-permalink" href="#value%3AK-instance-method">#</a>
       </div>
       
       <br/>
       <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/attribute.cr#L8" target="_blank">View source</a>]
         
       </div>
     </div>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Crystal Docs 1.0.0">
+<meta name="generator" content="Crystal Docs 1.1.1">
 <meta name="crystal_docs.project_version" content="main">
 <meta name="crystal_docs.project_name" content="opentelemetry-api">
 
@@ -51,12 +51,32 @@
   <div class="types-list">
     <ul>
   
+  <li class=" " data-id="opentelemetry-api/Fiber" data-name="fiber">
+      <a href="../../Fiber.html">Fiber</a>
+      
+    </li>
+  
   <li class="parent open current" data-id="opentelemetry-api/OpenTelemetry" data-name="opentelemetry">
       <a href="../../OpenTelemetry.html">OpenTelemetry</a>
       
         <ul>
   
-  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Attribute" data-name="opentelemetry::attribute">
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/AnyAttribute" data-name="opentelemetry::anyattribute">
+      <a href="../../OpenTelemetry/AnyAttribute.html">AnyAttribute</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/AnyAttribute/Type" data-name="opentelemetry::anyattribute::type">
+      <a href="../../OpenTelemetry/AnyAttribute/Type.html">Type</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Attribute" data-name="opentelemetry::attribute(k)">
       <a href="../../OpenTelemetry/Attribute.html">Attribute</a>
       
     </li>
@@ -65,6 +85,11 @@
       <a href="../../OpenTelemetry/Context.html">Context</a>
       
         <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Context/ContextContainer" data-name="opentelemetry::context::contextcontainer">
+      <a href="../../OpenTelemetry/Context/ContextContainer.html">ContextContainer</a>
+      
+    </li>
   
   <li class=" current" data-id="opentelemetry-api/OpenTelemetry/Context/Key" data-name="opentelemetry::context::key">
       <a href="../../OpenTelemetry/Context/Key.html">Key</a>
@@ -651,6 +676,16 @@
       
     </li>
   
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/ValueType" data-name="opentelemetry::valuetype">
+      <a href="../../OpenTelemetry/ValueType.html">ValueType</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/ValueTypes" data-name="opentelemetry::valuetypes">
+      <a href="../../OpenTelemetry/ValueTypes.html">ValueTypes</a>
+      
+    </li>
+  
 </ul>
 
       
@@ -698,7 +733,7 @@
   </h2>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/34edd3b6c81841c34ee53f416fe229cebcc8853b/src/opentelemetry-api/context/key.cr#L3" target="_blank">
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/context/key.cr#L3" target="_blank">
         opentelemetry-api/context/key.cr
       </a>
     
@@ -720,7 +755,7 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new(name=CSUUID.unique.to_s,context=nil)-class-method" class="signature"><strong>.new</strong>(name = <span class="t">CSUUID</span>.unique.to_s, context = <span class="n">nil</span>)</a>
+        <a href="#new%28name%3DCSUUID.unique.to_s%2Ccontext%3DContext.current%2Cid%3DCSUUID.unique%29-class-method" class="signature"><strong>.new</strong>(name = <span class="t">CSUUID</span>.unique.to_s, context = <span class="t">Context</span>.current, id = <span class="t">CSUUID</span>.unique)</a>
         
       </li>
     
@@ -741,12 +776,27 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#get(context=Context.current)-instance-method" class="signature"><strong>#get</strong>(context = <span class="t">Context</span>.current)</a>
+        <a href="#%3C%3D%3E%28val%29-instance-method" class="signature"><strong>#<=></strong>(val)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#name:String-instance-method" class="signature"><strong>#name</strong> : String</a>
+        <a href="#context%3AContextContainer-instance-method" class="signature"><strong>#context</strong> : ContextContainer</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#get%28context%3DContext.current%29-instance-method" class="signature"><strong>#get</strong>(context = <span class="t">Context</span>.current)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#id%3ACSUUID-instance-method" class="signature"><strong>#id</strong> : CSUUID</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#name%3AString-instance-method" class="signature"><strong>#name</strong> : String</a>
         
       </li>
     
@@ -805,18 +855,18 @@
     Constructor Detail
   </h2>
   
-    <div class="entry-detail" id="new(name=CSUUID.unique.to_s,context=nil)-class-method">
+    <div class="entry-detail" id="new(name=CSUUID.unique.to_s,context=Context.current,id=CSUUID.unique)-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(name = <span class="t">CSUUID</span>.unique.to_s, context = <span class="n">nil</span>)
+        def self.<strong>new</strong>(name = <span class="t">CSUUID</span>.unique.to_s, context = <span class="t">Context</span>.current, id = <span class="t">CSUUID</span>.unique)
 
-        <a class="method-permalink" href="#new(name=CSUUID.unique.to_s,context=nil)-class-method">#</a>
+        <a class="method-permalink" href="#new%28name%3DCSUUID.unique.to_s%2Ccontext%3DContext.current%2Cid%3DCSUUID.unique%29-class-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/34edd3b6c81841c34ee53f416fe229cebcc8853b/src/opentelemetry-api/context/key.cr#L6" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/context/key.cr#L8" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -835,18 +885,66 @@
     Instance Method Detail
   </h2>
   
-    <div class="entry-detail" id="get(context=Context.current)-instance-method">
+    <div class="entry-detail" id="&lt;=&gt;(val)-instance-method">
       <div class="signature">
         
-        def <strong>get</strong>(context = <span class="t">Context</span>.current)
+        def <strong><=></strong>(val)
 
-        <a class="method-permalink" href="#get(context=Context.current)-instance-method">#</a>
+        <a class="method-permalink" href="#%3C%3D%3E%28val%29-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/34edd3b6c81841c34ee53f416fe229cebcc8853b/src/opentelemetry-api/context/key.cr#L14" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/context/key.cr#L19" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="context:ContextContainer-instance-method">
+      <div class="signature">
+        
+        def <strong>context</strong> : <a href="../../OpenTelemetry/Context/ContextContainer.html">ContextContainer</a>
+
+        <a class="method-permalink" href="#context%3AContextContainer-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/context/key.cr#L6" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="get(context=Context.current)-instance-method">
+      <div class="signature">
+        
+        def <strong>get</strong>(context = <span class="t">Context</span>.current)
+
+        <a class="method-permalink" href="#get%28context%3DContext.current%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/context/key.cr#L15" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="id:CSUUID-instance-method">
+      <div class="signature">
+        
+        def <strong>id</strong> : CSUUID
+
+        <a class="method-permalink" href="#id%3ACSUUID-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/context/key.cr#L5" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -856,13 +954,13 @@
         
         def <strong>name</strong> : String
 
-        <a class="method-permalink" href="#name:String-instance-method">#</a>
+        <a class="method-permalink" href="#name%3AString-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/34edd3b6c81841c34ee53f416fe229cebcc8853b/src/opentelemetry-api/context/key.cr#L4" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/context/key.cr#L4" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -878,7 +976,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/34edd3b6c81841c34ee53f416fe229cebcc8853b/src/opentelemetry-api/context/key.cr#L10" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/context/key.cr#L11" target="_blank">View source</a>]
         
       </div>
     </div>
