@@ -217,8 +217,28 @@ describe OpenTelemetry do
           db_span.add_event("querying database")
           sleep(rand/1000)
         end
+        tracer.in_span("external api") do |api_span|
+          api_span.add_event("querying api")
+          sleep(rand/1000)
+        end
         sleep(rand/1000)
       end
     end
+
+    buffer = iterate_span_nodes tracer.root_span, 0, [] of String
+    buffer.should eq ["request", "  handler", "    db", "    external api"]
   end
+end
+
+def iterate_span_nodes(span, indent, buffer)
+  return if span.nil?
+
+  buffer << "#{" " * indent}#{span.name}"
+  if span && span.children
+    span.children.each do |child|
+      iterate_span_nodes(child, indent + 2, buffer)
+    end
+  end
+
+  buffer
 end

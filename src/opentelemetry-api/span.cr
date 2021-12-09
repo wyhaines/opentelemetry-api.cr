@@ -12,6 +12,7 @@ module OpenTelemetry
     property events : Array(Event) = [] of Event
     property attributes : Hash(String, AnyAttribute) = {} of String => AnyAttribute
     property parent : Span? = nil
+    property children : Array(Span) = [] of Span
 
     def initialize(@name = "")
     end
