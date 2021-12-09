@@ -32,6 +32,14 @@ module OpenTelemetry
       attributes[key]
     end
 
+    def add_event(name)
+      events << Event.new(name: name)
+    end
+
+    def add_event(name = "", &blk : Event ->)
+      events << Event.new(name: name, &blk)
+    end
+
     def add_event(name, attributes : Hash(String, AnyAttribute) = {} of String => AnyAttribute)
       events << Event.new(name: name, attributes: attributes)
     end

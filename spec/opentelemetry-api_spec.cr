@@ -155,28 +155,70 @@ describe OpenTelemetry do
   end
 
   it "can set events on a span" do
-    
+    span = OpenTelemetry::Span.new
+    span.set_attribute("verb", "GET")
+    span.set_attribute("url", "http://example.com/foo")
+    span.add_event("dispatching to handler") do |e|
+      e["verb"] = "GET"
+      e["url"] = "http://example.com/foo"
+    end
+    error_time = Time.utc.to_s
+    span.add_event("error") do |e|
+      e["error"] = "error"
+      e["time"] = error_time
+      e["message"] = "There was a really bad error."
+    end
+    span.events.size.should eq 2
+    e = span.events.first
+    e.name.should eq "dispatching to handler"
+    e.attributes["verb"].value.should eq "GET"
+    e.attributes["url"].value.should eq "http://example.com/foo"
+    e = span.events.last
+    e.name.should eq "error"
+    e.attributes["error"].value.should eq "error"
+    e.attributes["time"].value.should eq error_time
+    e.attributes["message"].value.should eq "There was a really bad error."
   end
 
   it "can use a tracer to create a span" do
+    provider = OpenTelemetry::TracerProvider.new(
+      service_name: "my_app_or_library",
+      service_version: "1.1.1",
+      exporter: OpenTelemetry::NullExporter.new)
+    tracer = provider.tracer do |t|
+      t.service_name = "microservice"
+      t.service_version = "1.2.3"
+    end
+    tracer.in_span("request") do |span|
+      span.set_attribute("verb", "GET")
+      span.set_attribute("url", "http://example.com/foo")
+      span.add_event("dispatching to handler")
+    end
   end
 
   it "can create nested spans" do
+    provider = OpenTelemetry::TracerProvider.new(
+      service_name: "my_app_or_library",
+      service_version: "1.1.1",
+      exporter: OpenTelemetry::NullExporter.new)
+    tracer = provider.tracer do |t|
+      t.service_name = "microservice"
+      t.service_version = "1.2.3"
+    end
+    tracer.in_span("request") do |span|
+      span.set_attribute("verb", "GET")
+      span.set_attribute("url", "http://example.com/foo")
+      sleep(rand/1000)
+      span.add_event("dispatching to handler")
+      tracer.in_span("handler") do |child_span|
+        sleep(rand/1000)
+        child_span.add_event("dispatching to database")
+        tracer.in_span("db") do |db_span|
+          db_span.add_event("querying database")
+          sleep(rand/1000)
+        end
+        sleep(rand/1000)
+      end
+    end
   end
-  
-  #
-  # ## Creating Spans Using a Tracer
-  # ----------------------------------------------------------------
-  #
-  # tracer.in_span("request") do |span|
-  #   span.set_attribute("verb", "GET")
-  #   span.set_attribute("url", "http://example.com/foo")
-  #   span.add_event("dispatching to handler")
-  #   tracer.in_span("handler") do |child_span|
-  #     child_span.add_event("handling request")
-  #     tracer.in_span("db") do |child_span|
-  #       child_span.add_event("querying database")
-  #     end
-  #   end
-  # end
 end

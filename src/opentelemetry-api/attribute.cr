@@ -2,7 +2,7 @@ module OpenTelemetry
   alias ValueType = String | Bool | Float64 | Int64 | Int32
   alias ValueArrays = Array(String) | Array(Bool) | Array(Float64) | Array(Int64) | Array(Int32)
   alias ValueTypes = ValueType | ValueArrays
-  
+
   struct Attribute(K)
     getter key : String
     getter value : K
@@ -41,17 +41,16 @@ module OpenTelemetry
 
   # This is a wrapper around the supported attribute types.
   class AnyAttribute
-    alias Type =
-      Attribute(String) |
-      Attribute(Bool) |
-      Attribute(Float64) |
-      Attribute(Int64) |
-      Attribute(Int32) |
-      Attribute(Array(String)) |
-      Attribute(Array(Bool)) |
-      Attribute(Array(Float64)) |
-      Attribute(Array(Int64)) |
-      Attribute(Array(Int32))
+    alias Type = Attribute(String) |
+                 Attribute(Bool) |
+                 Attribute(Float64) |
+                 Attribute(Int64) |
+                 Attribute(Int32) |
+                 Attribute(Array(String)) |
+                 Attribute(Array(Bool)) |
+                 Attribute(Array(Float64)) |
+                 Attribute(Array(Int64)) |
+                 Attribute(Array(Int32))
 
     getter raw : Type
 
@@ -59,6 +58,7 @@ module OpenTelemetry
       @raw = raw
     end
 
+    # ameba:disable Metrics/CyclomaticComplexity
     def initialize(key : String, value : ValueType | ValueArrays)
       case value
       when String
@@ -86,6 +86,7 @@ module OpenTelemetry
       end
     end
 
+    # ameba:disable Metrics/CyclomaticComplexity
     def <<(value : ValueType | ValueArrays)
       case object = @raw
       when Attribute(String)
@@ -99,7 +100,7 @@ module OpenTelemetry
       when Attribute(Int32)
         @raw = Attribute(Array(Int32)).new(@raw.key, [@raw.value.as(Int32)])
       end
-      
+
       case value
       when String
         @raw.value.as(Array(String)) << value

@@ -5,7 +5,7 @@ describe OpenTelemetry::Event do
     event = OpenTelemetry::Event.new(
       name: "test_event",
       attributes: {
-        "test_attribute" => "test_value"
+        "test_attribute" => "test_value",
       }
     )
     event.name.should eq "test_event"
@@ -16,7 +16,7 @@ describe OpenTelemetry::Event do
     event = OpenTelemetry::Event.new do |e|
       e.name = "test_event"
       e.attributes = {
-        "test_attribute" => "test_value"
+        "test_attribute" => "test_value",
       }
     end
     event.name.should eq "test_event"

@@ -62,43 +62,43 @@ describe OpenTelemetry::Attribute do
   end
 
   it "can create an AnyAttribute for a String" do
-    attr = OpenTelemetry::AnyAttribute.new("key1", "value1")
+    OpenTelemetry::AnyAttribute.new("key1", "value1")
   end
 
   it "can create an AnyAttribute for a Bool" do
-    attr = OpenTelemetry::AnyAttribute.new("key2", true)
+    OpenTelemetry::AnyAttribute.new("key2", true)
   end
 
   it "can create an AnyAttribute for an Int32" do
-    attr = OpenTelemetry::AnyAttribute.new("key3", 42)
+    OpenTelemetry::AnyAttribute.new("key3", 42)
   end
 
   it "can create an AnyAttribute for an Int64" do
-    attr = OpenTelemetry::AnyAttribute.new("key4", 42_i64)
+    OpenTelemetry::AnyAttribute.new("key4", 42_i64)
   end
 
   it "can create an AnyAttribute for a Float64" do
-    attr = OpenTelemetry::AnyAttribute.new("key5", 42.0)
+    OpenTelemetry::AnyAttribute.new("key5", 42.0)
   end
 
   it "can create an AnyAttribute for a String array" do
-    attr = OpenTelemetry::AnyAttribute.new("key6", ["value1", "value2"])
+    OpenTelemetry::AnyAttribute.new("key6", ["value1", "value2"])
   end
 
   it "can create an AnyAttribute for a Bool array" do
-    attr = OpenTelemetry::AnyAttribute.new("key7", [true, false])
+    OpenTelemetry::AnyAttribute.new("key7", [true, false])
   end
 
   it "can create an AnyAttribute for an Int32 array" do
-    attr = OpenTelemetry::AnyAttribute.new("key8", [42, 84])
+    OpenTelemetry::AnyAttribute.new("key8", [42, 84])
   end
 
   it "can create an AnyAttribute for an Int64 array" do
-    attr = OpenTelemetry::AnyAttribute.new("key9", [42_i64, 84_i64])
+    OpenTelemetry::AnyAttribute.new("key9", [42_i64, 84_i64])
   end
 
   it "can create an AnyAttribute for a Float64 array" do
-    attr = OpenTelemetry::AnyAttribute.new("key10", [42.0, 84.0])
+    OpenTelemetry::AnyAttribute.new("key10", [42.0, 84.0])
   end
 
   it "can append to an AnyAttribute that contains an array" do

@@ -12,18 +12,18 @@ module OpenTelemetry
     def initialize(@name)
     end
 
-    def initialize(@name, attributes : Hash(String, _))
-      @attributes = {} of String => AnyAttribute
-      attributes.each do |k, v|
-        @attributes[k] = AnyAttribute.new(k, v)
-      end
+    def initialize(@name = "", &blk : Event ->)
+      yield self
     end
 
     def initialize(@name, @attributes : Hash(String, AnyAttribute))
     end
 
-    def initialize(@name = "", &blk : Event ->)
-      yield self
+    def initialize(@name, attributes : Hash(String, _))
+      @attributes = {} of String => AnyAttribute
+      attributes.each do |k, v|
+        @attributes[k] = AnyAttribute.new(k, v)
+      end
     end
 
     def attributes=(attr : Hash(String, _))

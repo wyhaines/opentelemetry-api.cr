@@ -38,11 +38,9 @@ module OpenTelemetry
       span = Span.new(span_name)
       if !span_stack.empty?
         span.parent = span_stack.last
-        span_stack << span
       end
-
+      span_stack << span
       yield span
-
       if span_stack.last == span
         span_stack.pop
       else
