@@ -745,7 +745,7 @@ with that measurement. A <code><a href="../OpenTelemetry/Span.html">Span</a></co
   </h2>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/span.cr#L6" target="_blank">
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/6b6fc0836ddd746b3330d0cbfc43302df0209188/src/opentelemetry-api/span.cr#L6" target="_blank">
         opentelemetry-api/span.cr
       </a>
     
@@ -814,6 +814,16 @@ with that measurement. A <code><a href="../OpenTelemetry/Span.html">Span</a></co
     
       <li class="entry-summary">
         <a href="#attributes%3D%28attributes%3AHash%28String%2CAnyAttribute%29%29-instance-method" class="signature"><strong>#attributes=</strong>(attributes : Hash(String, AnyAttribute))</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#children%3AArray%28Span%29-instance-method" class="signature"><strong>#children</strong> : Array(Span)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#children%3D%28children%3AArray%28Span%29%29-instance-method" class="signature"><strong>#children=</strong>(children : Array(Span))</a>
         
       </li>
     
@@ -948,7 +958,7 @@ with that measurement. A <code><a href="../OpenTelemetry/Span.html">Span</a></co
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/span.cr#L16" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/6b6fc0836ddd746b3330d0cbfc43302df0209188/src/opentelemetry-api/span.cr#L17" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -978,7 +988,7 @@ with that measurement. A <code><a href="../OpenTelemetry/Span.html">Span</a></co
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/span.cr#L27" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/6b6fc0836ddd746b3330d0cbfc43302df0209188/src/opentelemetry-api/span.cr#L28" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -994,7 +1004,7 @@ with that measurement. A <code><a href="../OpenTelemetry/Span.html">Span</a></co
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/span.cr#L19" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/6b6fc0836ddd746b3330d0cbfc43302df0209188/src/opentelemetry-api/span.cr#L20" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1010,7 +1020,7 @@ with that measurement. A <code><a href="../OpenTelemetry/Span.html">Span</a></co
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/span.cr#L43" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/6b6fc0836ddd746b3330d0cbfc43302df0209188/src/opentelemetry-api/span.cr#L44" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1026,7 +1036,7 @@ with that measurement. A <code><a href="../OpenTelemetry/Span.html">Span</a></co
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/span.cr#L39" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/6b6fc0836ddd746b3330d0cbfc43302df0209188/src/opentelemetry-api/span.cr#L40" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1042,7 +1052,7 @@ with that measurement. A <code><a href="../OpenTelemetry/Span.html">Span</a></co
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/span.cr#L13" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/6b6fc0836ddd746b3330d0cbfc43302df0209188/src/opentelemetry-api/span.cr#L13" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1058,7 +1068,39 @@ with that measurement. A <code><a href="../OpenTelemetry/Span.html">Span</a></co
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/span.cr#L13" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/6b6fc0836ddd746b3330d0cbfc43302df0209188/src/opentelemetry-api/span.cr#L13" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="children:Array(Span)-instance-method">
+      <div class="signature">
+        
+        def <strong>children</strong> : Array(<a href="../OpenTelemetry/Span.html">Span</a>)
+
+        <a class="method-permalink" href="#children%3AArray%28Span%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/6b6fc0836ddd746b3330d0cbfc43302df0209188/src/opentelemetry-api/span.cr#L15" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="children=(children:Array(Span))-instance-method">
+      <div class="signature">
+        
+        def <strong>children=</strong>(children : Array(<a href="../OpenTelemetry/Span.html">Span</a>))
+
+        <a class="method-permalink" href="#children%3D%28children%3AArray%28Span%29%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/6b6fc0836ddd746b3330d0cbfc43302df0209188/src/opentelemetry-api/span.cr#L15" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1074,7 +1116,7 @@ with that measurement. A <code><a href="../OpenTelemetry/Span.html">Span</a></co
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/span.cr#L12" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/6b6fc0836ddd746b3330d0cbfc43302df0209188/src/opentelemetry-api/span.cr#L12" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1090,7 +1132,7 @@ with that measurement. A <code><a href="../OpenTelemetry/Span.html">Span</a></co
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/span.cr#L12" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/6b6fc0836ddd746b3330d0cbfc43302df0209188/src/opentelemetry-api/span.cr#L12" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1106,7 +1148,7 @@ with that measurement. A <code><a href="../OpenTelemetry/Span.html">Span</a></co
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/span.cr#L10" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/6b6fc0836ddd746b3330d0cbfc43302df0209188/src/opentelemetry-api/span.cr#L10" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1122,7 +1164,7 @@ with that measurement. A <code><a href="../OpenTelemetry/Span.html">Span</a></co
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/span.cr#L10" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/6b6fc0836ddd746b3330d0cbfc43302df0209188/src/opentelemetry-api/span.cr#L10" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1138,7 +1180,7 @@ with that measurement. A <code><a href="../OpenTelemetry/Span.html">Span</a></co
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/span.cr#L31" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/6b6fc0836ddd746b3330d0cbfc43302df0209188/src/opentelemetry-api/span.cr#L32" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1154,7 +1196,7 @@ with that measurement. A <code><a href="../OpenTelemetry/Span.html">Span</a></co
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/span.cr#L7" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/6b6fc0836ddd746b3330d0cbfc43302df0209188/src/opentelemetry-api/span.cr#L7" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1170,7 +1212,7 @@ with that measurement. A <code><a href="../OpenTelemetry/Span.html">Span</a></co
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/span.cr#L7" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/6b6fc0836ddd746b3330d0cbfc43302df0209188/src/opentelemetry-api/span.cr#L7" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1186,7 +1228,7 @@ with that measurement. A <code><a href="../OpenTelemetry/Span.html">Span</a></co
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/span.cr#L14" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/6b6fc0836ddd746b3330d0cbfc43302df0209188/src/opentelemetry-api/span.cr#L14" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1202,7 +1244,7 @@ with that measurement. A <code><a href="../OpenTelemetry/Span.html">Span</a></co
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/span.cr#L14" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/6b6fc0836ddd746b3330d0cbfc43302df0209188/src/opentelemetry-api/span.cr#L14" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1218,7 +1260,7 @@ with that measurement. A <code><a href="../OpenTelemetry/Span.html">Span</a></co
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/span.cr#L23" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/6b6fc0836ddd746b3330d0cbfc43302df0209188/src/opentelemetry-api/span.cr#L24" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1234,7 +1276,7 @@ with that measurement. A <code><a href="../OpenTelemetry/Span.html">Span</a></co
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/span.cr#L8" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/6b6fc0836ddd746b3330d0cbfc43302df0209188/src/opentelemetry-api/span.cr#L8" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1250,7 +1292,7 @@ with that measurement. A <code><a href="../OpenTelemetry/Span.html">Span</a></co
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/span.cr#L8" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/6b6fc0836ddd746b3330d0cbfc43302df0209188/src/opentelemetry-api/span.cr#L8" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1266,7 +1308,7 @@ with that measurement. A <code><a href="../OpenTelemetry/Span.html">Span</a></co
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/span.cr#L11" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/6b6fc0836ddd746b3330d0cbfc43302df0209188/src/opentelemetry-api/span.cr#L11" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1282,7 +1324,7 @@ with that measurement. A <code><a href="../OpenTelemetry/Span.html">Span</a></co
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/span.cr#L11" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/6b6fc0836ddd746b3330d0cbfc43302df0209188/src/opentelemetry-api/span.cr#L11" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1298,7 +1340,7 @@ with that measurement. A <code><a href="../OpenTelemetry/Span.html">Span</a></co
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/span.cr#L9" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/6b6fc0836ddd746b3330d0cbfc43302df0209188/src/opentelemetry-api/span.cr#L9" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1314,7 +1356,7 @@ with that measurement. A <code><a href="../OpenTelemetry/Span.html">Span</a></co
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5fed2502f966e2d5c9296c11151b700bfbc34c30/src/opentelemetry-api/span.cr#L9" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/6b6fc0836ddd746b3330d0cbfc43302df0209188/src/opentelemetry-api/span.cr#L9" target="_blank">View source</a>]
         
       </div>
     </div>
