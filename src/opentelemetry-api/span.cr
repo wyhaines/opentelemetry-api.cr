@@ -1,3 +1,4 @@
+require "./span_context"
 require "./event"
 
 module OpenTelemetry
@@ -13,6 +14,7 @@ module OpenTelemetry
     property attributes : Hash(String, AnyAttribute) = {} of String => AnyAttribute
     property parent : Span? = nil
     property children : Array(Span) = [] of Span
+    property context : SpanContext? = nil
 
     def initialize(@name = "")
     end

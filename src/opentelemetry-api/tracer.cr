@@ -2,6 +2,7 @@ require "./span"
 
 module OpenTelemetry
   class Tracer
+    getter trace_id : CSUUID = CSUUID.new
     property service_name : String = ""
     property service_version : String = ""
     property exporter : Exporter = AbstractExporter.new
@@ -9,6 +10,7 @@ module OpenTelemetry
     getter span_stack : Array(Span) = [] of Span
     getter root_span : Span? = nil
     property current_span : Span? = nil
+    property span_context : SpanContext? = nil
 
     def initialize(
       service_name = nil,
@@ -20,6 +22,7 @@ module OpenTelemetry
       self.service_name = service_name if service_name
       self.service_version = service_version if service_version
       self.exporter = exporter if exporter
+      span_context.trace_id = trace_id
     end
 
     def provider=(val)
@@ -38,6 +41,7 @@ module OpenTelemetry
 
     def in_span(span_name)
       span = Span.new(span_name)
+      span.context = @span_context
       if @root_span.nil?
         @root_span = @current_span = span
       else
