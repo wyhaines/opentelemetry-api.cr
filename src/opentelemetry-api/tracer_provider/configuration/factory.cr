@@ -10,13 +10,15 @@ module OpenTelemetry
         property service_name : String = ""
         property service_version : String = ""
         property exporter : Exporter = AbstractExporter.new
+        property id_generator : String = ""
 
         # :nodoc:
         private def self._build(instance)
           Configuration.new(
             service_name: instance.service_name,
             service_version: instance.service_version,
-            exporter: instance.exporter
+            exporter: instance.exporter,
+            id_generator: instance.id_generator
           )
         end
 
@@ -24,7 +26,8 @@ module OpenTelemetry
           build(
             service_name: new_config.service_name,
             service_version: new_config.service_version,
-            exporter: new_config.exporter
+            exporter: new_config.exporter,
+            id_generator: new_config.id_generator
           ) do |instance|
             block.call(instance)
           end
@@ -33,10 +36,11 @@ module OpenTelemetry
         def self.build(
           service_name = "service_#{CSUUID.unique}",
           service_version = "",
-          exporter = AbstractExporter.new
+          exporter = AbstractExporter.new,
+          id_generator = "unique"
         )
           instance = Factory.allocate
-          instance.initialize(service_name, service_version, exporter)
+          instance.initialize(service_name, service_version, exporter, id_generator)
           yield instance
           _build(instance)
         end
@@ -44,14 +48,15 @@ module OpenTelemetry
         def self.build(
           service_name = "service_#{CSUUID.unique}",
           service_version = "",
-          exporter = AbstractExporter.new
+          exporter = AbstractExporter.new,
+          id_generator = "unique"
         )
           instance = Factory.allocate
-          instance.initialize(service_name, service_version, exporter)
+          instance.initialize(service_name, service_version, exporter, id_generator)
           _build(instance)
         end
 
-        def initialize(@service_name, @service_version, @exporter); end
+        def initialize(@service_name, @service_version, @exporter, @id_generator); end
       end
     end
   end
