@@ -13,7 +13,7 @@
 <script type="text/javascript" src="../../js/doc.js"></script>
 
   <meta name="repository-name" content="opentelemetry-api">
-  <title>OpenTelemetry::TracerProvider::Configuration - opentelemetry-api main</title>
+  <title>OpenTelemetry::IdGenerator::Unique - opentelemetry-api main</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "../../";
   </script>
@@ -126,7 +126,7 @@
       
     </li>
   
-  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/IdGenerator" data-name="opentelemetry::idgenerator">
+  <li class="parent open current" data-id="opentelemetry-api/OpenTelemetry/IdGenerator" data-name="opentelemetry::idgenerator">
       <a href="../../OpenTelemetry/IdGenerator.html">IdGenerator</a>
       
         <ul>
@@ -141,7 +141,7 @@
       
     </li>
   
-  <li class=" " data-id="opentelemetry-api/OpenTelemetry/IdGenerator/Unique" data-name="opentelemetry::idgenerator::unique">
+  <li class=" current" data-id="opentelemetry-api/OpenTelemetry/IdGenerator/Unique" data-name="opentelemetry::idgenerator::unique">
       <a href="../../OpenTelemetry/IdGenerator/Unique.html">Unique</a>
       
     </li>
@@ -691,12 +691,12 @@
       
     </li>
   
-  <li class="parent open current" data-id="opentelemetry-api/OpenTelemetry/TracerProvider" data-name="opentelemetry::tracerprovider">
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/TracerProvider" data-name="opentelemetry::tracerprovider">
       <a href="../../OpenTelemetry/TracerProvider.html">TracerProvider</a>
       
         <ul>
   
-  <li class="parent open current" data-id="opentelemetry-api/OpenTelemetry/TracerProvider/Configuration" data-name="opentelemetry::tracerprovider::configuration">
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/TracerProvider/Configuration" data-name="opentelemetry::tracerprovider::configuration">
       <a href="../../OpenTelemetry/TracerProvider/Configuration.html">Configuration</a>
       
         <ul>
@@ -745,12 +745,12 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">struct</span> OpenTelemetry::TracerProvider::Configuration
+  <span class="kind">struct</span> OpenTelemetry::IdGenerator::Unique
 
 </h1>
 
 
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="../../OpenTelemetry/TracerProvider/Configuration.html">OpenTelemetry::TracerProvider::Configuration</a></li><li class="superclass">Struct</li><li class="superclass">Value</li><li class="superclass">Object</li></ul>
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../../OpenTelemetry/IdGenerator/Unique.html">OpenTelemetry::IdGenerator::Unique</a></li><li class="superclass"><a href="../../OpenTelemetry/IdGenerator/Base.html">OpenTelemetry::IdGenerator::Base</a></li><li class="superclass">Struct</li><li class="superclass">Value</li><li class="superclass">Object</li></ul>
 
 
 
@@ -764,7 +764,8 @@
     Overview
   </h2>
 
-  <p>This class encapsulates the configuration for a TracerProvider.</p>
+  <p>This ID Generator returns guaranteed unique (within the process) IDs
+which are chronologically and logically sortable.</p>
 
 
 
@@ -789,15 +790,8 @@
   </h2>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/8e012801ecd07c533c91242d7d0f44ff11beaf2a/src/opentelemetry-api/tracer_provider/configuration.cr#L6" target="_blank">
-        opentelemetry-api/tracer_provider/configuration.cr
-      </a>
-    
-    <br/>
-  
-    
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/8e012801ecd07c533c91242d7d0f44ff11beaf2a/src/opentelemetry-api/tracer_provider/configuration/factory.cr#L8" target="_blank">
-        opentelemetry-api/tracer_provider/configuration/factory.cr
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/8e012801ecd07c533c91242d7d0f44ff11beaf2a/src/opentelemetry-api/id_generator/unique.cr#L9" target="_blank">
+        opentelemetry-api/id_generator/unique.cr
       </a>
     
     <br/>
@@ -806,28 +800,6 @@
 
 
 
-
-  <h2>
-    <a id="constructors" class="anchor" href="#constructors">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Constructors
-  </h2>
-  <ul class="list-summary">
-    
-      <li class="entry-summary">
-        <a href="#new%28service_name%3AString%2Cservice_version%3AString%3D%22%22%2Cexporter%3AExporter%3DNullExporter.new%2Cid_generator%3AIdGenerator%3DIdGenerator.new%28%22unique%22%29%29-class-method" class="signature"><strong>.new</strong>(service_name : String, service_version : String = <span class="s">&quot;&quot;</span>, exporter : Exporter = <span class="t">NullExporter</span>.<span class="k">new</span>, id_generator : IdGenerator = <span class="t">IdGenerator</span>.<span class="k">new</span>(<span class="s">&quot;unique&quot;</span>))</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#new%28service_name%2Cservice_version%2Cexporter%2Cid_generator%3AString%3D%22unique%22%29-class-method" class="signature"><strong>.new</strong>(service_name, service_version, exporter, id_generator : String = <span class="s">&quot;unique&quot;</span>)</a>
-        
-      </li>
-    
-  </ul>
 
 
 
@@ -844,32 +816,16 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#clone-instance-method" class="signature"><strong>#clone</strong></a>
+        <a href="#span_id-instance-method" class="signature"><strong>#span_id</strong></a>
+        
+          <div class="summary"><p>This method will return an ID suitable for use as a Span ID.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#copy_with%28service_name_service_name%3D%40service_name%2Cservice_version_service_version%3D%40service_version%2Cexporter_exporter%3D%40exporter%2Cid_generator_id_generator%3D%40id_generator%29-instance-method" class="signature"><strong>#copy_with</strong>(service_name _service_name = @service_name, service_version _service_version = @service_version, exporter _exporter = @exporter, id_generator _id_generator = @id_generator)</a>
+        <a href="#trace_id-instance-method" class="signature"><strong>#trace_id</strong></a>
         
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#exporter%3AExporter-instance-method" class="signature"><strong>#exporter</strong> : Exporter</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#id_generator%3AIdGenerator-instance-method" class="signature"><strong>#id_generator</strong> : IdGenerator</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#service_name%3AString-instance-method" class="signature"><strong>#service_name</strong> : String</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#service_version%3AString-instance-method" class="signature"><strong>#service_version</strong> : String</a>
+          <div class="summary"><p>This method will return an ID suitable for use as a Trace ID.</p></div>
         
       </li>
     
@@ -880,6 +836,39 @@
 
 
 <div class="methods-inherited">
+  
+    
+
+  <h3>Instance methods inherited from struct <code><a href="../../OpenTelemetry/IdGenerator/Base.html">OpenTelemetry::IdGenerator::Base</a></code></h3>
+  
+  
+    <a href="../../OpenTelemetry/IdGenerator/Base.html#span_id-instance-method" class="tooltip">
+      <span>span_id</span>
+    span_id</a>, 
+    
+  
+    <a href="../../OpenTelemetry/IdGenerator/Base.html#trace_id-instance-method" class="tooltip">
+      <span>trace_id</span>
+    trace_id</a>
+    
+  
+
+
+    
+
+  <h3>Constructor methods inherited from struct <code><a href="../../OpenTelemetry/IdGenerator/Base.html">OpenTelemetry::IdGenerator::Base</a></code></h3>
+  
+  
+    <a href="../../OpenTelemetry/IdGenerator/Base.html#new-class-method" class="tooltip">
+      <span>new</span>
+    new</a>
+    
+  
+
+
+    
+
+
   
     
 
@@ -914,48 +903,6 @@
 </div>
 
 
-  <h2>
-    <a id="constructor-detail" class="anchor" href="#constructor-detail">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Constructor Detail
-  </h2>
-  
-    <div class="entry-detail" id="new(service_name:String,service_version:String=&quot;&quot;,exporter:Exporter=NullExporter.new,id_generator:IdGenerator=IdGenerator.new(&quot;unique&quot;))-class-method">
-      <div class="signature">
-        
-        def self.<strong>new</strong>(service_name : String, service_version : String = <span class="s">&quot;&quot;</span>, exporter : <a href="../../OpenTelemetry/Exporter.html">Exporter</a> = <span class="t">NullExporter</span>.<span class="k">new</span>, id_generator : <a href="../../OpenTelemetry/IdGenerator.html">IdGenerator</a> = <span class="t">IdGenerator</span>.<span class="k">new</span>(<span class="s">&quot;unique&quot;</span>))
-
-        <a class="method-permalink" href="#new%28service_name%3AString%2Cservice_version%3AString%3D%22%22%2Cexporter%3AExporter%3DNullExporter.new%2Cid_generator%3AIdGenerator%3DIdGenerator.new%28%22unique%22%29%29-class-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/8e012801ecd07c533c91242d7d0f44ff11beaf2a/src/opentelemetry-api/tracer_provider/configuration.cr#L6" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="new(service_name,service_version,exporter,id_generator:String=&quot;unique&quot;)-class-method">
-      <div class="signature">
-        
-        def self.<strong>new</strong>(service_name, service_version, exporter, id_generator : String = <span class="s">&quot;unique&quot;</span>)
-
-        <a class="method-permalink" href="#new%28service_name%2Cservice_version%2Cexporter%2Cid_generator%3AString%3D%22unique%22%29-class-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/8e012801ecd07c533c91242d7d0f44ff11beaf2a/src/opentelemetry-api/tracer_provider/configuration.cr#L11" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-
 
 
 
@@ -969,90 +916,56 @@
     Instance Method Detail
   </h2>
   
-    <div class="entry-detail" id="clone-instance-method">
+    <div class="entry-detail" id="span_id-instance-method">
       <div class="signature">
         
-        def <strong>clone</strong>
+        def <strong>span_id</strong>
 
-        <a class="method-permalink" href="#clone-instance-method">#</a>
+        <a class="method-permalink" href="#span_id-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+            <div class="doc-inherited">
+              Description copied from struct <a href="../../OpenTelemetry/IdGenerator/Base.html">OpenTelemetry::IdGenerator::Base</a>
+            </div>
+          
+          <p>This method will return an ID suitable for use as a Span ID. The standard offered
+in the open telemetry spec is 64 bits (8 bytes). This is not a hard requirement,
+however, so subclass implementations can return a different length.</p>
+        </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/8e012801ecd07c533c91242d7d0f44ff11beaf2a/src/opentelemetry-api/tracer_provider/configuration.cr#L6" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/8e012801ecd07c533c91242d7d0f44ff11beaf2a/src/opentelemetry-api/id_generator/unique.cr#L18" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="copy_with(service_name_service_name=@service_name,service_version_service_version=@service_version,exporter_exporter=@exporter,id_generator_id_generator=@id_generator)-instance-method">
+    <div class="entry-detail" id="trace_id-instance-method">
       <div class="signature">
         
-        def <strong>copy_with</strong>(service_name _service_name = @service_name, service_version _service_version = @service_version, exporter _exporter = @exporter, id_generator _id_generator = @id_generator)
+        def <strong>trace_id</strong>
 
-        <a class="method-permalink" href="#copy_with%28service_name_service_name%3D%40service_name%2Cservice_version_service_version%3D%40service_version%2Cexporter_exporter%3D%40exporter%2Cid_generator_id_generator%3D%40id_generator%29-instance-method">#</a>
+        <a class="method-permalink" href="#trace_id-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+            <div class="doc-inherited">
+              Description copied from struct <a href="../../OpenTelemetry/IdGenerator/Base.html">OpenTelemetry::IdGenerator::Base</a>
+            </div>
+          
+          <p>This method will return an ID suitable for use as a Trace ID. The standard offered
+in the open telemetry spec is 128 bits (16 bytes). This is not a hard requirement,
+however, so subclass implementations can return a different length.</p>
+        </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/8e012801ecd07c533c91242d7d0f44ff11beaf2a/src/opentelemetry-api/tracer_provider/configuration.cr#L6" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="exporter:Exporter-instance-method">
-      <div class="signature">
-        
-        def <strong>exporter</strong> : <a href="../../OpenTelemetry/Exporter.html">Exporter</a>
-
-        <a class="method-permalink" href="#exporter%3AExporter-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="id_generator:IdGenerator-instance-method">
-      <div class="signature">
-        
-        def <strong>id_generator</strong> : <a href="../../OpenTelemetry/IdGenerator.html">IdGenerator</a>
-
-        <a class="method-permalink" href="#id_generator%3AIdGenerator-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="service_name:String-instance-method">
-      <div class="signature">
-        
-        def <strong>service_name</strong> : String
-
-        <a class="method-permalink" href="#service_name%3AString-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="service_version:String-instance-method">
-      <div class="signature">
-        
-        def <strong>service_version</strong> : String
-
-        <a class="method-permalink" href="#service_version%3AString-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/8e012801ecd07c533c91242d7d0f44ff11beaf2a/src/opentelemetry-api/id_generator/unique.cr#L14" target="_blank">View source</a>]
         
       </div>
     </div>
