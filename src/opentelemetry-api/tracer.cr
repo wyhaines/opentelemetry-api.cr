@@ -1,8 +1,11 @@
 require "./span"
+require "random/isaac"
 
 module OpenTelemetry
   class Tracer
-    getter trace_id : CSUUID = CSUUID.new
+    @@prng = Random::ISAAC.new
+
+    getter trace_id : Slice(UInt8)
     property service_name : String = ""
     property service_version : String = ""
     property exporter : Exporter = AbstractExporter.new
@@ -10,7 +13,11 @@ module OpenTelemetry
     getter span_stack : Array(Span) = [] of Span
     getter root_span : Span? = nil
     property current_span : Span? = nil
-    property span_context : SpanContext? = nil
+    property span_context : SpanContext = SpanContext.new
+
+    def self.prng : Random::ISAAC
+      @@prng
+    end
 
     def initialize(
       service_name = nil,
@@ -22,6 +29,7 @@ module OpenTelemetry
       self.service_name = service_name if service_name
       self.service_version = service_version if service_version
       self.exporter = exporter if exporter
+      self.trace_id = @provider.id_generator.trace_id
       span_context.trace_id = trace_id
     end
 
