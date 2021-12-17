@@ -1,14 +1,18 @@
 require "./id_generator/*"
 
 module OpenTelemetry
-
   struct AbstractIdGenerator < IdGenerator::Base
-    def trace_id; super; end
-    def span_id; super; end
+    def trace_id
+      Slice(UInt8).new(16, 0)
+    end
+
+    def span_id
+      Slice(UInt8).new(8, 0)
+    end
   end
 
   struct IdGenerator
-    @generator : OpenTelemetry::IdGenerator::Base
+    getter generator : OpenTelemetry::IdGenerator::Base
 
     def initialize(variant = "unique")
       case variant.downcase

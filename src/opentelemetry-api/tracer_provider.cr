@@ -7,6 +7,7 @@ module OpenTelemetry
   # A TracerProvider encapsulates a set of tracing configuration, and provides an interface for creating Trace instances.
   class TracerProvider
     getter config : Configuration
+    @id_generator_instance : IdGenerator::Base?
 
     def initialize
       @config = Configuration::Factory.build

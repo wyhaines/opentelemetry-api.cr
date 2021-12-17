@@ -5,7 +5,7 @@ module OpenTelemetry
   class Tracer
     @@prng = Random::ISAAC.new
 
-    getter trace_id : Slice(UInt8)
+    property trace_id : Slice(UInt8) = @@prng.random_bytes(16)
     property service_name : String = ""
     property service_version : String = ""
     property exporter : Exporter = AbstractExporter.new
