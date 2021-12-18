@@ -8,7 +8,7 @@ module OpenTelemetry
     getter trace_state : Hash(String, String) = {} of String => String
 
     def initialize
-      @trace_id = Tracer.prng.random_bytes(8)
+      @trace_id = Slice(UInt8).new(8,0)
       @span_id = Tracer.prng.random_bytes(8)
     end
 

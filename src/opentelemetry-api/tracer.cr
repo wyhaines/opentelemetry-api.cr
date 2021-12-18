@@ -33,6 +33,10 @@ module OpenTelemetry
       span_context.trace_id = trace_id
     end
 
+    def id
+      trace_id
+    end
+    
     def provider=(val)
       self.service_name = @provider.service_name
       self.service_version = @provider.service_version

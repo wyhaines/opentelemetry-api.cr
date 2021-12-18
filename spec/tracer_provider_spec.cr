@@ -23,6 +23,63 @@ describe OpenTelemetry::TracerProvider do
     provider.exporter.should be_a OpenTelemetry::NullExporter
   end
 
+  it "can replace the configuration of a TracerProvider with new configuration" do
+    provider = OpenTelemetry::TracerProvider.new do |config|
+      config.service_name = "my_app_or_library"
+      config.service_version = "1.1.1"
+      config.exporter = OpenTelemetry::NullExporter.new
+      config.id_generator = OpenTelemetry::IdGenerator.new("random")
+    end
+
+    config2 = OpenTelemetry::TracerProvider::Configuration.new(
+      service_name: "my_app_or_library2",
+      service_version: "2.2.2",
+      id_generator: OpenTelemetry::IdGenerator.new("unique")
+    )
+
+    provider.configure!(config2)
+    provider.service_name.should eq "my_app_or_library2"
+    provider.service_version.should eq "2.2.2"
+    provider.exporter.should be_a OpenTelemetry::NullExporter
+    provider.id_generator.should be_a OpenTelemetry::IdGenerator
+    provider.id_generator.generator.should be_a OpenTelemetry::IdGenerator::Unique
+  end
+
+  it "can merge configuration with predictable outcomes" do
+    provider_prime = OpenTelemetry::TracerProvider.new
+
+    provider_clone = provider_prime.dup
+    reconfig = OpenTelemetry::TracerProvider::Configuration.new(
+      service_name: "my_app_or_library2"
+    )
+    provider_clone.merge_configuration(reconfig)
+    provider_clone.service_name.should eq "my_app_or_library2"
+    provider_clone.service_version.should eq ""
+
+    provider_clone = provider_prime.dup
+    reconfig = OpenTelemetry::TracerProvider::Configuration.new(
+      service_version: "2.2.2"
+    )
+    provider_clone.merge_configuration(reconfig)
+    provider_clone.service_name.should eq ""
+    provider_clone.service_version.should eq "2.2.2"
+
+    provider_clone = provider_prime.dup
+    reconfig = OpenTelemetry::TracerProvider::Configuration.new(
+      exporter: OpenTelemetry::NullExporter.new
+    )
+    provider_clone.merge_configuration(reconfig)
+    provider_clone.exporter.should be_a OpenTelemetry::NullExporter
+
+    provider_clone = provider_prime.dup
+    reconfig = OpenTelemetry::TracerProvider::Configuration.new(
+      id_generator: OpenTelemetry::IdGenerator.new("unique")
+    )
+    provider_clone.merge_configuration(reconfig)
+    provider_clone.id_generator.should be_a OpenTelemetry::IdGenerator
+    provider_clone.id_generator.generator.should be_a OpenTelemetry::IdGenerator::Unique
+  end
+
   it "can return individual provider instances using the block syntax" do
     provider_a = OpenTelemetry::TracerProvider.new do |config|
       config.service_version = "1.1.1"

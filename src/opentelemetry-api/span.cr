@@ -14,7 +14,7 @@ module OpenTelemetry
     property attributes : Hash(String, AnyAttribute) = {} of String => AnyAttribute
     property parent : Span? = nil
     property children : Array(Span) = [] of Span
-    property context : SpanContext? = nil
+    property context : SpanContext = SpanContext.new
 
     def initialize(@name = "")
     end
@@ -45,6 +45,14 @@ module OpenTelemetry
 
     def add_event(name, attributes : Hash(String, AnyAttribute) = {} of String => AnyAttribute)
       events << Event.new(name: name, attributes: attributes)
+    end
+
+    def id
+      context.span_id
+    end
+
+    def span_id
+      id
     end
   end
 end
