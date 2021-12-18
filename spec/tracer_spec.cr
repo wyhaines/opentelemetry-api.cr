@@ -11,7 +11,7 @@ describe OpenTelemetry::Tracer do
       t.service_version = "1.2.3"
     end
 
-    tracer.id.hexstring.should_not eq Slice(UInt8).new(8,0).hexstring
+    tracer.id.hexstring.should_not eq Slice(UInt8).new(8, 0).hexstring
     tracer.id.should eq tracer.trace_id
 
     tracer.id.should_not eq (provider.tracer do |t|
@@ -77,4 +77,42 @@ describe OpenTelemetry::Tracer do
     end
   end
 
+  it "produces traces and spans with the expected ids" do
+    provider = OpenTelemetry::TracerProvider.new(
+      service_name: "my_app_or_library",
+      service_version: "1.1.1",
+      exporter: OpenTelemetry::NullExporter.new)
+    tracer = provider.tracer do |t|
+      t.service_name = "microservice"
+      t.service_version = "1.2.3"
+    end
+
+    tracer.id.hexstring.should_not be_empty
+    tracer.id.size.should eq 16
+    tracer.id.hexstring.should_not eq "0000000000000000"
+
+    tracer.in_span("request") do |span|
+      span.id.hexstring.should_not be_empty
+      span.id.hexstring.should_not eq "00000000"
+
+      span.set_attribute("verb", "GET")
+      span.set_attribute("url", "http://example.com/foo")
+      sleep(rand/1000)
+      span.add_event("dispatching to handler")
+      tracer.in_span("handler") do |child_span|
+        child_span.id.should_not eq span.id
+        sleep(rand/1000)
+        child_span.add_event("dispatching to database")
+        tracer.in_span("db") do |db_span|
+          db_span.add_event("querying database")
+          sleep(rand/1000)
+        end
+        tracer.in_span("external api") do |api_span|
+          api_span.add_event("querying api")
+          sleep(rand/1000)
+        end
+        sleep(rand/1000)
+      end
+    end
+  end
 end

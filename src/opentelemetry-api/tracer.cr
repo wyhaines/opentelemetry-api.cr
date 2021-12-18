@@ -36,7 +36,7 @@ module OpenTelemetry
     def id
       trace_id
     end
-    
+
     def provider=(val)
       self.service_name = @provider.service_name
       self.service_version = @provider.service_version
@@ -53,7 +53,10 @@ module OpenTelemetry
 
     def in_span(span_name)
       span = Span.new(span_name)
-      span.context = @span_context
+      span.context = SpanContext.new(@span_context) do |ctx|
+        ctx.span_id = @provider.id_generator.span_id
+      end
+
       if @root_span.nil?
         @root_span = @current_span = span
       else
