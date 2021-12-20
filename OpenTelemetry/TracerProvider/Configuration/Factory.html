@@ -686,6 +686,11 @@
       
     </li>
   
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/StdOutExporter" data-name="opentelemetry::stdoutexporter">
+      <a href="../../../OpenTelemetry/StdOutExporter.html">StdOutExporter</a>
+      
+    </li>
+  
   <li class=" " data-id="opentelemetry-api/OpenTelemetry/Tracer" data-name="opentelemetry::tracer">
       <a href="../../../OpenTelemetry/Tracer.html">Tracer</a>
       
@@ -778,7 +783,7 @@
   </h2>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/04411323599248e421216ba94b14ccc155738ef7/src/opentelemetry-api/tracer_provider/configuration/factory.cr#L9" target="_blank">
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/729f611f41d3e545d2c93c55a977c2102b6fc5a1/src/opentelemetry-api/tracer_provider/configuration/factory.cr#L9" target="_blank">
         opentelemetry-api/tracer_provider/configuration/factory.cr
       </a>
     
@@ -824,12 +829,12 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#build%28service_name%3D%22service_%23%7BCSUUID.unique%7D%22%2Cservice_version%3D%22%22%2Cexporter%3DAbstractExporter.new%2Cid_generator%3DIdGenerator.new%28%22unique%22%29%2C%26%29-class-method" class="signature"><strong>.build</strong>(service_name = <span class="s">&quot;service_</span><span class="i">#{</span><span class="t">CSUUID</span>.unique<span class="i">}</span><span class="s">&quot;</span>, service_version = <span class="s">&quot;&quot;</span>, exporter = <span class="t">AbstractExporter</span>.<span class="k">new</span>, id_generator = <span class="t">IdGenerator</span>.<span class="k">new</span>(<span class="s">&quot;unique&quot;</span>), &)</a>
+        <a href="#build%28service_name%3D%22service_%23%7BCSUUID.unique%7D%22%2Cservice_version%3D%22%22%2Cexporter%3DExporter%3A%3AAbstract.new%2Cid_generator%3DIdGenerator.new%28%22unique%22%29%2C%26%29-class-method" class="signature"><strong>.build</strong>(service_name = <span class="s">&quot;service_</span><span class="i">#{</span><span class="t">CSUUID</span>.unique<span class="i">}</span><span class="s">&quot;</span>, service_version = <span class="s">&quot;&quot;</span>, exporter = <span class="t">Exporter</span><span class="t">::</span><span class="t">Abstract</span>.<span class="k">new</span>, id_generator = <span class="t">IdGenerator</span>.<span class="k">new</span>(<span class="s">&quot;unique&quot;</span>), &)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#build%28service_name%3D%22service_%23%7BCSUUID.unique%7D%22%2Cservice_version%3D%22%22%2Cexporter%3DAbstractExporter.new%2Cid_generator%3DIdGenerator.new%28%22unique%22%29%29-class-method" class="signature"><strong>.build</strong>(service_name = <span class="s">&quot;service_</span><span class="i">#{</span><span class="t">CSUUID</span>.unique<span class="i">}</span><span class="s">&quot;</span>, service_version = <span class="s">&quot;&quot;</span>, exporter = <span class="t">AbstractExporter</span>.<span class="k">new</span>, id_generator = <span class="t">IdGenerator</span>.<span class="k">new</span>(<span class="s">&quot;unique&quot;</span>))</a>
+        <a href="#build%28service_name%3D%22service_%23%7BCSUUID.unique%7D%22%2Cservice_version%3D%22%22%2Cexporter%3DExporter%3A%3AAbstract.new%2Cid_generator%3DIdGenerator.new%28%22unique%22%29%29-class-method" class="signature"><strong>.build</strong>(service_name = <span class="s">&quot;service_</span><span class="i">#{</span><span class="t">CSUUID</span>.unique<span class="i">}</span><span class="s">&quot;</span>, service_version = <span class="s">&quot;&quot;</span>, exporter = <span class="t">Exporter</span><span class="t">::</span><span class="t">Abstract</span>.<span class="k">new</span>, id_generator = <span class="t">IdGenerator</span>.<span class="k">new</span>(<span class="s">&quot;unique&quot;</span>))</a>
         
       </li>
     
@@ -938,7 +943,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/04411323599248e421216ba94b14ccc155738ef7/src/opentelemetry-api/tracer_provider/configuration/factory.cr#L59" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/729f611f41d3e545d2c93c55a977c2102b6fc5a1/src/opentelemetry-api/tracer_provider/configuration/factory.cr#L59" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -966,39 +971,39 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/04411323599248e421216ba94b14ccc155738ef7/src/opentelemetry-api/tracer_provider/configuration/factory.cr#L25" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/729f611f41d3e545d2c93c55a977c2102b6fc5a1/src/opentelemetry-api/tracer_provider/configuration/factory.cr#L25" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="build(service_name=&quot;service_#{CSUUID.unique}&quot;,service_version=&quot;&quot;,exporter=AbstractExporter.new,id_generator=IdGenerator.new(&quot;unique&quot;),&amp;)-class-method">
+    <div class="entry-detail" id="build(service_name=&quot;service_#{CSUUID.unique}&quot;,service_version=&quot;&quot;,exporter=Exporter::Abstract.new,id_generator=IdGenerator.new(&quot;unique&quot;),&amp;)-class-method">
       <div class="signature">
         
-        def self.<strong>build</strong>(service_name = <span class="s">&quot;service_</span><span class="i">#{</span><span class="t">CSUUID</span>.unique<span class="i">}</span><span class="s">&quot;</span>, service_version = <span class="s">&quot;&quot;</span>, exporter = <span class="t">AbstractExporter</span>.<span class="k">new</span>, id_generator = <span class="t">IdGenerator</span>.<span class="k">new</span>(<span class="s">&quot;unique&quot;</span>), &)
+        def self.<strong>build</strong>(service_name = <span class="s">&quot;service_</span><span class="i">#{</span><span class="t">CSUUID</span>.unique<span class="i">}</span><span class="s">&quot;</span>, service_version = <span class="s">&quot;&quot;</span>, exporter = <span class="t">Exporter</span><span class="t">::</span><span class="t">Abstract</span>.<span class="k">new</span>, id_generator = <span class="t">IdGenerator</span>.<span class="k">new</span>(<span class="s">&quot;unique&quot;</span>), &)
 
-        <a class="method-permalink" href="#build%28service_name%3D%22service_%23%7BCSUUID.unique%7D%22%2Cservice_version%3D%22%22%2Cexporter%3DAbstractExporter.new%2Cid_generator%3DIdGenerator.new%28%22unique%22%29%2C%26%29-class-method">#</a>
+        <a class="method-permalink" href="#build%28service_name%3D%22service_%23%7BCSUUID.unique%7D%22%2Cservice_version%3D%22%22%2Cexporter%3DExporter%3A%3AAbstract.new%2Cid_generator%3DIdGenerator.new%28%22unique%22%29%2C%26%29-class-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/04411323599248e421216ba94b14ccc155738ef7/src/opentelemetry-api/tracer_provider/configuration/factory.cr#L36" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/729f611f41d3e545d2c93c55a977c2102b6fc5a1/src/opentelemetry-api/tracer_provider/configuration/factory.cr#L36" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="build(service_name=&quot;service_#{CSUUID.unique}&quot;,service_version=&quot;&quot;,exporter=AbstractExporter.new,id_generator=IdGenerator.new(&quot;unique&quot;))-class-method">
+    <div class="entry-detail" id="build(service_name=&quot;service_#{CSUUID.unique}&quot;,service_version=&quot;&quot;,exporter=Exporter::Abstract.new,id_generator=IdGenerator.new(&quot;unique&quot;))-class-method">
       <div class="signature">
         
-        def self.<strong>build</strong>(service_name = <span class="s">&quot;service_</span><span class="i">#{</span><span class="t">CSUUID</span>.unique<span class="i">}</span><span class="s">&quot;</span>, service_version = <span class="s">&quot;&quot;</span>, exporter = <span class="t">AbstractExporter</span>.<span class="k">new</span>, id_generator = <span class="t">IdGenerator</span>.<span class="k">new</span>(<span class="s">&quot;unique&quot;</span>))
+        def self.<strong>build</strong>(service_name = <span class="s">&quot;service_</span><span class="i">#{</span><span class="t">CSUUID</span>.unique<span class="i">}</span><span class="s">&quot;</span>, service_version = <span class="s">&quot;&quot;</span>, exporter = <span class="t">Exporter</span><span class="t">::</span><span class="t">Abstract</span>.<span class="k">new</span>, id_generator = <span class="t">IdGenerator</span>.<span class="k">new</span>(<span class="s">&quot;unique&quot;</span>))
 
-        <a class="method-permalink" href="#build%28service_name%3D%22service_%23%7BCSUUID.unique%7D%22%2Cservice_version%3D%22%22%2Cexporter%3DAbstractExporter.new%2Cid_generator%3DIdGenerator.new%28%22unique%22%29%29-class-method">#</a>
+        <a class="method-permalink" href="#build%28service_name%3D%22service_%23%7BCSUUID.unique%7D%22%2Cservice_version%3D%22%22%2Cexporter%3DExporter%3A%3AAbstract.new%2Cid_generator%3DIdGenerator.new%28%22unique%22%29%29-class-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/04411323599248e421216ba94b14ccc155738ef7/src/opentelemetry-api/tracer_provider/configuration/factory.cr#L48" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/729f611f41d3e545d2c93c55a977c2102b6fc5a1/src/opentelemetry-api/tracer_provider/configuration/factory.cr#L48" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1026,7 +1031,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/04411323599248e421216ba94b14ccc155738ef7/src/opentelemetry-api/tracer_provider/configuration/factory.cr#L12" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/729f611f41d3e545d2c93c55a977c2102b6fc5a1/src/opentelemetry-api/tracer_provider/configuration/factory.cr#L12" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1042,7 +1047,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/04411323599248e421216ba94b14ccc155738ef7/src/opentelemetry-api/tracer_provider/configuration/factory.cr#L12" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/729f611f41d3e545d2c93c55a977c2102b6fc5a1/src/opentelemetry-api/tracer_provider/configuration/factory.cr#L12" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1058,7 +1063,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/04411323599248e421216ba94b14ccc155738ef7/src/opentelemetry-api/tracer_provider/configuration/factory.cr#L13" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/729f611f41d3e545d2c93c55a977c2102b6fc5a1/src/opentelemetry-api/tracer_provider/configuration/factory.cr#L13" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1074,7 +1079,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/04411323599248e421216ba94b14ccc155738ef7/src/opentelemetry-api/tracer_provider/configuration/factory.cr#L13" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/729f611f41d3e545d2c93c55a977c2102b6fc5a1/src/opentelemetry-api/tracer_provider/configuration/factory.cr#L13" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1090,7 +1095,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/04411323599248e421216ba94b14ccc155738ef7/src/opentelemetry-api/tracer_provider/configuration/factory.cr#L10" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/729f611f41d3e545d2c93c55a977c2102b6fc5a1/src/opentelemetry-api/tracer_provider/configuration/factory.cr#L10" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1106,7 +1111,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/04411323599248e421216ba94b14ccc155738ef7/src/opentelemetry-api/tracer_provider/configuration/factory.cr#L10" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/729f611f41d3e545d2c93c55a977c2102b6fc5a1/src/opentelemetry-api/tracer_provider/configuration/factory.cr#L10" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1122,7 +1127,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/04411323599248e421216ba94b14ccc155738ef7/src/opentelemetry-api/tracer_provider/configuration/factory.cr#L11" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/729f611f41d3e545d2c93c55a977c2102b6fc5a1/src/opentelemetry-api/tracer_provider/configuration/factory.cr#L11" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1138,7 +1143,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/04411323599248e421216ba94b14ccc155738ef7/src/opentelemetry-api/tracer_provider/configuration/factory.cr#L11" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/729f611f41d3e545d2c93c55a977c2102b6fc5a1/src/opentelemetry-api/tracer_provider/configuration/factory.cr#L11" target="_blank">View source</a>]
         
       </div>
     </div>

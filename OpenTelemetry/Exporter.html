@@ -686,6 +686,11 @@
       
     </li>
   
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/StdOutExporter" data-name="opentelemetry::stdoutexporter">
+      <a href="../OpenTelemetry/StdOutExporter.html">StdOutExporter</a>
+      
+    </li>
+  
   <li class=" " data-id="opentelemetry-api/OpenTelemetry/Tracer" data-name="opentelemetry::tracer">
       <a href="../OpenTelemetry/Tracer.html">Tracer</a>
       
@@ -775,6 +780,8 @@
     
       <li class="other-type"><a href="../OpenTelemetry/NullExporter.html">OpenTelemetry::NullExporter</a></li>
     
+      <li class="other-type"><a href="../OpenTelemetry/StdOutExporter.html">OpenTelemetry::StdOutExporter</a></li>
+    
   </ul>
 
 
@@ -792,8 +799,15 @@
   </h2>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/04411323599248e421216ba94b14ccc155738ef7/src/exporter.cr#L2" target="_blank">
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/729f611f41d3e545d2c93c55a977c2102b6fc5a1/src/exporter.cr#L2" target="_blank">
         exporter.cr
+      </a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/729f611f41d3e545d2c93c55a977c2102b6fc5a1/src/exporters/abstract.cr#L2" target="_blank">
+        exporters/abstract.cr
       </a>
     
     <br/>
@@ -806,6 +820,28 @@
 
 
 
+
+  <h2>
+    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#export%28traces%3AArray%28Trace%29%29-instance-method" class="signature"><strong>#export</strong>(traces : Array(Trace))</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#export%28trace%3ATrace%29-instance-method" class="signature"><strong>#export</strong>(trace : Trace)</a>
+        
+      </li>
+    
+  </ul>
 
 
 
@@ -839,6 +875,48 @@
 
 
 
+
+  <h2>
+    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="export(traces:Array(Trace))-instance-method">
+      <div class="signature">
+        abstract 
+        def <strong>export</strong>(traces : Array(Trace))
+
+        <a class="method-permalink" href="#export%28traces%3AArray%28Trace%29%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/729f611f41d3e545d2c93c55a977c2102b6fc5a1/src/exporter.cr#L3" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="export(trace:Trace)-instance-method">
+      <div class="signature">
+        
+        def <strong>export</strong>(trace : Trace)
+
+        <a class="method-permalink" href="#export%28trace%3ATrace%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/729f611f41d3e545d2c93c55a977c2102b6fc5a1/src/exporter.cr#L5" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
 
 
 
