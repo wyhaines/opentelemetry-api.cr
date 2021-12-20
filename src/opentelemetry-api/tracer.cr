@@ -72,6 +72,8 @@ module OpenTelemetry
       else
         raise "Unexpected Error: Invalid Spans in the Span Stack. Expected #{span.inspect} but found #{span_stack.last.inspect}"
       end
+
+      # TODO: Determine if we need to export the span
     end
   end
 end

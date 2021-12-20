@@ -104,10 +104,14 @@ describe OpenTelemetry::Tracer do
         sleep(rand/1000)
         child_span.add_event("dispatching to database")
         tracer.in_span("db") do |db_span|
+          db_span.id.should_not eq span.id
+          db_span.id.should_not eq child_span.id
           db_span.add_event("querying database")
           sleep(rand/1000)
         end
         tracer.in_span("external api") do |api_span|
+          api_span.id.should_not eq span.id
+          api_span.id.should_not eq child_span.id
           api_span.add_event("querying api")
           sleep(rand/1000)
         end
