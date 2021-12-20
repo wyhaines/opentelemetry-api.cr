@@ -1,12 +1,21 @@
 module OpenTelemetry
   abstract class Exporter
-  end
+    abstract def export(traces : Array(Trace))
 
-  # :nodoc:
-  class AbstractExporter < Exporter
-    # This class exists only for internal use.
+    def export(trace : Trace)
+      export [trace]
+    end
   end
 
   class NullExporter < Exporter
+    def export(traces : Array(Trace))
+    end
+  end
+
+  class StdOutExporter < Exporter
+    def export(traces : Array(Trace))
+    end
   end
 end
+
+require "./exporters/*"
