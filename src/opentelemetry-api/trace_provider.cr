@@ -1,11 +1,11 @@
-require "./tracer_provider/configuration"
+require "./trace_provider/configuration"
 require "./id_generator"
 require "./context"
-require "./tracer"
+require "./trace"
 
 module OpenTelemetry
-  # A TracerProvider encapsulates a set of tracing configuration, and provides an interface for creating Trace instances.
-  class TracerProvider
+  # A TraceProvider encapsulates a set of tracing configuration, and provides an interface for creating Trace instances.
+  class TraceProvider
     getter config : Configuration
     @id_generator_instance : IdGenerator::Base?
 
@@ -49,31 +49,31 @@ module OpenTelemetry
       self
     end
 
-    def tracer
-      new_tracer = Tracer.new
-      new_tracer.provider = self
+    def trace
+      new_trace = Trace.new
+      new_trace.provider = self
 
       new_trace
     end
 
-    def tracer(
+    def trace(
       service_name = nil,
       service_version = nil,
       exporter = nil,
       id_generator = nil
     )
-      new_tracer = Tracer.new(service_name, service_version, exporter, id_generator)
-      new_tracer.merge_configuration_from_provider = self
+      new_trace = Trace.new(service_name, service_version, exporter, id_generator)
+      new_trace.merge_configuration_from_provider = self
 
-      new_tracer
+      new_trace
     end
 
-    def tracer
-      new_tracer = tracer
-      new_tracer.provider = self
-      yield new_tracer
+    def trace
+      new_trace = trace
+      new_trace.provider = self
+      yield new_trace
 
-      new_tracer
+      new_trace
     end
 
     def service_name

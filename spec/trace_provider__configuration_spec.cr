@@ -1,8 +1,8 @@
 require "./spec_helper"
 
-describe OpenTelemetry::TracerProvider::Configuration do
+describe OpenTelemetry::TraceProvider::Configuration do
   it "can create a Configuration object" do
-    config = OpenTelemetry::TracerProvider::Configuration.new(
+    config = OpenTelemetry::TraceProvider::Configuration.new(
       service_name: "test-service",
       service_version: "1.0.0",
       exporter: OpenTelemetry::Exporter::Null.new,

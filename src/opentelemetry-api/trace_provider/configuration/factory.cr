@@ -4,7 +4,7 @@ module OpenTelemetry
   # useful to have access to a read/write object for easy manipulation.
   #
   # The `OpenTelemetry::Configuration::Factory` provides this interface.
-  class TracerProvider
+  class TraceProvider
     struct Configuration
       class Factory
         property service_name : String = ""

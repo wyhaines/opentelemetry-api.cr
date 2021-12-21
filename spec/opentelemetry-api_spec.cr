@@ -17,43 +17,43 @@ describe OpenTelemetry do
     OpenTelemetry.config.exporter.should be_a TestExporter
   end
 
-  it "can create a tracer with arguments passed to the class method" do
-    tracer = OpenTelemetry.tracer_provider(
+  it "can create a trace with arguments passed to the class method" do
+    trace = OpenTelemetry.trace_provider(
       "my_app_or_library",
       "1.2.3",
       OpenTelemetry::Exporter::Null.new)
 
-    tracer.service_name.should eq "my_app_or_library"
-    tracer.service_version.should eq "1.2.3"
-    tracer.exporter.should be_a OpenTelemetry::Exporter::Null
+    trace.service_name.should eq "my_app_or_library"
+    trace.service_version.should eq "1.2.3"
+    trace.exporter.should be_a OpenTelemetry::Exporter::Null
   end
 
   it "substitutes the global provider configuration when values are not provided via method argument initialization" do
-    tracer = OpenTelemetry.tracer_provider("my_app_or_library2")
-    tracer.service_name.should eq "my_app_or_library2"
-    tracer.service_version.should eq "1.1.1"
-    tracer.exporter.should be_a TestExporter
+    trace = OpenTelemetry.trace_provider("my_app_or_library2")
+    trace.service_name.should eq "my_app_or_library2"
+    trace.service_version.should eq "1.1.1"
+    trace.exporter.should be_a TestExporter
   end
 
-  it "can create a tracer via a block passed to the class method" do
-    tracer = OpenTelemetry.tracer_provider do |t|
+  it "can create a trace via a block passed to the class method" do
+    trace = OpenTelemetry.trace_provider do |t|
       t.service_name = "my_app_or_library"
       t.service_version = "1.2.3"
       t.exporter = OpenTelemetry::Exporter::Null.new
     end
 
-    tracer.service_name.should eq "my_app_or_library"
-    tracer.service_version.should eq "1.2.3"
-    tracer.exporter.should be_a OpenTelemetry::Exporter::Null
+    trace.service_name.should eq "my_app_or_library"
+    trace.service_version.should eq "1.2.3"
+    trace.exporter.should be_a OpenTelemetry::Exporter::Null
   end
 
   it "substitutes the global provider configuration when values are not set via block initialization" do
-    tracer = OpenTelemetry.tracer_provider do |t|
+    trace = OpenTelemetry.trace_provider do |t|
       t.service_version = "2.2.2"
     end
 
-    tracer.service_name.should eq "my_app_or_library"
-    tracer.service_version.should eq "2.2.2"
-    tracer.exporter.should be_a TestExporter
+    trace.service_name.should eq "my_app_or_library"
+    trace.service_version.should eq "2.2.2"
+    trace.exporter.should be_a TestExporter
   end
 end

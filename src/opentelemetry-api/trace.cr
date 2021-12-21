@@ -2,14 +2,14 @@ require "./span"
 require "random/isaac"
 
 module OpenTelemetry
-  class Tracer
+  class Trace
     @@prng = Random::ISAAC.new
 
     property trace_id : Slice(UInt8) = @@prng.random_bytes(16)
     property service_name : String = ""
     property service_version : String = ""
     property exporter : Exporter = Exporter::Abstract.new
-    getter provider : TracerProvider = TracerProvider.new
+    getter provider : TraceProvider = TraceProvider.new
     getter span_stack : Array(Span) = [] of Span
     getter root_span : Span? = nil
     property current_span : Span? = nil

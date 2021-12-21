@@ -49,16 +49,16 @@ describe OpenTelemetry::Span do
     e.attributes["message"].value.should eq "There was a really bad error."
   end
 
-  it "can use a tracer to create a span" do
-    provider = OpenTelemetry::TracerProvider.new(
+  it "can use a trace to create a span" do
+    provider = OpenTelemetry::TraceProvider.new(
       service_name: "my_app_or_library",
       service_version: "1.1.1",
       exporter: OpenTelemetry::Exporter::Null.new)
-    tracer = provider.tracer do |t|
+    trace = provider.trace do |t|
       t.service_name = "microservice"
       t.service_version = "1.2.3"
     end
-    tracer.in_span("request") do |span|
+    trace.in_span("request") do |span|
       span.set_attribute("verb", "GET")
       span.set_attribute("url", "http://example.com/foo")
       span.add_event("dispatching to handler")
@@ -66,27 +66,27 @@ describe OpenTelemetry::Span do
   end
 
   it "can create nested spans" do
-    provider = OpenTelemetry::TracerProvider.new(
+    provider = OpenTelemetry::TraceProvider.new(
       service_name: "my_app_or_library",
       service_version: "1.1.1",
       exporter: OpenTelemetry::Exporter::Null.new)
-    tracer = provider.tracer do |t|
+    trace = provider.trace do |t|
       t.service_name = "microservice"
       t.service_version = "1.2.3"
     end
-    tracer.in_span("request") do |span|
+    trace.in_span("request") do |span|
       span.set_attribute("verb", "GET")
       span.set_attribute("url", "http://example.com/foo")
       sleep(rand/1000)
       span.add_event("dispatching to handler")
-      tracer.in_span("handler") do |child_span|
+      trace.in_span("handler") do |child_span|
         sleep(rand/1000)
         child_span.add_event("dispatching to database")
-        tracer.in_span("db") do |db_span|
+        trace.in_span("db") do |db_span|
           db_span.add_event("querying database")
           sleep(rand/1000)
         end
-        tracer.in_span("external api") do |api_span|
+        trace.in_span("external api") do |api_span|
           api_span.add_event("querying api")
           sleep(rand/1000)
         end
@@ -94,7 +94,7 @@ describe OpenTelemetry::Span do
       end
     end
 
-    buffer = iterate_span_nodes tracer.root_span, 0, [] of String
+    buffer = iterate_span_nodes trace.root_span, 0, [] of String
     buffer.should eq ["request", "  handler", "    db", "    external api"]
   end
 end

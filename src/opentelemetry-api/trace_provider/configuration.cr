@@ -1,8 +1,8 @@
 require "./configuration/factory"
 
 module OpenTelemetry
-  class TracerProvider
-    # This class encapsulates the configuration for a TracerProvider.
+  class TraceProvider
+    # This class encapsulates the configuration for a TraceProvider.
     record Configuration,
       service_name : String = "",
       service_version : String = "",
