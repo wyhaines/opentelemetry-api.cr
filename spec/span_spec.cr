@@ -53,7 +53,7 @@ describe OpenTelemetry::Span do
     provider = OpenTelemetry::TracerProvider.new(
       service_name: "my_app_or_library",
       service_version: "1.1.1",
-      exporter: OpenTelemetry::NullExporter.new)
+      exporter: OpenTelemetry::Exporter::Null.new)
     tracer = provider.tracer do |t|
       t.service_name = "microservice"
       t.service_version = "1.2.3"
@@ -69,7 +69,7 @@ describe OpenTelemetry::Span do
     provider = OpenTelemetry::TracerProvider.new(
       service_name: "my_app_or_library",
       service_version: "1.1.1",
-      exporter: OpenTelemetry::NullExporter.new)
+      exporter: OpenTelemetry::Exporter::Null.new)
     tracer = provider.tracer do |t|
       t.service_name = "microservice"
       t.service_version = "1.2.3"

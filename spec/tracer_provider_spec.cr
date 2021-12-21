@@ -16,18 +16,18 @@ describe OpenTelemetry::TracerProvider do
     provider = OpenTelemetry::TracerProvider.new("my_app_or_library", "1.1.1")
     provider.service_name = "my_app_or_library2"
     provider.service_version = "2.2.2"
-    provider.exporter = OpenTelemetry::NullExporter.new
+    provider.exporter = OpenTelemetry::Exporter::Null.new
 
     provider.service_name.should eq "my_app_or_library2"
     provider.service_version.should eq "2.2.2"
-    provider.exporter.should be_a OpenTelemetry::NullExporter
+    provider.exporter.should be_a OpenTelemetry::Exporter::Null
   end
 
   it "can replace the configuration of a TracerProvider with new configuration" do
     provider = OpenTelemetry::TracerProvider.new do |config|
       config.service_name = "my_app_or_library"
       config.service_version = "1.1.1"
-      config.exporter = OpenTelemetry::NullExporter.new
+      config.exporter = OpenTelemetry::Exporter::Null.new
       config.id_generator = OpenTelemetry::IdGenerator.new("random")
     end
 
@@ -40,7 +40,7 @@ describe OpenTelemetry::TracerProvider do
     provider.configure!(config2)
     provider.service_name.should eq "my_app_or_library2"
     provider.service_version.should eq "2.2.2"
-    provider.exporter.should be_a OpenTelemetry::NullExporter
+    provider.exporter.should be_a OpenTelemetry::Exporter::Null
     provider.id_generator.should be_a OpenTelemetry::IdGenerator
     provider.id_generator.generator.should be_a OpenTelemetry::IdGenerator::Unique
   end
@@ -66,10 +66,10 @@ describe OpenTelemetry::TracerProvider do
 
     provider_clone = provider_prime.dup
     reconfig = OpenTelemetry::TracerProvider::Configuration.new(
-      exporter: OpenTelemetry::NullExporter.new
+      exporter: OpenTelemetry::Exporter::Null.new
     )
     provider_clone.merge_configuration(reconfig)
-    provider_clone.exporter.should be_a OpenTelemetry::NullExporter
+    provider_clone.exporter.should be_a OpenTelemetry::Exporter::Null
 
     provider_clone = provider_prime.dup
     reconfig = OpenTelemetry::TracerProvider::Configuration.new(
@@ -97,33 +97,33 @@ describe OpenTelemetry::TracerProvider do
     provider = OpenTelemetry::TracerProvider.new(
       service_name: "my_app_or_library",
       service_version: "1.1.1",
-      exporter: OpenTelemetry::NullExporter.new)
+      exporter: OpenTelemetry::Exporter::Null.new)
     tracer = provider.tracer
 
     tracer.is_a?(OpenTelemetry::Tracer).should be_true
     tracer.service_name.should eq "my_app_or_library"
     tracer.service_version.should eq "1.1.1"
-    tracer.exporter.should be_a OpenTelemetry::NullExporter
+    tracer.exporter.should be_a OpenTelemetry::Exporter::Null
   end
 
   it "can create a tracer from a provider, overriding the provider configuration" do
     provider = OpenTelemetry::TracerProvider.new(
       service_name: "my_app_or_library",
       service_version: "1.1.1",
-      exporter: OpenTelemetry::NullExporter.new)
+      exporter: OpenTelemetry::Exporter::Null.new)
     tracer = provider.tracer("microservice", "1.2.3")
 
     tracer.is_a?(OpenTelemetry::Tracer).should be_true
     tracer.service_name.should eq "microservice"
     tracer.service_version.should eq "1.2.3"
-    tracer.exporter.should be_a OpenTelemetry::NullExporter
+    tracer.exporter.should be_a OpenTelemetry::Exporter::Null
   end
 
   it "can create a tracer from a provider, overriding the provider configuration using block syntax" do
     provider = OpenTelemetry::TracerProvider.new(
       service_name: "my_app_or_library",
       service_version: "1.1.1",
-      exporter: OpenTelemetry::NullExporter.new)
+      exporter: OpenTelemetry::Exporter::Null.new)
     tracer = provider.tracer do |t|
       t.service_name = "microservice"
       t.service_version = "1.2.3"
@@ -132,6 +132,6 @@ describe OpenTelemetry::TracerProvider do
     tracer.is_a?(OpenTelemetry::Tracer).should be_true
     tracer.service_name.should eq "microservice"
     tracer.service_version.should eq "1.2.3"
-    tracer.exporter.should be_a OpenTelemetry::NullExporter
+    tracer.exporter.should be_a OpenTelemetry::Exporter::Null
   end
 end

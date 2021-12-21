@@ -21,11 +21,11 @@ describe OpenTelemetry do
     tracer = OpenTelemetry.tracer_provider(
       "my_app_or_library",
       "1.2.3",
-      OpenTelemetry::NullExporter.new)
+      OpenTelemetry::Exporter::Null.new)
 
     tracer.service_name.should eq "my_app_or_library"
     tracer.service_version.should eq "1.2.3"
-    tracer.exporter.should be_a OpenTelemetry::NullExporter
+    tracer.exporter.should be_a OpenTelemetry::Exporter::Null
   end
 
   it "substitutes the global provider configuration when values are not provided via method argument initialization" do
@@ -39,12 +39,12 @@ describe OpenTelemetry do
     tracer = OpenTelemetry.tracer_provider do |t|
       t.service_name = "my_app_or_library"
       t.service_version = "1.2.3"
-      t.exporter = OpenTelemetry::NullExporter.new
+      t.exporter = OpenTelemetry::Exporter::Null.new
     end
 
     tracer.service_name.should eq "my_app_or_library"
     tracer.service_version.should eq "1.2.3"
-    tracer.exporter.should be_a OpenTelemetry::NullExporter
+    tracer.exporter.should be_a OpenTelemetry::Exporter::Null
   end
 
   it "substitutes the global provider configuration when values are not set via block initialization" do

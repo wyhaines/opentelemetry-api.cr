@@ -22,7 +22,7 @@ module OpenTelemetry
     def initialize(
       service_name : String = "",
       service_version : String = "",
-      exporter : Exporter = NullExporter.new,
+      exporter : Exporter = Exporter::Null.new,
       id_generator = "unique"
     )
       @config = Configuration.new(

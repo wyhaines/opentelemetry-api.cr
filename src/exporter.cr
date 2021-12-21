@@ -6,16 +6,6 @@ module OpenTelemetry
       export [trace]
     end
   end
-
-  class NullExporter < Exporter
-    def export(traces : Array(Trace))
-    end
-  end
-
-  class StdOutExporter < Exporter
-    def export(traces : Array(Trace))
-    end
-  end
 end
 
 require "./exporters/*"
