@@ -9,7 +9,7 @@ module OpenTelemetry
       class Factory
         property service_name : String = ""
         property service_version : String = ""
-        property exporter : Exporter = Exporter::Abstract.new
+        property exporter : Exporter::Abstract = Exporter::Abstract.new
         property id_generator : IdGenerator
 
         # :nodoc:
