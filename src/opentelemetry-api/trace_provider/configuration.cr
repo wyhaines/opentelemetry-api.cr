@@ -6,7 +6,7 @@ module OpenTelemetry
     record Configuration,
       service_name : String = "",
       service_version : String = "",
-      exporter : Exporter::Null = Exporter::Null.new,
+      exporter : Exporter = Exporter.new(:null),
       id_generator : IdGenerator = IdGenerator.new("unique") do
       def initialize(@service_name, @service_version, @exporter, id_generator : String = "unique")
         @service_name = service_name

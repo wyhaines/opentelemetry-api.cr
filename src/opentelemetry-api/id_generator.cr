@@ -14,8 +14,8 @@ module OpenTelemetry
   struct IdGenerator
     getter generator : OpenTelemetry::IdGenerator::Base
 
-    def initialize(variant = "unique")
-      case variant.downcase
+    def initialize(variant : String | Symbol = "unique")
+      case variant.to_s.downcase
       # TODO: generate this via a macro
       when "unique"
         @generator = OpenTelemetry::IdGenerator::Unique.new

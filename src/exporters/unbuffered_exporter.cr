@@ -8,9 +8,6 @@ module OpenTelemetry
     # It is expected that subclasses will override at least the `handle` method
     # with their own functionality.
     module UnbufferedExporter
-      # As other data types, like metrics or logs are added, expand this aliase
-      # to be a union that supports them, as well.
-      alias Elements = Trace
       @buffer : Channel(Elements) = Channel(Elements).new
 
       def start

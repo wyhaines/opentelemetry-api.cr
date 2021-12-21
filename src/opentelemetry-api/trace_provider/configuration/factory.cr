@@ -9,7 +9,7 @@ module OpenTelemetry
       class Factory
         property service_name : String = ""
         property service_version : String = ""
-        property exporter : Exporter::Abstract = Exporter::Abstract.new
+        property exporter : Exporter  = Exporter.new(:abstract)
         property id_generator : IdGenerator
 
         # :nodoc:
@@ -36,7 +36,7 @@ module OpenTelemetry
         def self.build(
           service_name = "service_#{CSUUID.unique}",
           service_version = "",
-          exporter = Exporter::Abstract.new,
+          exporter = Exporter.new(:abstract),
           id_generator = IdGenerator.new("unique")
         )
           instance = Factory.allocate
@@ -48,7 +48,7 @@ module OpenTelemetry
         def self.build(
           service_name = "service_#{CSUUID.unique}",
           service_version = "",
-          exporter = Exporter::Abstract.new,
+          exporter = Exporter.new(:abstract),
           id_generator = IdGenerator.new("unique")
         )
           instance = Factory.allocate

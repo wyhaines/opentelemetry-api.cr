@@ -1,4 +1,2 @@
-class TestExporter < OpenTelemetry::Exporter
-  def export(traces : Array(Trace))
-  end
+class TestExporter < OpenTelemetry::Exporter::Null
 end

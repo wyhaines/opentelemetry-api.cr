@@ -8,7 +8,7 @@ module OpenTelemetry
     property trace_id : Slice(UInt8) = @@prng.random_bytes(16)
     property service_name : String = ""
     property service_version : String = ""
-    property exporter : Exporter::Abstract = Exporter::Abstract.new
+    property exporter : Exporter = Exporter.new(:abstract)
     getter provider : TraceProvider = TraceProvider.new
     getter span_stack : Array(Span) = [] of Span
     getter root_span : Span? = nil
@@ -47,7 +47,7 @@ module OpenTelemetry
     def merge_configuration_from_provider=(val)
       self.service_name = val.service_name if self.service_name.nil? || self.service_name.empty?
       self.service_version = val.service_version if self.service_version.nil? || self.service_version.empty?
-      self.exporter = val.exporter if self.exporter.nil? || self.exporter.is_a?(Exporter::Abstract)
+      self.exporter = val.exporter if self.exporter.nil? || self.exporter.exporter.is_a?(Exporter::Abstract)
       @provider = val
     end
 

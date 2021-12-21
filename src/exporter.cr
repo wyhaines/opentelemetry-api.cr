@@ -1,9 +1,17 @@
 module OpenTelemetry
-  abstract class Exporter
-    abstract def export(traces : Array(Trace))
+  class Exporter
+    # As other data types, like metrics or logs are added, expand this aliase
+    # to be a union that supports them, as well.
+    alias Elements = Trace
+    getter exporter : Exporter::Base = Exporter::Abstract.new
 
-    def export(trace : Trace)
-      export [trace]
+    def initialize(variant : String | Symbol = :null)
+      case variant.to_s.downcase
+      when "null"
+        @exporter = Exporter::Null.new
+      when "abstract"
+        @exporter = Exporter::Abstract.new
+      end
     end
   end
 end

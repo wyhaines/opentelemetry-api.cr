@@ -95,7 +95,7 @@ module OpenTelemetry
     provider = TraceProvider.new(
       service_name: service_name,
       service_version: service_version,
-      exporter: exporter || Exporter::Abstract.new)
+      exporter: exporter || Exporter.new(:abstract))
     provider.merge_configuration(@@config)
 
     provider.trace

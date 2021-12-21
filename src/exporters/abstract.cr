@@ -1,18 +1,11 @@
-require "./unbuffered_exporter"
+require "./base"
 
 module OpenTelemetry
   class Exporter
     # :nodoc:
-    class Abstract
+    # This class exists only for internal use.
+    class Abstract < Base
       include UnbufferedExporter
-      # This class exists only for internal use.
-      def export(elements : Array(Element))
-        raise NotImplementedError, "Exporter::Abstract.export not implemented; this class is not intended to be used externally"
-      end
-
-      def handle(element)
-        raise NotImplementedError, "Exporter::Abstract.handle not implemented; this class is not intended to be used externally"
-      end
     end
   end
 end

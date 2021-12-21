@@ -1,6 +1,6 @@
 module OpenTelemetry
   class Exporter
-    class Stdout
+    class Stdout < Base
       def export(traces : Array(Trace))
       end
     end

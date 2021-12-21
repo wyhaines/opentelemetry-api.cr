@@ -1,5 +1,4 @@
 require "nbchannel"
-require "./unbuffered_exporter"
 
 module OpenTelemetry
   class Exporter
@@ -8,8 +7,6 @@ module OpenTelemetry
     # enters the channel, and a `handle` method that will handle each data
     # element as it is received.
     module BufferedExporter
-      include UnbufferedExporter
-
       buffer : NBChannel(Elements) = NBChannel(Elements).new
       property batch_size = 100
       property batch_latency = 5
@@ -42,7 +39,6 @@ module OpenTelemetry
           handle(element)
         end
       end
-
     end
   end
 end

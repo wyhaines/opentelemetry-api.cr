@@ -16,18 +16,18 @@ describe OpenTelemetry::TraceProvider do
     provider = OpenTelemetry::TraceProvider.new("my_app_or_library", "1.1.1")
     provider.service_name = "my_app_or_library2"
     provider.service_version = "2.2.2"
-    provider.exporter = OpenTelemetry::Exporter::Null.new
+    provider.exporter = OpenTelemetry::Exporter.new
 
     provider.service_name.should eq "my_app_or_library2"
     provider.service_version.should eq "2.2.2"
-    provider.exporter.should be_a OpenTelemetry::Exporter::Null
+    provider.exporter.should be_a OpenTelemetry::Exporter
   end
 
   it "can replace the configuration of a TraceProvider with new configuration" do
     provider = OpenTelemetry::TraceProvider.new do |config|
       config.service_name = "my_app_or_library"
       config.service_version = "1.1.1"
-      config.exporter = OpenTelemetry::Exporter::Null.new
+      config.exporter = OpenTelemetry::Exporter.new
       config.id_generator = OpenTelemetry::IdGenerator.new("random")
     end
 
@@ -40,7 +40,7 @@ describe OpenTelemetry::TraceProvider do
     provider.configure!(config2)
     provider.service_name.should eq "my_app_or_library2"
     provider.service_version.should eq "2.2.2"
-    provider.exporter.should be_a OpenTelemetry::Exporter::Null
+    provider.exporter.should be_a OpenTelemetry::Exporter
     provider.id_generator.should be_a OpenTelemetry::IdGenerator
     provider.id_generator.generator.should be_a OpenTelemetry::IdGenerator::Unique
   end
@@ -66,10 +66,10 @@ describe OpenTelemetry::TraceProvider do
 
     provider_clone = provider_prime.dup
     reconfig = OpenTelemetry::TraceProvider::Configuration.new(
-      exporter: OpenTelemetry::Exporter::Null.new
+      exporter: OpenTelemetry::Exporter.new
     )
     provider_clone.merge_configuration(reconfig)
-    provider_clone.exporter.should be_a OpenTelemetry::Exporter::Null
+    provider_clone.exporter.should be_a OpenTelemetry::Exporter
 
     provider_clone = provider_prime.dup
     reconfig = OpenTelemetry::TraceProvider::Configuration.new(
@@ -97,33 +97,33 @@ describe OpenTelemetry::TraceProvider do
     provider = OpenTelemetry::TraceProvider.new(
       service_name: "my_app_or_library",
       service_version: "1.1.1",
-      exporter: OpenTelemetry::Exporter::Null.new)
+      exporter: OpenTelemetry::Exporter.new)
     trace = provider.trace
 
     trace.is_a?(OpenTelemetry::Trace).should be_true
     trace.service_name.should eq "my_app_or_library"
     trace.service_version.should eq "1.1.1"
-    trace.exporter.should be_a OpenTelemetry::Exporter::Null
+    trace.exporter.should be_a OpenTelemetry::Exporter
   end
 
   it "can create a trace from a provider, overriding the provider configuration" do
     provider = OpenTelemetry::TraceProvider.new(
       service_name: "my_app_or_library",
       service_version: "1.1.1",
-      exporter: OpenTelemetry::Exporter::Null.new)
+      exporter: OpenTelemetry::Exporter.new)
     trace = provider.trace("microservice", "1.2.3")
 
     trace.is_a?(OpenTelemetry::Trace).should be_true
     trace.service_name.should eq "microservice"
     trace.service_version.should eq "1.2.3"
-    trace.exporter.should be_a OpenTelemetry::Exporter::Null
+    trace.exporter.should be_a OpenTelemetry::Exporter
   end
 
   it "can create a trace from a provider, overriding the provider configuration using block syntax" do
     provider = OpenTelemetry::TraceProvider.new(
       service_name: "my_app_or_library",
       service_version: "1.1.1",
-      exporter: OpenTelemetry::Exporter::Null.new)
+      exporter: OpenTelemetry::Exporter.new)
     trace = provider.trace do |t|
       t.service_name = "microservice"
       t.service_version = "1.2.3"
@@ -132,6 +132,6 @@ describe OpenTelemetry::TraceProvider do
     trace.is_a?(OpenTelemetry::Trace).should be_true
     trace.service_name.should eq "microservice"
     trace.service_version.should eq "1.2.3"
-    trace.exporter.should be_a OpenTelemetry::Exporter::Null
+    trace.exporter.should be_a OpenTelemetry::Exporter
   end
 end
