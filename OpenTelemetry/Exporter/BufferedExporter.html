@@ -13,7 +13,7 @@
 <script type="text/javascript" src="../../js/doc.js"></script>
 
   <meta name="repository-name" content="opentelemetry-api">
-  <title>OpenTelemetry::IdGenerator::Unique - opentelemetry-api main</title>
+  <title>OpenTelemetry::Exporter::BufferedExporter - opentelemetry-api main</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "../../";
   </script>
@@ -121,7 +121,7 @@
       
     </li>
   
-  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Exporter" data-name="opentelemetry::exporter">
+  <li class="parent open current" data-id="opentelemetry-api/OpenTelemetry/Exporter" data-name="opentelemetry::exporter">
       <a href="../../OpenTelemetry/Exporter.html">Exporter</a>
       
         <ul>
@@ -131,7 +131,7 @@
       
     </li>
   
-  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Exporter/BufferedExporter" data-name="opentelemetry::exporter::bufferedexporter">
+  <li class=" current" data-id="opentelemetry-api/OpenTelemetry/Exporter/BufferedExporter" data-name="opentelemetry::exporter::bufferedexporter">
       <a href="../../OpenTelemetry/Exporter/BufferedExporter.html">BufferedExporter</a>
       
     </li>
@@ -161,7 +161,7 @@
       
     </li>
   
-  <li class="parent open current" data-id="opentelemetry-api/OpenTelemetry/IdGenerator" data-name="opentelemetry::idgenerator">
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/IdGenerator" data-name="opentelemetry::idgenerator">
       <a href="../../OpenTelemetry/IdGenerator.html">IdGenerator</a>
       
         <ul>
@@ -176,7 +176,7 @@
       
     </li>
   
-  <li class=" current" data-id="opentelemetry-api/OpenTelemetry/IdGenerator/Unique" data-name="opentelemetry::idgenerator::unique">
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/IdGenerator/Unique" data-name="opentelemetry::idgenerator::unique">
       <a href="../../OpenTelemetry/IdGenerator/Unique.html">Unique</a>
       
     </li>
@@ -775,12 +775,10 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">struct</span> OpenTelemetry::IdGenerator::Unique
+  <span class="kind">module</span> OpenTelemetry::Exporter::BufferedExporter
 
 </h1>
 
-
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="../../OpenTelemetry/IdGenerator/Unique.html">OpenTelemetry::IdGenerator::Unique</a></li><li class="superclass"><a href="../../OpenTelemetry/IdGenerator/Base.html">OpenTelemetry::IdGenerator::Base</a></li><li class="superclass">Struct</li><li class="superclass">Value</li><li class="superclass">Object</li></ul>
 
 
 
@@ -794,8 +792,10 @@
     Overview
   </h2>
 
-  <p>This ID Generator returns guaranteed unique (within the process) IDs
-which are chronologically and logically sortable.</p>
+  <p>A BufferedExporter provides a channel that can receive data to export,
+defines a <code>start</code> method that will spawn a fiber to consume data that
+enters the channel, and a <code><a href="../../OpenTelemetry/Exporter/BufferedExporter.html#handle%28elements%3AArray%28Element%29%29-instance-method">#handle</a></code> method that will handle each data
+element as it is received.</p>
 
 
 
@@ -820,8 +820,8 @@ which are chronologically and logically sortable.</p>
   </h2>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/opentelemetry-api/id_generator/unique.cr#L9" target="_blank">
-        opentelemetry-api/id_generator/unique.cr
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/exporters/buffered_exporter.cr#L9" target="_blank">
+        exporters/buffered_exporter.cr
       </a>
     
     <br/>
@@ -846,16 +846,42 @@ which are chronologically and logically sortable.</p>
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#span_id-instance-method" class="signature"><strong>#span_id</strong></a>
-        
-          <div class="summary"><p>This method will return an ID suitable for use as a Span ID.</p></div>
+        <a href="#batch_interval-instance-method" class="signature"><strong>#batch_interval</strong></a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#trace_id-instance-method" class="signature"><strong>#trace_id</strong></a>
+        <a href="#batch_interval%3D%28batch_interval%29-instance-method" class="signature"><strong>#batch_interval=</strong>(batch_interval)</a>
         
-          <div class="summary"><p>This method will return an ID suitable for use as a Trace ID.</p></div>
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#batch_latency-instance-method" class="signature"><strong>#batch_latency</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#batch_latency%3D%28batch_latency%29-instance-method" class="signature"><strong>#batch_latency=</strong>(batch_latency)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#batch_size-instance-method" class="signature"><strong>#batch_size</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#batch_size%3D%28batch_size%29-instance-method" class="signature"><strong>#batch_size=</strong>(batch_size)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#handle%28elements%3AArray%28Element%29%29-instance-method" class="signature"><strong>#handle</strong>(elements : Array(Element))</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#loop_and_receive-instance-method" class="signature"><strong>#loop_and_receive</strong></a>
         
       </li>
     
@@ -866,69 +892,6 @@ which are chronologically and logically sortable.</p>
 
 
 <div class="methods-inherited">
-  
-    
-
-  <h3>Instance methods inherited from struct <code><a href="../../OpenTelemetry/IdGenerator/Base.html">OpenTelemetry::IdGenerator::Base</a></code></h3>
-  
-  
-    <a href="../../OpenTelemetry/IdGenerator/Base.html#span_id-instance-method" class="tooltip">
-      <span>span_id</span>
-    span_id</a>, 
-    
-  
-    <a href="../../OpenTelemetry/IdGenerator/Base.html#trace_id-instance-method" class="tooltip">
-      <span>trace_id</span>
-    trace_id</a>
-    
-  
-
-
-    
-
-  <h3>Constructor methods inherited from struct <code><a href="../../OpenTelemetry/IdGenerator/Base.html">OpenTelemetry::IdGenerator::Base</a></code></h3>
-  
-  
-    <a href="../../OpenTelemetry/IdGenerator/Base.html#new-class-method" class="tooltip">
-      <span>new</span>
-    new</a>
-    
-  
-
-
-    
-
-
-  
-    
-
-
-    
-
-
-    
-
-
-  
-    
-
-
-    
-
-
-    
-
-
-  
-    
-
-
-    
-
-
-    
-
-
   
 </div>
 
@@ -946,56 +909,130 @@ which are chronologically and logically sortable.</p>
     Instance Method Detail
   </h2>
   
-    <div class="entry-detail" id="span_id-instance-method">
+    <div class="entry-detail" id="batch_interval-instance-method">
       <div class="signature">
         
-        def <strong>span_id</strong>
+        def <strong>batch_interval</strong>
 
-        <a class="method-permalink" href="#span_id-instance-method">#</a>
+        <a class="method-permalink" href="#batch_interval-instance-method">#</a>
       </div>
-      
-        <div class="doc">
-          
-            <div class="doc-inherited">
-              Description copied from struct <a href="../../OpenTelemetry/IdGenerator/Base.html">OpenTelemetry::IdGenerator::Base</a>
-            </div>
-          
-          <p>This method will return an ID suitable for use as a Span ID. The standard offered
-in the open telemetry spec is 64 bits (8 bytes). This is not a hard requirement,
-however, so subclass implementations can return a different length.</p>
-        </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/opentelemetry-api/id_generator/unique.cr#L18" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/exporters/buffered_exporter.cr#L13" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="trace_id-instance-method">
+    <div class="entry-detail" id="batch_interval=(batch_interval)-instance-method">
       <div class="signature">
         
-        def <strong>trace_id</strong>
+        def <strong>batch_interval=</strong>(batch_interval)
 
-        <a class="method-permalink" href="#trace_id-instance-method">#</a>
+        <a class="method-permalink" href="#batch_interval%3D%28batch_interval%29-instance-method">#</a>
       </div>
-      
-        <div class="doc">
-          
-            <div class="doc-inherited">
-              Description copied from struct <a href="../../OpenTelemetry/IdGenerator/Base.html">OpenTelemetry::IdGenerator::Base</a>
-            </div>
-          
-          <p>This method will return an ID suitable for use as a Trace ID. The standard offered
-in the open telemetry spec is 128 bits (16 bytes). This is not a hard requirement,
-however, so subclass implementations can return a different length.</p>
-        </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/opentelemetry-api/id_generator/unique.cr#L14" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/exporters/buffered_exporter.cr#L13" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="batch_latency-instance-method">
+      <div class="signature">
+        
+        def <strong>batch_latency</strong>
+
+        <a class="method-permalink" href="#batch_latency-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/exporters/buffered_exporter.cr#L12" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="batch_latency=(batch_latency)-instance-method">
+      <div class="signature">
+        
+        def <strong>batch_latency=</strong>(batch_latency)
+
+        <a class="method-permalink" href="#batch_latency%3D%28batch_latency%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/exporters/buffered_exporter.cr#L12" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="batch_size-instance-method">
+      <div class="signature">
+        
+        def <strong>batch_size</strong>
+
+        <a class="method-permalink" href="#batch_size-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/exporters/buffered_exporter.cr#L11" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="batch_size=(batch_size)-instance-method">
+      <div class="signature">
+        
+        def <strong>batch_size=</strong>(batch_size)
+
+        <a class="method-permalink" href="#batch_size%3D%28batch_size%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/exporters/buffered_exporter.cr#L11" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="handle(elements:Array(Element))-instance-method">
+      <div class="signature">
+        
+        def <strong>handle</strong>(elements : Array(Element))
+
+        <a class="method-permalink" href="#handle%28elements%3AArray%28Element%29%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/exporters/buffered_exporter.cr#L37" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="loop_and_receive-instance-method">
+      <div class="signature">
+        
+        def <strong>loop_and_receive</strong>
+
+        <a class="method-permalink" href="#loop_and_receive-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/exporters/buffered_exporter.cr#L15" target="_blank">View source</a>]
         
       </div>
     </div>

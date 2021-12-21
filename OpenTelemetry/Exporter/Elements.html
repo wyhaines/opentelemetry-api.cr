@@ -13,7 +13,7 @@
 <script type="text/javascript" src="../../js/doc.js"></script>
 
   <meta name="repository-name" content="opentelemetry-api">
-  <title>OpenTelemetry::IdGenerator::Unique - opentelemetry-api main</title>
+  <title>OpenTelemetry::Exporter::Elements - opentelemetry-api main</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "../../";
   </script>
@@ -121,7 +121,7 @@
       
     </li>
   
-  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Exporter" data-name="opentelemetry::exporter">
+  <li class="parent open current" data-id="opentelemetry-api/OpenTelemetry/Exporter" data-name="opentelemetry::exporter">
       <a href="../../OpenTelemetry/Exporter.html">Exporter</a>
       
         <ul>
@@ -136,7 +136,7 @@
       
     </li>
   
-  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Exporter/Elements" data-name="opentelemetry::exporter::elements">
+  <li class=" current" data-id="opentelemetry-api/OpenTelemetry/Exporter/Elements" data-name="opentelemetry::exporter::elements">
       <a href="../../OpenTelemetry/Exporter/Elements.html">Elements</a>
       
     </li>
@@ -161,7 +161,7 @@
       
     </li>
   
-  <li class="parent open current" data-id="opentelemetry-api/OpenTelemetry/IdGenerator" data-name="opentelemetry::idgenerator">
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/IdGenerator" data-name="opentelemetry::idgenerator">
       <a href="../../OpenTelemetry/IdGenerator.html">IdGenerator</a>
       
         <ul>
@@ -176,7 +176,7 @@
       
     </li>
   
-  <li class=" current" data-id="opentelemetry-api/OpenTelemetry/IdGenerator/Unique" data-name="opentelemetry::idgenerator::unique">
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/IdGenerator/Unique" data-name="opentelemetry::idgenerator::unique">
       <a href="../../OpenTelemetry/IdGenerator/Unique.html">Unique</a>
       
     </li>
@@ -775,12 +775,10 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">struct</span> OpenTelemetry::IdGenerator::Unique
+  <span class="kind">alias</span> OpenTelemetry::Exporter::Elements
 
 </h1>
 
-
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="../../OpenTelemetry/IdGenerator/Unique.html">OpenTelemetry::IdGenerator::Unique</a></li><li class="superclass"><a href="../../OpenTelemetry/IdGenerator/Base.html">OpenTelemetry::IdGenerator::Base</a></li><li class="superclass">Struct</li><li class="superclass">Value</li><li class="superclass">Object</li></ul>
 
 
 
@@ -794,10 +792,20 @@
     Overview
   </h2>
 
-  <p>This ID Generator returns guaranteed unique (within the process) IDs
-which are chronologically and logically sortable.</p>
+  <p>As other data types, like metrics or logs are added, expand this aliase
+to be a union that supports them, as well.</p>
 
 
+
+  <h2>
+    <a id="alias-definition" class="anchor" href="#alias-definition">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Alias Definition
+  </h2>
+  <code><a href="../../OpenTelemetry/Trace.html">OpenTelemetry::Trace</a></code>
 
 
 
@@ -820,8 +828,8 @@ which are chronologically and logically sortable.</p>
   </h2>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/opentelemetry-api/id_generator/unique.cr#L9" target="_blank">
-        opentelemetry-api/id_generator/unique.cr
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/exporter.cr#L5" target="_blank">
+        exporter.cr
       </a>
     
     <br/>
@@ -835,100 +843,11 @@ which are chronologically and logically sortable.</p>
 
 
 
-  <h2>
-    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Instance Method Summary
-  </h2>
-  <ul class="list-summary">
-    
-      <li class="entry-summary">
-        <a href="#span_id-instance-method" class="signature"><strong>#span_id</strong></a>
-        
-          <div class="summary"><p>This method will return an ID suitable for use as a Span ID.</p></div>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#trace_id-instance-method" class="signature"><strong>#trace_id</strong></a>
-        
-          <div class="summary"><p>This method will return an ID suitable for use as a Trace ID.</p></div>
-        
-      </li>
-    
-  </ul>
-
 
 
 
 
 <div class="methods-inherited">
-  
-    
-
-  <h3>Instance methods inherited from struct <code><a href="../../OpenTelemetry/IdGenerator/Base.html">OpenTelemetry::IdGenerator::Base</a></code></h3>
-  
-  
-    <a href="../../OpenTelemetry/IdGenerator/Base.html#span_id-instance-method" class="tooltip">
-      <span>span_id</span>
-    span_id</a>, 
-    
-  
-    <a href="../../OpenTelemetry/IdGenerator/Base.html#trace_id-instance-method" class="tooltip">
-      <span>trace_id</span>
-    trace_id</a>
-    
-  
-
-
-    
-
-  <h3>Constructor methods inherited from struct <code><a href="../../OpenTelemetry/IdGenerator/Base.html">OpenTelemetry::IdGenerator::Base</a></code></h3>
-  
-  
-    <a href="../../OpenTelemetry/IdGenerator/Base.html#new-class-method" class="tooltip">
-      <span>new</span>
-    new</a>
-    
-  
-
-
-    
-
-
-  
-    
-
-
-    
-
-
-    
-
-
-  
-    
-
-
-    
-
-
-    
-
-
-  
-    
-
-
-    
-
-
-    
-
-
   
 </div>
 
@@ -936,70 +855,6 @@ which are chronologically and logically sortable.</p>
 
 
 
-
-  <h2>
-    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Instance Method Detail
-  </h2>
-  
-    <div class="entry-detail" id="span_id-instance-method">
-      <div class="signature">
-        
-        def <strong>span_id</strong>
-
-        <a class="method-permalink" href="#span_id-instance-method">#</a>
-      </div>
-      
-        <div class="doc">
-          
-            <div class="doc-inherited">
-              Description copied from struct <a href="../../OpenTelemetry/IdGenerator/Base.html">OpenTelemetry::IdGenerator::Base</a>
-            </div>
-          
-          <p>This method will return an ID suitable for use as a Span ID. The standard offered
-in the open telemetry spec is 64 bits (8 bytes). This is not a hard requirement,
-however, so subclass implementations can return a different length.</p>
-        </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/opentelemetry-api/id_generator/unique.cr#L18" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="trace_id-instance-method">
-      <div class="signature">
-        
-        def <strong>trace_id</strong>
-
-        <a class="method-permalink" href="#trace_id-instance-method">#</a>
-      </div>
-      
-        <div class="doc">
-          
-            <div class="doc-inherited">
-              Description copied from struct <a href="../../OpenTelemetry/IdGenerator/Base.html">OpenTelemetry::IdGenerator::Base</a>
-            </div>
-          
-          <p>This method will return an ID suitable for use as a Trace ID. The standard offered
-in the open telemetry spec is 128 bits (16 bytes). This is not a hard requirement,
-however, so subclass implementations can return a different length.</p>
-        </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/opentelemetry-api/id_generator/unique.cr#L14" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
 
 
 

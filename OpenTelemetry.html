@@ -121,8 +121,43 @@
       
     </li>
   
-  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Exporter" data-name="opentelemetry::exporter">
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Exporter" data-name="opentelemetry::exporter">
       <a href="OpenTelemetry/Exporter.html">Exporter</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Exporter/Base" data-name="opentelemetry::exporter::base">
+      <a href="OpenTelemetry/Exporter/Base.html">Base</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Exporter/BufferedExporter" data-name="opentelemetry::exporter::bufferedexporter">
+      <a href="OpenTelemetry/Exporter/BufferedExporter.html">BufferedExporter</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Exporter/Elements" data-name="opentelemetry::exporter::elements">
+      <a href="OpenTelemetry/Exporter/Elements.html">Elements</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Exporter/Null" data-name="opentelemetry::exporter::null">
+      <a href="OpenTelemetry/Exporter/Null.html">Null</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Exporter/Stdout" data-name="opentelemetry::exporter::stdout">
+      <a href="OpenTelemetry/Exporter/Stdout.html">Stdout</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Exporter/UnbufferedExporter" data-name="opentelemetry::exporter::unbufferedexporter">
+      <a href="OpenTelemetry/Exporter/UnbufferedExporter.html">UnbufferedExporter</a>
+      
+    </li>
+  
+</ul>
+
       
     </li>
   
@@ -148,11 +183,6 @@
   
 </ul>
 
-      
-    </li>
-  
-  <li class=" " data-id="opentelemetry-api/OpenTelemetry/NullExporter" data-name="opentelemetry::nullexporter">
-      <a href="OpenTelemetry/NullExporter.html">NullExporter</a>
       
     </li>
   
@@ -686,28 +716,23 @@
       
     </li>
   
-  <li class=" " data-id="opentelemetry-api/OpenTelemetry/StdOutExporter" data-name="opentelemetry::stdoutexporter">
-      <a href="OpenTelemetry/StdOutExporter.html">StdOutExporter</a>
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Trace" data-name="opentelemetry::trace">
+      <a href="OpenTelemetry/Trace.html">Trace</a>
       
     </li>
   
-  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Tracer" data-name="opentelemetry::tracer">
-      <a href="OpenTelemetry/Tracer.html">Tracer</a>
-      
-    </li>
-  
-  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/TracerProvider" data-name="opentelemetry::tracerprovider">
-      <a href="OpenTelemetry/TracerProvider.html">TracerProvider</a>
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/TraceProvider" data-name="opentelemetry::traceprovider">
+      <a href="OpenTelemetry/TraceProvider.html">TraceProvider</a>
       
         <ul>
   
-  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/TracerProvider/Configuration" data-name="opentelemetry::tracerprovider::configuration">
-      <a href="OpenTelemetry/TracerProvider/Configuration.html">Configuration</a>
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/TraceProvider/Configuration" data-name="opentelemetry::traceprovider::configuration">
+      <a href="OpenTelemetry/TraceProvider/Configuration.html">Configuration</a>
       
         <ul>
   
-  <li class=" " data-id="opentelemetry-api/OpenTelemetry/TracerProvider/Configuration/Factory" data-name="opentelemetry::tracerprovider::configuration::factory">
-      <a href="OpenTelemetry/TracerProvider/Configuration/Factory.html">Factory</a>
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/TraceProvider/Configuration/Factory" data-name="opentelemetry::traceprovider::configuration::factory">
+      <a href="OpenTelemetry/TraceProvider/Configuration/Factory.html">Factory</a>
       
     </li>
   
@@ -768,7 +793,7 @@
   </h2>
 
   <pre><code class="language-crystal">
-## Global Tracer Provider
+## Global Trace Provider
 ----------------------------------------------------------------
 
 OpenTelemetry.configure do |config|
@@ -777,46 +802,46 @@ OpenTelemetry.configure do |config|
   config.exporter = OpenTelemetry::IOExporter.new(:STDOUT)
 end
 
-tracer = OpenTelemetry.tracer_provider("my_app_or_library", "1.1.1")
-tracer = OpenTelemetry.tracer_provider do |tracer|
-  tracer.service_name = "my_app_or_library"
-  tracer.service_version = "1.1.1"
+trace = OpenTelemetry.trace_provider("my_app_or_library", "1.1.1")
+trace = OpenTelemetry.trace_provider do |trace|
+  trace.service_name = "my_app_or_library"
+  trace.service_version = "1.1.1"
 end
 
-## Tracer Providers as Objects With Unique Configuration
+## Trace Providers as Objects With Unique Configuration
 ----------------------------------------------------------------
 
-provider_a = OpenTelemetry::TracerProvider.new("my_app_or_library", "1.1.1")
+provider_a = OpenTelemetry::TraceProvider.new("my_app_or_library", "1.1.1")
 provider_a.exporter = OpenTelemetry::IOExporter.new(:STDOUT)
 
-provider_b = OpenTelementry::TracerProvider.new do |config|
+provider_b = OpenTelementry::TraceProvider.new do |config|
   config.service_name = "my_app_or_library"
   config.service_version = "1.1.1"
   config.exporter = OpenTelemetry::IOExporter.new(:STDOUT)
 end
 
-## Getting a Tracer From a Provider Object
+## Getting a Trace From a Provider Object
 ----------------------------------------------------------------
 
-tracer = provider_a.tracer # Inherit all configuration from the Provider Object
+trace = provider_a.trace # Inherit all configuration from the Provider Object
 
-tracer = provider_a.tracer("microservice foo", "1.2.3") # Override the configuration
+trace = provider_a.trace("microservice foo", "1.2.3") # Override the configuration
 
-tracer = provider_a.tracer do |tracer|
-  tracer.service_name = "microservice foo"
-  tracer.service_version = "1.2.3"
+trace = provider_a.trace do |trace|
+  trace.service_name = "microservice foo"
+  trace.service_version = "1.2.3"
 end
 
-## Creating Spans Using a Tracer
+## Creating Spans Using a Trace
 ----------------------------------------------------------------
 
-tracer.in_span("request") do |span|
+trace.in_span("request") do |span|
   span.set_attribute("verb", "GET")
   span.set_attribute("url", "http://example.com/foo")
   span.add_event("dispatching to handler")
-  tracer.in_span("handler") do |child_span|
+  trace.in_span("handler") do |child_span|
     child_span.add_event("handling request")
-    tracer.in_span("db") do |child_span|
+    trace.in_span("db") do |child_span|
       child_span.add_event("querying database")
     end
   end
@@ -845,203 +870,238 @@ end</code></pre>
   </h2>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/729f611f41d3e545d2c93c55a977c2102b6fc5a1/src/exporter.cr#L1" target="_blank">
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/exporter.cr#L1" target="_blank">
         exporter.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/729f611f41d3e545d2c93c55a977c2102b6fc5a1/src/exporters/abstract.cr#L1" target="_blank">
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/exporters/abstract.cr#L3" target="_blank">
         exporters/abstract.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/729f611f41d3e545d2c93c55a977c2102b6fc5a1/src/opentelemetry-api.cr#L65" target="_blank">
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/exporters/base.cr#L3" target="_blank">
+        exporters/base.cr
+      </a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/exporters/buffered_exporter.cr#L3" target="_blank">
+        exporters/buffered_exporter.cr
+      </a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/exporters/null.cr#L3" target="_blank">
+        exporters/null.cr
+      </a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/exporters/stdout.cr#L1" target="_blank">
+        exporters/stdout.cr
+      </a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/exporters/unbuffered_exporter.cr#L1" target="_blank">
+        exporters/unbuffered_exporter.cr
+      </a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/opentelemetry-api.cr#L65" target="_blank">
         opentelemetry-api.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/729f611f41d3e545d2c93c55a977c2102b6fc5a1/src/opentelemetry-api/aliases.cr#L1" target="_blank">
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/opentelemetry-api/aliases.cr#L1" target="_blank">
         opentelemetry-api/aliases.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/729f611f41d3e545d2c93c55a977c2102b6fc5a1/src/opentelemetry-api/attribute.cr#L1" target="_blank">
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/opentelemetry-api/attribute.cr#L1" target="_blank">
         opentelemetry-api/attribute.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/729f611f41d3e545d2c93c55a977c2102b6fc5a1/src/opentelemetry-api/context.cr#L4" target="_blank">
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/opentelemetry-api/context.cr#L4" target="_blank">
         opentelemetry-api/context.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/729f611f41d3e545d2c93c55a977c2102b6fc5a1/src/opentelemetry-api/context/key.cr#L1" target="_blank">
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/opentelemetry-api/context/key.cr#L1" target="_blank">
         opentelemetry-api/context/key.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/729f611f41d3e545d2c93c55a977c2102b6fc5a1/src/opentelemetry-api/event.cr#L3" target="_blank">
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/opentelemetry-api/event.cr#L3" target="_blank">
         opentelemetry-api/event.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/729f611f41d3e545d2c93c55a977c2102b6fc5a1/src/opentelemetry-api/id_generator.cr#L3" target="_blank">
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/opentelemetry-api/id_generator.cr#L3" target="_blank">
         opentelemetry-api/id_generator.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/729f611f41d3e545d2c93c55a977c2102b6fc5a1/src/opentelemetry-api/id_generator/base.cr#L1" target="_blank">
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/opentelemetry-api/id_generator/base.cr#L1" target="_blank">
         opentelemetry-api/id_generator/base.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/729f611f41d3e545d2c93c55a977c2102b6fc5a1/src/opentelemetry-api/id_generator/random.cr#L3" target="_blank">
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/opentelemetry-api/id_generator/random.cr#L3" target="_blank">
         opentelemetry-api/id_generator/random.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/729f611f41d3e545d2c93c55a977c2102b6fc5a1/src/opentelemetry-api/id_generator/unique.cr#L6" target="_blank">
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/opentelemetry-api/id_generator/unique.cr#L6" target="_blank">
         opentelemetry-api/id_generator/unique.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/729f611f41d3e545d2c93c55a977c2102b6fc5a1/src/opentelemetry-api/span.cr#L4" target="_blank">
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/opentelemetry-api/span.cr#L4" target="_blank">
         opentelemetry-api/span.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/729f611f41d3e545d2c93c55a977c2102b6fc5a1/src/opentelemetry-api/span_context.cr#L3" target="_blank">
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/opentelemetry-api/span_context.cr#L3" target="_blank">
         opentelemetry-api/span_context.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/729f611f41d3e545d2c93c55a977c2102b6fc5a1/src/opentelemetry-api/tracer.cr#L4" target="_blank">
-        opentelemetry-api/tracer.cr
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/opentelemetry-api/trace.cr#L4" target="_blank">
+        opentelemetry-api/trace.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/729f611f41d3e545d2c93c55a977c2102b6fc5a1/src/opentelemetry-api/tracer_provider.cr#L6" target="_blank">
-        opentelemetry-api/tracer_provider.cr
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/opentelemetry-api/trace_provider.cr#L6" target="_blank">
+        opentelemetry-api/trace_provider.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/729f611f41d3e545d2c93c55a977c2102b6fc5a1/src/opentelemetry-api/tracer_provider/configuration.cr#L3" target="_blank">
-        opentelemetry-api/tracer_provider/configuration.cr
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/opentelemetry-api/trace_provider/configuration.cr#L3" target="_blank">
+        opentelemetry-api/trace_provider/configuration.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/729f611f41d3e545d2c93c55a977c2102b6fc5a1/src/opentelemetry-api/tracer_provider/configuration/factory.cr#L1" target="_blank">
-        opentelemetry-api/tracer_provider/configuration/factory.cr
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/opentelemetry-api/trace_provider/configuration/factory.cr#L1" target="_blank">
+        opentelemetry-api/trace_provider/configuration/factory.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/729f611f41d3e545d2c93c55a977c2102b6fc5a1/src/opentelemetry-api/version.cr#L1" target="_blank">
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/opentelemetry-api/version.cr#L1" target="_blank">
         opentelemetry-api/version.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/729f611f41d3e545d2c93c55a977c2102b6fc5a1/src/proto/common.pb.cr#L4" target="_blank">
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/proto/common.pb.cr#L4" target="_blank">
         proto/common.pb.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/729f611f41d3e545d2c93c55a977c2102b6fc5a1/src/proto/logs.pb.cr#L7" target="_blank">
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/proto/logs.pb.cr#L7" target="_blank">
         proto/logs.pb.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/729f611f41d3e545d2c93c55a977c2102b6fc5a1/src/proto/logs_service.pb.cr#L6" target="_blank">
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/proto/logs_service.pb.cr#L6" target="_blank">
         proto/logs_service.pb.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/729f611f41d3e545d2c93c55a977c2102b6fc5a1/src/proto/metrics.pb.cr#L7" target="_blank">
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/proto/metrics.pb.cr#L7" target="_blank">
         proto/metrics.pb.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/729f611f41d3e545d2c93c55a977c2102b6fc5a1/src/proto/metrics_config_service.pb.cr#L6" target="_blank">
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/proto/metrics_config_service.pb.cr#L6" target="_blank">
         proto/metrics_config_service.pb.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/729f611f41d3e545d2c93c55a977c2102b6fc5a1/src/proto/metrics_service.pb.cr#L6" target="_blank">
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/proto/metrics_service.pb.cr#L6" target="_blank">
         proto/metrics_service.pb.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/729f611f41d3e545d2c93c55a977c2102b6fc5a1/src/proto/resource.pb.cr#L6" target="_blank">
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/proto/resource.pb.cr#L6" target="_blank">
         proto/resource.pb.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/729f611f41d3e545d2c93c55a977c2102b6fc5a1/src/proto/trace.pb.cr#L7" target="_blank">
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/proto/trace.pb.cr#L7" target="_blank">
         proto/trace.pb.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/729f611f41d3e545d2c93c55a977c2102b6fc5a1/src/proto/trace_config.pb.cr#L4" target="_blank">
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/proto/trace_config.pb.cr#L4" target="_blank">
         proto/trace_config.pb.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/729f611f41d3e545d2c93c55a977c2102b6fc5a1/src/proto/trace_service.pb.cr#L6" target="_blank">
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/proto/trace_service.pb.cr#L6" target="_blank">
         proto/trace_service.pb.cr
       </a>
     
@@ -1063,7 +1123,7 @@ end</code></pre>
   <dl>
     
       <dt class="entry-const" id="VERSION">
-        <strong>VERSION</strong> = <code><span class="s">&quot;\&quot;729f611\&quot;&quot;</span></code>
+        <strong>VERSION</strong> = <code><span class="s">&quot;\&quot;006f663\&quot;&quot;</span></code>
       </dt>
       
     
@@ -1094,9 +1154,9 @@ end</code></pre>
       </li>
     
       <li class="entry-summary">
-        <a href="#configure%28%26block%3ATracerProvider%3A%3AConfiguration%3A%3AFactory-%3E%29-class-method" class="signature"><strong>.configure</strong>(&block : TracerProvider::Configuration::Factory -> )</a>
+        <a href="#configure%28%26block%3ATraceProvider%3A%3AConfiguration%3A%3AFactory-%3E%29-class-method" class="signature"><strong>.configure</strong>(&block : TraceProvider::Configuration::Factory -> )</a>
         
-          <div class="summary"><p>Use this method to configure the global tracer provider.</p></div>
+          <div class="summary"><p>Use this method to configure the global trace provider.</p></div>
         
       </li>
     
@@ -1116,17 +1176,17 @@ end</code></pre>
       </li>
     
       <li class="entry-summary">
-        <a href="#tracer_provider%28service_name%3AString%2Cservice_version%3AString%3D%22%22%2Cexporter%3Dnil%29-class-method" class="signature"><strong>.tracer_provider</strong>(service_name : String, service_version : String = <span class="s">&quot;&quot;</span>, exporter = <span class="n">nil</span>)</a>
+        <a href="#trace_provider%28service_name%3AString%2Cservice_version%3AString%3D%22%22%2Cexporter%3Dnil%29-class-method" class="signature"><strong>.trace_provider</strong>(service_name : String, service_version : String = <span class="s">&quot;&quot;</span>, exporter = <span class="n">nil</span>)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#tracer_provider-class-method" class="signature"><strong>.tracer_provider</strong></a>
+        <a href="#trace_provider-class-method" class="signature"><strong>.trace_provider</strong></a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#tracer_provider%28%26block%3ATracerProvider%3A%3AConfiguration%3A%3AFactory-%3E%29-class-method" class="signature"><strong>.tracer_provider</strong>(&block : TracerProvider::Configuration::Factory -> )</a>
+        <a href="#trace_provider%28%26block%3ATraceProvider%3A%3AConfiguration%3A%3AFactory-%3E%29-class-method" class="signature"><strong>.trace_provider</strong>(&block : TraceProvider::Configuration::Factory -> )</a>
         
       </li>
     
@@ -1165,7 +1225,7 @@ end</code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/729f611f41d3e545d2c93c55a977c2102b6fc5a1/src/opentelemetry-api.cr#L66" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/opentelemetry-api.cr#L66" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1181,28 +1241,28 @@ end</code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/729f611f41d3e545d2c93c55a977c2102b6fc5a1/src/opentelemetry-api.cr#L66" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/opentelemetry-api.cr#L66" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="configure(&amp;block:TracerProvider::Configuration::Factory-&gt;)-class-method">
+    <div class="entry-detail" id="configure(&amp;block:TraceProvider::Configuration::Factory-&gt;)-class-method">
       <div class="signature">
         
-        def self.<strong>configure</strong>(&block : <a href="OpenTelemetry/TracerProvider/Configuration/Factory.html">TracerProvider::Configuration::Factory</a> -> )
+        def self.<strong>configure</strong>(&block : <a href="OpenTelemetry/TraceProvider/Configuration/Factory.html">TraceProvider::Configuration::Factory</a> -> )
 
-        <a class="method-permalink" href="#configure%28%26block%3ATracerProvider%3A%3AConfiguration%3A%3AFactory-%3E%29-class-method">#</a>
+        <a class="method-permalink" href="#configure%28%26block%3ATraceProvider%3A%3AConfiguration%3A%3AFactory-%3E%29-class-method">#</a>
       </div>
       
         <div class="doc">
           
-          <p>Use this method to configure the global tracer provider.</p>
+          <p>Use this method to configure the global trace provider.</p>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/729f611f41d3e545d2c93c55a977c2102b6fc5a1/src/opentelemetry-api.cr#L70" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/opentelemetry-api.cr#L70" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1218,7 +1278,7 @@ end</code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/729f611f41d3e545d2c93c55a977c2102b6fc5a1/src/opentelemetry-api.cr#L104" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/opentelemetry-api.cr#L104" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1234,7 +1294,7 @@ end</code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/729f611f41d3e545d2c93c55a977c2102b6fc5a1/src/opentelemetry-api.cr#L67" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/opentelemetry-api.cr#L67" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1250,55 +1310,55 @@ end</code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/729f611f41d3e545d2c93c55a977c2102b6fc5a1/src/opentelemetry-api.cr#L67" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/opentelemetry-api.cr#L67" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="tracer_provider(service_name:String,service_version:String=&quot;&quot;,exporter=nil)-class-method">
+    <div class="entry-detail" id="trace_provider(service_name:String,service_version:String=&quot;&quot;,exporter=nil)-class-method">
       <div class="signature">
         
-        def self.<strong>tracer_provider</strong>(service_name : String, service_version : String = <span class="s">&quot;&quot;</span>, exporter = <span class="n">nil</span>)
+        def self.<strong>trace_provider</strong>(service_name : String, service_version : String = <span class="s">&quot;&quot;</span>, exporter = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#tracer_provider%28service_name%3AString%2Cservice_version%3AString%3D%22%22%2Cexporter%3Dnil%29-class-method">#</a>
+        <a class="method-permalink" href="#trace_provider%28service_name%3AString%2Cservice_version%3AString%3D%22%22%2Cexporter%3Dnil%29-class-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/729f611f41d3e545d2c93c55a977c2102b6fc5a1/src/opentelemetry-api.cr#L90" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/opentelemetry-api.cr#L90" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="tracer_provider-class-method">
+    <div class="entry-detail" id="trace_provider-class-method">
       <div class="signature">
         
-        def self.<strong>tracer_provider</strong>
+        def self.<strong>trace_provider</strong>
 
-        <a class="method-permalink" href="#tracer_provider-class-method">#</a>
+        <a class="method-permalink" href="#trace_provider-class-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/729f611f41d3e545d2c93c55a977c2102b6fc5a1/src/opentelemetry-api.cr#L76" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/opentelemetry-api.cr#L76" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="tracer_provider(&amp;block:TracerProvider::Configuration::Factory-&gt;)-class-method">
+    <div class="entry-detail" id="trace_provider(&amp;block:TraceProvider::Configuration::Factory-&gt;)-class-method">
       <div class="signature">
         
-        def self.<strong>tracer_provider</strong>(&block : <a href="OpenTelemetry/TracerProvider/Configuration/Factory.html">TracerProvider::Configuration::Factory</a> -> )
+        def self.<strong>trace_provider</strong>(&block : <a href="OpenTelemetry/TraceProvider/Configuration/Factory.html">TraceProvider::Configuration::Factory</a> -> )
 
-        <a class="method-permalink" href="#tracer_provider%28%26block%3ATracerProvider%3A%3AConfiguration%3A%3AFactory-%3E%29-class-method">#</a>
+        <a class="method-permalink" href="#trace_provider%28%26block%3ATraceProvider%3A%3AConfiguration%3A%3AFactory-%3E%29-class-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/729f611f41d3e545d2c93c55a977c2102b6fc5a1/src/opentelemetry-api.cr#L80" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/opentelemetry-api.cr#L80" target="_blank">View source</a>]
         
       </div>
     </div>
