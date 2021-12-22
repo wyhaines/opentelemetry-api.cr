@@ -1,3 +1,5 @@
+require "../proto/trace.pb"
+require "../proto/trace_service.pb"
 require "./span"
 require "random/isaac"
 
@@ -14,6 +16,8 @@ module OpenTelemetry
     getter root_span : Span? = nil
     property current_span : Span? = nil
     property span_context : SpanContext = SpanContext.new
+    @exported : Bool = false
+    @lock : Mutex = Mutex.new
 
     def self.prng : Random::ISAAC
       @@prng
@@ -57,7 +61,8 @@ module OpenTelemetry
         ctx.span_id = @provider.id_generator.span_id
       end
 
-      if @root_span.nil?
+      if @root_span.nil? || @exported
+        @exported = false
         @root_span = @current_span = span
       else
         span.parent = @span_stack.last
@@ -66,6 +71,8 @@ module OpenTelemetry
       end
       @span_stack << span
       yield span
+      span.finish = Time.monotonic
+      span.wall_finish = Time.utc
       if @span_stack.last == span
         @span_stack.pop
         @current_span = @span_stack.last?
@@ -73,7 +80,61 @@ module OpenTelemetry
         raise "Unexpected Error: Invalid Spans in the Span Stack. Expected #{span.inspect} but found #{span_stack.last.inspect}"
       end
 
-      # TODO: Determine if we need to export the span
+      if span == @root_span && !@exported
+        @exporter.export self
+        @exported = true
+      end
+    end
+
+    private def iterate_span_nodes(span, buffer)
+      iterate_span_nodes(span) do |s|
+        buffer << s if s
+      end
+
+      buffer
+    end
+
+    private def iterate_span_nodes(span, &blk : Span? ->)
+      yield span if span
+      if span && span.children
+        span.children.each do |child|
+          iterate_span_nodes(child, &blk) if child
+        end
+      end
+    end
+
+
+    # This method returns a ProtoBuf object containing all of the Trace information.
+    def to_protobuf
+      Proto::Trace::V1::ResourceSpans.new(
+        instrumentation_library_spans: [
+          Proto::Trace::V1::InstrumentationLibrarySpans.new(
+            instrumentation_library: Proto::Common::V1::InstrumentationLibrary.new(
+              name: "OpenTelemetry Crystal",
+              version: VERSION,
+            ),
+            spans: iterate_span_nodes(root_span, [] of Span).map(&.to_protobuf)
+          ),
+        ],
+      )
+    end
+
+    def to_json
+      String.build do |json|
+        json << "{\n"
+        json << "  \"type\":\"trace\",\n"
+        json << "  \"traceId\":\"#{trace_id.hexstring}\",\n"
+        json << "  \"spans\":[\n"
+        json << String.build do |span_list|
+          iterate_span_nodes(root_span) do |span|
+            span_list << "    "
+            span_list << span.to_json if span
+            span_list << ",\n"
+          end
+        end.chomp(",\n")
+        json << "\n  ]\n"
+        json << "}"
+      end
     end
   end
 end

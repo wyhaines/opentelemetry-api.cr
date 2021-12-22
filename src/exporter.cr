@@ -13,6 +13,14 @@ module OpenTelemetry
         @exporter = Exporter::Abstract.new
       end
     end
+
+    def export(elements : Array(Elements))
+      @exporter.export(elements)
+    end
+
+    def export(element : Elements)
+      @exporter.export(element)
+    end
   end
 end
 

@@ -169,5 +169,9 @@ module OpenTelemetry
         raise "Expected Attribute(Array) for #[]=(index : Int, value : ValueType), not #{@raw.value.class}"
       end
     end
+
+    def to_json
+      "\"#{key}\":#{value.to_json}"
+    end
   end
 end

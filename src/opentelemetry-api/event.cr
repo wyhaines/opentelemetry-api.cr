@@ -2,7 +2,6 @@ require "./attribute"
 
 module OpenTelemetry
   class Event
-    property identifier : CSUUID = CSUUID.unique
     property name : String = ""
     property timestamp : Time::Span = Time.monotonic
     property wall_timestamp : Time = Time.utc
@@ -47,6 +46,24 @@ module OpenTelemetry
 
     def get_attribute(key)
       attributes[key]
+    end
+
+    def time_unix_nano
+      (wall_timestamp - Time::UNIX_EPOCH).total_nanoseconds.to_u64
+    end
+
+    def to_json
+      String.build do |json|
+        json << "    {\n"
+        json << "        \"type\": \"event\",\n"
+        json << "        \"name\": \"#{name}\",\n"
+        json << "        \"timestamp\": #{time_unix_nano},\n"
+        json << "        \"attributes\":{\n"
+        attributes.each do |key, value|
+          json << "          #{value.to_json},\n"
+        end
+        json << "        }"
+      end
     end
   end
 end

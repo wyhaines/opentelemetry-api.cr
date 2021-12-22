@@ -10,6 +10,20 @@ module OpenTelemetry
     module UnbufferedExporter
       @buffer : Channel(Elements) = Channel(Elements).new
 
+      def initialize
+        start
+      end
+
+      def export(elements : Array(Elements))
+        elements.each do |element|
+          @buffer.send element
+        end
+      end
+
+      def export(element : Elements)
+        @buffer.send element
+      end
+
       def start
         spawn loop_and_receive
       end

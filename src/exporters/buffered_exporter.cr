@@ -7,13 +7,15 @@ module OpenTelemetry
     # enters the channel, and a `handle` method that will handle each data
     # element as it is received.
     module BufferedExporter
+      include UnbufferedExporter
+
       buffer : NBChannel(Elements) = NBChannel(Elements).new
       property batch_size = 100
       property batch_latency = 5
       property batch_interval = 0.05
 
       def loop_and_receive
-        elements = [] of Element
+        elements = [] of Elements
         mark = Time.monotonic
         loop do
           # Consume elements into an internal buffer until the buffer has reached
@@ -34,10 +36,10 @@ module OpenTelemetry
         end
       end
 
-      def handle(elements : Array(Element))
-        elements.each do |element|
-          handle(element)
-        end
+      abstract def handle(elements : Array(Elements))
+
+      def handle(element : Elements)
+        handle [element]
       end
     end
   end
