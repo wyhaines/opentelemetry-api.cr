@@ -7,18 +7,26 @@ module OpenTelemetry
     alias Elements = Trace
     getter exporter : Exporter::Base | Exporter::BufferedBase = Exporter::Abstract.new
 
-    def initialize(variant : String | Symbol = :null, *args, **kwargs, &blk : Exporter::Base | Exporter::BufferedBase ->)
+    def initialize(variant : String | Symbol = :null, *args, **kwargs, &blk : Exporter::Base? | Exporter::BufferedBase?)
       case variant.to_s.downcase
       when "null"
-        @exporter = Exporter::Null.new
+        @exporter = Exporter::Null.new(*args, **kwargs)
       when "abstract"
-        @exporter = Exporter::Abstract.new
+        @exporter = Exporter::Abstract.new(*args, **kwargs)
       when "stdout"
-        @exporter = Exporter::Stdout.new
+        @exporter = Exporter::Stdout.new(*args, **kwargs)
       when "http"
-        @exporter = Exporter::Http.new
+        if blk
+          @exporter = Exporter::Http.new(&blk)
+        else
+          @exporter = Exporter::Http.new(*args, **kwargs)
+        end
       when "grpc"
-        @exporter = Exporter::Grpc.new
+        if blk
+          @exporter = Exporter::Grpc.new(&blk)
+        else
+          @exporter = Exporter::Grpc.new(*args, **kwargs)
+        end
       end
     end
 
