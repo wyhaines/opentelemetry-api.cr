@@ -9,14 +9,13 @@ module OpenTelemetry
       property endpoint_uri : URI = URI.parse("http://localhost:8080/")
 
       def initialize(endpoint, @headers, @clients)
-        @endpoint_uri = uninitialized URI
+        @endpoint_uri = endpoint
         @headers = HTTP::Headers.new unless @headers
         @clients = uninitialized DB::Pool(HTTP::Client) unless @clients
         initialize_client_pool
       end
 
       def initialize
-        @endpoint_uri = uninitialized URI
         @clients = uninitialized DB::Pool(HTTP::Client)
         yield self
         initialize_client_pool
