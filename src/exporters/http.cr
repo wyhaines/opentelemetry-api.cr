@@ -10,11 +10,12 @@ module OpenTelemetry
 
       def initialize(endpoint, @headers, @clients)
         @endpoint_uri = uninitialized URI
-        @clients = uninitialized DB::Pool(HTTP::Client)
+        @headers = HTTP::Headers.new unless @headers
+        @clients = uninitialized DB::Pool(HTTP::Client) unless @clients
         initialize_client_pool
       end
 
-      def initialize(&blk : Http ->)
+      def initialize
         @endpoint_uri = uninitialized URI
         @clients = uninitialized DB::Pool(HTTP::Client)
         yield self
