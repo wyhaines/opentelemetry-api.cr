@@ -131,6 +131,11 @@
       
     </li>
   
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Exporter/BufferedBase" data-name="opentelemetry::exporter::bufferedbase">
+      <a href="../../OpenTelemetry/Exporter/BufferedBase.html">BufferedBase</a>
+      
+    </li>
+  
   <li class=" " data-id="opentelemetry-api/OpenTelemetry/Exporter/BufferedExporter" data-name="opentelemetry::exporter::bufferedexporter">
       <a href="../../OpenTelemetry/Exporter/BufferedExporter.html">BufferedExporter</a>
       
@@ -138,6 +143,16 @@
   
   <li class=" " data-id="opentelemetry-api/OpenTelemetry/Exporter/Elements" data-name="opentelemetry::exporter::elements">
       <a href="../../OpenTelemetry/Exporter/Elements.html">Elements</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Exporter/GRPC" data-name="opentelemetry::exporter::grpc">
+      <a href="../../OpenTelemetry/Exporter/GRPC.html">GRPC</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Exporter/Http" data-name="opentelemetry::exporter::http">
+      <a href="../../OpenTelemetry/Exporter/Http.html">Http</a>
       
     </li>
   
@@ -822,6 +837,8 @@ with their own functionality.</p>
     
       <li class="other-type"><a href="../../OpenTelemetry/Exporter/Base.html">OpenTelemetry::Exporter::Base</a></li>
     
+      <li class="other-type"><a href="../../OpenTelemetry/Exporter/BufferedExporter.html">OpenTelemetry::Exporter::BufferedExporter</a></li>
+    
   </ul>
 
 
@@ -837,7 +854,7 @@ with their own functionality.</p>
   </h2>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/exporters/unbuffered_exporter.cr#L10" target="_blank">
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/148f1ef8e11808432a1fdbcb8603c14548567b25/src/exporters/unbuffered_exporter.cr#L10" target="_blank">
         exporters/unbuffered_exporter.cr
       </a>
     
@@ -847,6 +864,23 @@ with their own functionality.</p>
 
 
 
+
+  <h2>
+    <a id="constructors" class="anchor" href="#constructors">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructors
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new-class-method" class="signature"><strong>.new</strong></a>
+        
+      </li>
+    
+  </ul>
 
 
 
@@ -861,6 +895,16 @@ with their own functionality.</p>
     Instance Method Summary
   </h2>
   <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#export%28elements%3AArray%28Elements%29%29-instance-method" class="signature"><strong>#export</strong>(elements : Array(Elements))</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#export%28element%3AElements%29-instance-method" class="signature"><strong>#export</strong>(element : Elements)</a>
+        
+      </li>
     
       <li class="entry-summary">
         <a href="#handle%28element%29-instance-method" class="signature"><strong>#handle</strong>(element)</a>
@@ -888,6 +932,32 @@ with their own functionality.</p>
 </div>
 
 
+  <h2>
+    <a id="constructor-detail" class="anchor" href="#constructor-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructor Detail
+  </h2>
+  
+    <div class="entry-detail" id="new-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>
+
+        <a class="method-permalink" href="#new-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/148f1ef8e11808432a1fdbcb8603c14548567b25/src/exporters/unbuffered_exporter.cr#L13" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
 
 
 
@@ -901,6 +971,38 @@ with their own functionality.</p>
     Instance Method Detail
   </h2>
   
+    <div class="entry-detail" id="export(elements:Array(Elements))-instance-method">
+      <div class="signature">
+        
+        def <strong>export</strong>(elements : Array(<a href="../../OpenTelemetry/Exporter/Elements.html">Elements</a>))
+
+        <a class="method-permalink" href="#export%28elements%3AArray%28Elements%29%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/148f1ef8e11808432a1fdbcb8603c14548567b25/src/exporters/unbuffered_exporter.cr#L17" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="export(element:Elements)-instance-method">
+      <div class="signature">
+        
+        def <strong>export</strong>(element : <a href="../../OpenTelemetry/Exporter/Elements.html">Elements</a>)
+
+        <a class="method-permalink" href="#export%28element%3AElements%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/148f1ef8e11808432a1fdbcb8603c14548567b25/src/exporters/unbuffered_exporter.cr#L23" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="handle(element)-instance-method">
       <div class="signature">
         abstract 
@@ -912,7 +1014,7 @@ with their own functionality.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/exporters/unbuffered_exporter.cr#L26" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/148f1ef8e11808432a1fdbcb8603c14548567b25/src/exporters/unbuffered_exporter.cr#L40" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -928,7 +1030,7 @@ with their own functionality.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/exporters/unbuffered_exporter.cr#L17" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/148f1ef8e11808432a1fdbcb8603c14548567b25/src/exporters/unbuffered_exporter.cr#L31" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -944,7 +1046,7 @@ with their own functionality.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/exporters/unbuffered_exporter.cr#L13" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/148f1ef8e11808432a1fdbcb8603c14548567b25/src/exporters/unbuffered_exporter.cr#L27" target="_blank">View source</a>]
         
       </div>
     </div>

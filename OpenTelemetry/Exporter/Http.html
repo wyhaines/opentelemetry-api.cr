@@ -13,7 +13,7 @@
 <script type="text/javascript" src="../../js/doc.js"></script>
 
   <meta name="repository-name" content="opentelemetry-api">
-  <title>OpenTelemetry::Exporter::Stdout - opentelemetry-api main</title>
+  <title>OpenTelemetry::Exporter::Http - opentelemetry-api main</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "../../";
   </script>
@@ -151,7 +151,7 @@
       
     </li>
   
-  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Exporter/Http" data-name="opentelemetry::exporter::http">
+  <li class=" current" data-id="opentelemetry-api/OpenTelemetry/Exporter/Http" data-name="opentelemetry::exporter::http">
       <a href="../../OpenTelemetry/Exporter/Http.html">Http</a>
       
     </li>
@@ -161,7 +161,7 @@
       
     </li>
   
-  <li class=" current" data-id="opentelemetry-api/OpenTelemetry/Exporter/Stdout" data-name="opentelemetry::exporter::stdout">
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Exporter/Stdout" data-name="opentelemetry::exporter::stdout">
       <a href="../../OpenTelemetry/Exporter/Stdout.html">Stdout</a>
       
     </li>
@@ -790,12 +790,12 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">class</span> OpenTelemetry::Exporter::Stdout
+  <span class="kind">class</span> OpenTelemetry::Exporter::Http
 
 </h1>
 
 
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="../../OpenTelemetry/Exporter/Stdout.html">OpenTelemetry::Exporter::Stdout</a></li><li class="superclass"><a href="../../OpenTelemetry/Exporter/BufferedBase.html">OpenTelemetry::Exporter::BufferedBase</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../../OpenTelemetry/Exporter/Http.html">OpenTelemetry::Exporter::Http</a></li><li class="superclass"><a href="../../OpenTelemetry/Exporter/BufferedBase.html">OpenTelemetry::Exporter::BufferedBase</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
 
 
 
@@ -807,6 +807,20 @@
 
 
 
+
+  <h2>
+    <a id="direct-known-subclasses" class="anchor" href="#direct-known-subclasses">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Direct Known Subclasses
+  </h2>
+  <ul class="other-types-list">
+    
+      <li class="other-type"><a href="../../OpenTelemetry/Exporter/GRPC.html">OpenTelemetry::Exporter::GRPC</a></li>
+    
+  </ul>
 
 
 
@@ -823,8 +837,8 @@
   </h2>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/148f1ef8e11808432a1fdbcb8603c14548567b25/src/exporters/stdout.cr#L3" target="_blank">
-        exporters/stdout.cr
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/148f1ef8e11808432a1fdbcb8603c14548567b25/src/exporters/http.cr#L6" target="_blank">
+        exporters/http.cr
       </a>
     
     <br/>
@@ -833,6 +847,28 @@
 
 
 
+
+  <h2>
+    <a id="constructors" class="anchor" href="#constructors">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructors
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28endpoint%2Cheaders%2Cclients%29-class-method" class="signature"><strong>.new</strong>(endpoint, headers, clients)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new%28%26%29-class-method" class="signature"><strong>.new</strong>(&)</a>
+        
+      </li>
+    
+  </ul>
 
 
 
@@ -849,7 +885,74 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
+        <a href="#clients%3ADB%3A%3APool%28HTTP%3A%3AClient%29-instance-method" class="signature"><strong>#clients</strong> : DB::Pool(HTTP::Client)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#clients%3D%28clients%3ADB%3A%3APool%28HTTP%3A%3AClient%29%29-instance-method" class="signature"><strong>#clients=</strong>(clients : DB::Pool(HTTP::Client))</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#collate%28elements%29-instance-method" class="signature"><strong>#collate</strong>(elements)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#endpoint%3AURI-instance-method" class="signature"><strong>#endpoint</strong> : URI</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#endpoint%3D%28uri%3AString%29-instance-method" class="signature"><strong>#endpoint=</strong>(uri : String)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#endpoint%3D%28uri%3AUri%29-instance-method" class="signature"><strong>#endpoint=</strong>(uri : Uri)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#endpoint_uri%3AURI-instance-method" class="signature"><strong>#endpoint_uri</strong> : URI</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#endpoint_uri%3D%28endpoint_uri%3AURI%29-instance-method" class="signature"><strong>#endpoint_uri=</strong>(endpoint_uri : URI)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#generate_payload%28request%29-instance-method" class="signature"><strong>#generate_payload</strong>(request)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#handle%28elements%3AArray%28Elements%29%29-instance-method" class="signature"><strong>#handle</strong>(elements : Array(Elements))</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#headers%3AHTTP%3A%3AHeaders-instance-method" class="signature"><strong>#headers</strong> : HTTP::Headers</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#headers%3D%28headers%3AHTTP%3A%3AHeaders%29-instance-method" class="signature"><strong>#headers=</strong>(headers : HTTP::Headers)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#initialize_client_pool-instance-method" class="signature"><strong>#initialize_client_pool</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#setup_standard_headers%28headers%29-instance-method" class="signature"><strong>#setup_standard_headers</strong>(headers)</a>
+        
+          <div class="summary"><p>For other HTTP based protocols, such as gRPC, this method should be overridden to set the appropriate protocol specific headers.</p></div>
         
       </li>
     
@@ -1005,6 +1108,48 @@
 </div>
 
 
+  <h2>
+    <a id="constructor-detail" class="anchor" href="#constructor-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructor Detail
+  </h2>
+  
+    <div class="entry-detail" id="new(endpoint,headers,clients)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(endpoint, headers, clients)
+
+        <a class="method-permalink" href="#new%28endpoint%2Cheaders%2Cclients%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/148f1ef8e11808432a1fdbcb8603c14548567b25/src/exporters/http.cr#L11" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(&amp;)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(&)
+
+        <a class="method-permalink" href="#new%28%26%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/148f1ef8e11808432a1fdbcb8603c14548567b25/src/exporters/http.cr#L17" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
 
 
 
@@ -1018,6 +1163,150 @@
     Instance Method Detail
   </h2>
   
+    <div class="entry-detail" id="clients:DB::Pool(HTTP::Client)-instance-method">
+      <div class="signature">
+        
+        def <strong>clients</strong> : DB::Pool(HTTP::Client)
+
+        <a class="method-permalink" href="#clients%3ADB%3A%3APool%28HTTP%3A%3AClient%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/148f1ef8e11808432a1fdbcb8603c14548567b25/src/exporters/http.cr#L7" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="clients=(clients:DB::Pool(HTTP::Client))-instance-method">
+      <div class="signature">
+        
+        def <strong>clients=</strong>(clients : DB::Pool(HTTP::Client))
+
+        <a class="method-permalink" href="#clients%3D%28clients%3ADB%3A%3APool%28HTTP%3A%3AClient%29%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/148f1ef8e11808432a1fdbcb8603c14548567b25/src/exporters/http.cr#L7" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="collate(elements)-instance-method">
+      <div class="signature">
+        
+        def <strong>collate</strong>(elements)
+
+        <a class="method-permalink" href="#collate%28elements%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/148f1ef8e11808432a1fdbcb8603c14548567b25/src/exporters/http.cr#L88" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="endpoint:URI-instance-method">
+      <div class="signature">
+        
+        def <strong>endpoint</strong> : URI
+
+        <a class="method-permalink" href="#endpoint%3AURI-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/148f1ef8e11808432a1fdbcb8603c14548567b25/src/exporters/http.cr#L49" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="endpoint=(uri:String)-instance-method">
+      <div class="signature">
+        
+        def <strong>endpoint=</strong>(uri : String)
+
+        <a class="method-permalink" href="#endpoint%3D%28uri%3AString%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/148f1ef8e11808432a1fdbcb8603c14548567b25/src/exporters/http.cr#L58" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="endpoint=(uri:Uri)-instance-method">
+      <div class="signature">
+        
+        def <strong>endpoint=</strong>(uri : Uri)
+
+        <a class="method-permalink" href="#endpoint%3D%28uri%3AUri%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/148f1ef8e11808432a1fdbcb8603c14548567b25/src/exporters/http.cr#L53" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="endpoint_uri:URI-instance-method">
+      <div class="signature">
+        
+        def <strong>endpoint_uri</strong> : URI
+
+        <a class="method-permalink" href="#endpoint_uri%3AURI-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/148f1ef8e11808432a1fdbcb8603c14548567b25/src/exporters/http.cr#L9" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="endpoint_uri=(endpoint_uri:URI)-instance-method">
+      <div class="signature">
+        
+        def <strong>endpoint_uri=</strong>(endpoint_uri : URI)
+
+        <a class="method-permalink" href="#endpoint_uri%3D%28endpoint_uri%3AURI%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/148f1ef8e11808432a1fdbcb8603c14548567b25/src/exporters/http.cr#L9" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="generate_payload(request)-instance-method">
+      <div class="signature">
+        
+        def <strong>generate_payload</strong>(request)
+
+        <a class="method-permalink" href="#generate_payload%28request%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/148f1ef8e11808432a1fdbcb8603c14548567b25/src/exporters/http.cr#L84" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="handle(elements:Array(Elements))-instance-method">
       <div class="signature">
         
@@ -1029,7 +1318,77 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/148f1ef8e11808432a1fdbcb8603c14548567b25/src/exporters/stdout.cr#L4" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/148f1ef8e11808432a1fdbcb8603c14548567b25/src/exporters/http.cr#L63" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="headers:HTTP::Headers-instance-method">
+      <div class="signature">
+        
+        def <strong>headers</strong> : HTTP::Headers
+
+        <a class="method-permalink" href="#headers%3AHTTP%3A%3AHeaders-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/148f1ef8e11808432a1fdbcb8603c14548567b25/src/exporters/http.cr#L8" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="headers=(headers:HTTP::Headers)-instance-method">
+      <div class="signature">
+        
+        def <strong>headers=</strong>(headers : HTTP::Headers)
+
+        <a class="method-permalink" href="#headers%3D%28headers%3AHTTP%3A%3AHeaders%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/148f1ef8e11808432a1fdbcb8603c14548567b25/src/exporters/http.cr#L8" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="initialize_client_pool-instance-method">
+      <div class="signature">
+        
+        def <strong>initialize_client_pool</strong>
+
+        <a class="method-permalink" href="#initialize_client_pool-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/148f1ef8e11808432a1fdbcb8603c14548567b25/src/exporters/http.cr#L24" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="setup_standard_headers(headers)-instance-method">
+      <div class="signature">
+        
+        def <strong>setup_standard_headers</strong>(headers)
+
+        <a class="method-permalink" href="#setup_standard_headers%28headers%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>For other HTTP based protocols, such as gRPC, this method should be
+overridden to set the appropriate protocol specific headers.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/148f1ef8e11808432a1fdbcb8603c14548567b25/src/exporters/http.cr#L44" target="_blank">View source</a>]
         
       </div>
     </div>

@@ -131,6 +131,11 @@
       
     </li>
   
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Exporter/BufferedBase" data-name="opentelemetry::exporter::bufferedbase">
+      <a href="../../OpenTelemetry/Exporter/BufferedBase.html">BufferedBase</a>
+      
+    </li>
+  
   <li class=" current" data-id="opentelemetry-api/OpenTelemetry/Exporter/BufferedExporter" data-name="opentelemetry::exporter::bufferedexporter">
       <a href="../../OpenTelemetry/Exporter/BufferedExporter.html">BufferedExporter</a>
       
@@ -138,6 +143,16 @@
   
   <li class=" " data-id="opentelemetry-api/OpenTelemetry/Exporter/Elements" data-name="opentelemetry::exporter::elements">
       <a href="../../OpenTelemetry/Exporter/Elements.html">Elements</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Exporter/GRPC" data-name="opentelemetry::exporter::grpc">
+      <a href="../../OpenTelemetry/Exporter/GRPC.html">GRPC</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Exporter/Http" data-name="opentelemetry::exporter::http">
+      <a href="../../OpenTelemetry/Exporter/Http.html">Http</a>
       
     </li>
   
@@ -794,18 +809,46 @@
 
   <p>A BufferedExporter provides a channel that can receive data to export,
 defines a <code>start</code> method that will spawn a fiber to consume data that
-enters the channel, and a <code><a href="../../OpenTelemetry/Exporter/BufferedExporter.html#handle%28elements%3AArray%28Element%29%29-instance-method">#handle</a></code> method that will handle each data
+enters the channel, and a <code><a href="../../OpenTelemetry/Exporter/BufferedExporter.html#handle%28elements%3AArray%28Elements%29%29-instance-method">#handle</a></code> method that will handle each data
 element as it is received.</p>
 
 
 
 
 
+  <h2>
+    <a id="included-modules" class="anchor" href="#included-modules">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Included Modules
+  </h2>
+  <ul class="other-types-list">
+    
+      <li class="other-type"><a href="../../OpenTelemetry/Exporter/UnbufferedExporter.html">OpenTelemetry::Exporter::UnbufferedExporter</a></li>
+    
+  </ul>
 
 
 
 
 
+
+
+  <h2>
+    <a id="direct-including-types" class="anchor" href="#direct-including-types">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Direct including types
+  </h2>
+  <ul class="other-types-list">
+    
+      <li class="other-type"><a href="../../OpenTelemetry/Exporter/BufferedBase.html">OpenTelemetry::Exporter::BufferedBase</a></li>
+    
+  </ul>
 
 
 
@@ -820,7 +863,7 @@ element as it is received.</p>
   </h2>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/exporters/buffered_exporter.cr#L9" target="_blank">
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/148f1ef8e11808432a1fdbcb8603c14548567b25/src/exporters/buffered_exporter.cr#L9" target="_blank">
         exporters/buffered_exporter.cr
       </a>
     
@@ -876,7 +919,12 @@ element as it is received.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#handle%28elements%3AArray%28Element%29%29-instance-method" class="signature"><strong>#handle</strong>(elements : Array(Element))</a>
+        <a href="#handle%28elements%3AArray%28Elements%29%29-instance-method" class="signature"><strong>#handle</strong>(elements : Array(Elements))</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#handle%28element%3AElements%29-instance-method" class="signature"><strong>#handle</strong>(element : Elements)</a>
         
       </li>
     
@@ -892,6 +940,49 @@ element as it is received.</p>
 
 
 <div class="methods-inherited">
+  
+    
+
+  <h3>Instance methods inherited from module <code><a href="../../OpenTelemetry/Exporter/UnbufferedExporter.html">OpenTelemetry::Exporter::UnbufferedExporter</a></code></h3>
+  
+  
+    <a href="../../OpenTelemetry/Exporter/UnbufferedExporter.html#export%28elements%3AArray%28Elements%29%29-instance-method" class="tooltip">
+      <span>export(elements : Array(Elements))<br/>export(element : Elements)</span>
+    export</a>, 
+    
+  
+    <a href="../../OpenTelemetry/Exporter/UnbufferedExporter.html#handle%28element%29-instance-method" class="tooltip">
+      <span>handle(element)</span>
+    handle</a>, 
+    
+  
+    <a href="../../OpenTelemetry/Exporter/UnbufferedExporter.html#loop_and_receive-instance-method" class="tooltip">
+      <span>loop_and_receive</span>
+    loop_and_receive</a>, 
+    
+  
+    <a href="../../OpenTelemetry/Exporter/UnbufferedExporter.html#start-instance-method" class="tooltip">
+      <span>start</span>
+    start</a>
+    
+  
+
+
+    
+
+  <h3>Constructor methods inherited from module <code><a href="../../OpenTelemetry/Exporter/UnbufferedExporter.html">OpenTelemetry::Exporter::UnbufferedExporter</a></code></h3>
+  
+  
+    <a href="../../OpenTelemetry/Exporter/UnbufferedExporter.html#new-class-method" class="tooltip">
+      <span>new</span>
+    new</a>
+    
+  
+
+
+    
+
+
   
 </div>
 
@@ -920,7 +1011,7 @@ element as it is received.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/exporters/buffered_exporter.cr#L13" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/148f1ef8e11808432a1fdbcb8603c14548567b25/src/exporters/buffered_exporter.cr#L15" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -936,7 +1027,7 @@ element as it is received.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/exporters/buffered_exporter.cr#L13" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/148f1ef8e11808432a1fdbcb8603c14548567b25/src/exporters/buffered_exporter.cr#L15" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -952,7 +1043,7 @@ element as it is received.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/exporters/buffered_exporter.cr#L12" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/148f1ef8e11808432a1fdbcb8603c14548567b25/src/exporters/buffered_exporter.cr#L14" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -968,7 +1059,7 @@ element as it is received.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/exporters/buffered_exporter.cr#L12" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/148f1ef8e11808432a1fdbcb8603c14548567b25/src/exporters/buffered_exporter.cr#L14" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -984,7 +1075,7 @@ element as it is received.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/exporters/buffered_exporter.cr#L11" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/148f1ef8e11808432a1fdbcb8603c14548567b25/src/exporters/buffered_exporter.cr#L13" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1000,23 +1091,39 @@ element as it is received.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/exporters/buffered_exporter.cr#L11" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/148f1ef8e11808432a1fdbcb8603c14548567b25/src/exporters/buffered_exporter.cr#L13" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="handle(elements:Array(Element))-instance-method">
+    <div class="entry-detail" id="handle(elements:Array(Elements))-instance-method">
       <div class="signature">
-        
-        def <strong>handle</strong>(elements : Array(Element))
+        abstract 
+        def <strong>handle</strong>(elements : Array(<a href="../../OpenTelemetry/Exporter/Elements.html">Elements</a>))
 
-        <a class="method-permalink" href="#handle%28elements%3AArray%28Element%29%29-instance-method">#</a>
+        <a class="method-permalink" href="#handle%28elements%3AArray%28Elements%29%29-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/exporters/buffered_exporter.cr#L37" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/148f1ef8e11808432a1fdbcb8603c14548567b25/src/exporters/buffered_exporter.cr#L39" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="handle(element:Elements)-instance-method">
+      <div class="signature">
+        
+        def <strong>handle</strong>(element : <a href="../../OpenTelemetry/Exporter/Elements.html">Elements</a>)
+
+        <a class="method-permalink" href="#handle%28element%3AElements%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/148f1ef8e11808432a1fdbcb8603c14548567b25/src/exporters/buffered_exporter.cr#L41" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1032,7 +1139,7 @@ element as it is received.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/006f66344c93fc288b778ce8328a1f9e3d4d7c03/src/exporters/buffered_exporter.cr#L15" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/148f1ef8e11808432a1fdbcb8603c14548567b25/src/exporters/buffered_exporter.cr#L17" target="_blank">View source</a>]
         
       </div>
     </div>
