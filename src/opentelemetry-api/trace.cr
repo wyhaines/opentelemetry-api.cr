@@ -103,7 +103,6 @@ module OpenTelemetry
       end
     end
 
-
     # This method returns a ProtoBuf object containing all of the Trace information.
     def to_protobuf
       Proto::Trace::V1::ResourceSpans.new(

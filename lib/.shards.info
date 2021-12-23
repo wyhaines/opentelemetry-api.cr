@@ -22,3 +22,6 @@ shards:
   parse_date:
     git: https://github.com/wyhaines/parsedate.cr.git
     version: 0.1.2
+  db:
+    git: https://github.com/crystal-lang/crystal-db.git
+    version: 0.10.1
