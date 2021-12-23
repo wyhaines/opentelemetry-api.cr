@@ -60,7 +60,7 @@ module OpenTelemetry
         json << "        \"timestamp\": #{time_unix_nano},\n"
         json << "        \"attributes\":{\n"
         json << String.build do |attr_json|
-          attributes.each do |key, value|
+          attributes.each do |_, value|
             attr_json << "          #{value.to_json},\n"
           end
         end.chomp(",\n")

@@ -136,7 +136,7 @@ module OpenTelemetry
         json << "      \"startTime\":#{start_time_unix_nano},\n"
         json << "      \"endTime\":#{end_time_unix_nano},\n"
         json << "      \"attributes\":{\n"
-        attributes.each do |key, value|
+        attributes.each do |_, value|
           json << "        #{value.to_json},\n"
         end
         json << "      },\n"

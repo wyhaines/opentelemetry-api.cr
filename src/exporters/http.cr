@@ -22,7 +22,7 @@ module OpenTelemetry
       end
 
       def initialize_client_pool
-        return if client_pool = @clients
+        return if @clients
         @clients = DB::Pool(HTTP::Client).new do
           client = HTTP::Client.new(@endpoint_uri)
 
@@ -63,9 +63,9 @@ module OpenTelemetry
       def handle(elements : Array(Elements))
         batches = collate(elements)
         @clients.checkout do |client|
-          if batches[:traces].any?
+          if !batches[:traces].empty?
             # TODO: handle errors; retry?
-            response = http.post(
+            response = client.post(
               @endpoint_uri.path,
               body: generate_payload(
                 Proto::Collector::Trace::V1::ExportTraceServiceRequest.new(
