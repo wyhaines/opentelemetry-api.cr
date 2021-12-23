@@ -1,3 +1,5 @@
+require "./opentelemetry-api/trace"
+
 module OpenTelemetry
   class Exporter
     # As other data types, like metrics or logs are added, expand this aliase
