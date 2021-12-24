@@ -6,10 +6,10 @@ provider = OpenTelemetry::TraceProvider.new(
   exporter: OpenTelemetry::Exporter.new(variant: :grpc) do |exporter|
     exporter.endpoint = "https://otlp.nr-data.net:4317"
     headers = HTTP::Headers.new
-    headers["api-key"] = ENV["NEW_RELIC_LICENSE_KEY"]?.to_s
+    headers["x-api-key"] = ENV["NEW_RELIC_LICENSE_KEY"]?.to_s
     exporter.headers = headers
   end
-  )
+)
 
 trace = provider.trace do |t|
   t.service_name = "Crystal gRPC Test"

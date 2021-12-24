@@ -10,7 +10,6 @@ module OpenTelemetry
       property endpoint_uri : URI = URI.parse("http://localhost:8080/")
 
       def initialize(endpoint : String? = nil, _headers : HTTP::Headers? = nil, _clients : DB::Pool(HTTP::Client)? = nil)
-
         @endpoint_uri = endpoint if endpoint
         @headers = _headers if _headers
         if _clients
@@ -40,10 +39,7 @@ module OpenTelemetry
             # Ensure that the minimum necessary headers are set.
             setup_standard_headers(request.headers)
 
-            # Populate the request headers with any other desired headers.
-            @headers.each do |key, value|
-              request.headers[key] = value
-            end
+            puts "headers: #{request.headers.inspect}"
           end
           client
         end
@@ -55,6 +51,11 @@ module OpenTelemetry
       def setup_standard_headers(headers)
         headers["content-type"] = "application/x-protobuf"
         headers["connection"] = "keep-alive"
+        @headers.each do |key, value|
+          headers[key] = value
+        end
+
+        headers
       end
 
       def endpoint
@@ -79,6 +80,7 @@ module OpenTelemetry
           puts "got client #{client.inspect}"
           if !batches[:traces].empty?
             # TODO: handle errors; retry?
+            puts "POST to #{@endpoint_uri.path} with "
             response = client.post(
               @endpoint_uri.path,
               body: generate_payload(
@@ -112,6 +114,10 @@ module OpenTelemetry
         end
 
         batches
+      end
+
+      def user_agent
+        "OpenTelemetry/Crystal #{VERSION}"
       end
     end
   end

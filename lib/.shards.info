@@ -25,3 +25,6 @@ shards:
   db:
     git: https://github.com/crystal-lang/crystal-db.git
     version: 0.10.1
+  duo:
+    git: https://github.com/azutoolkit/duo.git
+    version: 0.1.1

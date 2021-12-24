@@ -10,7 +10,7 @@ module OpenTelemetry
     # TODO: Build this using macros, so that if other exporters are added, the
     # code self-assembles to know about them and add access to them. This would
     # make the exporter system easily pluggable just by including another shard.
-    
+
     def initialize(variant : String | Symbol = :null, &block : Exporter::Http ->)
       case variant.to_s.downcase
       when "http"

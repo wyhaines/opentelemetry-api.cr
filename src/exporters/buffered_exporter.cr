@@ -9,7 +9,7 @@ module OpenTelemetry
     module BufferedExporter
       include UnbufferedExporter
 
-      buffer : NBChannel(Elements) = NBChannel(Elements).new
+      @buffer : NBChannel(Elements) = NBChannel(Elements).new
       property batch_size = 100
       property batch_latency = 5
       property batch_interval = 0.05
@@ -18,6 +18,8 @@ module OpenTelemetry
         puts "starting loop and receive"
         elements = [] of Elements
         mark = Time.monotonic
+        oldsize = 0
+        last_inspect = Time.monotonic
         loop do
           # Consume elements into an internal buffer until the buffer has reached
           # the maximum size for a processing batch, or there is nothing left to
@@ -26,6 +28,11 @@ module OpenTelemetry
             elements << element
           end
 
+          if oldsize != elements.size || (Time.monotonic - last_inspect).seconds > 1
+            oldsize = elements.size
+            last_inspect = Time.monotonic
+            puts "#{elements.size} >= #{@batch_size} || #{(Time.monotonic - mark).seconds} >= #{@batch_latency}"
+          end
           # If the internal buffer has reached the processing threshold size, or
           # if it has been longer than the batch_latency in seconds, then handle
           # each of the elements.
