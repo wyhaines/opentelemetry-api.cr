@@ -15,6 +15,7 @@ module OpenTelemetry
       property batch_interval = 0.05
 
       def loop_and_receive
+        puts "starting loop and receive"
         elements = [] of Elements
         mark = Time.monotonic
         loop do
@@ -28,11 +29,12 @@ module OpenTelemetry
           # If the internal buffer has reached the processing threshold size, or
           # if it has been longer than the batch_latency in seconds, then handle
           # each of the elements.
-          if elements.size >= @batch_size || Time.monotonic - mark >= @batch_latency
+          if elements.size >= @batch_size || (Time.monotonic - mark).seconds >= @batch_latency
             handle(elements)
             elements.clear
             mark = Time.monotonic
           end
+          sleep 0.01
         end
       end
 

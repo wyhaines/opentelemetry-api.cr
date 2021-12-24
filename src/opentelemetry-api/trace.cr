@@ -79,7 +79,7 @@ module OpenTelemetry
       else
         raise "Unexpected Error: Invalid Spans in the Span Stack. Expected #{span.inspect} but found #{span_stack.last.inspect}"
       end
-
+puts "checking export: #{span} == #{@root_span} && #{!@exported} ::> #{span == @root_span && !@exported}"
       if span == @root_span && !@exported
         @exporter.export self
         @exported = true

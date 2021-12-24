@@ -11,19 +11,20 @@ module OpenTelemetry
     # code self-assembles to know about them and add access to them. This would
     # make the exporter system easily pluggable just by including another shard.
     
-    def initialize(variant : String | Symbol = :null)
+    def initialize(variant : String | Symbol = :null, &block : Exporter::Http ->)
       case variant.to_s.downcase
       when "http"
-        @exporter = Exporter::Http.new do
-          yield self
-        end
-      when "grpc"
-        @exporter = Exporter::Grpc.new do
-          yield self
-        end
+        @exporter = Exporter::Http.new(&block)
       end
     end
-    
+
+    def initialize(variant : String | Symbol = :null, &block : Exporter::GRPC ->)
+      case variant.to_s.downcase
+      when "grpc"
+        @exporter = Exporter::GRPC.new(&block)
+      end
+    end
+
     def initialize(variant : String | Symbol = :null, *args, **kwargs)
       case variant.to_s.downcase
       when "null"
@@ -35,7 +36,7 @@ module OpenTelemetry
       when "http"
         @exporter = Exporter::Http.new(*args, **kwargs)
       when "grpc"
-        @exporter = Exporter::Grpc.new(*args, **kwargs)
+        @exporter = Exporter::GRPC.new(*args, **kwargs)
       end
     end
 

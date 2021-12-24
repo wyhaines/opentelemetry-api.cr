@@ -1,4 +1,5 @@
 require "./unbuffered_exporter"
+require "colorize"
 
 module OpenTelemetry
   class Exporter

@@ -11,7 +11,7 @@ module OpenTelemetry
       end
 
       def generate_payload(request)
-        request_payload = request.to_protobuf.to_slice
+        request_payload = request.to_slice
 
         payload = IO::Memory.new
         # TODO: Support compression

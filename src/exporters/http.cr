@@ -5,24 +5,34 @@ module OpenTelemetry
   class Exporter
     class Http < BufferedBase
       property clients : DB::Pool(HTTP::Client)
+      @clients_are_initialized : Bool = false
       property headers : HTTP::Headers = HTTP::Headers.new
       property endpoint_uri : URI = URI.parse("http://localhost:8080/")
 
-      def initialize(endpoint, @headers, @clients)
-        @endpoint_uri = endpoint
-        @headers = HTTP::Headers.new unless @headers
-        @clients = uninitialized DB::Pool(HTTP::Client) unless @clients
+      def initialize(endpoint : String? = nil, _headers : HTTP::Headers? = nil, _clients : DB::Pool(HTTP::Client)? = nil)
+
+        @endpoint_uri = endpoint if endpoint
+        @headers = _headers if _headers
+        if _clients
+          @clients = _clients
+          @clients_are_initialized = true
+        else
+          @clients = uninitialized DB::Pool(HTTP::Client)
+        end
         initialize_client_pool
+        start
       end
 
       def initialize
+        @clients_are_initialized = false
         @clients = uninitialized DB::Pool(HTTP::Client)
         yield self
         initialize_client_pool
+        start
       end
 
       def initialize_client_pool
-        return if @clients
+        return if @clients_are_initialized
         @clients = DB::Pool(HTTP::Client).new do
           client = HTTP::Client.new(@endpoint_uri)
 
@@ -37,6 +47,7 @@ module OpenTelemetry
           end
           client
         end
+        @clients_are_initialized = true
       end
 
       # For other HTTP based protocols, such as gRPC, this method should be
@@ -61,8 +72,11 @@ module OpenTelemetry
       end
 
       def handle(elements : Array(Elements))
+        puts "HTTP exporter: #{elements.size} elements"
         batches = collate(elements)
+        pp batches
         @clients.checkout do |client|
+          puts "got client #{client.inspect}"
           if !batches[:traces].empty?
             # TODO: handle errors; retry?
             response = client.post(
