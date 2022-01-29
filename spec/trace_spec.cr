@@ -14,7 +14,7 @@ describe OpenTelemetry::Trace do
     trace.id.hexstring.should_not eq Slice(UInt8).new(8, 0).hexstring
     trace.id.should eq trace.trace_id
 
-    trace.id.should_not eq (provider.trace do |t|
+    trace.id.should_not eq(provider.trace do |t|
       t.service_name = "my_app_or_library"
       t.service_version = "1.1.1"
     end.id)

@@ -11,19 +11,26 @@ module OpenTelemetry
     # code self-assembles to know about them and add access to them. This would
     # make the exporter system easily pluggable just by including another shard.
 
-    def initialize(variant : String | Symbol = :null, &block : Exporter::Http ->)
+    def initialize(variant : String | Symbol, &block : Exporter::Http ->)
       case variant.to_s.downcase
       when "http"
         @exporter = Exporter::Http.new(&block)
       end
     end
 
-    def initialize(variant : String | Symbol = :null, &block : Exporter::GRPC ->)
+    def initialize(variant : String | Symbol, &block : Exporter::Stdout ->)
       case variant.to_s.downcase
-      when "grpc"
-        @exporter = Exporter::GRPC.new(&block)
+      when "stdout"
+        @exporter = Exporter::Stdout.new(&block)
       end
     end
+
+    # def initialize(variant : String | Symbol = :null, &block : Exporter::GRPC ->)
+    #  case variant.to_s.downcase
+    #  when "grpc"
+    #    @exporter = Exporter::GRPC.new(&block)
+    #  end
+    # end
 
     def initialize(variant : String | Symbol = :null, *args, **kwargs)
       case variant.to_s.downcase
@@ -32,12 +39,13 @@ module OpenTelemetry
       when "abstract"
         @exporter = Exporter::Abstract.new(*args, **kwargs)
       when "stdout"
-        @exporter = Exporter::Stdout.new(*args, **kwargs)
+        @exporter = Exporter::Stdout.new
       when "http"
         @exporter = Exporter::Http.new(*args, **kwargs)
-      when "grpc"
-        @exporter = Exporter::GRPC.new(*args, **kwargs)
+        #      when "grpc"
+        #        @exporter = Exporter::GRPC.new(*args, **kwargs)
       end
+      pp "EXPORTER IS A #{@exporter}"
     end
 
     def export(elements : Array(Elements))

@@ -63,6 +63,7 @@ require "./exporter"
 #   end
 # end
 module OpenTelemetry
+  INSTANCE_ID = CSUUID.unique.to_s
   class_property config = TraceProvider::Configuration.new(Path[Process.executable_path.to_s].basename)
   class_property provider = TraceProvider.new
 

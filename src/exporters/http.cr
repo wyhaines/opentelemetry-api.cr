@@ -1,5 +1,6 @@
 require "db/pool"
 require "http/client"
+require "./buffered_base"
 
 module OpenTelemetry
   class Exporter
@@ -49,8 +50,8 @@ module OpenTelemetry
       # For other HTTP based protocols, such as gRPC, this method should be
       # overridden to set the appropriate protocol specific headers.
       def setup_standard_headers(headers)
-        headers["content-type"] = "application/x-protobuf"
-        headers["connection"] = "keep-alive"
+        headers["Content-Type"] = "application/x-protobuf"
+        headers["Connection"] = "keep-alive"
         @headers.each do |key, value|
           headers[key] = value
         end
@@ -88,6 +89,8 @@ module OpenTelemetry
                   resource_spans: batches[:traces]).to_protobuf
               )
             )
+            pp "And...."
+            pp response
             {% begin %}
             {% if flag? :DEBUG %}
             pp response

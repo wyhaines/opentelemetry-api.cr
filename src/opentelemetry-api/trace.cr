@@ -5,6 +5,7 @@ require "random/isaac"
 
 module OpenTelemetry
   class Trace
+    @[ThreadLocal]
     @@prng = Random::ISAAC.new
 
     property trace_id : Slice(UInt8) = @@prng.random_bytes(16)
@@ -57,6 +58,7 @@ module OpenTelemetry
 
     def in_span(span_name)
       span = Span.new(span_name)
+      set_standard_span_attributes(span)
       span.context = SpanContext.new(@span_context) do |ctx|
         ctx.span_id = @provider.id_generator.span_id
       end
@@ -84,6 +86,12 @@ module OpenTelemetry
         @exporter.export self
         @exported = true
       end
+    end
+
+    private def set_standard_span_attributes(span)
+      span["service.name"] = service_name
+      span["service.version"] = service_version
+      span["service.instance.id"] = OpenTelemetry::INSTANCE_ID
     end
 
     private def iterate_span_nodes(span, buffer)

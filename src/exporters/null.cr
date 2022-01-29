@@ -1,4 +1,4 @@
-require "./unbuffered_exporter"
+require "./base"
 require "colorize"
 
 module OpenTelemetry

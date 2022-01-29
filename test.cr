@@ -1,42 +1,47 @@
 require "./src/opentelemetry-api"
 
+pp "MAKE PROVIDER"
 provider = OpenTelemetry::TraceProvider.new(
-  service_name: "my_app_or_library",
-  service_version: "1.1.1",
-  exporter: OpenTelemetry::Exporter.new(variant: :grpc) do |exporter|
-    exporter.endpoint = "https://otlp.nr-data.net:4317"
+  service_name: "Crystal OTel Test",
+  service_version: "1.2.3",
+  exporter: OpenTelemetry::Exporter.new(variant: :stdout) do |exporter|
+    #exporter.endpoint = "https://staging-otlp.nr-data.net:4318/v1/traces"
     headers = HTTP::Headers.new
-    headers["x-api-key"] = ENV["NEW_RELIC_LICENSE_KEY"]?.to_s
-    exporter.headers = headers
+    headers["Api-Key"] = ENV["NEW_RELIC_LICENSE_KEY"]?.to_s
+    #exporter.headers = headers
   end
 )
+pp "START LOOP"
 
-trace = provider.trace do |t|
-  t.service_name = "Crystal gRPC Test"
-  t.service_version = "1.2.3"
-end
+1.times do |iteration|
+  1.times do
+    trace = provider.trace do |t|
+      # All inherited config can be overridden here, if desired.
+      t.service_name = "#{t.service_name} -- run #{iteration}"
+    end
 
-puts "start trace"
-trace.in_span("request") do |span|
-  span.set_attribute("verb", "GET")
-  span.set_attribute("url", "http://example.com/foo")
-  sleep(rand/1000)
-  span.add_event("dispatching to handler")
-  trace.in_span("handler") do |child_span|
-    sleep(rand/1000)
-    child_span.add_event("dispatching to database")
-    trace.in_span("db") do |db_span|
-      db_span.add_event("querying database")
+    trace.in_span("request") do |span|
+      span.set_attribute("verb", "GET")
+      span.set_attribute("url", "http://example.com/foo")
       sleep(rand/1000)
+      span.add_event("dispatching to handler")
+      trace.in_span("handler") do |child_span|
+        sleep(rand/1000)
+        child_span.add_event("dispatching to database")
+        trace.in_span("db") do |db_span|
+          db_span.add_event("querying database")
+          sleep(rand/1000)
+        end
+        trace.in_span("external api") do |api_span|
+          api_span.add_event("querying api")
+          sleep(rand/1000)
+        end
+        sleep(rand/1000)
+      end
     end
-    trace.in_span("external api") do |api_span|
-      api_span.add_event("querying api")
-      sleep(rand/1000)
-    end
-    sleep(rand/1000)
+    sleep rand() / 100
   end
 end
-puts "end trace"
 
-sleep 10
+sleep 20
 puts "finished sleeping"
