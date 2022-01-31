@@ -24,6 +24,10 @@ module OpenTelemetry
       @@prng
     end
 
+    def self.current_span
+      Fiber.current.current_span
+    end
+    
     def initialize(
       service_name = nil,
       service_version = nil,
@@ -65,11 +69,11 @@ module OpenTelemetry
 
       if @root_span.nil? || @exported
         @exported = false
-        @root_span = @current_span = span
+        @root_span = Fiber.current.current_span = @current_span = span
       else
         span.parent = @span_stack.last
         @span_stack.last.children << span
-        @current_span = span
+        Fiber.current.current_span = @current_span = span
       end
       @span_stack << span
       yield span
@@ -77,7 +81,7 @@ module OpenTelemetry
       span.wall_finish = Time.utc
       if @span_stack.last == span
         @span_stack.pop
-        @current_span = @span_stack.last?
+        Fiber.current.current_span = @current_span = @span_stack.last?
       else
         raise "Unexpected Error: Invalid Spans in the Span Stack. Expected #{span.inspect} but found #{span_stack.last.inspect}"
       end
