@@ -24,8 +24,6 @@ dependencies:
     branch: main
   protobuf:
     github: jeromegn/protobuf.cr
-  duo:
-    github: azutoolkit/duo
 
 development_dependencies:
   ameba:

@@ -16,7 +16,7 @@ describe OpenTelemetry::TraceProvider do
     provider = OpenTelemetry::TraceProvider.new("my_app_or_library", "1.1.1")
     provider.service_name = "my_app_or_library2"
     provider.service_version = "2.2.2"
-    provider.exporter = OpenTelemetry::Exporter.new
+    provider.exporter = OpenTelemetry::Exporter.new(variant: :abstract)
 
     provider.service_name.should eq "my_app_or_library2"
     provider.service_version.should eq "2.2.2"
@@ -27,7 +27,7 @@ describe OpenTelemetry::TraceProvider do
     provider = OpenTelemetry::TraceProvider.new do |config|
       config.service_name = "my_app_or_library"
       config.service_version = "1.1.1"
-      config.exporter = OpenTelemetry::Exporter.new
+      config.exporter = OpenTelemetry::Exporter.new(variant: :abstract)
       config.id_generator = OpenTelemetry::IdGenerator.new("random")
     end
 
@@ -40,7 +40,7 @@ describe OpenTelemetry::TraceProvider do
     provider.configure!(config2)
     provider.service_name.should eq "my_app_or_library2"
     provider.service_version.should eq "2.2.2"
-    provider.exporter.should be_a OpenTelemetry::Exporter
+    provider.exporter.should be_nil
     provider.id_generator.should be_a OpenTelemetry::IdGenerator
     provider.id_generator.generator.should be_a OpenTelemetry::IdGenerator::Unique
   end

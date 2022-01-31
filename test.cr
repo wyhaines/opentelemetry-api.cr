@@ -1,20 +1,25 @@
 require "./src/opentelemetry-api"
 
-pp "MAKE PROVIDER"
+type = ARGV[0]?
+iter = ARGV[1]?.nil? ? 1 : ARGV[1].to_i
+count = ARGV[2]?.nil? ? 1 : ARGV[2].to_i
+
 provider = OpenTelemetry::TraceProvider.new(
   service_name: "Crystal OTel Test",
   service_version: "1.2.3",
-  exporter: OpenTelemetry::Exporter.new(variant: :stdout) do |exporter|
-    #exporter.endpoint = "https://staging-otlp.nr-data.net:4318/v1/traces"
+  exporter: type == "http" ? OpenTelemetry::Exporter.new(variant: :http) do |exporter|
+    exporter = exporter.as(OpenTelemetry::Exporter::Http)
+    exporter.endpoint = "https://staging-otlp.nr-data.net:4318/v1/traces"
     headers = HTTP::Headers.new
     headers["Api-Key"] = ENV["NEW_RELIC_LICENSE_KEY"]?.to_s
-    #exporter.headers = headers
+    exporter.headers = headers
+  end : OpenTelemetry::Exporter.new(variant: :stdout) do |exporter|
+    exporter = exporter.as(OpenTelemetry::Exporter::Stdout)
   end
 )
-pp "START LOOP"
 
-1.times do |iteration|
-  1.times do
+iter.times do |iteration|
+  count.times do
     trace = provider.trace do |t|
       # All inherited config can be overridden here, if desired.
       t.service_name = "#{t.service_name} -- run #{iteration}"
@@ -43,5 +48,4 @@ pp "START LOOP"
   end
 end
 
-sleep 20
-puts "finished sleeping"
+sleep type == "http" ? 10 : 0.1

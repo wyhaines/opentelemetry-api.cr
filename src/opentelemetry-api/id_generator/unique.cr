@@ -1,5 +1,5 @@
 require "csuuid"
-require "random/isaac"
+require "random/pcg32"
 require "crystal/spin_lock"
 require "./base"
 
@@ -7,7 +7,7 @@ module OpenTelemetry
   # This ID Generator returns guaranteed unique (within the process) IDs
   # which are chronologically and logically sortable.
   struct IdGenerator::Unique < IdGenerator::Base
-    @prng : ::Random::ISAAC = ::Random::ISAAC.new
+    @prng : ::Random::PCG32 = ::Random::PCG32.new
     @unique_identifier : Slice(UInt8) = Slice(UInt8).new(3, 0)
     @mutex : Crystal::SpinLock = Crystal::SpinLock.new
 

@@ -22,7 +22,7 @@ module OpenTelemetry
     def initialize(
       service_name : String = "",
       service_version : String = "",
-      exporter : Exporter = Exporter.new(:null),
+      exporter : Exporter? = nil,
       id_generator = "unique"
     )
       @config = Configuration.new(
@@ -42,7 +42,7 @@ module OpenTelemetry
       @config = Configuration::Factory.build(@config) do |cfg|
         cfg.service_name = secondary_config.service_name if cfg.service_name.empty? || cfg.service_name =~ /service_[a-f\d]{8}-[a-f\d]{4}-[a-f\d]{4}-[a-f\d]{4}-[a-f\d]{12}/
         cfg.service_version = secondary_config.service_version if cfg.service_version.empty?
-        cfg.exporter = secondary_config.exporter if cfg.exporter.nil? || cfg.exporter.exporter.is_a?(Exporter::Abstract)
+        cfg.exporter = secondary_config.exporter if cfg.exporter.nil? || cfg.exporter.try(&.exporter).is_a?(Exporter::Abstract)
         cfg.id_generator = secondary_config.id_generator if cfg.id_generator.nil? || cfg.id_generator.generator.is_a?(AbstractIdGenerator)
       end
 

@@ -6,6 +6,7 @@ require "./opentelemetry-api/version"
 require "./opentelemetry-api/aliases"
 require "./opentelemetry-api/trace_provider"
 require "./exporter"
+require "random/pcg32"
 
 # ```
 #
@@ -63,6 +64,7 @@ require "./exporter"
 #   end
 # end
 module OpenTelemetry
+  CSUUID.prng = Random::PCG32.new
   INSTANCE_ID = CSUUID.unique.to_s
   class_property config = TraceProvider::Configuration.new(Path[Process.executable_path.to_s].basename)
   class_property provider = TraceProvider.new

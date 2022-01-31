@@ -44,7 +44,11 @@ module OpenTelemetry
         end
       end
 
-      abstract def handle(element)
+      def handle(element)
+        handle [element]
+      end
+
+      abstract def handle(elements : Array(Elements))
     end
   end
 end

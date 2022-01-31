@@ -1,17 +1,17 @@
 require "../proto/trace.pb"
 require "../proto/trace_service.pb"
 require "./span"
-require "random/isaac"
+require "random/pcg32"
 
 module OpenTelemetry
   class Trace
     @[ThreadLocal]
-    @@prng = Random::ISAAC.new
+    @@prng = Random::PCG32.new
 
     property trace_id : Slice(UInt8) = @@prng.random_bytes(16)
     property service_name : String = ""
     property service_version : String = ""
-    property exporter : Exporter = Exporter.new(:abstract)
+    property exporter : Exporter? = nil
     getter provider : TraceProvider = TraceProvider.new
     getter span_stack : Array(Span) = [] of Span
     getter root_span : Span? = nil
@@ -20,7 +20,7 @@ module OpenTelemetry
     @exported : Bool = false
     @lock : Mutex = Mutex.new
 
-    def self.prng : Random::ISAAC
+    def self.prng : Random::PCG32
       @@prng
     end
 
@@ -52,7 +52,7 @@ module OpenTelemetry
     def merge_configuration_from_provider=(val)
       self.service_name = val.service_name if self.service_name.nil? || self.service_name.empty?
       self.service_version = val.service_version if self.service_version.nil? || self.service_version.empty?
-      self.exporter = val.exporter if self.exporter.nil? || self.exporter.exporter.is_a?(Exporter::Abstract)
+      self.exporter = val.exporter if self.exporter.nil? || self.exporter.try(&.exporter).is_a?(Exporter::Abstract)
       @provider = val
     end
 
@@ -81,9 +81,8 @@ module OpenTelemetry
       else
         raise "Unexpected Error: Invalid Spans in the Span Stack. Expected #{span.inspect} but found #{span_stack.last.inspect}"
       end
-      puts "checking export: #{span} == #{@root_span} && #{!@exported} ::> #{span == @root_span && !@exported}"
-      if span == @root_span && !@exported
-        @exporter.export self
+      if span == @root_span && !@exported && (_exporter = @exporter)
+        _exporter.export self
         @exported = true
       end
     end
@@ -92,6 +91,7 @@ module OpenTelemetry
       span["service.name"] = service_name
       span["service.version"] = service_version
       span["service.instance.id"] = OpenTelemetry::INSTANCE_ID
+      span["service.instance.id"] = "OpenTelemetry::INSTANCE_ID"
     end
 
     private def iterate_span_nodes(span, buffer)

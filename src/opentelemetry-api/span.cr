@@ -136,16 +136,16 @@ module OpenTelemetry
         json << "      \"startTime\":#{start_time_unix_nano},\n"
         json << "      \"endTime\":#{end_time_unix_nano},\n"
         json << "      \"attributes\":{\n"
-        attributes.each do |_, value|
-          json << "        #{value.to_json},\n"
-        end
+        # attributes.each do |_, value|
+        #   json << "        #{value.to_json},\n"
+        # end
         json << "      },\n"
         json << "      \"events\":[\n"
-        json << String.build do |event_list|
-          events.each do |event|
-            event_list << "    #{event.to_json},\n"
-          end
-        end.chomp(",\n")
+        # json << String.build do |event_list|
+        #   events.each do |event|
+        #     event_list << "    #{event.to_json},\n"
+        #   end
+        # end.chomp(",\n")
         json << "\n      ]\n"
 
         json << "    }"

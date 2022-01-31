@@ -1,30 +1,27 @@
 ---
 version: 1.0
 shards:
-  nbchannel:
-    git: https://github.com/wyhaines/nbchannel.cr.git
-    version: 0.1.0+git.commit.ea6517a837270361695244d14c4b03d84660f113
-  ameba:
-    git: https://github.com/crystal-ameba/ameba.git
-    version: 0.14.3
-  csuuid:
-    git: https://github.com/wyhaines/csuuid.cr.git
-    version: 0.3.1+git.commit.3d7ae5fc06a87ceffbc27fca5b442ea1cda5882f
-  time-ext:
-    git: https://github.com/wyhaines/time-ext.cr.git
-    version: 0.1.0+git.commit.175f658235fb6cdc9c804cb96da510fec27f4cd6
-  protobuf:
-    git: https://github.com/jeromegn/protobuf.cr.git
-    version: 2.2.3
+  db:
+    git: https://github.com/crystal-lang/crystal-db.git
+    version: 0.11.0
   splay_tree_map:
     git: https://github.com/wyhaines/splay_tree_map.cr.git
     version: 0.2.2
+  nbchannel:
+    git: https://github.com/wyhaines/nbchannel.cr.git
+    version: 0.1.0+git.commit.ea6517a837270361695244d14c4b03d84660f113
+  time-ext:
+    git: https://github.com/wyhaines/time-ext.cr.git
+    version: 0.1.0+git.commit.175f658235fb6cdc9c804cb96da510fec27f4cd6
   parse_date:
     git: https://github.com/wyhaines/parsedate.cr.git
     version: 0.1.2
-  db:
-    git: https://github.com/crystal-lang/crystal-db.git
-    version: 0.10.1
-  duo:
-    git: https://github.com/azutoolkit/duo.git
-    version: 0.1.1
+  csuuid:
+    git: https://github.com/wyhaines/csuuid.cr.git
+    version: 0.4.0+git.commit.0b869f271cfd9baed20989176efa5439c2d1a3b8
+  protobuf:
+    git: https://github.com/jeromegn/protobuf.cr.git
+    version: 2.2.3
+  ameba:
+    git: https://github.com/crystal-ameba/ameba.git
+    version: 0.14.3
