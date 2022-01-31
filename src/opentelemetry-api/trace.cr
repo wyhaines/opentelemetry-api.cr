@@ -91,7 +91,6 @@ module OpenTelemetry
       span["service.name"] = service_name
       span["service.version"] = service_version
       span["service.instance.id"] = OpenTelemetry::INSTANCE_ID
-      span["service.instance.id"] = "OpenTelemetry::INSTANCE_ID"
     end
 
     private def iterate_span_nodes(span, buffer)
