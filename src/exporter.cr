@@ -42,8 +42,6 @@ module OpenTelemetry
 
     def initialize(variant : String | Symbol = :null, *args, **kwargs)
       case variant.to_s.downcase
-      when "null"
-        @exporter = Exporter::Null.new(*args, **kwargs)
       when "abstract"
         @exporter = Exporter::Abstract.new(*args, **kwargs)
       when "stdout"
@@ -52,6 +50,8 @@ module OpenTelemetry
         @exporter = Exporter::Http.new(*args, **kwargs)
         #      when "grpc"
         #        @exporter = Exporter::GRPC.new(*args, **kwargs)
+      else
+        @exporter = Exporter::Null.new(*args, **kwargs)
       end
       pp "EXPORTER IS A #{@exporter}"
     end
