@@ -14,10 +14,11 @@ module OpenTelemetry
     def trace(
       service_name = nil,
       service_version = nil,
+      schema_url = nil,
       exporter = nil,
       id_generator = nil
     )
-      new_trace = Trace.new(service_name, service_version, exporter, id_generator)
+      new_trace = Trace.new(service_name, service_version, schema_url, exporter, id_generator)
       new_trace.merge_configuration_from_provider = self
 
       new_trace

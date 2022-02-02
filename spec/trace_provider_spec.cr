@@ -3,13 +3,15 @@ require "./spec_helper"
 describe OpenTelemetry::TraceProvider do
   it "can return individual provider instances" do
     provider_a = OpenTelemetry::TraceProvider.new("my_app_or_library", "1.1.1")
-    provider_b = OpenTelemetry::TraceProvider.new("my_app_or_library2", "2.2.2")
+    provider_b = OpenTelemetry::TraceProvider.new("my_app_or_library2", "2.2.2", "http://foo.bar")
 
     provider_a.service_name.should eq "my_app_or_library"
     provider_b.service_name.should eq "my_app_or_library2"
     provider_a.should_not eq provider_b
     provider_a.service_version.should eq "1.1.1"
     provider_b.service_version.should eq "2.2.2"
+    provider_a.schema_url.should eq ""
+    provider_b.schema_url.should eq "http://foo.bar"
   end
 
   it "can assign to provider configuration values after the provider is created" do
@@ -27,6 +29,7 @@ describe OpenTelemetry::TraceProvider do
     provider = OpenTelemetry::TraceProvider.new do |config|
       config.service_name = "my_app_or_library"
       config.service_version = "1.1.1"
+      config.schema_url = "http://foo.bar"
       config.exporter = OpenTelemetry::Exporter.new(variant: :abstract)
       config.id_generator = OpenTelemetry::IdGenerator.new("random")
     end
@@ -40,6 +43,7 @@ describe OpenTelemetry::TraceProvider do
     provider.configure!(config2)
     provider.service_name.should eq "my_app_or_library2"
     provider.service_version.should eq "2.2.2"
+    provider.schema_url.should eq ""
     provider.exporter.should be_nil
     provider.id_generator.should be_a OpenTelemetry::IdGenerator
     provider.id_generator.generator.should be_a OpenTelemetry::IdGenerator::Unique
@@ -50,19 +54,27 @@ describe OpenTelemetry::TraceProvider do
 
     provider_clone = provider_prime.dup
     reconfig = OpenTelemetry::TraceProvider::Configuration.new(
-      service_name: "my_app_or_library2"
+      service_name: "my_app_or_library2",
+      schema_url: "http://foo.bar",
     )
     provider_clone.merge_configuration(reconfig)
     provider_clone.service_name.should eq "my_app_or_library2"
     provider_clone.service_version.should eq ""
+    provider_clone.schema_url.should eq "http://foo.bar"
 
-    provider_clone = provider_prime.dup
+    provider_clone = provider_prime.dup.configure!(
+      OpenTelemetry::TraceProvider::Configuration.new(
+        schema_url: "#"
+      )
+    )
     reconfig = OpenTelemetry::TraceProvider::Configuration.new(
-      service_version: "2.2.2"
+      service_version: "2.2.2",
+      schema_url: "http://foo.bar"
     )
     provider_clone.merge_configuration(reconfig)
     provider_clone.service_name.should eq ""
     provider_clone.service_version.should eq "2.2.2"
+    provider_clone.schema_url.should eq "#"
 
     provider_clone = provider_prime.dup
     reconfig = OpenTelemetry::TraceProvider::Configuration.new(

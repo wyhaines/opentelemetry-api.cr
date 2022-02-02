@@ -9,10 +9,12 @@ describe OpenTelemetry::Trace do
     trace = provider.trace do |t|
       t.service_name = "microservice"
       t.service_version = "1.2.3"
+      t.schema_url = "https://schema.open-telemetry.io/trace/v1/trace"
     end
 
     trace.id.hexstring.should_not eq Slice(UInt8).new(8, 0).hexstring
     trace.id.should eq trace.trace_id
+    trace.schema_url.should eq "https://schema.open-telemetry.io/trace/v1/trace"
 
     trace.id.should_not eq(provider.trace do |t|
       t.service_name = "my_app_or_library"
