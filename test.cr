@@ -14,7 +14,7 @@ provider = OpenTelemetry::TraceProvider.new(
     headers["Api-Key"] = ENV["NEW_RELIC_LICENSE_KEY"]?.to_s
     exporter.headers = headers
   end : OpenTelemetry::Exporter.new(variant: :stdout) do |exporter|
-    exporter = exporter.as(OpenTelemetry::Exporter::Stdout)
+    exporter.as(OpenTelemetry::Exporter::Stdout)
   end
 )
 
