@@ -1,5 +1,6 @@
 require "./provider"
 require "./meter"
+
 module OpenTelemetry
   # A MeterProvider encapsulates a set of meter configuration, and provides an interface for creating Meter instances.
   class MeterProvider < Provider
@@ -13,10 +14,17 @@ module OpenTelemetry
     def meter(
       service_name = nil,
       service_version = nil,
+      schema_url = nil,
       exporter = nil,
-      id_generator = nil
+      interval = nil
     )
-      new_meter = Meter.new(service_name, service_version, exporter, id_generator)
+      new_meter = Meter.new(
+        service_name: service_name,
+        service_version: service_version,
+        schema_url: schema_url,
+        exporter: exporter,
+        interval: interval
+      )
       new_meter.merge_configuration_from_provider = self
 
       new_meter

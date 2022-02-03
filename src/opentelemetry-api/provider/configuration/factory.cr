@@ -11,6 +11,7 @@ module OpenTelemetry
         property service_version : String = ""
         property schema_url : String = ""
         property exporter : Exporter? = nil
+        property interval : Int32 = 5000
         property id_generator : IdGenerator
 
         # :nodoc:
@@ -20,6 +21,7 @@ module OpenTelemetry
             service_version: instance.service_version,
             schema_url: instance.schema_url,
             exporter: instance.exporter,
+            interval: instance.interval,
             id_generator: instance.id_generator
           )
         end
@@ -30,6 +32,7 @@ module OpenTelemetry
             service_version: new_config.service_version,
             schema_url: new_config.schema_url,
             exporter: new_config.exporter,
+            interval: new_config.interval,
             id_generator: new_config.id_generator
           ) do |instance|
             block.call(instance)
@@ -41,10 +44,17 @@ module OpenTelemetry
           service_version = "",
           schema_url = "",
           exporter = Exporter.new(:abstract),
+          interval = 5000,
           id_generator = IdGenerator.new("unique")
         )
           instance = Factory.allocate
-          instance.initialize(service_name, service_version, schema_url, exporter, id_generator)
+          instance.initialize(
+            service_name: service_name,
+            service_version: service_version,
+            schema_url: schema_url,
+            exporter: exporter,
+            interval: interval,
+            id_generator: id_generator)
           yield instance
           _build(instance)
         end
@@ -54,14 +64,21 @@ module OpenTelemetry
           service_version = "",
           schema_url = "",
           exporter = Exporter.new(:abstract),
+          interval = 5000,
           id_generator = IdGenerator.new("unique")
         )
           instance = Factory.allocate
-          instance.initialize(service_name, service_version, schema_url, exporter, id_generator)
+          instance.initialize(
+            service_name: service_name,
+            service_version: service_version,
+            schema_url: schema_url,
+            exporter: exporter,
+            interval: interval,
+            id_generator: id_generator)
           _build(instance)
         end
 
-        def initialize(@service_name, @service_version, @schema_url, @exporter, @id_generator); end
+        def initialize(@service_name, @service_version, @schema_url, @exporter, @interval, @id_generator); end
       end
     end
   end

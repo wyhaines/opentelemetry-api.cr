@@ -2,6 +2,7 @@ require "../proto/trace.pb"
 require "../proto/trace_service.pb"
 require "./span"
 require "random/pcg32"
+require "./trace/exceptions"
 
 module OpenTelemetry
   class Trace
@@ -32,7 +33,7 @@ module OpenTelemetry
     def self.current_span
       Fiber.current.current_span
     end
-    
+
     def initialize(
       service_name = nil,
       service_version = nil,
@@ -93,7 +94,7 @@ module OpenTelemetry
         @span_stack.pop
         Fiber.current.current_span = @current_span = @span_stack.last?
       else
-        raise "Unexpected Error: Invalid Spans in the Span Stack. Expected #{span.inspect} but found #{span_stack.last.inspect}"
+        raise InvalidSpanInSpanStackError.new(span_stack.last.inspect, span.inspect)
       end
       if span == @root_span && !@exported && (_exporter = @exporter)
         _exporter.export self
