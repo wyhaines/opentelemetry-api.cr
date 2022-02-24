@@ -3,7 +3,6 @@ require "./instrument"
 
 module OpenTelemetry
   class Meter
-    @[ThreadLocal]
     property meter_name : String = ""
     property service_name : String = ""
     property service_version : String = ""

@@ -76,7 +76,6 @@ module OpenTelemetry
       def handle(elements : Array(Elements))
         puts "HTTP exporter: #{elements.size} elements"
         batches = collate(elements)
-        pp batches
         @clients.checkout do |client|
           puts "got client #{client.inspect}"
           if !batches[:traces].empty?
@@ -89,8 +88,6 @@ module OpenTelemetry
                   resource_spans: batches[:traces]).to_protobuf
               )
             )
-            pp "And...."
-            pp response
             {% begin %}
             {% if flag? :DEBUG %}
             pp response

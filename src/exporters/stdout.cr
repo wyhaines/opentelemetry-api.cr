@@ -4,11 +4,9 @@ module OpenTelemetry
   class Exporter
     class Stdout < BufferedBase
       def initialize
-        pp "stdout unconfigured"
       end
 
       def initialize
-        pp "stdout configured"
         yield self
         start
       end
