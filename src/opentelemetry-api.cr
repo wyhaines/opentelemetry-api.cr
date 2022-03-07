@@ -6,6 +6,7 @@ require "./opentelemetry-api/version"
 require "./opentelemetry-api/aliases"
 require "./opentelemetry-api/trace_provider"
 require "./opentelemetry-api/meter_provider"
+require "./opentelemetry-api/log_provider"
 require "./exporter"
 require "random/pcg32"
 
