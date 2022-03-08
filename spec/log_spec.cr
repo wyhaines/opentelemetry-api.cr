@@ -36,5 +36,28 @@ describe OpenTelemetry::Log do
 
   it "can transform a severity label into a severity number" do
     OpenTelemetry::Log.severity_number_from_name("TRACE").should eq 1
+    OpenTelemetry::Log.severity_number_from_name("TRACE2").should eq 2
+    OpenTelemetry::Log.severity_number_from_name("TRACE3").should eq 3
+    OpenTelemetry::Log.severity_number_from_name("TRACE4").should eq 4
+    OpenTelemetry::Log.severity_number_from_name("DEBUG").should eq 5
+    OpenTelemetry::Log.severity_number_from_name("DEBUG2").should eq 6
+    OpenTelemetry::Log.severity_number_from_name("DEBUG3").should eq 7
+    OpenTelemetry::Log.severity_number_from_name("DEBUG4").should eq 8
+    OpenTelemetry::Log.severity_number_from_name("INFO").should eq 9
+    OpenTelemetry::Log.severity_number_from_name("INFO2").should eq 10
+    OpenTelemetry::Log.severity_number_from_name("INFO3").should eq 11
+    OpenTelemetry::Log.severity_number_from_name("INFO4").should eq 12
+    OpenTelemetry::Log.severity_number_from_name("WARN").should eq 13
+    OpenTelemetry::Log.severity_number_from_name("WARN2").should eq 14
+    OpenTelemetry::Log.severity_number_from_name("WARN3").should eq 15
+    OpenTelemetry::Log.severity_number_from_name("WARN4").should eq 16
+    OpenTelemetry::Log.severity_number_from_name("ERROR").should eq 17
+    OpenTelemetry::Log.severity_number_from_name("ERROR2").should eq 18
+    OpenTelemetry::Log.severity_number_from_name("ERROR3").should eq 19
+    OpenTelemetry::Log.severity_number_from_name("ERROR4").should eq 20
+    OpenTelemetry::Log.severity_number_from_name("FATAL").should eq 21
+    OpenTelemetry::Log.severity_number_from_name("FATAL2").should eq 22
+    OpenTelemetry::Log.severity_number_from_name("FATAL3").should eq 23
+    OpenTelemetry::Log.severity_number_from_name("FATAL4").should eq 24
   end
 end

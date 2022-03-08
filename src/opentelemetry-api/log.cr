@@ -46,10 +46,13 @@ module OpenTelemetry
     end
 
     def self.severity_number_from_name(name)
-      parts = name.scan(/[a-zA-Z]+|\d+/).map(&.string)
+      parts = name.scan(/[a-zA-Z]+|\d+/).map(&.to_a.first.to_s)
       raise "Severity name not formatted correctly; LABEL|LABELn where LABEL is one of TRACE, DEBUG, INFO, WARN, ERROR, or FATAL and n is an optional number" if !(1..2).includes?(parts.size)
 
       name = parts[0].upcase
+      puts "**********"
+      pp name.scan(/[a-zA-Z]+|\d+/)
+      pp parts
       n = parts[1]? ? (parts[1].to_i - 1) : 0
 
       raise "Invalid severity sublevel; must be blank (i.e. TRACE) or 2..4 (i.e. TRACE4)" if !(0..3).includes?(n)
