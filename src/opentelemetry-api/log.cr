@@ -44,7 +44,7 @@ module OpenTelemetry
 
       "#{name}#{n == 1 ? "" : n}"
     end
-    
+
     def self.severity_number_from_name(name)
       parts = name.scan(/[a-zA-Z]+|\d+/).map(&.string)
       raise "Severity name not formatted correctly; LABEL|LABELn where LABEL is one of TRACE, DEBUG, INFO, WARN, ERROR, or FATAL and n is an optional number" if !(1..2).includes?(parts.size)
