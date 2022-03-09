@@ -11,9 +11,7 @@ module OpenTelemetry
     end
 
     def log(
-      service_name = nil,
-      service_version = nil,
-      schema_url = nil,
+      
       exporter = nil
     )
       new_log = Log.new(
