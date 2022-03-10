@@ -33,8 +33,8 @@ module OpenTelemetry
 
     property exporter : Exporter? = nil
 
-    property timestamp : Time::Span = Time.monotonic
-    property observed_timestamp : Time::Span = Time.monotonic
+    property timestamp : Time = Time.utc
+    property observed_timestamp : Time = Time.utc
     property trace_id : Slice(UInt8)? = nil
     property span_id : Slice(UInt8)? = nil
     property trace_flags : BitArray = BitArray.new(8)
@@ -100,31 +100,83 @@ module OpenTelemetry
       level
     end
 
-    def initialize(
+    private def initialize_impl(
       @severity : Level = Level::Info,
       @message : String = "",
-      @timestamp : Time::Span = Time.monotonic,
-      @observed_timestamp : Time::Span? = nil,
+      @timestamp : Time = Time.utc,
+      observed_timestamp : Time? = nil,
       @trace_id : Slice(Uint8)? = nil,
       @span_id : Slice(Uint8)? = nil,
       @trace_flags : BitArray = BitArray.new(8),
       @exporter : Exporter? = nil
     )
-      @observed_timestamp = @timestamp unless @observed_timestamp
+      @observed_timestamp = timestamp unless observed_timestamp
     end
 
     def initialize(
-      severity : String = "Info",
-      @message : String = "",
-      @timestamp : Time::Span = Time.monotonic,
-      @observed_timestamp : Time::Span? = nil,
-      @trace_id : Slice(Uint8)? = nil,
-      @span_id : Slice(Uint8)? = nil,
-      @trace_flags : BitArray = BitArray.new(8),
-      @exporter : Exporter? = nil
+      severity : Level = Level::Info,
+      message : String = "",
+      timestamp : Time = Time.utc,
+      observed_timestamp : Time? = nil,
+      trace_id : Slice(Uint8)? = nil,
+      span_id : Slice(Uint8)? = nil,
+      trace_flags : BitArray = BitArray.new(8),
+      exporter : Exporter? = nil
     )
-      @severity = self.class.severity_number_from_name(severity)
-      @observed_timestamp = @timestamp unless @observed_timestamp
+
+      initialize_impl(
+        severity,
+        message,
+        timestamp,
+        observed_timestamp,
+        trace_id,
+        span_id,
+        trace_flags,
+        exporter)
+    end
+
+    def initialize(
+      severity : String = "INFO",
+      message : String = "",
+      timestamp : Time = Time.utc,
+      observed_timestamp : Time? = nil,
+      trace_id : Slice(Uint8)? = nil,
+      span_id : Slice(Uint8)? = nil,
+      trace_flags : BitArray = BitArray.new(8),
+      exporter : Exporter? = nil
+    )
+
+      initialize_impl(
+        self.class.severity_number_from_name(severity),
+        message,
+        timestamp,
+        observed_timestamp,
+        trace_id,
+        span_id,
+        trace_flags,
+        exporter)
+    end
+
+    def initialize(
+      severity : Int = 9,
+      message : String = "",
+      timestamp : Time = Time.utc,
+      observed_timestamp : Time? = nil,
+      trace_id : Slice(Uint8)? = nil,
+      span_id : Slice(Uint8)? = nil,
+      trace_flags : BitArray = BitArray.new(8),
+      exporter : Exporter? = nil
+    )
+
+      initialize_impl(
+        self.class.severity_number_from_name(severity),
+        message,
+        timestamp,
+        observed_timestamp,
+        trace_id,
+        span_id,
+        trace_flags,
+        exporter)
     end
 
   #   def merge_configuration_from_provider=(val)

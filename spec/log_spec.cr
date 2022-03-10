@@ -60,4 +60,25 @@ describe OpenTelemetry::Log do
     OpenTelemetry::Log.severity_number_from_name("FATAL3").should eq 23
     OpenTelemetry::Log.severity_number_from_name("FATAL4").should eq 24
   end
+
+  it "can generate Log records" do
+    log = OpenTelemetry::Log.new
+
+    log.message.should eq ""
+    log.severity.should eq OpenTelemetry::Log::Level::Info
+    log.timestamp.should be < Time.utc
+    log.observed_timestamp.should eq log.timestamp
+    log.exporter.should be_nil
+    log.trace_id.should be_nil
+    log.span_id.should be_nil
+
+    log = OpenTelemetry::Log.new(message: "Hello World")
+    log.message.should eq "Hello World"
+
+    log = OpenTelemetry::Log.new(message: "Hello World", severity: OpenTelemetry::Log::Level::Debug)
+    log.message.should eq "Hello World"
+    log.severity.should eq OpenTelemetry::Log::Level::Debug
+
+    log = OpenTelemetry::Log.new(message: "Hello World", severity: OpenTelemetry::Log::Level::Debug, timestamp: Time.utc(2020, 1, 1, 12, 0, 0))
+  end
 end
