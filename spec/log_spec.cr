@@ -75,10 +75,35 @@ describe OpenTelemetry::Log do
     log = OpenTelemetry::Log.new(message: "Hello World")
     log.message.should eq "Hello World"
 
-    log = OpenTelemetry::Log.new(message: "Hello World", severity: OpenTelemetry::Log::Level::Debug)
-    log.message.should eq "Hello World"
+    log = OpenTelemetry::Log.new(
+      message: "Hello World 2",
+      severity: OpenTelemetry::Log::Level::Debug)
+    log.message.should eq "Hello World 2"
     log.severity.should eq OpenTelemetry::Log::Level::Debug
 
-    log = OpenTelemetry::Log.new(message: "Hello World", severity: OpenTelemetry::Log::Level::Debug, timestamp: Time.utc(2020, 1, 1, 12, 0, 0))
+    log = OpenTelemetry::Log.new(
+      message: "Hello World 3",
+      severity: OpenTelemetry::Log::Level::Debug2,
+      timestamp: Time.utc(2020, 1, 1, 12, 0, 0))
+
+    log.message.should eq "Hello World 3"
+    log.severity.should eq OpenTelemetry::Log::Level::Debug2
+    log.timestamp.should eq Time.utc(2020, 1, 1, 12, 0, 0)
+    log.observed_timestamp.should eq log.timestamp
+
+    log = OpenTelemetry::Log.new(
+      message: "Hello World 4",
+      severity: 17,
+      timestamp: Time.utc(2020, 1, 1, 12, 0, 0),
+      trace_id: "0123456701234567",
+      span_id: "01234567")
+
+    log.message.should eq "Hello World 4"
+    log.severity.should eq OpenTelemetry::Log::Level::Info3
+    log.timestamp.should eq Time.utc(2020, 1, 1, 12, 0, 0)
+    log.observed_timestamp.should eq log.timestamp
+    log.trace_id.should eq "0123456701234567"
+    log.span_id.should eq "01234567"
+
   end
 end
