@@ -46,55 +46,8 @@ module OpenTelemetry
 
     def self.severity_from_number(number)
       number_to_i = number.to_i
-      case number_to_i
-      when 1
-        Level::Trace
-      when 2
-        Level::Trace2
-      when 3
-        Level::Trace3
-      when 4
-        Level::Trace4
-      when 5
-        Level::Debug
-      when 6
-        Level::Debug2
-      when 7
-        Level::Debug3
-      when 8
-        Level::Debug4
-      when 9
-        Level::Info
-      when 10
-        Level::Info2
-      when 11
-        Level::Info3
-      when 12
-        Level::Info4
-      when 13
-        Level::Warn
-      when 14
-        Level::Warn2
-      when 15
-        Level::Warn3
-      when 16
-        Level::Warn4
-      when 17
-        Level::Error
-      when 18
-        Level::Error2
-      when 19
-        Level::Error3
-      when 20
-        Level::Error4
-      when 21
-        Level::Fatal
-      when 22
-        Level::Fatal2
-      when 23
-        Level::Fatal3
-      when 24
-        Level::Fatal4
+      if number_to_i > 0 && number_to_i < 25
+        Level.new(number_to_i)
       else
         raise "Invalid severity number; severity must be in the range of 1..24"
       end
