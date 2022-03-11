@@ -11,7 +11,6 @@ module OpenTelemetry
     end
 
     def log(
-      
       exporter = nil
     )
       new_log = Log.new(
