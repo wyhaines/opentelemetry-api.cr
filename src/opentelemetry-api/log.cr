@@ -44,35 +44,63 @@ module OpenTelemetry
     @exported : Bool = false
     @lock : Mutex = Mutex.new
 
-    def self.severity_name_from_number(number)
+    def self.severity_from_number(number)
       number_to_i = number.to_i
-      n = case number_to_i
-      when 1..4
-        name = "TRACE"
-        number_to_i
-      when 5..8
-        name = "DEBUG"
-        number_to_i - 4
-      when 9..12
-        name = "INFO"
-        number_to_i - 8
-      when 13..16
-        name = "WARN"
-        number_to_i - 12
-      when 17..20
-        name = "ERROR"
-        number_to_i - 16
-      when 21..24
-        name = "FATAL"
-        number_to_i - 20
+      case number_to_i
+      when 1
+        Level::Trace
+      when 2
+        Level::Trace2
+      when 3
+        Level::Trace3
+      when 4
+        Level::Trace4
+      when 5
+        Level::Debug
+      when 6
+        Level::Debug2
+      when 7
+        Level::Debug3
+      when 8
+        Level::Debug4
+      when 9
+        Level::Info
+      when 10
+        Level::Info2
+      when 11
+        Level::Info3
+      when 12
+        Level::Info4
+      when 13
+        Level::Warn
+      when 14
+        Level::Warn2
+      when 15
+        Level::Warn3
+      when 16
+        Level::Warn4
+      when 17
+        Level::Error
+      when 18
+        Level::Error2
+      when 19
+        Level::Error3
+      when 20
+        Level::Error4
+      when 21
+        Level::Fatal
+      when 22
+        Level::Fatal2
+      when 23
+        Level::Fatal3
+      when 24
+        Level::Fatal4
       else
         raise "Invalid severity number; severity must be in the range of 1..24"
       end
-
-      "#{name}#{n == 1 ? "" : n}"
     end
 
-    def self.severity_number_from_name(name)
+    def self.severity_from_name(name)
       parts = name.upcase.scan(/[a-zA-Z]+|\d+/).map(&.to_a.first.to_s)
       raise "Severity name not formatted correctly; LABEL|LABELn where LABEL is one of TRACE, DEBUG, INFO, WARN, ERROR, or FATAL and n is an optional number" if !(1..2).includes?(parts.size)
 
@@ -97,7 +125,7 @@ module OpenTelemetry
         raise "Invalid severity name; severity must be one of TRACE, DEBUG, INFO, WARN, ERROR, or FATAL"
       end
 
-      level
+      Level.new(level)
     end
 
     private def initialize_impl(
@@ -105,8 +133,8 @@ module OpenTelemetry
       @message : String = "",
       @timestamp : Time = Time.utc,
       observed_timestamp : Time? = nil,
-      @trace_id : Slice(Uint8)? = nil,
-      @span_id : Slice(Uint8)? = nil,
+      @trace_id : Slice(UInt8)? = nil,
+      @span_id : Slice(UInt8)? = nil,
       @trace_flags : BitArray = BitArray.new(8),
       @exporter : Exporter? = nil
     )
@@ -118,8 +146,8 @@ module OpenTelemetry
       message : String = "",
       timestamp : Time = Time.utc,
       observed_timestamp : Time? = nil,
-      trace_id : Slice(Uint8)? = nil,
-      span_id : Slice(Uint8)? = nil,
+      trace_id : Slice(UInt8)? = nil,
+      span_id : Slice(UInt8)? = nil,
       trace_flags : BitArray = BitArray.new(8),
       exporter : Exporter? = nil
     )
@@ -140,14 +168,14 @@ module OpenTelemetry
       message : String = "",
       timestamp : Time = Time.utc,
       observed_timestamp : Time? = nil,
-      trace_id : Slice(Uint8)? = nil,
-      span_id : Slice(Uint8)? = nil,
+      trace_id : Slice(UInt8)? = nil,
+      span_id : Slice(UInt8)? = nil,
       trace_flags : BitArray = BitArray.new(8),
       exporter : Exporter? = nil
     )
 
       initialize_impl(
-        self.class.severity_number_from_name(severity),
+        self.class.severity_from_name(severity),
         message,
         timestamp,
         observed_timestamp,
@@ -162,14 +190,14 @@ module OpenTelemetry
       message : String = "",
       timestamp : Time = Time.utc,
       observed_timestamp : Time? = nil,
-      trace_id : Slice(Uint8)? = nil,
-      span_id : Slice(Uint8)? = nil,
+      trace_id : Slice(UInt8)? = nil,
+      span_id : Slice(UInt8)? = nil,
       trace_flags : BitArray = BitArray.new(8),
       exporter : Exporter? = nil
     )
 
       initialize_impl(
-        self.class.severity_number_from_name(severity),
+        self.class.severity_from_number(severity),
         message,
         timestamp,
         observed_timestamp,
