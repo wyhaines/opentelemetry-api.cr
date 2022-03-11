@@ -13,7 +13,7 @@
 <script type="text/javascript" src="../../js/doc.js"></script>
 
   <meta name="repository-name" content="opentelemetry-api">
-  <title>OpenTelemetry::Context::ContextContainer - opentelemetry-api main</title>
+  <title>OpenTelemetry::Log::Level - opentelemetry-api main</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "../../";
   </script>
@@ -96,12 +96,12 @@
       
     </li>
   
-  <li class="parent open current" data-id="opentelemetry-api/OpenTelemetry/Context" data-name="opentelemetry::context">
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Context" data-name="opentelemetry::context">
       <a href="../../OpenTelemetry/Context.html">Context</a>
       
         <ul>
   
-  <li class=" current" data-id="opentelemetry-api/OpenTelemetry/Context/ContextContainer" data-name="opentelemetry::context::contextcontainer">
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Context/ContextContainer" data-name="opentelemetry::context::contextcontainer">
       <a href="../../OpenTelemetry/Context/ContextContainer.html">ContextContainer</a>
       
     </li>
@@ -231,12 +231,12 @@
       
     </li>
   
-  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Log" data-name="opentelemetry::log">
+  <li class="parent open current" data-id="opentelemetry-api/OpenTelemetry/Log" data-name="opentelemetry::log">
       <a href="../../OpenTelemetry/Log.html">Log</a>
       
         <ul>
   
-  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Log/Level" data-name="opentelemetry::log::level">
+  <li class=" current" data-id="opentelemetry-api/OpenTelemetry/Log/Level" data-name="opentelemetry::log::level">
       <a href="../../OpenTelemetry/Log/Level.html">Level</a>
       
     </li>
@@ -890,7 +890,7 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">alias</span> OpenTelemetry::Context::ContextContainer
+  <span class="kind">enum</span> OpenTelemetry::Log::Level
 
 </h1>
 
@@ -899,16 +899,6 @@
 
 
 
-
-  <h2>
-    <a id="alias-definition" class="anchor" href="#alias-definition">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Alias Definition
-  </h2>
-  <code>SplayTreeMap(<a href="../../OpenTelemetry/Context/Key.html">OpenTelemetry::Context::Key</a>, String)</code>
 
 
 
@@ -931,8 +921,8 @@
   </h2>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/37d474ae2e2b942648c945bff688febf390ee53d/src/opentelemetry-api/context.cr#L6" target="_blank">
-        opentelemetry-api/context.cr
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/37d474ae2e2b942648c945bff688febf390ee53d/src/opentelemetry-api/log.cr#L7" target="_blank">
+        opentelemetry-api/log.cr
       </a>
     
     <br/>
@@ -940,11 +930,277 @@
 
 
 
+  
+    <h2>
+      <a id="enum-members" class="anchor" href="#enum-members">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+      Enum Members
+    </h2>
+  
+  <dl>
+    
+      <dt class="entry-const" id="Trace">
+        <strong>Trace</strong> = <code><span class="n">1</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="Trace2">
+        <strong>Trace2</strong> = <code><span class="n">2</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="Trace3">
+        <strong>Trace3</strong> = <code><span class="n">3</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="Trace4">
+        <strong>Trace4</strong> = <code><span class="n">4</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="Debug">
+        <strong>Debug</strong> = <code><span class="n">5</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="Debug2">
+        <strong>Debug2</strong> = <code><span class="n">6</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="Debug3">
+        <strong>Debug3</strong> = <code><span class="n">7</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="Debug4">
+        <strong>Debug4</strong> = <code><span class="n">8</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="Info">
+        <strong>Info</strong> = <code><span class="n">9</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="Info2">
+        <strong>Info2</strong> = <code><span class="n">10</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="Info3">
+        <strong>Info3</strong> = <code><span class="n">11</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="Info4">
+        <strong>Info4</strong> = <code><span class="n">12</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="Warn">
+        <strong>Warn</strong> = <code><span class="n">13</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="Warn2">
+        <strong>Warn2</strong> = <code><span class="n">14</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="Warn3">
+        <strong>Warn3</strong> = <code><span class="n">15</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="Warn4">
+        <strong>Warn4</strong> = <code><span class="n">16</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="Error">
+        <strong>Error</strong> = <code><span class="n">17</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="Error2">
+        <strong>Error2</strong> = <code><span class="n">18</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="Error3">
+        <strong>Error3</strong> = <code><span class="n">19</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="Error4">
+        <strong>Error4</strong> = <code><span class="n">20</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="Fatal">
+        <strong>Fatal</strong> = <code><span class="n">21</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="Fatal2">
+        <strong>Fatal2</strong> = <code><span class="n">22</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="Fatal3">
+        <strong>Fatal3</strong> = <code><span class="n">23</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="Fatal4">
+        <strong>Fatal4</strong> = <code><span class="n">24</span></code>
+      </dt>
+      
+    
+  </dl>
 
 
 
 
 
+
+
+  <h2>
+    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#debug2%3F-instance-method" class="signature"><strong>#debug2?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#debug3%3F-instance-method" class="signature"><strong>#debug3?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#debug4%3F-instance-method" class="signature"><strong>#debug4?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#debug%3F-instance-method" class="signature"><strong>#debug?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#error2%3F-instance-method" class="signature"><strong>#error2?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#error3%3F-instance-method" class="signature"><strong>#error3?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#error4%3F-instance-method" class="signature"><strong>#error4?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#error%3F-instance-method" class="signature"><strong>#error?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#fatal2%3F-instance-method" class="signature"><strong>#fatal2?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#fatal3%3F-instance-method" class="signature"><strong>#fatal3?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#fatal4%3F-instance-method" class="signature"><strong>#fatal4?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#fatal%3F-instance-method" class="signature"><strong>#fatal?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#info2%3F-instance-method" class="signature"><strong>#info2?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#info3%3F-instance-method" class="signature"><strong>#info3?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#info4%3F-instance-method" class="signature"><strong>#info4?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#info%3F-instance-method" class="signature"><strong>#info?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#trace2%3F-instance-method" class="signature"><strong>#trace2?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#trace3%3F-instance-method" class="signature"><strong>#trace3?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#trace4%3F-instance-method" class="signature"><strong>#trace4?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#trace%3F-instance-method" class="signature"><strong>#trace?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#warn2%3F-instance-method" class="signature"><strong>#warn2?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#warn3%3F-instance-method" class="signature"><strong>#warn3?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#warn4%3F-instance-method" class="signature"><strong>#warn4?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#warn%3F-instance-method" class="signature"><strong>#warn?</strong></a>
+        
+      </li>
+    
+  </ul>
 
 
 
@@ -952,12 +1208,446 @@
 
 <div class="methods-inherited">
   
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
 </div>
 
 
 
 
 
+
+  <h2>
+    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="debug2?-instance-method">
+      <div class="signature">
+        
+        def <strong>debug2?</strong>
+
+        <a class="method-permalink" href="#debug2%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/37d474ae2e2b942648c945bff688febf390ee53d/src/opentelemetry-api/log.cr#L13" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="debug3?-instance-method">
+      <div class="signature">
+        
+        def <strong>debug3?</strong>
+
+        <a class="method-permalink" href="#debug3%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/37d474ae2e2b942648c945bff688febf390ee53d/src/opentelemetry-api/log.cr#L14" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="debug4?-instance-method">
+      <div class="signature">
+        
+        def <strong>debug4?</strong>
+
+        <a class="method-permalink" href="#debug4%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/37d474ae2e2b942648c945bff688febf390ee53d/src/opentelemetry-api/log.cr#L15" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="debug?-instance-method">
+      <div class="signature">
+        
+        def <strong>debug?</strong>
+
+        <a class="method-permalink" href="#debug%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/37d474ae2e2b942648c945bff688febf390ee53d/src/opentelemetry-api/log.cr#L12" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="error2?-instance-method">
+      <div class="signature">
+        
+        def <strong>error2?</strong>
+
+        <a class="method-permalink" href="#error2%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/37d474ae2e2b942648c945bff688febf390ee53d/src/opentelemetry-api/log.cr#L25" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="error3?-instance-method">
+      <div class="signature">
+        
+        def <strong>error3?</strong>
+
+        <a class="method-permalink" href="#error3%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/37d474ae2e2b942648c945bff688febf390ee53d/src/opentelemetry-api/log.cr#L26" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="error4?-instance-method">
+      <div class="signature">
+        
+        def <strong>error4?</strong>
+
+        <a class="method-permalink" href="#error4%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/37d474ae2e2b942648c945bff688febf390ee53d/src/opentelemetry-api/log.cr#L27" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="error?-instance-method">
+      <div class="signature">
+        
+        def <strong>error?</strong>
+
+        <a class="method-permalink" href="#error%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/37d474ae2e2b942648c945bff688febf390ee53d/src/opentelemetry-api/log.cr#L24" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="fatal2?-instance-method">
+      <div class="signature">
+        
+        def <strong>fatal2?</strong>
+
+        <a class="method-permalink" href="#fatal2%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/37d474ae2e2b942648c945bff688febf390ee53d/src/opentelemetry-api/log.cr#L29" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="fatal3?-instance-method">
+      <div class="signature">
+        
+        def <strong>fatal3?</strong>
+
+        <a class="method-permalink" href="#fatal3%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/37d474ae2e2b942648c945bff688febf390ee53d/src/opentelemetry-api/log.cr#L30" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="fatal4?-instance-method">
+      <div class="signature">
+        
+        def <strong>fatal4?</strong>
+
+        <a class="method-permalink" href="#fatal4%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/37d474ae2e2b942648c945bff688febf390ee53d/src/opentelemetry-api/log.cr#L31" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="fatal?-instance-method">
+      <div class="signature">
+        
+        def <strong>fatal?</strong>
+
+        <a class="method-permalink" href="#fatal%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/37d474ae2e2b942648c945bff688febf390ee53d/src/opentelemetry-api/log.cr#L28" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="info2?-instance-method">
+      <div class="signature">
+        
+        def <strong>info2?</strong>
+
+        <a class="method-permalink" href="#info2%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/37d474ae2e2b942648c945bff688febf390ee53d/src/opentelemetry-api/log.cr#L17" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="info3?-instance-method">
+      <div class="signature">
+        
+        def <strong>info3?</strong>
+
+        <a class="method-permalink" href="#info3%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/37d474ae2e2b942648c945bff688febf390ee53d/src/opentelemetry-api/log.cr#L18" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="info4?-instance-method">
+      <div class="signature">
+        
+        def <strong>info4?</strong>
+
+        <a class="method-permalink" href="#info4%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/37d474ae2e2b942648c945bff688febf390ee53d/src/opentelemetry-api/log.cr#L19" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="info?-instance-method">
+      <div class="signature">
+        
+        def <strong>info?</strong>
+
+        <a class="method-permalink" href="#info%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/37d474ae2e2b942648c945bff688febf390ee53d/src/opentelemetry-api/log.cr#L16" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="trace2?-instance-method">
+      <div class="signature">
+        
+        def <strong>trace2?</strong>
+
+        <a class="method-permalink" href="#trace2%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/37d474ae2e2b942648c945bff688febf390ee53d/src/opentelemetry-api/log.cr#L9" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="trace3?-instance-method">
+      <div class="signature">
+        
+        def <strong>trace3?</strong>
+
+        <a class="method-permalink" href="#trace3%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/37d474ae2e2b942648c945bff688febf390ee53d/src/opentelemetry-api/log.cr#L10" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="trace4?-instance-method">
+      <div class="signature">
+        
+        def <strong>trace4?</strong>
+
+        <a class="method-permalink" href="#trace4%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/37d474ae2e2b942648c945bff688febf390ee53d/src/opentelemetry-api/log.cr#L11" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="trace?-instance-method">
+      <div class="signature">
+        
+        def <strong>trace?</strong>
+
+        <a class="method-permalink" href="#trace%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/37d474ae2e2b942648c945bff688febf390ee53d/src/opentelemetry-api/log.cr#L8" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="warn2?-instance-method">
+      <div class="signature">
+        
+        def <strong>warn2?</strong>
+
+        <a class="method-permalink" href="#warn2%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/37d474ae2e2b942648c945bff688febf390ee53d/src/opentelemetry-api/log.cr#L21" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="warn3?-instance-method">
+      <div class="signature">
+        
+        def <strong>warn3?</strong>
+
+        <a class="method-permalink" href="#warn3%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/37d474ae2e2b942648c945bff688febf390ee53d/src/opentelemetry-api/log.cr#L22" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="warn4?-instance-method">
+      <div class="signature">
+        
+        def <strong>warn4?</strong>
+
+        <a class="method-permalink" href="#warn4%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/37d474ae2e2b942648c945bff688febf390ee53d/src/opentelemetry-api/log.cr#L23" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="warn?-instance-method">
+      <div class="signature">
+        
+        def <strong>warn?</strong>
+
+        <a class="method-permalink" href="#warn%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/37d474ae2e2b942648c945bff688febf390ee53d/src/opentelemetry-api/log.cr#L20" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
 
 
 
