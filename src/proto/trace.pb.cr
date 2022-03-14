@@ -4,7 +4,7 @@ require "protobuf"
 require "./common.pb.cr"
 require "./resource.pb.cr"
 
-module Opentelemetry
+module OpenTelemetry
   module Proto
     module Trace
       module V1
@@ -21,7 +21,7 @@ module Opentelemetry
           include ::Protobuf::Message
           
           contract_of "proto3" do
-            optional :resource, Opentelemetry::Proto::Resource::V1::Resource, 1
+            optional :resource, OpenTelemetry::Proto::Resource::V1::Resource, 1
             repeated :scope_spans, ScopeSpans, 2
             repeated :instrumentation_library_spans, InstrumentationLibrarySpans, 1000
             optional :schema_url, :string, 3
@@ -32,7 +32,7 @@ module Opentelemetry
           include ::Protobuf::Message
           
           contract_of "proto3" do
-            optional :scope, Opentelemetry::Proto::Common::V1::InstrumentationScope, 1
+            optional :scope, OpenTelemetry::Proto::Common::V1::InstrumentationScope, 1
             repeated :spans, Span, 2
             optional :schema_url, :string, 3
           end
@@ -42,7 +42,7 @@ module Opentelemetry
           include ::Protobuf::Message
           
           contract_of "proto3" do
-            optional :instrumentation_library, Opentelemetry::Proto::Common::V1::InstrumentationLibrary, 1
+            optional :instrumentation_library, OpenTelemetry::Proto::Common::V1::InstrumentationLibrary, 1
             repeated :spans, Span, 2
             optional :schema_url, :string, 3
           end
@@ -65,7 +65,7 @@ module Opentelemetry
             contract_of "proto3" do
               optional :time_unix_nano, :fixed64, 1
               optional :name, :string, 2
-              repeated :attributes, Opentelemetry::Proto::Common::V1::KeyValue, 3
+              repeated :attributes, OpenTelemetry::Proto::Common::V1::KeyValue, 3
               optional :dropped_attributes_count, :uint32, 4
             end
           end
@@ -77,7 +77,7 @@ module Opentelemetry
               optional :trace_id, :bytes, 1
               optional :span_id, :bytes, 2
               optional :trace_state, :string, 3
-              repeated :attributes, Opentelemetry::Proto::Common::V1::KeyValue, 4
+              repeated :attributes, OpenTelemetry::Proto::Common::V1::KeyValue, 4
               optional :dropped_attributes_count, :uint32, 5
             end
           end
@@ -91,7 +91,7 @@ module Opentelemetry
             optional :kind, Span::SpanKind, 6
             optional :start_time_unix_nano, :fixed64, 7
             optional :end_time_unix_nano, :fixed64, 8
-            repeated :attributes, Opentelemetry::Proto::Common::V1::KeyValue, 9
+            repeated :attributes, OpenTelemetry::Proto::Common::V1::KeyValue, 9
             optional :dropped_attributes_count, :uint32, 10
             repeated :events, Span::Event, 11
             optional :dropped_events_count, :uint32, 12

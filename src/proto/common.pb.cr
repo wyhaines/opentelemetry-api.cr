@@ -1,7 +1,7 @@
 ## Generated from opentelemetry/proto/common/v1/common.proto for opentelemetry.proto.common.v1
 require "protobuf"
 
-module Opentelemetry
+module OpenTelemetry
   module Proto
     module Common
       module V1

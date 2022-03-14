@@ -3,7 +3,7 @@ require "protobuf"
 
 require "./common.pb.cr"
 
-module Opentelemetry
+module OpenTelemetry
   module Proto
     module Resource
       module V1
@@ -12,7 +12,7 @@ module Opentelemetry
           include ::Protobuf::Message
           
           contract_of "proto3" do
-            repeated :attributes, Opentelemetry::Proto::Common::V1::KeyValue, 1
+            repeated :attributes, OpenTelemetry::Proto::Common::V1::KeyValue, 1
             optional :dropped_attributes_count, :uint32, 2
           end
         end

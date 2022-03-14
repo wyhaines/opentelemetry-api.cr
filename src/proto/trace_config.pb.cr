@@ -1,7 +1,7 @@
 ## Generated from opentelemetry/proto/trace/v1/trace_config.proto for opentelemetry.proto.trace.v1
 require "protobuf"
 
-module Opentelemetry
+module OpenTelemetry
   module Proto
     module Trace
       module V1

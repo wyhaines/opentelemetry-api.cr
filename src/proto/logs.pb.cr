@@ -4,7 +4,7 @@ require "protobuf"
 require "./common.pb.cr"
 require "./resource.pb.cr"
 
-module Opentelemetry
+module OpenTelemetry
   module Proto
     module Logs
       module V1
@@ -52,7 +52,7 @@ module Opentelemetry
           include ::Protobuf::Message
           
           contract_of "proto3" do
-            optional :resource, Opentelemetry::Proto::Resource::V1::Resource, 1
+            optional :resource, OpenTelemetry::Proto::Resource::V1::Resource, 1
             repeated :scope_logs, ScopeLogs, 2
             repeated :instrumentation_library_logs, InstrumentationLibraryLogs, 1000
             optional :schema_url, :string, 3
@@ -63,7 +63,7 @@ module Opentelemetry
           include ::Protobuf::Message
           
           contract_of "proto3" do
-            optional :scope, Opentelemetry::Proto::Common::V1::InstrumentationScope, 1
+            optional :scope, OpenTelemetry::Proto::Common::V1::InstrumentationScope, 1
             repeated :log_records, LogRecord, 2
             optional :schema_url, :string, 3
           end
@@ -73,7 +73,7 @@ module Opentelemetry
           include ::Protobuf::Message
           
           contract_of "proto3" do
-            optional :instrumentation_library, Opentelemetry::Proto::Common::V1::InstrumentationLibrary, 1
+            optional :instrumentation_library, OpenTelemetry::Proto::Common::V1::InstrumentationLibrary, 1
             repeated :log_records, LogRecord, 2
             optional :schema_url, :string, 3
           end
@@ -88,8 +88,8 @@ module Opentelemetry
             optional :severity_number, SeverityNumber, 2
             optional :severity_text, :string, 3
             optional :name, :string, 4
-            optional :body, Opentelemetry::Proto::Common::V1::AnyValue, 5
-            repeated :attributes, Opentelemetry::Proto::Common::V1::KeyValue, 6
+            optional :body, OpenTelemetry::Proto::Common::V1::AnyValue, 5
+            repeated :attributes, OpenTelemetry::Proto::Common::V1::KeyValue, 6
             optional :dropped_attributes_count, :uint32, 7
             optional :flags, :fixed32, 8
             optional :trace_id, :bytes, 9
