@@ -2,6 +2,7 @@ require "./ext"
 require "csuuid"
 require "./proto/trace.pb"
 require "./proto/trace_service.pb"
+require "./opentelemetry-api/name"
 require "./opentelemetry-api/version"
 require "./opentelemetry-api/aliases"
 require "./opentelemetry-api/trace_provider"
@@ -104,6 +105,13 @@ module OpenTelemetry
     provider.merge_configuration(@@config)
 
     provider.trace
+  end
+
+  def self.instrumentation_library
+    Proto::Common::V1::InstrumentationLibrary.new(
+      name: NAME,
+      version: VERSION,
+    )
   end
 
   def self.handle_error(error)

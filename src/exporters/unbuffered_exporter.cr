@@ -11,12 +11,10 @@ module OpenTelemetry
       @buffer : Channel(Elements) = Channel(Elements).new
 
       def initialize
-        pp "UnbufferedExporter.initialize"
         start
       end
 
       def initialize
-        pp "UnbufferedExporter.initialize configured"
         yield self
         start
       end

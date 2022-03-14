@@ -1,5 +1,6 @@
 require "./provider"
 require "./log"
+require "./log_collection"
 
 module OpenTelemetry
   class LogProvider < Provider

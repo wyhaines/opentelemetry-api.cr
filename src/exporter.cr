@@ -30,7 +30,6 @@ module OpenTelemetry
           yield obj
         end
       end
-      pp "EXPORTER IS A #{@exporter}"
     end
 
     # def initialize(variant : String | Symbol = :null, &block : Exporter::GRPC ->)
@@ -53,7 +52,6 @@ module OpenTelemetry
       else
         @exporter = Exporter::Null.new(*args, **kwargs)
       end
-      pp "EXPORTER IS A #{@exporter}"
     end
 
     def export(elements : Array(Elements))

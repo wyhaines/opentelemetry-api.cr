@@ -3,9 +3,12 @@ require "../proto/trace_service.pb"
 require "./span"
 require "random/pcg32"
 require "./trace/exceptions"
+require "./sendable"
 
 module OpenTelemetry
   class Trace
+    include Sendable
+
     @[ThreadLocal]
     @@prng = Random::PCG32.new
 
@@ -128,15 +131,13 @@ module OpenTelemetry
       end
     end
 
+    # TODO: Add support for a Resource
     # This method returns a ProtoBuf object containing all of the Trace information.
     def to_protobuf
       Proto::Trace::V1::ResourceSpans.new(
         instrumentation_library_spans: [
           Proto::Trace::V1::InstrumentationLibrarySpans.new(
-            instrumentation_library: Proto::Common::V1::InstrumentationLibrary.new(
-              name: "OpenTelemetry Crystal",
-              version: VERSION,
-            ),
+            instrumentation_library: OpenTelemetry.instrumentation_library,
             spans: iterate_span_nodes(root_span, [] of Span).map(&.to_protobuf)
           ),
         ],

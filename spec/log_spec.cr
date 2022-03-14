@@ -66,7 +66,7 @@ describe OpenTelemetry::Log do
     log = OpenTelemetry::Log.new
 
     log.message.should eq ""
-    log.severity.should eq OpenTelemetry::Log::Level::Info
+    log.severity.should eq OpenTelemetry::Log::Level::Unspecified
     log.timestamp.should be < Time.utc
     log.observed_timestamp.should eq log.timestamp
     log.exporter.should be_nil
@@ -106,5 +106,19 @@ describe OpenTelemetry::Log do
     log.trace_id.should eq "0123456701234567".to_slice
     log.span_id.should eq "01234567".to_slice
 
+    log = OpenTelemetry::Log.new(
+      message: "Goodbye Cruel World",
+      severity: OpenTelemetry::Log::Level::Fatal,
+      timestamp: Time.utc(2022, 1, 1, 12, 1, 1),
+      observed_timestamp: Time.utc(2022, 1, 1, 12, 0, 0),
+      trace_id: "0123456701234567".to_slice,
+      span_id: "01234567".to_slice)
+
+    log.message.should eq "Goodbye Cruel World"
+    log.severity.should eq OpenTelemetry::Log::Level::Fatal
+    log.timestamp.should eq Time.utc(2022, 1, 1, 12, 1, 1)
+    log.observed_timestamp.should eq Time.utc(2022, 1, 1, 12, 0, 0)
+    log.trace_id.should eq "0123456701234567".to_slice
+    log.span_id.should eq "01234567".to_slice
   end
 end
