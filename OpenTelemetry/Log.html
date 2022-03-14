@@ -246,6 +246,11 @@
       
     </li>
   
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/LogColletion" data-name="opentelemetry::logcolletion">
+      <a href="../OpenTelemetry/LogColletion.html">LogColletion</a>
+      
+    </li>
+  
   <li class=" " data-id="opentelemetry-api/OpenTelemetry/LogProvider" data-name="opentelemetry::logprovider">
       <a href="../OpenTelemetry/LogProvider.html">LogProvider</a>
       
@@ -831,6 +836,11 @@
       
     </li>
   
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Sendable" data-name="opentelemetry::sendable">
+      <a href="../OpenTelemetry/Sendable.html">Sendable</a>
+      
+    </li>
+  
   <li class=" " data-id="opentelemetry-api/OpenTelemetry/Span" data-name="opentelemetry::span">
       <a href="../OpenTelemetry/Span.html">Span</a>
       
@@ -904,6 +914,20 @@
 
 
 
+  <h2>
+    <a id="included-modules" class="anchor" href="#included-modules">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Included Modules
+  </h2>
+  <ul class="other-types-list">
+    
+      <li class="other-type"><a href="../OpenTelemetry/Sendable.html">OpenTelemetry::Sendable</a></li>
+    
+  </ul>
+
 
 
 
@@ -923,7 +947,7 @@
   </h2>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/37d474ae2e2b942648c945bff688febf390ee53d/src/opentelemetry-api/log.cr#L6" target="_blank">
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ec43f8098f5daa4d6755b1d52ea5c51f765b6293/src/opentelemetry-api/log.cr#L7" target="_blank">
         opentelemetry-api/log.cr
       </a>
     
@@ -931,6 +955,39 @@
   
 
 
+
+  
+    <h2>
+      <a id="constant-summary" class="anchor" href="#constant-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+      Constant Summary
+    </h2>
+  
+  <dl>
+    
+      <dt class="entry-const" id="NAME_OFFSETS">
+        <strong>NAME_OFFSETS</strong> = <code>{<span class="s">&quot;UNSPECIFIED&quot;</span> =&gt; -&gt;(_n : <span class="t">Int32</span>) <span class="k">do</span>
+  <span class="n">0</span>
+<span class="k">end</span>, <span class="s">&quot;TRACE&quot;</span> =&gt; -&gt;(n : <span class="t">Int32</span>) <span class="k">do</span>
+  n <span class="o">+</span> <span class="n">1</span>
+<span class="k">end</span>, <span class="s">&quot;DEBUG&quot;</span> =&gt; -&gt;(n : <span class="t">Int32</span>) <span class="k">do</span>
+  n <span class="o">+</span> <span class="n">5</span>
+<span class="k">end</span>, <span class="s">&quot;INFO&quot;</span> =&gt; -&gt;(n : <span class="t">Int32</span>) <span class="k">do</span>
+  n <span class="o">+</span> <span class="n">9</span>
+<span class="k">end</span>, <span class="s">&quot;WARN&quot;</span> =&gt; -&gt;(n : <span class="t">Int32</span>) <span class="k">do</span>
+  n <span class="o">+</span> <span class="n">13</span>
+<span class="k">end</span>, <span class="s">&quot;ERROR&quot;</span> =&gt; -&gt;(n : <span class="t">Int32</span>) <span class="k">do</span>
+  n <span class="o">+</span> <span class="n">17</span>
+<span class="k">end</span>, <span class="s">&quot;FATAL&quot;</span> =&gt; -&gt;(n : <span class="t">Int32</span>) <span class="k">do</span>
+  n <span class="o">+</span> <span class="n">21</span>
+<span class="k">end</span>}</code>
+      </dt>
+      
+    
+  </dl>
 
 
 
@@ -945,17 +1002,17 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new%28severity%3ALevel%3DLevel%3A%3AInfo%2Cmessage%3AString%3D%22%22%2Ctimestamp%3ATime%3DTime.utc%2Cobserved_timestamp%3ATime%3F%3Dnil%2Ctrace_id%3ASlice%28UInt8%29%3F%3Dnil%2Cspan_id%3ASlice%28UInt8%29%3F%3Dnil%2Ctrace_flags%3ABitArray%3DBitArray.new%288%29%2Cexporter%3AExporter%3F%3Dnil%29-class-method" class="signature"><strong>.new</strong>(severity : Level = <span class="t">Level</span><span class="t">::</span><span class="t">Info</span>, message : String = <span class="s">&quot;&quot;</span>, timestamp : Time = <span class="t">Time</span>.utc, observed_timestamp : Time? = <span class="n">nil</span>, trace_id : Slice(UInt8)? = <span class="n">nil</span>, span_id : Slice(UInt8)? = <span class="n">nil</span>, trace_flags : BitArray = <span class="t">BitArray</span>.<span class="k">new</span>(<span class="n">8</span>), exporter : Exporter? = <span class="n">nil</span>)</a>
+        <a href="#new%28severity%3ALevel%3DLevel%3A%3AUnspecified%2Cmessage%3AString%3D%22%22%2Ctimestamp%3ATime%3DTime.utc%2Cobserved_timestamp%3ATime%3F%3Dnil%2Ctrace_id%3ASlice%28UInt8%29%3F%3Dnil%2Cspan_id%3ASlice%28UInt8%29%3F%3Dnil%2Ctrace_flags%3ABitArray%3DBitArray.new%288%29%2Cexporter%3AExporter%3F%3Dnil%29-class-method" class="signature"><strong>.new</strong>(severity : Level = <span class="t">Level</span><span class="t">::</span><span class="t">Unspecified</span>, message : String = <span class="s">&quot;&quot;</span>, timestamp : Time = <span class="t">Time</span>.utc, observed_timestamp : Time? = <span class="n">nil</span>, trace_id : Slice(UInt8)? = <span class="n">nil</span>, span_id : Slice(UInt8)? = <span class="n">nil</span>, trace_flags : BitArray = <span class="t">BitArray</span>.<span class="k">new</span>(<span class="n">8</span>), exporter : Exporter? = <span class="n">nil</span>)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#new%28severity%3AString%3D%22INFO%22%2Cmessage%3AString%3D%22%22%2Ctimestamp%3ATime%3DTime.utc%2Cobserved_timestamp%3ATime%3F%3Dnil%2Ctrace_id%3ASlice%28UInt8%29%3F%3Dnil%2Cspan_id%3ASlice%28UInt8%29%3F%3Dnil%2Ctrace_flags%3ABitArray%3DBitArray.new%288%29%2Cexporter%3AExporter%3F%3Dnil%29-class-method" class="signature"><strong>.new</strong>(severity : String = <span class="s">&quot;INFO&quot;</span>, message : String = <span class="s">&quot;&quot;</span>, timestamp : Time = <span class="t">Time</span>.utc, observed_timestamp : Time? = <span class="n">nil</span>, trace_id : Slice(UInt8)? = <span class="n">nil</span>, span_id : Slice(UInt8)? = <span class="n">nil</span>, trace_flags : BitArray = <span class="t">BitArray</span>.<span class="k">new</span>(<span class="n">8</span>), exporter : Exporter? = <span class="n">nil</span>)</a>
+        <a href="#new%28severity%3AString%3D%22UNSPECIFIED%22%2Cmessage%3AString%3D%22%22%2Ctimestamp%3ATime%3DTime.utc%2Cobserved_timestamp%3ATime%3F%3Dnil%2Ctrace_id%3ASlice%28UInt8%29%3F%3Dnil%2Cspan_id%3ASlice%28UInt8%29%3F%3Dnil%2Ctrace_flags%3ABitArray%3DBitArray.new%288%29%2Cexporter%3AExporter%3F%3Dnil%29-class-method" class="signature"><strong>.new</strong>(severity : String = <span class="s">&quot;UNSPECIFIED&quot;</span>, message : String = <span class="s">&quot;&quot;</span>, timestamp : Time = <span class="t">Time</span>.utc, observed_timestamp : Time? = <span class="n">nil</span>, trace_id : Slice(UInt8)? = <span class="n">nil</span>, span_id : Slice(UInt8)? = <span class="n">nil</span>, trace_flags : BitArray = <span class="t">BitArray</span>.<span class="k">new</span>(<span class="n">8</span>), exporter : Exporter? = <span class="n">nil</span>)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#new%28severity%3AInt%3D9%2Cmessage%3AString%3D%22%22%2Ctimestamp%3ATime%3DTime.utc%2Cobserved_timestamp%3ATime%3F%3Dnil%2Ctrace_id%3ASlice%28UInt8%29%3F%3Dnil%2Cspan_id%3ASlice%28UInt8%29%3F%3Dnil%2Ctrace_flags%3ABitArray%3DBitArray.new%288%29%2Cexporter%3AExporter%3F%3Dnil%29-class-method" class="signature"><strong>.new</strong>(severity : Int = <span class="n">9</span>, message : String = <span class="s">&quot;&quot;</span>, timestamp : Time = <span class="t">Time</span>.utc, observed_timestamp : Time? = <span class="n">nil</span>, trace_id : Slice(UInt8)? = <span class="n">nil</span>, span_id : Slice(UInt8)? = <span class="n">nil</span>, trace_flags : BitArray = <span class="t">BitArray</span>.<span class="k">new</span>(<span class="n">8</span>), exporter : Exporter? = <span class="n">nil</span>)</a>
+        <a href="#new%28severity%3AInt%3D0%2Cmessage%3AString%3D%22%22%2Ctimestamp%3ATime%3DTime.utc%2Cobserved_timestamp%3ATime%3F%3Dnil%2Ctrace_id%3ASlice%28UInt8%29%3F%3Dnil%2Cspan_id%3ASlice%28UInt8%29%3F%3Dnil%2Ctrace_flags%3ABitArray%3DBitArray.new%288%29%2Cexporter%3AExporter%3F%3Dnil%29-class-method" class="signature"><strong>.new</strong>(severity : Int = <span class="n">0</span>, message : String = <span class="s">&quot;&quot;</span>, timestamp : Time = <span class="t">Time</span>.utc, observed_timestamp : Time? = <span class="n">nil</span>, trace_id : Slice(UInt8)? = <span class="n">nil</span>, span_id : Slice(UInt8)? = <span class="n">nil</span>, trace_flags : BitArray = <span class="t">BitArray</span>.<span class="k">new</span>(<span class="n">8</span>), exporter : Exporter? = <span class="n">nil</span>)</a>
         
       </li>
     
@@ -998,12 +1055,24 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
+        <a href="#export-instance-method" class="signature"><strong>#export</strong></a>
+        
+          <div class="summary"><p>Individual logs can export themselves.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#exporter%3AExporter%3F-instance-method" class="signature"><strong>#exporter</strong> : Exporter?</a>
         
       </li>
     
       <li class="entry-summary">
         <a href="#exporter%3D%28exporter%3AExporter%3F%29-instance-method" class="signature"><strong>#exporter=</strong>(exporter : Exporter?)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#merge_configuration_from_provider%3D%28val%29-instance-method" class="signature"><strong>#merge_configuration_from_provider=</strong>(val)</a>
         
       </li>
     
@@ -1024,6 +1093,16 @@
     
       <li class="entry-summary">
         <a href="#observed_timestamp%3D%28observed_timestamp%3ATime%29-instance-method" class="signature"><strong>#observed_timestamp=</strong>(observed_timestamp : Time)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#schema_url%3AString-instance-method" class="signature"><strong>#schema_url</strong> : String</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#schema_url%3D%28schema_url%3AString%29-instance-method" class="signature"><strong>#schema_url=</strong>(schema_url : String)</a>
         
       </li>
     
@@ -1058,6 +1137,18 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#to_json-instance-method" class="signature"><strong>#to_json</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_protobuf-instance-method" class="signature"><strong>#to_protobuf</strong></a>
+        
+          <div class="summary"><p>The ProtoBuf differs a LOT from the current Spec.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#trace_flags%3ABitArray-instance-method" class="signature"><strong>#trace_flags</strong> : BitArray</a>
         
       </li>
@@ -1084,6 +1175,35 @@
 
 
 <div class="methods-inherited">
+  
+    
+
+  <h3>Instance methods inherited from module <code><a href="../OpenTelemetry/Sendable.html">OpenTelemetry::Sendable</a></code></h3>
+  
+  
+    <a href="../OpenTelemetry/Sendable.html#size-instance-method" class="tooltip">
+      <span>size</span>
+    size</a>, 
+    
+  
+    <a href="../OpenTelemetry/Sendable.html#to_json-instance-method" class="tooltip">
+      <span>to_json</span>
+    to_json</a>, 
+    
+  
+    <a href="../OpenTelemetry/Sendable.html#to_protobuf-instance-method" class="tooltip">
+      <span>to_protobuf</span>
+    to_protobuf</a>
+    
+  
+
+
+    
+
+
+    
+
+
   
     
 
@@ -1117,50 +1237,50 @@
     Constructor Detail
   </h2>
   
-    <div class="entry-detail" id="new(severity:Level=Level::Info,message:String=&quot;&quot;,timestamp:Time=Time.utc,observed_timestamp:Time?=nil,trace_id:Slice(UInt8)?=nil,span_id:Slice(UInt8)?=nil,trace_flags:BitArray=BitArray.new(8),exporter:Exporter?=nil)-class-method">
+    <div class="entry-detail" id="new(severity:Level=Level::Unspecified,message:String=&quot;&quot;,timestamp:Time=Time.utc,observed_timestamp:Time?=nil,trace_id:Slice(UInt8)?=nil,span_id:Slice(UInt8)?=nil,trace_flags:BitArray=BitArray.new(8),exporter:Exporter?=nil)-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(severity : <a href="../OpenTelemetry/Log/Level.html">Level</a> = <span class="t">Level</span><span class="t">::</span><span class="t">Info</span>, message : String = <span class="s">&quot;&quot;</span>, timestamp : Time = <span class="t">Time</span>.utc, observed_timestamp : Time? = <span class="n">nil</span>, trace_id : Slice(UInt8)? = <span class="n">nil</span>, span_id : Slice(UInt8)? = <span class="n">nil</span>, trace_flags : BitArray = <span class="t">BitArray</span>.<span class="k">new</span>(<span class="n">8</span>), exporter : <a href="../OpenTelemetry/Exporter.html">Exporter</a>? = <span class="n">nil</span>)
+        def self.<strong>new</strong>(severity : <a href="../OpenTelemetry/Log/Level.html">Level</a> = <span class="t">Level</span><span class="t">::</span><span class="t">Unspecified</span>, message : String = <span class="s">&quot;&quot;</span>, timestamp : Time = <span class="t">Time</span>.utc, observed_timestamp : Time? = <span class="n">nil</span>, trace_id : Slice(UInt8)? = <span class="n">nil</span>, span_id : Slice(UInt8)? = <span class="n">nil</span>, trace_flags : BitArray = <span class="t">BitArray</span>.<span class="k">new</span>(<span class="n">8</span>), exporter : <a href="../OpenTelemetry/Exporter.html">Exporter</a>? = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#new%28severity%3ALevel%3DLevel%3A%3AInfo%2Cmessage%3AString%3D%22%22%2Ctimestamp%3ATime%3DTime.utc%2Cobserved_timestamp%3ATime%3F%3Dnil%2Ctrace_id%3ASlice%28UInt8%29%3F%3Dnil%2Cspan_id%3ASlice%28UInt8%29%3F%3Dnil%2Ctrace_flags%3ABitArray%3DBitArray.new%288%29%2Cexporter%3AExporter%3F%3Dnil%29-class-method">#</a>
+        <a class="method-permalink" href="#new%28severity%3ALevel%3DLevel%3A%3AUnspecified%2Cmessage%3AString%3D%22%22%2Ctimestamp%3ATime%3DTime.utc%2Cobserved_timestamp%3ATime%3F%3Dnil%2Ctrace_id%3ASlice%28UInt8%29%3F%3Dnil%2Cspan_id%3ASlice%28UInt8%29%3F%3Dnil%2Ctrace_flags%3ABitArray%3DBitArray.new%288%29%2Cexporter%3AExporter%3F%3Dnil%29-class-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/37d474ae2e2b942648c945bff688febf390ee53d/src/opentelemetry-api/log.cr#L97" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ec43f8098f5daa4d6755b1d52ea5c51f765b6293/src/opentelemetry-api/log.cr#L98" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="new(severity:String=&quot;INFO&quot;,message:String=&quot;&quot;,timestamp:Time=Time.utc,observed_timestamp:Time?=nil,trace_id:Slice(UInt8)?=nil,span_id:Slice(UInt8)?=nil,trace_flags:BitArray=BitArray.new(8),exporter:Exporter?=nil)-class-method">
+    <div class="entry-detail" id="new(severity:String=&quot;UNSPECIFIED&quot;,message:String=&quot;&quot;,timestamp:Time=Time.utc,observed_timestamp:Time?=nil,trace_id:Slice(UInt8)?=nil,span_id:Slice(UInt8)?=nil,trace_flags:BitArray=BitArray.new(8),exporter:Exporter?=nil)-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(severity : String = <span class="s">&quot;INFO&quot;</span>, message : String = <span class="s">&quot;&quot;</span>, timestamp : Time = <span class="t">Time</span>.utc, observed_timestamp : Time? = <span class="n">nil</span>, trace_id : Slice(UInt8)? = <span class="n">nil</span>, span_id : Slice(UInt8)? = <span class="n">nil</span>, trace_flags : BitArray = <span class="t">BitArray</span>.<span class="k">new</span>(<span class="n">8</span>), exporter : <a href="../OpenTelemetry/Exporter.html">Exporter</a>? = <span class="n">nil</span>)
+        def self.<strong>new</strong>(severity : String = <span class="s">&quot;UNSPECIFIED&quot;</span>, message : String = <span class="s">&quot;&quot;</span>, timestamp : Time = <span class="t">Time</span>.utc, observed_timestamp : Time? = <span class="n">nil</span>, trace_id : Slice(UInt8)? = <span class="n">nil</span>, span_id : Slice(UInt8)? = <span class="n">nil</span>, trace_flags : BitArray = <span class="t">BitArray</span>.<span class="k">new</span>(<span class="n">8</span>), exporter : <a href="../OpenTelemetry/Exporter.html">Exporter</a>? = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#new%28severity%3AString%3D%22INFO%22%2Cmessage%3AString%3D%22%22%2Ctimestamp%3ATime%3DTime.utc%2Cobserved_timestamp%3ATime%3F%3Dnil%2Ctrace_id%3ASlice%28UInt8%29%3F%3Dnil%2Cspan_id%3ASlice%28UInt8%29%3F%3Dnil%2Ctrace_flags%3ABitArray%3DBitArray.new%288%29%2Cexporter%3AExporter%3F%3Dnil%29-class-method">#</a>
+        <a class="method-permalink" href="#new%28severity%3AString%3D%22UNSPECIFIED%22%2Cmessage%3AString%3D%22%22%2Ctimestamp%3ATime%3DTime.utc%2Cobserved_timestamp%3ATime%3F%3Dnil%2Ctrace_id%3ASlice%28UInt8%29%3F%3Dnil%2Cspan_id%3ASlice%28UInt8%29%3F%3Dnil%2Ctrace_flags%3ABitArray%3DBitArray.new%288%29%2Cexporter%3AExporter%3F%3Dnil%29-class-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/37d474ae2e2b942648c945bff688febf390ee53d/src/opentelemetry-api/log.cr#L119" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ec43f8098f5daa4d6755b1d52ea5c51f765b6293/src/opentelemetry-api/log.cr#L119" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="new(severity:Int=9,message:String=&quot;&quot;,timestamp:Time=Time.utc,observed_timestamp:Time?=nil,trace_id:Slice(UInt8)?=nil,span_id:Slice(UInt8)?=nil,trace_flags:BitArray=BitArray.new(8),exporter:Exporter?=nil)-class-method">
+    <div class="entry-detail" id="new(severity:Int=0,message:String=&quot;&quot;,timestamp:Time=Time.utc,observed_timestamp:Time?=nil,trace_id:Slice(UInt8)?=nil,span_id:Slice(UInt8)?=nil,trace_flags:BitArray=BitArray.new(8),exporter:Exporter?=nil)-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(severity : Int = <span class="n">9</span>, message : String = <span class="s">&quot;&quot;</span>, timestamp : Time = <span class="t">Time</span>.utc, observed_timestamp : Time? = <span class="n">nil</span>, trace_id : Slice(UInt8)? = <span class="n">nil</span>, span_id : Slice(UInt8)? = <span class="n">nil</span>, trace_flags : BitArray = <span class="t">BitArray</span>.<span class="k">new</span>(<span class="n">8</span>), exporter : <a href="../OpenTelemetry/Exporter.html">Exporter</a>? = <span class="n">nil</span>)
+        def self.<strong>new</strong>(severity : Int = <span class="n">0</span>, message : String = <span class="s">&quot;&quot;</span>, timestamp : Time = <span class="t">Time</span>.utc, observed_timestamp : Time? = <span class="n">nil</span>, trace_id : Slice(UInt8)? = <span class="n">nil</span>, span_id : Slice(UInt8)? = <span class="n">nil</span>, trace_flags : BitArray = <span class="t">BitArray</span>.<span class="k">new</span>(<span class="n">8</span>), exporter : <a href="../OpenTelemetry/Exporter.html">Exporter</a>? = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#new%28severity%3AInt%3D9%2Cmessage%3AString%3D%22%22%2Ctimestamp%3ATime%3DTime.utc%2Cobserved_timestamp%3ATime%3F%3Dnil%2Ctrace_id%3ASlice%28UInt8%29%3F%3Dnil%2Cspan_id%3ASlice%28UInt8%29%3F%3Dnil%2Ctrace_flags%3ABitArray%3DBitArray.new%288%29%2Cexporter%3AExporter%3F%3Dnil%29-class-method">#</a>
+        <a class="method-permalink" href="#new%28severity%3AInt%3D0%2Cmessage%3AString%3D%22%22%2Ctimestamp%3ATime%3DTime.utc%2Cobserved_timestamp%3ATime%3F%3Dnil%2Ctrace_id%3ASlice%28UInt8%29%3F%3Dnil%2Cspan_id%3ASlice%28UInt8%29%3F%3Dnil%2Ctrace_flags%3ABitArray%3DBitArray.new%288%29%2Cexporter%3AExporter%3F%3Dnil%29-class-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/37d474ae2e2b942648c945bff688febf390ee53d/src/opentelemetry-api/log.cr#L141" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ec43f8098f5daa4d6755b1d52ea5c51f765b6293/src/opentelemetry-api/log.cr#L140" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1188,7 +1308,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/37d474ae2e2b942648c945bff688febf390ee53d/src/opentelemetry-api/log.cr#L56" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ec43f8098f5daa4d6755b1d52ea5c51f765b6293/src/opentelemetry-api/log.cr#L71" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1204,7 +1324,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/37d474ae2e2b942648c945bff688febf390ee53d/src/opentelemetry-api/log.cr#L47" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ec43f8098f5daa4d6755b1d52ea5c51f765b6293/src/opentelemetry-api/log.cr#L62" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1221,6 +1341,29 @@
     Instance Method Detail
   </h2>
   
+    <div class="entry-detail" id="export-instance-method">
+      <div class="signature">
+        
+        def <strong>export</strong>
+
+        <a class="method-permalink" href="#export-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Individual logs can export themselves. This is less efficient than using a LogProvider,
+and allowing the LogProvider to export larger chucks of logs, but this capability may
+be useful if log volume is not large.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ec43f8098f5daa4d6755b1d52ea5c51f765b6293/src/opentelemetry-api/log.cr#L189" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="exporter:Exporter?-instance-method">
       <div class="signature">
         
@@ -1232,7 +1375,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/37d474ae2e2b942648c945bff688febf390ee53d/src/opentelemetry-api/log.cr#L34" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ec43f8098f5daa4d6755b1d52ea5c51f765b6293/src/opentelemetry-api/log.cr#L48" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1248,7 +1391,23 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/37d474ae2e2b942648c945bff688febf390ee53d/src/opentelemetry-api/log.cr#L34" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ec43f8098f5daa4d6755b1d52ea5c51f765b6293/src/opentelemetry-api/log.cr#L48" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="merge_configuration_from_provider=(val)-instance-method">
+      <div class="signature">
+        
+        def <strong>merge_configuration_from_provider=</strong>(val)
+
+        <a class="method-permalink" href="#merge_configuration_from_provider%3D%28val%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ec43f8098f5daa4d6755b1d52ea5c51f765b6293/src/opentelemetry-api/log.cr#L161" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1264,7 +1423,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/37d474ae2e2b942648c945bff688febf390ee53d/src/opentelemetry-api/log.cr#L42" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ec43f8098f5daa4d6755b1d52ea5c51f765b6293/src/opentelemetry-api/log.cr#L57" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1280,7 +1439,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/37d474ae2e2b942648c945bff688febf390ee53d/src/opentelemetry-api/log.cr#L42" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ec43f8098f5daa4d6755b1d52ea5c51f765b6293/src/opentelemetry-api/log.cr#L57" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1296,7 +1455,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/37d474ae2e2b942648c945bff688febf390ee53d/src/opentelemetry-api/log.cr#L37" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ec43f8098f5daa4d6755b1d52ea5c51f765b6293/src/opentelemetry-api/log.cr#L52" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1312,7 +1471,39 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/37d474ae2e2b942648c945bff688febf390ee53d/src/opentelemetry-api/log.cr#L37" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ec43f8098f5daa4d6755b1d52ea5c51f765b6293/src/opentelemetry-api/log.cr#L52" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="schema_url:String-instance-method">
+      <div class="signature">
+        
+        def <strong>schema_url</strong> : String
+
+        <a class="method-permalink" href="#schema_url%3AString-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ec43f8098f5daa4d6755b1d52ea5c51f765b6293/src/opentelemetry-api/log.cr#L49" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="schema_url=(schema_url:String)-instance-method">
+      <div class="signature">
+        
+        def <strong>schema_url=</strong>(schema_url : String)
+
+        <a class="method-permalink" href="#schema_url%3D%28schema_url%3AString%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ec43f8098f5daa4d6755b1d52ea5c51f765b6293/src/opentelemetry-api/log.cr#L49" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1328,7 +1519,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/37d474ae2e2b942648c945bff688febf390ee53d/src/opentelemetry-api/log.cr#L41" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ec43f8098f5daa4d6755b1d52ea5c51f765b6293/src/opentelemetry-api/log.cr#L56" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1344,7 +1535,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/37d474ae2e2b942648c945bff688febf390ee53d/src/opentelemetry-api/log.cr#L41" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ec43f8098f5daa4d6755b1d52ea5c51f765b6293/src/opentelemetry-api/log.cr#L56" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1360,7 +1551,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/37d474ae2e2b942648c945bff688febf390ee53d/src/opentelemetry-api/log.cr#L39" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ec43f8098f5daa4d6755b1d52ea5c51f765b6293/src/opentelemetry-api/log.cr#L54" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1376,7 +1567,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/37d474ae2e2b942648c945bff688febf390ee53d/src/opentelemetry-api/log.cr#L39" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ec43f8098f5daa4d6755b1d52ea5c51f765b6293/src/opentelemetry-api/log.cr#L54" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1392,7 +1583,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/37d474ae2e2b942648c945bff688febf390ee53d/src/opentelemetry-api/log.cr#L36" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ec43f8098f5daa4d6755b1d52ea5c51f765b6293/src/opentelemetry-api/log.cr#L51" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1408,7 +1599,44 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/37d474ae2e2b942648c945bff688febf390ee53d/src/opentelemetry-api/log.cr#L36" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ec43f8098f5daa4d6755b1d52ea5c51f765b6293/src/opentelemetry-api/log.cr#L51" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_json-instance-method">
+      <div class="signature">
+        
+        def <strong>to_json</strong>
+
+        <a class="method-permalink" href="#to_json-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ec43f8098f5daa4d6755b1d52ea5c51f765b6293/src/opentelemetry-api/log.cr#L183" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_protobuf-instance-method">
+      <div class="signature">
+        
+        def <strong>to_protobuf</strong>
+
+        <a class="method-permalink" href="#to_protobuf-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>The ProtoBuf differs a LOT from the current Spec. Methinks this has changed a bunch since I last updated it.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ec43f8098f5daa4d6755b1d52ea5c51f765b6293/src/opentelemetry-api/log.cr#L170" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1424,7 +1652,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/37d474ae2e2b942648c945bff688febf390ee53d/src/opentelemetry-api/log.cr#L40" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ec43f8098f5daa4d6755b1d52ea5c51f765b6293/src/opentelemetry-api/log.cr#L55" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1440,7 +1668,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/37d474ae2e2b942648c945bff688febf390ee53d/src/opentelemetry-api/log.cr#L40" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ec43f8098f5daa4d6755b1d52ea5c51f765b6293/src/opentelemetry-api/log.cr#L55" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1456,7 +1684,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/37d474ae2e2b942648c945bff688febf390ee53d/src/opentelemetry-api/log.cr#L38" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ec43f8098f5daa4d6755b1d52ea5c51f765b6293/src/opentelemetry-api/log.cr#L53" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1472,7 +1700,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/37d474ae2e2b942648c945bff688febf390ee53d/src/opentelemetry-api/log.cr#L38" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ec43f8098f5daa4d6755b1d52ea5c51f765b6293/src/opentelemetry-api/log.cr#L53" target="_blank">View source</a>]
         
       </div>
     </div>
