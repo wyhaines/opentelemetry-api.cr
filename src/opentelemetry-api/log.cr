@@ -1,10 +1,10 @@
 require "../proto/logs.pb"
 require "../proto/logs_service.pb"
-require "./trace/exceptions"
+# require "./trace/exceptions"
 require "./sendable"
 
 module OpenTelemetry
-  class Log
+  class LogRecord
     include Sendable
 
     NAME_OFFSETS = {
@@ -48,21 +48,23 @@ module OpenTelemetry
     property exporter : Exporter? = nil
     property schema_url : String = ""
 
-    property timestamp : Time = Time.utc
-    property observed_timestamp : Time = Time.utc
+    property time : Time = Time.utc
+    property observed_time : Time = Time.utc
     property trace_id : Slice(UInt8)? = nil
     property span_id : Slice(UInt8)? = nil
-    property trace_flags : BitArray = BitArray.new(8)
+    property flags : BitArray = BitArray.new(8)
     property severity : Level = Level::Unspecified
-    property message : String = ""
+    property severity_text : String? = nil
+    property name : String? = nil
+    property attributes : Hash(String, AnyAttribute) = {} of String => AnyAttribute
 
+    @body : AnyValue? = nil
     @exported : Bool = false
     @lock : Mutex = Mutex.new
 
     def self.severity_from_number(number)
-      number_to_i = number.to_i
-      if number_to_i > 0 && number_to_i < 25
-        Level.new(number_to_i)
+      if number.to_i > 0 && number.to_i < 25
+        Level.new(number.to_i)
       else
         raise "Invalid severity number; severity must be in the range of 1..24"
       end
@@ -70,6 +72,7 @@ module OpenTelemetry
 
     def self.severity_from_name(name)
       parts = name.upcase.scan(/[a-zA-Z]+|\d+/).map(&.to_a.first.to_s)
+
       raise "Severity name not formatted correctly; LABEL|LABELn where LABEL is one of TRACE, DEBUG, INFO, WARN, ERROR, or FATAL and n is an optional number" if !(1..2).includes?(parts.size)
 
       name = parts[0].upcase
@@ -84,78 +87,95 @@ module OpenTelemetry
 
     private def initialize_impl(
       @severity : Level = Level::Unspecified,
-      @message : String = "",
-      @timestamp : Time = Time.utc,
-      observed_timestamp : Time? = nil,
+      body : ValueTypes? = nil,
+      @time : Time = Time.utc,
+      observed_time : Time? = nil,
       @trace_id : Slice(UInt8)? = nil,
       @span_id : Slice(UInt8)? = nil,
-      @trace_flags : BitArray = BitArray.new(8),
+      @flags : BitArray = BitArray.new(8),
       @exporter : Exporter? = nil
     )
-      @observed_timestamp = observed_timestamp || @timestamp
+      @observed_time = observed_time || @time
+      self.body = body
     end
 
     def initialize(
       severity : Level = Level::Unspecified,
-      message : String = "",
-      timestamp : Time = Time.utc,
-      observed_timestamp : Time? = nil,
+      body : ValueTypes? = nil,
+      time : Time = Time.utc,
+      observed_time : Time? = nil,
       trace_id : Slice(UInt8)? = nil,
       span_id : Slice(UInt8)? = nil,
-      trace_flags : BitArray = BitArray.new(8),
+      flags : BitArray = BitArray.new(8),
       exporter : Exporter? = nil
     )
       initialize_impl(
         severity,
-        message,
-        timestamp,
-        observed_timestamp,
+        body,
+        time,
+        observed_time,
         trace_id,
         span_id,
-        trace_flags,
+        flags,
         exporter)
     end
 
     def initialize(
       severity : String = "UNSPECIFIED",
-      message : String = "",
-      timestamp : Time = Time.utc,
-      observed_timestamp : Time? = nil,
+      body : ValueTypes? = nil,
+      time : Time = Time.utc,
+      observed_time : Time? = nil,
       trace_id : Slice(UInt8)? = nil,
       span_id : Slice(UInt8)? = nil,
-      trace_flags : BitArray = BitArray.new(8),
+      flags : BitArray = BitArray.new(8),
       exporter : Exporter? = nil
     )
       initialize_impl(
         self.class.severity_from_name(severity),
-        message,
-        timestamp,
-        observed_timestamp,
+        body,
+        time,
+        observed_time,
         trace_id,
         span_id,
-        trace_flags,
+        flags,
         exporter)
     end
 
     def initialize(
       severity : Int = 0,
-      message : String = "",
-      timestamp : Time = Time.utc,
-      observed_timestamp : Time? = nil,
+      body : ValueTypes? = nil,
+      time : Time = Time.utc,
+      observed_time : Time? = nil,
       trace_id : Slice(UInt8)? = nil,
       span_id : Slice(UInt8)? = nil,
-      trace_flags : BitArray = BitArray.new(8),
+      flags : BitArray = BitArray.new(8),
       exporter : Exporter? = nil
     )
       initialize_impl(
         self.class.severity_from_number(severity),
-        message,
-        timestamp,
-        observed_timestamp,
+        body,
+        time,
+        observed_time,
         trace_id,
         span_id,
-        trace_flags,
+        flags,
         exporter)
+    end
+
+    def body=(val)
+      if val.nil?
+        @body = nil
+      else
+        @body = AnyValue.new(val)
+      end
+    end
+
+    def body
+      if b = @body
+        b.value
+      else
+        nil
+      end
     end
 
     def merge_configuration_from_provider=(val)
@@ -169,14 +189,14 @@ module OpenTelemetry
     # The ProtoBuf differs a LOT from the current Spec. Methinks this has changed a bunch since I last updated it.
     def to_protobuf
       Proto::Trace::V1::Log.new(
-        time_unix_nano: (@timestamp - Time::UNIX_EPOCH).total_nanoseconds.to_u64,
-        observed_time_unix_nane: (@observed_timestamp - Time::UNIX_EPOCH).total_nanoseconds.to_u64,
+        time_unix_nano: (@time - Time::UNIX_EPOCH).total_nanoseconds.to_u64,
+        observed_time_unix_nane: (@observed_time - Time::UNIX_EPOCH).total_nanoseconds.to_u64,
         severity_number: @severity.value,
         severity_text: @severity.to_s,
-        message: @message,
+        body: body.value,
         trace_id: @trace_id,
         span_id: @span_id,
-              # flags: @trace_flags
+              # flags: @flags
 )
     end
 

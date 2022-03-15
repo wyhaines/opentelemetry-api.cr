@@ -1,95 +1,10 @@
-require "./anyvalue"
-
 module OpenTelemetry
-  alias ValueType = String | Bool | Float64 | Int64 | Int32
-  alias ValueArrays = Array(String) | Array(Bool) | Array(Float64) | Array(Int64) | Array(Int32)
-  alias ValueTypes = ValueType | ValueArrays
-
-  struct Attribute(K)
-    getter key : String
-    getter value : K
-
-    def self.from_h(hash)
-      new(key: hash["key"], value: hash["value"])
-    end
-
-    def self.from_a(ary)
-      new(key: ary[0], value: ary[1])
-    end
-
-    def initialize(@value)
-      @key = ""
-    end
-
-    def initialize(@key, @value)
-    end
-
-    # def to_h
-    #   {key: value}
-    # end
-
-    def to_s(io : IO) : Nil
-      io << value
-    end
-
-    # def to_i
-    #   value.to_i64
-    # end
-
-    # def to_f
-    #   value.to_f64
-    # end
-
-    # def to_bool
-    #   !!value
-    # end
-  end
-
-  # This is a wrapper around the supported attribute types.
-  class AnyAttribute
-    alias Type = Attribute(String) |
-                 Attribute(Bool) |
-                 Attribute(Float64) |
-                 Attribute(Int64) |
-                 Attribute(Int32) |
-                 Attribute(Array(String)) |
-                 Attribute(Array(Bool)) |
-                 Attribute(Array(Float64)) |
-                 Attribute(Array(Int64)) |
-                 Attribute(Array(Int32))
-
-    getter raw : Type
-
-    def initialize(raw : Attribute)
-      @raw = raw
-    end
+  class AnyValue
+    getter raw : AnyAttribute::Type = Attribute(String).new("")
 
     # ameba:disable Metrics/CyclomaticComplexity
-    def initialize(key : String, value : ValueTypes)
-      case value
-      when String
-        @raw = Attribute(String).new(key, value)
-      when Bool
-        @raw = Attribute(Bool).new(key, value)
-      when Float64
-        @raw = Attribute(Float64).new(key, value)
-      when Int64
-        @raw = Attribute(Int64).new(key, value)
-      when Int32
-        @raw = Attribute(Int32).new(key, value)
-      when Array(String)
-        @raw = Attribute(Array(String)).new(key, value)
-      when Array(Bool)
-        @raw = Attribute(Array(Bool)).new(key, value)
-      when Array(Float64)
-        @raw = Attribute(Array(Float64)).new(key, value)
-      when Array(Int64)
-        @raw = Attribute(Array(Int64)).new(key, value)
-      when Array(Int32)
-        @raw = Attribute(Array(Int32)).new(key, value)
-      else
-        raise ArgumentError.new("#{value} is not a valid type")
-      end
+    def initialize(value : ValueTypes)
+      self.value = value
     end
 
     # ameba:disable Metrics/CyclomaticComplexity
@@ -137,8 +52,31 @@ module OpenTelemetry
       @raw.value
     end
 
-    def key
-      @raw.key
+    def value=(val)
+      case val
+      when String
+        @raw = Attribute(String).new(val)
+      when Bool
+        @raw = Attribute(Bool).new(val)
+      when Float64
+        @raw = Attribute(Float64).new(val)
+      when Int64
+        @raw = Attribute(Int64).new(val)
+      when Int32
+        @raw = Attribute(Int32).new(val)
+      when Array(String)
+        @raw = Attribute(Array(String)).new(val)
+      when Array(Bool)
+        @raw = Attribute(Array(Bool)).new(val)
+      when Array(Float64)
+        @raw = Attribute(Array(Float64)).new(val)
+      when Array(Int64)
+        @raw = Attribute(Array(Int64)).new(val)
+      when Array(Int32)
+        @raw = Attribute(Array(Int32)).new(val)
+      else
+        raise ArgumentError.new("#{val} is not a valid type")
+      end
     end
 
     def [](index)
@@ -177,7 +115,7 @@ module OpenTelemetry
     end
 
     def to_json
-      "\"#{key}\":#{value.to_json}"
+      value.to_json
     end
   end
 end
