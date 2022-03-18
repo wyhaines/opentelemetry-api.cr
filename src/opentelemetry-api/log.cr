@@ -48,15 +48,16 @@ module OpenTelemetry
     property exporter : Exporter? = nil
     property schema_url : String = ""
 
-    property time : Time = Time.utc
-    property observed_time : Time = Time.utc
+    property time : Time? = nil
+    property observed_time : Time? = nil
     property trace_id : Slice(UInt8)? = nil
     property span_id : Slice(UInt8)? = nil
-    property flags : BitArray = BitArray.new(8)
+    property flags : TraceFlags = TraceFlags.new(0x00)
     property severity : Level = Level::Unspecified
     property severity_text : String? = nil
     property name : String? = nil
     property attributes : Hash(String, AnyAttribute) = {} of String => AnyAttribute
+    property dropped_attribute_count : UInt32 = 0
 
     @body : AnyValue? = nil
     @exported : Bool = false
@@ -87,79 +88,103 @@ module OpenTelemetry
 
     private def initialize_impl(
       @severity : Level = Level::Unspecified,
+      severity_text : String? = nil,
       body : ValueTypes? = nil,
-      @time : Time = Time.utc,
+      @time : Time? = nil,
       observed_time : Time? = nil,
       @trace_id : Slice(UInt8)? = nil,
       @span_id : Slice(UInt8)? = nil,
-      @flags : BitArray = BitArray.new(8),
+      @flags : TraceFlags = TraceFlags.new(0x00),
       @exporter : Exporter? = nil
     )
+      @severity_text = severity_text || @severity.to_s
       @observed_time = observed_time || @time
       self.body = body
     end
 
     def initialize(
       severity : Level = Level::Unspecified,
+      severity_text : String? = nil,
       body : ValueTypes? = nil,
-      time : Time = Time.utc,
+      time : Time? = nil,
       observed_time : Time? = nil,
       trace_id : Slice(UInt8)? = nil,
       span_id : Slice(UInt8)? = nil,
-      flags : BitArray = BitArray.new(8),
+      flags : TraceFlags = TraceFlags.new(0x00),
       exporter : Exporter? = nil
     )
       initialize_impl(
-        severity,
-        body,
-        time,
-        observed_time,
-        trace_id,
-        span_id,
-        flags,
-        exporter)
+        severity: severity,
+        severity_text: severity_text,
+        body: body,
+        time: time,
+        observed_time: observed_time,
+        trace_id: trace_id,
+        span_id: span_id,
+        flags: flags,
+        exporter: exporter)
     end
 
     def initialize(
       severity : String = "UNSPECIFIED",
+      severity_text : String? = nil,
       body : ValueTypes? = nil,
-      time : Time = Time.utc,
+      time : Time? = nil,
       observed_time : Time? = nil,
       trace_id : Slice(UInt8)? = nil,
       span_id : Slice(UInt8)? = nil,
-      flags : BitArray = BitArray.new(8),
+      flags : TraceFlags = TraceFlags.new(0x00),
       exporter : Exporter? = nil
     )
       initialize_impl(
-        self.class.severity_from_name(severity),
-        body,
-        time,
-        observed_time,
-        trace_id,
-        span_id,
-        flags,
-        exporter)
+        severity: self.class.severity_from_name(severity),
+        severity_text: severity_text,
+        body: body,
+        time: time,
+        observed_time: observed_time,
+        trace_id: trace_id,
+        span_id: span_id,
+        flags: flags,
+        exporter: exporter)
     end
 
     def initialize(
       severity : Int = 0,
+      severity_text : String? = nil,
       body : ValueTypes? = nil,
-      time : Time = Time.utc,
+      time : Time? = nil,
       observed_time : Time? = nil,
       trace_id : Slice(UInt8)? = nil,
       span_id : Slice(UInt8)? = nil,
-      flags : BitArray = BitArray.new(8),
+      flags : TraceFlags = TraceFlags.new(0x00),
       exporter : Exporter? = nil
     )
       initialize_impl(
-        self.class.severity_from_number(severity),
-        body,
-        time,
-        observed_time,
-        trace_id,
-        span_id,
-        flags,
-        exporter)
+        severity: self.class.severity_from_number(severity),
+        severity_text: severity_text,
+        body: body,
+        time: time,
+        observed_time: observed_time,
+        trace_id: trace_id,
+        span_id: span_id,
+        flags: flags,
+        exporter: exporter)
+    end
+
+    def []=(key, value)
+      attributes[key] = AnyAttribute.new(key: key, value: value)
+    end
+
+    def set_attribute(key, value)
+      self[key] = value
+    end
+
+    def [](key)
+      attributes[key].value
+    end
+
+    def get_attribute(key)
+      attributes[key]
     end
 
     def body=(val)
@@ -186,11 +211,27 @@ module OpenTelemetry
       @provider = val
     end
 
+    def time_unix_nano
+      if t = time
+        (t - Time::UNIX_EPOCH).total_nanoseconds.to_u64
+      else
+        0
+      end
+    end
+
+    def observed_time_unix_nano
+      if ot = observed_time
+        (ot - Time::UNIX_EPOCH).total_nanoseconds.to_u64
+      else
+        0
+      end
+    end
+
     # The ProtoBuf differs a LOT from the current Spec. Methinks this has changed a bunch since I last updated it.
     def to_protobuf
       Proto::Trace::V1::Log.new(
-        time_unix_nano: (@time - Time::UNIX_EPOCH).total_nanoseconds.to_u64,
-        observed_time_unix_nane: (@observed_time - Time::UNIX_EPOCH).total_nanoseconds.to_u64,
+        time_unix_nano: time_unix_nano,
+        observed_time_unix_nano: observed_time_unix_nano,
         severity_number: @severity.value,
         severity_text: @severity.to_s,
         body: body.value,
@@ -201,6 +242,13 @@ module OpenTelemetry
     end
 
     def to_json
+      String.build do |json|
+        json << "{\n"
+        json << "    \"time_unix_nano\":\"#{time_unix_nano}\"\n" if time_unix_nano
+        json << "    \"time_unix_nano\":\"#{time_unix_nano}\"\n" if observed_time_unix_nano
+        json << "    \"severity_text\":\"#{severity_text}\"\n" if severity_text
+        json << "}"
+      end
     end
 
     # Individual logs can export themselves. This is less efficient than using a LogProvider,

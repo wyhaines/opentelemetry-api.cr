@@ -61,78 +61,78 @@ describe OpenTelemetry::AnyValue do
     attr.value.should eq [42.0_f64, 84.0_f64, 42.0_f64]
   end
 
-    it "can create an AnyValue for a String" do
-      OpenTelemetry::AnyValue.new("value1")
-    end
+  it "can create an AnyValue for a String" do
+    OpenTelemetry::AnyValue.new("value1")
+  end
 
-    it "can create an AnyValue for a Bool" do
-      OpenTelemetry::AnyValue.new(true)
-    end
+  it "can create an AnyValue for a Bool" do
+    OpenTelemetry::AnyValue.new(true)
+  end
 
-    it "can create an AnyValue for an Int32" do
-      OpenTelemetry::AnyValue.new(42)
-    end
+  it "can create an AnyValue for an Int32" do
+    OpenTelemetry::AnyValue.new(42)
+  end
 
-    it "can create an AnyValue for an Int64" do
-      OpenTelemetry::AnyValue.new(42_i64)
-    end
+  it "can create an AnyValue for an Int64" do
+    OpenTelemetry::AnyValue.new(42_i64)
+  end
 
-    it "can create an AnyValue for a Float64" do
-      OpenTelemetry::AnyValue.new(42.0)
-    end
+  it "can create an AnyValue for a Float64" do
+    OpenTelemetry::AnyValue.new(42.0)
+  end
 
-    it "can create an AnyValue for a String array" do
-      OpenTelemetry::AnyValue.new(["value1", "value2"])
-    end
+  it "can create an AnyValue for a String array" do
+    OpenTelemetry::AnyValue.new(["value1", "value2"])
+  end
 
-    it "can create an AnyValue for a Bool array" do
-      OpenTelemetry::AnyValue.new([true, false])
-    end
+  it "can create an AnyValue for a Bool array" do
+    OpenTelemetry::AnyValue.new([true, false])
+  end
 
-    it "can create an AnyValue for an Int32 array" do
-      OpenTelemetry::AnyValue.new([42, 84])
-    end
+  it "can create an AnyValue for an Int32 array" do
+    OpenTelemetry::AnyValue.new([42, 84])
+  end
 
-    it "can create an AnyValue for an Int64 array" do
-      OpenTelemetry::AnyValue.new([42_i64, 84_i64])
-    end
+  it "can create an AnyValue for an Int64 array" do
+    OpenTelemetry::AnyValue.new([42_i64, 84_i64])
+  end
 
-    it "can create an AnyValue for a Float64 array" do
-      OpenTelemetry::AnyValue.new([42.0, 84.0])
-    end
+  it "can create an AnyValue for a Float64 array" do
+    OpenTelemetry::AnyValue.new([42.0, 84.0])
+  end
 
-    it "can append to an AnyValue that contains an array" do
-      attr = OpenTelemetry::AnyValue.new([42, 84])
-      attr << 42
-      attr.value.should eq [42, 84, 42]
+  it "can append to an AnyValue that contains an array" do
+    attr = OpenTelemetry::AnyValue.new([42, 84])
+    attr << 42
+    attr.value.should eq [42, 84, 42]
 
-      attr = OpenTelemetry::AnyValue.new(["value1", "value2"])
-      attr << "value3"
-      attr.value.should eq ["value1", "value2", "value3"]
+    attr = OpenTelemetry::AnyValue.new(["value1", "value2"])
+    attr << "value3"
+    attr.value.should eq ["value1", "value2", "value3"]
 
-      attr = OpenTelemetry::AnyValue.new([true, false])
-      attr << true
-      attr.value.should eq [true, false, true]
+    attr = OpenTelemetry::AnyValue.new([true, false])
+    attr << true
+    attr.value.should eq [true, false, true]
 
-      attr = OpenTelemetry::AnyValue.new([42_i64, 84_i64])
-      attr << 42_i64
-      attr.value.should eq [42_i64, 84_i64, 42_i64]
+    attr = OpenTelemetry::AnyValue.new([42_i64, 84_i64])
+    attr << 42_i64
+    attr.value.should eq [42_i64, 84_i64, 42_i64]
 
-      attr = OpenTelemetry::AnyValue.new([42.0, 84.0])
-      attr << 42.0
-      attr.value.should eq [42.0_f64, 84.0_f64, 42.0_f64]
-    end
+    attr = OpenTelemetry::AnyValue.new([42.0, 84.0])
+    attr << 42.0
+    attr.value.should eq [42.0_f64, 84.0_f64, 42.0_f64]
+  end
 
-    it "can transparently index appropriate attributes" do
-      attr = OpenTelemetry::AnyValue.new([42, 84])
-      attr2 = OpenTelemetry::AnyValue.new("abcdefghijklmnopqrstuvwxyz")
-      attr[0].should eq 42
-      attr[1].should eq 84
-      attr[1] = 43
-      attr[1].should eq 43
+  it "can transparently index appropriate attributes" do
+    attr = OpenTelemetry::AnyValue.new([42, 84])
+    attr2 = OpenTelemetry::AnyValue.new("abcdefghijklmnopqrstuvwxyz")
+    attr[0].should eq 42
+    attr[1].should eq 84
+    attr[1] = 43
+    attr[1].should eq 43
 
-      attr2[0].should eq 'a'
-      attr2[1].should eq 'b'
-      attr2[25].should eq 'z'
-    end
+    attr2[0].should eq 'a'
+    attr2[1].should eq 'b'
+    attr2[25].should eq 'z'
+  end
 end

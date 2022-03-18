@@ -67,7 +67,8 @@ describe OpenTelemetry::LogRecord do
 
     log.body.should be_nil
     log.severity.should eq OpenTelemetry::LogRecord::Level::Unspecified
-    log.time.should be < Time.utc
+    log.time.should be_nil
+
     log.observed_time.should eq log.time
     log.exporter.should be_nil
     log.trace_id.should be_nil
@@ -79,6 +80,7 @@ describe OpenTelemetry::LogRecord do
     log = OpenTelemetry::LogRecord.new(
       body: "Hello World 2",
       severity: OpenTelemetry::LogRecord::Level::Debug)
+      
     log.body.should eq "Hello World 2"
     log.severity.should eq OpenTelemetry::LogRecord::Level::Debug
 
@@ -120,5 +122,17 @@ describe OpenTelemetry::LogRecord do
     log.observed_time.should eq Time.utc(2022, 1, 1, 12, 0, 0)
     log.trace_id.should eq "0123456701234567".to_slice
     log.span_id.should eq "01234567".to_slice
+  end
+
+  it "can generate properly formed JSON versions of a log record" do
+    log = OpenTelemetry::LogRecord.new(
+      body: "Goodbye Cruel World",
+      severity: OpenTelemetry::LogRecord::Level::Fatal,
+      time: Time.utc(2022, 1, 1, 12, 1, 1),
+      observed_time: Time.utc(2022, 1, 1, 12, 0, 0),
+      trace_id: "0123456701234567".to_slice,
+      span_id: "01234567".to_slice)
+
+      puts log.to_json
   end
 end

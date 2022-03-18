@@ -74,23 +74,6 @@ module OpenTelemetry
       end
     end
 
-    private def attribute_to_anyvalue(attribute)
-      case val = attribute.value
-      when String
-        Proto::Common::V1::AnyValue.new(string_value: val)
-      when Bool
-        Proto::Common::V1::AnyValue.new(bool_value: val)
-      when Int
-        Proto::Common::V1::AnyValue.new(int_value: val.to_i64)
-      when Float
-        Proto::Common::V1::AnyValue.new(double_value: val.to_f64)
-      when Time
-        Proto::Common::V1::AnyValue.new(string_value: val.iso8601)
-      else
-        Proto::Common::V1::AnyValue.new
-      end
-    end
-
     def pb_span_kind
       case @kind
       when :client
@@ -123,7 +106,7 @@ module OpenTelemetry
       span.attributes = attributes.map do |key, value|
         Proto::Common::V1::KeyValue.new(
           key: key,
-          value: attribute_to_anyvalue(value))
+          value: Attribute.to_anyvalue(value))
       end
 
       span
@@ -153,7 +136,7 @@ module OpenTelemetry
         end.chomp(",\n")
         json << "\n      ]\n"
 
-        json << "    }"
+        json << "}"
       end
     end
   end

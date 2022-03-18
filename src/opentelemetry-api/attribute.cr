@@ -9,6 +9,23 @@ module OpenTelemetry
     getter key : String
     getter value : K
 
+    def self.to_anyvalue(attribute)
+      case val = attribute.value
+      when String
+        Proto::Common::V1::AnyValue.new(string_value: val)
+      when Bool
+        Proto::Common::V1::AnyValue.new(bool_value: val)
+      when Int
+        Proto::Common::V1::AnyValue.new(int_value: val.to_i64)
+      when Float
+        Proto::Common::V1::AnyValue.new(double_value: val.to_f64)
+      when Time
+        Proto::Common::V1::AnyValue.new(string_value: val.iso8601)
+      else
+        Proto::Common::V1::AnyValue.new
+      end
+    end
+
     def self.from_h(hash)
       new(key: hash["key"], value: hash["value"])
     end
