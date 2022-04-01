@@ -2,7 +2,6 @@ module OpenTelemetry
   class AnyValue
     getter raw : AnyAttribute::Type = Attribute(String).new("")
 
-    # ameba:disable Metrics/CyclomaticComplexity
     def initialize(value : ValueTypes)
       self.value = value
     end
@@ -52,6 +51,7 @@ module OpenTelemetry
       @raw.value
     end
 
+    # ameba:disable Metrics/CyclomaticComplexity
     def value=(val)
       case val
       when String

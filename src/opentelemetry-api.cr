@@ -25,10 +25,10 @@ require "random/pcg32"
 # end
 #
 # trace = OpenTelemetry.trace_provider("my_app_or_library", "1.1.1")
-# trace = OpenTelemetry.trace_provider do |trace|
-#   trace.service_name = "my_app_or_library"
-#   trace.service_version = "1.1.1"
-# end
+# trace = OpenTelemetry.trace_provider do |provider|
+#   provider.service_name = "my_app_or_library"
+#   provider.service_version = "1.1.1"
+# end.trace
 #
 # ## Trace Providers as Objects With Unique Configuration
 # ----------------------------------------------------------------
@@ -49,10 +49,10 @@ require "random/pcg32"
 #
 # trace = provider_a.trace("microservice foo", "1.2.3") # Override the configuration
 #
-# trace = provider_a.trace do |trace|
-#   trace.service_name = "microservice foo"
-#   trace.service_version = "1.2.3"
-# end
+# trace = provider_a.trace do |provider|
+#   provider.service_name = "microservice foo"
+#   provider.service_version = "1.2.3"
+# end.trace
 #
 # ## Creating Spans Using a Trace
 # ----------------------------------------------------------------
@@ -82,7 +82,7 @@ module OpenTelemetry
   end
 
   def self.trace_provider
-    provider.trace
+    provider
   end
 
   def self.trace_provider(&block : TraceProvider::Configuration::Factory ->)
@@ -92,7 +92,7 @@ module OpenTelemetry
 
     provider.merge_configuration(@@config)
 
-    provider.trace
+    provider
   end
 
   def self.trace_provider(
@@ -106,7 +106,7 @@ module OpenTelemetry
       exporter: exporter || Exporter.new(:abstract))
     provider.merge_configuration(@@config)
 
-    provider.trace
+    provider
   end
 
   def self.instrumentation_library

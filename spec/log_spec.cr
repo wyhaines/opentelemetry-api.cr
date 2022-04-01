@@ -80,7 +80,7 @@ describe OpenTelemetry::LogRecord do
     log = OpenTelemetry::LogRecord.new(
       body: "Hello World 2",
       severity: OpenTelemetry::LogRecord::Level::Debug)
-      
+
     log.body.should eq "Hello World 2"
     log.severity.should eq OpenTelemetry::LogRecord::Level::Debug
 
@@ -133,6 +133,6 @@ describe OpenTelemetry::LogRecord do
       trace_id: "0123456701234567".to_slice,
       span_id: "01234567".to_slice)
 
-      puts log.to_json
+    puts log.to_json
   end
 end
