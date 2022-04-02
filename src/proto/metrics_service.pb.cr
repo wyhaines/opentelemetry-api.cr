@@ -18,6 +18,9 @@ module OpenTelemetry
 
           struct ExportMetricsServiceResponse
             include ::Protobuf::Message
+
+            contract_of "proto3" do
+            end
           end
         end
       end

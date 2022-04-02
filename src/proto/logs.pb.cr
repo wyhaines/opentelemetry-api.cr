@@ -87,7 +87,6 @@ module OpenTelemetry
             optional :observed_time_unix_nano, :fixed64, 11
             optional :severity_number, SeverityNumber, 2
             optional :severity_text, :string, 3
-            optional :name, :string, 4
             optional :body, OpenTelemetry::Proto::Common::V1::AnyValue, 5
             repeated :attributes, OpenTelemetry::Proto::Common::V1::KeyValue, 6
             optional :dropped_attributes_count, :uint32, 7
