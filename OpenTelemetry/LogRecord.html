@@ -13,7 +13,7 @@
 <script type="text/javascript" src="../js/doc.js"></script>
 
   <meta name="repository-name" content="opentelemetry-api">
-  <title>OpenTelemetry::Provider - opentelemetry-api main</title>
+  <title>OpenTelemetry::LogRecord - opentelemetry-api main</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "../";
   </script>
@@ -246,7 +246,7 @@
       
     </li>
   
-  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/LogRecord" data-name="opentelemetry::logrecord">
+  <li class="parent open current" data-id="opentelemetry-api/OpenTelemetry/LogRecord" data-name="opentelemetry::logrecord">
       <a href="../OpenTelemetry/LogRecord.html">LogRecord</a>
       
         <ul>
@@ -811,7 +811,7 @@
       
     </li>
   
-  <li class="parent open current" data-id="opentelemetry-api/OpenTelemetry/Provider" data-name="opentelemetry::provider">
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Provider" data-name="opentelemetry::provider">
       <a href="../OpenTelemetry/Provider.html">Provider</a>
       
         <ul>
@@ -910,28 +910,12 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">class</span> OpenTelemetry::Provider
+  <span class="kind">class</span> OpenTelemetry::LogRecord
 
 </h1>
 
 
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="../OpenTelemetry/Provider.html">OpenTelemetry::Provider</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
-
-
-
-
-  <h2>
-    <a id="overview" class="anchor" href="#overview">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Overview
-  </h2>
-
-  <p>Provider is an abstract superclass of other specific providers, such as the TraceProvider
-or the MetricsProvider. It supplies some common faculties for dealing with configuration.</p>
-
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../OpenTelemetry/LogRecord.html">OpenTelemetry::LogRecord</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
 
 
 
@@ -941,22 +925,22 @@ or the MetricsProvider. It supplies some common faculties for dealing with confi
 
 
   <h2>
-    <a id="direct-known-subclasses" class="anchor" href="#direct-known-subclasses">
+    <a id="included-modules" class="anchor" href="#included-modules">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>
-    Direct Known Subclasses
+    Included Modules
   </h2>
   <ul class="other-types-list">
     
-      <li class="other-type"><a href="../OpenTelemetry/LogProvider.html">OpenTelemetry::LogProvider</a></li>
-    
-      <li class="other-type"><a href="../OpenTelemetry/MeterProvider.html">OpenTelemetry::MeterProvider</a></li>
-    
-      <li class="other-type"><a href="../OpenTelemetry/TraceProvider.html">OpenTelemetry::TraceProvider</a></li>
+      <li class="other-type"><a href="../OpenTelemetry/Sendable.html">OpenTelemetry::Sendable</a></li>
     
   </ul>
+
+
+
+
 
 
 
@@ -973,28 +957,47 @@ or the MetricsProvider. It supplies some common faculties for dealing with confi
   </h2>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/provider.cr#L8" target="_blank">
-        opentelemetry-api/provider.cr
-      </a>
-    
-    <br/>
-  
-    
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/provider/configuration.cr#L4" target="_blank">
-        opentelemetry-api/provider/configuration.cr
-      </a>
-    
-    <br/>
-  
-    
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/provider/configuration/factory.cr#L7" target="_blank">
-        opentelemetry-api/provider/configuration/factory.cr
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/log.cr#L7" target="_blank">
+        opentelemetry-api/log.cr
       </a>
     
     <br/>
   
 
 
+
+  
+    <h2>
+      <a id="constant-summary" class="anchor" href="#constant-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+      Constant Summary
+    </h2>
+  
+  <dl>
+    
+      <dt class="entry-const" id="NAME_OFFSETS">
+        <strong>NAME_OFFSETS</strong> = <code>{<span class="s">&quot;UNSPECIFIED&quot;</span> =&gt; -&gt;(_n : <span class="t">Int32</span>) <span class="k">do</span>
+  <span class="n">0</span>
+<span class="k">end</span>, <span class="s">&quot;TRACE&quot;</span> =&gt; -&gt;(n : <span class="t">Int32</span>) <span class="k">do</span>
+  n <span class="o">+</span> <span class="n">1</span>
+<span class="k">end</span>, <span class="s">&quot;DEBUG&quot;</span> =&gt; -&gt;(n : <span class="t">Int32</span>) <span class="k">do</span>
+  n <span class="o">+</span> <span class="n">5</span>
+<span class="k">end</span>, <span class="s">&quot;INFO&quot;</span> =&gt; -&gt;(n : <span class="t">Int32</span>) <span class="k">do</span>
+  n <span class="o">+</span> <span class="n">9</span>
+<span class="k">end</span>, <span class="s">&quot;WARN&quot;</span> =&gt; -&gt;(n : <span class="t">Int32</span>) <span class="k">do</span>
+  n <span class="o">+</span> <span class="n">13</span>
+<span class="k">end</span>, <span class="s">&quot;ERROR&quot;</span> =&gt; -&gt;(n : <span class="t">Int32</span>) <span class="k">do</span>
+  n <span class="o">+</span> <span class="n">17</span>
+<span class="k">end</span>, <span class="s">&quot;FATAL&quot;</span> =&gt; -&gt;(n : <span class="t">Int32</span>) <span class="k">do</span>
+  n <span class="o">+</span> <span class="n">21</span>
+<span class="k">end</span>}</code>
+      </dt>
+      
+    
+  </dl>
 
 
 
@@ -1009,18 +1012,45 @@ or the MetricsProvider. It supplies some common faculties for dealing with confi
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new%28service_name%3AString%3D%22%22%2Cservice_version%3AString%3D%22%22%2Cschema_url%3AString%3D%22%22%2Cexporter%3AExporter%3F%3Dnil%2Cid_generator%3D%22unique%22%29-class-method" class="signature"><strong>.new</strong>(service_name : String = <span class="s">&quot;&quot;</span>, service_version : String = <span class="s">&quot;&quot;</span>, schema_url : String = <span class="s">&quot;&quot;</span>, exporter : Exporter? = <span class="n">nil</span>, id_generator = <span class="s">&quot;unique&quot;</span>)</a>
+        <a href="#new%28severity%3ALevel%3DLevel%3A%3AUnspecified%2Cseverity_text%3AString%3F%3Dnil%2Cbody%3AValueTypes%3F%3Dnil%2Ctime%3ATime%3F%3Dnil%2Cobserved_time%3ATime%3F%3Dnil%2Ctrace_id%3ASlice%28UInt8%29%3F%3Dnil%2Cspan_id%3ASlice%28UInt8%29%3F%3Dnil%2Cflags%3ATraceFlags%3DTraceFlags.new%280%29%2Cexporter%3AExporter%3F%3Dnil%29-class-method" class="signature"><strong>.new</strong>(severity : Level = <span class="t">Level</span><span class="t">::</span><span class="t">Unspecified</span>, severity_text : String? = <span class="n">nil</span>, body : ValueTypes? = <span class="n">nil</span>, time : Time? = <span class="n">nil</span>, observed_time : Time? = <span class="n">nil</span>, trace_id : Slice(UInt8)? = <span class="n">nil</span>, span_id : Slice(UInt8)? = <span class="n">nil</span>, flags : TraceFlags = <span class="t">TraceFlags</span>.<span class="k">new</span>(<span class="n">0</span>), exporter : Exporter? = <span class="n">nil</span>)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#new%28%26block%3AConfiguration%3A%3AFactory-%3E%29-class-method" class="signature"><strong>.new</strong>(&block : Configuration::Factory -> )</a>
+        <a href="#new%28severity%3AString%3D%22UNSPECIFIED%22%2Cseverity_text%3AString%3F%3Dnil%2Cbody%3AValueTypes%3F%3Dnil%2Ctime%3ATime%3F%3Dnil%2Cobserved_time%3ATime%3F%3Dnil%2Ctrace_id%3ASlice%28UInt8%29%3F%3Dnil%2Cspan_id%3ASlice%28UInt8%29%3F%3Dnil%2Cflags%3ATraceFlags%3DTraceFlags.new%280%29%2Cexporter%3AExporter%3F%3Dnil%29-class-method" class="signature"><strong>.new</strong>(severity : String = <span class="s">&quot;UNSPECIFIED&quot;</span>, severity_text : String? = <span class="n">nil</span>, body : ValueTypes? = <span class="n">nil</span>, time : Time? = <span class="n">nil</span>, observed_time : Time? = <span class="n">nil</span>, trace_id : Slice(UInt8)? = <span class="n">nil</span>, span_id : Slice(UInt8)? = <span class="n">nil</span>, flags : TraceFlags = <span class="t">TraceFlags</span>.<span class="k">new</span>(<span class="n">0</span>), exporter : Exporter? = <span class="n">nil</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new%28severity%3AInt%3D0%2Cseverity_text%3AString%3F%3Dnil%2Cbody%3AValueTypes%3F%3Dnil%2Ctime%3ATime%3F%3Dnil%2Cobserved_time%3ATime%3F%3Dnil%2Ctrace_id%3ASlice%28UInt8%29%3F%3Dnil%2Cspan_id%3ASlice%28UInt8%29%3F%3Dnil%2Cflags%3ATraceFlags%3DTraceFlags.new%280%29%2Cexporter%3AExporter%3F%3Dnil%29-class-method" class="signature"><strong>.new</strong>(severity : Int = <span class="n">0</span>, severity_text : String? = <span class="n">nil</span>, body : ValueTypes? = <span class="n">nil</span>, time : Time? = <span class="n">nil</span>, observed_time : Time? = <span class="n">nil</span>, trace_id : Slice(UInt8)? = <span class="n">nil</span>, span_id : Slice(UInt8)? = <span class="n">nil</span>, flags : TraceFlags = <span class="t">TraceFlags</span>.<span class="k">new</span>(<span class="n">0</span>), exporter : Exporter? = <span class="n">nil</span>)</a>
         
       </li>
     
   </ul>
 
 
+
+  <h2>
+    <a id="class-method-summary" class="anchor" href="#class-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#severity_from_name%28name%29-class-method" class="signature"><strong>.severity_from_name</strong>(name)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#severity_from_number%28number%29-class-method" class="signature"><strong>.severity_from_number</strong>(number)</a>
+        
+      </li>
+    
+  </ul>
 
 
 
@@ -1035,67 +1065,186 @@ or the MetricsProvider. It supplies some common faculties for dealing with confi
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#config%3AConfiguration-instance-method" class="signature"><strong>#config</strong> : Configuration</a>
+        <a href="#%5B%5D%28key%29-instance-method" class="signature"><strong>#[]</strong>(key)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#configure%21%28new_config%29-instance-method" class="signature"><strong>#configure!</strong>(new_config)</a>
+        <a href="#%5B%5D%3D%28key%2Cvalue%29-instance-method" class="signature"><strong>#[]=</strong>(key, value)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#exporter-instance-method" class="signature"><strong>#exporter</strong></a>
+        <a href="#attributes%3AHash%28String%2CAnyAttribute%29-instance-method" class="signature"><strong>#attributes</strong> : Hash(String, AnyAttribute)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#exporter%3D%28val%29-instance-method" class="signature"><strong>#exporter=</strong>(val)</a>
+        <a href="#attributes%3D%28attributes%3AHash%28String%2CAnyAttribute%29%29-instance-method" class="signature"><strong>#attributes=</strong>(attributes : Hash(String, AnyAttribute))</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#id_generator-instance-method" class="signature"><strong>#id_generator</strong></a>
+        <a href="#body-instance-method" class="signature"><strong>#body</strong></a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#id_generator%3D%28val%29-instance-method" class="signature"><strong>#id_generator=</strong>(val)</a>
+        <a href="#body%3D%28val%29-instance-method" class="signature"><strong>#body=</strong>(val)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#merge_configuration%28secondary_config%29-instance-method" class="signature"><strong>#merge_configuration</strong>(secondary_config)</a>
+        <a href="#dropped_attribute_count%3AUInt32-instance-method" class="signature"><strong>#dropped_attribute_count</strong> : UInt32</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#schema_url-instance-method" class="signature"><strong>#schema_url</strong></a>
+        <a href="#dropped_attribute_count%3D%28dropped_attribute_count%3AUInt32%29-instance-method" class="signature"><strong>#dropped_attribute_count=</strong>(dropped_attribute_count : UInt32)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#schema_url%3D%28val%29-instance-method" class="signature"><strong>#schema_url=</strong>(val)</a>
+        <a href="#export-instance-method" class="signature"><strong>#export</strong></a>
+        
+          <div class="summary"><p>Individual logs can export themselves.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#service_name-instance-method" class="signature"><strong>#service_name</strong></a>
+        <a href="#exporter%3AExporter%3F-instance-method" class="signature"><strong>#exporter</strong> : Exporter?</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#service_name%3D%28val%29-instance-method" class="signature"><strong>#service_name=</strong>(val)</a>
+        <a href="#exporter%3D%28exporter%3AExporter%3F%29-instance-method" class="signature"><strong>#exporter=</strong>(exporter : Exporter?)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#service_version-instance-method" class="signature"><strong>#service_version</strong></a>
+        <a href="#flags%3ATraceFlags-instance-method" class="signature"><strong>#flags</strong> : TraceFlags</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#service_version%3D%28val%29-instance-method" class="signature"><strong>#service_version=</strong>(val)</a>
+        <a href="#flags%3D%28flags%3ATraceFlags%29-instance-method" class="signature"><strong>#flags=</strong>(flags : TraceFlags)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#get_attribute%28key%29-instance-method" class="signature"><strong>#get_attribute</strong>(key)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#merge_configuration_from_provider%3D%28val%29-instance-method" class="signature"><strong>#merge_configuration_from_provider=</strong>(val)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#name%3AString%3F-instance-method" class="signature"><strong>#name</strong> : String?</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#name%3D%28name%3AString%3F%29-instance-method" class="signature"><strong>#name=</strong>(name : String?)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#observed_time%3ATime%3F-instance-method" class="signature"><strong>#observed_time</strong> : Time?</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#observed_time%3D%28observed_time%3ATime%3F%29-instance-method" class="signature"><strong>#observed_time=</strong>(observed_time : Time?)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#observed_time_unix_nano-instance-method" class="signature"><strong>#observed_time_unix_nano</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#schema_url%3AString-instance-method" class="signature"><strong>#schema_url</strong> : String</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#schema_url%3D%28schema_url%3AString%29-instance-method" class="signature"><strong>#schema_url=</strong>(schema_url : String)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#set_attribute%28key%2Cvalue%29-instance-method" class="signature"><strong>#set_attribute</strong>(key, value)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#severity%3ALevel-instance-method" class="signature"><strong>#severity</strong> : Level</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#severity%3D%28severity%3ALevel%29-instance-method" class="signature"><strong>#severity=</strong>(severity : Level)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#severity_text%3AString%3F-instance-method" class="signature"><strong>#severity_text</strong> : String?</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#severity_text%3D%28severity_text%3AString%3F%29-instance-method" class="signature"><strong>#severity_text=</strong>(severity_text : String?)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#span_id%3ASlice%28UInt8%29%3F-instance-method" class="signature"><strong>#span_id</strong> : Slice(UInt8)?</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#span_id%3D%28span_id%3ASlice%28UInt8%29%3F%29-instance-method" class="signature"><strong>#span_id=</strong>(span_id : Slice(UInt8)?)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#time%3ATime%3F-instance-method" class="signature"><strong>#time</strong> : Time?</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#time%3D%28time%3ATime%3F%29-instance-method" class="signature"><strong>#time=</strong>(time : Time?)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#time_unix_nano-instance-method" class="signature"><strong>#time_unix_nano</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_json-instance-method" class="signature"><strong>#to_json</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_protobuf-instance-method" class="signature"><strong>#to_protobuf</strong></a>
+        
+          <div class="summary"><p>The ProtoBuf differs a LOT from the current Spec.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#trace_id%3ASlice%28UInt8%29%3F-instance-method" class="signature"><strong>#trace_id</strong> : Slice(UInt8)?</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#trace_id%3D%28trace_id%3ASlice%28UInt8%29%3F%29-instance-method" class="signature"><strong>#trace_id=</strong>(trace_id : Slice(UInt8)?)</a>
         
       </li>
     
@@ -1106,6 +1255,35 @@ or the MetricsProvider. It supplies some common faculties for dealing with confi
 
 
 <div class="methods-inherited">
+  
+    
+
+  <h3>Instance methods inherited from module <code><a href="../OpenTelemetry/Sendable.html">OpenTelemetry::Sendable</a></code></h3>
+  
+  
+    <a href="../OpenTelemetry/Sendable.html#size-instance-method" class="tooltip">
+      <span>size</span>
+    size</a>, 
+    
+  
+    <a href="../OpenTelemetry/Sendable.html#to_json-instance-method" class="tooltip">
+      <span>to_json</span>
+    to_json</a>, 
+    
+  
+    <a href="../OpenTelemetry/Sendable.html#to_protobuf-instance-method" class="tooltip">
+      <span>to_protobuf</span>
+    to_protobuf</a>
+    
+  
+
+
+    
+
+
+    
+
+
   
     
 
@@ -1139,40 +1317,98 @@ or the MetricsProvider. It supplies some common faculties for dealing with confi
     Constructor Detail
   </h2>
   
-    <div class="entry-detail" id="new(service_name:String=&quot;&quot;,service_version:String=&quot;&quot;,schema_url:String=&quot;&quot;,exporter:Exporter?=nil,id_generator=&quot;unique&quot;)-class-method">
+    <div class="entry-detail" id="new(severity:Level=Level::Unspecified,severity_text:String?=nil,body:ValueTypes?=nil,time:Time?=nil,observed_time:Time?=nil,trace_id:Slice(UInt8)?=nil,span_id:Slice(UInt8)?=nil,flags:TraceFlags=TraceFlags.new(0),exporter:Exporter?=nil)-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(service_name : String = <span class="s">&quot;&quot;</span>, service_version : String = <span class="s">&quot;&quot;</span>, schema_url : String = <span class="s">&quot;&quot;</span>, exporter : <a href="../OpenTelemetry/Exporter.html">Exporter</a>? = <span class="n">nil</span>, id_generator = <span class="s">&quot;unique&quot;</span>)
+        def self.<strong>new</strong>(severity : <a href="../OpenTelemetry/LogRecord/Level.html">Level</a> = <span class="t">Level</span><span class="t">::</span><span class="t">Unspecified</span>, severity_text : String? = <span class="n">nil</span>, body : <a href="../OpenTelemetry/ValueTypes.html">ValueTypes</a>? = <span class="n">nil</span>, time : Time? = <span class="n">nil</span>, observed_time : Time? = <span class="n">nil</span>, trace_id : Slice(UInt8)? = <span class="n">nil</span>, span_id : Slice(UInt8)? = <span class="n">nil</span>, flags : <a href="../OpenTelemetry/TraceFlags.html">TraceFlags</a> = <span class="t">TraceFlags</span>.<span class="k">new</span>(<span class="n">0</span>), exporter : <a href="../OpenTelemetry/Exporter.html">Exporter</a>? = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#new%28service_name%3AString%3D%22%22%2Cservice_version%3AString%3D%22%22%2Cschema_url%3AString%3D%22%22%2Cexporter%3AExporter%3F%3Dnil%2Cid_generator%3D%22unique%22%29-class-method">#</a>
+        <a class="method-permalink" href="#new%28severity%3ALevel%3DLevel%3A%3AUnspecified%2Cseverity_text%3AString%3F%3Dnil%2Cbody%3AValueTypes%3F%3Dnil%2Ctime%3ATime%3F%3Dnil%2Cobserved_time%3ATime%3F%3Dnil%2Ctrace_id%3ASlice%28UInt8%29%3F%3Dnil%2Cspan_id%3ASlice%28UInt8%29%3F%3Dnil%2Cflags%3ATraceFlags%3DTraceFlags.new%280%29%2Cexporter%3AExporter%3F%3Dnil%29-class-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/provider.cr#L22" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/log.cr#L105" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="new(&amp;block:Configuration::Factory-&gt;)-class-method">
+    <div class="entry-detail" id="new(severity:String=&quot;UNSPECIFIED&quot;,severity_text:String?=nil,body:ValueTypes?=nil,time:Time?=nil,observed_time:Time?=nil,trace_id:Slice(UInt8)?=nil,span_id:Slice(UInt8)?=nil,flags:TraceFlags=TraceFlags.new(0),exporter:Exporter?=nil)-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(&block : <a href="../OpenTelemetry/Provider/Configuration/Factory.html">Configuration::Factory</a> -> )
+        def self.<strong>new</strong>(severity : String = <span class="s">&quot;UNSPECIFIED&quot;</span>, severity_text : String? = <span class="n">nil</span>, body : <a href="../OpenTelemetry/ValueTypes.html">ValueTypes</a>? = <span class="n">nil</span>, time : Time? = <span class="n">nil</span>, observed_time : Time? = <span class="n">nil</span>, trace_id : Slice(UInt8)? = <span class="n">nil</span>, span_id : Slice(UInt8)? = <span class="n">nil</span>, flags : <a href="../OpenTelemetry/TraceFlags.html">TraceFlags</a> = <span class="t">TraceFlags</span>.<span class="k">new</span>(<span class="n">0</span>), exporter : <a href="../OpenTelemetry/Exporter.html">Exporter</a>? = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#new%28%26block%3AConfiguration%3A%3AFactory-%3E%29-class-method">#</a>
+        <a class="method-permalink" href="#new%28severity%3AString%3D%22UNSPECIFIED%22%2Cseverity_text%3AString%3F%3Dnil%2Cbody%3AValueTypes%3F%3Dnil%2Ctime%3ATime%3F%3Dnil%2Cobserved_time%3ATime%3F%3Dnil%2Ctrace_id%3ASlice%28UInt8%29%3F%3Dnil%2Cspan_id%3ASlice%28UInt8%29%3F%3Dnil%2Cflags%3ATraceFlags%3DTraceFlags.new%280%29%2Cexporter%3AExporter%3F%3Dnil%29-class-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/provider.cr#L16" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/log.cr#L128" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(severity:Int=0,severity_text:String?=nil,body:ValueTypes?=nil,time:Time?=nil,observed_time:Time?=nil,trace_id:Slice(UInt8)?=nil,span_id:Slice(UInt8)?=nil,flags:TraceFlags=TraceFlags.new(0),exporter:Exporter?=nil)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(severity : Int = <span class="n">0</span>, severity_text : String? = <span class="n">nil</span>, body : <a href="../OpenTelemetry/ValueTypes.html">ValueTypes</a>? = <span class="n">nil</span>, time : Time? = <span class="n">nil</span>, observed_time : Time? = <span class="n">nil</span>, trace_id : Slice(UInt8)? = <span class="n">nil</span>, span_id : Slice(UInt8)? = <span class="n">nil</span>, flags : <a href="../OpenTelemetry/TraceFlags.html">TraceFlags</a> = <span class="t">TraceFlags</span>.<span class="k">new</span>(<span class="n">0</span>), exporter : <a href="../OpenTelemetry/Exporter.html">Exporter</a>? = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#new%28severity%3AInt%3D0%2Cseverity_text%3AString%3F%3Dnil%2Cbody%3AValueTypes%3F%3Dnil%2Ctime%3ATime%3F%3Dnil%2Cobserved_time%3ATime%3F%3Dnil%2Ctrace_id%3ASlice%28UInt8%29%3F%3Dnil%2Cspan_id%3ASlice%28UInt8%29%3F%3Dnil%2Cflags%3ATraceFlags%3DTraceFlags.new%280%29%2Cexporter%3AExporter%3F%3Dnil%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/log.cr#L151" target="_blank">View source</a>]
         
       </div>
     </div>
   
 
 
+
+  <h2>
+    <a id="class-method-detail" class="anchor" href="#class-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="severity_from_name(name)-class-method">
+      <div class="signature">
+        
+        def self.<strong>severity_from_name</strong>(name)
+
+        <a class="method-permalink" href="#severity_from_name%28name%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/log.cr#L74" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="severity_from_number(number)-class-method">
+      <div class="signature">
+        
+        def self.<strong>severity_from_number</strong>(number)
+
+        <a class="method-permalink" href="#severity_from_number%28number%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/log.cr#L66" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
 
 
 
@@ -1185,210 +1421,590 @@ or the MetricsProvider. It supplies some common faculties for dealing with confi
     Instance Method Detail
   </h2>
   
-    <div class="entry-detail" id="config:Configuration-instance-method">
+    <div class="entry-detail" id="[](key)-instance-method">
       <div class="signature">
         
-        def <strong>config</strong> : <a href="../OpenTelemetry/Provider/Configuration.html">Configuration</a>
+        def <strong>[]</strong>(key)
 
-        <a class="method-permalink" href="#config%3AConfiguration-instance-method">#</a>
+        <a class="method-permalink" href="#%5B%5D%28key%29-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/provider.cr#L9" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/log.cr#L182" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="configure!(new_config)-instance-method">
+    <div class="entry-detail" id="[]=(key,value)-instance-method">
       <div class="signature">
         
-        def <strong>configure!</strong>(new_config)
+        def <strong>[]=</strong>(key, value)
 
-        <a class="method-permalink" href="#configure%21%28new_config%29-instance-method">#</a>
+        <a class="method-permalink" href="#%5B%5D%3D%28key%2Cvalue%29-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/provider.cr#L37" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/log.cr#L174" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="exporter-instance-method">
+    <div class="entry-detail" id="attributes:Hash(String,AnyAttribute)-instance-method">
       <div class="signature">
         
-        def <strong>exporter</strong>
+        def <strong>attributes</strong> : Hash(String, <a href="../OpenTelemetry/AnyAttribute.html">AnyAttribute</a>)
 
-        <a class="method-permalink" href="#exporter-instance-method">#</a>
+        <a class="method-permalink" href="#attributes%3AHash%28String%2CAnyAttribute%29-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/provider.cr#L85" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/log.cr#L59" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="exporter=(val)-instance-method">
+    <div class="entry-detail" id="attributes=(attributes:Hash(String,AnyAttribute))-instance-method">
       <div class="signature">
         
-        def <strong>exporter=</strong>(val)
+        def <strong>attributes=</strong>(attributes : Hash(String, <a href="../OpenTelemetry/AnyAttribute.html">AnyAttribute</a>))
 
-        <a class="method-permalink" href="#exporter%3D%28val%29-instance-method">#</a>
+        <a class="method-permalink" href="#attributes%3D%28attributes%3AHash%28String%2CAnyAttribute%29%29-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/provider.cr#L89" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/log.cr#L59" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="id_generator-instance-method">
+    <div class="entry-detail" id="body-instance-method">
       <div class="signature">
         
-        def <strong>id_generator</strong>
+        def <strong>body</strong>
 
-        <a class="method-permalink" href="#id_generator-instance-method">#</a>
+        <a class="method-permalink" href="#body-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/provider.cr#L95" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/log.cr#L198" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="id_generator=(val)-instance-method">
+    <div class="entry-detail" id="body=(val)-instance-method">
       <div class="signature">
         
-        def <strong>id_generator=</strong>(val)
+        def <strong>body=</strong>(val)
 
-        <a class="method-permalink" href="#id_generator%3D%28val%29-instance-method">#</a>
+        <a class="method-permalink" href="#body%3D%28val%29-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/provider.cr#L99" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/log.cr#L190" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="merge_configuration(secondary_config)-instance-method">
+    <div class="entry-detail" id="dropped_attribute_count:UInt32-instance-method">
       <div class="signature">
         
-        def <strong>merge_configuration</strong>(secondary_config)
+        def <strong>dropped_attribute_count</strong> : UInt32
 
-        <a class="method-permalink" href="#merge_configuration%28secondary_config%29-instance-method">#</a>
+        <a class="method-permalink" href="#dropped_attribute_count%3AUInt32-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/provider.cr#L43" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/log.cr#L60" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="schema_url-instance-method">
+    <div class="entry-detail" id="dropped_attribute_count=(dropped_attribute_count:UInt32)-instance-method">
       <div class="signature">
         
-        def <strong>schema_url</strong>
+        def <strong>dropped_attribute_count=</strong>(dropped_attribute_count : UInt32)
 
-        <a class="method-permalink" href="#schema_url-instance-method">#</a>
+        <a class="method-permalink" href="#dropped_attribute_count%3D%28dropped_attribute_count%3AUInt32%29-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/provider.cr#L75" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/log.cr#L60" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="schema_url=(val)-instance-method">
+    <div class="entry-detail" id="export-instance-method">
       <div class="signature">
         
-        def <strong>schema_url=</strong>(val)
+        def <strong>export</strong>
 
-        <a class="method-permalink" href="#schema_url%3D%28val%29-instance-method">#</a>
+        <a class="method-permalink" href="#export-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>Individual logs can export themselves. This is less efficient than using a LogProvider,
+and allowing the LogProvider to export larger chucks of logs, but this capability may
+be useful if log volume is not large.</p>
+        </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/provider.cr#L79" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/log.cr#L257" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="service_name-instance-method">
+    <div class="entry-detail" id="exporter:Exporter?-instance-method">
       <div class="signature">
         
-        def <strong>service_name</strong>
+        def <strong>exporter</strong> : <a href="../OpenTelemetry/Exporter.html">Exporter</a>?
 
-        <a class="method-permalink" href="#service_name-instance-method">#</a>
+        <a class="method-permalink" href="#exporter%3AExporter%3F-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/provider.cr#L55" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/log.cr#L48" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="service_name=(val)-instance-method">
+    <div class="entry-detail" id="exporter=(exporter:Exporter?)-instance-method">
       <div class="signature">
         
-        def <strong>service_name=</strong>(val)
+        def <strong>exporter=</strong>(exporter : <a href="../OpenTelemetry/Exporter.html">Exporter</a>?)
 
-        <a class="method-permalink" href="#service_name%3D%28val%29-instance-method">#</a>
+        <a class="method-permalink" href="#exporter%3D%28exporter%3AExporter%3F%29-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/provider.cr#L59" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/log.cr#L48" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="service_version-instance-method">
+    <div class="entry-detail" id="flags:TraceFlags-instance-method">
       <div class="signature">
         
-        def <strong>service_version</strong>
+        def <strong>flags</strong> : <a href="../OpenTelemetry/TraceFlags.html">TraceFlags</a>
 
-        <a class="method-permalink" href="#service_version-instance-method">#</a>
+        <a class="method-permalink" href="#flags%3ATraceFlags-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/provider.cr#L71" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/log.cr#L55" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="service_version=(val)-instance-method">
+    <div class="entry-detail" id="flags=(flags:TraceFlags)-instance-method">
       <div class="signature">
         
-        def <strong>service_version=</strong>(val)
+        def <strong>flags=</strong>(flags : <a href="../OpenTelemetry/TraceFlags.html">TraceFlags</a>)
 
-        <a class="method-permalink" href="#service_version%3D%28val%29-instance-method">#</a>
+        <a class="method-permalink" href="#flags%3D%28flags%3ATraceFlags%29-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/provider.cr#L65" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/log.cr#L55" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="get_attribute(key)-instance-method">
+      <div class="signature">
+        
+        def <strong>get_attribute</strong>(key)
+
+        <a class="method-permalink" href="#get_attribute%28key%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/log.cr#L186" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="merge_configuration_from_provider=(val)-instance-method">
+      <div class="signature">
+        
+        def <strong>merge_configuration_from_provider=</strong>(val)
+
+        <a class="method-permalink" href="#merge_configuration_from_provider%3D%28val%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/log.cr#L206" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="name:String?-instance-method">
+      <div class="signature">
+        
+        def <strong>name</strong> : String?
+
+        <a class="method-permalink" href="#name%3AString%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/log.cr#L58" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="name=(name:String?)-instance-method">
+      <div class="signature">
+        
+        def <strong>name=</strong>(name : String?)
+
+        <a class="method-permalink" href="#name%3D%28name%3AString%3F%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/log.cr#L58" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="observed_time:Time?-instance-method">
+      <div class="signature">
+        
+        def <strong>observed_time</strong> : Time?
+
+        <a class="method-permalink" href="#observed_time%3ATime%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/log.cr#L52" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="observed_time=(observed_time:Time?)-instance-method">
+      <div class="signature">
+        
+        def <strong>observed_time=</strong>(observed_time : Time?)
+
+        <a class="method-permalink" href="#observed_time%3D%28observed_time%3ATime%3F%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/log.cr#L52" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="observed_time_unix_nano-instance-method">
+      <div class="signature">
+        
+        def <strong>observed_time_unix_nano</strong>
+
+        <a class="method-permalink" href="#observed_time_unix_nano-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/log.cr#L222" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="schema_url:String-instance-method">
+      <div class="signature">
+        
+        def <strong>schema_url</strong> : String
+
+        <a class="method-permalink" href="#schema_url%3AString-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/log.cr#L49" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="schema_url=(schema_url:String)-instance-method">
+      <div class="signature">
+        
+        def <strong>schema_url=</strong>(schema_url : String)
+
+        <a class="method-permalink" href="#schema_url%3D%28schema_url%3AString%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/log.cr#L49" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="set_attribute(key,value)-instance-method">
+      <div class="signature">
+        
+        def <strong>set_attribute</strong>(key, value)
+
+        <a class="method-permalink" href="#set_attribute%28key%2Cvalue%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/log.cr#L178" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="severity:Level-instance-method">
+      <div class="signature">
+        
+        def <strong>severity</strong> : <a href="../OpenTelemetry/LogRecord/Level.html">Level</a>
+
+        <a class="method-permalink" href="#severity%3ALevel-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/log.cr#L56" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="severity=(severity:Level)-instance-method">
+      <div class="signature">
+        
+        def <strong>severity=</strong>(severity : <a href="../OpenTelemetry/LogRecord/Level.html">Level</a>)
+
+        <a class="method-permalink" href="#severity%3D%28severity%3ALevel%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/log.cr#L56" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="severity_text:String?-instance-method">
+      <div class="signature">
+        
+        def <strong>severity_text</strong> : String?
+
+        <a class="method-permalink" href="#severity_text%3AString%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/log.cr#L57" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="severity_text=(severity_text:String?)-instance-method">
+      <div class="signature">
+        
+        def <strong>severity_text=</strong>(severity_text : String?)
+
+        <a class="method-permalink" href="#severity_text%3D%28severity_text%3AString%3F%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/log.cr#L57" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="span_id:Slice(UInt8)?-instance-method">
+      <div class="signature">
+        
+        def <strong>span_id</strong> : Slice(UInt8)?
+
+        <a class="method-permalink" href="#span_id%3ASlice%28UInt8%29%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/log.cr#L54" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="span_id=(span_id:Slice(UInt8)?)-instance-method">
+      <div class="signature">
+        
+        def <strong>span_id=</strong>(span_id : Slice(UInt8)?)
+
+        <a class="method-permalink" href="#span_id%3D%28span_id%3ASlice%28UInt8%29%3F%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/log.cr#L54" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="time:Time?-instance-method">
+      <div class="signature">
+        
+        def <strong>time</strong> : Time?
+
+        <a class="method-permalink" href="#time%3ATime%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/log.cr#L51" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="time=(time:Time?)-instance-method">
+      <div class="signature">
+        
+        def <strong>time=</strong>(time : Time?)
+
+        <a class="method-permalink" href="#time%3D%28time%3ATime%3F%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/log.cr#L51" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="time_unix_nano-instance-method">
+      <div class="signature">
+        
+        def <strong>time_unix_nano</strong>
+
+        <a class="method-permalink" href="#time_unix_nano-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/log.cr#L214" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_json-instance-method">
+      <div class="signature">
+        
+        def <strong>to_json</strong>
+
+        <a class="method-permalink" href="#to_json-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/log.cr#L244" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_protobuf-instance-method">
+      <div class="signature">
+        
+        def <strong>to_protobuf</strong>
+
+        <a class="method-permalink" href="#to_protobuf-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>The ProtoBuf differs a LOT from the current Spec. Methinks this has changed a bunch since I last updated it.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/log.cr#L231" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="trace_id:Slice(UInt8)?-instance-method">
+      <div class="signature">
+        
+        def <strong>trace_id</strong> : Slice(UInt8)?
+
+        <a class="method-permalink" href="#trace_id%3ASlice%28UInt8%29%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/log.cr#L53" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="trace_id=(trace_id:Slice(UInt8)?)-instance-method">
+      <div class="signature">
+        
+        def <strong>trace_id=</strong>(trace_id : Slice(UInt8)?)
+
+        <a class="method-permalink" href="#trace_id%3D%28trace_id%3ASlice%28UInt8%29%3F%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/166549065ebe1099dbaab7c33d0878d467a6255c/src/opentelemetry-api/log.cr#L53" target="_blank">View source</a>]
         
       </div>
     </div>
