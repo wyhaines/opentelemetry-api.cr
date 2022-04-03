@@ -86,7 +86,7 @@ module OpenTelemetry
   end
 
   def self.trace_provider(&block : TraceProvider::Configuration::Factory ->)
-    provider = TraceProvider.new do |cfg|
+    self.provider = TraceProvider.new do |cfg|
       block.call(cfg)
     end
 
@@ -100,13 +100,28 @@ module OpenTelemetry
     service_version : String = "",
     exporter = nil
   )
-    provider = TraceProvider.new(
+    self.provider = TraceProvider.new(
       service_name: service_name,
       service_version: service_version,
       exporter: exporter || Exporter.new(:abstract))
     provider.merge_configuration(@@config)
 
     provider
+  end
+
+  def self.trace
+    if trace = Fiber.current.current_trace
+    else
+      trace = trace_provider.trace
+    end
+    trace
+  end
+
+  def self.trace
+    trace = self.trace
+    yield trace
+
+    trace
   end
 
   def self.instrumentation_library
