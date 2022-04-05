@@ -157,6 +157,7 @@ describe OpenTelemetry::Trace do
   end
 
   it "produces traces and spans with the expected ids when using a default config and default trace creation syntax" do
+    original_config = OpenTelemetry.config
     OpenTelemetry.configure do |config|
       config.service_name = "microservice twee"
       config.service_version = "1.2.4"
@@ -168,5 +169,6 @@ describe OpenTelemetry::Trace do
     trace.service_name.should eq "microservice twee"
     trace.service_version.should eq "1.2.4"
     test_complex_trace.call(OpenTelemetry.trace)
+    OpenTelemetry.config = original_config
   end
 end
