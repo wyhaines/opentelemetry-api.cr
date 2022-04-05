@@ -165,6 +165,7 @@ describe OpenTelemetry::Trace do
     end
 
     trace = OpenTelemetry.trace
+    pp trace
     trace.provider.exporter.try(&.exporter).should be_a OpenTelemetry::Exporter::Null
     trace.service_name.should eq "microservice twee"
     trace.service_version.should eq "1.2.4"

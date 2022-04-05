@@ -125,7 +125,7 @@ describe OpenTelemetry::LogRecord do
   end
 
   it "can generate properly formed JSON versions of a log record" do
-    log = OpenTelemetry::LogRecord.new(
+    OpenTelemetry::LogRecord.new(
       body: "Goodbye Cruel World",
       severity: OpenTelemetry::LogRecord::Level::Fatal,
       time: Time.utc(2022, 1, 1, 12, 1, 1),
