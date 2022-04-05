@@ -119,7 +119,8 @@ module OpenTelemetry
   end
 
   def self.trace
-    yield self.trace
+    trace = self.trace
+    yield trace
 
     trace
   end
