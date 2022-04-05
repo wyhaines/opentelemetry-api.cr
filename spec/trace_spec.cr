@@ -147,15 +147,6 @@ describe OpenTelemetry::Trace do
     test_complex_trace.call(trace)
   end
 
-  it "produces traces and spans with the expected ids when using default trace creation syntax" do
-    trace = OpenTelemetry.trace do |t|
-      t.service_name = "microservice c"
-      t.service_version = "1.2.3"
-    end
-
-    test_complex_trace.call(trace)
-  end
-
   it "produces traces and spans with the expected ids when using a default config and default trace creation syntax" do
     puts "\nDEBUG: #{Fiber.current.current_trace} -- #{Fiber.current.current_trace.try(&.service_name)}"
     original_config = OpenTelemetry.config
@@ -166,6 +157,7 @@ describe OpenTelemetry::Trace do
     end
 
     trace = OpenTelemetry.trace
+    puts "(((((((((())))))))))"
     puts "DEBUG: #{trace.service_name} -- #{trace.provider.service_name}"
     pp trace
     trace.provider.exporter.try(&.exporter).should be_a OpenTelemetry::Exporter::Null

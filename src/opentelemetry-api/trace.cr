@@ -23,7 +23,7 @@ module OpenTelemetry
     property current_span : Span? = nil
     property span_context : SpanContext = SpanContext.new
     @exported : Bool = false
-    @lock : Mutex = Mutex.new
+    @lock : Mutex = Mutex.new(protection: :reentrant)
 
     def self.prng : Random::PCG32
       @@prng
@@ -73,37 +73,42 @@ module OpenTelemetry
       @provider = val
     end
 
+    # Start a new span in the current trace.
     def in_span(span_name)
-      span = Span.new(span_name)
-      set_standard_span_attributes(span)
-      span.context = SpanContext.new(@span_context) do |ctx|
-        ctx.span_id = @provider.id_generator.span_id
-      end
+      @lock.synchronize do
+        span = Span.new(span_name)
+        set_standard_span_attributes(span)
+        span.context = SpanContext.new(@span_context) do |ctx|
+          ctx.span_id = @provider.id_generator.span_id
+        end
 
-      if @root_span.nil? || @exported
-        Fiber.current.current_trace = self
-        @exported = false
-        @root_span = Fiber.current.current_span = @current_span = span
-      else
-        span.parent = @span_stack.last
-        @span_stack.last.children << span
-        Fiber.current.current_span = @current_span = span
-      end
-      @span_stack << span
-      yield span
-      span.finish = Time.monotonic
-      span.wall_finish = Time.utc
-      if @span_stack.last == span
-        @span_stack.pop
-        Fiber.current.current_span = @current_span = @span_stack.last?
-      else
-        raise InvalidSpanInSpanStackError.new(span_stack.last.inspect, span.inspect)
-      end
-      if span == @root_span && !@exported && (_exporter = @exporter)
-        _exporter.export self
-        @exported = true
-        Fiber.current.current_trace = nil
-        Fiber.current.current_span = nil
+        if @root_span.nil? || @exported
+          Fiber.current.current_trace = self
+          @exported = false
+          @root_span = Fiber.current.current_span = @current_span = span
+        else
+          span.parent = @span_stack.last
+          @span_stack.last.children << span
+          Fiber.current.current_span = @current_span = span
+        end
+        @span_stack << span
+        yield span
+        span.finish = Time.monotonic
+        span.wall_finish = Time.utc
+        if @span_stack.last == span
+          @span_stack.pop
+          Fiber.current.current_span = @current_span = @span_stack.last?
+        else
+          raise InvalidSpanInSpanStackError.new(span_stack.last.inspect, span.inspect)
+        end
+        if span == @root_span && !@exported #&& (_exporter = @exporter)
+          if _exporter = @exporter
+            _exporter.export self
+          end
+          @exported = true
+          Fiber.current.current_trace = nil
+          Fiber.current.current_span = nil
+        end
       end
     end
 
