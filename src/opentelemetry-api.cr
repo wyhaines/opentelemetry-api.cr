@@ -79,6 +79,10 @@ module OpenTelemetry
     @@config = TraceProvider::Configuration::Factory.build do |config_block|
       block.call(config_block)
     end
+
+    provider.configure!(@@config)
+
+    @@config
   end
 
   def self.trace_provider
@@ -110,16 +114,12 @@ module OpenTelemetry
   end
 
   def self.trace
-    if trace = Fiber.current.current_trace
-    else
-      trace = trace_provider.trace
-    end
-    trace
+    trace = Fiber.current.current_trace
+    trace ? trace : trace_provider.trace
   end
 
   def self.trace
-    trace = self.trace
-    yield trace
+    yield self.trace
 
     trace
   end
