@@ -131,7 +131,7 @@ describe OpenTelemetry::Trace do
       service_version: "1.1.1",
       exporter: OpenTelemetry::Exporter.new)
     trace = provider.trace do |t|
-      t.service_name = "microservice"
+      t.service_name = "microservice a"
       t.service_version = "1.2.3"
     end
 
@@ -140,7 +140,7 @@ describe OpenTelemetry::Trace do
 
   it "produces traces and spans with the expected ids when using default trace creation syntax" do
     trace = OpenTelemetry.trace do |t|
-      t.service_name = "microservice"
+      t.service_name = "microservice b"
       t.service_version = "1.2.3"
     end
 
@@ -149,7 +149,7 @@ describe OpenTelemetry::Trace do
 
   it "produces traces and spans with the expected ids when using default trace creation syntax" do
     trace = OpenTelemetry.trace do |t|
-      t.service_name = "microservice"
+      t.service_name = "microservice c"
       t.service_version = "1.2.3"
     end
 

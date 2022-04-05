@@ -132,7 +132,5 @@ describe OpenTelemetry::LogRecord do
       observed_time: Time.utc(2022, 1, 1, 12, 0, 0),
       trace_id: "0123456701234567".to_slice,
       span_id: "01234567".to_slice)
-
-    puts log.to_json
   end
 end
