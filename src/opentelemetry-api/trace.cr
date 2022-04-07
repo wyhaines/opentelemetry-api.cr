@@ -101,7 +101,7 @@ module OpenTelemetry
         else
           raise InvalidSpanInSpanStackError.new(span_stack.last.inspect, span.inspect)
         end
-        if span == @root_span && !@exported #&& (_exporter = @exporter)
+        if span == @root_span && !@exported # && (_exporter = @exporter)
           if _exporter = @exporter
             _exporter.export self
           end

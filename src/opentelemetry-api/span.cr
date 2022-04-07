@@ -1,4 +1,5 @@
 require "./span_context"
+require "./span/kind"
 require "./event"
 require "json"
 require "./sendable"
@@ -19,7 +20,7 @@ module OpenTelemetry
     property parent : Span? = nil
     property children : Array(Span) = [] of Span
     property context : SpanContext = SpanContext.new
-    property kind : Symbol = :internal
+    property kind : Kind = Kind::Internal
 
     def initialize(@name = "")
     end
@@ -70,21 +71,21 @@ module OpenTelemetry
       if _wall_finish = wall_finish
         (_wall_finish - Time::UNIX_EPOCH).total_nanoseconds.to_u64
       else
-        nil
+        0_u64
       end
     end
 
     def pb_span_kind
       case @kind
-      when :client
+      when Kind::Client
         Proto::Trace::V1::Span::SpanKind::SPANKINDCLIENT
-      when :server
+      when Kind::Server
         Proto::Trace::V1::Span::SpanKind::SPANKINDSERVER
-      when :producer
+      when Kind::Producer
         Proto::Trace::V1::Span::SpanKind::SPANKINDPRODUCER
-      when :consumer
+      when Kind::Consumer
         Proto::Trace::V1::Span::SpanKind::SPANKINDCONSUMER
-      when :internal
+      when Kind::Internal
         Proto::Trace::V1::Span::SpanKind::SPANKINDINTERNAL
       else
         Proto::Trace::V1::Span::SpanKind::SPANKINDUNSPECIFIED
@@ -124,9 +125,11 @@ module OpenTelemetry
         json << "      \"startTime\":#{start_time_unix_nano},\n"
         json << "      \"endTime\":#{end_time_unix_nano},\n"
         json << "      \"attributes\":{\n"
-        attributes.each do |_, value|
-          json << "        #{value.to_json},\n"
-        end
+        json << String.build do |attribute_list|
+          attributes.each do |_, value|
+            attribute_list << "        #{value.to_json},\n"
+          end
+        end.chomp(",\n")
         json << "      },\n"
         json << "      \"events\":[\n"
         json << String.build do |event_list|

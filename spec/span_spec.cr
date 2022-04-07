@@ -1,4 +1,5 @@
 require "./spec_helper"
+require "json"
 
 describe OpenTelemetry::Span do
   it "can create a span and set/get attributes on that span" do
@@ -62,6 +63,25 @@ describe OpenTelemetry::Span do
       span.set_attribute("verb", "GET")
       span.set_attribute("url", "http://example.com/foo")
       span.add_event("dispatching to handler")
+    end
+  end
+
+  it "can set a span to all of the defined span kinds" do
+    [
+      {OpenTelemetry::Span::Kind::Server, "SERVER"},
+      {OpenTelemetry::Span::Kind::Client, "CLIENT"},
+      {OpenTelemetry::Span::Kind::Producer, "PRODUCER"},
+      {OpenTelemetry::Span::Kind::Consumer, "CONSUMER"},
+      {OpenTelemetry::Span::Kind::Internal, "INTERNAL"},
+      {OpenTelemetry::Span::Kind::Unspecified, "UNSPECIFIED"},
+    ].each do |kind, kind_str|
+      json = ""
+      OpenTelemetry.trace.in_span("request") do |span|
+        span.kind = kind
+
+        json = span.to_json
+      end
+      JSON.parse(json)["kind"].as_s.should eq kind_str
     end
   end
 
