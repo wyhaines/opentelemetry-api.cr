@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Crystal Docs 1.2.2">
+<meta name="generator" content="Crystal Docs 1.3.2">
 <meta name="crystal_docs.project_version" content="main">
 <meta name="crystal_docs.project_name" content="opentelemetry-api">
 
@@ -846,8 +846,18 @@
       
     </li>
   
-  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Span" data-name="opentelemetry::span">
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Span" data-name="opentelemetry::span">
       <a href="../OpenTelemetry/Span.html">Span</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Span/Kind" data-name="opentelemetry::span::kind">
+      <a href="../OpenTelemetry/Span/Kind.html">Kind</a>
+      
+    </li>
+  
+</ul>
+
       
     </li>
   
@@ -943,7 +953,7 @@
   </h2>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/e3eee34d9398f7c4ae4c5c52f56d1707d2686a5e/src/opentelemetry-api/attribute.cr#L8" target="_blank">
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ef1a1da386fbe3359d5fd9a62ecf0dae6885b8ef/src/opentelemetry-api/attribute.cr#L8" target="_blank">
         opentelemetry-api/attribute.cr
       </a>
     
@@ -1023,6 +1033,26 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#to_bool-instance-method" class="signature"><strong>#to_bool</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_f-instance-method" class="signature"><strong>#to_f</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_h-instance-method" class="signature"><strong>#to_h</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_i-instance-method" class="signature"><strong>#to_i</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#to_s%28io%3AIO%29%3ANil-instance-method" class="signature"><strong>#to_s</strong>(io : IO) : Nil</a>
         
           <div class="summary"><p>Same as <code>#inspect(io)</code>.</p></div>
@@ -1095,7 +1125,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/e3eee34d9398f7c4ae4c5c52f56d1707d2686a5e/src/opentelemetry-api/attribute.cr#L41" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ef1a1da386fbe3359d5fd9a62ecf0dae6885b8ef/src/opentelemetry-api/attribute.cr#L41" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1111,7 +1141,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/e3eee34d9398f7c4ae4c5c52f56d1707d2686a5e/src/opentelemetry-api/attribute.cr#L37" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ef1a1da386fbe3359d5fd9a62ecf0dae6885b8ef/src/opentelemetry-api/attribute.cr#L37" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1139,7 +1169,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/e3eee34d9398f7c4ae4c5c52f56d1707d2686a5e/src/opentelemetry-api/attribute.cr#L33" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ef1a1da386fbe3359d5fd9a62ecf0dae6885b8ef/src/opentelemetry-api/attribute.cr#L33" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1155,7 +1185,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/e3eee34d9398f7c4ae4c5c52f56d1707d2686a5e/src/opentelemetry-api/attribute.cr#L29" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ef1a1da386fbe3359d5fd9a62ecf0dae6885b8ef/src/opentelemetry-api/attribute.cr#L29" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1171,7 +1201,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/e3eee34d9398f7c4ae4c5c52f56d1707d2686a5e/src/opentelemetry-api/attribute.cr#L12" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ef1a1da386fbe3359d5fd9a62ecf0dae6885b8ef/src/opentelemetry-api/attribute.cr#L12" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1199,7 +1229,71 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/e3eee34d9398f7c4ae4c5c52f56d1707d2686a5e/src/opentelemetry-api/attribute.cr#L9" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ef1a1da386fbe3359d5fd9a62ecf0dae6885b8ef/src/opentelemetry-api/attribute.cr#L9" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_bool-instance-method">
+      <div class="signature">
+        
+        def <strong>to_bool</strong>
+
+        <a class="method-permalink" href="#to_bool-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ef1a1da386fbe3359d5fd9a62ecf0dae6885b8ef/src/opentelemetry-api/attribute.cr#L60" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_f-instance-method">
+      <div class="signature">
+        
+        def <strong>to_f</strong>
+
+        <a class="method-permalink" href="#to_f-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ef1a1da386fbe3359d5fd9a62ecf0dae6885b8ef/src/opentelemetry-api/attribute.cr#L56" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_h-instance-method">
+      <div class="signature">
+        
+        def <strong>to_h</strong>
+
+        <a class="method-permalink" href="#to_h-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ef1a1da386fbe3359d5fd9a62ecf0dae6885b8ef/src/opentelemetry-api/attribute.cr#L44" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_i-instance-method">
+      <div class="signature">
+        
+        def <strong>to_i</strong>
+
+        <a class="method-permalink" href="#to_i-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ef1a1da386fbe3359d5fd9a62ecf0dae6885b8ef/src/opentelemetry-api/attribute.cr#L52" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1224,7 +1318,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/e3eee34d9398f7c4ae4c5c52f56d1707d2686a5e/src/opentelemetry-api/attribute.cr#L48" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ef1a1da386fbe3359d5fd9a62ecf0dae6885b8ef/src/opentelemetry-api/attribute.cr#L48" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1240,7 +1334,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/e3eee34d9398f7c4ae4c5c52f56d1707d2686a5e/src/opentelemetry-api/attribute.cr#L10" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ef1a1da386fbe3359d5fd9a62ecf0dae6885b8ef/src/opentelemetry-api/attribute.cr#L10" target="_blank">View source</a>]
         
       </div>
     </div>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Crystal Docs 1.2.2">
+<meta name="generator" content="Crystal Docs 1.3.2">
 <meta name="crystal_docs.project_version" content="main">
 <meta name="crystal_docs.project_name" content="opentelemetry-api">
 
@@ -846,8 +846,18 @@
       
     </li>
   
-  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Span" data-name="opentelemetry::span">
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Span" data-name="opentelemetry::span">
       <a href="../OpenTelemetry/Span.html">Span</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Span/Kind" data-name="opentelemetry::span::kind">
+      <a href="../OpenTelemetry/Span/Kind.html">Kind</a>
+      
+    </li>
+  
+</ul>
+
       
     </li>
   
@@ -954,7 +964,7 @@
   </h2>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/e3eee34d9398f7c4ae4c5c52f56d1707d2686a5e/src/opentelemetry-api/attribute.cr#L66" target="_blank">
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ef1a1da386fbe3359d5fd9a62ecf0dae6885b8ef/src/opentelemetry-api/attribute.cr#L66" target="_blank">
         opentelemetry-api/attribute.cr
       </a>
     
@@ -976,7 +986,7 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new%28key%3AString%2Cvalue%3AValueTypes%29-class-method" class="signature"><strong>.new</strong>(key : String, value : ValueTypes)</a>
+        <a href="#new%28key%3AString%2Cvalue%3AValueTypes%7CUInt64%29-class-method" class="signature"><strong>.new</strong>(key : String, value : ValueTypes | UInt64)</a>
         
           <div class="summary"><p>ameba:disable Metrics/CyclomaticComplexity</p></div>
         
@@ -1085,12 +1095,12 @@
     Constructor Detail
   </h2>
   
-    <div class="entry-detail" id="new(key:String,value:ValueTypes)-class-method">
+    <div class="entry-detail" id="new(key:String,value:ValueTypes|UInt64)-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(key : String, value : <a href="../OpenTelemetry/ValueTypes.html">ValueTypes</a>)
+        def self.<strong>new</strong>(key : String, value : <a href="../OpenTelemetry/ValueTypes.html">ValueTypes</a> | UInt64)
 
-        <a class="method-permalink" href="#new%28key%3AString%2Cvalue%3AValueTypes%29-class-method">#</a>
+        <a class="method-permalink" href="#new%28key%3AString%2Cvalue%3AValueTypes%7CUInt64%29-class-method">#</a>
       </div>
       
         <div class="doc">
@@ -1101,7 +1111,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/e3eee34d9398f7c4ae4c5c52f56d1707d2686a5e/src/opentelemetry-api/attribute.cr#L85" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ef1a1da386fbe3359d5fd9a62ecf0dae6885b8ef/src/opentelemetry-api/attribute.cr#L85" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1117,7 +1127,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/e3eee34d9398f7c4ae4c5c52f56d1707d2686a5e/src/opentelemetry-api/attribute.cr#L80" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ef1a1da386fbe3359d5fd9a62ecf0dae6885b8ef/src/opentelemetry-api/attribute.cr#L80" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1152,7 +1162,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/e3eee34d9398f7c4ae4c5c52f56d1707d2686a5e/src/opentelemetry-api/attribute.cr#L113" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ef1a1da386fbe3359d5fd9a62ecf0dae6885b8ef/src/opentelemetry-api/attribute.cr#L113" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1168,7 +1178,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/e3eee34d9398f7c4ae4c5c52f56d1707d2686a5e/src/opentelemetry-api/attribute.cr#L161" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ef1a1da386fbe3359d5fd9a62ecf0dae6885b8ef/src/opentelemetry-api/attribute.cr#L161" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1184,7 +1194,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/e3eee34d9398f7c4ae4c5c52f56d1707d2686a5e/src/opentelemetry-api/attribute.cr#L179" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ef1a1da386fbe3359d5fd9a62ecf0dae6885b8ef/src/opentelemetry-api/attribute.cr#L179" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1200,7 +1210,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/e3eee34d9398f7c4ae4c5c52f56d1707d2686a5e/src/opentelemetry-api/attribute.cr#L170" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ef1a1da386fbe3359d5fd9a62ecf0dae6885b8ef/src/opentelemetry-api/attribute.cr#L170" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1216,7 +1226,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/e3eee34d9398f7c4ae4c5c52f56d1707d2686a5e/src/opentelemetry-api/attribute.cr#L157" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ef1a1da386fbe3359d5fd9a62ecf0dae6885b8ef/src/opentelemetry-api/attribute.cr#L157" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1232,7 +1242,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/e3eee34d9398f7c4ae4c5c52f56d1707d2686a5e/src/opentelemetry-api/attribute.cr#L78" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ef1a1da386fbe3359d5fd9a62ecf0dae6885b8ef/src/opentelemetry-api/attribute.cr#L78" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1248,7 +1258,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/e3eee34d9398f7c4ae4c5c52f56d1707d2686a5e/src/opentelemetry-api/attribute.cr#L196" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ef1a1da386fbe3359d5fd9a62ecf0dae6885b8ef/src/opentelemetry-api/attribute.cr#L196" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1264,7 +1274,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/e3eee34d9398f7c4ae4c5c52f56d1707d2686a5e/src/opentelemetry-api/attribute.cr#L153" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ef1a1da386fbe3359d5fd9a62ecf0dae6885b8ef/src/opentelemetry-api/attribute.cr#L153" target="_blank">View source</a>]
         
       </div>
     </div>
