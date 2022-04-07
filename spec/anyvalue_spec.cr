@@ -81,6 +81,11 @@ describe OpenTelemetry::AnyValue do
     OpenTelemetry::AnyValue.new(42.0)
   end
 
+  it "can create an AnyValue for an UInt64" do
+    OpenTelemetry::AnyValue.new(42_u64).value.should eq 42_i64
+    OpenTelemetry::AnyValue.new(42_u64).value.should be_a Int64
+  end
+
   it "can create an AnyValue for a String array" do
     OpenTelemetry::AnyValue.new(["value1", "value2"])
   end

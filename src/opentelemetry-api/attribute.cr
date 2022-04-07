@@ -41,25 +41,25 @@ module OpenTelemetry
     def initialize(@key, @value)
     end
 
-    # def to_h
-    #   {key: value}
-    # end
+    def to_h
+      {key: value}
+    end
 
     def to_s(io : IO) : Nil
       io << value
     end
 
-    # def to_i
-    #   value.to_i64
-    # end
+    def to_i
+      value.to_i64
+    end
 
-    # def to_f
-    #   value.to_f64
-    # end
+    def to_f
+      value.to_f64
+    end
 
-    # def to_bool
-    #   !!value
-    # end
+    def to_bool
+      !!value
+    end
   end
 
   # This is a wrapper around the supported attribute types.
@@ -82,7 +82,7 @@ module OpenTelemetry
     end
 
     # ameba:disable Metrics/CyclomaticComplexity
-    def initialize(key : String, value : ValueTypes)
+    def initialize(key : String, value : ValueTypes | UInt64)
       case value
       when String
         @raw = Attribute(String).new(key, value)
@@ -90,8 +90,8 @@ module OpenTelemetry
         @raw = Attribute(Bool).new(key, value)
       when Float64
         @raw = Attribute(Float64).new(key, value)
-      when Int64
-        @raw = Attribute(Int64).new(key, value)
+      when Int64, UInt64
+        @raw = Attribute(Int64).new(key, value.to_i64)
       when Int32
         @raw = Attribute(Int32).new(key, value)
       when Array(String)

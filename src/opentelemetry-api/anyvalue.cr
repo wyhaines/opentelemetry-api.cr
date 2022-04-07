@@ -2,8 +2,12 @@ module OpenTelemetry
   class AnyValue
     getter raw : AnyAttribute::Type = Attribute(String).new("")
 
-    def initialize(value : ValueTypes)
-      self.value = value
+    def initialize(value : ValueTypes | UInt64)
+      if value.is_a?(UInt64)
+        self.value = value.to_i64
+      else
+        self.value = value
+      end
     end
 
     # ameba:disable Metrics/CyclomaticComplexity
