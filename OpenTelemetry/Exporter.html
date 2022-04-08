@@ -156,6 +156,11 @@
       
     </li>
   
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Exporter/IO" data-name="opentelemetry::exporter::io">
+      <a href="../OpenTelemetry/Exporter/IO.html">IO</a>
+      
+    </li>
+  
   <li class=" " data-id="opentelemetry-api/OpenTelemetry/Exporter/Null" data-name="opentelemetry::exporter::null">
       <a href="../OpenTelemetry/Exporter/Null.html">Null</a>
       
@@ -953,63 +958,70 @@
   </h2>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ef1a1da386fbe3359d5fd9a62ecf0dae6885b8ef/src/exporter.cr#L4" target="_blank">
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/753649e7a9e5b579474cf6e43f8acc9204868aba/src/exporter.cr#L4" target="_blank">
         exporter.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ef1a1da386fbe3359d5fd9a62ecf0dae6885b8ef/src/exporters/abstract.cr#L4" target="_blank">
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/753649e7a9e5b579474cf6e43f8acc9204868aba/src/exporters/abstract.cr#L4" target="_blank">
         exporters/abstract.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ef1a1da386fbe3359d5fd9a62ecf0dae6885b8ef/src/exporters/base.cr#L4" target="_blank">
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/753649e7a9e5b579474cf6e43f8acc9204868aba/src/exporters/base.cr#L4" target="_blank">
         exporters/base.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ef1a1da386fbe3359d5fd9a62ecf0dae6885b8ef/src/exporters/buffered_base.cr#L4" target="_blank">
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/753649e7a9e5b579474cf6e43f8acc9204868aba/src/exporters/buffered_base.cr#L4" target="_blank">
         exporters/buffered_base.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ef1a1da386fbe3359d5fd9a62ecf0dae6885b8ef/src/exporters/buffered_exporter.cr#L4" target="_blank">
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/753649e7a9e5b579474cf6e43f8acc9204868aba/src/exporters/buffered_exporter.cr#L4" target="_blank">
         exporters/buffered_exporter.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ef1a1da386fbe3359d5fd9a62ecf0dae6885b8ef/src/exporters/http.cr#L6" target="_blank">
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/753649e7a9e5b579474cf6e43f8acc9204868aba/src/exporters/http.cr#L6" target="_blank">
         exporters/http.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ef1a1da386fbe3359d5fd9a62ecf0dae6885b8ef/src/exporters/null.cr#L5" target="_blank">
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/753649e7a9e5b579474cf6e43f8acc9204868aba/src/exporters/io.cr#L5" target="_blank">
+        exporters/io.cr
+      </a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/753649e7a9e5b579474cf6e43f8acc9204868aba/src/exporters/null.cr#L5" target="_blank">
         exporters/null.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ef1a1da386fbe3359d5fd9a62ecf0dae6885b8ef/src/exporters/stdout.cr#L4" target="_blank">
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/753649e7a9e5b579474cf6e43f8acc9204868aba/src/exporters/stdout.cr#L4" target="_blank">
         exporters/stdout.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ef1a1da386fbe3359d5fd9a62ecf0dae6885b8ef/src/exporters/unbuffered_exporter.cr#L2" target="_blank">
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/753649e7a9e5b579474cf6e43f8acc9204868aba/src/exporters/unbuffered_exporter.cr#L2" target="_blank">
         exporters/unbuffered_exporter.cr
       </a>
     
@@ -1067,7 +1079,7 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#exporter%3AExporter%3A%3AAbstract%7CExporter%3A%3ANull%7CExporter%3A%3AHttp%7CExporter%3A%3AStdout-instance-method" class="signature"><strong>#exporter</strong> : Exporter::Abstract | Exporter::Null | Exporter::Http | Exporter::Stdout</a>
+        <a href="#exporter%3AExporter%3A%3AAbstract%7CExporter%3A%3ANull%7CExporter%3A%3AHttp%7CExporter%3A%3AStdout%7CExporter%3A%3AIO-instance-method" class="signature"><strong>#exporter</strong> : Exporter::Abstract | Exporter::Null | Exporter::Http | Exporter::Stdout | Exporter::IO</a>
         
       </li>
     
@@ -1122,7 +1134,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ef1a1da386fbe3359d5fd9a62ecf0dae6885b8ef/src/exporter.cr#L14" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/753649e7a9e5b579474cf6e43f8acc9204868aba/src/exporter.cr#L14" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1138,7 +1150,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ef1a1da386fbe3359d5fd9a62ecf0dae6885b8ef/src/exporter.cr#L42" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/753649e7a9e5b579474cf6e43f8acc9204868aba/src/exporter.cr#L46" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1168,7 +1180,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ef1a1da386fbe3359d5fd9a62ecf0dae6885b8ef/src/exporter.cr#L57" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/753649e7a9e5b579474cf6e43f8acc9204868aba/src/exporter.cr#L63" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1184,23 +1196,23 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ef1a1da386fbe3359d5fd9a62ecf0dae6885b8ef/src/exporter.cr#L61" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/753649e7a9e5b579474cf6e43f8acc9204868aba/src/exporter.cr#L67" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="exporter:Exporter::Abstract|Exporter::Null|Exporter::Http|Exporter::Stdout-instance-method">
+    <div class="entry-detail" id="exporter:Exporter::Abstract|Exporter::Null|Exporter::Http|Exporter::Stdout|Exporter::IO-instance-method">
       <div class="signature">
         
-        def <strong>exporter</strong> : Exporter::Abstract | <a href="../OpenTelemetry/Exporter/Null.html">Exporter::Null</a> | <a href="../OpenTelemetry/Exporter/Http.html">Exporter::Http</a> | <a href="../OpenTelemetry/Exporter/Stdout.html">Exporter::Stdout</a>
+        def <strong>exporter</strong> : Exporter::Abstract | <a href="../OpenTelemetry/Exporter/Null.html">Exporter::Null</a> | <a href="../OpenTelemetry/Exporter/Http.html">Exporter::Http</a> | <a href="../OpenTelemetry/Exporter/Stdout.html">Exporter::Stdout</a> | <a href="../OpenTelemetry/Exporter/IO.html">Exporter::IO</a>
 
-        <a class="method-permalink" href="#exporter%3AExporter%3A%3AAbstract%7CExporter%3A%3ANull%7CExporter%3A%3AHttp%7CExporter%3A%3AStdout-instance-method">#</a>
+        <a class="method-permalink" href="#exporter%3AExporter%3A%3AAbstract%7CExporter%3A%3ANull%7CExporter%3A%3AHttp%7CExporter%3A%3AStdout%7CExporter%3A%3AIO-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ef1a1da386fbe3359d5fd9a62ecf0dae6885b8ef/src/exporter.cr#L8" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/753649e7a9e5b579474cf6e43f8acc9204868aba/src/exporter.cr#L8" target="_blank">View source</a>]
         
       </div>
     </div>

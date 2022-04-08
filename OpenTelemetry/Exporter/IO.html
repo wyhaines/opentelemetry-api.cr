@@ -13,7 +13,7 @@
 <script type="text/javascript" src="../../js/doc.js"></script>
 
   <meta name="repository-name" content="opentelemetry-api">
-  <title>OpenTelemetry::IdGenerator::Random - opentelemetry-api main</title>
+  <title>OpenTelemetry::Exporter::IO - opentelemetry-api main</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "../../";
   </script>
@@ -126,7 +126,7 @@
       
     </li>
   
-  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Exporter" data-name="opentelemetry::exporter">
+  <li class="parent open current" data-id="opentelemetry-api/OpenTelemetry/Exporter" data-name="opentelemetry::exporter">
       <a href="../../OpenTelemetry/Exporter.html">Exporter</a>
       
         <ul>
@@ -156,7 +156,7 @@
       
     </li>
   
-  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Exporter/IO" data-name="opentelemetry::exporter::io">
+  <li class=" current" data-id="opentelemetry-api/OpenTelemetry/Exporter/IO" data-name="opentelemetry::exporter::io">
       <a href="../../OpenTelemetry/Exporter/IO.html">IO</a>
       
     </li>
@@ -181,7 +181,7 @@
       
     </li>
   
-  <li class="parent open current" data-id="opentelemetry-api/OpenTelemetry/IdGenerator" data-name="opentelemetry::idgenerator">
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/IdGenerator" data-name="opentelemetry::idgenerator">
       <a href="../../OpenTelemetry/IdGenerator.html">IdGenerator</a>
       
         <ul>
@@ -191,7 +191,7 @@
       
     </li>
   
-  <li class=" current" data-id="opentelemetry-api/OpenTelemetry/IdGenerator/Random" data-name="opentelemetry::idgenerator::random">
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/IdGenerator/Random" data-name="opentelemetry::idgenerator::random">
       <a href="../../OpenTelemetry/IdGenerator/Random.html">Random</a>
       
     </li>
@@ -925,12 +925,12 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">struct</span> OpenTelemetry::IdGenerator::Random
+  <span class="kind">class</span> OpenTelemetry::Exporter::IO
 
 </h1>
 
 
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="../../OpenTelemetry/IdGenerator/Random.html">OpenTelemetry::IdGenerator::Random</a></li><li class="superclass"><a href="../../OpenTelemetry/IdGenerator/Base.html">OpenTelemetry::IdGenerator::Base</a></li><li class="superclass">Struct</li><li class="superclass">Value</li><li class="superclass">Object</li></ul>
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../../OpenTelemetry/Exporter/IO.html">OpenTelemetry::Exporter::IO</a></li><li class="superclass"><a href="../../OpenTelemetry/Exporter/Base.html">OpenTelemetry::Exporter::Base</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
 
 
 
@@ -958,8 +958,8 @@
   </h2>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/753649e7a9e5b579474cf6e43f8acc9204868aba/src/opentelemetry-api/id_generator/random.cr#L4" target="_blank">
-        opentelemetry-api/id_generator/random.cr
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/753649e7a9e5b579474cf6e43f8acc9204868aba/src/exporters/io.cr#L6" target="_blank">
+        exporters/io.cr
       </a>
     
     <br/>
@@ -968,6 +968,28 @@
 
 
 
+
+  <h2>
+    <a id="constructors" class="anchor" href="#constructors">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructors
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28io%3A%3A%3AIO%7C%3A%3AIO%3A%3AMemory%3D%3A%3AIO%3A%3AMemory.new%2C%2A_junk%2C%2A%2A_kwjunk%29-class-method" class="signature"><strong>.new</strong>(io : ::IO | ::IO::Memory = <span class="t">::</span><span class="t">IO</span><span class="t">::</span><span class="t">Memory</span>.<span class="k">new</span>, *_junk, **_kwjunk)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new%28%26%29-class-method" class="signature"><strong>.new</strong>(&)</a>
+        
+      </li>
+    
+  </ul>
 
 
 
@@ -984,16 +1006,17 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#span_id-instance-method" class="signature"><strong>#span_id</strong></a>
-        
-          <div class="summary"><p>Return a random sequence of 8 bytes for the span id.</p></div>
+        <a href="#handle%28elements%3AArray%28Elements%29%29-instance-method" class="signature"><strong>#handle</strong>(elements : Array(Elements))</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#trace_id-instance-method" class="signature"><strong>#trace_id</strong></a>
+        <a href="#io%3A%3A%3AIO%7C%3A%3AIO%3A%3AMemory%7CNil-instance-method" class="signature"><strong>#io</strong> : ::IO | ::IO::Memory | Nil</a>
         
-          <div class="summary"><p>Return a random sequence of 16 bytes for the trace id.</p></div>
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#io%3D%28io%3A%3A%3AIO%7C%3A%3AIO%3A%3AMemory%7CNil%29-instance-method" class="signature"><strong>#io=</strong>(io : ::IO | ::IO::Memory | Nil)</a>
         
       </li>
     
@@ -1007,33 +1030,57 @@
   
     
 
-  <h3>Instance methods inherited from struct <code><a href="../../OpenTelemetry/IdGenerator/Base.html">OpenTelemetry::IdGenerator::Base</a></code></h3>
+  <h3>Instance methods inherited from class <code><a href="../../OpenTelemetry/Exporter/Base.html">OpenTelemetry::Exporter::Base</a></code></h3>
   
   
-    <a href="../../OpenTelemetry/IdGenerator/Base.html#initialize-instance-method" class="tooltip">
-      <span>initialize</span>
-    initialize</a>, 
-    
-  
-    <a href="../../OpenTelemetry/IdGenerator/Base.html#span_id-instance-method" class="tooltip">
-      <span>span_id</span>
-    span_id</a>, 
-    
-  
-    <a href="../../OpenTelemetry/IdGenerator/Base.html#trace_id-instance-method" class="tooltip">
-      <span>trace_id</span>
-    trace_id</a>
+    <a href="../../OpenTelemetry/Exporter/Base.html#handle%28elements%3AArray%28Elements%29%29-instance-method" class="tooltip">
+      <span>handle(elements : Array(Elements))</span>
+    handle</a>
     
   
 
 
     
 
-  <h3>Constructor methods inherited from struct <code><a href="../../OpenTelemetry/IdGenerator/Base.html">OpenTelemetry::IdGenerator::Base</a></code></h3>
+
+    
+
+
+  
+    
+
+  <h3>Instance methods inherited from module <code><a href="../../OpenTelemetry/Exporter/UnbufferedExporter.html">OpenTelemetry::Exporter::UnbufferedExporter</a></code></h3>
   
   
-    <a href="../../OpenTelemetry/IdGenerator/Base.html#new-class-method" class="tooltip">
-      <span>new</span>
+    <a href="../../OpenTelemetry/Exporter/UnbufferedExporter.html#export%28elements%3AArray%28Elements%29%29-instance-method" class="tooltip">
+      <span>export(elements : Array(Elements))<br/>export(element : Elements)</span>
+    export</a>, 
+    
+  
+    <a href="../../OpenTelemetry/Exporter/UnbufferedExporter.html#handle%28elements%3AArray%28Elements%29%29-instance-method" class="tooltip">
+      <span>handle(elements : Array(Elements))<br/>handle(element)</span>
+    handle</a>, 
+    
+  
+    <a href="../../OpenTelemetry/Exporter/UnbufferedExporter.html#loop_and_receive-instance-method" class="tooltip">
+      <span>loop_and_receive</span>
+    loop_and_receive</a>, 
+    
+  
+    <a href="../../OpenTelemetry/Exporter/UnbufferedExporter.html#start-instance-method" class="tooltip">
+      <span>start</span>
+    start</a>
+    
+  
+
+
+    
+
+  <h3>Constructor methods inherited from module <code><a href="../../OpenTelemetry/Exporter/UnbufferedExporter.html">OpenTelemetry::Exporter::UnbufferedExporter</a></code></h3>
+  
+  
+    <a href="../../OpenTelemetry/Exporter/UnbufferedExporter.html#new-class-method" class="tooltip">
+      <span>new<br/>new(&)</span>
     new</a>
     
   
@@ -1063,18 +1110,50 @@
 
 
   
-    
-
-
-    
-
-
-    
-
-
-  
 </div>
 
+
+  <h2>
+    <a id="constructor-detail" class="anchor" href="#constructor-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructor Detail
+  </h2>
+  
+    <div class="entry-detail" id="new(io:::IO|::IO::Memory=::IO::Memory.new,*_junk,**_kwjunk)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(io : ::IO | ::IO::Memory = <span class="t">::</span><span class="t">IO</span><span class="t">::</span><span class="t">Memory</span>.<span class="k">new</span>, *_junk, **_kwjunk)
+
+        <a class="method-permalink" href="#new%28io%3A%3A%3AIO%7C%3A%3AIO%3A%3AMemory%3D%3A%3AIO%3A%3AMemory.new%2C%2A_junk%2C%2A%2A_kwjunk%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/753649e7a9e5b579474cf6e43f8acc9204868aba/src/exporters/io.cr#L9" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(&amp;)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(&)
+
+        <a class="method-permalink" href="#new%28%26%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/753649e7a9e5b579474cf6e43f8acc9204868aba/src/exporters/io.cr#L13" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
 
 
 
@@ -1089,44 +1168,50 @@
     Instance Method Detail
   </h2>
   
-    <div class="entry-detail" id="span_id-instance-method">
+    <div class="entry-detail" id="handle(elements:Array(Elements))-instance-method">
       <div class="signature">
         
-        def <strong>span_id</strong>
+        def <strong>handle</strong>(elements : Array(<a href="../../OpenTelemetry/Exporter/Elements.html">Elements</a>))
 
-        <a class="method-permalink" href="#span_id-instance-method">#</a>
+        <a class="method-permalink" href="#handle%28elements%3AArray%28Elements%29%29-instance-method">#</a>
       </div>
-      
-        <div class="doc">
-          
-          <p>Return a random sequence of 8 bytes for the span id.</p>
-        </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/753649e7a9e5b579474cf6e43f8acc9204868aba/src/opentelemetry-api/id_generator/random.cr#L11" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/753649e7a9e5b579474cf6e43f8acc9204868aba/src/exporters/io.cr#L18" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="trace_id-instance-method">
+    <div class="entry-detail" id="io:::IO|::IO::Memory|Nil-instance-method">
       <div class="signature">
         
-        def <strong>trace_id</strong>
+        def <strong>io</strong> : ::IO | ::IO::Memory | Nil
 
-        <a class="method-permalink" href="#trace_id-instance-method">#</a>
+        <a class="method-permalink" href="#io%3A%3A%3AIO%7C%3A%3AIO%3A%3AMemory%7CNil-instance-method">#</a>
       </div>
-      
-        <div class="doc">
-          
-          <p>Return a random sequence of 16 bytes for the trace id.</p>
-        </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/753649e7a9e5b579474cf6e43f8acc9204868aba/src/opentelemetry-api/id_generator/random.cr#L6" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/753649e7a9e5b579474cf6e43f8acc9204868aba/src/exporters/io.cr#L7" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="io=(io:::IO|::IO::Memory|Nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>io=</strong>(io : ::IO | ::IO::Memory | Nil)
+
+        <a class="method-permalink" href="#io%3D%28io%3A%3A%3AIO%7C%3A%3AIO%3A%3AMemory%7CNil%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/753649e7a9e5b579474cf6e43f8acc9204868aba/src/exporters/io.cr#L7" target="_blank">View source</a>]
         
       </div>
     </div>

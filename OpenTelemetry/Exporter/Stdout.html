@@ -156,6 +156,11 @@
       
     </li>
   
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Exporter/IO" data-name="opentelemetry::exporter::io">
+      <a href="../../OpenTelemetry/Exporter/IO.html">IO</a>
+      
+    </li>
+  
   <li class=" " data-id="opentelemetry-api/OpenTelemetry/Exporter/Null" data-name="opentelemetry::exporter::null">
       <a href="../../OpenTelemetry/Exporter/Null.html">Null</a>
       
@@ -925,7 +930,7 @@
 </h1>
 
 
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="../../OpenTelemetry/Exporter/Stdout.html">OpenTelemetry::Exporter::Stdout</a></li><li class="superclass"><a href="../../OpenTelemetry/Exporter/BufferedBase.html">OpenTelemetry::Exporter::BufferedBase</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../../OpenTelemetry/Exporter/Stdout.html">OpenTelemetry::Exporter::Stdout</a></li><li class="superclass"><a href="../../OpenTelemetry/Exporter/Base.html">OpenTelemetry::Exporter::Base</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
 
 
 
@@ -953,7 +958,7 @@
   </h2>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ef1a1da386fbe3359d5fd9a62ecf0dae6885b8ef/src/exporters/stdout.cr#L5" target="_blank">
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/753649e7a9e5b579474cf6e43f8acc9204868aba/src/exporters/stdout.cr#L5" target="_blank">
         exporters/stdout.cr
       </a>
     
@@ -963,28 +968,6 @@
 
 
 
-
-  <h2>
-    <a id="constructors" class="anchor" href="#constructors">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Constructors
-  </h2>
-  <ul class="list-summary">
-    
-      <li class="entry-summary">
-        <a href="#new-class-method" class="signature"><strong>.new</strong></a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#new%28%26%29-class-method" class="signature"><strong>.new</strong>(&)</a>
-        
-      </li>
-    
-  </ul>
 
 
 
@@ -1005,16 +988,6 @@
         
       </li>
     
-      <li class="entry-summary">
-        <a href="#loop_and_receive-instance-method" class="signature"><strong>#loop_and_receive</strong></a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#start-instance-method" class="signature"><strong>#start</strong></a>
-        
-      </li>
-    
   </ul>
 
 
@@ -1025,66 +998,12 @@
   
     
 
-  <h3>Instance methods inherited from class <code><a href="../../OpenTelemetry/Exporter/BufferedBase.html">OpenTelemetry::Exporter::BufferedBase</a></code></h3>
+  <h3>Instance methods inherited from class <code><a href="../../OpenTelemetry/Exporter/Base.html">OpenTelemetry::Exporter::Base</a></code></h3>
   
   
-    <a href="../../OpenTelemetry/Exporter/BufferedBase.html#handle%28elements%3AArray%28Elements%29%29-instance-method" class="tooltip">
+    <a href="../../OpenTelemetry/Exporter/Base.html#handle%28elements%3AArray%28Elements%29%29-instance-method" class="tooltip">
       <span>handle(elements : Array(Elements))</span>
     handle</a>
-    
-  
-
-
-    
-
-
-    
-
-
-  
-    
-
-  <h3>Instance methods inherited from module <code><a href="../../OpenTelemetry/Exporter/BufferedExporter.html">OpenTelemetry::Exporter::BufferedExporter</a></code></h3>
-  
-  
-    <a href="../../OpenTelemetry/Exporter/BufferedExporter.html#batch_interval-instance-method" class="tooltip">
-      <span>batch_interval</span>
-    batch_interval</a>, 
-    
-  
-    <a href="../../OpenTelemetry/Exporter/BufferedExporter.html#batch_interval%3D%28batch_interval%29-instance-method" class="tooltip">
-      <span>batch_interval=(batch_interval)</span>
-    batch_interval=</a>, 
-    
-  
-    <a href="../../OpenTelemetry/Exporter/BufferedExporter.html#batch_latency-instance-method" class="tooltip">
-      <span>batch_latency</span>
-    batch_latency</a>, 
-    
-  
-    <a href="../../OpenTelemetry/Exporter/BufferedExporter.html#batch_latency%3D%28batch_latency%29-instance-method" class="tooltip">
-      <span>batch_latency=(batch_latency)</span>
-    batch_latency=</a>, 
-    
-  
-    <a href="../../OpenTelemetry/Exporter/BufferedExporter.html#batch_threshold-instance-method" class="tooltip">
-      <span>batch_threshold</span>
-    batch_threshold</a>, 
-    
-  
-    <a href="../../OpenTelemetry/Exporter/BufferedExporter.html#batch_threshold%3D%28batch_threshold%29-instance-method" class="tooltip">
-      <span>batch_threshold=(batch_threshold)</span>
-    batch_threshold=</a>, 
-    
-  
-    <a href="../../OpenTelemetry/Exporter/BufferedExporter.html#handle%28elements%3AArray%28Elements%29%29-instance-method" class="tooltip">
-      <span>handle(elements : Array(Elements))<br/>handle(element : Elements)</span>
-    handle</a>, 
-    
-  
-    <a href="../../OpenTelemetry/Exporter/BufferedExporter.html#loop_and_receive-instance-method" class="tooltip">
-      <span>loop_and_receive</span>
-    loop_and_receive</a>
     
   
 
@@ -1162,48 +1081,6 @@
 </div>
 
 
-  <h2>
-    <a id="constructor-detail" class="anchor" href="#constructor-detail">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Constructor Detail
-  </h2>
-  
-    <div class="entry-detail" id="new-class-method">
-      <div class="signature">
-        
-        def self.<strong>new</strong>
-
-        <a class="method-permalink" href="#new-class-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ef1a1da386fbe3359d5fd9a62ecf0dae6885b8ef/src/exporters/stdout.cr#L6" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="new(&amp;)-class-method">
-      <div class="signature">
-        
-        def self.<strong>new</strong>(&)
-
-        <a class="method-permalink" href="#new%28%26%29-class-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ef1a1da386fbe3359d5fd9a62ecf0dae6885b8ef/src/exporters/stdout.cr#L9" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-
 
 
 
@@ -1228,39 +1105,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ef1a1da386fbe3359d5fd9a62ecf0dae6885b8ef/src/exporters/stdout.cr#L27" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="loop_and_receive-instance-method">
-      <div class="signature">
-        
-        def <strong>loop_and_receive</strong>
-
-        <a class="method-permalink" href="#loop_and_receive-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ef1a1da386fbe3359d5fd9a62ecf0dae6885b8ef/src/exporters/stdout.cr#L18" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="start-instance-method">
-      <div class="signature">
-        
-        def <strong>start</strong>
-
-        <a class="method-permalink" href="#start-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/ef1a1da386fbe3359d5fd9a62ecf0dae6885b8ef/src/exporters/stdout.cr#L14" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/753649e7a9e5b579474cf6e43f8acc9204868aba/src/exporters/stdout.cr#L6" target="_blank">View source</a>]
         
       </div>
     </div>
