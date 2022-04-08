@@ -10,7 +10,7 @@ module OpenTelemetry
       property headers : HTTP::Headers = HTTP::Headers.new
       property endpoint_uri : URI = URI.parse("http://localhost:8080/")
 
-      def initialize(endpoint : String? = nil, _headers : HTTP::Headers? = nil, _clients : DB::Pool(HTTP::Client)? = nil)
+      def initialize(endpoint : String? = nil, _headers : HTTP::Headers? = nil, _clients : DB::Pool(HTTP::Client)? = nil, *_junk, **_kwjunk)
         @endpoint_uri = endpoint if endpoint
         @headers = _headers if _headers
         if _clients

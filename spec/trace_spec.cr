@@ -148,7 +148,6 @@ describe OpenTelemetry::Trace do
   end
 
   it "produces traces and spans with the expected ids when using a default config and default trace creation syntax" do
-    puts "\nDEBUG: #{Fiber.current.current_trace} -- #{Fiber.current.current_trace.try(&.service_name)}"
     original_config = OpenTelemetry.config
     OpenTelemetry.configure do |config|
       config.service_name = "microservice twee"

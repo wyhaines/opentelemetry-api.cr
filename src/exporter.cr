@@ -5,7 +5,7 @@ module OpenTelemetry
     # As other data types, like metrics or logs are added, expand this aliase
     # to be a union that supports them, as well.
     alias Elements = Trace
-    getter exporter : Exporter::Abstract | Exporter::Null | Exporter::Http | Exporter::Stdout
+    getter exporter : Exporter::Abstract | Exporter::Null | Exporter::Http | Exporter::Stdout | Exporter::IO
 
     # TODO: Build this using macros, so that if other exporters are added, the
     # code self-assembles to know about them and add access to them. This would
@@ -19,6 +19,10 @@ module OpenTelemetry
         end
       when "http"
         @exporter = Exporter::Http.new do |obj|
+          yield obj
+        end
+      when "io"
+        @exporter = Exporter::IO.new do |obj|
           yield obj
         end
       when "abstract"
@@ -42,15 +46,17 @@ module OpenTelemetry
     def initialize(variant : String | Symbol = :null, *args, **kwargs)
       case variant.to_s.downcase
       when "abstract"
-        @exporter = Exporter::Abstract.new(*args, **kwargs)
+        @exporter = Exporter::Abstract.new
       when "stdout"
         @exporter = Exporter::Stdout.new
+      when "io"
+        @exporter = Exporter::IO.new(*args, **kwargs)
       when "http"
         @exporter = Exporter::Http.new(*args, **kwargs)
         #      when "grpc"
         #        @exporter = Exporter::GRPC.new(*args, **kwargs)
       else
-        @exporter = Exporter::Null.new(*args, **kwargs)
+        @exporter = Exporter::Null.new
       end
     end
 
