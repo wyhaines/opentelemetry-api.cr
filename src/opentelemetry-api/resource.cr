@@ -33,6 +33,10 @@ module OpenTelemetry
       attributes[key]
     end
 
+    def empty?
+      attributes.empty?
+    end
+
     # The ProtoBuf differs a LOT from the current Spec. Methinks this has changed a bunch since I last updated it.
     def to_protobuf
       resource = Proto::Resource::V1::Resource.new
@@ -49,12 +53,19 @@ module OpenTelemetry
       String.build do |json|
         json << "{\n"
         json << "  \"resource\":{\n"
-        attributes.each do |_, value|
-          json << "    #{value.to_json},\n"
-        end
-        json << "  },\n"
+        json << attribute_list
+        json << "  }\n"
         json << "}\n"
       end
+    end
+
+    def attribute_list(indent = 4)
+      spacer = " " * indent
+      String.build do |attribute_list|
+        attributes.each do |_, value|
+          attribute_list << "#{spacer}#{value.to_json},\n"
+        end
+      end.chomp(",\n")
     end
   end
 end

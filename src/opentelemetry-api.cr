@@ -127,11 +127,15 @@ module OpenTelemetry
     trace
   end
 
-  def self.instrumentation_library
-    Proto::Common::V1::InstrumentationLibrary.new(
+  def self.instrumentation_scope
+    Proto::Common::V1::InstrumentationScope.new(
       name: NAME,
       version: VERSION,
     )
+  end
+
+  def self.instrumentation_library
+    instrumentation_scope
   end
 
   def self.handle_error(error)

@@ -55,17 +55,19 @@ module OpenTelemetry
     def to_json
       String.build do |json|
         json << "    {\n"
-        json << "        \"type\": \"event\",\n"
-        json << "        \"name\": \"#{name}\",\n"
-        json << "        \"timestamp\": #{time_unix_nano},\n"
-        json << "        \"attributes\":{\n"
-        json << String.build do |attr_json|
-          attributes.each do |_, value|
-            attr_json << "          #{value.to_json},\n"
-          end
-        end.chomp(",\n")
-        json << "        }\n"
-        json << "      }"
+        json << "          \"type\": \"event\",\n"
+        json << "          \"name\": \"#{name}\",\n"
+        if !attributes.empty?
+          json << "          \"attributes\":{\n"
+          json << String.build do |attr_json|
+            attributes.each do |_, value|
+              attr_json << "            #{value.to_json},\n"
+            end
+          end.chomp(",\n")
+          json << "\n          },\n"
+        end
+        json << "          \"timestamp\": #{time_unix_nano}\n"
+        json << "        }"
       end
     end
   end

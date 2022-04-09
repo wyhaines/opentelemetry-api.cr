@@ -7,7 +7,7 @@ describe OpenTelemetry::VERSION do
   end
 
   it "has matching versions in the code and in the shard.ym" do
-    yml = File.open(File.join(__DIR__, "..", "shard.yml")) { |file| YAML.parse file}
+    yml = File.open(File.join(__DIR__, "..", "shard.yml")) { |file| YAML.parse file }
     yml["version"].as_s.should eq OpenTelemetry::VERSION
   end
 end

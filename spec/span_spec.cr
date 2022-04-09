@@ -68,20 +68,20 @@ describe OpenTelemetry::Span do
 
   it "can set a span to all of the defined span kinds" do
     [
-      {OpenTelemetry::Span::Kind::Server, "SERVER"},
-      {OpenTelemetry::Span::Kind::Client, "CLIENT"},
-      {OpenTelemetry::Span::Kind::Producer, "PRODUCER"},
-      {OpenTelemetry::Span::Kind::Consumer, "CONSUMER"},
-      {OpenTelemetry::Span::Kind::Internal, "INTERNAL"},
-      {OpenTelemetry::Span::Kind::Unspecified, "UNSPECIFIED"},
-    ].each do |kind, kind_str|
+      {OpenTelemetry::Span::Kind::Consumer, 5},
+      {OpenTelemetry::Span::Kind::Producer, 4},
+      {OpenTelemetry::Span::Kind::Client, 3},
+      {OpenTelemetry::Span::Kind::Server, 2},
+      {OpenTelemetry::Span::Kind::Internal, 1},
+      {OpenTelemetry::Span::Kind::Unspecified, 0},
+    ].each do |kind, kind_val|
       json = ""
       OpenTelemetry.trace.in_span("request") do |span|
         span.kind = kind
 
         json = span.to_json
       end
-      JSON.parse(json)["kind"].as_s.should eq kind_str
+      JSON.parse(json)["kind"].as_i.should eq kind_val
     end
   end
 

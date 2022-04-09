@@ -13,13 +13,14 @@ module OpenTelemetry
     @@prng = Random::PCG32.new
 
     property trace_id : Slice(UInt8) = @@prng.random_bytes(16)
-    property service_name : String = ""
-    property service_version : String = ""
+    @service_name : String = ""
+    @service_version : String = ""
     property schema_url : String = ""
     property exporter : Exporter? = nil
-    getter provider : TraceProvider = TraceProvider.new
+    getter provider : TraceProvider
     getter span_stack : Array(Span) = [] of Span
     getter root_span : Span? = nil
+    getter resource : Resource = Resource.new
     property current_span : Span? = nil
     property span_context : SpanContext = SpanContext.new
     @exported : Bool = false
@@ -44,13 +45,50 @@ module OpenTelemetry
       exporter = nil,
       provider = nil
     )
-      self.provider = provider if provider
+      provider ||= TraceProvider.new
+      @provider = provider
+      self.provider = provider
       self.service_name = service_name if service_name
       self.service_version = service_version if service_version
       self.schema_url = schema_url if schema_url
       self.exporter = exporter if exporter
       self.trace_id = @provider.id_generator.trace_id
       span_context.trace_id = trace_id
+      set_standard_resource_attributes
+    end
+
+    def []=(key, value)
+      resource[key] = value
+    end
+
+    def set_attribute(key, value)
+      resource[key] = value
+    end
+
+    def [](key)
+      resource[key].value
+    end
+
+    def get_attribute(key)
+      resource[key]
+    end
+
+    def service_name
+      @service_name
+    end
+
+    def service_name=(val)
+      @service_name = val
+      self["service.name"] = val
+    end
+
+    def service_version
+      @service_version
+    end
+
+    def service_version=(val)
+      @service_version = val
+      self["service.version"] = val
     end
 
     def id
@@ -77,7 +115,6 @@ module OpenTelemetry
     def in_span(span_name)
       @lock.synchronize do
         span = Span.new(span_name)
-        set_standard_span_attributes(span)
         span.context = SpanContext.new(@span_context) do |ctx|
           ctx.span_id = @provider.id_generator.span_id
         end
@@ -112,11 +149,10 @@ module OpenTelemetry
       end
     end
 
-    private def set_standard_span_attributes(span)
-      span["service.name"] = service_name
-      span["service.version"] = service_version
-      span["schema.url"] = schema_url
-      span["service.instance.id"] = OpenTelemetry::INSTANCE_ID
+    private def set_standard_resource_attributes
+      self["service.name"] = service_name
+      self["service.version"] = service_version
+      self["service.instance.id"] = OpenTelemetry::INSTANCE_ID
     end
 
     private def iterate_span_nodes(span, buffer)
@@ -140,12 +176,14 @@ module OpenTelemetry
     # This method returns a ProtoBuf object containing all of the Trace information.
     def to_protobuf
       Proto::Trace::V1::ResourceSpans.new(
-        instrumentation_library_spans: [
-          Proto::Trace::V1::InstrumentationLibrarySpans.new(
-            instrumentation_library: OpenTelemetry.instrumentation_library,
+        resource: resource.to_protobuf,
+        scope_spans: [
+          Proto::Trace::V1::ScopeSpans.new(
+            scope: OpenTelemetry.instrumentation_scope,
             spans: iterate_span_nodes(root_span, [] of Span).map(&.to_protobuf)
           ),
         ],
+        schema_url: schema_url
       )
     end
 
@@ -154,6 +192,12 @@ module OpenTelemetry
         json << "{\n"
         json << "  \"type\":\"trace\",\n"
         json << "  \"traceId\":\"#{trace_id.hexstring}\",\n"
+        if !resource.empty?
+          json << "  \"resource\":{\n"
+          json << resource.attribute_list
+          json << "  },\n"
+        end
+        json << "  \"schemaUrl\":\"#{schema_url}\",\n" if !schema_url.empty?
         json << "  \"spans\":[\n"
         json << String.build do |span_list|
           iterate_span_nodes(root_span) do |span|

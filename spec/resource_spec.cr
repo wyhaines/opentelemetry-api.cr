@@ -36,8 +36,7 @@ describe OpenTelemetry::Resource do
         "verb":"GET",
         "url":"http://example.com/foo",
         "bools":true,
-        "headers":["Content-Type: text/plain","Content-Length: 23"],
-      },
+        "headers":["Content-Type: text/plain","Content-Length: 23"]  }
     }
 
     EJSON

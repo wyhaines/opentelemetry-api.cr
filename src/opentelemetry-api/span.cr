@@ -120,7 +120,7 @@ module OpenTelemetry
         json << "      \"traceId\":\"#{context.trace_id.hexstring}\",\n"
         json << "      \"spanId\":\"#{context.span_id.hexstring}\",\n"
         json << "      \"parentSpanId\":\"#{parent.try(&.context.span_id.hexstring)}\",\n"
-        json << "      \"kind\":\"#{kind.to_s.upcase}\",\n"
+        json << "      \"kind\":#{kind.value},\n"
         json << "      \"name\":\"#{name}\",\n"
         json << "      \"startTime\":#{start_time_unix_nano},\n"
         json << "      \"endTime\":#{end_time_unix_nano},\n"
@@ -139,7 +139,7 @@ module OpenTelemetry
         end.chomp(",\n")
         json << "\n      ]\n"
 
-        json << "}"
+        json << "    }"
       end
     end
   end
