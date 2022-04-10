@@ -129,7 +129,7 @@ module OpenTelemetry
           Fiber.current.current_span = @current_span = span
         end
         @span_stack << span
-        yield span
+        result = yield span
         span.finish = Time.monotonic
         span.wall_finish = Time.utc
         if @span_stack.last == span
@@ -146,6 +146,8 @@ module OpenTelemetry
           Fiber.current.current_trace = nil
           Fiber.current.current_span = nil
         end
+        
+        result # ensure that the result of the block is returned by the `#in_span` method.
       end
     end
 
