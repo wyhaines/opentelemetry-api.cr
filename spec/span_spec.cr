@@ -22,6 +22,12 @@ describe OpenTelemetry::Span do
     span["headers"].should eq ["Content-Type: text/plain", "Content-Length: 23"]
     span.id.should_not be_nil
     span.id.should eq span.context.span_id
+    span.add_event("Test Event") do |event|
+      event["foo"] = "bar"
+    end
+
+    span.to_protobuf
+    # TODO: validate the protobuf structure.
   end
 
   it "can set events on a span" do

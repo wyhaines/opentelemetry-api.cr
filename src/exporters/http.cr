@@ -2,6 +2,23 @@ require "db/pool"
 require "http/client"
 require "./buffered_base"
 
+module HTTP
+  private def self.check_content_type_charset(body, headers)
+    return unless body
+
+    content_type = headers["Content-Type"]?
+    return unless content_type
+
+    mime_type = MIME::MediaType.parse?(content_type.split(",")[0])
+    return unless mime_type
+
+    charset = mime_type["charset"]?
+    return if !charset || charset == "utf-8"
+
+    body.set_encoding(charset, invalid: :skip)
+  end
+end
+
 module OpenTelemetry
   class Exporter
     class Http < BufferedBase
@@ -39,8 +56,6 @@ module OpenTelemetry
           client.before_request do |request|
             # Ensure that the minimum necessary headers are set.
             setup_standard_headers(request.headers)
-
-            puts "headers: #{request.headers.inspect}"
           end
           client
         end
@@ -74,13 +89,10 @@ module OpenTelemetry
       end
 
       def handle(elements : Array(Elements))
-        puts "HTTP exporter: #{elements.size} elements"
         batches = collate(elements)
         @clients.checkout do |client|
-          puts "got client #{client.inspect}"
           if !batches[:traces].empty?
             # TODO: handle errors; retry?
-            puts "POST to #{@endpoint_uri.path} with "
             response = client.post(
               @endpoint_uri.path,
               body: generate_payload(

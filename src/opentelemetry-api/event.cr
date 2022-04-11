@@ -52,6 +52,17 @@ module OpenTelemetry
       (wall_timestamp - Time::UNIX_EPOCH).total_nanoseconds.to_u64
     end
 
+    def to_protobuf
+      Proto::Trace::V1::Span::Event.new(
+        name: name,
+        time_unix_nano: time_unix_nano,
+        attributes: attributes.map do |key, value|
+          Proto::Common::V1::KeyValue.new(
+            key: key,
+            value: Attribute.to_anyvalue(value))
+        end)
+    end
+
     def to_json
       String.build do |json|
         json << "    {\n"
