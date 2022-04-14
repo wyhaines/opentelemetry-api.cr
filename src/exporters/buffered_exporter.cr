@@ -15,7 +15,6 @@ module OpenTelemetry
       property batch_interval = 0.05
 
       def loop_and_receive
-        puts "starting loop and receive"
         elements = [] of Elements
         elements_size = 0
         mark = Time.monotonic
