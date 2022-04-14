@@ -15,11 +15,9 @@ The general architecture of the implementation is guided by this document:
 
 The TL;DR is that a `TraceProvider` is used to create a `Tracer`. A `Span` is created inside of the context of a `Tracer`, and one `Span` may nest inside of another.
 
-## Caveats
+## Full Generated Documentation
 
-This implementation was built using the Ruby version for loose guideance, but that full implementation is complicated. At this time, this implementation is a best first attempt at producing something that generally conforms to the expected structure and terminology of OpenTelemetry, while remaining a simple MVP.
-
-The API is not yet considered stable, and may change in the future.
+[https://wyhaines.github.io/opentelemetry-api.cr/](https://wyhaines.github.io/opentelemetry-api.cr/)
 
 ## Installation
 
