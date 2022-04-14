@@ -942,13 +942,12 @@ OpenTelemetry to send or receive metrics, traces, and logs. This library is inte
 <p>The general architecture of the implementation is guided by this document:</p>
 <p><a href="https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/api.md">https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/api.md</a></p>
 <p>The TL;DR is that a <code>TraceProvider</code> is used to create a <code>Tracer</code>. A <code>Span</code> is created inside of the context of a <code>Tracer</code>, and one <code>Span</code> may nest inside of another.</p>
-<h2><a id="caveats" class="anchor" href="#caveats">
+<h2><a id="full-generated-documentation" class="anchor" href="#full-generated-documentation">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
-</a>Caveats</h2>
-<p>This implementation was built using the Ruby version for loose guideance, but that full implementation is complicated. At this time, this implementation is a best first attempt at producing something that generally conforms to the expected structure and terminology of OpenTelemetry, while remaining a simple MVP.</p>
-<p>The API is not yet considered stable, and may change in the future.</p>
+</a>Full Generated Documentation</h2>
+<p><a href="https://wyhaines.github.io/opentelemetry-api.cr/">https://wyhaines.github.io/opentelemetry-api.cr/</a></p>
 <h2><a id="installation" class="anchor" href="#installation">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
