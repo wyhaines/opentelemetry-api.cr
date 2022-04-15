@@ -1,4 +1,5 @@
 require "db/pool"
+require "retriable"
 require "http/client"
 require "./buffered_base"
 
@@ -90,21 +91,32 @@ module OpenTelemetry
 
       def handle(elements : Array(Elements))
         batches = collate(elements)
-        @clients.checkout do |client|
-          if !batches[:traces].empty?
-            # TODO: handle errors; retry?
-            response = client.post(
-              @endpoint_uri.path,
-              body: generate_payload(
-                Proto::Collector::Trace::V1::ExportTraceServiceRequest.new(
-                  resource_spans: batches[:traces]).to_protobuf
-              )
-            )
-            {% begin %}
-            {% if flag? :DEBUG %}
-            pp response
-            {% end %}
-            {% end %}
+        unless batches[:traces].empty?
+          begin
+            body = generate_payload(
+              Proto::Collector::Trace::V1::ExportTraceServiceRequest.new(
+                resource_spans: batches[:traces]).to_protobuf)
+          rescue ex : Exception
+            puts "Failed to generate payload: #{ex}"
+            return
+          end
+
+          begin
+            Retriable.retry(max_attempts: 5) do
+              @clients.checkout do |client|
+                response = client.post(
+                  @endpoint_uri.path,
+                  body: body
+                )
+                {% begin %}
+              {% if flag? :DEBUG %}
+              pp response
+              {% end %}
+              {% end %}
+              end
+            end
+          rescue ex
+            puts "Failed to send payload: #{ex}"
           end
         end
       end
