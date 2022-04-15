@@ -90,22 +90,37 @@ module OpenTelemetry
 
       def handle(elements : Array(Elements))
         batches = collate(elements)
-        @clients.checkout do |client|
-          if !batches[:traces].empty?
-            # TODO: handle errors; retry?
-            response = client.post(
-              @endpoint_uri.path,
-              body: generate_payload(
-                Proto::Collector::Trace::V1::ExportTraceServiceRequest.new(
-                  resource_spans: batches[:traces]).to_protobuf
-              )
-            )
-            {% begin %}
-            {% if flag? :DEBUG %}
-            pp response
-            {% end %}
-            {% end %}
+        retry_attempts = 3 # TODO: make this hard coded max retry attempts on error configurable
+        last_exception = nil
+        loop do
+          response = nil
+          if retry_attempts == 0
+            raise "Failed to send #{elements.size} elements to #{endpoint} because of #{last_exception}"
+          else
+            @clients.checkout do |client|
+              if !batches[:traces].empty?
+                begin
+                  response = client.post(
+                    @endpoint_uri.path,
+                    body: generate_payload(
+                      Proto::Collector::Trace::V1::ExportTraceServiceRequest.new(
+                        resource_spans: batches[:traces]).to_protobuf
+                    )
+                  )
+                rescue last_exception : Exception
+                  retry_attempts -= 1
+                  next
+                end
+
+              {% begin %}
+              {% if flag? :DEBUG %}
+              pp response
+              {% end %}
+              {% end %}
+              end
+            end
           end
+          break if response
         end
       end
 
