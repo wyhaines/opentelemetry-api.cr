@@ -90,37 +90,42 @@ module OpenTelemetry
 
       def handle(elements : Array(Elements))
         batches = collate(elements)
-        retry_attempts = 3 # TODO: make this hard coded max retry attempts on error configurable
-        last_exception = nil
+        retries = 3
         loop do
-          response = nil
-          if retry_attempts == 0
-            raise "Failed to send #{elements.size} elements to #{endpoint} because of #{last_exception}"
-          else
+          traces_sent = false
+          current_client = nil
+          current_exception = nil
+          last_exception = nil
+          begin
             @clients.checkout do |client|
+              current_client = client
               if !batches[:traces].empty?
-                begin
-                  response = client.post(
-                    @endpoint_uri.path,
-                    body: generate_payload(
-                      Proto::Collector::Trace::V1::ExportTraceServiceRequest.new(
-                        resource_spans: batches[:traces]).to_protobuf
-                    )
+                response = client.post(
+                  @endpoint_uri.path,
+                  body: generate_payload(
+                    Proto::Collector::Trace::V1::ExportTraceServiceRequest.new(
+                      resource_spans: batches[:traces]).to_protobuf
                   )
-                rescue last_exception : Exception
-                  retry_attempts -= 1
-                  next
-                end
+                )
 
-              {% begin %}
-              {% if flag? :DEBUG %}
-              pp response
-              {% end %}
-              {% end %}
+                traces_sent = true
+
+                {% begin %}
+                {% if flag? :DEBUG %}
+                pp response
+                {% end %}
+                {% end %}
               end
             end
+          rescue ex : Exception
+            last_exception = ex
+            retries = -1
           end
-          break if response
+
+          if retries.zero?
+            raise "Failed to send traces to #{@endpoint_uri} after #{retries} retries -- #{last_exception}"
+          end
+          break if traces_sent
         end
       end
 
