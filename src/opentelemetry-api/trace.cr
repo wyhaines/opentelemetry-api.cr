@@ -152,7 +152,11 @@ module OpenTelemetry
           Fiber.current.current_span = nil
         end
 
-        result # ensure that the result of the block is returned by the `#in_span` method.
+        if exception
+          raise exception # re-raise the exception
+        else
+          result # ensure that the result of the block is returned by the `#in_span` method.
+        end
       end
     end
 
