@@ -128,7 +128,13 @@ module OpenTelemetry
           Fiber.current.current_span = @current_span = span
         end
         @span_stack << span
-        result = yield span
+        exception = nil
+        begin
+          result = yield span
+        rescue exception
+          # If there was an error, then we have to set the span status accordingly.
+          span.status.error!(exception.message)
+        end
         span.finish = Time.monotonic
         span.wall_finish = Time.utc
         if @span_stack.last == span
