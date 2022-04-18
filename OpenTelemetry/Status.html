@@ -13,7 +13,7 @@
 <script type="text/javascript" src="../js/doc.js"></script>
 
   <meta name="repository-name" content="opentelemetry-api">
-  <title>OpenTelemetry::Instruments - opentelemetry-api main</title>
+  <title>OpenTelemetry::Status - opentelemetry-api main</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "../";
   </script>
@@ -241,7 +241,7 @@
       
     </li>
   
-  <li class=" current" data-id="opentelemetry-api/OpenTelemetry/Instruments" data-name="opentelemetry::instruments">
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Instruments" data-name="opentelemetry::instruments">
       <a href="../OpenTelemetry/Instruments.html">Instruments</a>
       
     </li>
@@ -876,7 +876,7 @@
       
     </li>
   
-  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Status" data-name="opentelemetry::status">
+  <li class="parent open current" data-id="opentelemetry-api/OpenTelemetry/Status" data-name="opentelemetry::status">
       <a href="../OpenTelemetry/Status.html">Status</a>
       
         <ul>
@@ -945,25 +945,17 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">alias</span> OpenTelemetry::Instruments
+  <span class="kind">class</span> OpenTelemetry::Status
 
 </h1>
 
 
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../OpenTelemetry/Status.html">OpenTelemetry::Status</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
 
 
 
 
 
-  <h2>
-    <a id="alias-definition" class="anchor" href="#alias-definition">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Alias Definition
-  </h2>
-  <code><a href="../OpenTelemetry/Instrument/Counter.html">OpenTelemetry::Instrument::Counter</a></code>
 
 
 
@@ -986,8 +978,8 @@
   </h2>
   
     
-      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5995552fcbb2e528b2273ca9b1e0844b904eef4d/src/opentelemetry-api/instrument.cr#L54" target="_blank">
-        opentelemetry-api/instrument.cr
+      <a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5995552fcbb2e528b2273ca9b1e0844b904eef4d/src/opentelemetry-api/status.cr#L2" target="_blank">
+        opentelemetry-api/status.cr
       </a>
     
     <br/>
@@ -997,9 +989,88 @@
 
 
 
+  <h2>
+    <a id="constructors" class="anchor" href="#constructors">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructors
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28code%3DStatusCode%3A%3AUnset%2Cmessage%3D%22%22%29-class-method" class="signature"><strong>.new</strong>(code = <span class="t">StatusCode</span><span class="t">::</span><span class="t">Unset</span>, message = <span class="s">&quot;&quot;</span>)</a>
+        
+      </li>
+    
+  </ul>
 
 
 
+
+
+  <h2>
+    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#code%3AStatusCode-instance-method" class="signature"><strong>#code</strong> : StatusCode</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#code%3D%28code%3AStatusCode%29-instance-method" class="signature"><strong>#code=</strong>(code : StatusCode)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#error%21%28message%3Dnil%29-instance-method" class="signature"><strong>#error!</strong>(message = <span class="n">nil</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#message%3AString-instance-method" class="signature"><strong>#message</strong> : String</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#message%3D%28message%3AString%29-instance-method" class="signature"><strong>#message=</strong>(message : String)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#ok%21%28message%3Dnil%29-instance-method" class="signature"><strong>#ok!</strong>(message = <span class="n">nil</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#pb_status_code-instance-method" class="signature"><strong>#pb_status_code</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_json-instance-method" class="signature"><strong>#to_json</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_protobuf-instance-method" class="signature"><strong>#to_protobuf</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#unset%21%28message%3Dnil%29-instance-method" class="signature"><strong>#unset!</strong>(message = <span class="n">nil</span>)</a>
+        
+      </li>
+    
+  </ul>
 
 
 
@@ -1007,12 +1078,228 @@
 
 <div class="methods-inherited">
   
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
 </div>
 
 
+  <h2>
+    <a id="constructor-detail" class="anchor" href="#constructor-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructor Detail
+  </h2>
+  
+    <div class="entry-detail" id="new(code=StatusCode::Unset,message=&quot;&quot;)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(code = <span class="t">StatusCode</span><span class="t">::</span><span class="t">Unset</span>, message = <span class="s">&quot;&quot;</span>)
+
+        <a class="method-permalink" href="#new%28code%3DStatusCode%3A%3AUnset%2Cmessage%3D%22%22%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5995552fcbb2e528b2273ca9b1e0844b904eef4d/src/opentelemetry-api/status.cr#L12" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
 
 
 
+
+
+  <h2>
+    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="code:StatusCode-instance-method">
+      <div class="signature">
+        
+        def <strong>code</strong> : <a href="../OpenTelemetry/Status/StatusCode.html">StatusCode</a>
+
+        <a class="method-permalink" href="#code%3AStatusCode-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5995552fcbb2e528b2273ca9b1e0844b904eef4d/src/opentelemetry-api/status.cr#L3" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="code=(code:StatusCode)-instance-method">
+      <div class="signature">
+        
+        def <strong>code=</strong>(code : <a href="../OpenTelemetry/Status/StatusCode.html">StatusCode</a>)
+
+        <a class="method-permalink" href="#code%3D%28code%3AStatusCode%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5995552fcbb2e528b2273ca9b1e0844b904eef4d/src/opentelemetry-api/status.cr#L3" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="error!(message=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>error!</strong>(message = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#error%21%28message%3Dnil%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5995552fcbb2e528b2273ca9b1e0844b904eef4d/src/opentelemetry-api/status.cr#L20" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="message:String-instance-method">
+      <div class="signature">
+        
+        def <strong>message</strong> : String
+
+        <a class="method-permalink" href="#message%3AString-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5995552fcbb2e528b2273ca9b1e0844b904eef4d/src/opentelemetry-api/status.cr#L4" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="message=(message:String)-instance-method">
+      <div class="signature">
+        
+        def <strong>message=</strong>(message : String)
+
+        <a class="method-permalink" href="#message%3D%28message%3AString%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5995552fcbb2e528b2273ca9b1e0844b904eef4d/src/opentelemetry-api/status.cr#L4" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="ok!(message=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>ok!</strong>(message = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#ok%21%28message%3Dnil%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5995552fcbb2e528b2273ca9b1e0844b904eef4d/src/opentelemetry-api/status.cr#L15" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="pb_status_code-instance-method">
+      <div class="signature">
+        
+        def <strong>pb_status_code</strong>
+
+        <a class="method-permalink" href="#pb_status_code-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5995552fcbb2e528b2273ca9b1e0844b904eef4d/src/opentelemetry-api/status.cr#L30" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_json-instance-method">
+      <div class="signature">
+        
+        def <strong>to_json</strong>
+
+        <a class="method-permalink" href="#to_json-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5995552fcbb2e528b2273ca9b1e0844b904eef4d/src/opentelemetry-api/status.cr#L48" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_protobuf-instance-method">
+      <div class="signature">
+        
+        def <strong>to_protobuf</strong>
+
+        <a class="method-permalink" href="#to_protobuf-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5995552fcbb2e528b2273ca9b1e0844b904eef4d/src/opentelemetry-api/status.cr#L41" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="unset!(message=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>unset!</strong>(message = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#unset%21%28message%3Dnil%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/opentelemetry-api.cr/blob/5995552fcbb2e528b2273ca9b1e0844b904eef4d/src/opentelemetry-api/status.cr#L25" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
 
 
 
