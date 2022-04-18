@@ -9,7 +9,6 @@ module OpenTelemetry
   class Trace
     include Sendable
 
-    @[ThreadLocal]
     @@prng = Random::PCG32.new
 
     property trace_id : Slice(UInt8) = @@prng.random_bytes(16)

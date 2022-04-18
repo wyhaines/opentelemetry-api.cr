@@ -25,6 +25,9 @@ describe OpenTelemetry::Span do
     span.add_event("Test Event") do |event|
       event["foo"] = "bar"
     end
+    span.status.code.should eq OpenTelemetry::Status::StatusCode::Unset
+    span.status.ok!("Everything is fine.")
+    span.status.code.should eq OpenTelemetry::Status::StatusCode::Ok
 
     span.to_protobuf
     # TODO: validate the protobuf structure.

@@ -1,5 +1,6 @@
 require "./span_context"
-require "./span/kind"
+require "./span/*"
+require "./status"
 require "./event"
 require "json"
 require "./sendable"
@@ -21,6 +22,7 @@ module OpenTelemetry
     property children : Array(Span) = [] of Span
     property context : SpanContext = SpanContext.new
     property kind : Kind = Kind::Internal
+    property status : Status = Status.new
 
     def initialize(@name = "")
     end
@@ -92,6 +94,17 @@ module OpenTelemetry
       end
     end
 
+    def pb_span_status
+      case @status
+      when Status::Unset
+        Proto::Trace::V1::Status::StatusCode::STATUSCODEUNSET
+      when Status::Ok
+        Proto::Trace::V1::Status::StatusCode::STATUSCODEOK
+      else
+        Proto::Trace::V1::Status::StatusCode::STATUSCODEERROR
+      end
+    end
+
     # Return the Protobuf object for the Span.
     def to_protobuf
       span = Proto::Trace::V1::Span.new(
@@ -102,6 +115,7 @@ module OpenTelemetry
         start_time_unix_nano: start_time_unix_nano,
         end_time_unix_nano: end_time_unix_nano,
         kind: pb_span_kind,
+        status: status.to_protobuf
       )
 
       span.attributes = attributes.map do |key, value|
@@ -124,6 +138,7 @@ module OpenTelemetry
         json << "      \"parentSpanId\":\"#{parent.try(&.context.span_id.hexstring)}\",\n"
         json << "      \"kind\":#{kind.value},\n"
         json << "      \"name\":\"#{name}\",\n"
+        json << "      \"status\":#{status.to_json},\n"
         json << "      \"startTime\":#{start_time_unix_nano},\n"
         json << "      \"endTime\":#{end_time_unix_nano},\n"
         json << "      \"attributes\":{\n"
