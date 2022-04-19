@@ -1,3 +1,5 @@
 module OpenTelemetry
-  VERSION = "0.2.0"
+  {% begin %}
+  VERSION = {{ read_file("#{__DIR__}/../../VERSION").chomp }}
+  {% end %}
 end
