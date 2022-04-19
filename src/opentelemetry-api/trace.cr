@@ -132,8 +132,11 @@ module OpenTelemetry
         begin
           result = yield span
         rescue exception
-          # If there was an error, then we have to set the span status accordingly.
-          span.status.error!(exception.message)
+          unless exception.span_status_message_set
+            # If there was an error, then we have to set the span status accordingly.
+            span.status.error!(exception.message)
+            exception.span_status_message_set = true
+          end
         end
         span.finish = Time.monotonic
         span.wall_finish = Time.utc
