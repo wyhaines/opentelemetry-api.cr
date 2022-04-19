@@ -77,6 +77,26 @@ module OpenTelemetry
       end
     end
 
+    def client!
+      self.kind = Kind::Client
+    end
+
+    def server!
+      self.kind = Kind::Server
+    end
+
+    def producer!
+      self.kind = Kind::Producer
+    end
+
+    def consumer!
+      self.kind = Kind::Consumer
+    end
+
+    def internal!
+      self.kind = Kind::Internal
+    end
+
     def pb_span_kind
       case @kind
       when Kind::Client

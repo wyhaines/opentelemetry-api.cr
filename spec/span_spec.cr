@@ -29,6 +29,10 @@ describe OpenTelemetry::Span do
     span.status.ok!("Everything is fine.")
     span.status.code.should eq OpenTelemetry::Status::StatusCode::Ok
 
+    span.kind.should eq OpenTelemetry::Span::Kind::Internal
+    span.server!
+    span.kind.should eq OpenTelemetry::Span::Kind::Server
+    
     span.to_protobuf
     # TODO: validate the protobuf structure.
   end
