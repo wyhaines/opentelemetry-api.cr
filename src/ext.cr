@@ -1,1 +1,1 @@
-require "./ext/fiber"
+require "./ext/*"
