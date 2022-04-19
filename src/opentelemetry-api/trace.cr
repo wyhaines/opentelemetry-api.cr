@@ -129,11 +129,18 @@ module OpenTelemetry
         end
         @span_stack << span
         exception = nil
+
         begin
           result = yield span
+          if typeof(result).nilable?
+            final_result = result
+          else
+            final_result = result.not_nil!
+          end
+          puts "in begin block: #{result.inspect}"
         rescue exception
           unless exception.span_status_message_set
-            # If there was an error, then we have to set the span status accordingly.
+            # If there was an error, then we have to set the span status accordingly, and set the message.
             span.status.error!(exception.message)
             exception.span_status_message_set = true
           end
@@ -158,7 +165,7 @@ module OpenTelemetry
         if exception
           raise exception # re-raise the exception
         else
-          result # ensure that the result of the block is returned by the `#in_span` method.
+          final_result
         end
       end
     end
