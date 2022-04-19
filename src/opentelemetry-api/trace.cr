@@ -137,7 +137,6 @@ module OpenTelemetry
           else
             final_result = result.not_nil!
           end
-          puts "in begin block: #{result.inspect}"
         rescue exception
           unless exception.span_status_message_set
             # If there was an error, then we have to set the span status accordingly, and set the message.
