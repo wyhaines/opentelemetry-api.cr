@@ -32,7 +32,7 @@ describe OpenTelemetry::Span do
     span.kind.should eq OpenTelemetry::Span::Kind::Internal
     span.server!
     span.kind.should eq OpenTelemetry::Span::Kind::Server
-    
+
     span.to_protobuf
     # TODO: validate the protobuf structure.
   end
