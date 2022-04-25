@@ -13,6 +13,7 @@ module OpenTelemetry
 
   struct IdGenerator
     getter generator : OpenTelemetry::IdGenerator::Base
+    class_property generator : OpenTelemetry::IdGenerator::Base = OpenTelemetry::IdGenerator::Unique.new
 
     def initialize(variant : String | Symbol = "unique")
       case variant.to_s.downcase
@@ -32,6 +33,14 @@ module OpenTelemetry
 
     def span_id
       @generator.span_id
+    end
+
+    def self.trace_id
+      generator.trace_id
+    end
+
+    def self.span_id
+      generator.span_id
     end
   end
 end

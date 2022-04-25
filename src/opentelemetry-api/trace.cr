@@ -25,6 +25,8 @@ module OpenTelemetry
     @exported : Bool = false
     @lock : Mutex = Mutex.new(protection: :reentrant)
 
+    MATCH = /(?<trace_id>[A-Fa-f0-9]{32})/
+
     def self.prng : Random::PCG32
       @@prng
     end
@@ -35,6 +37,14 @@ module OpenTelemetry
 
     def self.current_span
       Fiber.current.current_span
+    end
+
+    def self.validate_id(id : Slice(Uint8))
+      validate_id(id.hexstring)
+    end
+
+    def self.validate_id(id : String)
+      !!MATCH.match id
     end
 
     def initialize(
@@ -114,7 +124,7 @@ module OpenTelemetry
     def in_span(span_name)
       @lock.synchronize do
         span = Span.new(span_name)
-        span.context = SpanContext.new(@span_context) do |ctx|
+        span.context = SpanContext.build(@span_context) do |ctx|
           ctx.span_id = @provider.id_generator.span_id
         end
 

@@ -26,4 +26,5 @@ describe OpenTelemetry::Context::Key do
 end
 
 describe OpenTelemetry::Context do
+  
 end

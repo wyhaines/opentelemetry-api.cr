@@ -4,6 +4,7 @@ require "splay_tree_map"
 module OpenTelemetry
   struct Context
     alias ContextContainer = SplayTreeMap(OpenTelemetry::Context::Key, String)
+    EMPTY_ENTRIES = SplayTreeMap(Key, String).new
 
     @@root : SplayTreeMap(Key, String) = SplayTreeMap(Key, String).new
     @@stack : SplayTreeMap(Fiber, Array(SplayTreeMap(Key, String))) = SplayTreeMap(Fiber, Array(SplayTreeMap(Key, String))).new { |h, k| h[k] = [] of SplayTreeMap(Key, String) }
@@ -42,6 +43,14 @@ module OpenTelemetry
       calls_matched
     end
 
+    def self.attach(context)
+      token = context.object_id
+      stack << context
+      yield context
+    ensure
+      detach(token)
+    end
+
     # Executes a block with ctx as the current context. It restores
     # the previous context upon exiting.
     def self.with_current(ctx)
@@ -78,48 +87,57 @@ module OpenTelemetry
       detach(token)
     end
 
-    #   # Returns the value associated with key in the current context
-    #   #
-    #   # @param [String] key The lookup key
-    #   def self.value(key)
-    #     current.value(key)
-    #   end
+    def self.[](value)
+      current[value]
+    end
+
+    def self.value(key)
+      self[value]
+    end
+
+    def self.[]=(key, value)
+      current[key] = value
+    end
+
+    def self.set_value(key, value)
+      self[key] = value
+    end
 
     def self.clear
       stack.clear
     end
 
-    #   def self.empty
-    #     new(EMPTY_ENTRIES)
-    #   end
+    def self.empty
+      new(EMPTY_ENTRIES)
+    end
 
-    #     # -----------------------------------
-    #   def initialize(entries)
-    #     @entries = entries.freeze
-    #   end
+    def initialize(entries : SplayTreeMap(Key, String))
+      @entries = entries.dup
+    end
 
-    #   # Returns the corresponding value (or nil) for key
-    #   #
-    #   # @param [Key] key The lookup key
-    #   # @return [Object]
-    #   def value(key)
-    #     @entries[key]
-    #   end
+    def initialize(entries)
+      @entries = entries.transform_keys do |key|
+        Key.new(key)
+      end.transform_values(&.to_s)
+    end
+
+    def value(key)
+      self[key]
+    end
 
     def [](value)
       stack[value]
     end
 
-    #   # Returns a new Context where entries contains the newly added key and value
-    #   #
-    #   # @param [Key] key The key to store this value under
-    #   # @param [Object] value Object to be stored under key
-    #   # @return [Context]
-    #   def set_value(key, value)
-    #     new_entries = @entries.dup
-    #     new_entries[key] = value
-    #     Context.new(new_entries)
-    #   end
+    def set_value(key, value)
+      self[key] = value
+    end
+
+    def []=(key, value)
+      new_entries = @entries.dup
+      new_entries[key] = value
+      Context.new(new_entries)
+    end
 
     #   # Returns a new Context with the current context's entries merged with the
     #   #   new entries
@@ -132,6 +150,6 @@ module OpenTelemetry
     #     Context.new(@entries.merge(values))
     #   end
 
-    #   ROOT = empty.freeze
+    
   end
 end

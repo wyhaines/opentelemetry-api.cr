@@ -24,6 +24,16 @@ module OpenTelemetry
     property kind : Kind = Kind::Internal
     property status : Status = Status.new
 
+    MATCH = /(?<span_id>[A-Fa-f0-9]{16})/
+
+    def self.validate_id(id : Slice(UInt8))
+      validate_id(id.hexstring)
+    end
+
+    def self.validate_id(id : Slice)
+      !!MATCH.match id
+    end
+
     def initialize(@name = "")
     end
 
