@@ -1,5 +1,5 @@
 module OpenTelemetry
-  class Propagation
+  module Propagation
     class TraceContext < TextMapPropagator
       struct TraceParent
         class InvalidFormatError < ArgumentError

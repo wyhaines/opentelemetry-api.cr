@@ -1,20 +1,34 @@
 require "./../text_map_propagator"
 require "./trace_context/trace_parent"
+require "./text_map_setter"
+require "./text_map_getter"
 
 module OpenTelemetry
-  class Propagation
+  module Propagation
     class TraceContext < TextMapPropagator
       property trace_parent : TraceParent = TraceParent.new
+      property context : Context?
+
+      TRACEPARENT_KEY = "traceparent"
+      TRACESTATE_KEY = "tracestate"
       FIELDS = {"traceparent", "tracestate"}
 
       def initialize
       end
 
-      def initialize(trace_parent : TraceParent)
+      def initialize(trace_parent : TraceParent, context : Context? = nil)
         @trace_parent = trace_parent
+        @context = context
       end
 
-      def inject(carrier, context : Context)
+      def inject(carrier, context : Context, setter : TextMapSetter.class = TextMapSetter)
+        span = OpenTelemetry.current_span
+        if span
+          span_context = span.context
+
+          setter.set(carrier, TRACEPARENT_KEY, TraceParent.from_span_contex(span_context).to_s)
+          setter.set(carrier, TRACESTATE_KEY, tracestate)
+        end
       end
 
       def extract
@@ -89,7 +103,7 @@ module OpenTelemetry
       end
 
       def tracestate
-        @store.map do |key, value|
+        @context.map do |key, value|
           "#{key}=#{value}"
         end.join(",")
       end
