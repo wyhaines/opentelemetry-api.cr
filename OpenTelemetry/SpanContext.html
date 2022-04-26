@@ -311,6 +311,61 @@
       
     </li>
   
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Propagation" data-name="opentelemetry::propagation">
+      <a href="../OpenTelemetry/Propagation.html">Propagation</a>
+      
+        <ul>
+  
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Propagation/TraceContext" data-name="opentelemetry::propagation::tracecontext">
+      <a href="../OpenTelemetry/Propagation/TraceContext.html">TraceContext</a>
+      
+        <ul>
+  
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Propagation/TraceContext/TraceParent" data-name="opentelemetry::propagation::tracecontext::traceparent">
+      <a href="../OpenTelemetry/Propagation/TraceContext/TraceParent.html">TraceParent</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Propagation/TraceContext/TraceParent/InvalidFormatError" data-name="opentelemetry::propagation::tracecontext::traceparent::invalidformaterror">
+      <a href="../OpenTelemetry/Propagation/TraceContext/TraceParent/InvalidFormatError.html">InvalidFormatError</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Propagation/TraceContext/TraceParent/InvalidSpanIdError" data-name="opentelemetry::propagation::tracecontext::traceparent::invalidspaniderror">
+      <a href="../OpenTelemetry/Propagation/TraceContext/TraceParent/InvalidSpanIdError.html">InvalidSpanIdError</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Propagation/TraceContext/TraceParent/InvalidTraceFlagsIdError" data-name="opentelemetry::propagation::tracecontext::traceparent::invalidtraceflagsiderror">
+      <a href="../OpenTelemetry/Propagation/TraceContext/TraceParent/InvalidTraceFlagsIdError.html">InvalidTraceFlagsIdError</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Propagation/TraceContext/TraceParent/InvalidTraceIdError" data-name="opentelemetry::propagation::tracecontext::traceparent::invalidtraceiderror">
+      <a href="../OpenTelemetry/Propagation/TraceContext/TraceParent/InvalidTraceIdError.html">InvalidTraceIdError</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Propagation/TraceContext/TraceParent/InvalidVersionError" data-name="opentelemetry::propagation::tracecontext::traceparent::invalidversionerror">
+      <a href="../OpenTelemetry/Propagation/TraceContext/TraceParent/InvalidVersionError.html">InvalidVersionError</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
   <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Proto" data-name="opentelemetry::proto">
       <a href="../OpenTelemetry/Proto.html">Proto</a>
       
@@ -876,8 +931,18 @@
       
     </li>
   
-  <li class=" current" data-id="opentelemetry-api/OpenTelemetry/SpanContext" data-name="opentelemetry::spancontext">
+  <li class="parent open current" data-id="opentelemetry-api/OpenTelemetry/SpanContext" data-name="opentelemetry::spancontext">
       <a href="../OpenTelemetry/SpanContext.html">SpanContext</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/SpanContext/Config" data-name="opentelemetry::spancontext::config">
+      <a href="../OpenTelemetry/SpanContext/Config.html">Config</a>
+      
+    </li>
+  
+</ul>
+
       
     </li>
   
@@ -893,6 +958,11 @@
   
 </ul>
 
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/TextMapPropagator" data-name="opentelemetry::textmappropagator">
+      <a href="../OpenTelemetry/TextMapPropagator.html">TextMapPropagator</a>
       
     </li>
   
@@ -938,6 +1008,11 @@
   
 </ul>
 
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/String" data-name="string">
+      <a href="../String.html">String</a>
       
     </li>
   
@@ -1003,7 +1078,17 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new%28trace_id%2Cspan_id%2Ctrace_flags%2Ctrace_state%29-class-method" class="signature"><strong>.new</strong>(trace_id, span_id, trace_flags, trace_state)</a>
+        <a href="#new%28trace_id%2Cspan_id%2Ctrace_flags%2Ctrace_state%2Cremote%3Dfalse%29-class-method" class="signature"><strong>.new</strong>(trace_id, span_id, trace_flags, trace_state, remote = <span class="n">false</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new%28inherited_context%3ASpanContext%29-class-method" class="signature"><strong>.new</strong>(inherited_context : SpanContext)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new%28configuration%3AConfig%29-class-method" class="signature"><strong>.new</strong>(configuration : Config)</a>
         
       </li>
     
@@ -1012,14 +1097,26 @@
         
       </li>
     
+  </ul>
+
+
+
+  <h2>
+    <a id="class-method-summary" class="anchor" href="#class-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Summary
+  </h2>
+  <ul class="list-summary">
+    
       <li class="entry-summary">
-        <a href="#new%28inherited_context%3ASpanContext%2C%26%29-class-method" class="signature"><strong>.new</strong>(inherited_context : SpanContext, &)</a>
+        <a href="#build%28inherited_context%3ASpanContext%3F%3Dnil%2C%26%29-class-method" class="signature"><strong>.build</strong>(inherited_context : SpanContext? = <span class="n">nil</span>, &)</a>
         
       </li>
     
   </ul>
-
-
 
 
 
@@ -1032,6 +1129,16 @@
     Instance Method Summary
   </h2>
   <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#remote%3ABool-instance-method" class="signature"><strong>#remote</strong> : Bool</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#remote%3D%28remote%3ABool%29-instance-method" class="signature"><strong>#remote=</strong>(remote : Bool)</a>
+        
+      </li>
     
       <li class="entry-summary">
         <a href="#span_id%3ASlice%28UInt8%29-instance-method" class="signature"><strong>#span_id</strong> : Slice(UInt8)</a>
@@ -1049,6 +1156,11 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#trace_flags%3D%28trace_flags%3ABitArray%29-instance-method" class="signature"><strong>#trace_flags=</strong>(trace_flags : BitArray)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#trace_id%3ASlice%28UInt8%29-instance-method" class="signature"><strong>#trace_id</strong> : Slice(UInt8)</a>
         
       </li>
@@ -1060,6 +1172,11 @@
     
       <li class="entry-summary">
         <a href="#trace_state%3AHash%28String%2CString%29-instance-method" class="signature"><strong>#trace_state</strong> : Hash(String, String)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#trace_state%3D%28trace_state%3AHash%28String%2CString%29%29-instance-method" class="signature"><strong>#trace_state=</strong>(trace_state : Hash(String, String))</a>
         
       </li>
     
@@ -1113,12 +1230,40 @@
     Constructor Detail
   </h2>
   
-    <div class="entry-detail" id="new(trace_id,span_id,trace_flags,trace_state)-class-method">
+    <div class="entry-detail" id="new(trace_id,span_id,trace_flags,trace_state,remote=false)-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(trace_id, span_id, trace_flags, trace_state)
+        def self.<strong>new</strong>(trace_id, span_id, trace_flags, trace_state, remote = <span class="n">false</span>)
 
-        <a class="method-permalink" href="#new%28trace_id%2Cspan_id%2Ctrace_flags%2Ctrace_state%29-class-method">#</a>
+        <a class="method-permalink" href="#new%28trace_id%2Cspan_id%2Ctrace_flags%2Ctrace_state%2Cremote%3Dfalse%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(inherited_context:SpanContext)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(inherited_context : <a href="../OpenTelemetry/SpanContext.html">SpanContext</a>)
+
+        <a class="method-permalink" href="#new%28inherited_context%3ASpanContext%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(configuration:Config)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(configuration : <a href="../OpenTelemetry/SpanContext/Config.html">Config</a>)
+
+        <a class="method-permalink" href="#new%28configuration%3AConfig%29-class-method">#</a>
       </div>
       
       <br/>
@@ -1141,12 +1286,24 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="new(inherited_context:SpanContext,&amp;)-class-method">
+
+
+
+  <h2>
+    <a id="class-method-detail" class="anchor" href="#class-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="build(inherited_context:SpanContext?=nil,&amp;)-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(inherited_context : <a href="../OpenTelemetry/SpanContext.html">SpanContext</a>, &)
+        def self.<strong>build</strong>(inherited_context : <a href="../OpenTelemetry/SpanContext.html">SpanContext</a>? = <span class="n">nil</span>, &)
 
-        <a class="method-permalink" href="#new%28inherited_context%3ASpanContext%2C%26%29-class-method">#</a>
+        <a class="method-permalink" href="#build%28inherited_context%3ASpanContext%3F%3Dnil%2C%26%29-class-method">#</a>
       </div>
       
       <br/>
@@ -1158,8 +1315,6 @@
 
 
 
-
-
   <h2>
     <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
   <svg class="octicon-link" aria-hidden="true">
@@ -1168,6 +1323,34 @@
 </a>
     Instance Method Detail
   </h2>
+  
+    <div class="entry-detail" id="remote:Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>remote</strong> : Bool
+
+        <a class="method-permalink" href="#remote%3ABool-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="remote=(remote:Bool)-instance-method">
+      <div class="signature">
+        
+        def <strong>remote=</strong>(remote : Bool)
+
+        <a class="method-permalink" href="#remote%3D%28remote%3ABool%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
   
     <div class="entry-detail" id="span_id:Slice(UInt8)-instance-method">
       <div class="signature">
@@ -1211,6 +1394,20 @@
       </div>
     </div>
   
+    <div class="entry-detail" id="trace_flags=(trace_flags:BitArray)-instance-method">
+      <div class="signature">
+        
+        def <strong>trace_flags=</strong>(trace_flags : BitArray)
+
+        <a class="method-permalink" href="#trace_flags%3D%28trace_flags%3ABitArray%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="trace_id:Slice(UInt8)-instance-method">
       <div class="signature">
         
@@ -1242,9 +1439,23 @@
     <div class="entry-detail" id="trace_state:Hash(String,String)-instance-method">
       <div class="signature">
         
-        def <strong>trace_state</strong> : Hash(String, String)
+        def <strong>trace_state</strong> : Hash(<a href="../String.html">String</a>, <a href="../String.html">String</a>)
 
         <a class="method-permalink" href="#trace_state%3AHash%28String%2CString%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="trace_state=(trace_state:Hash(String,String))-instance-method">
+      <div class="signature">
+        
+        def <strong>trace_state=</strong>(trace_state : Hash(<a href="../String.html">String</a>, <a href="../String.html">String</a>))
+
+        <a class="method-permalink" href="#trace_state%3D%28trace_state%3AHash%28String%2CString%29%29-instance-method">#</a>
       </div>
       
       <br/>

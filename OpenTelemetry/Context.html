@@ -311,6 +311,61 @@
       
     </li>
   
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Propagation" data-name="opentelemetry::propagation">
+      <a href="../OpenTelemetry/Propagation.html">Propagation</a>
+      
+        <ul>
+  
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Propagation/TraceContext" data-name="opentelemetry::propagation::tracecontext">
+      <a href="../OpenTelemetry/Propagation/TraceContext.html">TraceContext</a>
+      
+        <ul>
+  
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Propagation/TraceContext/TraceParent" data-name="opentelemetry::propagation::tracecontext::traceparent">
+      <a href="../OpenTelemetry/Propagation/TraceContext/TraceParent.html">TraceParent</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Propagation/TraceContext/TraceParent/InvalidFormatError" data-name="opentelemetry::propagation::tracecontext::traceparent::invalidformaterror">
+      <a href="../OpenTelemetry/Propagation/TraceContext/TraceParent/InvalidFormatError.html">InvalidFormatError</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Propagation/TraceContext/TraceParent/InvalidSpanIdError" data-name="opentelemetry::propagation::tracecontext::traceparent::invalidspaniderror">
+      <a href="../OpenTelemetry/Propagation/TraceContext/TraceParent/InvalidSpanIdError.html">InvalidSpanIdError</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Propagation/TraceContext/TraceParent/InvalidTraceFlagsIdError" data-name="opentelemetry::propagation::tracecontext::traceparent::invalidtraceflagsiderror">
+      <a href="../OpenTelemetry/Propagation/TraceContext/TraceParent/InvalidTraceFlagsIdError.html">InvalidTraceFlagsIdError</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Propagation/TraceContext/TraceParent/InvalidTraceIdError" data-name="opentelemetry::propagation::tracecontext::traceparent::invalidtraceiderror">
+      <a href="../OpenTelemetry/Propagation/TraceContext/TraceParent/InvalidTraceIdError.html">InvalidTraceIdError</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Propagation/TraceContext/TraceParent/InvalidVersionError" data-name="opentelemetry::propagation::tracecontext::traceparent::invalidversionerror">
+      <a href="../OpenTelemetry/Propagation/TraceContext/TraceParent/InvalidVersionError.html">InvalidVersionError</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
   <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Proto" data-name="opentelemetry::proto">
       <a href="../OpenTelemetry/Proto.html">Proto</a>
       
@@ -876,8 +931,18 @@
       
     </li>
   
-  <li class=" " data-id="opentelemetry-api/OpenTelemetry/SpanContext" data-name="opentelemetry::spancontext">
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/SpanContext" data-name="opentelemetry::spancontext">
       <a href="../OpenTelemetry/SpanContext.html">SpanContext</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/SpanContext/Config" data-name="opentelemetry::spancontext::config">
+      <a href="../OpenTelemetry/SpanContext/Config.html">Config</a>
+      
+    </li>
+  
+</ul>
+
       
     </li>
   
@@ -893,6 +958,11 @@
   
 </ul>
 
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/TextMapPropagator" data-name="opentelemetry::textmappropagator">
+      <a href="../OpenTelemetry/TextMapPropagator.html">TextMapPropagator</a>
       
     </li>
   
@@ -938,6 +1008,11 @@
   
 </ul>
 
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/String" data-name="string">
+      <a href="../String.html">String</a>
       
     </li>
   
@@ -1008,6 +1083,16 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
+        <a href="#new%28entries%3AContextContainer%29-class-method" class="signature"><strong>.new</strong>(entries : ContextContainer)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new%28entries%29-class-method" class="signature"><strong>.new</strong>(entries)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#new-class-method" class="signature"><strong>.new</strong></a>
         
       </li>
@@ -1027,7 +1112,37 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#attach%28context%29-class-method" class="signature"><strong>.attach</strong>(context)</a>
+        <a href="#%5B%5D%28key%29-class-method" class="signature"><strong>.[]</strong>(key)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%5B%5D%3D%28key%2Cvalue%29-class-method" class="signature"><strong>.[]=</strong>(key, value)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%5B%5D%3F%28key%29-class-method" class="signature"><strong>.[]?</strong>(key)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#attach%28context%3AContext%29-class-method" class="signature"><strong>.attach</strong>(context : Context)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#attach%28entries%29-class-method" class="signature"><strong>.attach</strong>(entries)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#attach%28context%3AContext%2C%26%29-class-method" class="signature"><strong>.attach</strong>(context : Context, &)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#attach%28entries%2C%26%29-class-method" class="signature"><strong>.attach</strong>(entries, &)</a>
         
       </li>
     
@@ -1059,26 +1174,41 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#set_value%28key%2Cvalue%29-class-method" class="signature"><strong>.set_value</strong>(key, value)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#stack-class-method" class="signature"><strong>.stack</strong></a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#with_current%28ctx%2C%26%29-class-method" class="signature"><strong>.with_current</strong>(ctx, &)</a>
-        
-          <div class="summary"><p>Executes a block with ctx as the current context.</p></div>
+        <a href="#value%28key%29-class-method" class="signature"><strong>.value</strong>(key)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#with_value%28key%2Cvalue%2C%26%29-class-method" class="signature"><strong>.with_value</strong>(key, value, &)</a>
+        <a href="#value%3F%28key%29-class-method" class="signature"><strong>.value?</strong>(key)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#with%28key%2Cvalues%2C%26%29-class-method" class="signature"><strong>.with</strong>(key, values, &)</a>
         
           <div class="summary"><p>Execute a block in a new context with key set to value.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#with_values%28values%2C%26%29-class-method" class="signature"><strong>.with_values</strong>(values, &)</a>
+        <a href="#with%28context%3AContext%2C%26%29-class-method" class="signature"><strong>.with</strong>(context : Context, &)</a>
+        
+          <div class="summary"><p>Executes a block with ctx as the current context.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#with%28values%2C%26%29-class-method" class="signature"><strong>.with</strong>(values, &)</a>
         
           <div class="summary"><p>@param [String] key The lookup key @param [Hash] values Will be merged with values of the current context  and returned in a new context @param [Callable] Block to execute in a new context @yield [context, values] Yields the newly created context and values   to the block</p></div>
         
@@ -1099,12 +1229,42 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#%5B%5D%28value%29-instance-method" class="signature"><strong>#[]</strong>(value)</a>
+        <a href="#%5B%5D%28key%29-instance-method" class="signature"><strong>#[]</strong>(key)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#initialize-instance-method" class="signature"><strong>#initialize</strong></a>
+        <a href="#%5B%5D%3D%28key%2Cvalue%29-instance-method" class="signature"><strong>#[]=</strong>(key, value)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%5B%5D%3F%28key%29-instance-method" class="signature"><strong>#[]?</strong>(key)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#merge%28other_entries%29-instance-method" class="signature"><strong>#merge</strong>(other_entries)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#object_id%3ACSUUID-instance-method" class="signature"><strong>#object_id</strong> : CSUUID</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#set_value%28key%2Cvalue%29-instance-method" class="signature"><strong>#set_value</strong>(key, value)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#value%28key%29-instance-method" class="signature"><strong>#value</strong>(key)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#value%3F%28key%29-instance-method" class="signature"><strong>#value?</strong>(key)</a>
         
       </li>
     
@@ -1158,6 +1318,34 @@
     Constructor Detail
   </h2>
   
+    <div class="entry-detail" id="new(entries:ContextContainer)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(entries : <a href="../OpenTelemetry/Context/ContextContainer.html">ContextContainer</a>)
+
+        <a class="method-permalink" href="#new%28entries%3AContextContainer%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(entries)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(entries)
+
+        <a class="method-permalink" href="#new%28entries%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="new-class-method">
       <div class="signature">
         
@@ -1184,12 +1372,96 @@
     Class Method Detail
   </h2>
   
-    <div class="entry-detail" id="attach(context)-class-method">
+    <div class="entry-detail" id="[](key)-class-method">
       <div class="signature">
         
-        def self.<strong>attach</strong>(context)
+        def self.<strong>[]</strong>(key)
 
-        <a class="method-permalink" href="#attach%28context%29-class-method">#</a>
+        <a class="method-permalink" href="#%5B%5D%28key%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="[]=(key,value)-class-method">
+      <div class="signature">
+        
+        def self.<strong>[]=</strong>(key, value)
+
+        <a class="method-permalink" href="#%5B%5D%3D%28key%2Cvalue%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="[]?(key)-class-method">
+      <div class="signature">
+        
+        def self.<strong>[]?</strong>(key)
+
+        <a class="method-permalink" href="#%5B%5D%3F%28key%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="attach(context:Context)-class-method">
+      <div class="signature">
+        
+        def self.<strong>attach</strong>(context : <a href="../OpenTelemetry/Context.html">Context</a>)
+
+        <a class="method-permalink" href="#attach%28context%3AContext%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="attach(entries)-class-method">
+      <div class="signature">
+        
+        def self.<strong>attach</strong>(entries)
+
+        <a class="method-permalink" href="#attach%28entries%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="attach(context:Context,&amp;)-class-method">
+      <div class="signature">
+        
+        def self.<strong>attach</strong>(context : <a href="../OpenTelemetry/Context.html">Context</a>, &)
+
+        <a class="method-permalink" href="#attach%28context%3AContext%2C%26%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="attach(entries,&amp;)-class-method">
+      <div class="signature">
+        
+        def self.<strong>attach</strong>(entries, &)
+
+        <a class="method-permalink" href="#attach%28entries%2C%26%29-class-method">#</a>
       </div>
       
       <br/>
@@ -1276,6 +1548,20 @@ calls are unbalanced.</p>
       </div>
     </div>
   
+    <div class="entry-detail" id="set_value(key,value)-class-method">
+      <div class="signature">
+        
+        def self.<strong>set_value</strong>(key, value)
+
+        <a class="method-permalink" href="#set_value%28key%2Cvalue%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="stack-class-method">
       <div class="signature">
         
@@ -1290,19 +1576,13 @@ calls are unbalanced.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="with_current(ctx,&amp;)-class-method">
+    <div class="entry-detail" id="value(key)-class-method">
       <div class="signature">
         
-        def self.<strong>with_current</strong>(ctx, &)
+        def self.<strong>value</strong>(key)
 
-        <a class="method-permalink" href="#with_current%28ctx%2C%26%29-class-method">#</a>
+        <a class="method-permalink" href="#value%28key%29-class-method">#</a>
       </div>
-      
-        <div class="doc">
-          
-          <p>Executes a block with ctx as the current context. It restores
-the previous context upon exiting.</p>
-        </div>
       
       <br/>
       <div>
@@ -1310,12 +1590,26 @@ the previous context upon exiting.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="with_value(key,value,&amp;)-class-method">
+    <div class="entry-detail" id="value?(key)-class-method">
       <div class="signature">
         
-        def self.<strong>with_value</strong>(key, value, &)
+        def self.<strong>value?</strong>(key)
 
-        <a class="method-permalink" href="#with_value%28key%2Cvalue%2C%26%29-class-method">#</a>
+        <a class="method-permalink" href="#value%3F%28key%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="with(key,values,&amp;)-class-method">
+      <div class="signature">
+        
+        def self.<strong>with</strong>(key, values, &)
+
+        <a class="method-permalink" href="#with%28key%2Cvalues%2C%26%29-class-method">#</a>
       </div>
       
         <div class="doc">
@@ -1330,12 +1624,32 @@ previous context after the block executes.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="with_values(values,&amp;)-class-method">
+    <div class="entry-detail" id="with(context:Context,&amp;)-class-method">
       <div class="signature">
         
-        def self.<strong>with_values</strong>(values, &)
+        def self.<strong>with</strong>(context : <a href="../OpenTelemetry/Context.html">Context</a>, &)
 
-        <a class="method-permalink" href="#with_values%28values%2C%26%29-class-method">#</a>
+        <a class="method-permalink" href="#with%28context%3AContext%2C%26%29-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Executes a block with ctx as the current context. It restores
+the previous context upon exiting.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="with(values,&amp;)-class-method">
+      <div class="signature">
+        
+        def self.<strong>with</strong>(values, &)
+
+        <a class="method-permalink" href="#with%28values%2C%26%29-class-method">#</a>
       </div>
       
         <div class="doc">
@@ -1366,12 +1680,12 @@ to the block</p>
     Instance Method Detail
   </h2>
   
-    <div class="entry-detail" id="[](value)-instance-method">
+    <div class="entry-detail" id="[](key)-instance-method">
       <div class="signature">
         
-        def <strong>[]</strong>(value)
+        def <strong>[]</strong>(key)
 
-        <a class="method-permalink" href="#%5B%5D%28value%29-instance-method">#</a>
+        <a class="method-permalink" href="#%5B%5D%28key%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1380,12 +1694,96 @@ to the block</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="initialize-instance-method">
+    <div class="entry-detail" id="[]=(key,value)-instance-method">
       <div class="signature">
         
-        def <strong>initialize</strong>
+        def <strong>[]=</strong>(key, value)
 
-        <a class="method-permalink" href="#initialize-instance-method">#</a>
+        <a class="method-permalink" href="#%5B%5D%3D%28key%2Cvalue%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="[]?(key)-instance-method">
+      <div class="signature">
+        
+        def <strong>[]?</strong>(key)
+
+        <a class="method-permalink" href="#%5B%5D%3F%28key%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="merge(other_entries)-instance-method">
+      <div class="signature">
+        
+        def <strong>merge</strong>(other_entries)
+
+        <a class="method-permalink" href="#merge%28other_entries%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="object_id:CSUUID-instance-method">
+      <div class="signature">
+        
+        def <strong>object_id</strong> : CSUUID
+
+        <a class="method-permalink" href="#object_id%3ACSUUID-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="set_value(key,value)-instance-method">
+      <div class="signature">
+        
+        def <strong>set_value</strong>(key, value)
+
+        <a class="method-permalink" href="#set_value%28key%2Cvalue%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="value(key)-instance-method">
+      <div class="signature">
+        
+        def <strong>value</strong>(key)
+
+        <a class="method-permalink" href="#value%28key%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="value?(key)-instance-method">
+      <div class="signature">
+        
+        def <strong>value?</strong>(key)
+
+        <a class="method-permalink" href="#value%3F%28key%29-instance-method">#</a>
       </div>
       
       <br/>

@@ -311,6 +311,61 @@
       
     </li>
   
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Propagation" data-name="opentelemetry::propagation">
+      <a href="../OpenTelemetry/Propagation.html">Propagation</a>
+      
+        <ul>
+  
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Propagation/TraceContext" data-name="opentelemetry::propagation::tracecontext">
+      <a href="../OpenTelemetry/Propagation/TraceContext.html">TraceContext</a>
+      
+        <ul>
+  
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Propagation/TraceContext/TraceParent" data-name="opentelemetry::propagation::tracecontext::traceparent">
+      <a href="../OpenTelemetry/Propagation/TraceContext/TraceParent.html">TraceParent</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Propagation/TraceContext/TraceParent/InvalidFormatError" data-name="opentelemetry::propagation::tracecontext::traceparent::invalidformaterror">
+      <a href="../OpenTelemetry/Propagation/TraceContext/TraceParent/InvalidFormatError.html">InvalidFormatError</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Propagation/TraceContext/TraceParent/InvalidSpanIdError" data-name="opentelemetry::propagation::tracecontext::traceparent::invalidspaniderror">
+      <a href="../OpenTelemetry/Propagation/TraceContext/TraceParent/InvalidSpanIdError.html">InvalidSpanIdError</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Propagation/TraceContext/TraceParent/InvalidTraceFlagsIdError" data-name="opentelemetry::propagation::tracecontext::traceparent::invalidtraceflagsiderror">
+      <a href="../OpenTelemetry/Propagation/TraceContext/TraceParent/InvalidTraceFlagsIdError.html">InvalidTraceFlagsIdError</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Propagation/TraceContext/TraceParent/InvalidTraceIdError" data-name="opentelemetry::propagation::tracecontext::traceparent::invalidtraceiderror">
+      <a href="../OpenTelemetry/Propagation/TraceContext/TraceParent/InvalidTraceIdError.html">InvalidTraceIdError</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Propagation/TraceContext/TraceParent/InvalidVersionError" data-name="opentelemetry::propagation::tracecontext::traceparent::invalidversionerror">
+      <a href="../OpenTelemetry/Propagation/TraceContext/TraceParent/InvalidVersionError.html">InvalidVersionError</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
   <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Proto" data-name="opentelemetry::proto">
       <a href="../OpenTelemetry/Proto.html">Proto</a>
       
@@ -876,8 +931,18 @@
       
     </li>
   
-  <li class=" " data-id="opentelemetry-api/OpenTelemetry/SpanContext" data-name="opentelemetry::spancontext">
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/SpanContext" data-name="opentelemetry::spancontext">
       <a href="../OpenTelemetry/SpanContext.html">SpanContext</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/SpanContext/Config" data-name="opentelemetry::spancontext::config">
+      <a href="../OpenTelemetry/SpanContext/Config.html">Config</a>
+      
+    </li>
+  
+</ul>
+
       
     </li>
   
@@ -893,6 +958,11 @@
   
 </ul>
 
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/TextMapPropagator" data-name="opentelemetry::textmappropagator">
+      <a href="../OpenTelemetry/TextMapPropagator.html">TextMapPropagator</a>
       
     </li>
   
@@ -938,6 +1008,11 @@
   
 </ul>
 
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/String" data-name="string">
+      <a href="../String.html">String</a>
       
     </li>
   
@@ -1358,7 +1433,7 @@
     <div class="entry-detail" id="new(severity:Level=Level::Unspecified,severity_text:String?=nil,body:ValueTypes?=nil,time:Time?=nil,observed_time:Time?=nil,trace_id:Slice(UInt8)?=nil,span_id:Slice(UInt8)?=nil,flags:TraceFlags=TraceFlags.new(0),exporter:Exporter?=nil)-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(severity : <a href="../OpenTelemetry/LogRecord/Level.html">Level</a> = <span class="t">Level</span><span class="t">::</span><span class="t">Unspecified</span>, severity_text : String? = <span class="n">nil</span>, body : <a href="../OpenTelemetry/ValueTypes.html">ValueTypes</a>? = <span class="n">nil</span>, time : Time? = <span class="n">nil</span>, observed_time : Time? = <span class="n">nil</span>, trace_id : Slice(UInt8)? = <span class="n">nil</span>, span_id : Slice(UInt8)? = <span class="n">nil</span>, flags : <a href="../OpenTelemetry/TraceFlags.html">TraceFlags</a> = <span class="t">TraceFlags</span>.<span class="k">new</span>(<span class="n">0</span>), exporter : <a href="../OpenTelemetry/Exporter.html">Exporter</a>? = <span class="n">nil</span>)
+        def self.<strong>new</strong>(severity : <a href="../OpenTelemetry/LogRecord/Level.html">Level</a> = <span class="t">Level</span><span class="t">::</span><span class="t">Unspecified</span>, severity_text : <a href="../String.html">String</a>? = <span class="n">nil</span>, body : <a href="../OpenTelemetry/ValueTypes.html">ValueTypes</a>? = <span class="n">nil</span>, time : Time? = <span class="n">nil</span>, observed_time : Time? = <span class="n">nil</span>, trace_id : Slice(UInt8)? = <span class="n">nil</span>, span_id : Slice(UInt8)? = <span class="n">nil</span>, flags : <a href="../OpenTelemetry/TraceFlags.html">TraceFlags</a> = <span class="t">TraceFlags</span>.<span class="k">new</span>(<span class="n">0</span>), exporter : <a href="../OpenTelemetry/Exporter.html">Exporter</a>? = <span class="n">nil</span>)
 
         <a class="method-permalink" href="#new%28severity%3ALevel%3DLevel%3A%3AUnspecified%2Cseverity_text%3AString%3F%3Dnil%2Cbody%3AValueTypes%3F%3Dnil%2Ctime%3ATime%3F%3Dnil%2Cobserved_time%3ATime%3F%3Dnil%2Ctrace_id%3ASlice%28UInt8%29%3F%3Dnil%2Cspan_id%3ASlice%28UInt8%29%3F%3Dnil%2Cflags%3ATraceFlags%3DTraceFlags.new%280%29%2Cexporter%3AExporter%3F%3Dnil%29-class-method">#</a>
       </div>
@@ -1372,7 +1447,7 @@
     <div class="entry-detail" id="new(severity:String=&quot;UNSPECIFIED&quot;,severity_text:String?=nil,body:ValueTypes?=nil,time:Time?=nil,observed_time:Time?=nil,trace_id:Slice(UInt8)?=nil,span_id:Slice(UInt8)?=nil,flags:TraceFlags=TraceFlags.new(0),exporter:Exporter?=nil)-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(severity : String = <span class="s">&quot;UNSPECIFIED&quot;</span>, severity_text : String? = <span class="n">nil</span>, body : <a href="../OpenTelemetry/ValueTypes.html">ValueTypes</a>? = <span class="n">nil</span>, time : Time? = <span class="n">nil</span>, observed_time : Time? = <span class="n">nil</span>, trace_id : Slice(UInt8)? = <span class="n">nil</span>, span_id : Slice(UInt8)? = <span class="n">nil</span>, flags : <a href="../OpenTelemetry/TraceFlags.html">TraceFlags</a> = <span class="t">TraceFlags</span>.<span class="k">new</span>(<span class="n">0</span>), exporter : <a href="../OpenTelemetry/Exporter.html">Exporter</a>? = <span class="n">nil</span>)
+        def self.<strong>new</strong>(severity : <a href="../String.html">String</a> = <span class="s">&quot;UNSPECIFIED&quot;</span>, severity_text : <a href="../String.html">String</a>? = <span class="n">nil</span>, body : <a href="../OpenTelemetry/ValueTypes.html">ValueTypes</a>? = <span class="n">nil</span>, time : Time? = <span class="n">nil</span>, observed_time : Time? = <span class="n">nil</span>, trace_id : Slice(UInt8)? = <span class="n">nil</span>, span_id : Slice(UInt8)? = <span class="n">nil</span>, flags : <a href="../OpenTelemetry/TraceFlags.html">TraceFlags</a> = <span class="t">TraceFlags</span>.<span class="k">new</span>(<span class="n">0</span>), exporter : <a href="../OpenTelemetry/Exporter.html">Exporter</a>? = <span class="n">nil</span>)
 
         <a class="method-permalink" href="#new%28severity%3AString%3D%22UNSPECIFIED%22%2Cseverity_text%3AString%3F%3Dnil%2Cbody%3AValueTypes%3F%3Dnil%2Ctime%3ATime%3F%3Dnil%2Cobserved_time%3ATime%3F%3Dnil%2Ctrace_id%3ASlice%28UInt8%29%3F%3Dnil%2Cspan_id%3ASlice%28UInt8%29%3F%3Dnil%2Cflags%3ATraceFlags%3DTraceFlags.new%280%29%2Cexporter%3AExporter%3F%3Dnil%29-class-method">#</a>
       </div>
@@ -1386,7 +1461,7 @@
     <div class="entry-detail" id="new(severity:Int=0,severity_text:String?=nil,body:ValueTypes?=nil,time:Time?=nil,observed_time:Time?=nil,trace_id:Slice(UInt8)?=nil,span_id:Slice(UInt8)?=nil,flags:TraceFlags=TraceFlags.new(0),exporter:Exporter?=nil)-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(severity : Int = <span class="n">0</span>, severity_text : String? = <span class="n">nil</span>, body : <a href="../OpenTelemetry/ValueTypes.html">ValueTypes</a>? = <span class="n">nil</span>, time : Time? = <span class="n">nil</span>, observed_time : Time? = <span class="n">nil</span>, trace_id : Slice(UInt8)? = <span class="n">nil</span>, span_id : Slice(UInt8)? = <span class="n">nil</span>, flags : <a href="../OpenTelemetry/TraceFlags.html">TraceFlags</a> = <span class="t">TraceFlags</span>.<span class="k">new</span>(<span class="n">0</span>), exporter : <a href="../OpenTelemetry/Exporter.html">Exporter</a>? = <span class="n">nil</span>)
+        def self.<strong>new</strong>(severity : Int = <span class="n">0</span>, severity_text : <a href="../String.html">String</a>? = <span class="n">nil</span>, body : <a href="../OpenTelemetry/ValueTypes.html">ValueTypes</a>? = <span class="n">nil</span>, time : Time? = <span class="n">nil</span>, observed_time : Time? = <span class="n">nil</span>, trace_id : Slice(UInt8)? = <span class="n">nil</span>, span_id : Slice(UInt8)? = <span class="n">nil</span>, flags : <a href="../OpenTelemetry/TraceFlags.html">TraceFlags</a> = <span class="t">TraceFlags</span>.<span class="k">new</span>(<span class="n">0</span>), exporter : <a href="../OpenTelemetry/Exporter.html">Exporter</a>? = <span class="n">nil</span>)
 
         <a class="method-permalink" href="#new%28severity%3AInt%3D0%2Cseverity_text%3AString%3F%3Dnil%2Cbody%3AValueTypes%3F%3Dnil%2Ctime%3ATime%3F%3Dnil%2Cobserved_time%3ATime%3F%3Dnil%2Ctrace_id%3ASlice%28UInt8%29%3F%3Dnil%2Cspan_id%3ASlice%28UInt8%29%3F%3Dnil%2Cflags%3ATraceFlags%3DTraceFlags.new%280%29%2Cexporter%3AExporter%3F%3Dnil%29-class-method">#</a>
       </div>
@@ -1480,7 +1555,7 @@
     <div class="entry-detail" id="attributes:Hash(String,AnyAttribute)-instance-method">
       <div class="signature">
         
-        def <strong>attributes</strong> : Hash(String, <a href="../OpenTelemetry/AnyAttribute.html">AnyAttribute</a>)
+        def <strong>attributes</strong> : Hash(<a href="../String.html">String</a>, <a href="../OpenTelemetry/AnyAttribute.html">AnyAttribute</a>)
 
         <a class="method-permalink" href="#attributes%3AHash%28String%2CAnyAttribute%29-instance-method">#</a>
       </div>
@@ -1494,7 +1569,7 @@
     <div class="entry-detail" id="attributes=(attributes:Hash(String,AnyAttribute))-instance-method">
       <div class="signature">
         
-        def <strong>attributes=</strong>(attributes : Hash(String, <a href="../OpenTelemetry/AnyAttribute.html">AnyAttribute</a>))
+        def <strong>attributes=</strong>(attributes : Hash(<a href="../String.html">String</a>, <a href="../OpenTelemetry/AnyAttribute.html">AnyAttribute</a>))
 
         <a class="method-permalink" href="#attributes%3D%28attributes%3AHash%28String%2CAnyAttribute%29%29-instance-method">#</a>
       </div>
@@ -1669,7 +1744,7 @@ be useful if log volume is not large.</p>
     <div class="entry-detail" id="name:String?-instance-method">
       <div class="signature">
         
-        def <strong>name</strong> : String?
+        def <strong>name</strong> : <a href="../String.html">String</a>?
 
         <a class="method-permalink" href="#name%3AString%3F-instance-method">#</a>
       </div>
@@ -1683,7 +1758,7 @@ be useful if log volume is not large.</p>
     <div class="entry-detail" id="name=(name:String?)-instance-method">
       <div class="signature">
         
-        def <strong>name=</strong>(name : String?)
+        def <strong>name=</strong>(name : <a href="../String.html">String</a>?)
 
         <a class="method-permalink" href="#name%3D%28name%3AString%3F%29-instance-method">#</a>
       </div>
@@ -1739,7 +1814,7 @@ be useful if log volume is not large.</p>
     <div class="entry-detail" id="schema_url:String-instance-method">
       <div class="signature">
         
-        def <strong>schema_url</strong> : String
+        def <strong>schema_url</strong> : <a href="../String.html">String</a>
 
         <a class="method-permalink" href="#schema_url%3AString-instance-method">#</a>
       </div>
@@ -1753,7 +1828,7 @@ be useful if log volume is not large.</p>
     <div class="entry-detail" id="schema_url=(schema_url:String)-instance-method">
       <div class="signature">
         
-        def <strong>schema_url=</strong>(schema_url : String)
+        def <strong>schema_url=</strong>(schema_url : <a href="../String.html">String</a>)
 
         <a class="method-permalink" href="#schema_url%3D%28schema_url%3AString%29-instance-method">#</a>
       </div>
@@ -1809,7 +1884,7 @@ be useful if log volume is not large.</p>
     <div class="entry-detail" id="severity_text:String?-instance-method">
       <div class="signature">
         
-        def <strong>severity_text</strong> : String?
+        def <strong>severity_text</strong> : <a href="../String.html">String</a>?
 
         <a class="method-permalink" href="#severity_text%3AString%3F-instance-method">#</a>
       </div>
@@ -1823,7 +1898,7 @@ be useful if log volume is not large.</p>
     <div class="entry-detail" id="severity_text=(severity_text:String?)-instance-method">
       <div class="signature">
         
-        def <strong>severity_text=</strong>(severity_text : String?)
+        def <strong>severity_text=</strong>(severity_text : <a href="../String.html">String</a>?)
 
         <a class="method-permalink" href="#severity_text%3D%28severity_text%3AString%3F%29-instance-method">#</a>
       </div>

@@ -311,6 +311,61 @@
       
     </li>
   
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Propagation" data-name="opentelemetry::propagation">
+      <a href="../../../../OpenTelemetry/Propagation.html">Propagation</a>
+      
+        <ul>
+  
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Propagation/TraceContext" data-name="opentelemetry::propagation::tracecontext">
+      <a href="../../../../OpenTelemetry/Propagation/TraceContext.html">TraceContext</a>
+      
+        <ul>
+  
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Propagation/TraceContext/TraceParent" data-name="opentelemetry::propagation::tracecontext::traceparent">
+      <a href="../../../../OpenTelemetry/Propagation/TraceContext/TraceParent.html">TraceParent</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Propagation/TraceContext/TraceParent/InvalidFormatError" data-name="opentelemetry::propagation::tracecontext::traceparent::invalidformaterror">
+      <a href="../../../../OpenTelemetry/Propagation/TraceContext/TraceParent/InvalidFormatError.html">InvalidFormatError</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Propagation/TraceContext/TraceParent/InvalidSpanIdError" data-name="opentelemetry::propagation::tracecontext::traceparent::invalidspaniderror">
+      <a href="../../../../OpenTelemetry/Propagation/TraceContext/TraceParent/InvalidSpanIdError.html">InvalidSpanIdError</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Propagation/TraceContext/TraceParent/InvalidTraceFlagsIdError" data-name="opentelemetry::propagation::tracecontext::traceparent::invalidtraceflagsiderror">
+      <a href="../../../../OpenTelemetry/Propagation/TraceContext/TraceParent/InvalidTraceFlagsIdError.html">InvalidTraceFlagsIdError</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Propagation/TraceContext/TraceParent/InvalidTraceIdError" data-name="opentelemetry::propagation::tracecontext::traceparent::invalidtraceiderror">
+      <a href="../../../../OpenTelemetry/Propagation/TraceContext/TraceParent/InvalidTraceIdError.html">InvalidTraceIdError</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Propagation/TraceContext/TraceParent/InvalidVersionError" data-name="opentelemetry::propagation::tracecontext::traceparent::invalidversionerror">
+      <a href="../../../../OpenTelemetry/Propagation/TraceContext/TraceParent/InvalidVersionError.html">InvalidVersionError</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
   <li class="parent open current" data-id="opentelemetry-api/OpenTelemetry/Proto" data-name="opentelemetry::proto">
       <a href="../../../../OpenTelemetry/Proto.html">Proto</a>
       
@@ -876,8 +931,18 @@
       
     </li>
   
-  <li class=" " data-id="opentelemetry-api/OpenTelemetry/SpanContext" data-name="opentelemetry::spancontext">
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/SpanContext" data-name="opentelemetry::spancontext">
       <a href="../../../../OpenTelemetry/SpanContext.html">SpanContext</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/SpanContext/Config" data-name="opentelemetry::spancontext::config">
+      <a href="../../../../OpenTelemetry/SpanContext/Config.html">Config</a>
+      
+    </li>
+  
+</ul>
+
       
     </li>
   
@@ -893,6 +958,11 @@
   
 </ul>
 
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/TextMapPropagator" data-name="opentelemetry::textmappropagator">
+      <a href="../../../../OpenTelemetry/TextMapPropagator.html">TextMapPropagator</a>
       
     </li>
   
@@ -938,6 +1008,11 @@
   
 </ul>
 
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/String" data-name="string">
+      <a href="../../../../String.html">String</a>
       
     </li>
   
@@ -1320,7 +1395,7 @@
     <div class="entry-detail" id="new(trace_id:Slice(UInt8)?=nil,span_id:Slice(UInt8)?=nil,trace_state:String?=nil,parent_span_id:Slice(UInt8)?=nil,name:String?=nil,kind:Span::SpanKind?=nil,start_time_unix_nano:UInt64?=nil,end_time_unix_nano:UInt64?=nil,attributes:Array(OpenTelemetry::Proto::Common::V1::KeyValue)?=nil,dropped_attributes_count:UInt32?=nil,events:Array(Span::Event)?=nil,dropped_events_count:UInt32?=nil,links:Array(Span::Link)?=nil,dropped_links_count:UInt32?=nil,status:Status?=nil)-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(trace_id : Slice(UInt8)? = <span class="n">nil</span>, span_id : Slice(UInt8)? = <span class="n">nil</span>, trace_state : String? = <span class="n">nil</span>, parent_span_id : Slice(UInt8)? = <span class="n">nil</span>, name : String? = <span class="n">nil</span>, kind : <a href="../../../../OpenTelemetry/Proto/Trace/V1/Span/SpanKind.html">Span::SpanKind</a>? = <span class="n">nil</span>, start_time_unix_nano : UInt64? = <span class="n">nil</span>, end_time_unix_nano : UInt64? = <span class="n">nil</span>, attributes : Array(<a href="../../../../OpenTelemetry/Proto/Common/V1/KeyValue.html">OpenTelemetry::Proto::Common::V1::KeyValue</a>)? = <span class="n">nil</span>, dropped_attributes_count : UInt32? = <span class="n">nil</span>, events : Array(<a href="../../../../OpenTelemetry/Proto/Trace/V1/Span/Event.html">Span::Event</a>)? = <span class="n">nil</span>, dropped_events_count : UInt32? = <span class="n">nil</span>, links : Array(<a href="../../../../OpenTelemetry/Proto/Trace/V1/Span/Link.html">Span::Link</a>)? = <span class="n">nil</span>, dropped_links_count : UInt32? = <span class="n">nil</span>, status : <a href="../../../../OpenTelemetry/Proto/Trace/V1/Status.html">Status</a>? = <span class="n">nil</span>)
+        def self.<strong>new</strong>(trace_id : Slice(UInt8)? = <span class="n">nil</span>, span_id : Slice(UInt8)? = <span class="n">nil</span>, trace_state : <a href="../../../../String.html">String</a>? = <span class="n">nil</span>, parent_span_id : Slice(UInt8)? = <span class="n">nil</span>, name : <a href="../../../../String.html">String</a>? = <span class="n">nil</span>, kind : <a href="../../../../OpenTelemetry/Proto/Trace/V1/Span/SpanKind.html">Span::SpanKind</a>? = <span class="n">nil</span>, start_time_unix_nano : UInt64? = <span class="n">nil</span>, end_time_unix_nano : UInt64? = <span class="n">nil</span>, attributes : Array(<a href="../../../../OpenTelemetry/Proto/Common/V1/KeyValue.html">OpenTelemetry::Proto::Common::V1::KeyValue</a>)? = <span class="n">nil</span>, dropped_attributes_count : UInt32? = <span class="n">nil</span>, events : Array(<a href="../../../../OpenTelemetry/Proto/Trace/V1/Span/Event.html">Span::Event</a>)? = <span class="n">nil</span>, dropped_events_count : UInt32? = <span class="n">nil</span>, links : Array(<a href="../../../../OpenTelemetry/Proto/Trace/V1/Span/Link.html">Span::Link</a>)? = <span class="n">nil</span>, dropped_links_count : UInt32? = <span class="n">nil</span>, status : <a href="../../../../OpenTelemetry/Proto/Trace/V1/Status.html">Status</a>? = <span class="n">nil</span>)
 
         <a class="method-permalink" href="#new%28trace_id%3ASlice%28UInt8%29%3F%3Dnil%2Cspan_id%3ASlice%28UInt8%29%3F%3Dnil%2Ctrace_state%3AString%3F%3Dnil%2Cparent_span_id%3ASlice%28UInt8%29%3F%3Dnil%2Cname%3AString%3F%3Dnil%2Ckind%3ASpan%3A%3ASpanKind%3F%3Dnil%2Cstart_time_unix_nano%3AUInt64%3F%3Dnil%2Cend_time_unix_nano%3AUInt64%3F%3Dnil%2Cattributes%3AArray%28OpenTelemetry%3A%3AProto%3A%3ACommon%3A%3AV1%3A%3AKeyValue%29%3F%3Dnil%2Cdropped_attributes_count%3AUInt32%3F%3Dnil%2Cevents%3AArray%28Span%3A%3AEvent%29%3F%3Dnil%2Cdropped_events_count%3AUInt32%3F%3Dnil%2Clinks%3AArray%28Span%3A%3ALink%29%3F%3Dnil%2Cdropped_links_count%3AUInt32%3F%3Dnil%2Cstatus%3AStatus%3F%3Dnil%29-class-method">#</a>
       </div>
@@ -1372,7 +1447,7 @@
     <div class="entry-detail" id="[](key:String)-instance-method">
       <div class="signature">
         
-        def <strong>[]</strong>(key : String)
+        def <strong>[]</strong>(key : <a href="../../../../String.html">String</a>)
 
         <a class="method-permalink" href="#%5B%5D%28key%3AString%29-instance-method">#</a>
       </div>
@@ -1610,7 +1685,7 @@
     <div class="entry-detail" id="name:String?-instance-method">
       <div class="signature">
         
-        def <strong>name</strong> : String?
+        def <strong>name</strong> : <a href="../../../../String.html">String</a>?
 
         <a class="method-permalink" href="#name%3AString%3F-instance-method">#</a>
       </div>
@@ -1624,7 +1699,7 @@
     <div class="entry-detail" id="name=(name:String?)-instance-method">
       <div class="signature">
         
-        def <strong>name=</strong>(name : String?)
+        def <strong>name=</strong>(name : <a href="../../../../String.html">String</a>?)
 
         <a class="method-permalink" href="#name%3D%28name%3AString%3F%29-instance-method">#</a>
       </div>
@@ -1806,7 +1881,7 @@
     <div class="entry-detail" id="trace_state:String?-instance-method">
       <div class="signature">
         
-        def <strong>trace_state</strong> : String?
+        def <strong>trace_state</strong> : <a href="../../../../String.html">String</a>?
 
         <a class="method-permalink" href="#trace_state%3AString%3F-instance-method">#</a>
       </div>
@@ -1820,7 +1895,7 @@
     <div class="entry-detail" id="trace_state=(trace_state:String?)-instance-method">
       <div class="signature">
         
-        def <strong>trace_state=</strong>(trace_state : String?)
+        def <strong>trace_state=</strong>(trace_state : <a href="../../../../String.html">String</a>?)
 
         <a class="method-permalink" href="#trace_state%3D%28trace_state%3AString%3F%29-instance-method">#</a>
       </div>
