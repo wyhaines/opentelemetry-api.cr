@@ -3,7 +3,7 @@ module OpenTelemetry
     struct Key
       getter name : String
       getter id : CSUUID
-      getter context : ContextContainer
+      getter context : Context
 
       def initialize(@name = CSUUID.unique.to_s, @context = Context.current, @id = CSUUID.unique)
       end
@@ -13,7 +13,7 @@ module OpenTelemetry
       end
 
       def get(context = Context.current)
-        context[self]
+        context[self.name]
       end
 
       def <=>(val)

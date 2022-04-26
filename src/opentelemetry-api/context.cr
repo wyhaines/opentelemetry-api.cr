@@ -3,11 +3,12 @@ require "splay_tree_map"
 
 module OpenTelemetry
   struct Context
-    alias ContextContainer = SplayTreeMap(OpenTelemetry::Context::Key, String)
-    EMPTY_ENTRIES = SplayTreeMap(Key, String).new
+    alias ContextContainer = SplayTreeMap(String, String)
 
-    @@root : SplayTreeMap(Key, String) = SplayTreeMap(Key, String).new
-    @@stack : SplayTreeMap(Fiber, Array(SplayTreeMap(Key, String))) = SplayTreeMap(Fiber, Array(SplayTreeMap(Key, String))).new { |h, k| h[k] = [] of SplayTreeMap(Key, String) }
+    @@root : Context = Context.new
+    @@stack : SplayTreeMap(Fiber, Array(Context)) = SplayTreeMap(Fiber, Array(Context)).new { |h, k| h[k] = [] of Context }
+
+    getter object_id : CSUUID = CSUUID.unique
 
     def self.stack
       @@stack[Fiber.current]
@@ -25,9 +26,13 @@ module OpenTelemetry
       Key.new(name)
     end
 
-    def self.attach(context)
+    def self.attach(context : Context)
       stack << context
       context.object_id
+    end
+
+    def self.attach(entries)
+      attach(Context.new(entries))
     end
 
     # Restores the previous Context associated with the current Fiber.
@@ -43,7 +48,7 @@ module OpenTelemetry
       calls_matched
     end
 
-    def self.attach(context)
+    def self.attach(context : Context)
       token = context.object_id
       stack << context
       yield context
@@ -51,23 +56,32 @@ module OpenTelemetry
       detach(token)
     end
 
+    def self.attach(entries)
+      attach(Context.new(entries)) { |ctx| yield ctx }
+    end
+
     # Executes a block with ctx as the current context. It restores
     # the previous context upon exiting.
-    def self.with_current(ctx)
-      token = attach(ctx)
-      yield ctx
-    ensure
-      detach(token)
+    def self.with(context : Context)
+      attach(context) { |ctx| yield ctx }
+    end
+
+    def self.with(entries)
+      self.with(Context.new(entries)) { |ctx| yield ctx }
     end
 
     # Execute a block in a new context with key set to value. Restores the
     # previous context after the block executes.
-    def self.with_value(key, value)
-      ctx = current.set_value(key, value)
+    def self.with(key, value)
+      ctx = current[key] = value
       token = attach(ctx)
       yield ctx, value
     ensure
       detach(token)
+    end
+
+    def self.with(key, value)
+      self.with(key, value) { |ctx, val| yield ctx, val }
     end
 
     # Execute a block in a new context where its values are merged with the
@@ -79,20 +93,32 @@ module OpenTelemetry
     # @param [Callable] Block to execute in a new context
     # @yield [context, values] Yields the newly created context and values
     #   to the block
-    def self.with_values(values)
-      ctx = current.set_values(values)
+    def self.with(values)
+      ctx = current.dup.merge(values)
       token = attach(ctx)
       yield ctx, values
     ensure
       detach(token)
     end
 
-    def self.[](value)
-      current[value]
+    def self.with(key, values)
+      self.with(key, values) { |ctx, val| yield ctx, val }
+    end
+
+    def self.[](key)
+      current[key]
+    end
+
+    def self.[]?(key)
+      current[key]?
     end
 
     def self.value(key)
-      self[value]
+      self[key]
+    end
+
+    def self.value?(key)
+      self[key]?
     end
 
     def self.[]=(key, value)
@@ -107,26 +133,36 @@ module OpenTelemetry
       stack.clear
     end
 
-    def self.empty
-      new(EMPTY_ENTRIES)
+    def initialize
+      @entries = ContextContainer.new
     end
 
-    def initialize(entries : SplayTreeMap(Key, String))
+    def initialize(entries : ContextContainer)
       @entries = entries.dup
     end
 
     def initialize(entries)
-      @entries = entries.transform_keys do |key|
-        Key.new(key)
-      end.transform_values(&.to_s)
+      @entries = ContextContainer.new
+
+      entries.each do |k, v|
+        @entries[k.to_s] = v.to_s
+      end
     end
 
     def value(key)
       self[key]
     end
 
-    def [](value)
-      stack[value]
+    def value?(key)
+      self[key]?
+    end
+
+    def [](key)
+      @entries[key]
+    end
+
+    def []?(key)
+      @entries[key]?
     end
 
     def set_value(key, value)
@@ -134,22 +170,11 @@ module OpenTelemetry
     end
 
     def []=(key, value)
-      new_entries = @entries.dup
-      new_entries[key] = value
-      Context.new(new_entries)
+      @entries[key] = value
     end
 
-    #   # Returns a new Context with the current context's entries merged with the
-    #   #   new entries
-    #   #
-    #   # @param [Hash] values The values to be merged with the current context's
-    #   #   entries.
-    #   # @param [Object] value Object to be stored under key
-    #   # @return [Context]
-    #   def set_values(values)
-    #     Context.new(@entries.merge(values))
-    #   end
-
-    
+    def merge(other_entries)
+      @entries.merge(other_entries)
+    end
   end
 end

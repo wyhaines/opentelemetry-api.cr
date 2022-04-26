@@ -26,5 +26,42 @@ describe OpenTelemetry::Context::Key do
 end
 
 describe OpenTelemetry::Context do
-  
+  it "should have a usable base context" do
+    OpenTelemetry::Context["foo"] = "bar"
+    OpenTelemetry::Context["foo"].should eq "bar"
+    OpenTelemetry::Context::Key.new("foo").value.should eq "bar"
+  end
+
+  it "should allow an imperative attach and detach of a context" do
+    entries = SplayTreeMap(String, String).new
+    entries["foo"] = "bar"
+    entries["bar"] = "baz"
+    token = OpenTelemetry::Context.attach(entries)
+    OpenTelemetry::Context["foo"].should eq "bar"
+    OpenTelemetry::Context["bar"].should eq "baz"
+    OpenTelemetry::Context.detach(token)
+  end
+
+  it "should allow an implicit attach and detach of a context" do
+    entries = SplayTreeMap(String, String).new
+    entries["foo"] = "bar"
+    entries["bif"] = "baz"
+    OpenTelemetry::Context.with(entries) do
+      OpenTelemetry::Context["foo"].should eq "bar"
+      OpenTelemetry::Context["bif"].should eq "baz"
+    end
+  end
+
+  it "should allow attachment of a new context for the duration of a block" do
+    OpenTelemetry::Context["one"] = "1"
+    OpenTelemetry::Context["two"] = "2"
+    OpenTelemetry::Context.with({"three" => "3"}) do
+      OpenTelemetry::Context["one"].should eq "1"
+      OpenTelemetry::Context["two"].should eq "2"
+      OpenTelemetry::Context["three"].should eq "3"
+    end
+    OpenTelemetry::Context["one"].should eq "1"
+    OpenTelemetry::Context["two"].should eq "2"
+    OpenTelemetry::Context["three"]?.should be_nil
+  end
 end

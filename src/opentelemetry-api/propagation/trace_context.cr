@@ -5,12 +5,23 @@ module OpenTelemetry
   class Propagation
     class TraceContext < TextMapPropagator
       property trace_parent : TraceParent = TraceParent.new
+      FIELDS = {"traceparent", "tracestate"}
 
       def initialize
       end
 
       def initialize(trace_parent : TraceParent)
         @trace_parent = trace_parent
+      end
+
+      def inject(carrier, context : Context)
+      end
+
+      def extract
+      end
+
+      def fields
+        FIELDS
       end
 
       def version
