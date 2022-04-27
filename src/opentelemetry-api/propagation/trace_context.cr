@@ -10,8 +10,8 @@ module OpenTelemetry
       property context : Context?
 
       TRACEPARENT_KEY = "traceparent"
-      TRACESTATE_KEY = "tracestate"
-      FIELDS = {"traceparent", "tracestate"}
+      TRACESTATE_KEY  = "tracestate"
+      FIELDS          = {"traceparent", "tracestate"}
 
       def initialize
       end
