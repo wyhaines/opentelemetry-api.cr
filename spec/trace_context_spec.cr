@@ -39,4 +39,40 @@ describe OpenTelemetry::Propagation::TraceContext do
     trace_context.span_id.hexstring.should eq "00f067aa0ba902b7"
     trace_context.trace_flags.should eq 0x01
   end
+
+  it "can inject TraceContext into an object such as HTTP::Headers" do
+    provider = OpenTelemetry::TraceProvider.new(
+      service_name: "my_app_or_library",
+      service_version: "1.1.1",
+      exporter: OpenTelemetry::Exporter.new)
+    trace = provider.trace do |t|
+      t.service_name = "microservice"
+      t.service_version = "1.2.3"
+    end
+
+    trace.in_span("request") do |span|
+      span.set_attribute("verb", "GET")
+      span.set_attribute("url", "http://example.com/foo")
+      span.add_event("dispatching to handler")
+      OpenTelemetry::Context["foo"] = "bar"
+      OpenTelemetry::Context["baz"] = "qux"
+      trace.in_span("test TraceContext Injection") do |_other_span|
+        headers = HTTP::Headers{
+          "X-B3-TraceId"      => "4bf92f3577b34da6a3ce929d0e0e4736",
+          "X-B3-SpanId"       => "00f067aa0ba902b7",
+          "X-B3-ParentSpanId" => "00f067aa0ba902b7",
+          "X-B3-Sampled"      => "1",
+          "X-B3-Flags"        => "1",
+          "X-Foo"             => "bar",
+          "X-Baz"             => "qux",
+        }
+        OpenTelemetry::Propagation::TraceContext.new(span.context).inject(headers)
+
+        headers["X-B3-TraceID"].should eq "4bf92f3577b34da6a3ce929d0e0e4736"
+        headers["X-Baz"].should eq "qux"
+        headers["tracestate"].should eq "baz=qux,foo=bar"
+        OpenTelemetry::Propagation::TraceContext::TraceParent.valid?(headers["traceparent"]).should be_truthy
+      end
+    end
+  end
 end

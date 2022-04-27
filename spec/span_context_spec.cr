@@ -8,14 +8,13 @@ describe OpenTelemetry::SpanContext do
     context.trace_id.should eq Bytes.new(16, 0)
     context.span_id.should eq Bytes.new(8, 0)
     context.trace_state.empty?.should be_true
-    context.trace_flags.should eq BitArray.new(8)
+    context.trace_flags.should eq OpenTelemetry::TraceFlags::None
   end
 
   it "can create a SpanContext with specified values" do
     trace_id = OpenTelemetry::IdGenerator.trace_id
     span_id = OpenTelemetry::IdGenerator.span_id
-    trace_flags = BitArray.new(8)
-    trace_flags[7] = true
+    trace_flags = OpenTelemetry::TraceFlags.new(0x01)
     context = OpenTelemetry::SpanContext.new(
       remote: false,
       trace_id: trace_id,
@@ -34,7 +33,7 @@ describe OpenTelemetry::SpanContext do
   it "can create a SpanContext using the block syntax" do
     trace_id = OpenTelemetry::IdGenerator.trace_id
     span_id = OpenTelemetry::IdGenerator.span_id
-    trace_flags = BitArray.new(8)
+    trace_flags = OpenTelemetry::TraceFlags.new(0x01)
     context = OpenTelemetry::SpanContext.build do |ctx|
       ctx.remote = false
       ctx.trace_id = trace_id

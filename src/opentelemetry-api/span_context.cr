@@ -4,13 +4,14 @@ module OpenTelemetry
   struct SpanContext
     property trace_id : Slice(UInt8)
     property span_id : Slice(UInt8)
-    property trace_flags : BitArray = BitArray.new(8)
+    property trace_flags : TraceFlags
     property trace_state : Hash(String, String) = {} of String => String
     property remote : Bool = false
 
     def initialize
       @trace_id = Slice(UInt8).new(16, 0)
       @span_id = Slice(UInt8).new(8, 0)
+      @trace_flags = TraceFlags.new(0x00)
     end
 
     def initialize(@trace_id, @span_id, @trace_flags, @trace_state, @remote = false)
@@ -48,11 +49,12 @@ module OpenTelemetry
     class Config
       property trace_id : Slice(UInt8)
       property span_id : Slice(UInt8)
-      property trace_flags : BitArray = BitArray.new(8)
+      property trace_flags : TraceFlags
       property trace_state : Hash(String, String) = {} of String => String
       property remote : Bool = false
 
       def initialize(@trace_id, @span_id)
+        @trace_flags = TraceFlags.new(0x00)
       end
 
       def initialize(inherited_context : SpanContext)

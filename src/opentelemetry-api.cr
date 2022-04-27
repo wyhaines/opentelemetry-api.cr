@@ -114,6 +114,10 @@ module OpenTelemetry
     provider
   end
 
+  def self.current_span
+    Fiber.current.current_span
+  end
+
   def self.trace
     trace = Fiber.current.current_trace
     r = trace ? trace : trace_provider.trace

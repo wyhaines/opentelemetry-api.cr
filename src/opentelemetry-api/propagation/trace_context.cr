@@ -16,17 +16,22 @@ module OpenTelemetry
       def initialize
       end
 
-      def initialize(trace_parent : TraceParent, context : Context? = nil)
+      def initialize(trace_parent : TraceParent, context : Context = OpenTelemetry::Context.current)
         @trace_parent = trace_parent
         @context = context
       end
 
-      def inject(carrier, context : Context, setter : TextMapSetter.class = TextMapSetter)
+      def initialize(span_context : SpanContext, context : Context = OpenTelemetry::Context.current)
+        @trace_parent = TraceParent.from_span_context(span_context)
+        @context = context
+      end
+
+      def inject(carrier, context : Context? = nil, setter : TextMapSetter.class = TextMapSetter)
         span = OpenTelemetry.current_span
         if span
           span_context = span.context
 
-          setter.set(carrier, TRACEPARENT_KEY, TraceParent.from_span_contex(span_context).to_s)
+          setter.set(carrier, TRACEPARENT_KEY, TraceParent.from_span_context(span_context).to_s)
           setter.set(carrier, TRACESTATE_KEY, tracestate)
         end
       end
@@ -103,9 +108,11 @@ module OpenTelemetry
       end
 
       def tracestate
-        @context.map do |key, value|
-          "#{key}=#{value}"
-        end.join(",")
+        if ctx = @context
+          ctx.entries.map do |key, value|
+            "#{key}=#{value}"
+          end.join(",")
+        end
       end
     end
   end

@@ -173,6 +173,10 @@ module OpenTelemetry
       @entries[key] = value
     end
 
+    def entries
+      @entries
+    end
+
     def merge(other_entries)
       @entries.merge(other_entries)
     end

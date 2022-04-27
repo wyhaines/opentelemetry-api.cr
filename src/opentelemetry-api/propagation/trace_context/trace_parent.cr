@@ -87,6 +87,8 @@ module OpenTelemetry
             trace_flags = TraceFlags.new(trace_flags.hexstring.to_i(16))
           elsif trace_flags.is_a?(Int)
             trace_flags = TraceFlags.new(trace_flags)
+          elsif trace_flags.is_a?(TraceFlags)
+            trace_flags
           else
             trace_flags = TraceFlags.new(trace_flags.to_i(16))
           end
@@ -103,6 +105,14 @@ module OpenTelemetry
           raise InvalidVersionError.new(version) unless version.hexstring =~ VERSION_MATCH
           raise InvalidTraceIdError.new(trace_id) unless trace_id.hexstring =~ Trace::MATCH
           raise InvalidSpanIdError.new(span_id) unless span_id.hexstring =~ Span::MATCH
+        end
+
+        def self.valid?(traceparent : String)
+          MATCH.match(traceparent)
+        end
+
+        def valid?
+          MATCH.match(to_s)
         end
 
         def to_s(io)
