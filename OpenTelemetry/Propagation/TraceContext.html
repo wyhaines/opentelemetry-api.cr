@@ -316,6 +316,16 @@
       
         <ul>
   
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Propagation/TextMapGetter" data-name="opentelemetry::propagation::textmapgetter">
+      <a href="../../OpenTelemetry/Propagation/TextMapGetter.html">TextMapGetter</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Propagation/TextMapSetter" data-name="opentelemetry::propagation::textmapsetter">
+      <a href="../../OpenTelemetry/Propagation/TextMapSetter.html">TextMapSetter</a>
+      
+    </li>
+  
   <li class="parent open current" data-id="opentelemetry-api/OpenTelemetry/Propagation/TraceContext" data-name="opentelemetry::propagation::tracecontext">
       <a href="../../OpenTelemetry/Propagation/TraceContext.html">TraceContext</a>
       
@@ -1087,6 +1097,16 @@
       </dt>
       
     
+      <dt class="entry-const" id="TRACEPARENT_KEY">
+        <strong>TRACEPARENT_KEY</strong> = <code><span class="s">&quot;traceparent&quot;</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="TRACESTATE_KEY">
+        <strong>TRACESTATE_KEY</strong> = <code><span class="s">&quot;tracestate&quot;</span></code>
+      </dt>
+      
+    
   </dl>
 
 
@@ -1102,7 +1122,7 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new%28trace_parent%3ATraceParent%29-class-method" class="signature"><strong>.new</strong>(trace_parent : TraceParent)</a>
+        <a href="#new%28trace_parent%3ATraceParent%2Ccontext%3AContext%3F%3Dnil%29-class-method" class="signature"><strong>.new</strong>(trace_parent : TraceParent, context : Context? = <span class="n">nil</span>)</a>
         
       </li>
     
@@ -1128,6 +1148,16 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
+        <a href="#context%3AContext%3F-instance-method" class="signature"><strong>#context</strong> : Context?</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#context%3D%28context%3AContext%3F%29-instance-method" class="signature"><strong>#context=</strong>(context : Context?)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#extract-instance-method" class="signature"><strong>#extract</strong></a>
         
       </li>
@@ -1138,7 +1168,7 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#inject%28carrier%2Ccontext%3AContext%29-instance-method" class="signature"><strong>#inject</strong>(carrier, context : Context)</a>
+        <a href="#inject%28carrier%2Ccontext%3AContext%2Csetter%3ATextMapSetter.class%3DTextMapSetter%29-instance-method" class="signature"><strong>#inject</strong>(carrier, context : Context, setter : <span class="t">TextMapSetter</span>.<span class="k">class</span> = <span class="t">TextMapSetter</span>)</a>
         
       </li>
     
@@ -1245,16 +1275,6 @@
   <h3>Instance methods inherited from class <code><a href="../../OpenTelemetry/TextMapPropagator.html">OpenTelemetry::TextMapPropagator</a></code></h3>
   
   
-    <a href="../../OpenTelemetry/TextMapPropagator.html#%5B%5D%28key%29-instance-method" class="tooltip">
-      <span>[](key)</span>
-    []</a>, 
-    
-  
-    <a href="../../OpenTelemetry/TextMapPropagator.html#%5B%5D%3D%28key%2Cvalue%29-instance-method" class="tooltip">
-      <span>[]=(key, value)</span>
-    []=</a>, 
-    
-  
     <a href="../../OpenTelemetry/TextMapPropagator.html#extract-instance-method" class="tooltip">
       <span>extract</span>
     extract</a>, 
@@ -1311,12 +1331,12 @@
     Constructor Detail
   </h2>
   
-    <div class="entry-detail" id="new(trace_parent:TraceParent)-class-method">
+    <div class="entry-detail" id="new(trace_parent:TraceParent,context:Context?=nil)-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(trace_parent : <a href="../../OpenTelemetry/Propagation/TraceContext/TraceParent.html">TraceParent</a>)
+        def self.<strong>new</strong>(trace_parent : <a href="../../OpenTelemetry/Propagation/TraceContext/TraceParent.html">TraceParent</a>, context : <a href="../../OpenTelemetry/Context.html">Context</a>? = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#new%28trace_parent%3ATraceParent%29-class-method">#</a>
+        <a class="method-permalink" href="#new%28trace_parent%3ATraceParent%2Ccontext%3AContext%3F%3Dnil%29-class-method">#</a>
       </div>
       
       <br/>
@@ -1353,6 +1373,34 @@
     Instance Method Detail
   </h2>
   
+    <div class="entry-detail" id="context:Context?-instance-method">
+      <div class="signature">
+        
+        def <strong>context</strong> : <a href="../../OpenTelemetry/Context.html">Context</a>?
+
+        <a class="method-permalink" href="#context%3AContext%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="context=(context:Context?)-instance-method">
+      <div class="signature">
+        
+        def <strong>context=</strong>(context : <a href="../../OpenTelemetry/Context.html">Context</a>?)
+
+        <a class="method-permalink" href="#context%3D%28context%3AContext%3F%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="extract-instance-method">
       <div class="signature">
         
@@ -1381,12 +1429,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="inject(carrier,context:Context)-instance-method">
+    <div class="entry-detail" id="inject(carrier,context:Context,setter:TextMapSetter.class=TextMapSetter)-instance-method">
       <div class="signature">
         
-        def <strong>inject</strong>(carrier, context : <a href="../../OpenTelemetry/Context.html">Context</a>)
+        def <strong>inject</strong>(carrier, context : <a href="../../OpenTelemetry/Context.html">Context</a>, setter : <span class="t">TextMapSetter</span>.<span class="k">class</span> = <span class="t">TextMapSetter</span>)
 
-        <a class="method-permalink" href="#inject%28carrier%2Ccontext%3AContext%29-instance-method">#</a>
+        <a class="method-permalink" href="#inject%28carrier%2Ccontext%3AContext%2Csetter%3ATextMapSetter.class%3DTextMapSetter%29-instance-method">#</a>
       </div>
       
       <br/>
