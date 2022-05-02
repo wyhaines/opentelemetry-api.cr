@@ -23,6 +23,10 @@ module OpenTelemetry
 
       def initialize(span_context : SpanContext, context : Context = OpenTelemetry::Context.current)
         @trace_parent = TraceParent.from_span_context(span_context)
+        context = context.dup
+        if context
+          context.merge span_context.trace_state
+        end
         @context = context
       end
 
@@ -32,11 +36,43 @@ module OpenTelemetry
           span_context = span.context
 
           setter.set(carrier, TRACEPARENT_KEY, TraceParent.from_span_context(span_context).to_s)
-          setter.set(carrier, TRACESTATE_KEY, tracestate)
+          setter.set(carrier, TRACESTATE_KEY, context ? tracestate(context) : tracestate)
         end
+
+        context ? context : span_context
       end
 
-      def extract
+      def extract(carrier, context : Context? = nil, getter : TextMapGetter.class = TextMapGetter)
+        span = OpenTelemetry.current_span
+        if span
+          span_context = span.context
+        end
+
+        trace_parent_value = getter.get(carrier, TRACEPARENT_KEY)
+        return unless trace_parent_value
+
+        tp = TraceParent.from_string(trace_parent_value)
+        ts = {} of String => String
+        getter.get(carrier, TRACESTATE_KEY).split(/\s*,\s*/).each do |entry|
+          next unless entry.index('=')
+
+          k, v = entry.split(/\s*=\s*/)
+          ts[k.to_s] = v.to_s
+        end
+
+        target = context ? context : span_context
+        if target
+          ts.each do |key, value|
+            target[key] = value
+          end
+        end
+
+        if target.is_a?(SpanContext)
+          target.trace_id = tp.trace_id
+          target.span_id = tp.span_id
+        end
+
+        target
       end
 
       def fields
@@ -113,6 +149,18 @@ module OpenTelemetry
             "#{key}=#{value}"
           end.join(",")
         end
+      end
+
+      def tracestate(ctx : Context)
+        ctx.entries.map do |key, value|
+          "#{key}=#{value}"
+        end.join(",")
+      end
+
+      def tracestate(ctx : SpanContext)
+        ctx.trace_state.map do |key, value|
+          "#{key}=#{value}"
+        end.join(",")
       end
     end
   end

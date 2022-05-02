@@ -54,6 +54,9 @@ describe OpenTelemetry::Propagation::TraceContext do
       span.set_attribute("verb", "GET")
       span.set_attribute("url", "http://example.com/foo")
       span.add_event("dispatching to handler")
+      span["fib"] = "far"
+      span["flo"] = "fling"
+
       OpenTelemetry::Context["foo"] = "bar"
       OpenTelemetry::Context["baz"] = "qux"
       trace.in_span("test TraceContext Injection") do |_other_span|
@@ -66,8 +69,25 @@ describe OpenTelemetry::Propagation::TraceContext do
           "X-Foo"             => "bar",
           "X-Baz"             => "qux",
         }
-        OpenTelemetry::Propagation::TraceContext.new(span.context).inject(headers)
 
+        new_span_context = OpenTelemetry::Propagation::TraceContext.new(span.context).inject(headers)
+        new_span_context.is_a?(OpenTelemetry::SpanContext).should be_true
+        headers["X-B3-TraceID"].should eq "4bf92f3577b34da6a3ce929d0e0e4736"
+        headers["X-Baz"].should eq "qux"
+        headers["tracestate"].should eq "baz=qux,foo=bar"
+        OpenTelemetry::Propagation::TraceContext::TraceParent.valid?(headers["traceparent"]).should be_truthy
+
+        headers = HTTP::Headers{
+          "X-B3-TraceId"      => "4bf92f3577b34da6a3ce929d0e0e4736",
+          "X-B3-SpanId"       => "00f067aa0ba902b7",
+          "X-B3-ParentSpanId" => "00f067aa0ba902b7",
+          "X-B3-Sampled"      => "1",
+          "X-B3-Flags"        => "1",
+          "X-Foo"             => "bar",
+          "X-Baz"             => "qux",
+        }
+        new_context = OpenTelemetry::Propagation::TraceContext.new(span.context).inject(headers, OpenTelemetry::Context.current)
+        new_context.is_a?(OpenTelemetry::Context).should be_true
         headers["X-B3-TraceID"].should eq "4bf92f3577b34da6a3ce929d0e0e4736"
         headers["X-Baz"].should eq "qux"
         headers["tracestate"].should eq "baz=qux,foo=bar"

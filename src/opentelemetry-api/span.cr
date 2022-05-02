@@ -23,6 +23,7 @@ module OpenTelemetry
     property context : SpanContext = SpanContext.new
     property kind : Kind = Kind::Internal
     property status : Status = Status.new
+    property is_recording : Bool = true
 
     MATCH = /(?<span_id>[A-Fa-f0-9]{16})/
 
@@ -34,7 +35,18 @@ module OpenTelemetry
       !!MATCH.match id
     end
 
+    def self.build(name = "")
+      span = new(name)
+      yield span
+
+      span
+    end
+
     def initialize(@name = "")
+    end
+
+    def recording?
+      @is_recording
     end
 
     def []=(key, value)
@@ -137,6 +149,8 @@ module OpenTelemetry
 
     # Return the Protobuf object for the Span.
     def to_protobuf
+      return unless recording?
+
       span = Proto::Trace::V1::Span.new(
         name: name,
         trace_id: context.trace_id,
@@ -160,6 +174,8 @@ module OpenTelemetry
     end
 
     def to_json
+      return "" unless recording?
+
       String.build do |json|
         json << "{\n"
         json << "      \"type\":\"span\",\n"

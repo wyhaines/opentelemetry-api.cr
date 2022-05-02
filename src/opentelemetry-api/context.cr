@@ -178,7 +178,7 @@ module OpenTelemetry
     end
 
     def merge(other_entries)
-      @entries.merge(other_entries)
+      @entries = @entries.merge(other_entries)
     end
   end
 end

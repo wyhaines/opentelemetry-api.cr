@@ -6,7 +6,7 @@ module OpenTelemetry
   # the relevant type of propagator.
   abstract class TextMapPropagator
     abstract def inject(carrier, context : Context)
-    abstract def extract
+    abstract def extract(carrier, context : Context)
     abstract def fields
   end
 end

@@ -187,7 +187,7 @@ module OpenTelemetry
 
     private def iterate_span_nodes(span, buffer)
       iterate_span_nodes(span) do |s|
-        buffer << s if s
+        buffer << s if s && s.recording?
       end
 
       buffer
@@ -205,12 +205,13 @@ module OpenTelemetry
     # TODO: Add support for a Resource
     # This method returns a ProtoBuf object containing all of the Trace information.
     def to_protobuf
+      spans_buffer = iterate_span_nodes(root_span, [] of Span).select(&.recording?).map(&.to_protobuf.not_nil!)
       Proto::Trace::V1::ResourceSpans.new(
         resource: resource.to_protobuf,
         scope_spans: [
           Proto::Trace::V1::ScopeSpans.new(
             scope: OpenTelemetry.instrumentation_scope,
-            spans: iterate_span_nodes(root_span, [] of Span).map(&.to_protobuf)
+            spans: spans_buffer
           ),
         ],
         schema_url: schema_url

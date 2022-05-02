@@ -133,7 +133,8 @@ module OpenTelemetry
         elements.each do |element|
           case element
           when Trace
-            batches[:traces] << element.to_protobuf
+            pb_or_nil = element.to_protobuf
+            batches[:traces] << pb_or_nil if pb_or_nil
           end
         end
 

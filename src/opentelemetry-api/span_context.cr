@@ -5,6 +5,8 @@ module OpenTelemetry
     property trace_id : Slice(UInt8)
     property span_id : Slice(UInt8)
     property trace_flags : TraceFlags
+    # TODO: We're currenty playing fast and loose with TraceState. TraceState, per the spec,
+    # should be immutable, however, so this will need to be revised.
     property trace_state : Hash(String, String) = {} of String => String
     property remote : Bool = false
 
@@ -32,6 +34,33 @@ module OpenTelemetry
         configuration.trace_flags,
         configuration.trace_state,
         configuration.remote)
+    end
+
+    # Returns true is the trace id and span id are non-zero
+    def valid?
+      @trace_id != Bytes(16, 0) && @span_id != Bytes(8, 0)
+    end
+
+    # The spec dictates that this name be available: https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/api.md#isvalid
+    def is_valid
+      valid?
+    end
+
+    def remote?
+      !!@remote
+    end
+
+    # The spec dictates that this name be available: https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/api.md#isvalid
+    def is_remote
+      remote?
+    end
+
+    def [](val)
+      @trace_state[val]
+    end
+
+    def []=(val, val2)
+      @trace_state[val] = val2
     end
 
     def self.build(inherited_context : SpanContext? = nil)
