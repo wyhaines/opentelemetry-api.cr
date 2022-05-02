@@ -74,7 +74,7 @@ describe OpenTelemetry::Propagation::TraceContext do
         new_span_context.is_a?(OpenTelemetry::SpanContext).should be_true
         headers["X-B3-TraceID"].should eq "4bf92f3577b34da6a3ce929d0e0e4736"
         headers["X-Baz"].should eq "qux"
-        headers["tracestate"].should eq "baz=qux,foo=bar"
+        headers["tracestate"].should match /baz=qux,foo=bar/
         OpenTelemetry::Propagation::TraceContext::TraceParent.valid?(headers["traceparent"]).should be_truthy
 
         headers = HTTP::Headers{
@@ -90,7 +90,7 @@ describe OpenTelemetry::Propagation::TraceContext do
         new_context.is_a?(OpenTelemetry::Context).should be_true
         headers["X-B3-TraceID"].should eq "4bf92f3577b34da6a3ce929d0e0e4736"
         headers["X-Baz"].should eq "qux"
-        headers["tracestate"].should eq "baz=qux,foo=bar"
+        headers["tracestate"].should match /baz=qux,foo=bar/
         OpenTelemetry::Propagation::TraceContext::TraceParent.valid?(headers["traceparent"]).should be_truthy
       end
     end
