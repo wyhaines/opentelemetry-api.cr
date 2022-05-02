@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="generator" content="Crystal Docs 1.3.2">
-<meta name="crystal_docs.project_version" content="0.2.2">
+<meta name="crystal_docs.project_version" content="0.2.3">
 <meta name="crystal_docs.project_name" content="opentelemetry-api">
 
 
@@ -13,7 +13,7 @@
 <script type="text/javascript" src="../../js/doc.js"></script>
 
   <meta name="repository-name" content="opentelemetry-api">
-  <title>OpenTelemetry::Propagation::TraceContext - opentelemetry-api 0.2.2</title>
+  <title>OpenTelemetry::Propagation::TraceContext - opentelemetry-api 0.2.3</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "../../";
   </script>
@@ -39,7 +39,7 @@
       </h1>
 
       <span class="project-version">
-        0.2.2
+        0.2.3
       </span>
     </div>
   </div>
@@ -1163,7 +1163,7 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#extract-instance-method" class="signature"><strong>#extract</strong></a>
+        <a href="#extract%28carrier%2Ccontext%3AContext%3F%3Dnil%2Cgetter%3ATextMapGetter.class%3DTextMapGetter%29-instance-method" class="signature"><strong>#extract</strong>(carrier, context : Context? = <span class="n">nil</span>, getter : <span class="t">TextMapGetter</span>.<span class="k">class</span> = <span class="t">TextMapGetter</span>)</a>
         
       </li>
     
@@ -1248,6 +1248,16 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#tracestate%28ctx%3AContext%29-instance-method" class="signature"><strong>#tracestate</strong>(ctx : Context)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#tracestate%28ctx%3ASpanContext%29-instance-method" class="signature"><strong>#tracestate</strong>(ctx : SpanContext)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#tracestate-instance-method" class="signature"><strong>#tracestate</strong></a>
         
       </li>
@@ -1280,8 +1290,8 @@
   <h3>Instance methods inherited from class <code><a href="../../OpenTelemetry/TextMapPropagator.html">OpenTelemetry::TextMapPropagator</a></code></h3>
   
   
-    <a href="../../OpenTelemetry/TextMapPropagator.html#extract-instance-method" class="tooltip">
-      <span>extract</span>
+    <a href="../../OpenTelemetry/TextMapPropagator.html#extract%28carrier%2Ccontext%3AContext%29-instance-method" class="tooltip">
+      <span>extract(carrier, context : Context)</span>
     extract</a>, 
     
   
@@ -1420,12 +1430,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="extract-instance-method">
+    <div class="entry-detail" id="extract(carrier,context:Context?=nil,getter:TextMapGetter.class=TextMapGetter)-instance-method">
       <div class="signature">
         
-        def <strong>extract</strong>
+        def <strong>extract</strong>(carrier, context : <a href="../../OpenTelemetry/Context.html">Context</a>? = <span class="n">nil</span>, getter : <span class="t">TextMapGetter</span>.<span class="k">class</span> = <span class="t">TextMapGetter</span>)
 
-        <a class="method-permalink" href="#extract-instance-method">#</a>
+        <a class="method-permalink" href="#extract%28carrier%2Ccontext%3AContext%3F%3Dnil%2Cgetter%3ATextMapGetter.class%3DTextMapGetter%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1650,6 +1660,34 @@
         def <strong>traceparent</strong>
 
         <a class="method-permalink" href="#traceparent-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="tracestate(ctx:Context)-instance-method">
+      <div class="signature">
+        
+        def <strong>tracestate</strong>(ctx : <a href="../../OpenTelemetry/Context.html">Context</a>)
+
+        <a class="method-permalink" href="#tracestate%28ctx%3AContext%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="tracestate(ctx:SpanContext)-instance-method">
+      <div class="signature">
+        
+        def <strong>tracestate</strong>(ctx : <a href="../../OpenTelemetry/SpanContext.html">SpanContext</a>)
+
+        <a class="method-permalink" href="#tracestate%28ctx%3ASpanContext%29-instance-method">#</a>
       </div>
       
       <br/>

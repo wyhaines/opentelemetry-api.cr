@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="generator" content="Crystal Docs 1.3.2">
-<meta name="crystal_docs.project_version" content="0.2.2">
+<meta name="crystal_docs.project_version" content="0.2.3">
 <meta name="crystal_docs.project_name" content="opentelemetry-api">
 
 
@@ -13,7 +13,7 @@
 <script type="text/javascript" src="../js/doc.js"></script>
 
   <meta name="repository-name" content="opentelemetry-api">
-  <title>OpenTelemetry::SpanContext - opentelemetry-api 0.2.2</title>
+  <title>OpenTelemetry::SpanContext - opentelemetry-api 0.2.3</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "../";
   </script>
@@ -39,7 +39,7 @@
       </h1>
 
       <span class="project-version">
-        0.2.2
+        0.2.3
       </span>
     </div>
   </div>
@@ -1141,12 +1141,41 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
+        <a href="#%5B%5D%28val%29-instance-method" class="signature"><strong>#[]</strong>(val)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%5B%5D%3D%28val%2Cval2%29-instance-method" class="signature"><strong>#[]=</strong>(val, val2)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#is_remote-instance-method" class="signature"><strong>#is_remote</strong></a>
+        
+          <div class="summary"><p>The spec dictates that this name be available: https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/api.md#isvalid</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#is_valid-instance-method" class="signature"><strong>#is_valid</strong></a>
+        
+          <div class="summary"><p>The spec dictates that this name be available: https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/api.md#isvalid</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#remote%3ABool-instance-method" class="signature"><strong>#remote</strong> : Bool</a>
         
       </li>
     
       <li class="entry-summary">
         <a href="#remote%3D%28remote%3ABool%29-instance-method" class="signature"><strong>#remote=</strong>(remote : Bool)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#remote%3F-instance-method" class="signature"><strong>#remote?</strong></a>
         
       </li>
     
@@ -1183,10 +1212,21 @@
       <li class="entry-summary">
         <a href="#trace_state%3AHash%28String%2CString%29-instance-method" class="signature"><strong>#trace_state</strong> : Hash(String, String)</a>
         
+          <div class="summary"><p><span class="flag orange">TODO</span>  We're currenty playing fast and loose with TraceState.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#trace_state%3D%28trace_state%3AHash%28String%2CString%29%29-instance-method" class="signature"><strong>#trace_state=</strong>(trace_state : Hash(String, String))</a>
+        
+          <div class="summary"><p><span class="flag orange">TODO</span>  We're currenty playing fast and loose with TraceState.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#valid%3F-instance-method" class="signature"><strong>#valid?</strong></a>
+        
+          <div class="summary"><p>Returns true is the trace id and span id are non-zero</p></div>
         
       </li>
     
@@ -1334,6 +1374,72 @@
     Instance Method Detail
   </h2>
   
+    <div class="entry-detail" id="[](val)-instance-method">
+      <div class="signature">
+        
+        def <strong>[]</strong>(val)
+
+        <a class="method-permalink" href="#%5B%5D%28val%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="[]=(val,val2)-instance-method">
+      <div class="signature">
+        
+        def <strong>[]=</strong>(val, val2)
+
+        <a class="method-permalink" href="#%5B%5D%3D%28val%2Cval2%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="is_remote-instance-method">
+      <div class="signature">
+        
+        def <strong>is_remote</strong>
+
+        <a class="method-permalink" href="#is_remote-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>The spec dictates that this name be available: https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/api.md#isvalid</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="is_valid-instance-method">
+      <div class="signature">
+        
+        def <strong>is_valid</strong>
+
+        <a class="method-permalink" href="#is_valid-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>The spec dictates that this name be available: https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/api.md#isvalid</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="remote:Bool-instance-method">
       <div class="signature">
         
@@ -1354,6 +1460,20 @@
         def <strong>remote=</strong>(remote : Bool)
 
         <a class="method-permalink" href="#remote%3D%28remote%3ABool%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="remote?-instance-method">
+      <div class="signature">
+        
+        def <strong>remote?</strong>
+
+        <a class="method-permalink" href="#remote%3F-instance-method">#</a>
       </div>
       
       <br/>
@@ -1454,6 +1574,12 @@
         <a class="method-permalink" href="#trace_state%3AHash%28String%2CString%29-instance-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p><span class="flag orange">TODO</span>  We're currenty playing fast and loose with TraceState. TraceState, per the spec,
+should be immutable, however, so this will need to be revised.</p>
+        </div>
+      
       <br/>
       <div>
         
@@ -1467,6 +1593,31 @@
 
         <a class="method-permalink" href="#trace_state%3D%28trace_state%3AHash%28String%2CString%29%29-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p><span class="flag orange">TODO</span>  We're currenty playing fast and loose with TraceState. TraceState, per the spec,
+should be immutable, however, so this will need to be revised.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="valid?-instance-method">
+      <div class="signature">
+        
+        def <strong>valid?</strong>
+
+        <a class="method-permalink" href="#valid%3F-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns true is the trace id and span id are non-zero</p>
+        </div>
       
       <br/>
       <div>

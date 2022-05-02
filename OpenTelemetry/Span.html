@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="generator" content="Crystal Docs 1.3.2">
-<meta name="crystal_docs.project_version" content="0.2.2">
+<meta name="crystal_docs.project_version" content="0.2.3">
 <meta name="crystal_docs.project_name" content="opentelemetry-api">
 
 
@@ -13,7 +13,7 @@
 <script type="text/javascript" src="../js/doc.js"></script>
 
   <meta name="repository-name" content="opentelemetry-api">
-  <title>OpenTelemetry::Span - opentelemetry-api 0.2.2</title>
+  <title>OpenTelemetry::Span - opentelemetry-api 0.2.3</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "../";
   </script>
@@ -39,7 +39,7 @@
       </h1>
 
       <span class="project-version">
-        0.2.2
+        0.2.3
       </span>
     </div>
   </div>
@@ -1157,6 +1157,11 @@ with that measurement. A <code><a href="../OpenTelemetry/Span.html">Span</a></co
   <ul class="list-summary">
     
       <li class="entry-summary">
+        <a href="#build%28name%3D%22%22%2C%26%29-class-method" class="signature"><strong>.build</strong>(name = <span class="s">&quot;&quot;</span>, &)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#validate_id%28id%3ASlice%28UInt8%29%29-class-method" class="signature"><strong>.validate_id</strong>(id : Slice(UInt8))</a>
         
       </li>
@@ -1281,6 +1286,16 @@ with that measurement. A <code><a href="../OpenTelemetry/Span.html">Span</a></co
       </li>
     
       <li class="entry-summary">
+        <a href="#is_recording%3ABool-instance-method" class="signature"><strong>#is_recording</strong> : Bool</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#is_recording%3D%28is_recording%3ABool%29-instance-method" class="signature"><strong>#is_recording=</strong>(is_recording : Bool)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#kind%3AKind-instance-method" class="signature"><strong>#kind</strong> : Kind</a>
         
       </li>
@@ -1322,6 +1337,11 @@ with that measurement. A <code><a href="../OpenTelemetry/Span.html">Span</a></co
     
       <li class="entry-summary">
         <a href="#producer%21-instance-method" class="signature"><strong>#producer!</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#recording%3F%3ABool-instance-method" class="signature"><strong>#recording?</strong> : Bool</a>
         
       </li>
     
@@ -1491,6 +1511,20 @@ with that measurement. A <code><a href="../OpenTelemetry/Span.html">Span</a></co
 </a>
     Class Method Detail
   </h2>
+  
+    <div class="entry-detail" id="build(name=&quot;&quot;,&amp;)-class-method">
+      <div class="signature">
+        
+        def self.<strong>build</strong>(name = <span class="s">&quot;&quot;</span>, &)
+
+        <a class="method-permalink" href="#build%28name%3D%22%22%2C%26%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
   
     <div class="entry-detail" id="validate_id(id:Slice(UInt8))-class-method">
       <div class="signature">
@@ -1812,6 +1846,34 @@ with that measurement. A <code><a href="../OpenTelemetry/Span.html">Span</a></co
       </div>
     </div>
   
+    <div class="entry-detail" id="is_recording:Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>is_recording</strong> : Bool
+
+        <a class="method-permalink" href="#is_recording%3ABool-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="is_recording=(is_recording:Bool)-instance-method">
+      <div class="signature">
+        
+        def <strong>is_recording=</strong>(is_recording : Bool)
+
+        <a class="method-permalink" href="#is_recording%3D%28is_recording%3ABool%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="kind:Kind-instance-method">
       <div class="signature">
         
@@ -1930,6 +1992,20 @@ with that measurement. A <code><a href="../OpenTelemetry/Span.html">Span</a></co
         def <strong>producer!</strong>
 
         <a class="method-permalink" href="#producer%21-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="recording?:Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>recording?</strong> : Bool
+
+        <a class="method-permalink" href="#recording%3F%3ABool-instance-method">#</a>
       </div>
       
       <br/>
