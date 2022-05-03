@@ -142,11 +142,6 @@ module OpenTelemetry
 
         begin
           result = yield span
-          if typeof(result).nilable?
-            final_result = result
-          else
-            final_result = result.not_nil!
-          end
         rescue exception
           unless exception.span_status_message_set
             # If there was an error, then we have to set the span status accordingly, and set the message.
@@ -154,6 +149,7 @@ module OpenTelemetry
             exception.span_status_message_set = true
           end
         end
+
         span.finish = Time.monotonic
         span.wall_finish = Time.utc
         if @span_stack.last == span
@@ -171,11 +167,10 @@ module OpenTelemetry
           Fiber.current.current_span = nil
         end
 
-        if exception
-          raise exception # re-raise the exception
-        else
-          final_result
-        end
+        # re-raise the exception
+        raise exception if exception
+
+        result.as(typeof(yield span))
       end
     end
 
