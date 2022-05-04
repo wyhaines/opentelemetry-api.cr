@@ -120,26 +120,20 @@ module OpenTelemetry
       @provider = val
     end
 
-    # Start a new span in the current trace.
+    # Start a new span in the current trace. A matching `#close_span` call *must* be made to complete the span.
+    def in_span(span_name)
+      @lock.lock
+
+      in_span_impl span_name
+    end
+
+    # Start a new span in the current trace. The block provided will be executed within the context of the new span,
+    # and the span will be closed automatically when the block returns.
     def in_span(span_name)
       @lock.synchronize do
-        span = Span.new(span_name)
-        span.context = SpanContext.build(@span_context) do |ctx|
-          ctx.span_id = @provider.id_generator.span_id
-        end
+        span = in_span_impl(span_name)
 
-        if @root_span.nil? || @exported
-          Fiber.current.current_trace = self
-          @exported = false
-          @root_span = Fiber.current.current_span = @current_span = span
-        else
-          span.parent = @span_stack.last
-          @span_stack.last.children << span
-          Fiber.current.current_span = @current_span = span
-        end
-        @span_stack << span
         exception = nil
-
         begin
           result = yield span
           if typeof(result).nilable?
@@ -154,22 +148,8 @@ module OpenTelemetry
             exception.span_status_message_set = true
           end
         end
-        span.finish = Time.monotonic
-        span.wall_finish = Time.utc
-        if @span_stack.last == span
-          @span_stack.pop
-          Fiber.current.current_span = @current_span = @span_stack.last?
-        else
-          raise InvalidSpanInSpanStackError.new(span_stack.last.inspect, span.inspect)
-        end
-        if span == @root_span && !@exported # && (_exporter = @exporter)
-          if _exporter = @exporter
-            _exporter.export self
-          end
-          @exported = true
-          Fiber.current.current_trace = nil
-          Fiber.current.current_span = nil
-        end
+
+        close_span_impl(span)
 
         if exception
           raise exception # re-raise the exception
@@ -177,6 +157,52 @@ module OpenTelemetry
           final_result
         end
       end
+    end
+
+    private def in_span_impl(span_name)
+      span = Span.new(span_name)
+      span.context = SpanContext.build(@span_context) do |ctx|
+        ctx.span_id = @provider.id_generator.span_id
+      end
+
+      if @root_span.nil? || @exported
+        Fiber.current.current_trace = self
+        @exported = false
+        @root_span = Fiber.current.current_span = @current_span = span
+      else
+        span.parent = @span_stack.last
+        @span_stack.last.children << span
+        Fiber.current.current_span = @current_span = span
+      end
+      @span_stack << span
+
+      span
+    end
+
+    private def close_span_impl(span)
+      span.finish = Time.monotonic
+      span.wall_finish = Time.utc
+      if @span_stack.last == span
+        @span_stack.pop
+        Fiber.current.current_span = @current_span = @span_stack.last?
+      else
+        raise InvalidSpanInSpanStackError.new(span_stack.last.inspect, span.inspect)
+      end
+      if span == @root_span && !@exported # && (_exporter = @exporter)
+        if _exporter = @exporter
+          _exporter.export self
+        end
+        @exported = true
+        Fiber.current.current_trace = nil
+        Fiber.current.current_span = nil
+      end
+    end
+
+    # Close a previosly opened span.
+    def close_span(span = OpenTelemetry.current_span)
+      close_span_impl(span)
+    ensure
+      @lock.unlock
     end
 
     private def set_standard_resource_attributes
