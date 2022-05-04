@@ -136,11 +136,6 @@ module OpenTelemetry
         exception = nil
         begin
           result = yield span
-          if typeof(result).nilable?
-            final_result = result
-          else
-            final_result = result.not_nil!
-          end
         rescue exception
           unless exception.span_status_message_set
             # If there was an error, then we have to set the span status accordingly, and set the message.
@@ -151,11 +146,9 @@ module OpenTelemetry
 
         close_span_impl(span)
 
-        if exception
-          raise exception # re-raise the exception
-        else
-          final_result
-        end
+        raise exception if exception
+
+        result.as(typeof(yield span)) # `typeof` is evaluated at compile_time, which means that the yield is not actually called twice, despite what this looks like.
       end
     end
 
