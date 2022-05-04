@@ -1194,6 +1194,13 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#close_span%28span%3DOpenTelemetry.current_span%29-instance-method" class="signature"><strong>#close_span</strong>(span = <span class="t">OpenTelemetry</span>.current_span)</a>
+        
+          <div class="summary"><p>Close a previosly opened span.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#current_span%3ASpan%3F-instance-method" class="signature"><strong>#current_span</strong> : Span?</a>
         
       </li>
@@ -1220,6 +1227,13 @@
     
       <li class="entry-summary">
         <a href="#id-instance-method" class="signature"><strong>#id</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#in_span%28span_name%29-instance-method" class="signature"><strong>#in_span</strong>(span_name)</a>
+        
+          <div class="summary"><p>Start a new span in the current trace.</p></div>
         
       </li>
     
@@ -1532,6 +1546,25 @@
       </div>
     </div>
   
+    <div class="entry-detail" id="close_span(span=OpenTelemetry.current_span)-instance-method">
+      <div class="signature">
+        
+        def <strong>close_span</strong>(span = <span class="t">OpenTelemetry</span>.current_span)
+
+        <a class="method-permalink" href="#close_span%28span%3DOpenTelemetry.current_span%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Close a previosly opened span.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="current_span:Span?-instance-method">
       <div class="signature">
         
@@ -1616,6 +1649,25 @@
       </div>
     </div>
   
+    <div class="entry-detail" id="in_span(span_name)-instance-method">
+      <div class="signature">
+        
+        def <strong>in_span</strong>(span_name)
+
+        <a class="method-permalink" href="#in_span%28span_name%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Start a new span in the current trace. A matching <code><a href="../OpenTelemetry/Trace.html#close_span%28span%3DOpenTelemetry.current_span%29-instance-method">#close_span</a></code> call <em>must</em> be made to complete the span.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="in_span(span_name,&amp;)-instance-method">
       <div class="signature">
         
@@ -1626,7 +1678,8 @@
       
         <div class="doc">
           
-          <p>Start a new span in the current trace.</p>
+          <p>Start a new span in the current trace. The block provided will be executed within the context of the new span,
+and the span will be closed automatically when the block returns.</p>
         </div>
       
       <br/>
