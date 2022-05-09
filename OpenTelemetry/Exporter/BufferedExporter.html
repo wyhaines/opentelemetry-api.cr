@@ -1054,7 +1054,7 @@
 
   <p>A BufferedExporter provides a channel that can receive data to export,
 defines a <code>start</code> method that will spawn a fiber to consume data that
-enters the channel, and a <code><a href="../../OpenTelemetry/Exporter/BufferedExporter.html#handle%28elements%3AArray%28Elements%29%29-instance-method">#handle</a></code> method that will handle each data
+enters the channel, and a <code>handle</code> method that will handle each data
 element as it is received.</p>
 
 
@@ -1162,16 +1162,6 @@ element as it is received.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#handle%28elements%3AArray%28Elements%29%29-instance-method" class="signature"><strong>#handle</strong>(elements : Array(Elements))</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#handle%28element%3AElements%29-instance-method" class="signature"><strong>#handle</strong>(element : Elements)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
         <a href="#loop_and_receive-instance-method" class="signature"><strong>#loop_and_receive</strong></a>
         
       </li>
@@ -1197,6 +1187,11 @@ element as it is received.</p>
     <a href="../../OpenTelemetry/Exporter/UnbufferedExporter.html#handle%28elements%3AArray%28Elements%29%29-instance-method" class="tooltip">
       <span>handle(elements : Array(Elements))<br/>handle(element)</span>
     handle</a>, 
+    
+  
+    <a href="../../OpenTelemetry/Exporter/UnbufferedExporter.html#inject_telemetry_attributes%28element%29-instance-method" class="tooltip">
+      <span>inject_telemetry_attributes(element)</span>
+    inject_telemetry_attributes</a>, 
     
   
     <a href="../../OpenTelemetry/Exporter/UnbufferedExporter.html#loop_and_receive-instance-method" class="tooltip">
@@ -1319,34 +1314,6 @@ element as it is received.</p>
         def <strong>batch_threshold=</strong>(batch_threshold)
 
         <a class="method-permalink" href="#batch_threshold%3D%28batch_threshold%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="handle(elements:Array(Elements))-instance-method">
-      <div class="signature">
-        abstract 
-        def <strong>handle</strong>(elements : Array(<a href="../../OpenTelemetry/Exporter/Elements.html">Elements</a>))
-
-        <a class="method-permalink" href="#handle%28elements%3AArray%28Elements%29%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="handle(element:Elements)-instance-method">
-      <div class="signature">
-        
-        def <strong>handle</strong>(element : <a href="../../OpenTelemetry/Exporter/Elements.html">Elements</a>)
-
-        <a class="method-permalink" href="#handle%28element%3AElements%29-instance-method">#</a>
       </div>
       
       <br/>
