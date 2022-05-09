@@ -48,12 +48,6 @@ module OpenTelemetry
           sleep 0.01
         end
       end
-
-      abstract def handle(elements : Array(Elements))
-
-      def handle(element : Elements)
-        handle [element]
-      end
     end
   end
 end

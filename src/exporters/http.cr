@@ -57,6 +57,13 @@ module OpenTelemetry
           client.before_request do |request|
             # Ensure that the minimum necessary headers are set.
             setup_standard_headers(request.headers)
+
+            # Set span to be non-recording. # TODO: Should this also be wrapped in a conditional
+            # macro, so that this code doesn't even exist unless the ENV variable is set when the
+            # code is compiled?
+            if ENV["OTEL_CRYSTAL_ENABLE_INSTRUMENTATION_SELF"]? && (span = OpenTelemetry.current_span)
+              span.is_recording = false
+            end
           end
           client
         end

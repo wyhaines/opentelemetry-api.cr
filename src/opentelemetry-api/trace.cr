@@ -164,6 +164,7 @@ module OpenTelemetry
         @root_span = Fiber.current.current_span = @current_span = span
       else
         span.parent = @span_stack.last
+        span.is_recording = @span_stack.last.is_recording # Propagate is_recording to children.
         @span_stack.last.children << span
         Fiber.current.current_span = @current_span = span
       end

@@ -42,7 +42,16 @@ module OpenTelemetry
         end
       end
 
+      @[AlwaysInline]
+      def inject_telemetry_attributes(element)
+        element["telemetry.sdk.name"] = "opentelemetry"
+        element["telemetry.sdk.language"] = "crystal"
+        element["telemetry.sdk.version"] = OpenTelemetry::VERSION
+      end
+
+      @[AlwaysInline]
       def handle(element)
+        inject_telemetry_attributes element
         handle [element]
       end
 
