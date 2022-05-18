@@ -26,7 +26,10 @@ module OpenTelemetry
       property clients : DB::Pool(HTTP::Client)
       @clients_are_initialized : Bool = false
       property headers : HTTP::Headers = HTTP::Headers.new
-      property endpoint_uri : URI = URI.parse("http://localhost:8080/")
+      property endpoint_uri : URI = URI.parse(
+        ENV["OTEL_EXPORTER_OTLP_TRACES_ENDPOINT"]? ||
+        ENV["OTEL_EXPORTER_OTLP_ENDPOINT"]? ||
+        "http://localhost:4318")
 
       def initialize(endpoint : String? = nil, _headers : HTTP::Headers? = nil, _clients : DB::Pool(HTTP::Client)? = nil, *_junk, **_kwjunk)
         @endpoint_uri = endpoint if endpoint
@@ -57,13 +60,6 @@ module OpenTelemetry
           client.before_request do |request|
             # Ensure that the minimum necessary headers are set.
             setup_standard_headers(request.headers)
-
-            # Set span to be non-recording. # TODO: Should this also be wrapped in a conditional
-            # macro, so that this code doesn't even exist unless the ENV variable is set when the
-            # code is compiled?
-            if ENV["OTEL_CRYSTAL_ENABLE_INSTRUMENTATION_SELF"]? && (span = OpenTelemetry.current_span)
-              span.is_recording = false
-            end
           end
           client
         end
@@ -75,7 +71,30 @@ module OpenTelemetry
       def setup_standard_headers(headers)
         headers["Content-Type"] = "application/x-protobuf"
         headers["Connection"] = "keep-alive"
+        add_env_based_headers(headers)
+
         @headers.each do |key, value|
+          headers[key] = value
+        end
+
+        headers
+      end
+
+      private def add_env_based_headers(headers)
+        # TODO: This behavior is not spec-conformant, and will be broken as soon
+        # as more than just Traces are implemented, so clean this up and make it
+        # right sooner rather than later.
+        extra_headers = [] of String
+        if chunk = ENV["OTEL_EXPORTER_OTLP_HEADERS"]?
+          extra_headers.concat chunk.split(/\s*,\s*/)
+        end
+
+        if chunk = ENV["OTEL_EXPORTER_OTLP_TRACES_HEADERS"]?
+          extra_headers.concat chunk.split(/\s*,\s*/)
+        end
+
+        extra_headers.each do |header|
+          key, value = header.split(/\s*=\s*/, 2)
           headers[key] = value
         end
 
@@ -111,15 +130,25 @@ module OpenTelemetry
           begin
             Retriable.retry(max_attempts: 5) do
               @clients.checkout do |client|
-                response = client.post(
-                  @endpoint_uri.path,
-                  body: body
-                )
-                {% begin %}
-              {% if flag? :DEBUG %}
-              pp response
-              {% end %}
-              {% end %}
+                OpenTelemetry.trace.in_span("Send OTLP/HTTP to Ingest") do |span|
+                  # By default, spans wrapping the internal operation of the exporter
+                  # should not be recorded.
+                  if !ENV["OTEL_CRYSTAL_ENABLE_INSTRUMENTATION_SELF"]?
+                    span.is_recording = false
+                  else
+                    span.is_recording = true
+                  end
+
+                  response = client.post(
+                    @endpoint_uri.path,
+                    body: body
+                  )
+                  {% begin %}
+                    {% if flag? :DEBUG %}
+                      pp response
+                    {% end %}
+                  {% end %}
+                end
               end
             end
           rescue ex
