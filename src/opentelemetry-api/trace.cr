@@ -148,7 +148,11 @@ module OpenTelemetry
 
         raise exception if exception
 
-        result.as(typeof(yield span)) # `typeof` is evaluated at compile_time, which means that the yield is not actually called twice, despite what this looks like.
+        begin
+          result.as(typeof(yield span)) # `typeof` is evaluated at compile_time, which means that the yield is not actually called twice, despite what this looks like.
+        rescue ex : TypeCastError
+          result.not_nil!
+        end
       end
     end
 

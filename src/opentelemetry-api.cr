@@ -101,7 +101,7 @@ module OpenTelemetry
   end
 
   def self.trace_provider(
-    service_name : String,
+    service_name : String = ENV["OTEL_SERVICE_NAME"]? || "",
     service_version : String = "",
     exporter = nil
   )
