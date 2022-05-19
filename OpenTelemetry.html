@@ -1543,12 +1543,7 @@ end</code></pre>
       </li>
     
       <li class="entry-summary">
-        <a href="#trace_provider%28service_name%3AString%2Cservice_version%3AString%3D%22%22%2Cexporter%3Dnil%29-class-method" class="signature"><strong>.trace_provider</strong>(service_name : String, service_version : String = <span class="s">&quot;&quot;</span>, exporter = <span class="n">nil</span>)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#trace_provider-class-method" class="signature"><strong>.trace_provider</strong></a>
+        <a href="#trace_provider%28service_name%3AString%3DENV%5B%22OTEL_SERVICE_NAME%22%5D%3F%7C%7C%22%22%2Cservice_version%3AString%3D%22%22%2Cexporter%3Dnil%29-class-method" class="signature"><strong>.trace_provider</strong>(service_name : String = <span class="t">ENV</span>[<span class="s">&quot;OTEL_SERVICE_NAME&quot;</span>]? || <span class="s">&quot;&quot;</span>, service_version : String = <span class="s">&quot;&quot;</span>, exporter = <span class="n">nil</span>)</a>
         
       </li>
     
@@ -1740,26 +1735,12 @@ end</code></pre>
       </div>
     </div>
   
-    <div class="entry-detail" id="trace_provider(service_name:String,service_version:String=&quot;&quot;,exporter=nil)-class-method">
+    <div class="entry-detail" id="trace_provider(service_name:String=ENV[&quot;OTEL_SERVICE_NAME&quot;]?||&quot;&quot;,service_version:String=&quot;&quot;,exporter=nil)-class-method">
       <div class="signature">
         
-        def self.<strong>trace_provider</strong>(service_name : <a href="String.html">String</a>, service_version : <a href="String.html">String</a> = <span class="s">&quot;&quot;</span>, exporter = <span class="n">nil</span>)
+        def self.<strong>trace_provider</strong>(service_name : <a href="String.html">String</a> = <span class="t">ENV</span>[<span class="s">&quot;OTEL_SERVICE_NAME&quot;</span>]? || <span class="s">&quot;&quot;</span>, service_version : <a href="String.html">String</a> = <span class="s">&quot;&quot;</span>, exporter = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#trace_provider%28service_name%3AString%2Cservice_version%3AString%3D%22%22%2Cexporter%3Dnil%29-class-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="trace_provider-class-method">
-      <div class="signature">
-        
-        def self.<strong>trace_provider</strong>
-
-        <a class="method-permalink" href="#trace_provider-class-method">#</a>
+        <a class="method-permalink" href="#trace_provider%28service_name%3AString%3DENV%5B%22OTEL_SERVICE_NAME%22%5D%3F%7C%7C%22%22%2Cservice_version%3AString%3D%22%22%2Cexporter%3Dnil%29-class-method">#</a>
       </div>
       
       <br/>
