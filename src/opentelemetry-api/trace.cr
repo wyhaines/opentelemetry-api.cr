@@ -151,6 +151,7 @@ module OpenTelemetry
         begin
           result.as(typeof(yield span)) # `typeof` is evaluated at compile_time, which means that the yield is not actually called twice, despite what this looks like.
         rescue ex : TypeCastError
+          # Sometimes, the above still fails to protect us. I feel like there has to be a better way to do this, but for now, this works.
           result.not_nil!
         end
       end

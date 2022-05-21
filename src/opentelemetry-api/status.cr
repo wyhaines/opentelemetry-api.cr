@@ -1,5 +1,5 @@
 module OpenTelemetry
-  class Status
+  struct Status
     property code : StatusCode
     property message : String
 
