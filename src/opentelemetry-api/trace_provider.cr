@@ -1,5 +1,6 @@
 require "./provider"
 require "./trace"
+require "./sampler" # SDK
 
 module OpenTelemetry
   # A TraceProvider encapsulates a set of tracing configuration, and provides an interface for creating Trace instances.
