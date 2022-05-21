@@ -138,6 +138,19 @@ describe OpenTelemetry::Trace do
     test_complex_trace.call(trace)
   end
 
+  it "produces traces and spans with the expected ids when using spec compliant naming" do
+    provider = OpenTelemetry::TracerProvider.new(
+      service_name: "my_app_or_library",
+      service_version: "1.1.1",
+      exporter: OpenTelemetry::Exporter.new)
+    tracer = provider.tracer do |t|
+      t.service_name = "microservice a"
+      t.service_version = "1.2.3"
+    end
+
+    test_complex_trace.call(tracer)
+  end
+
   it "produces traces and spans with the expected ids when using default trace creation syntax" do
     trace = OpenTelemetry.trace do |t|
       t.service_name = "microservice b"
@@ -160,6 +173,22 @@ describe OpenTelemetry::Trace do
     trace.service_name.should eq "microservice twee"
     trace.service_version.should eq "1.2.4"
     test_complex_trace.call(OpenTelemetry.trace)
+    OpenTelemetry.config = original_config
+  end
+
+  it "works when using spec compliant naming with a default config and default tracer creation syntax" do
+    original_config = OpenTelemetry.config
+    OpenTelemetry.configure do |config|
+      config.service_name = "microservice twee"
+      config.service_version = "1.2.4"
+      config.exporter = OpenTelemetry::Exporter.new
+    end
+
+    tracer = OpenTelemetry.tracer
+    tracer.provider.exporter.try(&.exporter).should be_a OpenTelemetry::Exporter::Null
+    tracer.service_name.should eq "microservice twee"
+    tracer.service_version.should eq "1.2.4"
+    test_complex_trace.call(OpenTelemetry.tracer)
     OpenTelemetry.config = original_config
   end
 end

@@ -90,6 +90,16 @@ module OpenTelemetry
     provider
   end
 
+  # Alias. The spec uses `TracerProvider`s, which manage `Tracer`s,
+  # but which have internal methods and entities like `trace_id` and `TraceState`
+  # and `TraceFlags`. Then this library was initially written, I opted for uniformly
+  # consistent naming, but that violates the spec. Future versions will move towards
+  # deprecating the uniform naming, in places where that naming violates the spec.
+  # This is here to start preparing for that transition.
+  def self.tracer_provider
+    trace_provider
+  end
+
   def self.trace_provider(&block : TraceProvider::Configuration::Factory ->)
     self.provider = TraceProvider.new do |cfg|
       block.call(cfg)
@@ -98,6 +108,16 @@ module OpenTelemetry
     provider.merge_configuration(@@config)
 
     provider
+  end
+
+  # Alias. The spec uses `TracerProvider`s, which manage `Tracer`s,
+  # but which have internal methods and entities like `trace_id` and `TraceState`
+  # and `TraceFlags`. Then this library was initially written, I opted for uniformly
+  # consistent naming, but that violates the spec. Future versions will move towards
+  # deprecating the uniform naming, in places where that naming violates the spec.
+  # This is here to start preparing for that transition.
+  def self.tracer_provider(&block : TraceProvider::Configuration::Factory ->)
+    self.trace_provider(&block)
   end
 
   def self.trace_provider(
@@ -114,6 +134,23 @@ module OpenTelemetry
     provider
   end
 
+  # Alias. The spec uses `TracerProvider`s, which manage `Tracer`s,
+  # but which have internal methods and entities like `trace_id` and `TraceState`
+  # and `TraceFlags`. Then this library was initially written, I opted for uniformly
+  # consistent naming, but that violates the spec. Future versions will move towards
+  # deprecating the uniform naming, in places where that naming violates the spec.
+  # This is here to start preparing for that transition.
+  def self.tracer_provider(
+    service_name : String = ENV["OTEL_SERVICE_NAME"]? || "",
+    service_version : String = "",
+    exporter = nil
+  )
+    self.trace_provider(
+      service_name: service_name,
+      service_version: service_version,
+      exporter: exporter)
+  end
+
   def self.current_span
     Fiber.current.current_span
   end
@@ -125,11 +162,34 @@ module OpenTelemetry
     r
   end
 
+  # Alias. The spec uses `TracerProvider`s, which manage `Tracer`s,
+  # but which have internal methods and entities like `trace_id` and `TraceState`
+  # and `TraceFlags`. Then this library was initially written, I opted for uniformly
+  # consistent naming, but that violates the spec. Future versions will move towards
+  # deprecating the uniform naming, in places where that naming violates the spec.
+  # This is here to start preparing for that transition.
+  def self.tracer
+    trace
+  end
+
   def self.trace
     trace = self.trace
     yield trace
 
     trace
+  end
+
+  # Alias. The spec uses `TracerProvider`s, which manage `Tracer`s,
+  # but which have internal methods and entities like `trace_id` and `TraceState`
+  # and `TraceFlags`. Then this library was initially written, I opted for uniformly
+  # consistent naming, but that violates the spec. Future versions will move towards
+  # deprecating the uniform naming, in places where that naming violates the spec.
+  # This is here to start preparing for that transition.
+  def self.tracer
+    tracer = self.tracer
+    yield tracer
+
+    tracer
   end
 
   def self.instrumentation_scope
