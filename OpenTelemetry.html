@@ -1001,6 +1001,16 @@
       
     </li>
   
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Tracer" data-name="opentelemetry::tracer">
+      <a href="OpenTelemetry/Tracer.html">Tracer</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/TracerProvider" data-name="opentelemetry::tracerprovider">
+      <a href="OpenTelemetry/TracerProvider.html">TracerProvider</a>
+      
+    </li>
+  
   <li class=" " data-id="opentelemetry-api/OpenTelemetry/ValueArrays" data-name="opentelemetry::valuearrays">
       <a href="OpenTelemetry/ValueArrays.html">ValueArrays</a>
       
@@ -1552,6 +1562,34 @@ end</code></pre>
         
       </li>
     
+      <li class="entry-summary">
+        <a href="#tracer-class-method" class="signature"><strong>.tracer</strong></a>
+        
+          <div class="summary"><p>Alias.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#tracer%28%26%29-class-method" class="signature"><strong>.tracer</strong>(&)</a>
+        
+          <div class="summary"><p>Alias.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#tracer_provider%28service_name%3AString%3DENV%5B%22OTEL_SERVICE_NAME%22%5D%3F%7C%7C%22%22%2Cservice_version%3AString%3D%22%22%2Cexporter%3Dnil%29-class-method" class="signature"><strong>.tracer_provider</strong>(service_name : String = <span class="t">ENV</span>[<span class="s">&quot;OTEL_SERVICE_NAME&quot;</span>]? || <span class="s">&quot;&quot;</span>, service_version : String = <span class="s">&quot;&quot;</span>, exporter = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Alias.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#tracer_provider%28%26block%3ATraceProvider%3A%3AConfiguration%3A%3AFactory-%3E%29-class-method" class="signature"><strong>.tracer_provider</strong>(&block : TraceProvider::Configuration::Factory -> )</a>
+        
+          <div class="summary"><p>Alias.</p></div>
+        
+      </li>
+    
   </ul>
 
 
@@ -1756,6 +1794,102 @@ end</code></pre>
 
         <a class="method-permalink" href="#trace_provider%28%26block%3ATraceProvider%3A%3AConfiguration%3A%3AFactory-%3E%29-class-method">#</a>
       </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="tracer-class-method">
+      <div class="signature">
+        
+        def self.<strong>tracer</strong>
+
+        <a class="method-permalink" href="#tracer-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Alias. The spec uses <code><a href="OpenTelemetry/TracerProvider.html">TracerProvider</a></code>s, which manage <code><a href="OpenTelemetry/Tracer.html">Tracer</a></code>s,
+but which have internal methods and entities like <code>trace_id</code> and <code>TraceState</code>
+and <code><a href="OpenTelemetry/TraceFlags.html">TraceFlags</a></code>. Then this library was initially written, I opted for uniformly
+consistent naming, but that violates the spec. Future versions will move towards
+deprecating the uniform naming, in places where that naming violates the spec.
+This is here to start preparing for that transition.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="tracer(&amp;)-class-method">
+      <div class="signature">
+        
+        def self.<strong>tracer</strong>(&)
+
+        <a class="method-permalink" href="#tracer%28%26%29-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Alias. The spec uses <code><a href="OpenTelemetry/TracerProvider.html">TracerProvider</a></code>s, which manage <code><a href="OpenTelemetry/Tracer.html">Tracer</a></code>s,
+but which have internal methods and entities like <code>trace_id</code> and <code>TraceState</code>
+and <code><a href="OpenTelemetry/TraceFlags.html">TraceFlags</a></code>. Then this library was initially written, I opted for uniformly
+consistent naming, but that violates the spec. Future versions will move towards
+deprecating the uniform naming, in places where that naming violates the spec.
+This is here to start preparing for that transition.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="tracer_provider(service_name:String=ENV[&quot;OTEL_SERVICE_NAME&quot;]?||&quot;&quot;,service_version:String=&quot;&quot;,exporter=nil)-class-method">
+      <div class="signature">
+        
+        def self.<strong>tracer_provider</strong>(service_name : <a href="String.html">String</a> = <span class="t">ENV</span>[<span class="s">&quot;OTEL_SERVICE_NAME&quot;</span>]? || <span class="s">&quot;&quot;</span>, service_version : <a href="String.html">String</a> = <span class="s">&quot;&quot;</span>, exporter = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#tracer_provider%28service_name%3AString%3DENV%5B%22OTEL_SERVICE_NAME%22%5D%3F%7C%7C%22%22%2Cservice_version%3AString%3D%22%22%2Cexporter%3Dnil%29-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Alias. The spec uses <code><a href="OpenTelemetry/TracerProvider.html">TracerProvider</a></code>s, which manage <code><a href="OpenTelemetry/Tracer.html">Tracer</a></code>s,
+but which have internal methods and entities like <code>trace_id</code> and <code>TraceState</code>
+and <code><a href="OpenTelemetry/TraceFlags.html">TraceFlags</a></code>. Then this library was initially written, I opted for uniformly
+consistent naming, but that violates the spec. Future versions will move towards
+deprecating the uniform naming, in places where that naming violates the spec.
+This is here to start preparing for that transition.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="tracer_provider(&amp;block:TraceProvider::Configuration::Factory-&gt;)-class-method">
+      <div class="signature">
+        
+        def self.<strong>tracer_provider</strong>(&block : <a href="OpenTelemetry/Provider/Configuration/Factory.html">TraceProvider::Configuration::Factory</a> -> )
+
+        <a class="method-permalink" href="#tracer_provider%28%26block%3ATraceProvider%3A%3AConfiguration%3A%3AFactory-%3E%29-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Alias. The spec uses <code><a href="OpenTelemetry/TracerProvider.html">TracerProvider</a></code>s, which manage <code><a href="OpenTelemetry/Tracer.html">Tracer</a></code>s,
+but which have internal methods and entities like <code>trace_id</code> and <code>TraceState</code>
+and <code><a href="OpenTelemetry/TraceFlags.html">TraceFlags</a></code>. Then this library was initially written, I opted for uniformly
+consistent naming, but that violates the spec. Future versions will move towards
+deprecating the uniform naming, in places where that naming violates the spec.
+This is here to start preparing for that transition.</p>
+        </div>
       
       <br/>
       <div>

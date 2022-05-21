@@ -1001,6 +1001,16 @@
       
     </li>
   
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Tracer" data-name="opentelemetry::tracer">
+      <a href="../OpenTelemetry/Tracer.html">Tracer</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/TracerProvider" data-name="opentelemetry::tracerprovider">
+      <a href="../OpenTelemetry/TracerProvider.html">TracerProvider</a>
+      
+    </li>
+  
   <li class=" " data-id="opentelemetry-api/OpenTelemetry/ValueArrays" data-name="opentelemetry::valuearrays">
       <a href="../OpenTelemetry/ValueArrays.html">ValueArrays</a>
       
@@ -1105,10 +1115,28 @@
       <li class="entry-summary">
         <a href="#trace%28service_name%3Dnil%2Cservice_version%3Dnil%2Cschema_url%3Dnil%2Cexporter%3Dnil%2Cprovider%3Dself%29-instance-method" class="signature"><strong>#trace</strong>(service_name = <span class="n">nil</span>, service_version = <span class="n">nil</span>, schema_url = <span class="n">nil</span>, exporter = <span class="n">nil</span>, provider = <span class="k">self</span>)</a>
         
+          <div class="summary"><p>Create a new trace, initializing it with the provided parameters.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#trace%28%26%29-instance-method" class="signature"><strong>#trace</strong>(&)</a>
+        
+          <div class="summary"><p>Create a new, uninitialized trace, and pass it to the provided block to complete its initialization.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#tracer%28service_name%3Dnil%2Cservice_version%3Dnil%2Cschema_url%3Dnil%2Cexporter%3Dnil%2Cprovider%3Dself%29-instance-method" class="signature"><strong>#tracer</strong>(service_name = <span class="n">nil</span>, service_version = <span class="n">nil</span>, schema_url = <span class="n">nil</span>, exporter = <span class="n">nil</span>, provider = <span class="k">self</span>)</a>
+        
+          <div class="summary"><p>Alias.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#tracer%28%26%29-instance-method" class="signature"><strong>#tracer</strong>(&)</a>
+        
+          <div class="summary"><p>Alias.</p></div>
         
       </li>
     
@@ -1252,6 +1280,11 @@
         <a class="method-permalink" href="#trace%28service_name%3Dnil%2Cservice_version%3Dnil%2Cschema_url%3Dnil%2Cexporter%3Dnil%2Cprovider%3Dself%29-instance-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>Create a new trace, initializing it with the provided parameters.</p>
+        </div>
+      
       <br/>
       <div>
         
@@ -1265,6 +1298,60 @@
 
         <a class="method-permalink" href="#trace%28%26%29-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>Create a new, uninitialized trace, and pass it to the provided block to
+complete its initialization.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="tracer(service_name=nil,service_version=nil,schema_url=nil,exporter=nil,provider=self)-instance-method">
+      <div class="signature">
+        
+        def <strong>tracer</strong>(service_name = <span class="n">nil</span>, service_version = <span class="n">nil</span>, schema_url = <span class="n">nil</span>, exporter = <span class="n">nil</span>, provider = <span class="k">self</span>)
+
+        <a class="method-permalink" href="#tracer%28service_name%3Dnil%2Cservice_version%3Dnil%2Cschema_url%3Dnil%2Cexporter%3Dnil%2Cprovider%3Dself%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Alias. The spec uses <code><a href="../OpenTelemetry/TracerProvider.html">TracerProvider</a></code>s, which manage <code><a href="../OpenTelemetry/Tracer.html">Tracer</a></code>s,
+but which have internal methods and entities like <code>trace_id</code> and <code>TraceState</code>
+and <code><a href="../OpenTelemetry/TraceFlags.html">TraceFlags</a></code>. Then this library was initially written, I opted for uniformly
+consistent naming, but that violates the spec. Future versions will move towards
+deprecating the uniform naming, in places where that naming violates the spec.
+This is here to start preparing for that transition.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="tracer(&amp;)-instance-method">
+      <div class="signature">
+        
+        def <strong>tracer</strong>(&)
+
+        <a class="method-permalink" href="#tracer%28%26%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Alias. The spec uses <code><a href="../OpenTelemetry/TracerProvider.html">TracerProvider</a></code>s, which manage <code><a href="../OpenTelemetry/Tracer.html">Tracer</a></code>s,
+but which have internal methods and entities like <code>trace_id</code> and <code>TraceState</code>
+and <code><a href="../OpenTelemetry/TraceFlags.html">TraceFlags</a></code>. Then this library was initially written, I opted for uniformly
+consistent naming, but that violates the spec. Future versions will move towards
+deprecating the uniform naming, in places where that naming violates the spec.
+This is here to start preparing for that transition.</p>
+        </div>
       
       <br/>
       <div>
