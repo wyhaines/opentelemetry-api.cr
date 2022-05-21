@@ -267,4 +267,12 @@ module OpenTelemetry
       end
     end
   end
+
+  # Alias. The spec uses `TracerProvider`s, which manage `Tracer`s,
+  # but which have internal methods and entities like `trace_id` and `TraceState`
+  # and `TraceFlags`. Then this library was initially written, I opted for uniformly
+  # consistent naming, but that violates the spec. Future versions will move towards
+  # deprecating the uniform naming, in places where that naming violates the spec.
+  # This is here to start preparing for that transition.
+  alias Tracer = Trace
 end
