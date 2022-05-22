@@ -3,7 +3,7 @@ module OpenTelemetry
   abstract struct Sampler
     def should_sample(
       context : SpanContext,
-      name : String,
+      name : String = "",
       trace_id : Slice(UInt8)? = nil,
       kind : OpenTelemetry::Span::Kind = OpenTelemetry::Span::Kind::Internal,
       attributes : Hash(String, AnyAttribute) = {} of String => AnyAttribute,
@@ -29,6 +29,12 @@ module OpenTelemetry
     # This should probably be overridden with a specific, appropriate name.
     def description
       self.class.name
+    end
+
+    # Crystal doesn't tend to yuse `get_*` names, but this name is provided as an alias for `description` to be more spec compliant,
+    # as it request `getDescription` or a close equivalent.
+    def get_description
+      description
     end
   end
 end
