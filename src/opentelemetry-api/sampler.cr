@@ -5,15 +5,25 @@ module OpenTelemetry
       context : SpanContext,
       name : String,
       trace_id : Slice(UInt8)? = nil,
-      kind : Kind = Kind::Internal,
+      kind : OpenTelemetry::Span::Kind = OpenTelemetry::Span::Kind::Internal,
       attributes : Hash(String, AnyAttribute) = {} of String => AnyAttribute,
       links : Nil = nil # Not implemented yet
     ) : SamplingResult
-      validate(context, name, trace_id, kind, attributes, links)
+      trace_id = validate(context, name, trace_id, kind, attributes, links)
 
       should_sample_impl(context, name, trace_id, kind, attributes, links)
     end
 
+    private def validate(context, name, trace_id, kind, attributes, links)
+      if trace_id
+        raise ArgumentError.new("The trace id in the span context (#{context.trace_id}) must match the provided trace_id (#{trace_id})") unless context.trace_id == trace_id
+        trace_id
+      else
+        context.trace_id
+      end
+    end
+
+    # Override this with sampling decision making logic relevant to the type of sampler being implemented.
     private abstract def should_sample_impl(context, name, trace_id, kind, attributes, links) : SamplingResult
 
     # This should probably be overridden with a specific, appropriate name.

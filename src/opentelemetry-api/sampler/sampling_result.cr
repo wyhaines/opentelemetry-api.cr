@@ -20,7 +20,7 @@ module OpenTelemetry
       )
         @attributes.merge! attributes
         @trace_state.merge! trace_state
-        @description = description || sampler.try(&.description) || "UNKNOWN"
+        @description = sampler.description
       end
     end
   end

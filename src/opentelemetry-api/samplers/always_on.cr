@@ -3,5 +3,9 @@ module OpenTelemetry
     private def should_sample_impl(context, name, trace_id, kind, attributes, links) : SamplingResult
       SamplingResult.new(SamplingResult::Decision::RecordAndSample, self)
     end
+
+    def description
+      "AlwaysOn"
+    end
   end
 end
