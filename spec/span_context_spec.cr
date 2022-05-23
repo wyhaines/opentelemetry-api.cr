@@ -19,6 +19,7 @@ describe OpenTelemetry::SpanContext do
       remote: false,
       trace_id: trace_id,
       span_id: span_id,
+      parent_id: nil,
       trace_flags: trace_flags,
       trace_state: {"key" => "value"}
     )

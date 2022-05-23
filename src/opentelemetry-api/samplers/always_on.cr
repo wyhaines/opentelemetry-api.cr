@@ -1,5 +1,5 @@
 module OpenTelemetry
-  struct Sampler::AlwaysOn < Sampler
+  struct Sampler::AlwaysOn < InheritableSampler
     private def should_sample_impl(context, name, trace_id, kind, attributes, links) : SamplingResult
       SamplingResult.new(SamplingResult::Decision::RecordAndSample)
     end

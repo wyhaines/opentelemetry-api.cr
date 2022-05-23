@@ -21,13 +21,13 @@ module OpenTelemetry
   # ```
   #
   # It uses CRC32 for the hashing/randomization algorithm. CRC32 is
-  # dramatically faster than algorithms like MD5 of SHA1, and it
-  # produces a uniform distribution of the bits for trace id input
+  # dramatically faster than algorithms like MD5 or SHA1, and it
+  # produces a more uniform distribution of the bits for trace id input
   # data than does any of the readily available cryptographic hashing
-  # algorithms.
-  struct Sampler::TraceIdRatioBased < Sampler
+  # algorithms. It is surprisingly good for this purpose.
+  struct Sampler::TraceIdRatioBased < InheritableSampler
     @ratio : Float64
-    @description : String
+    getter description : String
 
     def initialize(ratio : Float)
       @ratio = ratio.to_f64
@@ -55,10 +55,6 @@ module OpenTelemetry
       else
         SamplingResult.new(SamplingResult::Decision::Drop)
       end
-    end
-
-    def description
-      @description
     end
   end
 end
