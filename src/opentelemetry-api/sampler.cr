@@ -1,5 +1,14 @@
 module OpenTelemetry
   abstract struct Sampler
+    def should_sample(span)
+      should_sample(
+        context: span.context,
+        name: span.name,
+        kind: span.kind,
+        attributes: span.attributes
+      )
+    end
+
     def should_sample(
       context : SpanContext,
       name : String = "",
@@ -37,7 +46,7 @@ module OpenTelemetry
     end
   end
 
-    # All Samplers other than the ParentBased sampler should inherit from and implement this interface.
+  # All Samplers other than the ParentBased sampler should inherit from and implement this interface.
   abstract struct InheritableSampler < Sampler
     private abstract def should_sample_impl(context, name, trace_id, kind, attributes, links) : SamplingResult
   end

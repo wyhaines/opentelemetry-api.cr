@@ -1,6 +1,7 @@
 module OpenTelemetry
   struct Sampler::ParentBased < Sampler
     getter description : String
+
     def initialize(
       @root : InheritableSampler,
       @remote_parent_sampled : InheritableSampler = AlwaysOn.new,
@@ -12,7 +13,7 @@ module OpenTelemetry
     end
 
     private def should_sample_impl(context, name, trace_id, kind, attributes, links) : SamplingResult
-      if parent_id = context.parent_id
+      if context.parent_id
         @root
       elsif context.remote? && context.trace_flags.sampled?
         @remote_parent_sampled

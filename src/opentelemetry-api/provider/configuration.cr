@@ -8,6 +8,7 @@ module OpenTelemetry
       service_version : String = "",
       schema_url : String = "",
       exporter : Exporter? = nil,
+      sampler : Sampler = Sampler::AlwaysOn.new,
       interval : Int32 = 5000,
       id_generator : IdGenerator = IdGenerator.new("unique") do
       def initialize(
@@ -15,6 +16,7 @@ module OpenTelemetry
         @service_version : String = "",
         @schema_url : String = "",
         @exporter : Exporter? = nil,
+        @sampler : Sampler = Sampler::AlwaysOn.new,
         @interval : Int32 = 5000,
         id_generator : String = "unique"
       )

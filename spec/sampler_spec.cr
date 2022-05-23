@@ -40,15 +40,6 @@ end
 
 describe OpenTelemetry::Sampler::TraceIdRatioBased do
   it "has the correct description" do
-    trace_id = OpenTelemetry::IdGenerator.trace_id
-    span_id = OpenTelemetry::IdGenerator.span_id
-    trace_flags = OpenTelemetry::TraceFlags.new(0x01)
-    context = OpenTelemetry::SpanContext.build do |ctx|
-      ctx.remote = false
-      ctx.trace_id = trace_id
-      ctx.span_id = span_id
-      ctx.trace_flags = trace_flags
-    end
     sampler = OpenTelemetry::Sampler::TraceIdRatioBased.new(0.5)
     sampler.description.should eq "TraceIdRatioBased{0.5}"
 
@@ -87,7 +78,7 @@ describe OpenTelemetry::Sampler::TraceIdRatioBased do
     count.should be_close(50000, 1000)
 
     count = 0
-    sampler = OpenTelemetry::Sampler::TraceIdRatioBased.new(1,11)
+    sampler = OpenTelemetry::Sampler::TraceIdRatioBased.new(1, 11)
     100000.times do
       trace_id = OpenTelemetry::IdGenerator.trace_id
       span_id = OpenTelemetry::IdGenerator.span_id
@@ -109,15 +100,6 @@ end
 
 describe OpenTelemetry::Sampler::ParentBased do
   it "has the correct description" do
-    trace_id = OpenTelemetry::IdGenerator.trace_id
-    span_id = OpenTelemetry::IdGenerator.span_id
-    trace_flags = OpenTelemetry::TraceFlags.new(0x01)
-    context = OpenTelemetry::SpanContext.build do |ctx|
-      ctx.remote = false
-      ctx.trace_id = trace_id
-      ctx.span_id = span_id
-      ctx.trace_flags = trace_flags
-    end
     sampler = OpenTelemetry::Sampler::ParentBased.new(OpenTelemetry::Sampler::AlwaysOn.new)
     sampler.description.should eq "ParentBased{root=AlwaysOn, remote_parent_sampled=AlwaysOn, remote_parent_not_sampled=AlwaysOff, local_parent_sampled=AlwaysOn, local_parent_not_sampled=OpenTelemetry::Sampler::AlwaysOff()}"
   end

@@ -15,7 +15,8 @@ module OpenTelemetry
     @service_name : String = ""
     @service_version : String = ""
     property schema_url : String = ""
-    property exporter : Exporter? = nil
+    # property exporter : Exporter? = nil
+    @exporter : Exporter? = nil
     getter provider : TraceProvider
     getter span_stack : Array(Span) = [] of Span
     getter root_span : Span? = nil
@@ -60,10 +61,13 @@ module OpenTelemetry
       self.service_name = service_name if service_name
       self.service_version = service_version if service_version
       self.schema_url = schema_url if schema_url
-      self.exporter = exporter if exporter
       self.trace_id = @provider.id_generator.trace_id
       span_context.trace_id = trace_id
       set_standard_resource_attributes
+    end
+
+    def exporter
+      @provider.config.exporter
     end
 
     def []=(key, value)
@@ -108,7 +112,6 @@ module OpenTelemetry
       self.service_name = @provider.service_name
       self.service_version = @provider.service_version
       self.schema_url = @provider.schema_url
-      self.exporter = @provider.exporter
       @provider = val
     end
 
@@ -116,7 +119,6 @@ module OpenTelemetry
       self.service_name = val.service_name if self.service_name.nil? || self.service_name.empty?
       self.service_version = val.service_version if self.service_version.nil? || self.service_version.empty?
       self.schema_url = val.schema_url if self.schema_url.nil? || self.schema_url.empty?
-      self.exporter = val.exporter if self.exporter.nil? || self.exporter.try(&.exporter).is_a?(Exporter::Abstract)
       @provider = val
     end
 
@@ -159,6 +161,7 @@ module OpenTelemetry
 
     private def in_span_impl(span_name)
       span = Span.new(span_name)
+      set_sampling span
       span.context = SpanContext.build(@span_context) do |ctx|
         ctx.span_id = @provider.id_generator.span_id
       end
@@ -179,6 +182,21 @@ module OpenTelemetry
       span
     end
 
+    @[AlwaysInline]
+    def set_sampling(span)
+      case @provider.config.sampler.should_sample(span)
+      when OpenTelemetry::Sampler::SamplingResult::Decision::RecordAndSample
+        span.is_recording = true
+        span.context.trace_flags = OpenTelemetry::TraceFlags::Sampled
+      when OpenTelemetry::Sampler::SamplingResult::Decision::RecordOnly
+        span.is_recording = true
+        span.context.trace_flags = OpenTelemetry::TraceFlags::None
+      else
+        span.is_recording = false
+        span.context.trace_flags = OpenTelemetry::TraceFlags::None
+      end
+    end
+
     private def close_span_impl(span)
       span.finish = Time.monotonic
       span.wall_finish = Time.utc
@@ -189,7 +207,7 @@ module OpenTelemetry
         raise InvalidSpanInSpanStackError.new(span_stack.last.inspect, span.inspect)
       end
       if span == @root_span && !@exported # && (_exporter = @exporter)
-        if _exporter = @exporter
+        if _exporter = exporter
           _exporter.export self
         end
         @exported = true
