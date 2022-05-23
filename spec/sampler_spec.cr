@@ -96,12 +96,37 @@ describe OpenTelemetry::Sampler::TraceIdRatioBased do
 
     count.should be_close(9091, 300)
   end
+
+  it "gets the correct ratio of spans when generating actual traces" do
+    memory = IO::Memory.new
+
+    original_config = OpenTelemetry.config
+    OpenTelemetry.configure do |config|
+      config.exporter = OpenTelemetry::Exporter.new(variant: :io, io: memory)
+      config.sampler = OpenTelemetry::Sampler::TraceIdRatioBased.new(0.5)
+    end
+
+    10.times do
+      OpenTelemetry.trace.in_span("IO Memory Exporter Test") do |span|
+        span.set_attribute("key", "value")
+      end
+    end
+
+    sleep 1
+    puts memory.rewind.gets_to_end
+    sleep 100
+    client_traces = FindJson.from_io(memory)
+
+    client_traces.size.should be_close(500, 50)
+
+    OpenTelemetry.config = original_config
+  end
 end
 
 describe OpenTelemetry::Sampler::ParentBased do
   it "has the correct description" do
     sampler = OpenTelemetry::Sampler::ParentBased.new(OpenTelemetry::Sampler::AlwaysOn.new)
-    sampler.description.should eq "ParentBased{root=AlwaysOn, remote_parent_sampled=AlwaysOn, remote_parent_not_sampled=AlwaysOff, local_parent_sampled=AlwaysOn, local_parent_not_sampled=OpenTelemetry::Sampler::AlwaysOff()}"
+    sampler.description.should eq "ParentBased{root=AlwaysOn, remote_parent_sampled=AlwaysOn, remote_parent_not_sampled=AlwaysOff, local_parent_sampled=AlwaysOn, local_parent_not_sampled=AlwaysOff}"
   end
 
   it "makes the right decisions" do

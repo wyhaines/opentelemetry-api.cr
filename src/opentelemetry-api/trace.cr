@@ -161,9 +161,9 @@ module OpenTelemetry
 
     private def in_span_impl(span_name)
       span = Span.new(span_name)
-      set_sampling span
       span.context = SpanContext.build(@span_context) do |ctx|
         ctx.span_id = @provider.id_generator.span_id
+        set_sampling(span, ctx)
       end
 
       if @root_span.nil? || @exported
@@ -183,17 +183,17 @@ module OpenTelemetry
     end
 
     @[AlwaysInline]
-    def set_sampling(span)
-      case @provider.config.sampler.should_sample(span)
+    def set_sampling(span, ctx)
+      case @provider.config.sampler.should_sample(span).decision
       when OpenTelemetry::Sampler::SamplingResult::Decision::RecordAndSample
         span.is_recording = true
-        span.context.trace_flags = OpenTelemetry::TraceFlags::Sampled
+        ctx.trace_flags = OpenTelemetry::TraceFlags::Sampled
       when OpenTelemetry::Sampler::SamplingResult::Decision::RecordOnly
         span.is_recording = true
-        span.context.trace_flags = OpenTelemetry::TraceFlags::None
+        ctx.trace_flags = OpenTelemetry::TraceFlags::None
       else
         span.is_recording = false
-        span.context.trace_flags = OpenTelemetry::TraceFlags::None
+        ctx.trace_flags = OpenTelemetry::TraceFlags::None
       end
     end
 
@@ -208,6 +208,11 @@ module OpenTelemetry
       end
       if span == @root_span && !@exported # && (_exporter = @exporter)
         if _exporter = exporter
+          # TODO: Re-examine how this works. Currently, all spans,
+          # even those which have been sampled out, are sent to the
+          # exporter, but the ones which are sampled out won't get
+          # sent. It would be better if the ones which are sampled
+          # out just go away early.
           _exporter.export self
         end
         @exported = true
@@ -249,7 +254,9 @@ module OpenTelemetry
     # TODO: Add support for a Resource
     # This method returns a ProtoBuf object containing all of the Trace information.
     def to_protobuf
-      spans_buffer = iterate_span_nodes(root_span, [] of Span).select(&.recording?).map(&.to_protobuf.not_nil!)
+      spans_buffer = iterate_span_nodes(root_span, [] of Span).map(&.to_protobuf.not_nil!)
+      return if spans_buffer.empty?
+      pp "SPANS BUFFER HAS #{spans_buffer.size}"
       Proto::Trace::V1::ResourceSpans.new(
         resource: resource.to_protobuf,
         scope_spans: [

@@ -44,6 +44,10 @@ module OpenTelemetry
     def get_description
       description
     end
+
+    def to_s(io)
+      io << description
+    end
   end
 
   # All Samplers other than the ParentBased sampler should inherit from and implement this interface.
