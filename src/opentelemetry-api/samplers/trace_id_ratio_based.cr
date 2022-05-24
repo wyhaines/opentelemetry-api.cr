@@ -26,6 +26,7 @@ module OpenTelemetry
   # data than does any of the readily available cryptographic hashing
   # algorithms. It is surprisingly good for this purpose.
   struct Sampler::TraceIdRatioBased < InheritableSampler
+    BlankId = Slice(UInt8).new(16, 0)
     @ratio : Float64
     getter description : String
 
@@ -50,8 +51,8 @@ module OpenTelemetry
     end
 
     private def should_sample_impl(context, name, trace_id, kind, attributes, links) : SamplingResult
-      puts "COMPARING #{(Digest::CRC32.checksum(trace_id) / 4294967295_u32)} <= #{@ratio}"
-      if (Digest::CRC32.checksum(trace_id) / 4294967295_u32) <= @ratio
+      tid = trace_id == BlankId ? context.trace_id : trace_id
+      if (Digest::CRC32.checksum(tid) / 4294967295_u32) <= @ratio
         SamplingResult.new(SamplingResult::Decision::RecordAndSample)
       else
         SamplingResult.new(SamplingResult::Decision::Drop)

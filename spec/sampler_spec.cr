@@ -38,7 +38,7 @@ describe OpenTelemetry::Sampler::AlwaysOff do
   end
 end
 
-describe OpenTelemetry::Sampler::TraceIdRatioBased do
+describe OpenTelemetry::Sampler::TraceIdRatioBased, tags: ["TraceIdRatioBased"] do
   it "has the correct description" do
     sampler = OpenTelemetry::Sampler::TraceIdRatioBased.new(0.5)
     sampler.description.should eq "TraceIdRatioBased{0.5}"
@@ -106,18 +106,16 @@ describe OpenTelemetry::Sampler::TraceIdRatioBased do
       config.sampler = OpenTelemetry::Sampler::TraceIdRatioBased.new(0.5)
     end
 
-    10.times do
-      OpenTelemetry.trace.in_span("IO Memory Exporter Test") do |span|
+    1000.times do
+      trace = OpenTelemetry.trace
+      trace.in_span("IO Memory Exporter Test") do |span|
         span.set_attribute("key", "value")
       end
     end
 
     sleep 1
-    puts memory.rewind.gets_to_end
-    sleep 100
-    client_traces = FindJson.from_io(memory)
-
-    client_traces.size.should be_close(500, 50)
+    client_traces, server_traces = FindJson.from_io(memory)
+    server_traces.size.should be_close(500, 50)
 
     OpenTelemetry.config = original_config
   end
