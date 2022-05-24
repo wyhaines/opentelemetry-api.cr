@@ -6,13 +6,16 @@ module OpenTelemetry
   # The `OpenTelemetry::Configuration::Factory` provides this interface.
   class Provider
     struct Configuration
+      DEFAULT_SERVICE_NAME = {{ env("OTEL_SERVICE_NAME") }}
+      DEFAULT_SERVICE_VERSION = {{ env("OTEL_SERVICE_VERSION") }}
+
       class Factory
         property service_name : String = ""
         property service_version : String = ""
         property schema_url : String = ""
         property exporter : Exporter? = nil
         property sampler : Sampler = Sampler::AlwaysOn.new
-        property interval : Int32 = 5000
+        # property interval : Int32 = 5000
         property id_generator : IdGenerator
 
         # :nodoc:
@@ -23,7 +26,7 @@ module OpenTelemetry
             schema_url: instance.schema_url,
             exporter: instance.exporter,
             sampler: instance.sampler,
-            interval: instance.interval,
+            # interval: instance.interval,
             id_generator: instance.id_generator
           )
         end
@@ -35,7 +38,7 @@ module OpenTelemetry
             schema_url: new_config.schema_url,
             exporter: new_config.exporter,
             sampler: new_config.sampler,
-            interval: new_config.interval,
+            # interval: new_config.interval,
             id_generator: new_config.id_generator
           ) do |instance|
             block.call(instance)
@@ -48,7 +51,7 @@ module OpenTelemetry
           schema_url = "",
           exporter = Exporter.new(:abstract),
           sampler = Sampler::AlwaysOn.new,
-          interval = 5000,
+          # interval = 5000,
           id_generator = IdGenerator.new("unique")
         )
           instance = Factory.allocate
@@ -58,7 +61,7 @@ module OpenTelemetry
             schema_url: schema_url,
             exporter: exporter,
             sampler: sampler,
-            interval: interval,
+            # interval: interval,
             id_generator: id_generator)
           yield instance
           _build(instance)
@@ -70,7 +73,7 @@ module OpenTelemetry
           schema_url = "",
           exporter = Exporter.new(:abstract),
           sampler = Sampler::AlwaysOn.new,
-          interval = 5000,
+          # interval = 5000,
           id_generator = IdGenerator.new("unique")
         )
           instance = Factory.allocate
@@ -80,12 +83,21 @@ module OpenTelemetry
             schema_url: schema_url,
             exporter: exporter,
             sampler: sampler,
-            interval: interval,
+            # interval: interval,
             id_generator: id_generator)
           _build(instance)
         end
 
-        def initialize(@service_name, @service_version, @schema_url, @exporter, @sampler, @interval, @id_generator); end
+        def initialize(
+          @service_name,
+          @service_version,
+          @schema_url,
+          @exporter,
+          @sampler,
+          # @interval,
+          @id_generator
+        )
+        end
       end
     end
   end

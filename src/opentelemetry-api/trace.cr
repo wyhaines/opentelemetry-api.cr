@@ -164,7 +164,7 @@ module OpenTelemetry
       span.context = SpanContext.build(@span_context) do |ctx|
         ctx.span_id = @provider.id_generator.span_id
       end
-  
+
       # TODO: Is there a more efficient way to do this than creating and throwing away
       # multiple Span::Context structs?
       span.context = set_sampling(span)
@@ -276,7 +276,7 @@ module OpenTelemetry
     end
 
     def to_json
-      return "" unless iterate_span_nodes(root_span, [] of Span).any? {|spn| spn.can_export?}
+      return "" unless iterate_span_nodes(root_span, [] of Span).any? { |spn| spn.can_export? }
       String.build do |json|
         json << "{\n"
         json << "  \"type\":\"trace\",\n"

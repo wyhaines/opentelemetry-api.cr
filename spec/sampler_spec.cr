@@ -113,7 +113,6 @@ describe OpenTelemetry::Sampler::TraceIdRatioBased, tags: ["TraceIdRatioBased"] 
       end
     end
 
-    sleep 1
     client_traces, server_traces = FindJson.from_io(memory)
     server_traces.size.should be_close(500, 50)
 
