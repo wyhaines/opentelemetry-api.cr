@@ -2,6 +2,23 @@ module OpenTelemetry
   struct Sampler::ParentBased < Sampler
     getter description : String
 
+    def initialize(arg = nil)
+      if arg.is_a? InheritableSampler
+        arg = arg.class.name
+      end
+
+      if arg
+        @root = Provider::Configuration.get_sampler_class_from_name(arg).as(InheritableSampler)
+      else
+        @root = AlwaysOn.new
+      end
+      @remote_parent_sampled = AlwaysOn.new
+      @remote_parent_not_sampled = AlwaysOff.new
+      @local_parent_sampled = AlwaysOn.new
+      @local_parent_not_sampled = AlwaysOff.new
+      @description = "ParentBased{root=#{@root.description}, remote_parent_sampled=#{@remote_parent_sampled.description}, remote_parent_not_sampled=#{@remote_parent_not_sampled.description}, local_parent_sampled=#{@local_parent_sampled.description}, local_parent_not_sampled=#{@local_parent_not_sampled}}"
+    end
+
     def initialize(
       @root : InheritableSampler,
       @remote_parent_sampled : InheritableSampler = AlwaysOn.new,

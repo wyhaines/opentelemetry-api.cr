@@ -40,11 +40,14 @@ end
 
 describe OpenTelemetry::Sampler::TraceIdRatioBased, tags: ["TraceIdRatioBased"] do
   it "has the correct description" do
-    sampler = OpenTelemetry::Sampler::TraceIdRatioBased.new(0.5)
-    sampler.description.should eq "TraceIdRatioBased{0.5}"
+    OpenTelemetry::Sampler::TraceIdRatioBased.new(0.5).description
+      .should eq "TraceIdRatioBased{0.5}"
 
-    sampler = OpenTelemetry::Sampler::TraceIdRatioBased.new(1, 4)
-    sampler.description.should eq "TraceIdRatioBased{0.25}"
+    OpenTelemetry::Sampler::TraceIdRatioBased.new(1, 4).description
+      .should eq "TraceIdRatioBased{0.25}"
+
+    OpenTelemetry::Sampler::TraceIdRatioBased.new("0.153").description
+      .should eq "TraceIdRatioBased{0.153}"
   end
 
   it "delivers the correct ratio of decisions" do

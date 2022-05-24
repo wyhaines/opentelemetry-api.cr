@@ -27,16 +27,22 @@ module OpenTelemetry
   # algorithms. It is surprisingly good for this purpose.
   struct Sampler::TraceIdRatioBased < InheritableSampler
     BlankId = Slice(UInt8).new(16, 0)
-    @ratio : Float64
-    getter description : String
+    @ratio : Float64 = 1.0
+    getter! description : String
 
-    def initialize(ratio : Float)
-      @ratio = ratio.to_f64
-      @description = finish_initialization
+    def initialize(arg = nil)
+      initialize_impl arg.to_s.to_f64
+    end
+
+    def initialize(ratio : Float | String)
+      initialize_impl(ratio.to_f64)
     end
 
     def initialize(numerator : Int, denominator : Int)
-      @ratio = BigRational.new(numerator, denominator).to_f64
+      initialize_impl(BigRational.new(numerator, denominator).to_f64)
+    end
+
+    def initialize_impl(@ratio)
       @description = finish_initialization
     end
 
