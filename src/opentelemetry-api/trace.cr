@@ -15,7 +15,8 @@ module OpenTelemetry
     @service_name : String = ""
     @service_version : String = ""
     property schema_url : String = ""
-    property exporter : Exporter? = nil
+    # property exporter : Exporter? = nil
+    @exporter : Exporter? = nil
     getter provider : TraceProvider
     getter span_stack : Array(Span) = [] of Span
     getter root_span : Span? = nil
@@ -60,10 +61,13 @@ module OpenTelemetry
       self.service_name = service_name if service_name
       self.service_version = service_version if service_version
       self.schema_url = schema_url if schema_url
-      self.exporter = exporter if exporter
       self.trace_id = @provider.id_generator.trace_id
       span_context.trace_id = trace_id
       set_standard_resource_attributes
+    end
+
+    def exporter
+      @provider.config.exporter
     end
 
     def []=(key, value)
@@ -108,7 +112,6 @@ module OpenTelemetry
       self.service_name = @provider.service_name
       self.service_version = @provider.service_version
       self.schema_url = @provider.schema_url
-      self.exporter = @provider.exporter
       @provider = val
     end
 
@@ -116,7 +119,6 @@ module OpenTelemetry
       self.service_name = val.service_name if self.service_name.nil? || self.service_name.empty?
       self.service_version = val.service_version if self.service_version.nil? || self.service_version.empty?
       self.schema_url = val.schema_url if self.schema_url.nil? || self.schema_url.empty?
-      self.exporter = val.exporter if self.exporter.nil? || self.exporter.try(&.exporter).is_a?(Exporter::Abstract)
       @provider = val
     end
 
@@ -163,12 +165,17 @@ module OpenTelemetry
         ctx.span_id = @provider.id_generator.span_id
       end
 
+      # TODO: Is there a more efficient way to do this than creating and throwing away
+      # multiple Span::Context structs?
+      span.context = set_sampling(span)
+
       if @root_span.nil? || @exported
         Fiber.current.current_trace = self
         @exported = false
         @root_span = Fiber.current.current_span = @current_span = span
       else
         span.parent = @span_stack.last
+        span.context.parent_id = span.parent.try &.span_id
         span.is_recording = @span_stack.last.is_recording # Propagate is_recording to children.
         @span_stack.last.children << span
         Fiber.current.current_span = @current_span = span
@@ -176,6 +183,24 @@ module OpenTelemetry
       @span_stack << span
 
       span
+    end
+
+    @[AlwaysInline]
+    def set_sampling(span)
+      ctx = span.context
+      case @provider.config.sampler.should_sample(span).decision
+      when OpenTelemetry::Sampler::SamplingResult::Decision::RecordAndSample
+        span.is_recording = true
+        ctx.trace_flags = OpenTelemetry::TraceFlags::Sampled
+      when OpenTelemetry::Sampler::SamplingResult::Decision::RecordOnly
+        span.is_recording = true
+        ctx.trace_flags = OpenTelemetry::TraceFlags::None
+      else
+        span.is_recording = false
+        ctx.trace_flags = OpenTelemetry::TraceFlags::None
+      end
+
+      ctx
     end
 
     private def close_span_impl(span)
@@ -188,7 +213,12 @@ module OpenTelemetry
         raise InvalidSpanInSpanStackError.new(span_stack.last.inspect, span.inspect)
       end
       if span == @root_span && !@exported # && (_exporter = @exporter)
-        if _exporter = @exporter
+        if _exporter = exporter
+          # TODO: Re-examine how this works. Currently, all spans,
+          # even those which have been sampled out, are sent to the
+          # exporter, but the ones which are sampled out won't get
+          # sent. It would be better if the ones which are sampled
+          # out just go away early.
           _exporter.export self
         end
         @exported = true
@@ -230,7 +260,8 @@ module OpenTelemetry
     # TODO: Add support for a Resource
     # This method returns a ProtoBuf object containing all of the Trace information.
     def to_protobuf
-      spans_buffer = iterate_span_nodes(root_span, [] of Span).select(&.recording?).map(&.to_protobuf.not_nil!)
+      spans_buffer = iterate_span_nodes(root_span, [] of Span).map(&.to_protobuf.not_nil!)
+      return if spans_buffer.empty?
       Proto::Trace::V1::ResourceSpans.new(
         resource: resource.to_protobuf,
         scope_spans: [
@@ -244,6 +275,7 @@ module OpenTelemetry
     end
 
     def to_json
+      return "" unless iterate_span_nodes(root_span, [] of Span).any?(&.can_export?)
       String.build do |json|
         json << "{\n"
         json << "  \"type\":\"trace\",\n"

@@ -24,6 +24,7 @@ module OpenTelemetry
       service_version : String = "",
       schema_url : String = "",
       exporter : Exporter? = nil,
+      sampler : Sampler = Sampler::AlwaysOn.new,
       id_generator = "unique"
     )
       @config = Configuration.new(
@@ -31,6 +32,7 @@ module OpenTelemetry
         service_version: service_version,
         schema_url: schema_url,
         exporter: exporter,
+        sampler: sampler,
         id_generator: id_generator)
     end
 
@@ -42,14 +44,39 @@ module OpenTelemetry
 
     def merge_configuration(secondary_config)
       @config = Configuration::Factory.build(@config) do |cfg|
-        cfg.service_name = secondary_config.service_name if cfg.service_name.empty? || cfg.service_name =~ /service_[a-f\d]{8}-[a-f\d]{4}-[a-f\d]{4}-[a-f\d]{4}-[a-f\d]{12}/
-        cfg.service_version = secondary_config.service_version if cfg.service_version.empty?
-        cfg.schema_url = secondary_config.schema_url if cfg.schema_url.empty?
-        cfg.exporter = secondary_config.exporter if cfg.exporter.nil? || cfg.exporter.try(&.exporter).is_a?(Exporter::Abstract)
-        cfg.id_generator = secondary_config.id_generator if cfg.id_generator.nil? || cfg.id_generator.generator.is_a?(AbstractIdGenerator)
+        merge_service_name(cfg, secondary_config)
+        merge_service_version(cfg, secondary_config)
+        merge_schema_url(cfg, secondary_config)
+        merge_exporter(cfg, secondary_config)
+        merge_sampler(cfg, secondary_config)
+        merge_id_generator(cfg, secondary_config)
       end
 
       self
+    end
+
+    private def merge_service_name(config, secondary_config)
+      config.service_name = secondary_config.service_name if config.service_name.empty? || config.service_name =~ /service_[a-f\d]{8}-[a-f\d]{4}-[a-f\d]{4}-[a-f\d]{4}-[a-f\d]{12}/
+    end
+
+    private def merge_service_version(config, secondary_config)
+      config.service_version = secondary_config.service_version if config.service_version.empty?
+    end
+
+    private def merge_schema_url(config, secondary_config)
+      config.schema_url = secondary_config.schema_url if config.schema_url.empty?
+    end
+
+    private def merge_exporter(config, secondary_config)
+      config.exporter = secondary_config.exporter if config.exporter.nil? || config.exporter.try(&.exporter).is_a?(Exporter::Abstract)
+    end
+
+    private def merge_sampler(config, secondary_config)
+      config.sampler = secondary_config.sampler if config.sampler.nil? || config.sampler.is_a?(Sampler)
+    end
+
+    private def merge_id_generator(config, secondary_config)
+      config.id_generator = secondary_config.id_generator if config.id_generator.nil? || config.id_generator.generator.is_a?(AbstractIdGenerator)
     end
 
     def service_name
@@ -89,6 +116,16 @@ module OpenTelemetry
     def exporter=(val)
       @config = Configuration::Factory.build(@config) do |cfg|
         cfg.exporter = val
+      end
+    end
+
+    def sampler
+      @config.sampler
+    end
+
+    def sampler=(val)
+      @config = Configuration::Factory.build(@config) do |cfg|
+        cfg.sampler = val
       end
     end
 

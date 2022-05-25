@@ -1,5 +1,6 @@
 require "./provider"
 require "./trace"
+require "./sampler" # SDK
 
 module OpenTelemetry
   # A TraceProvider encapsulates a set of tracing configuration, and provides an interface for creating Trace instances.
@@ -9,14 +10,12 @@ module OpenTelemetry
       service_name = nil,
       service_version = nil,
       schema_url = nil,
-      exporter = nil,
       provider = self
     )
       new_trace = Trace.new(
         service_name: service_name,
         service_version: service_version,
         schema_url: schema_url,
-        exporter: exporter,
         provider: provider)
       new_trace.merge_configuration_from_provider = self
 
@@ -33,10 +32,9 @@ module OpenTelemetry
       service_name = nil,
       service_version = nil,
       schema_url = nil,
-      exporter = nil,
       provider = self
     )
-      trace(service_name, service_version, schema_url, exporter, provider)
+      trace(service_name, service_version, schema_url, provider)
     end
 
     # Create a new, uninitialized trace, and pass it to the provided block to

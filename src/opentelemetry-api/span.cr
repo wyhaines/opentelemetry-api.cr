@@ -147,9 +147,14 @@ module OpenTelemetry
       end
     end
 
+    @[AlwaysInline]
+    def can_export?
+      context.trace_flags.sampled? && recording?
+    end
+
     # Return the Protobuf object for the Span.
     def to_protobuf
-      return unless recording?
+      return unless can_export?
 
       span = Proto::Trace::V1::Span.new(
         name: name,
@@ -174,8 +179,7 @@ module OpenTelemetry
     end
 
     def to_json
-      return "" unless recording?
-
+      return "" unless can_export?
       String.build do |json|
         json << "{\n"
         json << "      \"type\":\"span\",\n"

@@ -4,7 +4,8 @@ module OpenTelemetry
   struct SpanContext
     property trace_id : Slice(UInt8)
     property span_id : Slice(UInt8)
-    property trace_flags : TraceFlags
+    property parent_id : Slice(UInt8)? = nil
+    property trace_flags : TraceFlags = TraceFlags::Sampled
     # TODO: We're currenty playing fast and loose with TraceState. TraceState, per the spec,
     # should be immutable, however, so this will need to be revised.
     property trace_state : Hash(String, String) = {} of String => String
@@ -16,7 +17,7 @@ module OpenTelemetry
       @trace_flags = TraceFlags.new(0x00)
     end
 
-    def initialize(@trace_id, @span_id, @trace_flags, @trace_state, @remote = false)
+    def initialize(@trace_id, @span_id, @parent_id, @trace_flags, @trace_state, @remote = false)
     end
 
     def initialize(inherited_context : SpanContext)
@@ -25,12 +26,14 @@ module OpenTelemetry
       @trace_flags = inherited_context.trace_flags
       @remote = inherited_context.remote
       @span_id = IdGenerator.span_id
+      @parent_id = inherited_context.span_id
     end
 
     def initialize(configuration : Config)
       initialize(
         configuration.trace_id,
         configuration.span_id,
+        configuration.parent_id,
         configuration.trace_flags,
         configuration.trace_state,
         configuration.remote)
@@ -78,11 +81,12 @@ module OpenTelemetry
     class Config
       property trace_id : Slice(UInt8)
       property span_id : Slice(UInt8)
+      property parent_id : Slice(UInt8)? = nil
       property trace_flags : TraceFlags
       property trace_state : Hash(String, String) = {} of String => String
       property remote : Bool = false
 
-      def initialize(@trace_id, @span_id)
+      def initialize(@trace_id, @span_id, @parent_id = nil)
         @trace_flags = TraceFlags.new(0x00)
       end
 
@@ -92,6 +96,7 @@ module OpenTelemetry
         @trace_flags = inherited_context.trace_flags
         @remote = inherited_context.remote
         @span_id = IdGenerator.span_id
+        @parent_id = inherited_context.span_id
       end
     end
   end

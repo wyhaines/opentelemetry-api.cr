@@ -9,12 +9,12 @@ describe OpenTelemetry::Exporter do
     OpenTelemetry.configure do |config|
       config.exporter = OpenTelemetry::Exporter.new(variant: :io, io: memory)
     end
-
     trace = OpenTelemetry.trace
     trace.provider.exporter.try(&.exporter).should be_a OpenTelemetry::Exporter::IO
     trace.in_span("IO Memory Exporter Test") do |span|
       span.set_attribute("key", "value")
     end
+
     memory.rewind
     json = memory.gets_to_end
     pjson = JSON.parse(json)
