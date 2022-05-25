@@ -72,7 +72,10 @@ require "random/pcg32"
 module OpenTelemetry
   CSUUID.prng = Random::PCG32.new
   INSTANCE_ID = CSUUID.unique.to_s
+  # The `config` class property provides direct access to the global default TracerProvider configuration.
   class_property config = TraceProvider::Configuration.new(Path[Process.executable_path.to_s].basename)
+
+  # `provider` class property provides direct access to the global default Tracerprovider instance.
   class_property provider = TraceProvider.new
 
   # Use this method to configure the global trace provider.
@@ -84,6 +87,20 @@ module OpenTelemetry
     provider.configure!(@@config)
 
     @@config
+  end
+
+  # Calling `configure` with no block results in a global TracerProvider being configured with the default configuration.
+  # This is useful in cases where it is known that environment variable configuration is going to be used exclusively.
+  #
+  # ```crystal
+  # # Depend on SDK environment variables ([https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/sdk-environment-variables.md](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/sdk-environment-variables.md))
+  # # for all configuration.
+  # OpenTelememtry.configure
+  # ```
+  #
+  def self.configure
+    configure do |_|
+    end
   end
 
   def self.trace_provider
