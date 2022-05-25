@@ -4,6 +4,8 @@
 
 # OpenTelemetry-API
 
+# TODO: A bunch of this needs to be rewritten now that configuration via environment is supported. This note will stay here until the documentation is updated.
+
 This library provides the base functionality for implementing services that utilize
 OpenTelemetry to send or receive metrics, traces, and logs. This library is intended to be focused specifically on OpenTelemetry itself, with most higher level functionality implemented by other libraries which use this library.
 
