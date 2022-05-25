@@ -1588,10 +1588,14 @@ end</code></pre>
       <li class="entry-summary">
         <a href="#config-class-method" class="signature"><strong>.config</strong></a>
         
+          <div class="summary"><p>The <code><a href="OpenTelemetry.html#config-class-method">.config</a></code> class property provides direct access to the global default TracerProvider configuration.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#config%3D%28config%29-class-method" class="signature"><strong>.config=</strong>(config)</a>
+        
+          <div class="summary"><p>The <code><a href="OpenTelemetry.html#config-class-method">.config</a></code> class property provides direct access to the global default TracerProvider configuration.</p></div>
         
       </li>
     
@@ -1599,6 +1603,13 @@ end</code></pre>
         <a href="#configure%28%26block%3ATraceProvider%3A%3AConfiguration%3A%3AFactory-%3E%29-class-method" class="signature"><strong>.configure</strong>(&block : TraceProvider::Configuration::Factory -> )</a>
         
           <div class="summary"><p>Use this method to configure the global trace provider.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#configure-class-method" class="signature"><strong>.configure</strong></a>
+        
+          <div class="summary"><p>Calling <code><a href="OpenTelemetry.html#configure%28%26block%3ATraceProvider%3A%3AConfiguration%3A%3AFactory-%3E%29-class-method">.configure</a></code> with no block results in a global TracerProvider being configured with the default configuration.</p></div>
         
       </li>
     
@@ -1625,10 +1636,14 @@ end</code></pre>
       <li class="entry-summary">
         <a href="#provider-class-method" class="signature"><strong>.provider</strong></a>
         
+          <div class="summary"><p><code><a href="OpenTelemetry.html#provider-class-method">.provider</a></code> class property provides direct access to the global default Tracerprovider instance.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#provider%3D%28provider%29-class-method" class="signature"><strong>.provider=</strong>(provider)</a>
+        
+          <div class="summary"><p><code><a href="OpenTelemetry.html#provider-class-method">.provider</a></code> class property provides direct access to the global default Tracerprovider instance.</p></div>
         
       </li>
     
@@ -1712,6 +1727,11 @@ end</code></pre>
         <a class="method-permalink" href="#config-class-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>The <code><a href="OpenTelemetry.html#config-class-method">.config</a></code> class property provides direct access to the global default TracerProvider configuration.</p>
+        </div>
+      
       <br/>
       <div>
         
@@ -1725,6 +1745,11 @@ end</code></pre>
 
         <a class="method-permalink" href="#config%3D%28config%29-class-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>The <code><a href="OpenTelemetry.html#config-class-method">.config</a></code> class property provides direct access to the global default TracerProvider configuration.</p>
+        </div>
       
       <br/>
       <div>
@@ -1743,6 +1768,29 @@ end</code></pre>
         <div class="doc">
           
           <p>Use this method to configure the global trace provider.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="configure-class-method">
+      <div class="signature">
+        
+        def self.<strong>configure</strong>
+
+        <a class="method-permalink" href="#configure-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Calling <code><a href="OpenTelemetry.html#configure%28%26block%3ATraceProvider%3A%3AConfiguration%3A%3AFactory-%3E%29-class-method">.configure</a></code> with no block results in a global TracerProvider being configured with the default configuration.
+This is useful in cases where it is known that environment variable configuration is going to be used exclusively.</p>
+<pre><code class="language-crystal"><span class="c"># Depend on SDK environment variables ([https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/sdk-environment-variables.md](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/sdk-environment-variables.md))</span>
+<span class="c"># for all configuration.</span>
+<span class="t">OpenTelememtry</span>.configure</code></pre>
         </div>
       
       <br/>
@@ -1815,6 +1863,11 @@ end</code></pre>
         <a class="method-permalink" href="#provider-class-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p><code><a href="OpenTelemetry.html#provider-class-method">.provider</a></code> class property provides direct access to the global default Tracerprovider instance.</p>
+        </div>
+      
       <br/>
       <div>
         
@@ -1828,6 +1881,11 @@ end</code></pre>
 
         <a class="method-permalink" href="#provider%3D%28provider%29-class-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p><code><a href="OpenTelemetry.html#provider-class-method">.provider</a></code> class property provides direct access to the global default Tracerprovider instance.</p>
+        </div>
       
       <br/>
       <div>

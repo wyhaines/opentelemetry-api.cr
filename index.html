@@ -1106,23 +1106,25 @@
     <use href="#octicon-link"/>
   </svg>
 </a>OpenTelemetry-API</h1>
-<h1><a id="todo-a-bunch-of-this-needs-to-be-rewritten-now-that-configuration-via-environment-is-supported.-this-note-will-stay-here-until-the-documentation-is-updated." class="anchor" href="#todo-a-bunch-of-this-needs-to-be-rewritten-now-that-configuration-via-environment-is-supported.-this-note-will-stay-here-until-the-documentation-is-updated.">
+<h1><a id="todo-documentation-must-be-substantially-expanded.-click-through-to-the-full-generated-documentation-for-somewhat-more-complete-documentation." class="anchor" href="#todo-documentation-must-be-substantially-expanded.-click-through-to-the-full-generated-documentation-for-somewhat-more-complete-documentation.">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
-</a>TODO: A bunch of this needs to be rewritten now that configuration via environment is supported. This note will stay here until the documentation is updated.</h1>
+</a>TODO: Documentation must be substantially expanded. Click through to the <a href="#full-generated-documentation">Full Generated Documentation</a> for somewhat more complete documentation.</h1>
 <p>This library provides the base functionality for implementing services that utilize
 OpenTelemetry to send or receive metrics, traces, and logs. This library is intended to be focused specifically on OpenTelemetry itself, with most higher level functionality implemented by other libraries which use this library.</p>
+<p><strong>NOTE:</strong> This shard currently breaks the OpenTelemetry spec because it bundles both API and SDK functionality into a single repository/library. This <a href="https://github.com/wyhaines/opentelemetry-api.cr/issues/5">issue</a> will be addressed very soon, and the SDK functionality will all be moved over to <a href="https://github.com/wyhaines/opentelemetry-sdk.cr">https://github.com/wyhaines/opentelemetry-sdk.cr</a>.</p>
 <p>As a general rule, naming conventions have been based on the standard glossary of OpenTelementry terms, as found at <a href="https://opentelemetry.io/docs/concepts/glossary/">https://opentelemetry.io/docs/concepts/glossary/</a></p>
 <p>The general architecture of the implementation is guided by this document:</p>
 <p><a href="https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/api.md">https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/api.md</a></p>
-<p>The TL;DR is that a <code>TraceProvider</code> is used to create a <code>Tracer</code>. A <code>Span</code> is created inside of the context of a <code>Tracer</code>, and one <code>Span</code> may nest inside of another.</p>
+<p>The TL;DR is that a <code>TracerProvider</code> is used to create a <code>Tracer</code>. A <code>Span</code> is created inside of the context of a <code>Tracer</code>, and one <code>Span</code> may nest inside of another.</p>
 <h2><a id="full-generated-documentation" class="anchor" href="#full-generated-documentation">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>Full Generated Documentation</h2>
 <p><a href="https://wyhaines.github.io/opentelemetry-api.cr/">https://wyhaines.github.io/opentelemetry-api.cr/</a></p>
+<p>A lot of documentation needs to be added. PRs would be welcome!</p>
 <h2><a id="installation" class="anchor" href="#installation">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
@@ -1150,23 +1152,19 @@ OpenTelemetry to send or receive metrics, traces, and logs. This library is inte
     <use href="#octicon-link"/>
   </svg>
 </a>Global Tracer Provider</h2>
-<hr />
+<p>The most common pattern for usage is to have a single global <code>TracerProvider</code> that is configured early in the program's execution. One may create an explicit configuration block, which will configure a globally held <code>TracerProvider</code>:</p>
 <pre><code class="language-crystal"><span class="t">OpenTelemetry</span>.configure <span class="k">do</span> <span class="o">|</span>config<span class="o">|</span>
   config.service_name <span class="o">=</span> <span class="s">&quot;my_app_or_library&quot;</span>
   config.service_version <span class="o">=</span> <span class="s">&quot;1.1.1&quot;</span>
   config.exporter <span class="o">=</span> <span class="t">OpenTelemetry</span><span class="t">::</span><span class="t">IOExporter</span>.<span class="k">new</span>(<span class="n">:STDOUT</span>)
 <span class="k">end</span></code></pre>
-<pre><code class="language-crystal">tracer <span class="o">=</span> <span class="t">OpenTelemetry</span>.tracer_provider(<span class="s">&quot;my_app_or_library&quot;</span>, <span class="s">&quot;1.1.1&quot;</span>)
-tracer <span class="o">=</span> <span class="t">OpenTelemetry</span>.tracer_provider <span class="k">do</span> <span class="o">|</span>tracer<span class="o">|</span>
+<p>One may also provision a <code>TracerProvider</code> object directly:</p>
+<pre><code class="language-crystal">tracer_provider <span class="o">=</span> <span class="t">OpenTelemetry</span>.tracer_provider(<span class="s">&quot;my_app_or_library&quot;</span>, <span class="s">&quot;1.1.1&quot;</span>)
+tracer_provider <span class="o">=</span> <span class="t">OpenTelemetry</span>.tracer_provider <span class="k">do</span> <span class="o">|</span>tracer<span class="o">|</span>
   tracer.service_name <span class="o">=</span> <span class="s">&quot;my_app_or_library&quot;</span>
   tracer.service_version <span class="o">=</span> <span class="s">&quot;1.1.1&quot;</span>
 <span class="k">end</span></code></pre>
-<h2><a id="tracer-providers-as-objects-with-unique-configuration" class="anchor" href="#tracer-providers-as-objects-with-unique-configuration">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>Tracer Providers as Objects With Unique Configuration</h2>
-<hr />
+<p>This allows multiple providers with different configuration to be created:</p>
 <pre><code class="language-crystal">provider_a <span class="o">=</span> <span class="t">OpenTelemetry</span><span class="t">::</span><span class="t">TracerProvider</span>.<span class="k">new</span>(<span class="s">&quot;my_app_or_library&quot;</span>, <span class="s">&quot;1.1.1&quot;</span>)
 provider_a.exporter <span class="o">=</span> <span class="t">OpenTelemetry</span><span class="t">::</span><span class="t">IOExporter</span>.<span class="k">new</span>(<span class="n">:STDOUT</span>)</code></pre>
 <pre><code class="language-crystal">provider_b <span class="o">=</span> <span class="t">OpenTelementry</span><span class="t">::</span><span class="t">TracerProvider</span>.<span class="k">new</span> <span class="k">do</span> <span class="o">|</span>config<span class="o">|</span>
@@ -1174,18 +1172,57 @@ provider_a.exporter <span class="o">=</span> <span class="t">OpenTelemetry</span
   config.service_version <span class="o">=</span> <span class="s">&quot;1.1.1&quot;</span>
   config.exporter <span class="o">=</span> <span class="t">OpenTelemetry</span><span class="t">::</span><span class="t">IOExporter</span>.<span class="k">new</span>(<span class="n">:STDOUT</span>)
 <span class="k">end</span></code></pre>
+<p>All <code>TracerProvider</code> configuration done in this way will respect OpenTelemetry SDK conventions for environment variable based configuration. Configuration delivered via environment variables supercedes configuration delivered in code. For example:</p>
+<p><em>environment variables</em></p>
+<pre><code class="language-bash">OTEL_SERVICE_NAME=&quot;FIB ON COMMAND&quot;
+OTEL_SERVICE_VERSION=&quot;1.1.1&quot;
+OTEL_TRACES_EXPORTER=&quot;stdout&quot;
+OTEL_TRACES_SAMPLER=traceidratio
+OTEL_TRACES_SAMPLER_ARG=&quot;0.10&quot;</code></pre>
+<p><em>configuration code</em></p>
+<pre><code class="language-crystal"><span class="t">OpenTelemetry</span>.configure <span class="k">do</span> <span class="o">|</span>config<span class="o">|</span>
+  config.service_name <span class="o">=</span> <span class="s">&quot;Fibonacci Server&quot;</span>
+  config.service_version <span class="o">=</span> <span class="t">Fibonacci</span><span class="t">::</span><span class="t">VERSION</span>
+  config.exporter <span class="o">=</span> <span class="t">OpenTelemetry</span><span class="t">::</span><span class="t">Exporter</span>.<span class="k">new</span>(variant: <span class="n">:http</span>) <span class="k">do</span> <span class="o">|</span>exporter<span class="o">|</span>
+    exporter <span class="o">=</span> exporter.<span class="k">as</span>(<span class="t">OpenTelemetry</span><span class="t">::</span><span class="t">Exporter</span><span class="t">::</span><span class="t">Http</span>)
+    exporter.endpoint <span class="o">=</span> <span class="s">&quot;https://otlp.nr-data.net:4318/v1/traces&quot;</span>
+    headers <span class="o">=</span> <span class="t">HTTP</span><span class="t">::</span><span class="t">Headers</span>.<span class="k">new</span>
+    headers[<span class="s">&quot;api-key&quot;</span>] <span class="o">=</span> <span class="t">ENV</span>[<span class="s">&quot;NEW_RELIC_LICENSE_KEY&quot;</span>]?.to_s
+    exporter.headers <span class="o">=</span> headers
+  <span class="k">end</span>
+<span class="k">end</span></code></pre>
+<p>In the above code, the code specifies a default set of configuration, which includes setting up an exporter to send traces to New Relic. The environment variable based configuration will override that configuration, however, and will instead setup a Stdout exporter with a sampler that only sends 10% of the traces to the exporter.</p>
+<p>If one knows that one will be depending on environment variable based configuration, the initial configuration of the OpenTelemetry library can be simplified down to:</p>
+<pre><code class="language-crystal"><span class="t">OpenTelemetry</span>.configure</code></pre>
+<p>The SDK will support the full range of environment variable based configuration (<a href="https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/sdk-environment-variables.md">https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/sdk-environment-variables.md</a>), but currently only a minimal subset is supported:</p>
+<ul>
+<li>OTEL_SERVICE_NAME</li>
+<li>OTEL_SERVICE_VERSION</li>
+<li>OTEL_SCHEMA_URL</li>
+<li>OTEL_TRACES_SAMPLER</li>
+<li>OTEL_TRACES_SAMPLER_ARG</li>
+<li>OTEL_TRACES_EXPORTER</li>
+</ul>
 <h2><a id="getting-a-tracer-from-a-provider-object" class="anchor" href="#getting-a-tracer-from-a-provider-object">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>Getting a Tracer From a Provider Object</h2>
-<hr />
-<pre><code class="language-crystal">tracer <span class="o">=</span> provider_a.tracer <span class="c"># Inherit all configuration from the Provider Object</span></code></pre>
+<p>Most typically, when using a default <code>TracerProvider</code>, the SDK will be leveraged to produce a Tracer like so:</p>
+<pre><code class="language-crystal"><span class="t">OpenTelemetry</span>.tracer.in_span(<span class="s">&quot;I am a span&quot;</span>) <span class="k">do</span> <span class="o">|</span>span<span class="o">|</span>
+  span.set_attribute(<span class="s">&quot;key1&quot;</span>, <span class="s">&quot;value1&quot;</span>)
+  span.set_attribute(<span class="s">&quot;key2&quot;</span>, <span class="s">&quot;value2&quot;</span>)
+  span.set_attribute(<span class="s">&quot;key3&quot;</span>, <span class="s">&quot;value3&quot;</span>)
+
+  do_some_work
+<span class="k">end</span></code></pre>
+<p>If one wishes to override the configuration held by a <code>TracerProvider</code> when creating a <code>Tracer</code>, new configuration can be provided in the <code>#tracer</code> method call:</p>
 <pre><code class="language-crystal">tracer <span class="o">=</span> provider_a.tracer(<span class="s">&quot;microservice foo&quot;</span>, <span class="s">&quot;1.2.3&quot;</span>) <span class="c"># Override the configuration</span></code></pre>
 <pre><code class="language-crystal">tracer <span class="o">=</span> provider_a.tracer <span class="k">do</span> <span class="o">|</span>tracer<span class="o">|</span>
   tracer.service_name <span class="o">=</span> <span class="s">&quot;microservice foo&quot;</span>
   tracer.service_version <span class="o">=</span> <span class="s">&quot;1.2.3&quot;</span>
 <span class="k">end</span></code></pre>
+<p>This new configuration only applies to the specific <code>Tracer</code> instance created. It does not alter the <code>TracerProvider</code> configuration.</p>
 <h2><a id="creating-spans-using-a-tracer" class="anchor" href="#creating-spans-using-a-tracer">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
