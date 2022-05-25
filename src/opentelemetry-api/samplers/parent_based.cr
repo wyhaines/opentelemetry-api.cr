@@ -8,7 +8,12 @@ module OpenTelemetry
       end
 
       if arg
-        @root = Provider::Configuration.get_sampler_class_from_name(arg).as(InheritableSampler)
+        pre_root = Provider::Configuration.get_sampler_class_from_name(arg)
+        if pre_root.is_a?(InheritableSampler)
+          @root = pre_root
+        else
+          @root = AlwaysOn.new
+        end
       else
         @root = AlwaysOn.new
       end

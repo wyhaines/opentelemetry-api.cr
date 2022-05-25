@@ -34,14 +34,30 @@ module OpenTelemetry
       # revisited, though maybe that will come naturally when all of
       # the SDK code is surgically separated from the API code.
       def self.default_sampler
-        sampler_class = get_sampler_class_from_name(default_traces_sampler.to_s.split(/_/).first)
+        sampler_class_name = normalize_sampler_name(default_traces_sampler.to_s)
+        sampler_class = get_sampler_class_from_name(
+          sampler_class_name.split(/_/).first)
         if sampler_class == OpenTelemetry::Sampler::ParentBased
-          subsample_classr = get_sampler_class_from_name(default_traces_sampler.to_s.split(/_/, 2).last)
+          subsample_class = get_sampler_class_from_name(
+            normalize_sampler_name(sampler_class_name.split(/_/, 2).last))
 
-          subsampler = get_sampler_instance_from_class_and_arg(subsample_classr, default_traces_sampler_arg)
+          subsampler = get_sampler_instance_from_class_and_arg(subsample_class, default_traces_sampler_arg)
           sampler_class.new(subsampler)
         else
           get_sampler_instance_from_class_and_arg(sampler_class, default_traces_sampler_arg)
+        end
+      end
+
+      private def self.normalize_sampler_name(name)
+        case name.underscore
+        when /^always_on/
+          "alwayson"
+        when /^always_off/
+          "alwaysoff"
+        when /^parent_based(.*)/
+          "parentbased_#{$1}"
+        else
+          name
         end
       end
 
@@ -54,11 +70,10 @@ module OpenTelemetry
       end
 
       def self.get_sampler_class_from_name(name)
-        puts "\nNAME: #{name}"
         {% begin %}
-        case name.downcase
-        {% for name in OpenTelemetry::InheritableSampler.all_subclasses %}
-        when /{{ name.id.stringify.underscore }}/
+        case
+        {% for name in OpenTelemetry::Sampler.all_subclasses %}
+        when {{ name.id.stringify.underscore.gsub(/_/, "").split("::").last }} =~ /#{name}/
           {{ name.id }}
         {% end %}
         else

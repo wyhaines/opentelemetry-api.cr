@@ -262,7 +262,6 @@ module OpenTelemetry
     def to_protobuf
       spans_buffer = iterate_span_nodes(root_span, [] of Span).map(&.to_protobuf.not_nil!)
       return if spans_buffer.empty?
-      pp "SPANS BUFFER HAS #{spans_buffer.size}"
       Proto::Trace::V1::ResourceSpans.new(
         resource: resource.to_protobuf,
         scope_spans: [
@@ -276,7 +275,7 @@ module OpenTelemetry
     end
 
     def to_json
-      return "" unless iterate_span_nodes(root_span, [] of Span).any? { |spn| spn.can_export? }
+      return "" unless iterate_span_nodes(root_span, [] of Span).any?(&.can_export?)
       String.build do |json|
         json << "{\n"
         json << "  \"type\":\"trace\",\n"

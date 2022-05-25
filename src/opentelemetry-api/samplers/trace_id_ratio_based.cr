@@ -32,6 +32,8 @@ module OpenTelemetry
 
     def initialize(arg = nil)
       initialize_impl arg.to_s.to_f64
+    rescue
+      initialize_impl 0_f64
     end
 
     def initialize(ratio : Float | String)
