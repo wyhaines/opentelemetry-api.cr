@@ -216,6 +216,11 @@
       
     </li>
   
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/InheritableSampler" data-name="opentelemetry::inheritablesampler">
+      <a href="../../OpenTelemetry/InheritableSampler.html">InheritableSampler</a>
+      
+    </li>
+  
   <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Instrument" data-name="opentelemetry::instrument">
       <a href="../../OpenTelemetry/Instrument.html">Instrument</a>
       
@@ -921,6 +926,56 @@
       
     </li>
   
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Sampler" data-name="opentelemetry::sampler">
+      <a href="../../OpenTelemetry/Sampler.html">Sampler</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Sampler/AlwaysOff" data-name="opentelemetry::sampler::alwaysoff">
+      <a href="../../OpenTelemetry/Sampler/AlwaysOff.html">AlwaysOff</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Sampler/AlwaysOn" data-name="opentelemetry::sampler::alwayson">
+      <a href="../../OpenTelemetry/Sampler/AlwaysOn.html">AlwaysOn</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Sampler/AlwaysRecord" data-name="opentelemetry::sampler::alwaysrecord">
+      <a href="../../OpenTelemetry/Sampler/AlwaysRecord.html">AlwaysRecord</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Sampler/ParentBased" data-name="opentelemetry::sampler::parentbased">
+      <a href="../../OpenTelemetry/Sampler/ParentBased.html">ParentBased</a>
+      
+    </li>
+  
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Sampler/SamplingResult" data-name="opentelemetry::sampler::samplingresult">
+      <a href="../../OpenTelemetry/Sampler/SamplingResult.html">SamplingResult</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Sampler/SamplingResult/Decision" data-name="opentelemetry::sampler::samplingresult::decision">
+      <a href="../../OpenTelemetry/Sampler/SamplingResult/Decision.html">Decision</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Sampler/TraceIdRatioBased" data-name="opentelemetry::sampler::traceidratiobased">
+      <a href="../../OpenTelemetry/Sampler/TraceIdRatioBased.html">TraceIdRatioBased</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
   <li class=" " data-id="opentelemetry-api/OpenTelemetry/Sendable" data-name="opentelemetry::sendable">
       <a href="../../OpenTelemetry/Sendable.html">Sendable</a>
       
@@ -1114,18 +1169,82 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new%28service_name%3AString%3D%22%22%2Cservice_version%3AString%3D%22%22%2Cschema_url%3AString%3D%22%22%2Cexporter%3AExporter%3F%3Dnil%2Cinterval%3AInt32%3D5000%2Cid_generator%3AString%3D%22unique%22%29-class-method" class="signature"><strong>.new</strong>(service_name : String = <span class="s">&quot;&quot;</span>, service_version : String = <span class="s">&quot;&quot;</span>, schema_url : String = <span class="s">&quot;&quot;</span>, exporter : Exporter? = <span class="n">nil</span>, interval : Int32 = <span class="n">5000</span>, id_generator : String = <span class="s">&quot;unique&quot;</span>)</a>
+        <a href="#new%28service_name%3AString%3D%22%22%2Cservice_version%3AString%3D%22%22%2Cschema_url%3AString%3D%22%22%2Cexporter%3AExporter%3F%3Dnil%2Csampler%3ASampler%3DSampler%3A%3AAlwaysOn.new%2Cid_generator%3AString%3D%22unique%22%29-class-method" class="signature"><strong>.new</strong>(service_name : String = <span class="s">&quot;&quot;</span>, service_version : String = <span class="s">&quot;&quot;</span>, schema_url : String = <span class="s">&quot;&quot;</span>, exporter : Exporter? = <span class="n">nil</span>, sampler : Sampler = <span class="t">Sampler</span><span class="t">::</span><span class="t">AlwaysOn</span>.<span class="k">new</span>, id_generator : String = <span class="s">&quot;unique&quot;</span>)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#new%28service_name%3AString%3D%22%22%2Cservice_version%3AString%3D%22%22%2Cschema_url%3AString%3D%22%22%2Cexporter%3AExporter%3F%3Dnil%2Cinterval%3AInt32%3D5000%2Cid_generator%3AIdGenerator%3DIdGenerator.new%28%22unique%22%29%29-class-method" class="signature"><strong>.new</strong>(service_name : String = <span class="s">&quot;&quot;</span>, service_version : String = <span class="s">&quot;&quot;</span>, schema_url : String = <span class="s">&quot;&quot;</span>, exporter : Exporter? = <span class="n">nil</span>, interval : Int32 = <span class="n">5000</span>, id_generator : IdGenerator = <span class="t">IdGenerator</span>.<span class="k">new</span>(<span class="s">&quot;unique&quot;</span>))</a>
+        <a href="#new%28service_name%3AString%3D%22%22%2Cservice_version%3AString%3D%22%22%2Cschema_url%3AString%3D%22%22%2Cexporter%3AExporter%3F%3Dnil%2Csampler%3ASampler%3DSampler%3A%3AAlwaysOn.new%2Cid_generator%3AIdGenerator%3DIdGenerator.new%28%22unique%22%29%29-class-method" class="signature"><strong>.new</strong>(service_name : String = <span class="s">&quot;&quot;</span>, service_version : String = <span class="s">&quot;&quot;</span>, schema_url : String = <span class="s">&quot;&quot;</span>, exporter : Exporter? = <span class="n">nil</span>, sampler : Sampler = <span class="t">Sampler</span><span class="t">::</span><span class="t">AlwaysOn</span>.<span class="k">new</span>, id_generator : IdGenerator = <span class="t">IdGenerator</span>.<span class="k">new</span>(<span class="s">&quot;unique&quot;</span>))</a>
         
       </li>
     
   </ul>
 
 
+
+  <h2>
+    <a id="class-method-summary" class="anchor" href="#class-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#default_exporter_instance-class-method" class="signature"><strong>.default_exporter_instance</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#default_sampler_instance-class-method" class="signature"><strong>.default_sampler_instance</strong></a>
+        
+          <div class="summary"><p><span class="flag orange">TODO</span>  The Sampler code all feels kind of bodgey.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#default_schema_url-class-method" class="signature"><strong>.default_schema_url</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#default_service_name-class-method" class="signature"><strong>.default_service_name</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#default_service_version-class-method" class="signature"><strong>.default_service_version</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#default_traces_exporter-class-method" class="signature"><strong>.default_traces_exporter</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#default_traces_sampler-class-method" class="signature"><strong>.default_traces_sampler</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#default_traces_sampler_arg-class-method" class="signature"><strong>.default_traces_sampler_arg</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#get_sampler_class_from_name%28name%29-class-method" class="signature"><strong>.get_sampler_class_from_name</strong>(name)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#get_sampler_instance_from_class_and_arg%28klass%2Carg%3Dnil%29-class-method" class="signature"><strong>.get_sampler_instance_from_class_and_arg</strong>(klass, arg = <span class="n">nil</span>)</a>
+        
+      </li>
+    
+  </ul>
 
 
 
@@ -1145,7 +1264,7 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#copy_with%28service_name_service_name%3D%40service_name%2Cservice_version_service_version%3D%40service_version%2Cschema_url_schema_url%3D%40schema_url%2Cexporter_exporter%3D%40exporter%2Cinterval_interval%3D%40interval%2Cid_generator_id_generator%3D%40id_generator%29-instance-method" class="signature"><strong>#copy_with</strong>(service_name _service_name = @service_name, service_version _service_version = @service_version, schema_url _schema_url = @schema_url, exporter _exporter = @exporter, interval _interval = @interval, id_generator _id_generator = @id_generator)</a>
+        <a href="#copy_with%28service_name_service_name%3D%40service_name%2Cservice_version_service_version%3D%40service_version%2Cschema_url_schema_url%3D%40schema_url%2Cexporter_exporter%3D%40exporter%2Csampler_sampler%3D%40sampler%2Cid_generator_id_generator%3D%40id_generator%29-instance-method" class="signature"><strong>#copy_with</strong>(service_name _service_name = @service_name, service_version _service_version = @service_version, schema_url _schema_url = @schema_url, exporter _exporter = @exporter, sampler _sampler = @sampler, id_generator _id_generator = @id_generator)</a>
         
       </li>
     
@@ -1160,7 +1279,7 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#interval%3AInt32-instance-method" class="signature"><strong>#interval</strong> : Int32</a>
+        <a href="#sampler%3ASampler-instance-method" class="signature"><strong>#sampler</strong> : Sampler</a>
         
       </li>
     
@@ -1229,12 +1348,12 @@
     Constructor Detail
   </h2>
   
-    <div class="entry-detail" id="new(service_name:String=&quot;&quot;,service_version:String=&quot;&quot;,schema_url:String=&quot;&quot;,exporter:Exporter?=nil,interval:Int32=5000,id_generator:String=&quot;unique&quot;)-class-method">
+    <div class="entry-detail" id="new(service_name:String=&quot;&quot;,service_version:String=&quot;&quot;,schema_url:String=&quot;&quot;,exporter:Exporter?=nil,sampler:Sampler=Sampler::AlwaysOn.new,id_generator:String=&quot;unique&quot;)-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(service_name : <a href="../../String.html">String</a> = <span class="s">&quot;&quot;</span>, service_version : <a href="../../String.html">String</a> = <span class="s">&quot;&quot;</span>, schema_url : <a href="../../String.html">String</a> = <span class="s">&quot;&quot;</span>, exporter : <a href="../../OpenTelemetry/Exporter.html">Exporter</a>? = <span class="n">nil</span>, interval : Int32 = <span class="n">5000</span>, id_generator : <a href="../../String.html">String</a> = <span class="s">&quot;unique&quot;</span>)
+        def self.<strong>new</strong>(service_name : <a href="../../String.html">String</a> = <span class="s">&quot;&quot;</span>, service_version : <a href="../../String.html">String</a> = <span class="s">&quot;&quot;</span>, schema_url : <a href="../../String.html">String</a> = <span class="s">&quot;&quot;</span>, exporter : <a href="../../OpenTelemetry/Exporter.html">Exporter</a>? = <span class="n">nil</span>, sampler : <a href="../../OpenTelemetry/Sampler.html">Sampler</a> = <span class="t">Sampler</span><span class="t">::</span><span class="t">AlwaysOn</span>.<span class="k">new</span>, id_generator : <a href="../../String.html">String</a> = <span class="s">&quot;unique&quot;</span>)
 
-        <a class="method-permalink" href="#new%28service_name%3AString%3D%22%22%2Cservice_version%3AString%3D%22%22%2Cschema_url%3AString%3D%22%22%2Cexporter%3AExporter%3F%3Dnil%2Cinterval%3AInt32%3D5000%2Cid_generator%3AString%3D%22unique%22%29-class-method">#</a>
+        <a class="method-permalink" href="#new%28service_name%3AString%3D%22%22%2Cservice_version%3AString%3D%22%22%2Cschema_url%3AString%3D%22%22%2Cexporter%3AExporter%3F%3Dnil%2Csampler%3ASampler%3DSampler%3A%3AAlwaysOn.new%2Cid_generator%3AString%3D%22unique%22%29-class-method">#</a>
       </div>
       
       <br/>
@@ -1243,12 +1362,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="new(service_name:String=&quot;&quot;,service_version:String=&quot;&quot;,schema_url:String=&quot;&quot;,exporter:Exporter?=nil,interval:Int32=5000,id_generator:IdGenerator=IdGenerator.new(&quot;unique&quot;))-class-method">
+    <div class="entry-detail" id="new(service_name:String=&quot;&quot;,service_version:String=&quot;&quot;,schema_url:String=&quot;&quot;,exporter:Exporter?=nil,sampler:Sampler=Sampler::AlwaysOn.new,id_generator:IdGenerator=IdGenerator.new(&quot;unique&quot;))-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(service_name : <a href="../../String.html">String</a> = <span class="s">&quot;&quot;</span>, service_version : <a href="../../String.html">String</a> = <span class="s">&quot;&quot;</span>, schema_url : <a href="../../String.html">String</a> = <span class="s">&quot;&quot;</span>, exporter : <a href="../../OpenTelemetry/Exporter.html">Exporter</a>? = <span class="n">nil</span>, interval : Int32 = <span class="n">5000</span>, id_generator : <a href="../../OpenTelemetry/IdGenerator.html">IdGenerator</a> = <span class="t">IdGenerator</span>.<span class="k">new</span>(<span class="s">&quot;unique&quot;</span>))
+        def self.<strong>new</strong>(service_name : <a href="../../String.html">String</a> = <span class="s">&quot;&quot;</span>, service_version : <a href="../../String.html">String</a> = <span class="s">&quot;&quot;</span>, schema_url : <a href="../../String.html">String</a> = <span class="s">&quot;&quot;</span>, exporter : <a href="../../OpenTelemetry/Exporter.html">Exporter</a>? = <span class="n">nil</span>, sampler : <a href="../../OpenTelemetry/Sampler.html">Sampler</a> = <span class="t">Sampler</span><span class="t">::</span><span class="t">AlwaysOn</span>.<span class="k">new</span>, id_generator : <a href="../../OpenTelemetry/IdGenerator.html">IdGenerator</a> = <span class="t">IdGenerator</span>.<span class="k">new</span>(<span class="s">&quot;unique&quot;</span>))
 
-        <a class="method-permalink" href="#new%28service_name%3AString%3D%22%22%2Cservice_version%3AString%3D%22%22%2Cschema_url%3AString%3D%22%22%2Cexporter%3AExporter%3F%3Dnil%2Cinterval%3AInt32%3D5000%2Cid_generator%3AIdGenerator%3DIdGenerator.new%28%22unique%22%29%29-class-method">#</a>
+        <a class="method-permalink" href="#new%28service_name%3AString%3D%22%22%2Cservice_version%3AString%3D%22%22%2Cschema_url%3AString%3D%22%22%2Cexporter%3AExporter%3F%3Dnil%2Csampler%3ASampler%3DSampler%3A%3AAlwaysOn.new%2Cid_generator%3AIdGenerator%3DIdGenerator.new%28%22unique%22%29%29-class-method">#</a>
       </div>
       
       <br/>
@@ -1259,6 +1378,163 @@
   
 
 
+
+  <h2>
+    <a id="class-method-detail" class="anchor" href="#class-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="default_exporter_instance-class-method">
+      <div class="signature">
+        
+        def self.<strong>default_exporter_instance</strong>
+
+        <a class="method-permalink" href="#default_exporter_instance-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="default_sampler_instance-class-method">
+      <div class="signature">
+        
+        def self.<strong>default_sampler_instance</strong>
+
+        <a class="method-permalink" href="#default_sampler_instance-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p><span class="flag orange">TODO</span>  The Sampler code all feels kind of bodgey. It should be
+revisited, though maybe that will come naturally when all of
+the SDK code is surgically separated from the API code.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="default_schema_url-class-method">
+      <div class="signature">
+        
+        def self.<strong>default_schema_url</strong>
+
+        <a class="method-permalink" href="#default_schema_url-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="default_service_name-class-method">
+      <div class="signature">
+        
+        def self.<strong>default_service_name</strong>
+
+        <a class="method-permalink" href="#default_service_name-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="default_service_version-class-method">
+      <div class="signature">
+        
+        def self.<strong>default_service_version</strong>
+
+        <a class="method-permalink" href="#default_service_version-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="default_traces_exporter-class-method">
+      <div class="signature">
+        
+        def self.<strong>default_traces_exporter</strong>
+
+        <a class="method-permalink" href="#default_traces_exporter-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="default_traces_sampler-class-method">
+      <div class="signature">
+        
+        def self.<strong>default_traces_sampler</strong>
+
+        <a class="method-permalink" href="#default_traces_sampler-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="default_traces_sampler_arg-class-method">
+      <div class="signature">
+        
+        def self.<strong>default_traces_sampler_arg</strong>
+
+        <a class="method-permalink" href="#default_traces_sampler_arg-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="get_sampler_class_from_name(name)-class-method">
+      <div class="signature">
+        
+        def self.<strong>get_sampler_class_from_name</strong>(name)
+
+        <a class="method-permalink" href="#get_sampler_class_from_name%28name%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="get_sampler_instance_from_class_and_arg(klass,arg=nil)-class-method">
+      <div class="signature">
+        
+        def self.<strong>get_sampler_instance_from_class_and_arg</strong>(klass, arg = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#get_sampler_instance_from_class_and_arg%28klass%2Carg%3Dnil%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
 
 
 
@@ -1285,12 +1561,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="copy_with(service_name_service_name=@service_name,service_version_service_version=@service_version,schema_url_schema_url=@schema_url,exporter_exporter=@exporter,interval_interval=@interval,id_generator_id_generator=@id_generator)-instance-method">
+    <div class="entry-detail" id="copy_with(service_name_service_name=@service_name,service_version_service_version=@service_version,schema_url_schema_url=@schema_url,exporter_exporter=@exporter,sampler_sampler=@sampler,id_generator_id_generator=@id_generator)-instance-method">
       <div class="signature">
         
-        def <strong>copy_with</strong>(service_name _service_name = @service_name, service_version _service_version = @service_version, schema_url _schema_url = @schema_url, exporter _exporter = @exporter, interval _interval = @interval, id_generator _id_generator = @id_generator)
+        def <strong>copy_with</strong>(service_name _service_name = @service_name, service_version _service_version = @service_version, schema_url _schema_url = @schema_url, exporter _exporter = @exporter, sampler _sampler = @sampler, id_generator _id_generator = @id_generator)
 
-        <a class="method-permalink" href="#copy_with%28service_name_service_name%3D%40service_name%2Cservice_version_service_version%3D%40service_version%2Cschema_url_schema_url%3D%40schema_url%2Cexporter_exporter%3D%40exporter%2Cinterval_interval%3D%40interval%2Cid_generator_id_generator%3D%40id_generator%29-instance-method">#</a>
+        <a class="method-permalink" href="#copy_with%28service_name_service_name%3D%40service_name%2Cservice_version_service_version%3D%40service_version%2Cschema_url_schema_url%3D%40schema_url%2Cexporter_exporter%3D%40exporter%2Csampler_sampler%3D%40sampler%2Cid_generator_id_generator%3D%40id_generator%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1327,12 +1603,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="interval:Int32-instance-method">
+    <div class="entry-detail" id="sampler:Sampler-instance-method">
       <div class="signature">
         
-        def <strong>interval</strong> : Int32
+        def <strong>sampler</strong> : <a href="../../OpenTelemetry/Sampler.html">Sampler</a>
 
-        <a class="method-permalink" href="#interval%3AInt32-instance-method">#</a>
+        <a class="method-permalink" href="#sampler%3ASampler-instance-method">#</a>
       </div>
       
       <br/>

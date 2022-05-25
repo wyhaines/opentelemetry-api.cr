@@ -216,6 +216,11 @@
       
     </li>
   
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/InheritableSampler" data-name="opentelemetry::inheritablesampler">
+      <a href="../OpenTelemetry/InheritableSampler.html">InheritableSampler</a>
+      
+    </li>
+  
   <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Instrument" data-name="opentelemetry::instrument">
       <a href="../OpenTelemetry/Instrument.html">Instrument</a>
       
@@ -921,6 +926,56 @@
       
     </li>
   
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Sampler" data-name="opentelemetry::sampler">
+      <a href="../OpenTelemetry/Sampler.html">Sampler</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Sampler/AlwaysOff" data-name="opentelemetry::sampler::alwaysoff">
+      <a href="../OpenTelemetry/Sampler/AlwaysOff.html">AlwaysOff</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Sampler/AlwaysOn" data-name="opentelemetry::sampler::alwayson">
+      <a href="../OpenTelemetry/Sampler/AlwaysOn.html">AlwaysOn</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Sampler/AlwaysRecord" data-name="opentelemetry::sampler::alwaysrecord">
+      <a href="../OpenTelemetry/Sampler/AlwaysRecord.html">AlwaysRecord</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Sampler/ParentBased" data-name="opentelemetry::sampler::parentbased">
+      <a href="../OpenTelemetry/Sampler/ParentBased.html">ParentBased</a>
+      
+    </li>
+  
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Sampler/SamplingResult" data-name="opentelemetry::sampler::samplingresult">
+      <a href="../OpenTelemetry/Sampler/SamplingResult.html">SamplingResult</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Sampler/SamplingResult/Decision" data-name="opentelemetry::sampler::samplingresult::decision">
+      <a href="../OpenTelemetry/Sampler/SamplingResult/Decision.html">Decision</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Sampler/TraceIdRatioBased" data-name="opentelemetry::sampler::traceidratiobased">
+      <a href="../OpenTelemetry/Sampler/TraceIdRatioBased.html">TraceIdRatioBased</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
   <li class=" " data-id="opentelemetry-api/OpenTelemetry/Sendable" data-name="opentelemetry::sendable">
       <a href="../OpenTelemetry/Sendable.html">Sendable</a>
       
@@ -1170,6 +1225,16 @@
     merge_configuration</a>, 
     
   
+    <a href="../OpenTelemetry/Provider.html#sampler-instance-method" class="tooltip">
+      <span>sampler</span>
+    sampler</a>, 
+    
+  
+    <a href="../OpenTelemetry/Provider.html#sampler%3D%28val%29-instance-method" class="tooltip">
+      <span>sampler=(val)</span>
+    sampler=</a>, 
+    
+  
     <a href="../OpenTelemetry/Provider.html#schema_url-instance-method" class="tooltip">
       <span>schema_url</span>
     schema_url</a>, 
@@ -1207,8 +1272,8 @@
   <h3>Constructor methods inherited from class <code><a href="../OpenTelemetry/Provider.html">OpenTelemetry::Provider</a></code></h3>
   
   
-    <a href="../OpenTelemetry/Provider.html#new%28service_name%3AString%3D%22%22%2Cservice_version%3AString%3D%22%22%2Cschema_url%3AString%3D%22%22%2Cexporter%3AExporter%3F%3Dnil%2Cid_generator%3D%22unique%22%29-class-method" class="tooltip">
-      <span>new(service_name : String = <span class="s">&quot;&quot;</span>, service_version : String = <span class="s">&quot;&quot;</span>, schema_url : String = <span class="s">&quot;&quot;</span>, exporter : Exporter? = <span class="n">nil</span>, id_generator = <span class="s">&quot;unique&quot;</span>)<br/>new(&block : Configuration::Factory -> )</span>
+    <a href="../OpenTelemetry/Provider.html#new%28service_name%3AString%3D%22%22%2Cservice_version%3AString%3D%22%22%2Cschema_url%3AString%3D%22%22%2Cexporter%3AExporter%3F%3Dnil%2Csampler%3ASampler%3DSampler%3A%3AAlwaysOn.new%2Cid_generator%3D%22unique%22%29-class-method" class="tooltip">
+      <span>new(service_name : String = <span class="s">&quot;&quot;</span>, service_version : String = <span class="s">&quot;&quot;</span>, schema_url : String = <span class="s">&quot;&quot;</span>, exporter : Exporter? = <span class="n">nil</span>, sampler : Sampler = <span class="t">Sampler</span><span class="t">::</span><span class="t">AlwaysOn</span>.<span class="k">new</span>, id_generator = <span class="s">&quot;unique&quot;</span>)<br/>new(&block : Configuration::Factory -> )</span>
     new</a>
     
   

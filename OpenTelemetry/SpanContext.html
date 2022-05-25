@@ -216,6 +216,11 @@
       
     </li>
   
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/InheritableSampler" data-name="opentelemetry::inheritablesampler">
+      <a href="../OpenTelemetry/InheritableSampler.html">InheritableSampler</a>
+      
+    </li>
+  
   <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Instrument" data-name="opentelemetry::instrument">
       <a href="../OpenTelemetry/Instrument.html">Instrument</a>
       
@@ -921,6 +926,56 @@
       
     </li>
   
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Sampler" data-name="opentelemetry::sampler">
+      <a href="../OpenTelemetry/Sampler.html">Sampler</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Sampler/AlwaysOff" data-name="opentelemetry::sampler::alwaysoff">
+      <a href="../OpenTelemetry/Sampler/AlwaysOff.html">AlwaysOff</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Sampler/AlwaysOn" data-name="opentelemetry::sampler::alwayson">
+      <a href="../OpenTelemetry/Sampler/AlwaysOn.html">AlwaysOn</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Sampler/AlwaysRecord" data-name="opentelemetry::sampler::alwaysrecord">
+      <a href="../OpenTelemetry/Sampler/AlwaysRecord.html">AlwaysRecord</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Sampler/ParentBased" data-name="opentelemetry::sampler::parentbased">
+      <a href="../OpenTelemetry/Sampler/ParentBased.html">ParentBased</a>
+      
+    </li>
+  
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Sampler/SamplingResult" data-name="opentelemetry::sampler::samplingresult">
+      <a href="../OpenTelemetry/Sampler/SamplingResult.html">SamplingResult</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Sampler/SamplingResult/Decision" data-name="opentelemetry::sampler::samplingresult::decision">
+      <a href="../OpenTelemetry/Sampler/SamplingResult/Decision.html">Decision</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Sampler/TraceIdRatioBased" data-name="opentelemetry::sampler::traceidratiobased">
+      <a href="../OpenTelemetry/Sampler/TraceIdRatioBased.html">TraceIdRatioBased</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
   <li class=" " data-id="opentelemetry-api/OpenTelemetry/Sendable" data-name="opentelemetry::sendable">
       <a href="../OpenTelemetry/Sendable.html">Sendable</a>
       
@@ -1098,7 +1153,7 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new%28trace_id%2Cspan_id%2Ctrace_flags%2Ctrace_state%2Cremote%3Dfalse%29-class-method" class="signature"><strong>.new</strong>(trace_id, span_id, trace_flags, trace_state, remote = <span class="n">false</span>)</a>
+        <a href="#new%28trace_id%2Cspan_id%2Cparent_id%2Ctrace_flags%2Ctrace_state%2Cremote%3Dfalse%29-class-method" class="signature"><strong>.new</strong>(trace_id, span_id, parent_id, trace_flags, trace_state, remote = <span class="n">false</span>)</a>
         
       </li>
     
@@ -1171,6 +1226,16 @@
         <a href="#is_valid-instance-method" class="signature"><strong>#is_valid</strong></a>
         
           <div class="summary"><p>The spec dictates that this name be available: https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/api.md#isvalid</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#parent_id%3ASlice%28UInt8%29%3F-instance-method" class="signature"><strong>#parent_id</strong> : Slice(UInt8)?</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#parent_id%3D%28parent_id%3ASlice%28UInt8%29%3F%29-instance-method" class="signature"><strong>#parent_id=</strong>(parent_id : Slice(UInt8)?)</a>
         
       </li>
     
@@ -1290,12 +1355,12 @@
     Constructor Detail
   </h2>
   
-    <div class="entry-detail" id="new(trace_id,span_id,trace_flags,trace_state,remote=false)-class-method">
+    <div class="entry-detail" id="new(trace_id,span_id,parent_id,trace_flags,trace_state,remote=false)-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(trace_id, span_id, trace_flags, trace_state, remote = <span class="n">false</span>)
+        def self.<strong>new</strong>(trace_id, span_id, parent_id, trace_flags, trace_state, remote = <span class="n">false</span>)
 
-        <a class="method-permalink" href="#new%28trace_id%2Cspan_id%2Ctrace_flags%2Ctrace_state%2Cremote%3Dfalse%29-class-method">#</a>
+        <a class="method-permalink" href="#new%28trace_id%2Cspan_id%2Cparent_id%2Ctrace_flags%2Ctrace_state%2Cremote%3Dfalse%29-class-method">#</a>
       </div>
       
       <br/>
@@ -1443,6 +1508,34 @@
           
           <p>The spec dictates that this name be available: https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/api.md#isvalid</p>
         </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="parent_id:Slice(UInt8)?-instance-method">
+      <div class="signature">
+        
+        def <strong>parent_id</strong> : Slice(UInt8)?
+
+        <a class="method-permalink" href="#parent_id%3ASlice%28UInt8%29%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="parent_id=(parent_id:Slice(UInt8)?)-instance-method">
+      <div class="signature">
+        
+        def <strong>parent_id=</strong>(parent_id : Slice(UInt8)?)
+
+        <a class="method-permalink" href="#parent_id%3D%28parent_id%3ASlice%28UInt8%29%3F%29-instance-method">#</a>
+      </div>
       
       <br/>
       <div>

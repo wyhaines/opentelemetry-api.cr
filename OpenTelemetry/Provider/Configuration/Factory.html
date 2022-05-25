@@ -216,6 +216,11 @@
       
     </li>
   
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/InheritableSampler" data-name="opentelemetry::inheritablesampler">
+      <a href="../../../OpenTelemetry/InheritableSampler.html">InheritableSampler</a>
+      
+    </li>
+  
   <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Instrument" data-name="opentelemetry::instrument">
       <a href="../../../OpenTelemetry/Instrument.html">Instrument</a>
       
@@ -921,6 +926,56 @@
       
     </li>
   
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Sampler" data-name="opentelemetry::sampler">
+      <a href="../../../OpenTelemetry/Sampler.html">Sampler</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Sampler/AlwaysOff" data-name="opentelemetry::sampler::alwaysoff">
+      <a href="../../../OpenTelemetry/Sampler/AlwaysOff.html">AlwaysOff</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Sampler/AlwaysOn" data-name="opentelemetry::sampler::alwayson">
+      <a href="../../../OpenTelemetry/Sampler/AlwaysOn.html">AlwaysOn</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Sampler/AlwaysRecord" data-name="opentelemetry::sampler::alwaysrecord">
+      <a href="../../../OpenTelemetry/Sampler/AlwaysRecord.html">AlwaysRecord</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Sampler/ParentBased" data-name="opentelemetry::sampler::parentbased">
+      <a href="../../../OpenTelemetry/Sampler/ParentBased.html">ParentBased</a>
+      
+    </li>
+  
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/Sampler/SamplingResult" data-name="opentelemetry::sampler::samplingresult">
+      <a href="../../../OpenTelemetry/Sampler/SamplingResult.html">SamplingResult</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Sampler/SamplingResult/Decision" data-name="opentelemetry::sampler::samplingresult::decision">
+      <a href="../../../OpenTelemetry/Sampler/SamplingResult/Decision.html">Decision</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Sampler/TraceIdRatioBased" data-name="opentelemetry::sampler::traceidratiobased">
+      <a href="../../../OpenTelemetry/Sampler/TraceIdRatioBased.html">TraceIdRatioBased</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
   <li class=" " data-id="opentelemetry-api/OpenTelemetry/Sendable" data-name="opentelemetry::sendable">
       <a href="../../../OpenTelemetry/Sendable.html">Sendable</a>
       
@@ -1098,7 +1153,7 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new%28service_name%2Cservice_version%2Cschema_url%2Cexporter%2Cinterval%2Cid_generator%29-class-method" class="signature"><strong>.new</strong>(service_name, service_version, schema_url, exporter, interval, id_generator)</a>
+        <a href="#new%28service_name%2Cservice_version%2Cschema_url%2Cexporter%2Csampler%2Cid_generator%29-class-method" class="signature"><strong>.new</strong>(service_name, service_version, schema_url, exporter, sampler, id_generator)</a>
         
       </li>
     
@@ -1122,12 +1177,12 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#build%28service_name%3D%22service_%23%7BCSUUID.unique%7D%22%2Cservice_version%3D%22%22%2Cschema_url%3D%22%22%2Cexporter%3DExporter.new%28%3Aabstract%29%2Cinterval%3D5000%2Cid_generator%3DIdGenerator.new%28%22unique%22%29%2C%26%29-class-method" class="signature"><strong>.build</strong>(service_name = <span class="s">&quot;service_</span><span class="i">#{</span><span class="t">CSUUID</span>.unique<span class="i">}</span><span class="s">&quot;</span>, service_version = <span class="s">&quot;&quot;</span>, schema_url = <span class="s">&quot;&quot;</span>, exporter = <span class="t">Exporter</span>.<span class="k">new</span>(<span class="n">:abstract</span>), interval = <span class="n">5000</span>, id_generator = <span class="t">IdGenerator</span>.<span class="k">new</span>(<span class="s">&quot;unique&quot;</span>), &)</a>
+        <a href="#build%28service_name%3D%22service_%23%7BCSUUID.unique%7D%22%2Cservice_version%3D%22%22%2Cschema_url%3D%22%22%2Cexporter%3DExporter.new%28%3Aabstract%29%2Csampler%3DSampler%3A%3AAlwaysOn.new%2Cid_generator%3DIdGenerator.new%28%22unique%22%29%2C%26%29-class-method" class="signature"><strong>.build</strong>(service_name = <span class="s">&quot;service_</span><span class="i">#{</span><span class="t">CSUUID</span>.unique<span class="i">}</span><span class="s">&quot;</span>, service_version = <span class="s">&quot;&quot;</span>, schema_url = <span class="s">&quot;&quot;</span>, exporter = <span class="t">Exporter</span>.<span class="k">new</span>(<span class="n">:abstract</span>), sampler = <span class="t">Sampler</span><span class="t">::</span><span class="t">AlwaysOn</span>.<span class="k">new</span>, id_generator = <span class="t">IdGenerator</span>.<span class="k">new</span>(<span class="s">&quot;unique&quot;</span>), &)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#build%28service_name%3D%22service_%23%7BCSUUID.unique%7D%22%2Cservice_version%3D%22%22%2Cschema_url%3D%22%22%2Cexporter%3DExporter.new%28%3Aabstract%29%2Cinterval%3D5000%2Cid_generator%3DIdGenerator.new%28%22unique%22%29%29-class-method" class="signature"><strong>.build</strong>(service_name = <span class="s">&quot;service_</span><span class="i">#{</span><span class="t">CSUUID</span>.unique<span class="i">}</span><span class="s">&quot;</span>, service_version = <span class="s">&quot;&quot;</span>, schema_url = <span class="s">&quot;&quot;</span>, exporter = <span class="t">Exporter</span>.<span class="k">new</span>(<span class="n">:abstract</span>), interval = <span class="n">5000</span>, id_generator = <span class="t">IdGenerator</span>.<span class="k">new</span>(<span class="s">&quot;unique&quot;</span>))</a>
+        <a href="#build%28service_name%3D%22service_%23%7BCSUUID.unique%7D%22%2Cservice_version%3D%22%22%2Cschema_url%3D%22%22%2Cexporter%3DExporter.new%28%3Aabstract%29%2Csampler%3DSampler%3A%3AAlwaysOn.new%2Cid_generator%3DIdGenerator.new%28%22unique%22%29%29-class-method" class="signature"><strong>.build</strong>(service_name = <span class="s">&quot;service_</span><span class="i">#{</span><span class="t">CSUUID</span>.unique<span class="i">}</span><span class="s">&quot;</span>, service_version = <span class="s">&quot;&quot;</span>, schema_url = <span class="s">&quot;&quot;</span>, exporter = <span class="t">Exporter</span>.<span class="k">new</span>(<span class="n">:abstract</span>), sampler = <span class="t">Sampler</span><span class="t">::</span><span class="t">AlwaysOn</span>.<span class="k">new</span>, id_generator = <span class="t">IdGenerator</span>.<span class="k">new</span>(<span class="s">&quot;unique&quot;</span>))</a>
         
       </li>
     
@@ -1166,12 +1221,12 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#interval%3AInt32-instance-method" class="signature"><strong>#interval</strong> : Int32</a>
+        <a href="#sampler%3ASampler-instance-method" class="signature"><strong>#sampler</strong> : Sampler</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#interval%3D%28interval%3AInt32%29-instance-method" class="signature"><strong>#interval=</strong>(interval : Int32)</a>
+        <a href="#sampler%3D%28sampler%3ASampler%29-instance-method" class="signature"><strong>#sampler=</strong>(sampler : Sampler)</a>
         
       </li>
     
@@ -1245,12 +1300,12 @@
     Constructor Detail
   </h2>
   
-    <div class="entry-detail" id="new(service_name,service_version,schema_url,exporter,interval,id_generator)-class-method">
+    <div class="entry-detail" id="new(service_name,service_version,schema_url,exporter,sampler,id_generator)-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(service_name, service_version, schema_url, exporter, interval, id_generator)
+        def self.<strong>new</strong>(service_name, service_version, schema_url, exporter, sampler, id_generator)
 
-        <a class="method-permalink" href="#new%28service_name%2Cservice_version%2Cschema_url%2Cexporter%2Cinterval%2Cid_generator%29-class-method">#</a>
+        <a class="method-permalink" href="#new%28service_name%2Cservice_version%2Cschema_url%2Cexporter%2Csampler%2Cid_generator%29-class-method">#</a>
       </div>
       
       <br/>
@@ -1285,12 +1340,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="build(service_name=&quot;service_#{CSUUID.unique}&quot;,service_version=&quot;&quot;,schema_url=&quot;&quot;,exporter=Exporter.new(:abstract),interval=5000,id_generator=IdGenerator.new(&quot;unique&quot;),&amp;)-class-method">
+    <div class="entry-detail" id="build(service_name=&quot;service_#{CSUUID.unique}&quot;,service_version=&quot;&quot;,schema_url=&quot;&quot;,exporter=Exporter.new(:abstract),sampler=Sampler::AlwaysOn.new,id_generator=IdGenerator.new(&quot;unique&quot;),&amp;)-class-method">
       <div class="signature">
         
-        def self.<strong>build</strong>(service_name = <span class="s">&quot;service_</span><span class="i">#{</span><span class="t">CSUUID</span>.unique<span class="i">}</span><span class="s">&quot;</span>, service_version = <span class="s">&quot;&quot;</span>, schema_url = <span class="s">&quot;&quot;</span>, exporter = <span class="t">Exporter</span>.<span class="k">new</span>(<span class="n">:abstract</span>), interval = <span class="n">5000</span>, id_generator = <span class="t">IdGenerator</span>.<span class="k">new</span>(<span class="s">&quot;unique&quot;</span>), &)
+        def self.<strong>build</strong>(service_name = <span class="s">&quot;service_</span><span class="i">#{</span><span class="t">CSUUID</span>.unique<span class="i">}</span><span class="s">&quot;</span>, service_version = <span class="s">&quot;&quot;</span>, schema_url = <span class="s">&quot;&quot;</span>, exporter = <span class="t">Exporter</span>.<span class="k">new</span>(<span class="n">:abstract</span>), sampler = <span class="t">Sampler</span><span class="t">::</span><span class="t">AlwaysOn</span>.<span class="k">new</span>, id_generator = <span class="t">IdGenerator</span>.<span class="k">new</span>(<span class="s">&quot;unique&quot;</span>), &)
 
-        <a class="method-permalink" href="#build%28service_name%3D%22service_%23%7BCSUUID.unique%7D%22%2Cservice_version%3D%22%22%2Cschema_url%3D%22%22%2Cexporter%3DExporter.new%28%3Aabstract%29%2Cinterval%3D5000%2Cid_generator%3DIdGenerator.new%28%22unique%22%29%2C%26%29-class-method">#</a>
+        <a class="method-permalink" href="#build%28service_name%3D%22service_%23%7BCSUUID.unique%7D%22%2Cservice_version%3D%22%22%2Cschema_url%3D%22%22%2Cexporter%3DExporter.new%28%3Aabstract%29%2Csampler%3DSampler%3A%3AAlwaysOn.new%2Cid_generator%3DIdGenerator.new%28%22unique%22%29%2C%26%29-class-method">#</a>
       </div>
       
       <br/>
@@ -1299,12 +1354,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="build(service_name=&quot;service_#{CSUUID.unique}&quot;,service_version=&quot;&quot;,schema_url=&quot;&quot;,exporter=Exporter.new(:abstract),interval=5000,id_generator=IdGenerator.new(&quot;unique&quot;))-class-method">
+    <div class="entry-detail" id="build(service_name=&quot;service_#{CSUUID.unique}&quot;,service_version=&quot;&quot;,schema_url=&quot;&quot;,exporter=Exporter.new(:abstract),sampler=Sampler::AlwaysOn.new,id_generator=IdGenerator.new(&quot;unique&quot;))-class-method">
       <div class="signature">
         
-        def self.<strong>build</strong>(service_name = <span class="s">&quot;service_</span><span class="i">#{</span><span class="t">CSUUID</span>.unique<span class="i">}</span><span class="s">&quot;</span>, service_version = <span class="s">&quot;&quot;</span>, schema_url = <span class="s">&quot;&quot;</span>, exporter = <span class="t">Exporter</span>.<span class="k">new</span>(<span class="n">:abstract</span>), interval = <span class="n">5000</span>, id_generator = <span class="t">IdGenerator</span>.<span class="k">new</span>(<span class="s">&quot;unique&quot;</span>))
+        def self.<strong>build</strong>(service_name = <span class="s">&quot;service_</span><span class="i">#{</span><span class="t">CSUUID</span>.unique<span class="i">}</span><span class="s">&quot;</span>, service_version = <span class="s">&quot;&quot;</span>, schema_url = <span class="s">&quot;&quot;</span>, exporter = <span class="t">Exporter</span>.<span class="k">new</span>(<span class="n">:abstract</span>), sampler = <span class="t">Sampler</span><span class="t">::</span><span class="t">AlwaysOn</span>.<span class="k">new</span>, id_generator = <span class="t">IdGenerator</span>.<span class="k">new</span>(<span class="s">&quot;unique&quot;</span>))
 
-        <a class="method-permalink" href="#build%28service_name%3D%22service_%23%7BCSUUID.unique%7D%22%2Cservice_version%3D%22%22%2Cschema_url%3D%22%22%2Cexporter%3DExporter.new%28%3Aabstract%29%2Cinterval%3D5000%2Cid_generator%3DIdGenerator.new%28%22unique%22%29%29-class-method">#</a>
+        <a class="method-permalink" href="#build%28service_name%3D%22service_%23%7BCSUUID.unique%7D%22%2Cservice_version%3D%22%22%2Cschema_url%3D%22%22%2Cexporter%3DExporter.new%28%3Aabstract%29%2Csampler%3DSampler%3A%3AAlwaysOn.new%2Cid_generator%3DIdGenerator.new%28%22unique%22%29%29-class-method">#</a>
       </div>
       
       <br/>
@@ -1381,12 +1436,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="interval:Int32-instance-method">
+    <div class="entry-detail" id="sampler:Sampler-instance-method">
       <div class="signature">
         
-        def <strong>interval</strong> : Int32
+        def <strong>sampler</strong> : <a href="../../../OpenTelemetry/Sampler.html">Sampler</a>
 
-        <a class="method-permalink" href="#interval%3AInt32-instance-method">#</a>
+        <a class="method-permalink" href="#sampler%3ASampler-instance-method">#</a>
       </div>
       
       <br/>
@@ -1395,12 +1450,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="interval=(interval:Int32)-instance-method">
+    <div class="entry-detail" id="sampler=(sampler:Sampler)-instance-method">
       <div class="signature">
         
-        def <strong>interval=</strong>(interval : Int32)
+        def <strong>sampler=</strong>(sampler : <a href="../../../OpenTelemetry/Sampler.html">Sampler</a>)
 
-        <a class="method-permalink" href="#interval%3D%28interval%3AInt32%29-instance-method">#</a>
+        <a class="method-permalink" href="#sampler%3D%28sampler%3ASampler%29-instance-method">#</a>
       </div>
       
       <br/>
