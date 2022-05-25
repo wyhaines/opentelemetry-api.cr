@@ -1616,6 +1616,8 @@ end</code></pre>
       <li class="entry-summary">
         <a href="#current_span-class-method" class="signature"><strong>.current_span</strong></a>
         
+          <div class="summary"><p>Returns the current active <code><a href="OpenTelemetry/Span.html">Span</a></code> in the current fiber, or nil if there is no currently active <code><a href="OpenTelemetry/Span.html">Span</a></code>.</p></div>
+        
       </li>
     
       <li class="entry-summary">
@@ -1650,20 +1652,28 @@ end</code></pre>
       <li class="entry-summary">
         <a href="#trace-class-method" class="signature"><strong>.trace</strong></a>
         
+          <div class="summary"><p>Returns the currently active <code><a href="OpenTelemetry/Tracer.html">Tracer</a></code> in the current fiber.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#trace%28%26%29-class-method" class="signature"><strong>.trace</strong>(&)</a>
+        
+          <div class="summary"><p>Invokes the provided block with either the currently active <code><a href="OpenTelemetry/Tracer.html">Tracer</a></code>, if one exists, or a new <code><a href="OpenTelemetry/Tracer.html">Tracer</a></code>, if there isn't one currently active.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#trace_provider%28service_name%3AString%3DENV%5B%22OTEL_SERVICE_NAME%22%5D%3F%7C%7C%22%22%2Cservice_version%3AString%3D%22%22%2Cexporter%3Dnil%29-class-method" class="signature"><strong>.trace_provider</strong>(service_name : String = <span class="t">ENV</span>[<span class="s">&quot;OTEL_SERVICE_NAME&quot;</span>]? || <span class="s">&quot;&quot;</span>, service_version : String = <span class="s">&quot;&quot;</span>, exporter = <span class="n">nil</span>)</a>
         
+          <div class="summary"><p>Configure and return a new <code><a href="OpenTelemetry/TracerProvider.html">TracerProvider</a></code> instance, using the method arguments.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#trace_provider%28%26block%3ATraceProvider%3A%3AConfiguration%3A%3AFactory-%3E%29-class-method" class="signature"><strong>.trace_provider</strong>(&block : TraceProvider::Configuration::Factory -> )</a>
+        
+          <div class="summary"><p>Configure and return a new <code><a href="OpenTelemetry/TracerProvider.html">TracerProvider</a></code> instance, using the provided block.</p></div>
         
       </li>
     
@@ -1767,7 +1777,8 @@ end</code></pre>
       
         <div class="doc">
           
-          <p>Use this method to configure the global trace provider.</p>
+          <p>Use this method to configure the global trace provider. The provided block will receive a <code><a href="OpenTelemetry/Provider/Configuration/Factory.html">OpenTelemetry::Provider::Configuration::Factory</a></code>
+instance, which will be used to generate a <code><a href="OpenTelemetry/Provider/Configuration.html">OpenTelemetry::Provider::Configuration</a></code> struct instance.</p>
         </div>
       
       <br/>
@@ -1806,6 +1817,12 @@ This is useful in cases where it is known that environment variable configuratio
 
         <a class="method-permalink" href="#current_span-class-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>Returns the current active <code><a href="OpenTelemetry/Span.html">Span</a></code> in the current fiber, or nil if there is no currently
+active <code><a href="OpenTelemetry/Span.html">Span</a></code>.</p>
+        </div>
       
       <br/>
       <div>
@@ -1901,6 +1918,14 @@ This is useful in cases where it is known that environment variable configuratio
         <a class="method-permalink" href="#trace-class-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>Returns the currently active <code><a href="OpenTelemetry/Tracer.html">Tracer</a></code> in the current fiber. If there is no currently active
+<code><a href="OpenTelemetry/Tracer.html">Tracer</a></code>, then a new <code><a href="OpenTelemetry/Tracer.html">Tracer</a></code> will be created and returned. Once a new <code><a href="OpenTelemetry/Tracer.html">Tracer</a></code> has been
+created, it will remain active until at least one <code><a href="OpenTelemetry/Span.html">Span</a></code> has been opened in it, and then
+subsequently closed.</p>
+        </div>
+      
       <br/>
       <div>
         
@@ -1914,6 +1939,15 @@ This is useful in cases where it is known that environment variable configuratio
 
         <a class="method-permalink" href="#trace%28%26%29-class-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>Invokes the provided block with either the currently active <code><a href="OpenTelemetry/Tracer.html">Tracer</a></code>, if one
+exists, or a new <code><a href="OpenTelemetry/Tracer.html">Tracer</a></code>, if there isn't one currently active. The block version
+of opening a new <code><a href="OpenTelemetry/Tracer.html">Tracer</a></code> ensures that only the code that executes between when
+the block starts executing, and when it finishes executing, will be included in
+the finished trace.</p>
+        </div>
       
       <br/>
       <div>
@@ -1929,6 +1963,14 @@ This is useful in cases where it is known that environment variable configuratio
         <a class="method-permalink" href="#trace_provider%28service_name%3AString%3DENV%5B%22OTEL_SERVICE_NAME%22%5D%3F%7C%7C%22%22%2Cservice_version%3AString%3D%22%22%2Cexporter%3Dnil%29-class-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>Configure and return a new <code><a href="OpenTelemetry/TracerProvider.html">TracerProvider</a></code> instance, using the method arguments.
+The configured <code><a href="OpenTelemetry/TracerProvider.html">TracerProvider</a></code> will have the configuration from the global instance
+merged with it, which means that given no additional configuration, the newly
+provided <code><a href="OpenTelemetry/TracerProvider.html">TracerProvider</a></code> will have the same configuration as the global <code><a href="OpenTelemetry/TracerProvider.html">TracerProvider</a></code></p>
+        </div>
+      
       <br/>
       <div>
         
@@ -1942,6 +1984,14 @@ This is useful in cases where it is known that environment variable configuratio
 
         <a class="method-permalink" href="#trace_provider%28%26block%3ATraceProvider%3A%3AConfiguration%3A%3AFactory-%3E%29-class-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>Configure and return a new <code><a href="OpenTelemetry/TracerProvider.html">TracerProvider</a></code> instance, using the provided block.
+The configured <code><a href="OpenTelemetry/TracerProvider.html">TracerProvider</a></code> will have the configuration from the global instance
+merged with it, which means that given no additional configuration, the newly
+provided <code><a href="OpenTelemetry/TracerProvider.html">TracerProvider</a></code> will have the same configuration as the global <code><a href="OpenTelemetry/TracerProvider.html">TracerProvider</a></code></p>
+        </div>
       
       <br/>
       <div>

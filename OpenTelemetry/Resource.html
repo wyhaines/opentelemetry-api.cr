@@ -1169,10 +1169,14 @@
       <li class="entry-summary">
         <a href="#new%28attrs%29-class-method" class="signature"><strong>.new</strong>(attrs)</a>
         
+          <div class="summary"><p>Create a new Resource that has been intialized by the provided key/value pairs.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#new-class-method" class="signature"><strong>.new</strong></a>
+        
+          <div class="summary"><p>Create an empty Resource.</p></div>
         
       </li>
     
@@ -1195,10 +1199,21 @@
       <li class="entry-summary">
         <a href="#%5B%5D%28key%29-instance-method" class="signature"><strong>#[]</strong>(key)</a>
         
+          <div class="summary"><p>Retrieve the value for a key in the Resource.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#%5B%5D%3D%28key%2Cvalue%29-instance-method" class="signature"><strong>#[]=</strong>(key, value)</a>
+        
+          <div class="summary"><p>Assign a value to a key in the Resource.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%5B%5D%3F%28key%29-instance-method" class="signature"><strong>#[]?</strong>(key)</a>
+        
+          <div class="summary"><p>Retrieve a value for a key in the Resource.</p></div>
         
       </li>
     
@@ -1230,27 +1245,42 @@
       <li class="entry-summary">
         <a href="#empty%3F-instance-method" class="signature"><strong>#empty?</strong></a>
         
+          <div class="summary"><p>Return true if the resource is empty.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#get_attribute%28key%29-instance-method" class="signature"><strong>#get_attribute</strong>(key)</a>
+        
+          <div class="summary"><p>Alias for <code><a href="../OpenTelemetry/Resource.html#%5B%5D%28key%29-instance-method">#[]</a></code></p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#get_attribute%3F%28key%29-instance-method" class="signature"><strong>#get_attribute?</strong>(key)</a>
+        
+          <div class="summary"><p>Alias for <code><a href="../OpenTelemetry/Resource.html#%5B%5D%3F%28key%29-instance-method">#[]?</a></code></p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#set_attribute%28key%2Cvalue%29-instance-method" class="signature"><strong>#set_attribute</strong>(key, value)</a>
         
+          <div class="summary"><p>Alias for <code><a href="../OpenTelemetry/Resource.html#%5B%5D%3D%28key%2Cvalue%29-instance-method">#[]=</a></code></p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#to_json-instance-method" class="signature"><strong>#to_json</strong></a>
+        
+          <div class="summary"><p>Export the resource with a JSON representation.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#to_protobuf-instance-method" class="signature"><strong>#to_protobuf</strong></a>
         
-          <div class="summary"><p>The ProtoBuf differs a LOT from the current Spec.</p></div>
+          <div class="summary"><p>Export the resource to its protocol buffer representation.</p></div>
         
       </li>
     
@@ -1331,6 +1361,13 @@
         <a class="method-permalink" href="#new%28attrs%29-class-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>Create a new Resource that has been intialized by the provided key/value pairs.
+This initialization will support any seed object that provides an <code>#each</code> method
+which takes a two-argument block.</p>
+        </div>
+      
       <br/>
       <div>
         
@@ -1344,6 +1381,11 @@
 
         <a class="method-permalink" href="#new-class-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>Create an empty Resource.</p>
+        </div>
       
       <br/>
       <div>
@@ -1373,6 +1415,11 @@
         <a class="method-permalink" href="#%5B%5D%28key%29-instance-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>Retrieve the value for a key in the Resource.</p>
+        </div>
+      
       <br/>
       <div>
         
@@ -1386,6 +1433,30 @@
 
         <a class="method-permalink" href="#%5B%5D%3D%28key%2Cvalue%29-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>Assign a value to a key in the Resource.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="[]?(key)-instance-method">
+      <div class="signature">
+        
+        def <strong>[]?</strong>(key)
+
+        <a class="method-permalink" href="#%5B%5D%3F%28key%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Retrieve a value for a key in the Resource. Return nil instead of an exception if the key is not present.</p>
+        </div>
       
       <br/>
       <div>
@@ -1471,6 +1542,11 @@
         <a class="method-permalink" href="#empty%3F-instance-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>Return true if the resource is empty.</p>
+        </div>
+      
       <br/>
       <div>
         
@@ -1484,6 +1560,30 @@
 
         <a class="method-permalink" href="#get_attribute%28key%29-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>Alias for <code><a href="../OpenTelemetry/Resource.html#%5B%5D%28key%29-instance-method">#[]</a></code></p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="get_attribute?(key)-instance-method">
+      <div class="signature">
+        
+        def <strong>get_attribute?</strong>(key)
+
+        <a class="method-permalink" href="#get_attribute%3F%28key%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Alias for <code><a href="../OpenTelemetry/Resource.html#%5B%5D%3F%28key%29-instance-method">#[]?</a></code></p>
+        </div>
       
       <br/>
       <div>
@@ -1499,6 +1599,11 @@
         <a class="method-permalink" href="#set_attribute%28key%2Cvalue%29-instance-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>Alias for <code><a href="../OpenTelemetry/Resource.html#%5B%5D%3D%28key%2Cvalue%29-instance-method">#[]=</a></code></p>
+        </div>
+      
       <br/>
       <div>
         
@@ -1512,6 +1617,11 @@
 
         <a class="method-permalink" href="#to_json-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>Export the resource with a JSON representation.</p>
+        </div>
       
       <br/>
       <div>
@@ -1529,7 +1639,7 @@
       
         <div class="doc">
           
-          <p>The ProtoBuf differs a LOT from the current Spec. Methinks this has changed a bunch since I last updated it.</p>
+          <p>Export the resource to its protocol buffer representation.</p>
         </div>
       
       <br/>

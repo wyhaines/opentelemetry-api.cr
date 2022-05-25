@@ -1212,25 +1212,35 @@
       <li class="entry-summary">
         <a href="#current_span-class-method" class="signature"><strong>.current_span</strong></a>
         
+          <div class="summary"><p>Returns the current active <code><a href="../OpenTelemetry/Span.html">Span</a></code> in the current fiber, or nil if there is no currently active <code><a href="../OpenTelemetry/Span.html">Span</a></code>.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#current_trace-class-method" class="signature"><strong>.current_trace</strong></a>
+        
+          <div class="summary"><p>Returns the currently active <code><a href="../OpenTelemetry/Tracer.html">Tracer</a></code> in the current fiber, or nil if there is no currently active <code><a href="../OpenTelemetry/Tracer.html">Tracer</a></code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#prng%3ARandom%3A%3APCG32-class-method" class="signature"><strong>.prng</strong> : Random::PCG32</a>
         
+          <div class="summary"><p>This returns the currently initialized random number generator.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#validate_id%28id%3ASlice%28Uint8%29%29-class-method" class="signature"><strong>.validate_id</strong>(id : Slice(Uint8))</a>
         
+          <div class="summary"><p>Take a slice of UInt8 (<code>Bytes</code>) and determine if it is a valid trace_id.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#validate_id%28id%3AString%29-class-method" class="signature"><strong>.validate_id</strong>(id : String)</a>
+        
+          <div class="summary"><p>Take a string and determine if it is a valid trace_id.</p></div>
         
       </li>
     
@@ -1251,10 +1261,21 @@
       <li class="entry-summary">
         <a href="#%5B%5D%28key%29-instance-method" class="signature"><strong>#[]</strong>(key)</a>
         
+          <div class="summary"><p>Get the value of an attribute on the <code><a href="../OpenTelemetry/Resource.html">Resource</a></code> that is attached to this trace.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#%5B%5D%3D%28key%2Cvalue%29-instance-method" class="signature"><strong>#[]=</strong>(key, value)</a>
+        
+          <div class="summary"><p>Set an attribute on the <code><a href="../OpenTelemetry/Resource.html">Resource</a></code> that is attached to this trace.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%5B%5D%3F%28key%29-instance-method" class="signature"><strong>#[]?</strong>(key)</a>
+        
+          <div class="summary"><p>Get the value of an attribute on the <code><a href="../OpenTelemetry/Resource.html">Resource</a></code> that is attached to this trace, or nil if the key does not exist.</p></div>
         
       </li>
     
@@ -1278,15 +1299,21 @@
       <li class="entry-summary">
         <a href="#exporter-instance-method" class="signature"><strong>#exporter</strong></a>
         
+          <div class="summary"><p>This returns the exporter that this trace will be exported to.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#get_attribute%28key%29-instance-method" class="signature"><strong>#get_attribute</strong>(key)</a>
         
+          <div class="summary"><p>An alias for <code><a href="../OpenTelemetry/Trace.html#%5B%5D%28key%29-instance-method">#[]</a></code></p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#id-instance-method" class="signature"><strong>#id</strong></a>
+        
+          <div class="summary"><p>Return the trace_id for this trace.</p></div>
         
       </li>
     
@@ -1307,6 +1334,8 @@
       <li class="entry-summary">
         <a href="#merge_configuration_from_provider%3D%28val%29-instance-method" class="signature"><strong>#merge_configuration_from_provider=</strong>(val)</a>
         
+          <div class="summary"><p>Merge the configuration from a given <code><a href="../OpenTelemetry/TraceProvider.html">TraceProvider</a></code> into the configuration for this trace's TraceProvider.</p></div>
+        
       </li>
     
       <li class="entry-summary">
@@ -1316,6 +1345,8 @@
     
       <li class="entry-summary">
         <a href="#provider%3D%28val%29-instance-method" class="signature"><strong>#provider=</strong>(val)</a>
+        
+          <div class="summary"><p>Set the <code><a href="../OpenTelemetry/TraceProvider.html">TraceProvider</a></code> for this trace.</p></div>
         
       </li>
     
@@ -1342,25 +1373,35 @@
       <li class="entry-summary">
         <a href="#service_name%3AString-instance-method" class="signature"><strong>#service_name</strong> : String</a>
         
+          <div class="summary"><p>Return the service name of this trace.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#service_name%3D%28val%29-instance-method" class="signature"><strong>#service_name=</strong>(val)</a>
+        
+          <div class="summary"><p>Set the service name of this trace.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#service_version%3AString-instance-method" class="signature"><strong>#service_version</strong> : String</a>
         
+          <div class="summary"><p>Return the service version of this trace.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#service_version%3D%28val%29-instance-method" class="signature"><strong>#service_version=</strong>(val)</a>
         
+          <div class="summary"><p>Set the service version of this trace.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#set_attribute%28key%2Cvalue%29-instance-method" class="signature"><strong>#set_attribute</strong>(key, value)</a>
+        
+          <div class="summary"><p>An alias for <code><a href="../OpenTelemetry/Trace.html#%5B%5D%3D%28key%2Cvalue%29-instance-method">#[]=</a></code></p></div>
         
       </li>
     
@@ -1509,6 +1550,12 @@
         <a class="method-permalink" href="#current_span-class-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>Returns the current active <code><a href="../OpenTelemetry/Span.html">Span</a></code> in the current fiber, or nil if there is no currently
+active <code><a href="../OpenTelemetry/Span.html">Span</a></code>.</p>
+        </div>
+      
       <br/>
       <div>
         
@@ -1522,6 +1569,11 @@
 
         <a class="method-permalink" href="#current_trace-class-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>Returns the currently active <code><a href="../OpenTelemetry/Tracer.html">Tracer</a></code> in the current fiber, or nil if there is no currently active <code><a href="../OpenTelemetry/Tracer.html">Tracer</a></code>.</p>
+        </div>
       
       <br/>
       <div>
@@ -1537,6 +1589,17 @@
         <a class="method-permalink" href="#prng%3ARandom%3A%3APCG32-class-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>This returns the currently initialized random number generator. The Crystal
+OpenTelemetry currently utilizes only the PCG32 algorithm, as in earlier
+versions of Crystal, the Random::ISAAC algorithm, which is arguably superior
+to the PCG32 algorithm, was not concurrency-safe, and would cause strange and
+unpleasant problems under heavy concurrent loads. If/when it is determined that
+this is no longer an issue, the library will support both algorithms, but will
+default to the ISAAC algorithm.</p>
+        </div>
+      
       <br/>
       <div>
         
@@ -1551,6 +1614,11 @@
         <a class="method-permalink" href="#validate_id%28id%3ASlice%28Uint8%29%29-class-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>Take a slice of UInt8 (<code>Bytes</code>) and determine if it is a valid trace_id.</p>
+        </div>
+      
       <br/>
       <div>
         
@@ -1564,6 +1632,11 @@
 
         <a class="method-permalink" href="#validate_id%28id%3AString%29-class-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>Take a string and determine if it is a valid trace_id.</p>
+        </div>
       
       <br/>
       <div>
@@ -1591,6 +1664,11 @@
         <a class="method-permalink" href="#%5B%5D%28key%29-instance-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>Get the value of an attribute on the <code><a href="../OpenTelemetry/Resource.html">Resource</a></code> that is attached to this trace. This will throw an exception if the key does not exist.</p>
+        </div>
+      
       <br/>
       <div>
         
@@ -1604,6 +1682,30 @@
 
         <a class="method-permalink" href="#%5B%5D%3D%28key%2Cvalue%29-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>Set an attribute on the <code><a href="../OpenTelemetry/Resource.html">Resource</a></code> that is attached to this trace.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="[]?(key)-instance-method">
+      <div class="signature">
+        
+        def <strong>[]?</strong>(key)
+
+        <a class="method-permalink" href="#%5B%5D%3F%28key%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Get the value of an attribute on the <code><a href="../OpenTelemetry/Resource.html">Resource</a></code> that is attached to this trace, or nil if the key does not exist.</p>
+        </div>
       
       <br/>
       <div>
@@ -1666,6 +1768,11 @@
         <a class="method-permalink" href="#exporter-instance-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>This returns the exporter that this trace will be exported to.</p>
+        </div>
+      
       <br/>
       <div>
         
@@ -1680,6 +1787,11 @@
         <a class="method-permalink" href="#get_attribute%28key%29-instance-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>An alias for <code><a href="../OpenTelemetry/Trace.html#%5B%5D%28key%29-instance-method">#[]</a></code></p>
+        </div>
+      
       <br/>
       <div>
         
@@ -1693,6 +1805,11 @@
 
         <a class="method-permalink" href="#id-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>Return the trace_id for this trace.</p>
+        </div>
       
       <br/>
       <div>
@@ -1747,6 +1864,11 @@ and the span will be closed automatically when the block returns.</p>
         <a class="method-permalink" href="#merge_configuration_from_provider%3D%28val%29-instance-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>Merge the configuration from a given <code><a href="../OpenTelemetry/TraceProvider.html">TraceProvider</a></code> into the configuration for this trace's TraceProvider.</p>
+        </div>
+      
       <br/>
       <div>
         
@@ -1774,6 +1896,11 @@ and the span will be closed automatically when the block returns.</p>
 
         <a class="method-permalink" href="#provider%3D%28val%29-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>Set the <code><a href="../OpenTelemetry/TraceProvider.html">TraceProvider</a></code> for this trace.</p>
+        </div>
       
       <br/>
       <div>
@@ -1845,6 +1972,11 @@ and the span will be closed automatically when the block returns.</p>
         <a class="method-permalink" href="#service_name%3AString-instance-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>Return the service name of this trace.</p>
+        </div>
+      
       <br/>
       <div>
         
@@ -1858,6 +1990,11 @@ and the span will be closed automatically when the block returns.</p>
 
         <a class="method-permalink" href="#service_name%3D%28val%29-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>Set the service name of this trace.</p>
+        </div>
       
       <br/>
       <div>
@@ -1873,6 +2010,11 @@ and the span will be closed automatically when the block returns.</p>
         <a class="method-permalink" href="#service_version%3AString-instance-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>Return the service version of this trace.</p>
+        </div>
+      
       <br/>
       <div>
         
@@ -1887,6 +2029,11 @@ and the span will be closed automatically when the block returns.</p>
         <a class="method-permalink" href="#service_version%3D%28val%29-instance-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>Set the service version of this trace.</p>
+        </div>
+      
       <br/>
       <div>
         
@@ -1900,6 +2047,11 @@ and the span will be closed automatically when the block returns.</p>
 
         <a class="method-permalink" href="#set_attribute%28key%2Cvalue%29-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>An alias for <code><a href="../OpenTelemetry/Trace.html#%5B%5D%3D%28key%2Cvalue%29-instance-method">#[]=</a></code></p>
+        </div>
       
       <br/>
       <div>
