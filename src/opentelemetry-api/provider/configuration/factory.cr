@@ -33,7 +33,7 @@ module OpenTelemetry
       # TODO: The Sampler code all feels kind of bodgey. It should be
       # revisited, though maybe that will come naturally when all of
       # the SDK code is surgically separated from the API code.
-      def self.default_sampler
+      def self.default_sampler_instance
         sampler_class_name = normalize_sampler_name(default_traces_sampler.to_s)
         sampler_class = get_sampler_class_from_name(
           sampler_class_name.split(/_/).first)
@@ -82,33 +82,37 @@ module OpenTelemetry
         {% end %}
       end
 
+      def self.default_exporter_instance
+        Exporter.new(variant: default_traces_exporter.to_s)
+      end
+
       class Factory
         property service_name : String = Configuration.default_service_name || ""
         property service_version : String = Configuration.default_service_version || ""
         property schema_url : String = Configuration.default_schema_url || ""
-        property exporter : Exporter? = nil
-        property sampler : Sampler = Configuration.default_traces_sampler ? Configuration.default_sampler : Sampler::AlwaysOn.new
+        property exporter : Exporter? = Configuration.default_traces_exporter ? Configuration.default_exporter_instance : nil
+        property sampler : Sampler = Configuration.default_traces_sampler ? Configuration.default_sampler_instance : Sampler::AlwaysOn.new
         property id_generator : IdGenerator
 
         # :nodoc:
         private def self._build(instance)
           Configuration.new(
-            service_name: instance.service_name,
-            service_version: instance.service_version,
-            schema_url: instance.schema_url,
-            exporter: instance.exporter,
-            sampler: Configuration.default_traces_sampler ? Configuration.default_sampler : instance.sampler,
+            service_name: Configuration.default_service_name ? Configuration.default_service_name.to_s : instance.service_name,
+            service_version: Configuration.default_service_version ? Configuration.default_service_version.to_s : instance.service_version,
+            schema_url: Configuration.default_schema_url ? Configuration.default_schema_url.to_s : instance.schema_url,
+            exporter: Configuration.default_traces_exporter ? Configuration.default_exporter_instance : instance.exporter,
+            sampler: Configuration.default_traces_sampler ? Configuration.default_sampler_instance : instance.sampler,
             id_generator: instance.id_generator
           )
         end
 
         def self.build(new_config : Configuration, &block : Factory ->)
           build(
-            service_name: new_config.service_name,
-            service_version: new_config.service_version,
-            schema_url: new_config.schema_url,
-            exporter: new_config.exporter,
-            sampler: Configuration.default_traces_sampler ? Configuration.default_sampler : new_config.sampler,
+            service_name: Configuration.default_service_name ? Configuration.default_service_name.to_s : new_config.service_name,
+            service_version: Configuration.default_service_version ? Configuration.default_service_version.to_s : new_config.service_version,
+            schema_url: Configuration.default_schema_url ? Configuration.default_schema_url.to_s : new_config.schema_url,
+            exporter: Configuration.default_traces_exporter ? Configuration.default_exporter_instance : new_config.exporter,
+            sampler: Configuration.default_traces_sampler ? Configuration.default_sampler_instance : new_config.sampler,
             id_generator: new_config.id_generator
           ) do |instance|
             block.call(instance)
@@ -125,11 +129,11 @@ module OpenTelemetry
         )
           instance = Factory.allocate
           instance.initialize(
-            service_name: service_name,
-            service_version: service_version,
-            schema_url: schema_url,
-            exporter: exporter,
-            sampler: Configuration.default_traces_sampler ? Configuration.default_sampler : sampler,
+            service_name: Configuration.default_service_name ? Configuration.default_service_name.to_s : service_name,
+            service_version: Configuration.default_service_version ? Configuration.default_service_version.to_s : service_version,
+            schema_url: Configuration.default_schema_url ? Configuration.default_schema_url.to_s : schema_url,
+            exporter: Configuration.default_traces_exporter ? Configuration.default_exporter_instance : exporter,
+            sampler: Configuration.default_traces_sampler ? Configuration.default_sampler_instance : sampler,
             id_generator: id_generator)
           yield instance
           _build(instance)
@@ -145,11 +149,11 @@ module OpenTelemetry
         )
           instance = Factory.allocate
           instance.initialize(
-            service_name: service_name,
-            service_version: service_version,
-            schema_url: schema_url,
-            exporter: exporter,
-            sampler: Configuration.default_traces_sampler ? Configuration.default_sampler : sampler,
+            service_name: Configuration.default_service_name ? Configuration.default_service_name.to_s : service_name,
+            service_version: Configuration.default_service_version ? Configuration.default_service_version.to_s : service_version,
+            schema_url: Configuration.default_schema_url ? Configuration.default_schema_url.to_s : schema_url,
+            exporter: Configuration.default_traces_exporter ? Configuration.default_exporter_instance : exporter,
+            sampler: Configuration.default_traces_sampler ? Configuration.default_sampler_instance : sampler,
             id_generator: id_generator)
           _build(instance)
         end
@@ -162,7 +166,11 @@ module OpenTelemetry
           @sampler,
           @id_generator
         )
-          @sampler = Configuration.default_traces_sampler ? Configuration.default_sampler : @sampler
+          @service_name = Configuration.default_service_name ? Configuration.default_service_name.to_s : @service_name
+          @service_version = Configuration.default_service_version ? Configuration.default_service_version.to_s : @service_version
+          @schema_url = Configuration.default_schema_url ? Configuration.default_schema_url.to_s : @schema_url
+          @exporter = Configuration.default_traces_exporter ? Configuration.default_exporter_instance : @exporter
+          @sampler = Configuration.default_traces_sampler ? Configuration.default_sampler_instance : @sampler
         end
       end
     end
