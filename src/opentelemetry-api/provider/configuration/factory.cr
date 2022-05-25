@@ -88,7 +88,6 @@ module OpenTelemetry
         property schema_url : String = Configuration.default_schema_url || ""
         property exporter : Exporter? = nil
         property sampler : Sampler = Configuration.default_traces_sampler ? Configuration.default_sampler : Sampler::AlwaysOn.new
-        # property interval : Int32 = 5000
         property id_generator : IdGenerator
 
         # :nodoc:
@@ -99,7 +98,6 @@ module OpenTelemetry
             schema_url: instance.schema_url,
             exporter: instance.exporter,
             sampler: Configuration.default_traces_sampler ? Configuration.default_sampler : instance.sampler,
-            # interval: instance.interval,
             id_generator: instance.id_generator
           )
         end
@@ -111,7 +109,6 @@ module OpenTelemetry
             schema_url: new_config.schema_url,
             exporter: new_config.exporter,
             sampler: Configuration.default_traces_sampler ? Configuration.default_sampler : new_config.sampler,
-            # interval: new_config.interval,
             id_generator: new_config.id_generator
           ) do |instance|
             block.call(instance)
@@ -124,7 +121,6 @@ module OpenTelemetry
           schema_url = "",
           exporter = Exporter.new(:abstract),
           sampler = Sampler::AlwaysOn.new,
-          # interval = 5000,
           id_generator = IdGenerator.new("unique")
         )
           instance = Factory.allocate
@@ -134,7 +130,6 @@ module OpenTelemetry
             schema_url: schema_url,
             exporter: exporter,
             sampler: Configuration.default_traces_sampler ? Configuration.default_sampler : sampler,
-            # interval: interval,
             id_generator: id_generator)
           yield instance
           _build(instance)
@@ -146,7 +141,6 @@ module OpenTelemetry
           schema_url = "",
           exporter = Exporter.new(:abstract),
           sampler = Sampler::AlwaysOn.new,
-          # interval = 5000,
           id_generator = IdGenerator.new("unique")
         )
           instance = Factory.allocate
@@ -156,7 +150,6 @@ module OpenTelemetry
             schema_url: schema_url,
             exporter: exporter,
             sampler: Configuration.default_traces_sampler ? Configuration.default_sampler : sampler,
-            # interval: interval,
             id_generator: id_generator)
           _build(instance)
         end
@@ -167,7 +160,6 @@ module OpenTelemetry
           @schema_url,
           @exporter,
           @sampler,
-          # @interval,
           @id_generator
         )
           @sampler = Configuration.default_traces_sampler ? Configuration.default_sampler : @sampler
