@@ -191,3 +191,26 @@ describe OpenTelemetry::Sampler::ParentBased do
     result.decision.should eq OpenTelemetry::Sampler::SamplingResult::Decision::Drop
   end
 end
+
+describe OpenTelemetry::Sampler do
+  it "can setup samplers via environment variables" do
+    memory = IO::Memory.new
+    original_config = OpenTelemetry.config
+
+    ENV["OTEL_TRACES_SAMPLER"] = "alwayson"
+    OpenTelemetry.configure do |config|
+      config.exporter = OpenTelemetry::Exporter.new(variant: :io, io: memory)
+    end
+    OpenTelemetry.trace_provider.config.sampler.should be_a(OpenTelemetry::Sampler::AlwaysOn)
+
+    ENV["OTEL_TRACES_SAMPLER"] = "always_off"
+    OpenTelemetry.configure do |config|
+      config.exporter = OpenTelemetry::Exporter.new(variant: :io, io: memory)
+    end
+    sleep 10
+
+    OpenTelemetry.trace_provider.config.sampler.should be_a(OpenTelemetry::Sampler::AlwaysOff)
+
+    OpenTelemetry.config = original_config
+  end
+end

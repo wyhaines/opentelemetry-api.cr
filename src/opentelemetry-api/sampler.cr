@@ -1,7 +1,7 @@
 module OpenTelemetry
   abstract struct Sampler
     # The generic initializer should always accept an arg, even if
-    # that arg isn't used. This just makes life easier for implementers. 
+    # that arg isn't used. This just makes life easier for implementers.
     abstract def initialize(arg = nil)
 
     def should_sample(span)
