@@ -28,22 +28,34 @@ module OpenTelemetry
 
     MATCH = /(?<trace_id>[A-Fa-f0-9]{32})/
 
+    # This returns the currently initialized random number generator. The Crystal
+    # OpenTelemetry currently utilizes only the PCG32 algorithm, as in earlier
+    # versions of Crystal, the Random::ISAAC algorithm, which is arguably superior
+    # to the PCG32 algorithm, was not concurrency-safe, and would cause strange and
+    # unpleasant problems under heavy concurrent loads. If/when it is determined that
+    # this is no longer an issue, the library will support both algorithms, but will
+    # default to the ISAAC algorithm.
     def self.prng : Random::PCG32
       @@prng
     end
 
+    # Returns the currently active `Tracer` in the current fiber, or nil if there is no currently active `Tracer`.
     def self.current_trace
       Fiber.current.current_trace
     end
 
+    # Returns the current active `Span` in the current fiber, or nil if there is no currently
+    # active `Span`.
     def self.current_span
       Fiber.current.current_span
     end
 
+    # Take a slice of UInt8 (`Bytes`) and determine if it is a valid trace_id.
     def self.validate_id(id : Slice(Uint8))
       validate_id(id.hexstring)
     end
 
+    # Take a string and determine if it is a valid trace_id.
     def self.validate_id(id : String)
       !!MATCH.match id
     end
@@ -66,48 +78,68 @@ module OpenTelemetry
       set_standard_resource_attributes
     end
 
+    # This returns the exporter that this trace will be exported to.
     def exporter
       @provider.config.exporter
     end
 
+    # Set an attribute on the `Resource` that is attached to this trace.
     def []=(key, value)
       resource[key] = value
     end
 
+    # An alias for `#[]=`
     def set_attribute(key, value)
       resource[key] = value
     end
 
+    # Get the value of an attribute on the `Resource` that is attached to this trace. This will throw an exception if the key does not exist.
     def [](key)
       resource[key].value
     end
 
+    # An alias for `#[]`
     def get_attribute(key)
       resource[key]
     end
 
+    # Get the value of an attribute on the `Resource` that is attached to this trace, or nil if the key does not exist.
+    def []?(key)
+      if r = resource[key]?
+        r.value
+      else
+        nil
+      end
+    end
+
+    # Return the service name of this trace.
     def service_name
       @service_name
     end
 
+    # Set the service name of this trace.
     def service_name=(val)
       @service_name = val
       self["service.name"] = val
     end
 
+    # Return the service version of this trace.
     def service_version
       @service_version
     end
 
+    # Set the service version of this trace.
     def service_version=(val)
       @service_version = val
       self["service.version"] = val
     end
 
+    # Return the trace_id for this trace.
     def id
       trace_id
     end
 
+    # Set the `TraceProvider` for this trace.
     def provider=(val)
       self.service_name = @provider.service_name
       self.service_version = @provider.service_version
@@ -115,6 +147,7 @@ module OpenTelemetry
       @provider = val
     end
 
+    # Merge the configuration from a given `TraceProvider` into the configuration for this trace's TraceProvider.
     def merge_configuration_from_provider=(val)
       self.service_name = val.service_name if self.service_name.nil? || self.service_name.empty?
       self.service_version = val.service_version if self.service_version.nil? || self.service_version.empty?

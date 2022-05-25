@@ -78,7 +78,8 @@ module OpenTelemetry
   # `provider` class property provides direct access to the global default Tracerprovider instance.
   class_property provider = TraceProvider.new
 
-  # Use this method to configure the global trace provider.
+  # Use this method to configure the global trace provider. The provided block will receive a `OpenTelemetry::Provider::Configuration::Factory`
+  # instance, which will be used to generate a `OpenTelemetry::Provider::Configuration` struct instance.
   def self.configure(&block : TraceProvider::Configuration::Factory ->)
     @@config = TraceProvider::Configuration::Factory.build do |config_block|
       block.call(config_block)
@@ -92,7 +93,7 @@ module OpenTelemetry
   # Calling `configure` with no block results in a global TracerProvider being configured with the default configuration.
   # This is useful in cases where it is known that environment variable configuration is going to be used exclusively.
   #
-  # ```crystal
+  # ```
   # # Depend on SDK environment variables ([https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/sdk-environment-variables.md](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/sdk-environment-variables.md))
   # # for all configuration.
   # OpenTelememtry.configure
@@ -103,6 +104,7 @@ module OpenTelemetry
     end
   end
 
+  # Return the global `TracerProvider` instance.
   def self.trace_provider
     provider
   end
@@ -117,6 +119,10 @@ module OpenTelemetry
     trace_provider
   end
 
+  # Configure and return a new `TracerProvider` instance, using the provided block.
+  # The configured `TracerProvider` will have the configuration from the global instance
+  # merged with it, which means that given no additional configuration, the newly
+  # provided `TracerProvider` will have the same configuration as the global `TracerProvider`
   def self.trace_provider(&block : TraceProvider::Configuration::Factory ->)
     self.provider = TraceProvider.new do |cfg|
       block.call(cfg)
@@ -137,6 +143,10 @@ module OpenTelemetry
     self.trace_provider(&block)
   end
 
+  # Configure and return a new `TracerProvider` instance, using the method arguments.
+  # The configured `TracerProvider` will have the configuration from the global instance
+  # merged with it, which means that given no additional configuration, the newly
+  # provided `TracerProvider` will have the same configuration as the global `TracerProvider`
   def self.trace_provider(
     service_name : String = ENV["OTEL_SERVICE_NAME"]? || "",
     service_version : String = "",
@@ -168,10 +178,16 @@ module OpenTelemetry
       exporter: exporter)
   end
 
+  # Returns the current active `Span` in the current fiber, or nil if there is no currently
+  # active `Span`.
   def self.current_span
     Fiber.current.current_span
   end
 
+  # Returns the currently active `Tracer` in the current fiber. If there is no currently active
+  # `Tracer`, then a new `Tracer` will be created and returned. Once a new `Tracer` has been
+  # created, it will remain active until at least one `Span` has been opened in it, and then
+  # subsequently closed.
   def self.trace
     trace = Fiber.current.current_trace
     r = trace ? trace : trace_provider.trace
@@ -189,6 +205,11 @@ module OpenTelemetry
     trace
   end
 
+  # Invokes the provided block with either the currently active `Tracer`, if one
+  # exists, or a new `Tracer`, if there isn't one currently active. The block version
+  # of opening a new `Tracer` ensures that only the code that executes between when
+  # the block starts executing, and when it finishes executing, will be included in
+  # the finished trace.
   def self.trace
     trace = self.trace
     yield trace
