@@ -31,7 +31,7 @@ A lot of documentation needs to be added. PRs would be welcome!
 
    ```yaml
    dependencies:
-     otel:
+     opentelemetry-api:
        github: wyhaines/opentelemetry-api.cr
    ```
 
