@@ -2,6 +2,16 @@ require "spec"
 require "../src/opentelemetry-api.cr"
 require "./test_exporter"
 
+clear_env
+
+# Ensure that no existing environment variables mess with spec operation,
+# since environment variables supercede code/config settings.
+def clear_env
+  ENV.keys.select(&.starts_with?("OTEL")).each do |key|
+    ENV.delete(key)
+  end
+end
+
 def iterate_span_nodes(span, indent, buffer)
   return if span.nil?
 
