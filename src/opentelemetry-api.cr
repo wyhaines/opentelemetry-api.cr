@@ -22,7 +22,7 @@ require "random/pcg32"
 # OpenTelemetry.configure do |config|
 #   config.service_name = "my_app_or_library"
 #   config.service_version = "1.1.1"
-#   config.exporter = OpenTelemetry::IOExporter.new(:STDOUT)
+#   config.exporter = OpenTelemetry::Exporter.new(variant: :stdout)
 # end
 #
 # trace = OpenTelemetry.trace_provider("my_app_or_library", "1.1.1")
@@ -35,12 +35,12 @@ require "random/pcg32"
 # ----------------------------------------------------------------
 #
 # provider_a = OpenTelemetry::TraceProvider.new("my_app_or_library", "1.1.1")
-# provider_a.exporter = OpenTelemetry::IOExporter.new(:STDOUT)
+# provider_a.exporter = OpenTelemetry::Exporter.new(variant: :stdout)
 #
 # provider_b = OpenTelementry::TraceProvider.new do |config|
 #   config.service_name = "my_app_or_library"
 #   config.service_version = "1.1.1"
-#   config.exporter = OpenTelemetry::IOExporter.new(:STDOUT)
+#   config.exporter = OpenTelemetry::Exporter.new(variant: :stdout)
 # end
 #
 # ## Getting a Trace From a Provider Object
