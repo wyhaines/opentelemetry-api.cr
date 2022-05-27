@@ -354,7 +354,7 @@ module OpenTelemetry
         if !resource.empty?
           json << "  \"resource\":{\n"
           json << resource.attribute_list
-          json << "  },\n"
+          json << "\n  },\n"
         end
         json << "  \"schemaUrl\":\"#{schema_url}\",\n" if !schema_url.empty?
         json << "  \"spans\":[\n"

@@ -47,10 +47,7 @@ module OpenTelemetry
 
     def to_json
       String.build do |json|
-        json << "{\n"
-        json << "  \"code\": #{@code.value},\n"
-        json << "  \"message\": \"#{@message}\"\n"
-        json << "}"
+        json << "{\"code\":#{@code.value},\"message\":\"#{@message}\"}"
       end
     end
   end

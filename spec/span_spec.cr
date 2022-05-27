@@ -143,4 +143,25 @@ describe OpenTelemetry::Span do
       iterate_tracer_spans(trace).map(&.name).should eq ["request", "handler", "external api", "db"]
     end
   end
+  
+  describe ".to_json" do
+    it "renders attributes" do
+      subject = nil
+      OpenTelemetry.trace.in_span("request") do |span|
+        span.set_attribute("verb", "GET")
+        subject = span
+      end
+      actual = JSON.parse(subject.to_json).as_h
+      actual.has_key?("attributes").should be_true
+    end
+    
+    it "skip attributes" do
+      subject = nil
+      OpenTelemetry.trace.in_span("request") do |span|
+        subject = span
+      end
+      actual = JSON.parse(subject.to_json).as_h
+      actual.has_key?("attributes").should be_false
+    end
+  end
 end
