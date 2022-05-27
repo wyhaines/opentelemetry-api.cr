@@ -25,7 +25,7 @@ require "random/pcg32"
 #   config.exporter = OpenTelemetry::Exporter.new(variant: :stdout)
 # end
 #
-# trace = OpenTelemetry.trace_provider("my_app_or_library", "1.1.1")
+# trace = OpenTelemetry.trace_provider("my_app_or_library", "1.1.1").trace
 # trace = OpenTelemetry.trace_provider do |provider|
 #   provider.service_name = "my_app_or_library"
 #   provider.service_version = "1.1.1"
