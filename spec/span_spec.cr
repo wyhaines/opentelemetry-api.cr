@@ -88,13 +88,13 @@ describe OpenTelemetry::Span do
       {OpenTelemetry::Span::Kind::Internal, 1},
       {OpenTelemetry::Span::Kind::Unspecified, 0},
     ].each do |kind, kind_val|
-      json = ""
+      subject = nil
       OpenTelemetry.trace.in_span("request") do |span|
         span.kind = kind
 
-        json = span.to_json
+        subject = span
       end
-      JSON.parse(json)["kind"].as_i.should eq kind_val
+      JSON.parse(subject.to_json)["kind"].as_i.should eq kind_val
     end
   end
 
