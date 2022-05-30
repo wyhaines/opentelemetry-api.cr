@@ -247,7 +247,7 @@ describe OpenTelemetry::Sampler do
     end
 
     _, server_traces = FindJson.from_io(memory)
-    server_traces.size.should be_close(500, 50)
+    server_traces.size.should be_close(500, 60)
 
     ENV.delete("OTEL_TRACES_SAMPLER")
     ENV.delete("OTEL_TRACES_SAMPLER_ARG")
