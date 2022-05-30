@@ -263,7 +263,7 @@ module OpenTelemetry
     # Close a previosly opened span.
     def close_span(span = OpenTelemetry.current_span)
       return unless span
-      
+
       close_span_impl(span)
     ensure
       @lock.unlock

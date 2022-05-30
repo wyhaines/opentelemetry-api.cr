@@ -80,9 +80,9 @@ describe OpenTelemetry::Span do
   end
 
   it "can set a span to all of the defined span kinds" do
-pp OpenTelemetry.trace_provider.config
-pp Fiber.current.current_trace
-pp Fiber.current.current_span
+    pp OpenTelemetry.trace_provider.config
+    pp Fiber.current.current_trace
+    pp Fiber.current.current_span
     [
       {OpenTelemetry::Span::Kind::Consumer, 5},
       {OpenTelemetry::Span::Kind::Producer, 4},

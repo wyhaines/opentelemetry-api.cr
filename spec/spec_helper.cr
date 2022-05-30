@@ -12,6 +12,14 @@ def clear_env
   end
 end
 
+def checkout_config(clear : Bool = true)
+  config = OpenTelemetry.config
+  clear_env if clear
+  yield
+  clear_env if clear
+  OpenTelemetry.config = config
+end
+
 def iterate_span_nodes(span, indent, buffer)
   return if span.nil?
 

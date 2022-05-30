@@ -148,33 +148,32 @@ describe OpenTelemetry::TraceProvider do
   end
 
   it "will honor environment variable configuration even when configuration is set in code" do
-    clear_env
-    ENV["OTEL_SERVICE_NAME"] = "i am a special app"
-    ENV["OTEL_SERVICE_VERSION"] = "1.2.3"
-    ENV["OTEL_TRACES_EXPORTER"] = "stdout"
-    ENV["OTEL_TRACES_SAMPLER"] = "alwaysoff"
-    OpenTelemetry.configure do |config|
-      config.service_name = "microservice"
-      config.service_version = "1.1.1"
-    end
-
-    begin
-      trace = OpenTelemetry.trace
-      trace.in_span("NOP")
-      trace.is_a?(OpenTelemetry::Trace).should be_true
-      trace.service_name.should eq "i am a special app"
-      trace.service_version.should eq "1.2.3"
-      if exptr = trace.exporter
-        exptr.exporter.should be_a OpenTelemetry::Exporter::Stdout
-      end
-      OpenTelemetry.config.sampler.should be_a OpenTelemetry::Sampler::AlwaysOff
-    ensure
-      if trace
-        # By fully closing the trace, we ensure that it doesn't exist as the Fiber.current_trace, either.
-        trace.close_span
+    checkout_config do
+      ENV["OTEL_SERVICE_NAME"] = "i am a special app"
+      ENV["OTEL_SERVICE_VERSION"] = "1.2.3"
+      ENV["OTEL_TRACES_EXPORTER"] = "stdout"
+      ENV["OTEL_TRACES_SAMPLER"] = "alwaysoff"
+      OpenTelemetry.configure do |config|
+        config.service_name = "microservice"
+        config.service_version = "1.1.1"
       end
 
-      clear_env
+      begin
+        trace = OpenTelemetry.trace
+        trace.in_span("NOP")
+        trace.is_a?(OpenTelemetry::Trace).should be_true
+        trace.service_name.should eq "i am a special app"
+        trace.service_version.should eq "1.2.3"
+        if exptr = trace.exporter
+          exptr.exporter.should be_a OpenTelemetry::Exporter::Stdout
+        end
+        OpenTelemetry.config.sampler.should be_a OpenTelemetry::Sampler::AlwaysOff
+      ensure
+        if trace
+          # By fully closing the trace, we ensure that it doesn't exist as the Fiber.current_trace, either.
+          trace.close_span
+        end
+      end
     end
   end
 end
