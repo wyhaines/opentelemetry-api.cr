@@ -1134,7 +1134,7 @@ OpenTelemetry to send or receive metrics, traces, and logs. This library is inte
 <li>
 <p>Add the dependency to your <code>shard.yml</code>:</p>
 <pre><code class="language-yaml">dependencies:
-  otel:
+  opentelemetry-api:
     github: wyhaines/opentelemetry-api.cr</code></pre>
 </li>
 <li>
@@ -1156,7 +1156,7 @@ OpenTelemetry to send or receive metrics, traces, and logs. This library is inte
 <pre><code class="language-crystal"><span class="t">OpenTelemetry</span>.configure <span class="k">do</span> <span class="o">|</span>config<span class="o">|</span>
   config.service_name <span class="o">=</span> <span class="s">&quot;my_app_or_library&quot;</span>
   config.service_version <span class="o">=</span> <span class="s">&quot;1.1.1&quot;</span>
-  config.exporter <span class="o">=</span> <span class="t">OpenTelemetry</span><span class="t">::</span><span class="t">IOExporter</span>.<span class="k">new</span>(<span class="n">:STDOUT</span>)
+  config.exporter <span class="o">=</span> <span class="t">OpenTelemetry</span><span class="t">::</span><span class="t">Exporter</span>.<span class="k">new</span>(variant: <span class="n">:stdout</span>)
 <span class="k">end</span></code></pre>
 <p>One may also provision a <code>TracerProvider</code> object directly:</p>
 <pre><code class="language-crystal">tracer_provider <span class="o">=</span> <span class="t">OpenTelemetry</span>.tracer_provider(<span class="s">&quot;my_app_or_library&quot;</span>, <span class="s">&quot;1.1.1&quot;</span>)
@@ -1166,11 +1166,11 @@ tracer_provider <span class="o">=</span> <span class="t">OpenTelemetry</span>.tr
 <span class="k">end</span></code></pre>
 <p>This allows multiple providers with different configuration to be created:</p>
 <pre><code class="language-crystal">provider_a <span class="o">=</span> <span class="t">OpenTelemetry</span><span class="t">::</span><span class="t">TracerProvider</span>.<span class="k">new</span>(<span class="s">&quot;my_app_or_library&quot;</span>, <span class="s">&quot;1.1.1&quot;</span>)
-provider_a.exporter <span class="o">=</span> <span class="t">OpenTelemetry</span><span class="t">::</span><span class="t">IOExporter</span>.<span class="k">new</span>(<span class="n">:STDOUT</span>)</code></pre>
+provider_a.exporter <span class="o">=</span> <span class="t">OpenTelemetry</span><span class="t">::</span><span class="t">Exporter</span>.<span class="k">new</span>(variant: <span class="n">:stdout</span>)</code></pre>
 <pre><code class="language-crystal">provider_b <span class="o">=</span> <span class="t">OpenTelementry</span><span class="t">::</span><span class="t">TracerProvider</span>.<span class="k">new</span> <span class="k">do</span> <span class="o">|</span>config<span class="o">|</span>
   config.service_name <span class="o">=</span> <span class="s">&quot;my_app_or_library&quot;</span>
   config.service_version <span class="o">=</span> <span class="s">&quot;1.1.1&quot;</span>
-  config.exporter <span class="o">=</span> <span class="t">OpenTelemetry</span><span class="t">::</span><span class="t">IOExporter</span>.<span class="k">new</span>(<span class="n">:STDOUT</span>)
+  config.exporter <span class="o">=</span> <span class="t">OpenTelemetry</span><span class="t">::</span><span class="t">Exporter</span>.<span class="k">new</span>(variant: <span class="n">:stdout</span>)
 <span class="k">end</span></code></pre>
 <p>All <code>TracerProvider</code> configuration done in this way will respect OpenTelemetry SDK conventions for environment variable based configuration. Configuration delivered via environment variables supercedes configuration delivered in code. For example:</p>
 <p><em>environment variables</em></p>
