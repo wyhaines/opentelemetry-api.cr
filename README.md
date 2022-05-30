@@ -25,6 +25,12 @@ The TL;DR is that a `TracerProvider` is used to create a `Tracer`. A `Span` is c
 
 A lot of documentation needs to be added. PRs would be welcome!
 
+## Discord
+
+A Discord community for help and discussion with Crystal OpenTelemetry can be found at:
+
+https://discord.gg/WKe9WWJ3HE
+
 ## Installation
 
 1. Add the dependency to your `shard.yml`:
