@@ -37,7 +37,7 @@ https://discord.gg/WKe9WWJ3HE
 
    ```yaml
    dependencies:
-     otel:
+     opentelemetry-api:
        github: wyhaines/opentelemetry-api.cr
    ```
 
@@ -57,7 +57,7 @@ The most common pattern for usage is to have a single global `TracerProvider` th
 OpenTelemetry.configure do |config|
   config.service_name = "my_app_or_library"
   config.service_version = "1.1.1"
-  config.exporter = OpenTelemetry::IOExporter.new(:STDOUT)
+  config.exporter = OpenTelemetry::Exporter.new(variant: :stdout)
 end
 ```
 
@@ -75,14 +75,14 @@ This allows multiple providers with different configuration to be created:
 
 ```crystal
 provider_a = OpenTelemetry::TracerProvider.new("my_app_or_library", "1.1.1")
-provider_a.exporter = OpenTelemetry::IOExporter.new(:STDOUT)
+provider_a.exporter = OpenTelemetry::Exporter.new(variant: :stdout)
 ```
 
 ```crystal
 provider_b = OpenTelementry::TracerProvider.new do |config|
   config.service_name = "my_app_or_library"
   config.service_version = "1.1.1"
-  config.exporter = OpenTelemetry::IOExporter.new(:STDOUT)
+  config.exporter = OpenTelemetry::Exporter.new(variant: :stdout)
 end
 ```
 
