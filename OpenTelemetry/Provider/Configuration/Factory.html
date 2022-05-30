@@ -1157,6 +1157,11 @@
         
       </li>
     
+      <li class="entry-summary">
+        <a href="#new%28configuration%29-class-method" class="signature"><strong>.new</strong>(configuration)</a>
+        
+      </li>
+    
   </ul>
 
 
@@ -1177,12 +1182,12 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#build%28service_name%3D%22service_%23%7BCSUUID.unique%7D%22%2Cservice_version%3D%22%22%2Cschema_url%3D%22%22%2Cexporter%3DExporter.new%28%3Aabstract%29%2Csampler%3DSampler%3A%3AAlwaysOn.new%2Cid_generator%3DIdGenerator.new%28%22unique%22%29%2C%26%29-class-method" class="signature"><strong>.build</strong>(service_name = <span class="s">&quot;service_</span><span class="i">#{</span><span class="t">CSUUID</span>.unique<span class="i">}</span><span class="s">&quot;</span>, service_version = <span class="s">&quot;&quot;</span>, schema_url = <span class="s">&quot;&quot;</span>, exporter = <span class="t">Exporter</span>.<span class="k">new</span>(<span class="n">:abstract</span>), sampler = <span class="t">Sampler</span><span class="t">::</span><span class="t">AlwaysOn</span>.<span class="k">new</span>, id_generator = <span class="t">IdGenerator</span>.<span class="k">new</span>(<span class="s">&quot;unique&quot;</span>), &)</a>
+        <a href="#build%28service_name%3Dunknown_service%2Cservice_version%3D%22%22%2Cschema_url%3D%22%22%2Cexporter%3DExporter.new%28%3Anull%29%2Csampler%3DSampler%3A%3AAlwaysOn.new%2Cid_generator%3DIdGenerator.new%28%22unique%22%29%2C%26%29-class-method" class="signature"><strong>.build</strong>(service_name = unknown_service, service_version = <span class="s">&quot;&quot;</span>, schema_url = <span class="s">&quot;&quot;</span>, exporter = <span class="t">Exporter</span>.<span class="k">new</span>(<span class="n">:null</span>), sampler = <span class="t">Sampler</span><span class="t">::</span><span class="t">AlwaysOn</span>.<span class="k">new</span>, id_generator = <span class="t">IdGenerator</span>.<span class="k">new</span>(<span class="s">&quot;unique&quot;</span>), &)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#build%28service_name%3D%22service_%23%7BCSUUID.unique%7D%22%2Cservice_version%3D%22%22%2Cschema_url%3D%22%22%2Cexporter%3DExporter.new%28%3Aabstract%29%2Csampler%3DSampler%3A%3AAlwaysOn.new%2Cid_generator%3DIdGenerator.new%28%22unique%22%29%29-class-method" class="signature"><strong>.build</strong>(service_name = <span class="s">&quot;service_</span><span class="i">#{</span><span class="t">CSUUID</span>.unique<span class="i">}</span><span class="s">&quot;</span>, service_version = <span class="s">&quot;&quot;</span>, schema_url = <span class="s">&quot;&quot;</span>, exporter = <span class="t">Exporter</span>.<span class="k">new</span>(<span class="n">:abstract</span>), sampler = <span class="t">Sampler</span><span class="t">::</span><span class="t">AlwaysOn</span>.<span class="k">new</span>, id_generator = <span class="t">IdGenerator</span>.<span class="k">new</span>(<span class="s">&quot;unique&quot;</span>))</a>
+        <a href="#build%28service_name%3Dunknown_service%2Cservice_version%3D%22%22%2Cschema_url%3D%22%22%2Cexporter%3DExporter.new%28%3Anull%29%2Csampler%3DSampler%3A%3AAlwaysOn.new%2Cid_generator%3DIdGenerator.new%28%22unique%22%29%29-class-method" class="signature"><strong>.build</strong>(service_name = unknown_service, service_version = <span class="s">&quot;&quot;</span>, schema_url = <span class="s">&quot;&quot;</span>, exporter = <span class="t">Exporter</span>.<span class="k">new</span>(<span class="n">:null</span>), sampler = <span class="t">Sampler</span><span class="t">::</span><span class="t">AlwaysOn</span>.<span class="k">new</span>, id_generator = <span class="t">IdGenerator</span>.<span class="k">new</span>(<span class="s">&quot;unique&quot;</span>))</a>
         
       </li>
     
@@ -1243,10 +1248,14 @@
       <li class="entry-summary">
         <a href="#service_name%3AString-instance-method" class="signature"><strong>#service_name</strong> : String</a>
         
+          <div class="summary"><p>property service_name : String = Configuration.default_service_name || Path[Process.executable_path.to_s].basename property service_version : String = Configuration.default_service_version || &quot;&quot; property schema_url : String = Configuration.default_schema_url || &quot;&quot; property exporter : Exporter? = Configuration.default_traces_exporter ? Configuration.default_exporter_instance : nil property sampler : Sampler = Configuration.default_traces_sampler ? Configuration.default_sampler_instance : Sampler::AlwaysOn.new</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#service_name%3D%28service_name%3AString%29-instance-method" class="signature"><strong>#service_name=</strong>(service_name : String)</a>
+        
+          <div class="summary"><p>property service_name : String = Configuration.default_service_name || Path[Process.executable_path.to_s].basename property service_version : String = Configuration.default_service_version || &quot;&quot; property schema_url : String = Configuration.default_schema_url || &quot;&quot; property exporter : Exporter? = Configuration.default_traces_exporter ? Configuration.default_exporter_instance : nil property sampler : Sampler = Configuration.default_traces_sampler ? Configuration.default_sampler_instance : Sampler::AlwaysOn.new</p></div>
         
       </li>
     
@@ -1314,6 +1323,20 @@
       </div>
     </div>
   
+    <div class="entry-detail" id="new(configuration)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(configuration)
+
+        <a class="method-permalink" href="#new%28configuration%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
 
 
 
@@ -1340,12 +1363,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="build(service_name=&quot;service_#{CSUUID.unique}&quot;,service_version=&quot;&quot;,schema_url=&quot;&quot;,exporter=Exporter.new(:abstract),sampler=Sampler::AlwaysOn.new,id_generator=IdGenerator.new(&quot;unique&quot;),&amp;)-class-method">
+    <div class="entry-detail" id="build(service_name=unknown_service,service_version=&quot;&quot;,schema_url=&quot;&quot;,exporter=Exporter.new(:null),sampler=Sampler::AlwaysOn.new,id_generator=IdGenerator.new(&quot;unique&quot;),&amp;)-class-method">
       <div class="signature">
         
-        def self.<strong>build</strong>(service_name = <span class="s">&quot;service_</span><span class="i">#{</span><span class="t">CSUUID</span>.unique<span class="i">}</span><span class="s">&quot;</span>, service_version = <span class="s">&quot;&quot;</span>, schema_url = <span class="s">&quot;&quot;</span>, exporter = <span class="t">Exporter</span>.<span class="k">new</span>(<span class="n">:abstract</span>), sampler = <span class="t">Sampler</span><span class="t">::</span><span class="t">AlwaysOn</span>.<span class="k">new</span>, id_generator = <span class="t">IdGenerator</span>.<span class="k">new</span>(<span class="s">&quot;unique&quot;</span>), &)
+        def self.<strong>build</strong>(service_name = unknown_service, service_version = <span class="s">&quot;&quot;</span>, schema_url = <span class="s">&quot;&quot;</span>, exporter = <span class="t">Exporter</span>.<span class="k">new</span>(<span class="n">:null</span>), sampler = <span class="t">Sampler</span><span class="t">::</span><span class="t">AlwaysOn</span>.<span class="k">new</span>, id_generator = <span class="t">IdGenerator</span>.<span class="k">new</span>(<span class="s">&quot;unique&quot;</span>), &)
 
-        <a class="method-permalink" href="#build%28service_name%3D%22service_%23%7BCSUUID.unique%7D%22%2Cservice_version%3D%22%22%2Cschema_url%3D%22%22%2Cexporter%3DExporter.new%28%3Aabstract%29%2Csampler%3DSampler%3A%3AAlwaysOn.new%2Cid_generator%3DIdGenerator.new%28%22unique%22%29%2C%26%29-class-method">#</a>
+        <a class="method-permalink" href="#build%28service_name%3Dunknown_service%2Cservice_version%3D%22%22%2Cschema_url%3D%22%22%2Cexporter%3DExporter.new%28%3Anull%29%2Csampler%3DSampler%3A%3AAlwaysOn.new%2Cid_generator%3DIdGenerator.new%28%22unique%22%29%2C%26%29-class-method">#</a>
       </div>
       
       <br/>
@@ -1354,12 +1377,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="build(service_name=&quot;service_#{CSUUID.unique}&quot;,service_version=&quot;&quot;,schema_url=&quot;&quot;,exporter=Exporter.new(:abstract),sampler=Sampler::AlwaysOn.new,id_generator=IdGenerator.new(&quot;unique&quot;))-class-method">
+    <div class="entry-detail" id="build(service_name=unknown_service,service_version=&quot;&quot;,schema_url=&quot;&quot;,exporter=Exporter.new(:null),sampler=Sampler::AlwaysOn.new,id_generator=IdGenerator.new(&quot;unique&quot;))-class-method">
       <div class="signature">
         
-        def self.<strong>build</strong>(service_name = <span class="s">&quot;service_</span><span class="i">#{</span><span class="t">CSUUID</span>.unique<span class="i">}</span><span class="s">&quot;</span>, service_version = <span class="s">&quot;&quot;</span>, schema_url = <span class="s">&quot;&quot;</span>, exporter = <span class="t">Exporter</span>.<span class="k">new</span>(<span class="n">:abstract</span>), sampler = <span class="t">Sampler</span><span class="t">::</span><span class="t">AlwaysOn</span>.<span class="k">new</span>, id_generator = <span class="t">IdGenerator</span>.<span class="k">new</span>(<span class="s">&quot;unique&quot;</span>))
+        def self.<strong>build</strong>(service_name = unknown_service, service_version = <span class="s">&quot;&quot;</span>, schema_url = <span class="s">&quot;&quot;</span>, exporter = <span class="t">Exporter</span>.<span class="k">new</span>(<span class="n">:null</span>), sampler = <span class="t">Sampler</span><span class="t">::</span><span class="t">AlwaysOn</span>.<span class="k">new</span>, id_generator = <span class="t">IdGenerator</span>.<span class="k">new</span>(<span class="s">&quot;unique&quot;</span>))
 
-        <a class="method-permalink" href="#build%28service_name%3D%22service_%23%7BCSUUID.unique%7D%22%2Cservice_version%3D%22%22%2Cschema_url%3D%22%22%2Cexporter%3DExporter.new%28%3Aabstract%29%2Csampler%3DSampler%3A%3AAlwaysOn.new%2Cid_generator%3DIdGenerator.new%28%22unique%22%29%29-class-method">#</a>
+        <a class="method-permalink" href="#build%28service_name%3Dunknown_service%2Cservice_version%3D%22%22%2Cschema_url%3D%22%22%2Cexporter%3DExporter.new%28%3Anull%29%2Csampler%3DSampler%3A%3AAlwaysOn.new%2Cid_generator%3DIdGenerator.new%28%22unique%22%29%29-class-method">#</a>
       </div>
       
       <br/>
@@ -1500,6 +1523,15 @@
         <a class="method-permalink" href="#service_name%3AString-instance-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>property service_name : String = Configuration.default_service_name || Path[Process.executable_path.to_s].basename
+property service_version : String = Configuration.default_service_version || &quot;&quot;
+property schema_url : String = Configuration.default_schema_url || &quot;&quot;
+property exporter : Exporter? = Configuration.default_traces_exporter ? Configuration.default_exporter_instance : nil
+property sampler : Sampler = Configuration.default_traces_sampler ? Configuration.default_sampler_instance : Sampler::AlwaysOn.new</p>
+        </div>
+      
       <br/>
       <div>
         
@@ -1513,6 +1545,15 @@
 
         <a class="method-permalink" href="#service_name%3D%28service_name%3AString%29-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>property service_name : String = Configuration.default_service_name || Path[Process.executable_path.to_s].basename
+property service_version : String = Configuration.default_service_version || &quot;&quot;
+property schema_url : String = Configuration.default_schema_url || &quot;&quot;
+property exporter : Exporter? = Configuration.default_traces_exporter ? Configuration.default_exporter_instance : nil
+property sampler : Sampler = Configuration.default_traces_sampler ? Configuration.default_sampler_instance : Sampler::AlwaysOn.new</p>
+        </div>
       
       <br/>
       <div>
