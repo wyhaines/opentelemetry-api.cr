@@ -94,6 +94,7 @@ describe OpenTelemetry::Span do
 
         json = span.to_json
       end
+pp json
       JSON.parse(json)["kind"].as_i.should eq kind_val
     end
   end
