@@ -19,6 +19,12 @@ module OpenTelemetry
       end
     end
 
+    def initialize(config, &block : Configuration::Factory ->)
+      @config = Configuration::Factory.build(config) do |config_block|
+        block.call(config_block)
+      end
+    end
+
     def initialize(
       service_name : String = "",
       service_version : String = "",

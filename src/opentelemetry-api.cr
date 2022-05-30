@@ -73,7 +73,7 @@ module OpenTelemetry
   CSUUID.prng = Random::PCG32.new
   INSTANCE_ID = CSUUID.unique.to_s
   # The `config` class property provides direct access to the global default TracerProvider configuration.
-  class_property config = TraceProvider::Configuration.new(Path[Process.executable_path.to_s].basename)
+  class_property config : TraceProvider::Configuration = TraceProvider::Configuration::Factory.build
 
   # `provider` class property provides direct access to the global default Tracerprovider instance.
   class_property provider = TraceProvider.new
@@ -124,11 +124,9 @@ module OpenTelemetry
   # merged with it, which means that given no additional configuration, the newly
   # provided `TracerProvider` will have the same configuration as the global `TracerProvider`
   def self.trace_provider(&block : TraceProvider::Configuration::Factory ->)
-    self.provider = TraceProvider.new do |cfg|
+    self.provider = TraceProvider.new(@@config) do |cfg|
       block.call(cfg)
     end
-
-    provider.merge_configuration(@@config)
 
     provider
   end

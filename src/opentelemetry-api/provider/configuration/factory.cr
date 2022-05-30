@@ -87,11 +87,16 @@ module OpenTelemetry
       end
 
       class Factory
-        property service_name : String = Configuration.default_service_name || ""
-        property service_version : String = Configuration.default_service_version || ""
-        property schema_url : String = Configuration.default_schema_url || ""
-        property exporter : Exporter? = Configuration.default_traces_exporter ? Configuration.default_exporter_instance : nil
-        property sampler : Sampler = Configuration.default_traces_sampler ? Configuration.default_sampler_instance : Sampler::AlwaysOn.new
+        # property service_name : String = Configuration.default_service_name || Path[Process.executable_path.to_s].basename
+        # property service_version : String = Configuration.default_service_version || ""
+        # property schema_url : String = Configuration.default_schema_url || ""
+        # property exporter : Exporter? = Configuration.default_traces_exporter ? Configuration.default_exporter_instance : nil
+        # property sampler : Sampler = Configuration.default_traces_sampler ? Configuration.default_sampler_instance : Sampler::AlwaysOn.new
+        property service_name : String = ""
+        property service_version : String = ""
+        property schema_url : String = ""
+        property exporter : Exporter? = nil
+        property sampler : Sampler = Sampler::AlwaysOn.new
         property id_generator : IdGenerator
 
         # :nodoc:
@@ -119,11 +124,27 @@ module OpenTelemetry
           end
         end
 
+        @[AlwaysInline]
+        private def self.unknown_service
+          "unknown_service:#{Path[Process.executable_path.to_s].basename}"
+        end
+
+        def self.build(configuration)
+          instance = Factory.new(configuration)
+          yield instance
+          _build(instance)
+        end
+
+        def self.build(configuration)
+          instance = Factory.new(configuration)
+          _build(instance)
+        end
+
         def self.build(
-          service_name = "service_#{CSUUID.unique}",
+          service_name = unknown_service,
           service_version = "",
           schema_url = "",
-          exporter = Exporter.new(:abstract),
+          exporter = Exporter.new(:null),
           sampler = Sampler::AlwaysOn.new,
           id_generator = IdGenerator.new("unique")
         )
@@ -139,10 +160,10 @@ module OpenTelemetry
         end
 
         def self.build(
-          service_name = "service_#{CSUUID.unique}",
+          service_name = unknown_service,
           service_version = "",
           schema_url = "",
-          exporter = Exporter.new(:abstract),
+          exporter = Exporter.new(:null),
           sampler = Sampler::AlwaysOn.new,
           id_generator = IdGenerator.new("unique")
         )
@@ -164,6 +185,15 @@ module OpenTelemetry
           @sampler,
           @id_generator
         )
+        end
+
+        def initialize(configuration)
+          @service_name = configuration.service_name
+          @service_version = configuration.service_version
+          @schema_url = configuration.schema_url
+          @exporter = configuration.exporter
+          @sampler = configuration.sampler
+          @id_generator = configuration.id_generator
         end
       end
     end

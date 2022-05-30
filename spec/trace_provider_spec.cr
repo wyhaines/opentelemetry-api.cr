@@ -1,6 +1,14 @@
 require "./spec_helper"
 
 describe OpenTelemetry::TraceProvider do
+  it "validates the default configuration from the Factory" do
+    config = OpenTelemetry::TracerProvider::Configuration::Factory.build
+    if exporter = config.exporter.try(&.exporter)
+      exporter.should be_a OpenTelemetry::Exporter::Null
+    end
+    config.service_name.should eq "unknown_service:crystal-run-spec.tmp"
+  end
+
   it "can return individual provider instances" do
     provider_a = OpenTelemetry::TraceProvider.new("my_app_or_library", "1.1.1")
     provider_b = OpenTelemetry::TraceProvider.new("my_app_or_library2", "2.2.2", "http://foo.bar")
