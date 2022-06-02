@@ -102,8 +102,6 @@ describe OpenTelemetry::Span do
           span.context.trace_flags = OpenTelemetry::TraceFlags::Sampled
 
           json = span.to_json
-          pp span
-          pp json
         end
         JSON.parse(json)["kind"].as_i.should eq kind_val
       end
