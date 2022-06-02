@@ -76,7 +76,7 @@ module OpenTelemetry
   class_property config : TraceProvider::Configuration = TraceProvider::Configuration::Factory.build
 
   # `provider` class property provides direct access to the global default Tracerprovider instance.
-  class_property provider = TraceProvider.new
+  class_property provider : TraceProvider = TraceProvider.new.configure!(@@config)
 
   # Use this method to configure the global trace provider. The provided block will receive a `OpenTelemetry::Provider::Configuration::Factory`
   # instance, which will be used to generate a `OpenTelemetry::Provider::Configuration` struct instance.
@@ -146,16 +146,17 @@ module OpenTelemetry
   # merged with it, which means that given no additional configuration, the newly
   # provided `TracerProvider` will have the same configuration as the global `TracerProvider`
   def self.trace_provider(
-    service_name : String = ENV["OTEL_SERVICE_NAME"]? || "",
-    service_version : String = "",
+    service_name : String? = nil,
+    service_version : String? = nil,
     exporter = nil
   )
-    self.provider = TraceProvider.new(
-      service_name: service_name,
-      service_version: service_version,
-      exporter: exporter || Exporter.new(:abstract))
-    provider.merge_configuration(@@config)
-
+    if !service_name.nil? || !service_version.nil? || !exporter.nil?
+      self.provider = TraceProvider.new(
+        service_name: service_name || ENV["OTEL_SERVICE_NAME"]? || "",
+        service_version: service_version || "",
+        exporter: exporter || Exporter.new(:abstract))
+      provider.merge_configuration(@@config)
+    end
     provider
   end
 
@@ -166,8 +167,8 @@ module OpenTelemetry
   # deprecating the uniform naming, in places where that naming violates the spec.
   # This is here to start preparing for that transition.
   def self.tracer_provider(
-    service_name : String = ENV["OTEL_SERVICE_NAME"]? || "",
-    service_version : String = "",
+    service_name : String? = nil,
+    service_version : String? = nil,
     exporter = nil
   )
     self.trace_provider(

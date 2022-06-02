@@ -5,6 +5,11 @@ require "./sampler" # SDK
 module OpenTelemetry
   # A TraceProvider encapsulates a set of tracing configuration, and provides an interface for creating Trace instances.
   class TraceProvider < Provider
+    # # Ensure that any resources, like fibers, are shut down when a TracerProvider object is collected.
+    # def finalize
+    #   @config.exporter.try(&.exporter).try(&.do_reap)
+    # end
+
     # Create a new trace, initializing it with the provided parameters.
     def trace(
       service_name = nil,

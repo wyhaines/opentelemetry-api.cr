@@ -33,7 +33,7 @@ module OpenTelemetry
             oldsize = elements.size
             last_inspect = Time.monotonic
             {% if flag? :DEBUG %}
-              puts "#{elements.size} >= #{@batch_threshold} || #{(Time.monotonic - mark).seconds} >= #{@batch_latency}"
+              puts "#{self.object_id} : #{elements.size} >= #{@batch_threshold} || #{(Time.monotonic - mark).seconds} >= #{@batch_latency}"
             {% end %}
           end
           # If the internal buffer has reached the processing threshold size, or
@@ -45,6 +45,8 @@ module OpenTelemetry
             elements_size = 0
             mark = Time.monotonic
           end
+
+          break if reaped?
           sleep 0.01
         end
       end

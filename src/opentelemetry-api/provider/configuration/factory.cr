@@ -5,7 +5,7 @@ module OpenTelemetry
   #
   # The `OpenTelemetry::Configuration::Factory` provides this interface.
   class Provider
-    struct Configuration
+    class Configuration
       def self.default_service_name
         ENV["OTEL_SERVICE_NAME"]?
       end
@@ -87,11 +87,6 @@ module OpenTelemetry
       end
 
       class Factory
-        # property service_name : String = Configuration.default_service_name || Path[Process.executable_path.to_s].basename
-        # property service_version : String = Configuration.default_service_version || ""
-        # property schema_url : String = Configuration.default_schema_url || ""
-        # property exporter : Exporter? = Configuration.default_traces_exporter ? Configuration.default_exporter_instance : nil
-        # property sampler : Sampler = Configuration.default_traces_sampler ? Configuration.default_sampler_instance : Sampler::AlwaysOn.new
         property service_name : String = ""
         property service_version : String = ""
         property schema_url : String = ""

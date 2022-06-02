@@ -9,6 +9,12 @@ module OpenTelemetry
     # with their own functionality.
     module UnbufferedExporter
       @buffer : Channel(Elements) = Channel(Elements).new
+      @reap_semaphore : NBChannel(Bool) = NBChannel(Bool).new
+      @reaped : Bool = false
+
+      def do_reap
+        @reap_semaphore.send(true)
+      end
 
       def initialize
         start
@@ -33,11 +39,21 @@ module OpenTelemetry
         spawn loop_and_receive
       end
 
+      def reaped?
+        if @reaped || @reap_semaphore.receive?
+          @reaped = true
+        end
+
+        @reaped
+      end
+
       def loop_and_receive
         loop do
           while element = @buffer.receive?
             handle element
           end
+
+          break if reaped?
           sleep 0.01
         end
       end

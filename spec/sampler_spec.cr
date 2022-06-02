@@ -117,7 +117,7 @@ describe OpenTelemetry::Sampler::TraceIdRatioBased, tags: ["TraceIdRatioBased"] 
     end
 
     _, server_traces = FindJson.from_io(memory)
-    server_traces.size.should be_close(500, 50)
+    server_traces.size.should be_close(500, 65)
 
     OpenTelemetry.config = original_config
   end
