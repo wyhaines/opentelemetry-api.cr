@@ -98,6 +98,8 @@ describe OpenTelemetry::Span do
         json = ""
         OpenTelemetry.trace.in_span("request") do |span|
           span.kind = kind
+          span.is_recording = true
+          span.context.trace_flags = OpenTelemetry::TraceFlags::Sampled
 
           json = span.to_json
           pp span
