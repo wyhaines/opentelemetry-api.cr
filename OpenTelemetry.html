@@ -1636,16 +1636,16 @@ end</code></pre>
       </li>
     
       <li class="entry-summary">
-        <a href="#provider-class-method" class="signature"><strong>.provider</strong></a>
+        <a href="#provider%3ATraceProvider-class-method" class="signature"><strong>.provider</strong> : TraceProvider</a>
         
-          <div class="summary"><p><code><a href="OpenTelemetry.html#provider-class-method">.provider</a></code> class property provides direct access to the global default Tracerprovider instance.</p></div>
+          <div class="summary"><p><code><a href="OpenTelemetry.html#provider%3ATraceProvider-class-method">.provider</a></code> class property provides direct access to the global default Tracerprovider instance.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#provider%3D%28provider%29-class-method" class="signature"><strong>.provider=</strong>(provider)</a>
+        <a href="#provider%3D%28provider%3ATraceProvider%29-class-method" class="signature"><strong>.provider=</strong>(provider : TraceProvider)</a>
         
-          <div class="summary"><p><code><a href="OpenTelemetry.html#provider-class-method">.provider</a></code> class property provides direct access to the global default Tracerprovider instance.</p></div>
+          <div class="summary"><p><code><a href="OpenTelemetry.html#provider%3ATraceProvider-class-method">.provider</a></code> class property provides direct access to the global default Tracerprovider instance.</p></div>
         
       </li>
     
@@ -1664,7 +1664,7 @@ end</code></pre>
       </li>
     
       <li class="entry-summary">
-        <a href="#trace_provider%28service_name%3AString%3DENV%5B%22OTEL_SERVICE_NAME%22%5D%3F%7C%7C%22%22%2Cservice_version%3AString%3D%22%22%2Cexporter%3Dnil%29-class-method" class="signature"><strong>.trace_provider</strong>(service_name : String = <span class="t">ENV</span>[<span class="s">&quot;OTEL_SERVICE_NAME&quot;</span>]? || <span class="s">&quot;&quot;</span>, service_version : String = <span class="s">&quot;&quot;</span>, exporter = <span class="n">nil</span>)</a>
+        <a href="#trace_provider%28service_name%3AString%3F%3Dnil%2Cservice_version%3AString%3F%3Dnil%2Cexporter%3Dnil%29-class-method" class="signature"><strong>.trace_provider</strong>(service_name : String? = <span class="n">nil</span>, service_version : String? = <span class="n">nil</span>, exporter = <span class="n">nil</span>)</a>
         
           <div class="summary"><p>Configure and return a new <code><a href="OpenTelemetry/TracerProvider.html">TracerProvider</a></code> instance, using the method arguments.</p></div>
         
@@ -1692,7 +1692,7 @@ end</code></pre>
       </li>
     
       <li class="entry-summary">
-        <a href="#tracer_provider%28service_name%3AString%3DENV%5B%22OTEL_SERVICE_NAME%22%5D%3F%7C%7C%22%22%2Cservice_version%3AString%3D%22%22%2Cexporter%3Dnil%29-class-method" class="signature"><strong>.tracer_provider</strong>(service_name : String = <span class="t">ENV</span>[<span class="s">&quot;OTEL_SERVICE_NAME&quot;</span>]? || <span class="s">&quot;&quot;</span>, service_version : String = <span class="s">&quot;&quot;</span>, exporter = <span class="n">nil</span>)</a>
+        <a href="#tracer_provider%28service_name%3AString%3F%3Dnil%2Cservice_version%3AString%3F%3Dnil%2Cexporter%3Dnil%29-class-method" class="signature"><strong>.tracer_provider</strong>(service_name : String? = <span class="n">nil</span>, service_version : String? = <span class="n">nil</span>, exporter = <span class="n">nil</span>)</a>
         
           <div class="summary"><p>Alias.</p></div>
         
@@ -1872,17 +1872,17 @@ active <code><a href="OpenTelemetry/Span.html">Span</a></code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="provider-class-method">
+    <div class="entry-detail" id="provider:TraceProvider-class-method">
       <div class="signature">
         
-        def self.<strong>provider</strong>
+        def self.<strong>provider</strong> : <a href="OpenTelemetry/TraceProvider.html">TraceProvider</a>
 
-        <a class="method-permalink" href="#provider-class-method">#</a>
+        <a class="method-permalink" href="#provider%3ATraceProvider-class-method">#</a>
       </div>
       
         <div class="doc">
           
-          <p><code><a href="OpenTelemetry.html#provider-class-method">.provider</a></code> class property provides direct access to the global default Tracerprovider instance.</p>
+          <p><code><a href="OpenTelemetry.html#provider%3ATraceProvider-class-method">.provider</a></code> class property provides direct access to the global default Tracerprovider instance.</p>
         </div>
       
       <br/>
@@ -1891,17 +1891,17 @@ active <code><a href="OpenTelemetry/Span.html">Span</a></code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="provider=(provider)-class-method">
+    <div class="entry-detail" id="provider=(provider:TraceProvider)-class-method">
       <div class="signature">
         
-        def self.<strong>provider=</strong>(provider)
+        def self.<strong>provider=</strong>(provider : <a href="OpenTelemetry/TraceProvider.html">TraceProvider</a>)
 
-        <a class="method-permalink" href="#provider%3D%28provider%29-class-method">#</a>
+        <a class="method-permalink" href="#provider%3D%28provider%3ATraceProvider%29-class-method">#</a>
       </div>
       
         <div class="doc">
           
-          <p><code><a href="OpenTelemetry.html#provider-class-method">.provider</a></code> class property provides direct access to the global default Tracerprovider instance.</p>
+          <p><code><a href="OpenTelemetry.html#provider%3ATraceProvider-class-method">.provider</a></code> class property provides direct access to the global default Tracerprovider instance.</p>
         </div>
       
       <br/>
@@ -1955,12 +1955,12 @@ the finished trace.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="trace_provider(service_name:String=ENV[&quot;OTEL_SERVICE_NAME&quot;]?||&quot;&quot;,service_version:String=&quot;&quot;,exporter=nil)-class-method">
+    <div class="entry-detail" id="trace_provider(service_name:String?=nil,service_version:String?=nil,exporter=nil)-class-method">
       <div class="signature">
         
-        def self.<strong>trace_provider</strong>(service_name : <a href="String.html">String</a> = <span class="t">ENV</span>[<span class="s">&quot;OTEL_SERVICE_NAME&quot;</span>]? || <span class="s">&quot;&quot;</span>, service_version : <a href="String.html">String</a> = <span class="s">&quot;&quot;</span>, exporter = <span class="n">nil</span>)
+        def self.<strong>trace_provider</strong>(service_name : <a href="String.html">String</a>? = <span class="n">nil</span>, service_version : <a href="String.html">String</a>? = <span class="n">nil</span>, exporter = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#trace_provider%28service_name%3AString%3DENV%5B%22OTEL_SERVICE_NAME%22%5D%3F%7C%7C%22%22%2Cservice_version%3AString%3D%22%22%2Cexporter%3Dnil%29-class-method">#</a>
+        <a class="method-permalink" href="#trace_provider%28service_name%3AString%3F%3Dnil%2Cservice_version%3AString%3F%3Dnil%2Cexporter%3Dnil%29-class-method">#</a>
       </div>
       
         <div class="doc">
@@ -2047,12 +2047,12 @@ This is here to start preparing for that transition.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="tracer_provider(service_name:String=ENV[&quot;OTEL_SERVICE_NAME&quot;]?||&quot;&quot;,service_version:String=&quot;&quot;,exporter=nil)-class-method">
+    <div class="entry-detail" id="tracer_provider(service_name:String?=nil,service_version:String?=nil,exporter=nil)-class-method">
       <div class="signature">
         
-        def self.<strong>tracer_provider</strong>(service_name : <a href="String.html">String</a> = <span class="t">ENV</span>[<span class="s">&quot;OTEL_SERVICE_NAME&quot;</span>]? || <span class="s">&quot;&quot;</span>, service_version : <a href="String.html">String</a> = <span class="s">&quot;&quot;</span>, exporter = <span class="n">nil</span>)
+        def self.<strong>tracer_provider</strong>(service_name : <a href="String.html">String</a>? = <span class="n">nil</span>, service_version : <a href="String.html">String</a>? = <span class="n">nil</span>, exporter = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#tracer_provider%28service_name%3AString%3DENV%5B%22OTEL_SERVICE_NAME%22%5D%3F%7C%7C%22%22%2Cservice_version%3AString%3D%22%22%2Cexporter%3Dnil%29-class-method">#</a>
+        <a class="method-permalink" href="#tracer_provider%28service_name%3AString%3F%3Dnil%2Cservice_version%3AString%3F%3Dnil%2Cexporter%3Dnil%29-class-method">#</a>
       </div>
       
         <div class="doc">

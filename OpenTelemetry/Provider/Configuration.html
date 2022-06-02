@@ -1100,12 +1100,12 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">struct</span> OpenTelemetry::Provider::Configuration
+  <span class="kind">class</span> OpenTelemetry::Provider::Configuration
 
 </h1>
 
 
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="../../OpenTelemetry/Provider/Configuration.html">OpenTelemetry::Provider::Configuration</a></li><li class="superclass">Struct</li><li class="superclass">Value</li><li class="superclass">Object</li></ul>
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../../OpenTelemetry/Provider/Configuration.html">OpenTelemetry::Provider::Configuration</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
 
 
 
@@ -1259,17 +1259,19 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#clone-instance-method" class="signature"><strong>#clone</strong></a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#copy_with%28service_name_service_name%3D%40service_name%2Cservice_version_service_version%3D%40service_version%2Cschema_url_schema_url%3D%40schema_url%2Cexporter_exporter%3D%40exporter%2Csampler_sampler%3D%40sampler%2Cid_generator_id_generator%3D%40id_generator%29-instance-method" class="signature"><strong>#copy_with</strong>(service_name _service_name = @service_name, service_version _service_version = @service_version, schema_url _schema_url = @schema_url, exporter _exporter = @exporter, sampler _sampler = @sampler, id_generator _id_generator = @id_generator)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
         <a href="#exporter%3AExporter%3F-instance-method" class="signature"><strong>#exporter</strong> : Exporter?</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#exporter%3D%28exporter%3AExporter%3F%29-instance-method" class="signature"><strong>#exporter=</strong>(exporter : Exporter?)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#finalize-instance-method" class="signature"><strong>#finalize</strong></a>
+        
+          <div class="summary"><p>Ensure that any resources, like fibers, are shut down when a TracerProvider object is collected.</p></div>
         
       </li>
     
@@ -1279,7 +1281,17 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#id_generator%3D%28id_generator%3AIdGenerator%29-instance-method" class="signature"><strong>#id_generator=</strong>(id_generator : IdGenerator)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#sampler%3ASampler-instance-method" class="signature"><strong>#sampler</strong> : Sampler</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#sampler%3D%28sampler%3ASampler%29-instance-method" class="signature"><strong>#sampler=</strong>(sampler : Sampler)</a>
         
       </li>
     
@@ -1289,12 +1301,27 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#schema_url%3D%28schema_url%3AString%29-instance-method" class="signature"><strong>#schema_url=</strong>(schema_url : String)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#service_name%3AString-instance-method" class="signature"><strong>#service_name</strong> : String</a>
         
       </li>
     
       <li class="entry-summary">
+        <a href="#service_name%3D%28service_name%3AString%29-instance-method" class="signature"><strong>#service_name=</strong>(service_name : String)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#service_version%3AString-instance-method" class="signature"><strong>#service_version</strong> : String</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#service_version%3D%28service_version%3AString%29-instance-method" class="signature"><strong>#service_version=</strong>(service_version : String)</a>
         
       </li>
     
@@ -1305,16 +1332,6 @@
 
 
 <div class="methods-inherited">
-  
-    
-
-
-    
-
-
-    
-
-
   
     
 
@@ -1547,34 +1564,6 @@ the SDK code is surgically separated from the API code.</p>
     Instance Method Detail
   </h2>
   
-    <div class="entry-detail" id="clone-instance-method">
-      <div class="signature">
-        
-        def <strong>clone</strong>
-
-        <a class="method-permalink" href="#clone-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="copy_with(service_name_service_name=@service_name,service_version_service_version=@service_version,schema_url_schema_url=@schema_url,exporter_exporter=@exporter,sampler_sampler=@sampler,id_generator_id_generator=@id_generator)-instance-method">
-      <div class="signature">
-        
-        def <strong>copy_with</strong>(service_name _service_name = @service_name, service_version _service_version = @service_version, schema_url _schema_url = @schema_url, exporter _exporter = @exporter, sampler _sampler = @sampler, id_generator _id_generator = @id_generator)
-
-        <a class="method-permalink" href="#copy_with%28service_name_service_name%3D%40service_name%2Cservice_version_service_version%3D%40service_version%2Cschema_url_schema_url%3D%40schema_url%2Cexporter_exporter%3D%40exporter%2Csampler_sampler%3D%40sampler%2Cid_generator_id_generator%3D%40id_generator%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
     <div class="entry-detail" id="exporter:Exporter?-instance-method">
       <div class="signature">
         
@@ -1589,12 +1578,59 @@ the SDK code is surgically separated from the API code.</p>
       </div>
     </div>
   
+    <div class="entry-detail" id="exporter=(exporter:Exporter?)-instance-method">
+      <div class="signature">
+        
+        def <strong>exporter=</strong>(exporter : <a href="../../OpenTelemetry/Exporter.html">Exporter</a>?)
+
+        <a class="method-permalink" href="#exporter%3D%28exporter%3AExporter%3F%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="finalize-instance-method">
+      <div class="signature">
+        
+        def <strong>finalize</strong>
+
+        <a class="method-permalink" href="#finalize-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Ensure that any resources, like fibers, are shut down when a TracerProvider object is collected.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="id_generator:IdGenerator-instance-method">
       <div class="signature">
         
         def <strong>id_generator</strong> : <a href="../../OpenTelemetry/IdGenerator.html">IdGenerator</a>
 
         <a class="method-permalink" href="#id_generator%3AIdGenerator-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="id_generator=(id_generator:IdGenerator)-instance-method">
+      <div class="signature">
+        
+        def <strong>id_generator=</strong>(id_generator : <a href="../../OpenTelemetry/IdGenerator.html">IdGenerator</a>)
+
+        <a class="method-permalink" href="#id_generator%3D%28id_generator%3AIdGenerator%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1617,12 +1653,40 @@ the SDK code is surgically separated from the API code.</p>
       </div>
     </div>
   
+    <div class="entry-detail" id="sampler=(sampler:Sampler)-instance-method">
+      <div class="signature">
+        
+        def <strong>sampler=</strong>(sampler : <a href="../../OpenTelemetry/Sampler.html">Sampler</a>)
+
+        <a class="method-permalink" href="#sampler%3D%28sampler%3ASampler%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="schema_url:String-instance-method">
       <div class="signature">
         
         def <strong>schema_url</strong> : <a href="../../String.html">String</a>
 
         <a class="method-permalink" href="#schema_url%3AString-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="schema_url=(schema_url:String)-instance-method">
+      <div class="signature">
+        
+        def <strong>schema_url=</strong>(schema_url : <a href="../../String.html">String</a>)
+
+        <a class="method-permalink" href="#schema_url%3D%28schema_url%3AString%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1645,12 +1709,40 @@ the SDK code is surgically separated from the API code.</p>
       </div>
     </div>
   
+    <div class="entry-detail" id="service_name=(service_name:String)-instance-method">
+      <div class="signature">
+        
+        def <strong>service_name=</strong>(service_name : <a href="../../String.html">String</a>)
+
+        <a class="method-permalink" href="#service_name%3D%28service_name%3AString%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="service_version:String-instance-method">
       <div class="signature">
         
         def <strong>service_version</strong> : <a href="../../String.html">String</a>
 
         <a class="method-permalink" href="#service_version%3AString-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="service_version=(service_version:String)-instance-method">
+      <div class="signature">
+        
+        def <strong>service_version=</strong>(service_version : <a href="../../String.html">String</a>)
+
+        <a class="method-permalink" href="#service_version%3D%28service_version%3AString%29-instance-method">#</a>
       </div>
       
       <br/>
