@@ -229,6 +229,22 @@ module OpenTelemetry
     tracer
   end
 
+macro in_span(span_name, &block)
+  OpenTelemetry.trace.in_span({{ span_name.id }}) do |{{ block.args.join(",").id }}|
+  {% verbatim do %}
+  if __spanlocal = Fiber.current.current_span
+  __spanlocal["code.filepath"] = __FILE__
+  __spanlocal["code.lineno"] = __LINE__
+  __spanlocal["code.function"] = {{ "#{@def.name}" }}
+  __spanlocal["code.namespace"] = {{ "#{@type.name}" }}
+  __spanlocal["thread.id"] = Fiber.current.object_id
+  __spanlocal["thread.name"] = Fiber.current.name.to_s
+  end
+  {% end %}
+    {{ block.body }}
+  end
+end
+
   def self.instrumentation_scope
     Proto::Common::V1::InstrumentationScope.new(
       name: NAME,

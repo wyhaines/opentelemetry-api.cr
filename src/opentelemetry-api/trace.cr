@@ -175,6 +175,9 @@ module OpenTelemetry
           unless exception.span_status_message_set
             # If there was an error, then we have to set the span status accordingly, and set the message.
             span.status.error!(exception.message)
+            span["exception.type"] = exception.class.name
+            span["exception.message"] = exception.message.to_s
+            span["exception.stacktrace"] = exception.backtrace.join("\n")
             exception.span_status_message_set = true
           end
         end
@@ -295,7 +298,8 @@ module OpenTelemetry
     # TODO: Add support for a Resource
     # This method returns a ProtoBuf object containing all of the Trace information.
     def to_protobuf
-      spans_buffer = iterate_span_nodes(root_span, [] of Span).map(&.to_protobuf.not_nil!)
+      spans_buffer = iterate_span_nodes(root_span, [] of Span).map(&.to_protobuf)
+      spans_buffer = spans_buffer.compact
       return if spans_buffer.empty?
       Proto::Trace::V1::ResourceSpans.new(
         resource: resource.to_protobuf,
