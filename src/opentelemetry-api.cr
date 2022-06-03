@@ -191,7 +191,7 @@ module OpenTelemetry
     trace = Fiber.current.current_trace
     r = trace ? trace : trace_provider.trace
     Fiber.current.current_trace = r
-    
+
     r
   end
 
