@@ -169,6 +169,7 @@ module OpenTelemetry
         span = in_span_impl(span_name)
 
         exception = nil
+        current_trace = Fiber.current.current_trace.not_nil!
         begin
           result = yield span
         rescue exception
@@ -178,8 +179,18 @@ module OpenTelemetry
             span["exception.type"] = exception.class.name
             span["exception.message"] = exception.message.to_s
             span["exception.stacktrace"] = exception.backtrace.join("\n")
+            current_trace.span_context["exception.type"] = exception.class.name
+            current_trace.span_context["exception.message"] = span["exception.message"].to_s
+            current_trace.span_context["exception.stacktrace"] = span["exception.stacktrace"].to_s
             exception.span_status_message_set = true
           end
+        end
+
+        if !exception && ((span == @root_span) && current_trace.span_context.trace_state.has_key?("exception.type"))
+          span.status.error!(current_trace.span_context["exception.message"])
+          span["exception.type"] = current_trace.span_context["exception.type"]
+          span["exception.message"] = current_trace.span_context["exception.message"]
+          span["exception.stacktrace"] = current_trace.span_context["exception.stacktrace"]
         end
 
         close_span_impl(span)

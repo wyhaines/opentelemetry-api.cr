@@ -62,6 +62,10 @@ module OpenTelemetry
       @trace_state[val]
     end
 
+    def []?(val)
+      @trace_state[val]?
+    end
+
     def []=(val, val2)
       @trace_state[val] = val2
     end

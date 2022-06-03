@@ -190,7 +190,8 @@ module OpenTelemetry
   def self.trace
     trace = Fiber.current.current_trace
     r = trace ? trace : trace_provider.trace
-
+    Fiber.current.current_trace = r
+    
     r
   end
 
@@ -229,8 +230,8 @@ module OpenTelemetry
     tracer
   end
 
-macro in_span(span_name, &block)
-  OpenTelemetry.trace.in_span({{ span_name.id }}) do |{{ block.args.join(",").id }}|
+  macro in_span(span_name, &block)
+  OpenTelemetry.trace.in_span({{ span_name }}) do |{{ block.args.join(",").id }}|
   {% verbatim do %}
   if __spanlocal = Fiber.current.current_span
   __spanlocal["code.filepath"] = __FILE__
