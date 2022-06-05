@@ -1,6 +1,6 @@
 module OpenTelemetry
   module Propagation
-    class TraceContext < TextMapPropagator
+    struct TraceContext < TextMapPropagator
       struct TraceParent
         class InvalidFormatError < ArgumentError
           def initialize(format)

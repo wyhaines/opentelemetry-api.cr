@@ -20,17 +20,20 @@ def checkout_config(clear : Bool = true)
   OpenTelemetry.config = config
 end
 
-def iterate_span_nodes(span, indent, buffer)
-  return if span.nil?
+# def iterate_span_nodes(span, indent, buffer)
+#   return if span.nil?
 
-  buffer << "#{" " * indent}#{span.name}"
-  if span && span.children
-    span.children.each do |child|
-      iterate_span_nodes(child, indent + 2, buffer)
-    end
-  end
+#   buffer << "#{" " * indent}#{span.name}"
+#   if span && span.children
+#     span.children.each do |child|
+#       iterate_span_nodes(child, indent + 2, buffer)
+#     end
+#   end
 
-  buffer
+#   buffer
+# end
+def iterate_tracer_spans(tracer)
+  tracer.output_stack
 end
 
 class FindJson

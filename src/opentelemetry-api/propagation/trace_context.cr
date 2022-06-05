@@ -5,7 +5,7 @@ require "./text_map_getter"
 
 module OpenTelemetry
   module Propagation
-    class TraceContext < TextMapPropagator
+    struct TraceContext < TextMapPropagator
       property trace_parent : TraceParent = TraceParent.new
       property context : Context?
 

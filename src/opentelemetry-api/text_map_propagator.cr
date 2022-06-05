@@ -4,7 +4,7 @@ module OpenTelemetry
   # via either a TraceContext or via Baggage. This class will be subclassed
   # to provide additional specific behavior to conform with the specs for
   # the relevant type of propagator.
-  abstract class TextMapPropagator
+  abstract struct TextMapPropagator
     abstract def inject(carrier, context : Context)
     abstract def extract(carrier, context : Context)
     abstract def fields

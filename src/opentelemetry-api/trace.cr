@@ -19,7 +19,8 @@ module OpenTelemetry
     @exporter : Exporter? = nil
     getter provider : TraceProvider
     getter span_stack : Array(Span) = [] of Span
-    getter root_span : Span? = nil
+    getter output_stack : Deque(Span) = Deque(Span).new
+    @root_span : Span? = nil
     getter resource : Resource = Resource.new
     property current_span : Span? = nil
     property span_context : SpanContext = SpanContext.new
@@ -176,21 +177,25 @@ module OpenTelemetry
           unless exception.span_status_message_set
             # If there was an error, then we have to set the span status accordingly, and set the message.
             span.status.error!(exception.message)
-            span["exception.type"] = exception.class.name
-            span["exception.message"] = exception.message.to_s
-            span["exception.stacktrace"] = exception.backtrace.join("\n")
+            span.add_event("exception") do |event|
+              event["exception.type"] = exception.class.name
+              event["exception.message"] = exception.message.to_s
+              event["exception.backtrace"] = exception.backtrace.join("\n")
+            end
             current_trace.span_context["exception.type"] = exception.class.name
-            current_trace.span_context["exception.message"] = span["exception.message"].to_s
-            current_trace.span_context["exception.stacktrace"] = span["exception.stacktrace"].to_s
+            current_trace.span_context["exception.message"] = exception.message.to_s
+            current_trace.span_context["exception.stacktrace"] = exception.backtrace.join("\n")
             exception.span_status_message_set = true
           end
         end
 
         if !exception && ((span == @root_span) && current_trace.span_context.trace_state.has_key?("exception.type"))
           span.status.error!(current_trace.span_context["exception.message"])
-          span["exception.type"] = current_trace.span_context["exception.type"]
-          span["exception.message"] = current_trace.span_context["exception.message"]
-          span["exception.stacktrace"] = current_trace.span_context["exception.stacktrace"]
+          span.add_event("exception") do |event|
+            event["exception.type"] = current_trace.span_context["exception.type"]
+            event["exception.message"] = current_trace.span_context["exception.message"]
+            event["exception.stacktrace"] = current_trace.span_context["exception.stacktrace"]
+          end
         end
 
         close_span_impl(span)
@@ -206,10 +211,12 @@ module OpenTelemetry
       end
     end
 
+    @[AlwaysInline]
     private def in_span_impl(span_name)
-      span = Span.new(span_name)
-      span.context = SpanContext.build(@span_context) do |ctx|
-        ctx.span_id = @provider.id_generator.span_id
+      span = Span.build(span_name) do |spx|
+        spx.context = SpanContext.build(@span_context) do |ctx|
+          ctx.span_id = @provider.id_generator.span_id
+        end
       end
 
       # TODO: Is there a more efficient way to do this than creating and throwing away
@@ -221,10 +228,11 @@ module OpenTelemetry
         @exported = false
         @root_span = Fiber.current.current_span = @current_span = span
       else
-        span.parent = @span_stack.last
-        span.context.parent_id = span.parent.try &.span_id
-        span.is_recording = @span_stack.last.is_recording # Propagate is_recording to children.
-        @span_stack.last.children << span
+        span_parent = @span_stack.last
+        span.parent = span_parent
+        span.context.parent_id = span_parent.try &.span_id
+        span.is_recording = span_parent.is_recording # Propagate is_recording to children.
+        # @span_stack.last.children << span
         Fiber.current.current_span = @current_span = span
       end
       @span_stack << span
@@ -250,11 +258,13 @@ module OpenTelemetry
       ctx
     end
 
+    @[AlwaysInline]
     private def close_span_impl(span)
       span.finish = Time.monotonic
       span.wall_finish = Time.utc
       if @span_stack.last == span
-        @span_stack.pop
+        candidate_span = @span_stack.pop
+        @output_stack.unshift(candidate_span) if candidate_span.can_export?
         Fiber.current.current_span = @current_span = @span_stack.last?
       else
         raise InvalidSpanInSpanStackError.new(span_stack.last.inspect, span.inspect)
@@ -268,6 +278,7 @@ module OpenTelemetry
           # out just go away early.
           _exporter.export self
         end
+        @root_span = nil
         @exported = true
         Fiber.current.current_trace = nil
         Fiber.current.current_span = nil
@@ -291,7 +302,7 @@ module OpenTelemetry
 
     private def iterate_span_nodes(span, buffer)
       iterate_span_nodes(span) do |s|
-        buffer << s if s && s.recording?
+        buffer << s if s && s.can_export?
       end
 
       buffer
@@ -306,12 +317,23 @@ module OpenTelemetry
       end
     end
 
+    private def reverse_iterate_span_nodes(span, &blk : Span? ->)
+      if span && span.children
+        span.children.each do |child|
+          reverse_iterate_span_nodes(child, &blk) if child
+        end
+      end
+      yield span if span
+    end
+
     # TODO: Add support for a Resource
     # This method returns a ProtoBuf object containing all of the Trace information.
     def to_protobuf
-      spans_buffer = iterate_span_nodes(root_span, [] of Span).map(&.to_protobuf)
-      spans_buffer = spans_buffer.compact
+      # spans_buffer = iterate_span_nodes(root_span, [] of Span).map(&.to_protobuf)
+      # spans_buffer = spans_buffer.compact
+      spans_buffer = @output_stack.map(&.to_protobuf).compact
       return if spans_buffer.empty?
+
       Proto::Trace::V1::ResourceSpans.new(
         resource: resource.to_protobuf,
         scope_spans: [
@@ -325,7 +347,9 @@ module OpenTelemetry
     end
 
     def to_json
-      return "" unless iterate_span_nodes(root_span, [] of Span).any?(&.can_export?)
+      # return "" unless iterate_span_nodes(root_span, [] of Span).any?(&.can_export?)
+      return "" unless @output_stack.any?(&.can_export?)
+
       String.build do |json|
         json << "{\n"
         json << "  \"type\":\"trace\",\n"
@@ -338,7 +362,8 @@ module OpenTelemetry
         json << "  \"schemaUrl\":\"#{schema_url}\",\n" if !schema_url.empty?
         json << "  \"spans\":[\n"
         json << String.build do |span_list|
-          iterate_span_nodes(root_span) do |span|
+          # iterate_span_nodes(root_span) do |span|
+          @output_stack.each do |span|
             span_list << "    "
             span_list << span.to_json if span
             span_list << ",\n"

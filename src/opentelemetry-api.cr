@@ -231,19 +231,22 @@ module OpenTelemetry
   end
 
   macro in_span(span_name, &block)
-  OpenTelemetry.trace.in_span({{ span_name }}) do |{{ block.args.join(",").id }}|
-  {% verbatim do %}
-  if __spanlocal = Fiber.current.current_span
-  __spanlocal["code.filepath"] = __FILE__
-  __spanlocal["code.lineno"] = __LINE__
-  __spanlocal["code.function"] = {{ "#{@def.name}" }}
-  __spanlocal["code.namespace"] = {{ "#{@type.name}" }}
-  __spanlocal["thread.id"] = Fiber.current.object_id
-  __spanlocal["thread.name"] = Fiber.current.name.to_s
-  end
-  {% end %}
+  {%
+    span_arg = block.args.first.id
+    if span_arg == "_".id
+      span_arg = "__tmp_span_arg__".id
+    end
+  %}
+  OpenTelemetry.trace.in_span({{ span_name }}) do |{{ span_arg }}|
+  {{ span_arg }}["code.filepath"] = __FILE__
+  {{ span_arg }}["code.lineno"] = __LINE__
+  {{ span_arg }}["code.function"] = \{{ "#{@def ? @def.name : "@toplevel".id}" }}
+  {{ span_arg }}["code.namespace"] = \{{ "#{@type.name}" }}
+  {{ span_arg }}["thread.id"] = Fiber.current.object_id
+  {{ span_arg }}["thread.name"] = Fiber.current.name.to_s
     {{ block.body }}
   end
+  {% debug %}
 end
 
   def self.instrumentation_scope

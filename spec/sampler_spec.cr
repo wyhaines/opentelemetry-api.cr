@@ -1,6 +1,6 @@
 require "./spec_helper"
 
-describe OpenTelemetry::Sampler::AlwaysOn do
+describe OpenTelemetry::Sampler::AlwaysOn, tags: ["Sampler", "SamplerAlwaysOn"] do
   it "has the correct description and decision" do
     trace_id = OpenTelemetry::IdGenerator.trace_id
     span_id = OpenTelemetry::IdGenerator.span_id
@@ -19,7 +19,7 @@ describe OpenTelemetry::Sampler::AlwaysOn do
   end
 end
 
-describe OpenTelemetry::Sampler::AlwaysOff do
+describe OpenTelemetry::Sampler::AlwaysOff, tags: ["Sampler", "SampleAlwaysOff"] do
   it "has the correct description and decision" do
     trace_id = OpenTelemetry::IdGenerator.trace_id
     span_id = OpenTelemetry::IdGenerator.span_id
@@ -38,7 +38,7 @@ describe OpenTelemetry::Sampler::AlwaysOff do
   end
 end
 
-describe OpenTelemetry::Sampler::TraceIdRatioBased, tags: ["TraceIdRatioBased"] do
+describe OpenTelemetry::Sampler::TraceIdRatioBased, tags: ["Sampler", "TraceIdRatioBased"] do
   it "has the correct description" do
     OpenTelemetry::Sampler::TraceIdRatioBased.new(0.5).description
       .should eq "TraceIdRatioBased{0.5}"
@@ -101,29 +101,28 @@ describe OpenTelemetry::Sampler::TraceIdRatioBased, tags: ["TraceIdRatioBased"] 
   end
 
   it "gets the correct ratio of spans when generating actual traces" do
-    memory = IO::Memory.new
+    checkout_config do
+      memory = IO::Memory.new
 
-    original_config = OpenTelemetry.config
-    OpenTelemetry.configure do |config|
-      config.exporter = OpenTelemetry::Exporter.new(variant: :io, io: memory)
-      config.sampler = OpenTelemetry::Sampler::TraceIdRatioBased.new(0.5)
-    end
-
-    1000.times do
-      trace = OpenTelemetry.trace
-      trace.in_span("IO Memory Exporter Test") do |span|
-        span.set_attribute("key", "value")
+      OpenTelemetry.configure do |config|
+        config.exporter = OpenTelemetry::Exporter.new(variant: :io, io: memory)
+        config.sampler = OpenTelemetry::Sampler::TraceIdRatioBased.new(0.5)
       end
+
+      1000.times do
+        trace = OpenTelemetry.trace
+        trace.in_span("IO Memory Exporter Test") do |span|
+          span.set_attribute("key", "value")
+        end
+      end
+
+      _, server_traces = FindJson.from_io(memory)
+      server_traces.size.should be_close(500, 65)
     end
-
-    _, server_traces = FindJson.from_io(memory)
-    server_traces.size.should be_close(500, 65)
-
-    OpenTelemetry.config = original_config
   end
 end
 
-describe OpenTelemetry::Sampler::ParentBased do
+describe OpenTelemetry::Sampler::ParentBased, tags: ["Sampler", "ParentBased"] do
   it "has the correct description" do
     sampler = OpenTelemetry::Sampler::ParentBased.new(OpenTelemetry::Sampler::AlwaysOn.new)
     sampler.description.should eq "ParentBased{root=AlwaysOn, remote_parent_sampled=AlwaysOn, remote_parent_not_sampled=AlwaysOff, local_parent_sampled=AlwaysOn, local_parent_not_sampled=AlwaysOff}"
@@ -192,65 +191,65 @@ describe OpenTelemetry::Sampler::ParentBased do
   end
 end
 
-describe OpenTelemetry::Sampler do
+describe OpenTelemetry::Sampler, tags: ["Sampler"] do
   it "can setup samplers via environment variables" do
-    memory = IO::Memory.new
-    original_config = OpenTelemetry.config
+    checkout_config do
+      memory = IO::Memory.new
 
-    ENV["OTEL_TRACES_SAMPLER"] = "alwayson"
-    OpenTelemetry.configure do |config|
-      config.exporter = OpenTelemetry::Exporter.new(variant: :io, io: memory)
-    end
-    OpenTelemetry.trace_provider.config.sampler.should be_a(OpenTelemetry::Sampler::AlwaysOn)
-
-    ENV["OTEL_TRACES_SAMPLER"] = "always_off"
-    OpenTelemetry.configure do |config|
-      config.exporter = OpenTelemetry::Exporter.new(variant: :io, io: memory)
-    end
-    OpenTelemetry.trace_provider.config.sampler.should be_a(OpenTelemetry::Sampler::AlwaysOff)
-
-    ENV["OTEL_TRACES_SAMPLER"] = "traceidratio"
-    OpenTelemetry.configure do |config|
-      config.exporter = OpenTelemetry::Exporter.new(variant: :io, io: memory)
-    end
-    OpenTelemetry.trace_provider.config.sampler.should be_a(OpenTelemetry::Sampler::TraceIdRatioBased)
-    OpenTelemetry.trace_provider.config.sampler.description.should eq "TraceIdRatioBased{0.0}"
-
-    ENV["OTEL_TRACES_SAMPLER_ARG"] = "0.5"
-    OpenTelemetry.configure do |config|
-      config.exporter = OpenTelemetry::Exporter.new(variant: :io, io: memory)
-    end
-    OpenTelemetry.trace_provider.config.sampler.should be_a(OpenTelemetry::Sampler::TraceIdRatioBased)
-    OpenTelemetry.trace_provider.config.sampler.description.should eq "TraceIdRatioBased{0.5}"
-    ENV.delete("OTEL_TRACES_SAMPLER_ARG")
-
-    ENV["OTEL_TRACES_SAMPLER"] = "parentbased_always_off"
-    OpenTelemetry.configure do |config|
-      config.exporter = OpenTelemetry::Exporter.new(variant: :io, io: memory)
-    end
-    OpenTelemetry.trace_provider.config.sampler.should be_a(OpenTelemetry::Sampler::ParentBased)
-    OpenTelemetry.trace_provider.config.sampler.description.should eq "ParentBased{root=AlwaysOff, remote_parent_sampled=AlwaysOn, remote_parent_not_sampled=AlwaysOff, local_parent_sampled=AlwaysOn, local_parent_not_sampled=AlwaysOff}"
-
-    ENV["OTEL_TRACES_SAMPLER"] = "parentbased_traceidratio"
-    ENV["OTEL_TRACES_SAMPLER_ARG"] = "0.5"
-    OpenTelemetry.configure do |config|
-      config.exporter = OpenTelemetry::Exporter.new(variant: :io, io: memory)
-    end
-    OpenTelemetry.trace_provider.config.sampler.should be_a(OpenTelemetry::Sampler::ParentBased)
-    OpenTelemetry.trace_provider.config.sampler.description.should eq "ParentBased{root=TraceIdRatioBased{0.5}, remote_parent_sampled=AlwaysOn, remote_parent_not_sampled=AlwaysOff, local_parent_sampled=AlwaysOn, local_parent_not_sampled=AlwaysOff}"
-
-    1000.times do
-      trace = OpenTelemetry.trace
-      trace.in_span("IO Memory Exporter Test") do |span|
-        span.set_attribute("key", "value")
+      ENV["OTEL_TRACES_SAMPLER"] = "alwayson"
+      OpenTelemetry.configure do |config|
+        config.exporter = OpenTelemetry::Exporter.new(variant: :io, io: memory)
       end
+      OpenTelemetry.trace_provider.config.sampler.should be_a(OpenTelemetry::Sampler::AlwaysOn)
+
+      ENV["OTEL_TRACES_SAMPLER"] = "always_off"
+      OpenTelemetry.configure do |config|
+        config.exporter = OpenTelemetry::Exporter.new(variant: :io, io: memory)
+      end
+      OpenTelemetry.trace_provider.config.sampler.should be_a(OpenTelemetry::Sampler::AlwaysOff)
+
+      ENV["OTEL_TRACES_SAMPLER"] = "traceidratio"
+      OpenTelemetry.configure do |config|
+        config.exporter = OpenTelemetry::Exporter.new(variant: :io, io: memory)
+      end
+      OpenTelemetry.trace_provider.config.sampler.should be_a(OpenTelemetry::Sampler::TraceIdRatioBased)
+      OpenTelemetry.trace_provider.config.sampler.description.should eq "TraceIdRatioBased{0.0}"
+
+      ENV["OTEL_TRACES_SAMPLER_ARG"] = "0.5"
+      OpenTelemetry.configure do |config|
+        config.exporter = OpenTelemetry::Exporter.new(variant: :io, io: memory)
+      end
+      OpenTelemetry.trace_provider.config.sampler.should be_a(OpenTelemetry::Sampler::TraceIdRatioBased)
+      OpenTelemetry.trace_provider.config.sampler.description.should eq "TraceIdRatioBased{0.5}"
+      ENV.delete("OTEL_TRACES_SAMPLER_ARG")
+
+      ENV["OTEL_TRACES_SAMPLER"] = "parentbased_always_off"
+      OpenTelemetry.configure do |config|
+        config.exporter = OpenTelemetry::Exporter.new(variant: :io, io: memory)
+      end
+      OpenTelemetry.trace_provider.config.sampler.should be_a(OpenTelemetry::Sampler::ParentBased)
+      OpenTelemetry.trace_provider.config.sampler.description.should eq "ParentBased{root=AlwaysOff, remote_parent_sampled=AlwaysOn, remote_parent_not_sampled=AlwaysOff, local_parent_sampled=AlwaysOn, local_parent_not_sampled=AlwaysOff}"
+
+      ENV["OTEL_TRACES_SAMPLER"] = "parentbased_traceidratio"
+      ENV["OTEL_TRACES_SAMPLER_ARG"] = "0.5"
+      OpenTelemetry.configure do |config|
+        config.exporter = OpenTelemetry::Exporter.new(variant: :io, io: memory)
+      end
+      OpenTelemetry.trace_provider.config.sampler.should be_a(OpenTelemetry::Sampler::ParentBased)
+      OpenTelemetry.trace_provider.config.sampler.description.should eq "ParentBased{root=TraceIdRatioBased{0.5}, remote_parent_sampled=AlwaysOn, remote_parent_not_sampled=AlwaysOff, local_parent_sampled=AlwaysOn, local_parent_not_sampled=AlwaysOff}"
+
+      1000.times do
+        trace = OpenTelemetry.trace
+        trace.in_span("IO Memory Exporter Test") do |span|
+          span.set_attribute("key", "value")
+        end
+      end
+
+      _, server_traces = FindJson.from_io(memory)
+      server_traces.size.should be_close(500, 60)
+
+      ENV.delete("OTEL_TRACES_SAMPLER")
+      ENV.delete("OTEL_TRACES_SAMPLER_ARG")
     end
-
-    _, server_traces = FindJson.from_io(memory)
-    server_traces.size.should be_close(500, 60)
-
-    ENV.delete("OTEL_TRACES_SAMPLER")
-    ENV.delete("OTEL_TRACES_SAMPLER_ARG")
-    OpenTelemetry.config = original_config
   end
 end

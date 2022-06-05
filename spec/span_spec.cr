@@ -138,8 +138,9 @@ describe OpenTelemetry::Span do
         end
       end
 
-      buffer = iterate_span_nodes trace.root_span, 0, [] of String
-      buffer.should eq ["request", "  handler", "    db", "    external api"]
+      # buffer = iterate_span_nodes trace.root_span, 0, [] of String
+      # buffer.should eq ["request", "  handler", "    db", "    external api"]
+      iterate_tracer_spans(trace).map(&.name).should eq ["request", "handler", "external api", "db"]
     end
   end
 end
