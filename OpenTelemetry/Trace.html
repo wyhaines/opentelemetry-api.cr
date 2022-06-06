@@ -1339,6 +1339,11 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#output_stack%3ADeque%28Span%29-instance-method" class="signature"><strong>#output_stack</strong> : Deque(Span)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#provider%3ATraceProvider-instance-method" class="signature"><strong>#provider</strong> : TraceProvider</a>
         
       </li>
@@ -1352,11 +1357,6 @@
     
       <li class="entry-summary">
         <a href="#resource%3AResource-instance-method" class="signature"><strong>#resource</strong> : Resource</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#root_span%3ASpan%3F-instance-method" class="signature"><strong>#root_span</strong> : Span?</a>
         
       </li>
     
@@ -1433,7 +1433,7 @@
       <li class="entry-summary">
         <a href="#to_protobuf-instance-method" class="signature"><strong>#to_protobuf</strong></a>
         
-          <div class="summary"><p><span class="flag orange">TODO</span>  Add support for a Resource This method returns a ProtoBuf object containing all of the Trace information.</p></div>
+          <div class="summary"><p>This method returns a ProtoBuf object containing all of the Trace information.</p></div>
         
       </li>
     
@@ -1875,6 +1875,20 @@ and the span will be closed automatically when the block returns.</p>
       </div>
     </div>
   
+    <div class="entry-detail" id="output_stack:Deque(Span)-instance-method">
+      <div class="signature">
+        
+        def <strong>output_stack</strong> : Deque(<a href="../OpenTelemetry/Span.html">Span</a>)
+
+        <a class="method-permalink" href="#output_stack%3ADeque%28Span%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="provider:TraceProvider-instance-method">
       <div class="signature">
         
@@ -1914,20 +1928,6 @@ and the span will be closed automatically when the block returns.</p>
         def <strong>resource</strong> : <a href="../OpenTelemetry/Resource.html">Resource</a>
 
         <a class="method-permalink" href="#resource%3AResource-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="root_span:Span?-instance-method">
-      <div class="signature">
-        
-        def <strong>root_span</strong> : <a href="../OpenTelemetry/Span.html">Span</a>?
-
-        <a class="method-permalink" href="#root_span%3ASpan%3F-instance-method">#</a>
       </div>
       
       <br/>
@@ -2139,8 +2139,7 @@ and the span will be closed automatically when the block returns.</p>
       
         <div class="doc">
           
-          <p><span class="flag orange">TODO</span>  Add support for a Resource
-This method returns a ProtoBuf object containing all of the Trace information.</p>
+          <p>This method returns a ProtoBuf object containing all of the Trace information.</p>
         </div>
       
       <br/>
