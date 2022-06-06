@@ -23,7 +23,6 @@ module OpenTelemetry
 
       def initialize(span_context : SpanContext, context : Context = OpenTelemetry::Context.current)
         @trace_parent = TraceParent.from_span_context(span_context)
-        # context = context.dup
         if context
           context.merge span_context.trace_state
         end
