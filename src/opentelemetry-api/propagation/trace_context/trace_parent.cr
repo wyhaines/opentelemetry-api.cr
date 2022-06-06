@@ -2,7 +2,6 @@ module OpenTelemetry
   module Propagation
     struct TraceContext < TextMapPropagator
       struct TraceParent
-
         class InvalidFormatError < ArgumentError
           def initialize(format)
             super("Invalid TraceParent Format: #{format} lacks a recognizeable version, trace id, span id, or trace flags.")

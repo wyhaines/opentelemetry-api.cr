@@ -15,7 +15,7 @@ module OpenTelemetry
       if stack.empty?
         stack << Context.new
       end
-        stack.last
+      stack.last
     end
 
     def self.create_key
