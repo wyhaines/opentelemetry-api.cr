@@ -69,7 +69,10 @@ module OpenTelemetry
 
       # TODO: Once we support more than just traces, how this all works will have to be revised.
       private def self.normalized_traces_endpoint_uri(endpoint_uri)
-        endpoint_uri.to_s.ends_with?("traces") ? endpoint_uri : URI.parse(Path.new(endpoint_uri.to_s).join("/v1/traces").to_s)
+        endpoint_uri.path.ends_with?("traces") ? endpoint_uri : URI.parse(
+          Path.new(endpoint_uri.to_s)
+            .join("/v1/traces")
+            .to_s)
       end
 
       # For other HTTP based protocols, such as gRPC, this method should be
