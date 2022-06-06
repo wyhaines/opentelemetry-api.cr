@@ -64,4 +64,33 @@ describe OpenTelemetry::Context do
     OpenTelemetry::Context["two"].should eq "2"
     OpenTelemetry::Context["three"]?.should be_nil
   end
+
+  it "context is per-fiber" do
+    fiber_a_context_stack_id = nil
+    fiber_b_context_stack_id = nil
+    fiber_a_context_id = nil
+    fiber_b_context_id = nil
+
+    finished = Channel(Bool).new
+
+    spawn(name: "Fiber A") do
+      fiber_a_context_stack_id = OpenTelemetry::Context.stack.object_id
+      fiber_a_context_id = OpenTelemetry::Context.current.object_id
+      finished.send(true)
+    end
+
+    spawn(name: "Fiber B") do
+      fiber_b_context_stack_id = OpenTelemetry::Context.stack.object_id
+      fiber_b_context_id = OpenTelemetry::Context.current.object_id
+      finished.send(true)
+    end
+
+    finished.receive
+    finished.receive
+
+    fiber_a_context_stack_id.should_not eq fiber_b_context_stack_id
+    fiber_a_context_id.should_not eq fiber_b_context_id
+    fiber_b_context_stack_id.should_not eq fiber_a_context_stack_id
+    fiber_b_context_id.should_not eq fiber_a_context_id
+  end
 end

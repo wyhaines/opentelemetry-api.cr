@@ -5,9 +5,6 @@ module OpenTelemetry
   struct Context
     alias ContextContainer = SplayTreeMap(String, String)
 
-    @@root : Context = Context.new
-    @@stack : SplayTreeMap(Fiber, Array(Context)) = SplayTreeMap(Fiber, Array(Context)).new { |h, k| h[k] = [] of Context }
-
     getter object_id : CSUUID = CSUUID.unique
 
     def self.stack
