@@ -11,11 +11,14 @@ module OpenTelemetry
     getter object_id : CSUUID = CSUUID.unique
 
     def self.stack
-      @@stack[Fiber.current]
+      Fiber.current.context_stack
     end
 
     def self.current
-      stack.empty? ? @@root : stack.last
+      if stack.empty?
+        stack << Context.new
+      end
+        stack.last
     end
 
     def self.create_key

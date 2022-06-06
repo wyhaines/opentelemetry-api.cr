@@ -27,10 +27,6 @@ module OpenTelemetry
 
     MATCH = /(?<span_id>[A-Fa-f0-9]{16})/
 
-    def finalize
-      puts "X SPAN X(#{name}) > #{object_id}"
-    end
-
     def self.validate_id(id : Slice(UInt8))
       validate_id(id.hexstring)
     end
