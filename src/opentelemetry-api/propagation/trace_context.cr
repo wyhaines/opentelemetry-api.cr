@@ -48,7 +48,7 @@ module OpenTelemetry
         end
 
         trace_parent_value = getter.get(carrier, TRACEPARENT_KEY)
-        return unless trace_parent_value
+        return if trace_parent_value.nil? || trace_parent_value.size == 0
 
         tp = TraceParent.from_string(trace_parent_value)
         ts = {} of String => String
