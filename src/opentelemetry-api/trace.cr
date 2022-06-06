@@ -326,12 +326,9 @@ module OpenTelemetry
       yield span if span
     end
 
-    # TODO: Add support for a Resource
     # This method returns a ProtoBuf object containing all of the Trace information.
     def to_protobuf
-      # spans_buffer = iterate_span_nodes(root_span, [] of Span).map(&.to_protobuf)
-      # spans_buffer = spans_buffer.compact
-      spans_buffer = @output_stack.map(&.to_protobuf).compact
+      spans_buffer = @output_stack.compact_map(&.to_protobuf)
       return if spans_buffer.empty?
 
       Proto::Trace::V1::ResourceSpans.new(
