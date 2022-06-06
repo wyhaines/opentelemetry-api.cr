@@ -1153,7 +1153,7 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new%28endpoint%3AString%3F%3Dnil%2C_headers%3AHTTP%3A%3AHeaders%3F%3Dnil%2C_clients%3ADB%3A%3APool%28HTTP%3A%3AClient%29%3F%3Dnil%2C%2A_junk%2C%2A%2A_kwjunk%29-class-method" class="signature"><strong>.new</strong>(endpoint : String? = <span class="n">nil</span>, _headers : HTTP::Headers? = <span class="n">nil</span>, _clients : DB::Pool(HTTP::Client)? = <span class="n">nil</span>, *_junk, **_kwjunk)</a>
+        <a href="#new%28endpoint%3AString%3F%7CURI%3Dnil%2C_headers%3AHTTP%3A%3AHeaders%3F%3Dnil%2C_clients%3ADB%3A%3APool%28HTTP%3A%3AClient%29%3F%3Dnil%2C%2A_junk%2C%2A%2A_kwjunk%29-class-method" class="signature"><strong>.new</strong>(endpoint : String? | URI = <span class="n">nil</span>, _headers : HTTP::Headers? = <span class="n">nil</span>, _clients : DB::Pool(HTTP::Client)? = <span class="n">nil</span>, *_junk, **_kwjunk)</a>
         
       </li>
     
@@ -1165,6 +1165,30 @@
   </ul>
 
 
+
+  <h2>
+    <a id="class-method-summary" class="anchor" href="#class-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#normalized_traces_endpoint_uri%28endpoint_uri%3AString%29-class-method" class="signature"><strong>.normalized_traces_endpoint_uri</strong>(endpoint_uri : String)</a>
+        
+          <div class="summary"><p><span class="flag orange">TODO</span>  Once we support more than just traces, how this all works will have to be revised.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#normalized_traces_endpoint_uri%28endpoint_uri%3AURI%29-class-method" class="signature"><strong>.normalized_traces_endpoint_uri</strong>(endpoint_uri : URI)</a>
+        
+      </li>
+    
+  </ul>
 
 
 
@@ -1199,12 +1223,12 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#endpoint%3D%28uri%3AString%29-instance-method" class="signature"><strong>#endpoint=</strong>(uri : String)</a>
+        <a href="#endpoint%3D%28uri%3AURI%29-instance-method" class="signature"><strong>#endpoint=</strong>(uri : URI)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#endpoint%3D%28uri%3AUri%29-instance-method" class="signature"><strong>#endpoint=</strong>(uri : Uri)</a>
+        <a href="#endpoint%3D%28uri%3AString%29-instance-method" class="signature"><strong>#endpoint=</strong>(uri : String)</a>
         
       </li>
     
@@ -1421,12 +1445,12 @@
     Constructor Detail
   </h2>
   
-    <div class="entry-detail" id="new(endpoint:String?=nil,_headers:HTTP::Headers?=nil,_clients:DB::Pool(HTTP::Client)?=nil,*_junk,**_kwjunk)-class-method">
+    <div class="entry-detail" id="new(endpoint:String?|URI=nil,_headers:HTTP::Headers?=nil,_clients:DB::Pool(HTTP::Client)?=nil,*_junk,**_kwjunk)-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(endpoint : <a href="../../String.html">String</a>? = <span class="n">nil</span>, _headers : HTTP::Headers? = <span class="n">nil</span>, _clients : DB::Pool(HTTP::Client)? = <span class="n">nil</span>, *_junk, **_kwjunk)
+        def self.<strong>new</strong>(endpoint : <a href="../../String.html">String</a>? | URI = <span class="n">nil</span>, _headers : HTTP::Headers? = <span class="n">nil</span>, _clients : DB::Pool(HTTP::Client)? = <span class="n">nil</span>, *_junk, **_kwjunk)
 
-        <a class="method-permalink" href="#new%28endpoint%3AString%3F%3Dnil%2C_headers%3AHTTP%3A%3AHeaders%3F%3Dnil%2C_clients%3ADB%3A%3APool%28HTTP%3A%3AClient%29%3F%3Dnil%2C%2A_junk%2C%2A%2A_kwjunk%29-class-method">#</a>
+        <a class="method-permalink" href="#new%28endpoint%3AString%3F%7CURI%3Dnil%2C_headers%3AHTTP%3A%3AHeaders%3F%3Dnil%2C_clients%3ADB%3A%3APool%28HTTP%3A%3AClient%29%3F%3Dnil%2C%2A_junk%2C%2A%2A_kwjunk%29-class-method">#</a>
       </div>
       
       <br/>
@@ -1451,6 +1475,49 @@
   
 
 
+
+  <h2>
+    <a id="class-method-detail" class="anchor" href="#class-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="normalized_traces_endpoint_uri(endpoint_uri:String)-class-method">
+      <div class="signature">
+        
+        def self.<strong>normalized_traces_endpoint_uri</strong>(endpoint_uri : <a href="../../String.html">String</a>)
+
+        <a class="method-permalink" href="#normalized_traces_endpoint_uri%28endpoint_uri%3AString%29-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p><span class="flag orange">TODO</span>  Once we support more than just traces, how this all works will have to be revised.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="normalized_traces_endpoint_uri(endpoint_uri:URI)-class-method">
+      <div class="signature">
+        
+        def self.<strong>normalized_traces_endpoint_uri</strong>(endpoint_uri : URI)
+
+        <a class="method-permalink" href="#normalized_traces_endpoint_uri%28endpoint_uri%3AURI%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
 
 
 
@@ -1519,12 +1586,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="endpoint=(uri:String)-instance-method">
+    <div class="entry-detail" id="endpoint=(uri:URI)-instance-method">
       <div class="signature">
         
-        def <strong>endpoint=</strong>(uri : <a href="../../String.html">String</a>)
+        def <strong>endpoint=</strong>(uri : URI)
 
-        <a class="method-permalink" href="#endpoint%3D%28uri%3AString%29-instance-method">#</a>
+        <a class="method-permalink" href="#endpoint%3D%28uri%3AURI%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1533,12 +1600,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="endpoint=(uri:Uri)-instance-method">
+    <div class="entry-detail" id="endpoint=(uri:String)-instance-method">
       <div class="signature">
         
-        def <strong>endpoint=</strong>(uri : Uri)
+        def <strong>endpoint=</strong>(uri : <a href="../../String.html">String</a>)
 
-        <a class="method-permalink" href="#endpoint%3D%28uri%3AUri%29-instance-method">#</a>
+        <a class="method-permalink" href="#endpoint%3D%28uri%3AString%29-instance-method">#</a>
       </div>
       
       <br/>
