@@ -26,12 +26,12 @@ module OpenTelemetry
       property clients : DB::Pool(HTTP::Client)
       @clients_are_initialized : Bool = false
       property headers : HTTP::Headers = HTTP::Headers.new
-      property endpoint_uri : URI = normalized_traces_endpoint_uri(URI.parse(
+      property endpoint_uri : URI = normalized_traces_endpoint_uri(
         ENV["OTEL_EXPORTER_OTLP_TRACES_ENDPOINT"]? ||
         ENV["OTEL_EXPORTER_OTLP_ENDPOINT"]? ||
-        "http://localhost:4318"))
+        "http://localhost:4318")
 
-      def initialize(endpoint : String? = nil, _headers : HTTP::Headers? = nil, _clients : DB::Pool(HTTP::Client)? = nil, *_junk, **_kwjunk)
+      def initialize(endpoint : String? | URI = nil, _headers : HTTP::Headers? = nil, _clients : DB::Pool(HTTP::Client)? = nil, *_junk, **_kwjunk)
         @endpoint_uri = self.class.normalized_traces_endpoint_uri(endpoint) if endpoint
         @headers = _headers if _headers
         if _clients
@@ -68,7 +68,15 @@ module OpenTelemetry
       end
 
       # TODO: Once we support more than just traces, how this all works will have to be revised.
-      private def self.normalized_traces_endpoint_uri(endpoint_uri)
+      def self.normalized_traces_endpoint_uri(endpoint_uri : String)
+        parsed_endpoint_uri = URI.parse(endpoint_uri)
+        parsed_endpoint_uri.path.ends_with?("traces") ? parsed_endpoint_uri : URI.parse(
+          Path.new(endpoint_uri)
+            .join("/v1/traces")
+            .to_s)
+      end
+
+      def self.normalized_traces_endpoint_uri(endpoint_uri : URI)
         endpoint_uri.path.ends_with?("traces") ? endpoint_uri : URI.parse(
           Path.new(endpoint_uri.to_s)
             .join("/v1/traces")
@@ -114,7 +122,7 @@ module OpenTelemetry
         @endpoint_uri
       end
 
-      def endpoint=(uri : Uri)
+      def endpoint=(uri : URI)
         @endpoint_uri = uri
         @endpoint_uri.path = "/" if @endpoint_uri.path.empty?
       end
