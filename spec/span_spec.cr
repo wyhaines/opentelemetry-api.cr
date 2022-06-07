@@ -1,7 +1,7 @@
 require "./spec_helper"
 require "json"
 
-describe OpenTelemetry::Span do
+describe OpenTelemetry::Span, tags: ["Span"] do
   it "can create a span and set/get attributes on that span" do
     checkout_config do
       span = OpenTelemetry::Span.new

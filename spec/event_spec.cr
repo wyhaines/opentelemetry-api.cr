@@ -1,6 +1,6 @@
 require "./spec_helper"
 
-describe OpenTelemetry::Event do
+describe OpenTelemetry::Event, tags: ["Event"] do
   it "can create an event with direct initialization" do
     event = OpenTelemetry::Event.new(
       name: "test_event",

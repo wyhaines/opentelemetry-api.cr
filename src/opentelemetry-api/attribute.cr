@@ -196,5 +196,9 @@ module OpenTelemetry
     def to_json
       "\"#{key}\":#{value.to_json}"
     end
+
+    def to_json(json : JSON::Builder)
+      json.field key, value.to_json(json)
+    end
   end
 end

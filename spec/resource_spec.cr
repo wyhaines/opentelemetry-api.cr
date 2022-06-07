@@ -1,6 +1,6 @@
 require "./spec_helper"
 
-describe OpenTelemetry::Resource do
+describe OpenTelemetry::Resource, tags: ["Resource"] do
   resource = OpenTelemetry::Resource.new
 
   around_each do |example|
@@ -30,17 +30,16 @@ describe OpenTelemetry::Resource do
   end
 
   it "can create a json representation of a resource" do
-    resource.to_json.should eq (<<-EJSON
+    resource.to_json.should eq <<-EJSON
     {
-      "resource":{
-        "verb":"GET",
-        "url":"http://example.com/foo",
-        "bools":true,
-        "headers":["Content-Type: text/plain","Content-Length: 23"]  }
+      "verb": "GET",
+      "url": "http://example.com/foo",
+      "bools": true,
+      "headers": [
+        "Content-Type: text/plain",
+        "Content-Length: 23"
+      ]
     }
-
     EJSON
-
-      ).gsub(/\r/, "")
   end
 end

@@ -70,22 +70,21 @@ module OpenTelemetry
 
     # Export the resource with a JSON representation.
     def to_json
-      String.build do |json|
-        json << "{\n"
-        json << "  \"resource\":{\n"
-        json << attribute_list
-        json << "  }\n"
-        json << "}\n"
+      JSON.build(indent: "  ") do |json|
+        self.to_json(json)
       end
     end
 
-    def attribute_list(indent = 4)
-      spacer = " " * indent
-      String.build do |attribute_list|
+    def to_json(json : JSON::Builder)
+      attribute_list(json)
+    end
+
+    def attribute_list(json)
+      json.object do
         attributes.each do |_, value|
-          attribute_list << "#{spacer}#{value.to_json},\n"
+          json.field value.key, value.value
         end
-      end.chomp(",\n")
+      end
     end
   end
 end

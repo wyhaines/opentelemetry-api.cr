@@ -180,33 +180,42 @@ module OpenTelemetry
 
     def to_json
       return "" unless can_export?
-      String.build do |json|
-        json << "{\n"
-        json << "      \"type\":\"span\",\n"
-        json << "      \"traceId\":\"#{context.trace_id.hexstring}\",\n"
-        json << "      \"spanId\":\"#{context.span_id.hexstring}\",\n"
-        json << "      \"parentSpanId\":\"#{parent.try(&.context.span_id.hexstring)}\",\n"
-        json << "      \"kind\":#{kind.value},\n"
-        json << "      \"name\":\"#{name}\",\n"
-        json << "      \"status\":#{status.to_json},\n"
-        json << "      \"startTime\":#{start_time_unix_nano},\n"
-        json << "      \"endTime\":#{end_time_unix_nano},\n"
-        json << "      \"attributes\":{\n"
-        json << String.build do |attribute_list|
-          attributes.each do |_, value|
-            attribute_list << "        #{value.to_json},\n"
-          end
-        end.chomp(",\n")
-        json << "      },\n"
-        json << "      \"events\":[\n"
-        json << String.build do |event_list|
-          events.each do |event|
-            event_list << "    #{event.to_json},\n"
-          end
-        end.chomp(",\n")
-        json << "\n      ]\n"
+      JSON.build(indent: "  ") do |json|
+        self.to_json(json)
+      end
+    end
 
-        json << "    }"
+    def to_json(json : JSON::Builder)
+      if can_export?
+        json.object do
+          json.field "type", "span"
+          json.field "traceId", context.trace_id.hexstring
+          json.field "spanId", context.span_id.hexstring
+          json.field "parentSpanId", parent.try(&.context.span_id.hexstring)
+          json.field "kind", kind.value
+          json.field "name", name
+          json.field "status", status.to_json
+          json.field "startTime", start_time_unix_nano
+          json.field "endTime", end_time_unix_nano
+          json.field "attributes" do
+            json.object do
+              attributes.each do |_, value|
+                json.field value.key, value.value
+              end
+            end
+          end
+          json.field "events" do
+            json.array do
+              events.each do |event|
+                event.to_json(json)
+              end
+            end
+          end
+          json
+        end
+      else
+        json.object do
+        end
       end
     end
   end

@@ -121,5 +121,9 @@ module OpenTelemetry
     def to_json
       value.to_json
     end
+
+    def to_json(json : JSON::Builder)
+      value.to_json(json)
+    end
   end
 end

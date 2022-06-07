@@ -18,7 +18,7 @@ module OpenTelemetry
       def handle(elements : Array(Elements))
         if io_not_nil = io
           elements.each do |element|
-            io_not_nil << element.to_json.to_s
+            io_not_nil << element.to_json
           end
         end
       end

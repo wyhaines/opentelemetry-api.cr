@@ -206,4 +206,22 @@ describe OpenTelemetry::Trace, tags: ["Tracer"] do
       test_complex_trace.call(OpenTelemetry.tracer)
     end
   end
+
+  it "has a resonable JSON representation" do
+    checkout_config do
+      OpenTelemetry.configure do |config|
+        config.service_name = "microservice twee"
+        config.service_version = "1.2.4"
+        config.exporter = OpenTelemetry::Exporter.new
+      end
+
+      tracer = OpenTelemetry.tracer
+      test_complex_trace.call(tracer)
+      pj = JSON.parse(tracer.to_json)
+      pj["type"].as_s.should eq "trace"
+      pj["traceId"].as_s.presence.should be_a String
+      pj["resource"]?.try(&.["service.name"]).should eq "microservice twee"
+      pj["spans"]?.try(&.as_a.size).to_s.to_i.should be > 0
+    end
+  end
 end

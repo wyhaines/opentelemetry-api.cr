@@ -344,30 +344,33 @@ module OpenTelemetry
     end
 
     def to_json
-      # return "" unless iterate_span_nodes(root_span, [] of Span).any?(&.can_export?)
-      return "" unless @output_stack.any?(&.can_export?)
+      JSON.build(indent: "  ") do |json|
+        self.to_json(json)
+      end
+    end
 
-      String.build do |json|
-        json << "{\n"
-        json << "  \"type\":\"trace\",\n"
-        json << "  \"traceId\":\"#{trace_id.hexstring}\",\n"
-        if !resource.empty?
-          json << "  \"resource\":{\n"
-          json << resource.attribute_list
-          json << "  },\n"
-        end
-        json << "  \"schemaUrl\":\"#{schema_url}\",\n" if !schema_url.empty?
-        json << "  \"spans\":[\n"
-        json << String.build do |span_list|
-          # iterate_span_nodes(root_span) do |span|
-          @output_stack.each do |span|
-            span_list << "    "
-            span_list << span.to_json if span
-            span_list << ",\n"
+    def to_json(json : JSON::Builder)
+      if @output_stack.any?(&.can_export?)
+        json.object do
+          json.field "type", "trace"
+          json.field "traceId", trace_id.hexstring
+          if !resource.empty?
+            json.field "resource" do
+              resource.to_json(json)
+            end
           end
-        end.chomp(",\n")
-        json << "\n  ]\n"
-        json << "}"
+          json.field("schemaUrl", schema_url) if !schema_url.empty?
+          json.field "spans" do
+            json.array do
+              @output_stack.each do |span|
+                span.to_json(json)
+              end
+            end
+          end
+        end
+      else
+        json.object do
+        end
       end
     end
   end
