@@ -40,6 +40,18 @@ describe OpenTelemetry::Propagation::TraceContext do
     trace_context.trace_flags.should eq 0x01
   end
 
+  describe "#extract" do
+    it "skips extract trace context if missing HTTP::Header" do
+      headers = HTTP::Headers{
+        "Accept"     => "*/*",
+        "Host"       => "127.0.0.1:8080",
+        "User-Agent" => "curl/7.79.1",
+      }
+      subject = OpenTelemetry::Propagation::TraceContext.new.extract(headers)
+      subject.should be_nil
+    end
+  end
+
   it "can inject TraceContext into an object such as HTTP::Headers" do
     provider = OpenTelemetry::TraceProvider.new(
       service_name: "my_app_or_library",
