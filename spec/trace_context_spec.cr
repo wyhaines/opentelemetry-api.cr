@@ -50,6 +50,19 @@ describe OpenTelemetry::Propagation::TraceContext do
       subject = OpenTelemetry::Propagation::TraceContext.new.extract(headers)
       subject.should be_nil
     end
+
+    it "returns span context with trace_id and span_id" do
+      headers = HTTP::Headers{
+        "Accept"      => "*/*",
+        "Host"        => "127.0.0.1:8080",
+        "User-Agent"  => "curl/7.79.1",
+        "Traceparent" => "00-1000000000000000209b117028ae242e-209b117028ae242e-01",
+        "baggage"     => "key1=,key2=val2",
+      }
+      subject = OpenTelemetry::Propagation::TraceContext.new.extract(headers).not_nil!
+      subject.trace_id.should eq Bytes[16, 0, 0, 0, 0, 0, 0, 0, 32, 155, 17, 112, 40, 174, 36, 46]
+      subject.span_id.should eq Bytes[32, 155, 17, 112, 40, 174, 36, 46]
+    end
   end
 
   it "can inject TraceContext into an object such as HTTP::Headers" do

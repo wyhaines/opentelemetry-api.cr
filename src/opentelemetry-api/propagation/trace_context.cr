@@ -42,11 +42,6 @@ module OpenTelemetry
       end
 
       def extract(carrier, context : Context? = nil, getter : TextMapGetter.class = TextMapGetter)
-        span = OpenTelemetry.current_span
-        if span
-          span_context = span.context
-        end
-
         trace_parent_value = getter.get(carrier, TRACEPARENT_KEY)
         return unless trace_parent_value.presence
 
@@ -59,19 +54,7 @@ module OpenTelemetry
           ts[k.to_s] = v.to_s
         end
 
-        target = context ? context : span_context
-        if target
-          ts.each do |key, value|
-            target[key] = value
-          end
-        end
-
-        if target.is_a?(SpanContext)
-          target.trace_id = tp.trace_id
-          target.span_id = tp.span_id
-        end
-
-        target
+        ::OpenTelemetry::SpanContext.new(tp.trace_id, tp.span_id, nil, tp.trace_flags, ts, true)
       end
 
       def fields
