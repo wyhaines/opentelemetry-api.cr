@@ -16,7 +16,7 @@ module OpenTelemetry
         @reap_semaphore.send(true)
       end
 
-      def initialize
+      def initialize(*_junk, **_kwjunk)
         start
       end
 

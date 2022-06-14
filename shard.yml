@@ -26,6 +26,8 @@ dependencies:
     github: jeromegn/protobuf.cr
   retriable:
     github: Sija/retriable.cr
+  debug:
+    github: Sija/debug.cr
 
 development_dependencies:
   ameba:

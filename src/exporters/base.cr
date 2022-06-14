@@ -12,6 +12,12 @@ module OpenTelemetry
       def handle(elements : Array(Elements))
         raise NotImplementedError.new("Exporter::Abstract.handle not implemented; this class is not intended to be used externally")
       end
+
+      macro method_missing(call)
+        ::Debug.mdebug!("Method missing: {{ call.name }}")
+        (raise NotImplementedError.new([{{ @type.id.stringify }}, "{{ call.name.id }} not implemented"].join("#")))
+        {% debug %}
+      end
     end
   end
 end
