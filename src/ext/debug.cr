@@ -13,7 +13,7 @@ require "colorize"
 # This version also adds a macro level debugging statement, `macro_debug!`.
 module Debug
   {% begin %}
-    ACTIVE = {{ flag?(:DEBUG) || (env("DEBUG") && env("DEBUG") != "0" && env("DEBUG") != "false") }}
+    ACTIVE = {{ flag?(:DEBUG) || (env("DEBUG") && env("DEBUG") != "0" && env("DEBUG") != "false" && env("DEBUG") != "") }}
 
     # This constant contains the colors used when highlighting macro
     # debugging statements via `mdebug!`. For more information on these
@@ -31,7 +31,7 @@ module Debug
     def self.enabled? : Bool
       case enabled = @@enabled
       when Nil
-        !!({{ flag?(:DEBUG) }} || (ENV["DEBUG"]? && ENV["DEBUG"] != "0" && ENV["DEBUG"] != "false"))
+        !!({{ flag?(:DEBUG) }} || (ENV["DEBUG"]? && ENV["DEBUG"] != "0" && ENV["DEBUG"] != "false" && ENV["DEBUG"].presence))
       else
         enabled
       end
