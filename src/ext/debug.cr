@@ -10,8 +10,7 @@ require "colorize"
 # `DEBUG`, and compile time as well as runtime flagging via the `DEBUG`
 # environment variable.
 #
-# This version also adds a macro level debugging statement, `mdebug!`.
-# See below for complete documentation.
+# This version also adds a macro level debugging statement, `macro_debug!`.
 module Debug
   {% begin %}
     ACTIVE = {{ flag?(:DEBUG) || (env("DEBUG") && env("DEBUG") != "0" && env("DEBUG") != "false") }}
@@ -32,38 +31,12 @@ module Debug
     def self.enabled? : Bool
       case enabled = @@enabled
       when Nil
-        {{ flag?(:DEBUG) }} || (ENV["DEBUG"]? && ENV["DEBUG"] != "0" && ENV["DEBUG"] != "false")
+        !!({{ flag?(:DEBUG) }} || (ENV["DEBUG"]? && ENV["DEBUG"] != "0" && ENV["DEBUG"] != "false"))
       else
         enabled
       end
     end
   {% end %}
-
-  # This is the main macro level debugging statement. It takes a message, and
-  # an optional severity level, and outputs, during macro evaluation, the
-  # debugging statement, highlighted according to the color codes in the
-  # MDEBUG_COLORS constant.
-  #
-  # If debugging is not active (either the `DEBUG` flag is not set, or the
-  # `DEBUG` environment variable is not set to a truthy value), this macro
-  # will do nothing.
-  macro mdebug!(message,
-                severity = :debug,
-                file = __FILE__,
-                line = __LINE__)
-    {% if ::Debug::ACTIVE %}
-      \{%
-        puts [
-          "\e[38;5;{{ ::Debug::MDEBUG_COLORS[:severity].id }}m{{ severity.upcase.id }}\e[0m",
-          "\e[38;5;{{ ::Debug::MDEBUG_COLORS[:separator].id }}m -- \e[0m",
-          "\e[38;5;{{ ::Debug::MDEBUG_COLORS[:file].id }}m{{ file.id }}\e[0m",
-          "\e[38;5;{{ ::Debug::MDEBUG_COLORS[:separator].id }}m:\e[0m",
-          "\e[38;5;{{ ::Debug::MDEBUG_COLORS[:lineno].id }}m{{ line }}\e[0m",
-          "\e[38;5;{{ ::Debug::MDEBUG_COLORS[:separator].id }}m -- \e[0m",
-          "\e[38;5;{{ ::Debug::MDEBUG_COLORS[:message].id }}m{{ message.id }}\e[0m"].join("")
-      %}
-    {% end %}
-  end
 
   macro log(*args,
             severity = :debug,
@@ -165,6 +138,32 @@ module Debug
       {% end %}
     {% end %}
   end
+end
+
+# This is the main macro level debugging statement. It takes a message, and
+# an optional severity level, and outputs, during macro evaluation, the
+# debugging statement, highlighted according to the color codes in the
+# `Debug::MDEBUG_COLORS` constant.
+#
+# If debugging is not active (either the `DEBUG` flag is not set, or the
+# `DEBUG` environment variable is not set to a truthy value), this macro
+# will do nothing.
+macro macro_debug!(message,
+                   severity = :debug,
+                   file = __FILE__,
+                   line = __LINE__)
+  {% if ::Debug::ACTIVE %}
+    \{%
+      puts [
+      "\e[38;5;{{ ::Debug::MDEBUG_COLORS[:severity].id }}m{{ severity.upcase.id }}\e[0m",
+      "\e[38;5;{{ ::Debug::MDEBUG_COLORS[:separator].id }}m -- \e[0m",
+      "\e[38;5;{{ ::Debug::MDEBUG_COLORS[:file].id }}m{{ file.id }}\e[0m",
+      "\e[38;5;{{ ::Debug::MDEBUG_COLORS[:separator].id }}m:\e[0m",
+      "\e[38;5;{{ ::Debug::MDEBUG_COLORS[:lineno].id }}m{{ line }}\e[0m",
+      "\e[38;5;{{ ::Debug::MDEBUG_COLORS[:separator].id }}m -- \e[0m",
+      "\e[38;5;{{ ::Debug::MDEBUG_COLORS[:message].id }}m{{ message.id }}\e[0m"].join("")
+    %}
+  {% end %}
 end
 
 require "debug/src/debug/**"

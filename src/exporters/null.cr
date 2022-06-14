@@ -8,12 +8,12 @@ module OpenTelemetry
     class Null < Base
       def handle(elements : Array(Elements))
         {% begin %}
-        {% if flag? :DEBUG %}
-        elements.each do |element|
-          output = element.to_json
-          puts "\n#{"DEBUG - #{Time.local}:\n".colorize(:green)} #{output}"
-        end
-        {% end %}
+          {% if ::Debug::ACTIVE %}
+            elements.each do |element|
+              output = element.to_json
+              debug!(output)
+            end
+          {% end %}
         {% end %}
       end
     end

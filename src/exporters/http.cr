@@ -160,11 +160,7 @@ module OpenTelemetry
                     @endpoint_uri.path,
                     body: body
                   )
-                  {% begin %}
-                    {% if flag? :DEBUG %}
-                      pp response
-                    {% end %}
-                  {% end %}
+                  debug!(response)
                 end
               end
             end

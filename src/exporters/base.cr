@@ -14,7 +14,7 @@ module OpenTelemetry
       end
 
       macro method_missing(call)
-        ::Debug.mdebug!("Method missing: {{ call.name }}")
+        macro_debug!("Method missing: {{ call.name }}")
         (raise NotImplementedError.new([{{ @type.id.stringify }}, "{{ call.name.id }} not implemented"].join("#")))
         {% debug %}
       end
