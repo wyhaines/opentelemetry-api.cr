@@ -51,6 +51,11 @@
   <div class="types-list">
     <ul>
   
+  <li class=" " data-id="opentelemetry-api/toplevel" data-name="top level namespace">
+      <a href="toplevel.html">Top Level Namespace</a>
+      
+    </li>
+  
   <li class=" current" data-id="opentelemetry-api/Debug" data-name="debug">
       <a href="Debug.html">Debug</a>
       
@@ -1134,8 +1139,7 @@ to the main project, and accepted, this can disappear into the void.</p>
 <p>Specifically, this version responds to both the compile time flag,
 <code>DEBUG</code>, and compile time as well as runtime flagging via the <code>DEBUG</code>
 environment variable.</p>
-<p>This version also adds a macro level debugging statement, <code><a href="Debug.html#mdebug%21%28message%2Cseverity%3D%3Adebug%2Cfile%3D__FILE__%2Cline%3D__LINE__%29-macro">mdebug!</a></code>.
-See below for complete documentation.</p>
+<p>This version also adds a macro level debugging statement, <code><a href="toplevel.html#macro_debug%21%28message%2Cseverity%3D%3Adebug%2Cfile%3D__FILE__%2Cline%3D__LINE__%29-macro">macro_debug!</a></code>.</p>
 
 
 
@@ -1210,7 +1214,7 @@ See below for complete documentation.</p>
       
       <dd class="entry-const-doc">
         <p>This constant contains the colors used when highlighting macro
-debugging statements via <code><a href="Debug.html#mdebug%21%28message%2Cseverity%3D%3Adebug%2Cfile%3D__FILE__%2Cline%3D__LINE__%29-macro">mdebug!</a></code>. For more information on these
+debugging statements via <code>mdebug!</code>. For more information on these
 codes, see this link:
 <a href="https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit">https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit</a></p>
       </dd>
@@ -1260,13 +1264,6 @@ codes, see this link:
     
       <li class="entry-summary">
         <a href="#log%28%2Aargs%2Cseverity%3D%3Adebug%2Cprogname%3Dnil%2Cbacktrace_offset%3D0%2Cfile%3D__FILE__%2Cline%3D__LINE__%29-macro" class="signature"><strong>log</strong>(*args, severity = <span class="n">:debug</span>, progname = <span class="n">nil</span>, backtrace_offset = <span class="n">0</span>, file = __FILE__, line = __LINE__)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#mdebug%21%28message%2Cseverity%3D%3Adebug%2Cfile%3D__FILE__%2Cline%3D__LINE__%29-macro" class="signature"><strong>mdebug!</strong>(message, severity = <span class="n">:debug</span>, file = __FILE__, line = __LINE__)</a>
-        
-          <div class="summary"><p>This is the main macro level debugging statement.</p></div>
         
       </li>
     
@@ -1339,31 +1336,6 @@ codes, see this link:
 
         <a class="method-permalink" href="#log%28%2Aargs%2Cseverity%3D%3Adebug%2Cprogname%3Dnil%2Cbacktrace_offset%3D0%2Cfile%3D__FILE__%2Cline%3D__LINE__%29-macro">#</a>
       </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="mdebug!(message,severity=:debug,file=__FILE__,line=__LINE__)-macro">
-      <div class="signature">
-        
-        macro <strong>mdebug!</strong>(message, severity = <span class="n">:debug</span>, file = __FILE__, line = __LINE__)
-
-        <a class="method-permalink" href="#mdebug%21%28message%2Cseverity%3D%3Adebug%2Cfile%3D__FILE__%2Cline%3D__LINE__%29-macro">#</a>
-      </div>
-      
-        <div class="doc">
-          
-          <p>This is the main macro level debugging statement. It takes a message, and
-an optional severity level, and outputs, during macro evaluation, the
-debugging statement, highlighted according to the color codes in the
-MDEBUG_COLORS constant.</p>
-<p>If debugging is not active (either the <code>DEBUG</code> flag is not set, or the
-<code>DEBUG</code> environment variable is not set to a truthy value), this macro
-will do nothing.</p>
-        </div>
       
       <br/>
       <div>

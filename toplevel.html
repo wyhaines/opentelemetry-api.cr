@@ -13,7 +13,7 @@
 <script type="text/javascript" src="js/doc.js"></script>
 
   <meta name="repository-name" content="opentelemetry-api">
-  <title>String - opentelemetry-api 0.3.4</title>
+  <title>Top Level Namespace - opentelemetry-api 0.3.4</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "";
   </script>
@@ -51,7 +51,7 @@
   <div class="types-list">
     <ul>
   
-  <li class=" " data-id="opentelemetry-api/toplevel" data-name="top level namespace">
+  <li class=" current" data-id="opentelemetry-api/toplevel" data-name="top level namespace">
       <a href="toplevel.html">Top Level Namespace</a>
       
     </li>
@@ -1101,7 +1101,7 @@
       
     </li>
   
-  <li class=" current" data-id="opentelemetry-api/String" data-name="string">
+  <li class=" " data-id="opentelemetry-api/String" data-name="string">
       <a href="String.html">String</a>
       
     </li>
@@ -1115,109 +1115,13 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">class</span> String
+  Top Level Namespace
 
 </h1>
 
 
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="String.html">String</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
 
 
-
-
-  <h2>
-    <a id="overview" class="anchor" href="#overview">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Overview
-  </h2>
-
-  <p>A <code><a href="String.html">String</a></code> represents an immutable sequence of UTF-8 characters.</p>
-<p>A <code><a href="String.html">String</a></code> is typically created with a string literal, enclosing UTF-8 characters
-in double quotes:</p>
-<pre><code class="language-crystal"><span class="s">&quot;hello world&quot;</span></code></pre>
-<p>See <a href="https://crystal-lang.org/reference/syntax_and_semantics/literals/string.html"><code>String</code> literals</a> in the language reference.</p>
-<p>A backslash can be used to denote some characters inside the string:</p>
-<pre><code class="language-crystal"><span class="s">&quot;\&quot;&quot;</span> <span class="c"># double quote</span>
-<span class="s">&quot;\\&quot;</span> <span class="c"># backslash</span>
-<span class="s">&quot;\e&quot;</span> <span class="c"># escape</span>
-<span class="s">&quot;\f&quot;</span> <span class="c"># form feed</span>
-<span class="s">&quot;\n&quot;</span> <span class="c"># newline</span>
-<span class="s">&quot;\r&quot;</span> <span class="c"># carriage return</span>
-<span class="s">&quot;\t&quot;</span> <span class="c"># tab</span>
-<span class="s">&quot;\v&quot;</span> <span class="c"># vertical tab</span></code></pre>
-<p>You can use a backslash followed by an <em>u</em> and four hexadecimal characters to denote a unicode codepoint written:</p>
-<pre><code class="language-crystal"><span class="s">&quot;\u0041&quot;</span> <span class="c"># == &quot;A&quot;</span></code></pre>
-<p>Or you can use curly braces and specify up to six hexadecimal numbers (0 to 10FFFF):</p>
-<pre><code class="language-crystal"><span class="s">&quot;\u{41}&quot;</span> <span class="c"># == &quot;A&quot;</span></code></pre>
-<p>A string can span multiple lines:</p>
-<pre><code class="language-crystal"><span class="s">&quot;hello
-      world&quot;</span> <span class="c"># same as &quot;hello\n      world&quot;</span></code></pre>
-<p>Note that in the above example trailing and leading spaces, as well as newlines,
-end up in the resulting string. To avoid this, you can split a string into multiple lines
-by joining multiple literals with a backslash:</p>
-<pre><code class="language-crystal"><span class="s">&quot;hello &quot;</span> \
-<span class="s">&quot;world, &quot;</span> \
-<span class="s">&quot;no newlines&quot;</span> <span class="c"># same as &quot;hello world, no newlines&quot;</span></code></pre>
-<p>Alternatively, a backslash followed by a newline can be inserted inside the string literal:</p>
-<pre><code class="language-crystal"><span class="s">&quot;hello \
-     world, \
-     no newlines&quot;</span> <span class="c"># same as &quot;hello world, no newlines&quot;</span></code></pre>
-<p>In this case, leading whitespace is not included in the resulting string.</p>
-<p>If you need to write a string that has many double quotes, parentheses, or similar
-characters, you can use alternative literals:</p>
-<pre><code class="language-crystal"><span class="c"># Supports double quotes and nested parentheses</span>
-<span class="s">%(hello (&quot;world&quot;))</span> <span class="c"># same as &quot;hello (\&quot;world\&quot;)&quot;</span>
-
-<span class="c"># Supports double quotes and nested brackets</span>
-<span class="s">%[hello [&quot;world&quot;]]</span> <span class="c"># same as &quot;hello [\&quot;world\&quot;]&quot;</span>
-
-<span class="c"># Supports double quotes and nested curlies</span>
-<span class="s">%{hello {&quot;world&quot;}}</span> <span class="c"># same as &quot;hello {\&quot;world\&quot;}&quot;</span>
-
-<span class="c"># Supports double quotes and nested angles</span>
-<span class="s">%&lt;hello &lt;&quot;world&quot;&gt;&gt;</span> <span class="c"># same as &quot;hello &lt;\&quot;world\&quot;&gt;&quot;</span></code></pre>
-<p>To create a <code><a href="String.html">String</a></code> with embedded expressions, you can use string interpolation:</p>
-<pre><code class="language-crystal">a <span class="o">=</span> <span class="n">1</span>
-b <span class="o">=</span> <span class="n">2</span>
-<span class="s">&quot;sum = </span><span class="i">#{</span>a <span class="o">+</span> b<span class="i">}</span><span class="s">&quot;</span> <span class="c"># &quot;sum = 3&quot;</span></code></pre>
-<p>This ends up invoking <code>Object#to_s(IO)</code> on each expression enclosed by <code>#{...}</code>.</p>
-<p>If you need to dynamically build a string, use <code>String#build</code> or <code>IO::Memory</code>.</p>
-<h3><a id="non-utf-8-valid-strings" class="anchor" href="#non-utf-8-valid-strings">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>Non UTF-8 valid strings</h3>
-<p>String might end up being conformed of bytes which are an invalid
-byte sequence according to UTF-8. This can happen if the string is created
-via one of the constructors that accept bytes, or when getting a string
-from <code>String.build</code> or <code>IO::Memory</code>. No exception will be raised, but
-invalid byte sequences, when asked as chars, will use the unicode replacement
-char (value 0xFFFD). For example:</p>
-<pre><code class="language-crystal"><span class="c"># here 255 is not a valid byte value in the UTF-8 encoding</span>
-string <span class="o">=</span> <span class="t">String</span>.<span class="k">new</span>(<span class="t">Bytes</span>[<span class="n">255</span>, <span class="n">97</span>])
-string.valid_encoding? <span class="c"># =&gt; false</span>
-
-<span class="c"># The first char here is the unicode replacement char</span>
-string.chars <span class="c"># =&gt; [&#39;�&#39;, &#39;a&#39;]</span></code></pre>
-<p>One can also create strings with specific byte value in them by
-using octal and hexadecimal escape sequences:</p>
-<pre><code class="language-crystal"><span class="c"># Octal escape sequences</span>
-<span class="s">&quot;\101&quot;</span> <span class="c"># # =&gt; &quot;A&quot;</span>
-<span class="s">&quot;\12&quot;</span>  <span class="c"># # =&gt; &quot;\n&quot;</span>
-<span class="s">&quot;\1&quot;</span>   <span class="c"># string with one character with code point 1</span>
-<span class="s">&quot;\377&quot;</span> <span class="c"># string with one byte with value 255</span>
-
-<span class="c"># Hexadecimal escape sequences</span>
-<span class="s">&quot;\x41&quot;</span> <span class="c"># # =&gt; &quot;A&quot;</span>
-<span class="s">&quot;\xFF&quot;</span> <span class="c"># string with one byte with value 255</span></code></pre>
-<p>The reason for allowing strings that don't have a valid UTF-8 sequence
-is that the world is full of content that isn't properly encoded,
-and having a program raise an exception or stop because of this
-is not good. It's better if programs are more resilient, but
-show a replacement character when there's an error in incoming data.</p>
 
 
 
@@ -1233,11 +1137,25 @@ show a replacement character when there's an error in incoming data.</p>
   </h2>
   <ul class="other-types-list">
     
-      <li class="other-type">Comparable(<a href="String.html">String</a>)</li>
+      <li class="other-type">Debug::KernelExtension</li>
     
   </ul>
 
 
+
+  <h2>
+    <a id="extended-modules" class="anchor" href="#extended-modules">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Extended Modules
+  </h2>
+  <ul class="other-types-list">
+    
+      <li class="other-type">Debug::KernelExtension</li>
+    
+  </ul>
 
 
 
@@ -1255,11 +1173,8 @@ show a replacement character when there's an error in incoming data.</p>
     Defined in:
   </h2>
   
-    
-      ext/string.cr
-    
-    <br/>
-  
+
+
 
 
 
@@ -1270,26 +1185,19 @@ show a replacement character when there's an error in incoming data.</p>
 
 
   <h2>
-    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
+    <a id="macro-summary" class="anchor" href="#macro-summary">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>
-    Instance Method Summary
+    Macro Summary
   </h2>
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#lpad%28size%2Cpadding%3D%22%22%29-instance-method" class="signature"><strong>#lpad</strong>(size, padding = <span class="s">&quot; &quot;</span>)</a>
+        <a href="#macro_debug%21%28message%2Cseverity%3D%3Adebug%2Cfile%3D__FILE__%2Cline%3D__LINE__%29-macro" class="signature"><strong>macro_debug!</strong>(message, severity = <span class="n">:debug</span>, file = __FILE__, line = __LINE__)</a>
         
-          <div class="summary"><p>The <code><a href="String.html#lpad%28size%2Cpadding%3D%22%22%29-instance-method">#lpad</a></code> method takes a string size, and an optional padding string, and it returns a new string, of the specified size, with any empty space to the left filled with repetitions of the padding string.</p></div>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#rpad%28size%2Cpadding%3D%22%22%29-instance-method" class="signature"><strong>#rpad</strong>(size, padding = <span class="s">&quot; &quot;</span>)</a>
-        
-          <div class="summary"><p>The <code><a href="String.html#rpad%28size%2Cpadding%3D%22%22%29-instance-method">#rpad</a></code> method takes a string size, and an optional padding string, and it returns a new string, of the specified size, with any empty space to the right filled with repetitions of the padding string.</p></div>
+          <div class="summary"><p>This is the main macro level debugging statement.</p></div>
         
       </li>
     
@@ -1297,29 +1205,7 @@ show a replacement character when there's an error in incoming data.</p>
 
 
 
-
-
 <div class="methods-inherited">
-  
-    
-
-
-    
-
-
-    
-
-
-  
-    
-
-
-    
-
-
-    
-
-
   
     
 
@@ -1338,30 +1224,34 @@ show a replacement character when there's an error in incoming data.</p>
 
 
 
+
+
   <h2>
-    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
+    <a id="macro-detail" class="anchor" href="#macro-detail">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>
-    Instance Method Detail
+    Macro Detail
   </h2>
   
-    <div class="entry-detail" id="lpad(size,padding=&quot;&quot;)-instance-method">
+    <div class="entry-detail" id="macro_debug!(message,severity=:debug,file=__FILE__,line=__LINE__)-macro">
       <div class="signature">
         
-        def <strong>lpad</strong>(size, padding = <span class="s">&quot; &quot;</span>)
+        macro <strong>macro_debug!</strong>(message, severity = <span class="n">:debug</span>, file = __FILE__, line = __LINE__)
 
-        <a class="method-permalink" href="#lpad%28size%2Cpadding%3D%22%22%29-instance-method">#</a>
+        <a class="method-permalink" href="#macro_debug%21%28message%2Cseverity%3D%3Adebug%2Cfile%3D__FILE__%2Cline%3D__LINE__%29-macro">#</a>
       </div>
       
         <div class="doc">
           
-          <p>The <code><a href="String.html#lpad%28size%2Cpadding%3D%22%22%29-instance-method">#lpad</a></code> method takes a string size, and an optional padding string, and it
-returns a new string, of the specified size, with any empty space to the left
-filled with repetitions of the padding string. If the size is smaller than the
-size of the original string, it is truncated from the left to match the requested
-final size.</p>
+          <p>This is the main macro level debugging statement. It takes a message, and
+an optional severity level, and outputs, during macro evaluation, the
+debugging statement, highlighted according to the color codes in the
+<code><a href="Debug.html#MDEBUG_COLORS">Debug::MDEBUG_COLORS</a></code> constant.</p>
+<p>If debugging is not active (either the <code>DEBUG</code> flag is not set, or the
+<code>DEBUG</code> environment variable is not set to a truthy value), this macro
+will do nothing.</p>
         </div>
       
       <br/>
@@ -1370,31 +1260,6 @@ final size.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="rpad(size,padding=&quot;&quot;)-instance-method">
-      <div class="signature">
-        
-        def <strong>rpad</strong>(size, padding = <span class="s">&quot; &quot;</span>)
-
-        <a class="method-permalink" href="#rpad%28size%2Cpadding%3D%22%22%29-instance-method">#</a>
-      </div>
-      
-        <div class="doc">
-          
-          <p>The <code><a href="String.html#rpad%28size%2Cpadding%3D%22%22%29-instance-method">#rpad</a></code> method takes a string size, and an optional padding string, and it
-returns a new string, of the specified size, with any empty space to the right
-filled with repetitions of the padding string. If the size is smaller than the
-size of the original string, it is truncated from the right to match the requested
-final size.</p>
-        </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-
-
 
 
 </div>
