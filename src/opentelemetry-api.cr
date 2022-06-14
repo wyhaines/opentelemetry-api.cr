@@ -246,7 +246,6 @@ module OpenTelemetry
   {{ span_arg }}["thread.name"] = Fiber.current.name.to_s
     {{ block.body }}
   end
-  {% debug %}
 end
 
   def self.instrumentation_scope
