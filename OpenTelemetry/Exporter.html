@@ -51,6 +51,11 @@
   <div class="types-list">
     <ul>
   
+  <li class=" " data-id="opentelemetry-api/Debug" data-name="debug">
+      <a href="../Debug.html">Debug</a>
+      
+    </li>
+  
   <li class=" " data-id="opentelemetry-api/Exception" data-name="exception">
       <a href="../Exception.html">Exception</a>
       
@@ -158,6 +163,11 @@
   
   <li class=" " data-id="opentelemetry-api/OpenTelemetry/Exporter/Elements" data-name="opentelemetry::exporter::elements">
       <a href="../OpenTelemetry/Exporter/Elements.html">Elements</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Exporter/Exporters" data-name="opentelemetry::exporter::exporters">
+      <a href="../OpenTelemetry/Exporter/Exporters.html">Exporters</a>
       
     </li>
   
@@ -1200,6 +1210,8 @@
       <li class="entry-summary">
         <a href="#new%28variant%3AString%7CSymbol%2C%26%29-class-method" class="signature"><strong>.new</strong>(variant : String | Symbol, &)</a>
         
+          <div class="summary"><p>By building the constructors with macros, the available exporters can be expanded independently of the main codebase.</p></div>
+        
       </li>
     
       <li class="entry-summary">
@@ -1234,7 +1246,7 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#exporter%3AExporter%3A%3AAbstract%7CExporter%3A%3ANull%7CExporter%3A%3AHttp%7CExporter%3A%3AStdout%7CExporter%3A%3AIO-instance-method" class="signature"><strong>#exporter</strong> : Exporter::Abstract | Exporter::Null | Exporter::Http | Exporter::Stdout | Exporter::IO</a>
+        <a href="#exporter%3AExporters-instance-method" class="signature"><strong>#exporter</strong> : Exporters</a>
         
       </li>
     
@@ -1290,6 +1302,16 @@
 
         <a class="method-permalink" href="#new%28variant%3AString%7CSymbol%2C%26%29-class-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>By building the constructors with macros, the available exporters can be expanded
+independently of the main codebase. So long as the class is required before this
+class, so that it is already defined in the <code><a href="../OpenTelemetry/Exporter.html">OpenTelemetry::Exporter</a>::*</code> namespace,
+it will be accounted for in the contructors here. It, however, is up to the
+developers of any exporters to ensure that they choose a name which doesn't conflict
+with one already defined in the <code><a href="../OpenTelemetry/Exporter.html">OpenTelemetry::Exporter</a>::*</code> namespace.</p>
+        </div>
       
       <br/>
       <div>
@@ -1353,12 +1375,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="exporter:Exporter::Abstract|Exporter::Null|Exporter::Http|Exporter::Stdout|Exporter::IO-instance-method">
+    <div class="entry-detail" id="exporter:Exporters-instance-method">
       <div class="signature">
         
-        def <strong>exporter</strong> : Exporter::Abstract | <a href="../OpenTelemetry/Exporter/Null.html">Exporter::Null</a> | <a href="../OpenTelemetry/Exporter/Http.html">Exporter::Http</a> | <a href="../OpenTelemetry/Exporter/Stdout.html">Exporter::Stdout</a> | <a href="../OpenTelemetry/Exporter/IO.html">Exporter::IO</a>
+        def <strong>exporter</strong> : <a href="../OpenTelemetry/Exporter/Exporters.html">Exporters</a>
 
-        <a class="method-permalink" href="#exporter%3AExporter%3A%3AAbstract%7CExporter%3A%3ANull%7CExporter%3A%3AHttp%7CExporter%3A%3AStdout%7CExporter%3A%3AIO-instance-method">#</a>
+        <a class="method-permalink" href="#exporter%3AExporters-instance-method">#</a>
       </div>
       
       <br/>
