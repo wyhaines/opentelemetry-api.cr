@@ -6,6 +6,7 @@ describe OpenTelemetry::API::Context::Key do
       name: CSUUID.unique.to_s,
       context: OpenTelemetry::Context.new,
       id: CSUUID.unique)
+    key.should be_a OpenTelemetry::API::Context::Key
     key.@name.should_not be_empty
     key.@context.should be_a(OpenTelemetry::Context)
     key.@id.to_s.should_not be_empty

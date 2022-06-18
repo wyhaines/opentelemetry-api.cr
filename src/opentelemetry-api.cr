@@ -1,1 +1,2 @@
+require "./anyattribute"
 require "./api/**"
