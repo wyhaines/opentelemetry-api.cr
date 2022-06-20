@@ -1,7 +1,7 @@
 require "./spec_helper"
 
 describe OpenTelemetry::API::Context::Key do
-  it "defines initialize" do
+  it "defines #initialize" do
     key = OpenTelemetry::API::Context::Key.new(
       name: CSUUID.unique.to_s,
       context: OpenTelemetry::Context.new,
@@ -12,7 +12,7 @@ describe OpenTelemetry::API::Context::Key do
     key.@id.to_s.should_not be_empty
   end
 
-  it "defines value" do
+  it "defines #value" do
     key = OpenTelemetry::API::Context::Key.new(
       name: CSUUID.unique.to_s,
       context: OpenTelemetry::Context.new,
@@ -20,7 +20,7 @@ describe OpenTelemetry::API::Context::Key do
     key.value.should be_nil
   end
 
-  it "defines get" do
+  it "defines #get" do
     key = OpenTelemetry::API::Context::Key.new(
       name: CSUUID.unique.to_s,
       context: OpenTelemetry::Context.new,
@@ -28,7 +28,7 @@ describe OpenTelemetry::API::Context::Key do
     key.get.should be_nil
   end
 
-  it "defines <=>" do
+  it "defines #<=>" do
     key1 = OpenTelemetry::API::Context::Key.new(
       name: CSUUID.unique.to_s,
       context: OpenTelemetry::Context.new,
@@ -40,7 +40,7 @@ describe OpenTelemetry::API::Context::Key do
     key1.should be < key2
   end
 
-  it "defines name" do
+  it "defines #name" do
     key = OpenTelemetry::API::Context::Key.new(
       name: CSUUID.unique.to_s,
       context: OpenTelemetry::Context.new,
@@ -48,7 +48,7 @@ describe OpenTelemetry::API::Context::Key do
     key.name.should_not be_empty
   end
 
-  it "defines id" do
+  it "defines #id" do
     key = OpenTelemetry::API::Context::Key.new(
       name: CSUUID.unique.to_s,
       context: OpenTelemetry::Context.new,
@@ -56,7 +56,7 @@ describe OpenTelemetry::API::Context::Key do
     key.id.to_s.should_not be_empty
   end
 
-  it "defines context" do
+  it "defines #context" do
     key = OpenTelemetry::API::Context::Key.new(
       name: CSUUID.unique.to_s,
       context: OpenTelemetry::Context.new,

@@ -1,6 +1,6 @@
 module OpenTelemetry
   module API
-    class Event
+    class Event < OpenTelemetry::API::AbstractEvent
       property name : String = ""
       property timestamp : Time::Span = Time.monotonic
       property wall_timestamp : Time = Time.utc
