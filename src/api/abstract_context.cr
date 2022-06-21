@@ -1,4 +1,5 @@
 require "splay_tree_map"
+require "./context/abstract_key"
 
 module OpenTelemetry
   module API
