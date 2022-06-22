@@ -2,18 +2,18 @@ module OpenTelemetry
   module API
     abstract class AbstractEvent
       abstract def name : String
-      abstract def name=(val : String)
+      abstract def name=(name : String)
 
       abstract def timestamp : Time::Span
-      abstract def timestamp=(val : Time::Span) # default to Time.monotonic
+      abstract def timestamp=(timestamp : Time::Span) # default to Time.monotonic
 
       abstract def wall_timestamp : Time
-      abstract def wall_timestamp=(val : Time) # default to Time.utc
+      abstract def wall_timestamp=(wall_timestamp : Time) # default to Time.utc
 
       abstract def attributes : Hash(String, AnyAttribute) # default to empty hash
 
       abstract def parent_span : Span?
-      abstract def parent_span=(val : Span?)
+      abstract def parent_span=(parent_span : Span?)
 
       abstract def initialize(@name)
 

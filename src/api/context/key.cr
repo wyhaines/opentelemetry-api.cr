@@ -20,8 +20,8 @@ module OpenTelemetry
         def get(context = Context.current)
         end
 
-        def <=>(val)
-          id <=> val.id
+        def <=>(other)
+          id <=> other.id
         end
       end
     end

@@ -6,10 +6,10 @@ module OpenTelemetry
       include Sendable
 
       abstract def attributes
-      abstract def attributes=(val : Hash(String, AnyAttribute))
+      abstract def attributes=(attributes : Hash(String, AnyAttribute))
 
       abstract def dropped_attribute_count
-      abstract def dropped_attribute_count=(val : UInt32)
+      abstract def dropped_attribute_count=(dropped_attribute_count : UInt32)
 
       @exported : Bool = false
 

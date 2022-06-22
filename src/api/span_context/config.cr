@@ -1,4 +1,4 @@
-require "./abstract_span_context_config"
+require "./abstract_config"
 
 module OpenTelemetry
   module API

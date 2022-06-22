@@ -36,8 +36,8 @@ describe OpenTelemetry::API::SpanContext::Config do
     config = OpenTelemetry::API::SpanContext::Config.new(
       Slice(UInt8).new(16),
       Slice(UInt8).new(8))
-    config.trace_id = Slice(UInt8).new(16,1)
-    config.trace_id.should eq Slice(UInt8).new(16,1)
+    config.trace_id = Slice(UInt8).new(16, 1)
+    config.trace_id.should eq Slice(UInt8).new(16, 1)
   end
 
   it "defines #span_id" do
@@ -51,8 +51,8 @@ describe OpenTelemetry::API::SpanContext::Config do
     config = OpenTelemetry::API::SpanContext::Config.new(
       Slice(UInt8).new(16),
       Slice(UInt8).new(8))
-    config.span_id = Slice(UInt8).new(8,1)
-    config.span_id.should eq Slice(UInt8).new(8,1)
+    config.span_id = Slice(UInt8).new(8, 1)
+    config.span_id.should eq Slice(UInt8).new(8, 1)
   end
 
   it "defines #parent_id" do
@@ -66,8 +66,8 @@ describe OpenTelemetry::API::SpanContext::Config do
     config = OpenTelemetry::API::SpanContext::Config.new(
       Slice(UInt8).new(16),
       Slice(UInt8).new(8))
-    config.parent_id = Slice(UInt8).new(8,1)
-    config.parent_id.should eq Slice(UInt8).new(8,1)
+    config.parent_id = Slice(UInt8).new(8, 1)
+    config.parent_id.should eq Slice(UInt8).new(8, 1)
   end
 
   it "defines #trace_flags" do
@@ -100,21 +100,21 @@ describe OpenTelemetry::API::SpanContext::Config do
     config = OpenTelemetry::API::SpanContext::Config.new(
       Slice(UInt8).new(16),
       Slice(UInt8).new(8))
-    config.trace_state = { "key" => "value" }
-    config.trace_state.should eq({ "key" => "value" })
+    config.trace_state = {"key" => "value"}
+    config.trace_state.should eq({"key" => "value"})
   end
 
   it "defines #remote" do
     config = OpenTelemetry::API::SpanContext::Config.new(
       Slice(UInt8).new(16),
-      Slice(UInt8).new(8)) 
+      Slice(UInt8).new(8))
     config.remote.should be_false
   end
 
   it "defines #remote=" do
     config = OpenTelemetry::API::SpanContext::Config.new(
       Slice(UInt8).new(16),
-      Slice(UInt8).new(8)) 
+      Slice(UInt8).new(8))
     config.remote = true
     config.remote.should be_true
   end

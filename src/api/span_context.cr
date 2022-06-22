@@ -1,4 +1,4 @@
-require "./span_context_config"
+require "./span_context/config"
 
 module OpenTelemetry
   module API

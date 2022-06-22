@@ -1,4 +1,4 @@
-require "./abstract_span_context_config"
+require "./span_context/abstract_config"
 
 module OpenTelemetry
   module API
@@ -13,29 +13,29 @@ module OpenTelemetry
 
       # This is probably going to be a property
       abstract def trace_id : Slice(UInt8)
-      abstract def trace_id=(value : Slice(UInt8))
+      abstract def trace_id=(trace_id : Slice(UInt8))
 
       # This is probably going to be a property
       abstract def span_id : Slice(UInt8)
-      abstract def span_id=(value : Slice(UInt8))
+      abstract def span_id=(span_id : Slice(UInt8))
 
       # This is probably going to be a property
       abstract def parent_id : Slice(UInt8)?
-      abstract def parent_id=(value : Slice(UInt8)?)
+      abstract def parent_id=(parent_id : Slice(UInt8)?)
 
       # This is probably going to be a property
       abstract def trace_flags : TraceFlags
-      abstract def trace_flags=(value : TraceFlags)
+      abstract def trace_flags=(trace_flags : TraceFlags)
 
       # TODO: We're currenty playing fast and loose with TraceState. TraceState, per the spec,
       # should be immutable, however, so this will need to be revised.
       # This is probably going to be a property
       abstract def trace_state : Hash(String, String)
-      abstract def trace_state=(value : Hash(String, String))
+      abstract def trace_state=(trace_state : Hash(String, String))
 
       # This is probably going to be a property
       abstract def remote : Bool
-      abstract def remote=(value : Bool)
+      abstract def remote=(remote : Bool)
 
       # Returns true is the trace id and span id are non-zero
       abstract def valid?

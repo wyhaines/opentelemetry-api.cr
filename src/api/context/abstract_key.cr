@@ -11,7 +11,7 @@ module OpenTelemetry::API
 
       abstract def get(context = Context.current)
 
-      abstract def <=>(val)
+      abstract def <=>(other)
     end
   end
 end
