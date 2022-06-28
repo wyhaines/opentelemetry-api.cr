@@ -18,7 +18,7 @@ https://discord.gg/WKe9WWJ3HE
 
 ## Installation
 
-You will not normally directly use this shard. If you want to instrument your code with OpenTelemetry, see the [Instrumentation shard](https://github.co/wyhaines/opentelemetry-instrumentation.cr/) or the [SDK].
+You will not normally directly use this shard. If you want to instrument your code with OpenTelemetry, see the [Instrumentation shard](https://github.com/wyhaines/opentelemetry-instrumentation.cr/) or the [SDK].
 
 If you do have reason to use this shard directly, however:
 
@@ -54,7 +54,7 @@ If you want to help with development, [fork](https://github.com/wyhaines/opentel
 
 If you have a question or find an issue, you can [start a discussion](https://github.com/wyhaines/opentelemetry-api.cr/discussions/new) or [create an issue](https://github.com/wyhaines/opentelemetry-api.cr/issues/new/choose).
 
-##Contributing
+## Contributing
 
 1. Fork it (<https://github.com/your-github-user/otel/fork>)
 2. Create your feature branch (`git checkout -b my-new-feature`)
