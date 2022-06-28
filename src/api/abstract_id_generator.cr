@@ -1,39 +1,15 @@
-require "./abstract_id_generator/*"
+require "./id_generator/abstract_base"
 
 module OpenTelemetry
-  # struct AbstractIdGenerator < IdGenerator::Base
-  #   def trace_id
-  #     Slice(UInt8).new(16, 0)
-  #   end
-
-  #   def span_id
-  #     Slice(UInt8).new(8, 0)
-  #   end
-  # end
   module API
     abstract struct AbstractIdGenerator
-      # getter generator : OpenTelemetry::IdGenerator::Base
-      # class_property generator : OpenTelemetry::IdGenerator::Base = OpenTelemetry::IdGenerator::Unique.new
+      abstract def initialize(variant : String | Symbol = "unique")
 
-      def initialize(variant : String | Symbol = "unique")
-        # case variant.to_s.downcase
-        # # TODO: generate this via a macro
-        # when "unique"
-        #   @generator = OpenTelemetry::IdGenerator::Unique.new
-        # when "random"
-        #   @generator = OpenTelemetry::IdGenerator::Random.new
-        # else
-        #   raise "unknown variant #{variant}"
-        # end
-      end
+      abstract def generator : AbstractIdGenerator::AbstractBase
 
-      def trace_id
-        @generator.trace_id
-      end
+      abstract def trace_id
 
-      def span_id
-        @generator.span_id
-      end
+      abstract def span_id
 
       def self.trace_id
         generator.trace_id
