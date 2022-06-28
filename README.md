@@ -4,7 +4,7 @@
 
 # OpenTelemetry-API
 
-This is an implementation of the OpenTelemetry API. The API layer provides a set of interface definitions, and NO-OP implementations of those interfaces. It is not useful on its own to instrument your code with OpenTelemetry, but rather is intended to be used by the [SDK](/wyhaines/opentelemetry-sdk.cr/), which provides the functionality behind the API interfaces defined in this repo.
+This is an implementation of the OpenTelemetry API. The API layer provides a set of interface definitions, and NO-OP implementations of those interfaces. It is not useful on its own to instrument your code with OpenTelemetry, but rather is intended to be used by the [SDK], which provides the functionality behind the API interfaces defined in this repo.
 
 ## Full Generated Documentation
 
@@ -18,7 +18,7 @@ https://discord.gg/WKe9WWJ3HE
 
 ## Installation
 
-You will not normally directly use this shard. If you want to instrument your code with OpenTelemetry, see the [Instrumentation shard](/wyhaines/opentelemetry-instrumentation.cr/) or the [SDK](/wyhaines/opentelemetry-sdk.cr/).
+You will not normally directly use this shard. If you want to instrument your code with OpenTelemetry, see the [Instrumentation shard](https://github.co/wyhaines/opentelemetry-instrumentation.cr/) or the [SDK].
 
 If you do have reason to use this shard directly, however:
 
@@ -42,7 +42,7 @@ require "opentelemetry-api"
 
 This will define a set of classes and structs which implement the OpenTelemetry API interfaces with methods that do nothing.
 
-If you only want access to the API interfaces (which is what the [SDK](/wyhaines/opentelemetry-sdk.cr) uses):
+If you only want access to the API interfaces (which is what the [SDK] uses):
 
 ```crystal
 require "opentelemetry-api/src/interfaces"
@@ -70,3 +70,4 @@ If you have a question or find an issue, you can [start a discussion](https://gi
 ![GitHub issues](https://img.shields.io/github/issues/wyhaines/opentelemetry-api.cr?style=for-the-badge)
 
 [Contributing]: #contributing
+[SDK]: https://github.com/wyhaines/opentelemetry-sdk.cr
