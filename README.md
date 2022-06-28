@@ -56,7 +56,7 @@ If you have a question or find an issue, you can [start a discussion](https://gi
 
 ## Contributing
 
-1. Fork it (<https://github.com/your-github-user/otel/fork>)
+1. Fork it (https://github.com/wyhaines/opentelemetry-api.cr/fork)
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
