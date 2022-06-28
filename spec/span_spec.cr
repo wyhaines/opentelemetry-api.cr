@@ -1,146 +1,225 @@
 require "./spec_helper"
-require "json"
 
-describe OpenTelemetry::Span, tags: ["Span"] do
-  it "can create a span and set/get attributes on that span" do
-    checkout_config do
-      span = OpenTelemetry::Span.new
-      verb = "GET"
-      url = "http://example.com/foo"
-      span.set_attribute("verb", verb)
-      span["url"] = url
-      span["verb"].should eq verb
-      span["url"].should eq url
-      span.get_attribute("url").value.should eq url
-      span["bools"] = true
-      span["bools"] = false
-      span["bools"].should be_false
-      span.get_attribute("bools") << true
-      span["bools"].should eq [false, true]
-      span["headers"] = Array(String).new
-      span.get_attribute("headers") << "Content-Type: text/plain"
-      span.get_attribute("headers") << "Content-Length: 23"
-      span["headers"].should eq ["Content-Type: text/plain", "Content-Length: 23"]
-      span.id.should_not be_nil
-      span.id.should eq span.context.span_id
-      span.add_event("Test Event") do |event|
-        event["foo"] = "bar"
-      end
-      span.status.code.should eq OpenTelemetry::Status::StatusCode::Unset
-      span.status.ok!("Everything is fine.")
-      span.status.code.should eq OpenTelemetry::Status::StatusCode::Ok
+describe OpenTelemetry::API::Span do
+  it "defines #initialize" do
+    span = OpenTelemetry::API::Span.new("span")
+    span.@name.should eq "span"
+  end
 
-      span.kind.should eq OpenTelemetry::Span::Kind::Internal
-      span.server!
-      span.kind.should eq OpenTelemetry::Span::Kind::Server
+  it "defines Span.builder" do
+    span = OpenTelemetry::API::Span.build("span") do |spn|
+      spn.@name.should eq "span"
+      spn.name = "span2"
+    end
 
-      span.to_protobuf
-      # TODO: validate the protobuf structure.
+    span.@name.should eq "span2"
+  end
+
+  it "defines #name" do
+    span = OpenTelemetry::API::Span.new("span")
+    span.name.should eq "span"
+  end
+
+  it "defines #name=" do
+    span = OpenTelemetry::API::Span.new("span")
+    span.name = "span2"
+    span.name.should eq "span2"
+  end
+
+  it "defines #start" do
+    span = OpenTelemetry::API::Span.new("span")
+    span.start.should be_a(Time::Span)
+    span.start.should be < Time.monotonic
+  end
+
+  it "defines #start=" do
+    span = OpenTelemetry::API::Span.new("span")
+    actual_start = Time.monotonic
+    span.start = actual_start
+    span.start.should be_a(Time::Span)
+    span.start.should eq actual_start
+  end
+
+  it "defines #wall_start" do
+    span = OpenTelemetry::API::Span.new("span")
+    span.wall_start.should be_a(Time)
+    span.wall_start.should be < Time.utc
+  end
+
+  it "defines #wall_start=" do
+    span = OpenTelemetry::API::Span.new("span")
+    actual_start = Time.utc
+    span.wall_start = actual_start
+    span.wall_start.should be_a(Time)
+    span.wall_start.should eq actual_start
+  end
+
+  it "defines #finish" do
+    span = OpenTelemetry::API::Span.new("span")
+    span.finish.should be_nil
+  end
+
+  it "defines #finish=" do
+    span = OpenTelemetry::API::Span.new("span")
+    actual_finish = Time.monotonic
+    span.finish = actual_finish
+    span.finish.should be_a(Time::Span)
+    span.finish.should eq actual_finish
+  end
+
+  it "defines #wall_finish" do
+    span = OpenTelemetry::API::Span.new("span")
+    span.wall_finish.should be_nil
+  end
+
+  it "defines #wall_finish=" do
+    span = OpenTelemetry::API::Span.new("span")
+    actual_finish = Time.utc
+    span.wall_finish = actual_finish
+    span.wall_finish.should be_a(Time)
+    span.wall_finish.should eq actual_finish
+  end
+
+  it "defines #events" do
+    span = OpenTelemetry::API::Span.new("span")
+    span.events.should be_a(Array(OpenTelemetry::API::Event))
+    span.events.size.should eq 0
+  end
+
+  it "defines #events=" do
+    span = OpenTelemetry::API::Span.new("span")
+    span.events = [OpenTelemetry::API::Event.new("event")]
+    span.events.should be_a(Array(OpenTelemetry::API::Event))
+  end
+
+  it "defines #attributes" do
+    span = OpenTelemetry::API::Span.new("span")
+    span.attributes.should be_a(Hash(String, OpenTelemetry::AnyAttribute))
+    span.attributes.size.should eq 0
+  end
+
+  it "defines #attributes=" do
+    attr = Hash(String, OpenTelemetry::AnyAttribute).new
+    span = OpenTelemetry::API::Span.new("span")
+    span.attributes = attr
+    span.attributes.should be_a(Hash(String, OpenTelemetry::AnyAttribute))
+    span.attributes.should eq attr
+  end
+
+  it "defines #parent" do
+    span = OpenTelemetry::API::Span.new("span")
+    span.parent.should be_nil
+  end
+
+  it "defines #parent=" do
+    span = OpenTelemetry::API::Span.new("span")
+    span.parent = OpenTelemetry::API::Span.new("span2")
+    span.parent.should be_a(OpenTelemetry::API::Span)
+    span.name.should eq "span"
+    if span_parent = span.parent
+      span_parent.name.should eq "span2"
     end
   end
 
-  it "can set events on a span" do
-    checkout_config do
-      span = OpenTelemetry::Span.new
-      span.set_attribute("verb", "GET")
-      span.set_attribute("url", "http://example.com/foo")
-      span.add_event("dispatching to handler") do |e|
-        e["verb"] = "GET"
-        e["url"] = "http://example.com/foo"
-      end
-      error_time = Time.utc.to_s
-      span.add_event("error") do |e|
-        e["error"] = "error"
-        e["time"] = error_time
-        e["message"] = "There was a really bad error."
-      end
-      span.events.size.should eq 2
-      e = span.events.first
-      e.name.should eq "dispatching to handler"
-      e.attributes["verb"].value.should eq "GET"
-      e.attributes["url"].value.should eq "http://example.com/foo"
-      e = span.events.last
-      e.name.should eq "error"
-      e.attributes["error"].value.should eq "error"
-      e.attributes["time"].value.should eq error_time
-      e.attributes["message"].value.should eq "There was a really bad error."
+  it "defines #children" do
+    span = OpenTelemetry::API::Span.new("span")
+    span.children.should be_a(Array(OpenTelemetry::API::Span))
+    span.children.size.should eq 0
+  end
+
+  it "defines #children=" do
+    span = OpenTelemetry::API::Span.new("span")
+    span.children = [OpenTelemetry::API::Span.new("span2")]
+    span.children.should be_a(Array(OpenTelemetry::API::Span))
+    span.children.size.should eq 1
+    if span_child = span.children[0]
+      span_child.name.should eq "span2"
     end
   end
 
-  it "can use a trace to create a span" do
-    checkout_config do
-      provider = OpenTelemetry::TraceProvider.new(
-        service_name: "my_app_or_library",
-        service_version: "1.1.1",
-        exporter: OpenTelemetry::Exporter.new(variant: :null))
-      trace = provider.trace do |t|
-        t.service_name = "microservice"
-        t.service_version = "1.2.3"
-      end
-      trace.in_span("request") do |span|
-        span.set_attribute("verb", "GET")
-        span.set_attribute("url", "http://example.com/foo")
-        span.add_event("dispatching to handler")
-      end
-    end
+  it "defines #context" do
+    span = OpenTelemetry::API::Span.new("span")
+    span.context.should be_a(OpenTelemetry::API::SpanContext)
   end
 
-  it "can set a span to all of the defined span kinds" do
-    [
-      {OpenTelemetry::Span::Kind::Consumer, 5},
-      {OpenTelemetry::Span::Kind::Producer, 4},
-      {OpenTelemetry::Span::Kind::Client, 3},
-      {OpenTelemetry::Span::Kind::Server, 2},
-      {OpenTelemetry::Span::Kind::Internal, 1},
-      {OpenTelemetry::Span::Kind::Unspecified, 0},
-    ].each do |kind, kind_val|
-      checkout_config do
-        json = ""
-        OpenTelemetry.trace.in_span("request") do |span|
-          span.kind = kind
-          span.is_recording = true
-          span.context.trace_flags = OpenTelemetry::TraceFlags::Sampled
-
-          json = span.to_json
-        end
-        JSON.parse(json)["kind"].as_i.should eq kind_val
-      end
-    end
+  it "defines #context=" do
+    ctx = OpenTelemetry::API::SpanContext.new
+    span = OpenTelemetry::API::Span.new("span")
+    span.context = ctx
+    span.context.should be_a(OpenTelemetry::API::SpanContext)
+    span.context.should eq ctx
   end
 
-  it "can create nested spans" do
-    checkout_config do
-      provider = OpenTelemetry::TraceProvider.new(
-        service_name: "my_app_or_library",
-        service_version: "1.1.1",
-        exporter: OpenTelemetry::Exporter.new(variant: :null))
-      trace = provider.trace do |t|
-        t.service_name = "microservice"
-        t.service_version = "1.2.3"
-      end
-      trace.in_span("request") do |span|
-        span.set_attribute("verb", "GET")
-        span.set_attribute("url", "http://example.com/foo")
-        sleep(rand/1000)
-        span.add_event("dispatching to handler")
-        trace.in_span("handler") do |child_span|
-          sleep(rand/1000)
-          child_span.add_event("dispatching to database")
-          trace.in_span("db") do |db_span|
-            db_span.add_event("querying database")
-            sleep(rand/1000)
-          end
-          trace.in_span("external api") do |api_span|
-            api_span.add_event("querying api")
-            sleep(rand/1000)
-          end
-          sleep(rand/1000)
-        end
-      end
+  it "defines #kind" do
+    span = OpenTelemetry::API::Span.new("span")
+    span.kind.should be_a(OpenTelemetry::API::Span::Kind)
+    span.kind.should eq OpenTelemetry::API::Span::Kind::Internal
+  end
 
-      # buffer = iterate_span_nodes trace.root_span, 0, [] of String
-      # buffer.should eq ["request", "  handler", "    db", "    external api"]
-      iterate_tracer_spans(trace).map(&.name).should eq ["request", "handler", "external api", "db"]
+  it "defines #kind=" do
+    span = OpenTelemetry::API::Span.new("span")
+    span.kind = OpenTelemetry::API::Span::Kind::Server
+    span.kind.should be_a(OpenTelemetry::API::Span::Kind)
+    span.kind.should eq OpenTelemetry::API::Span::Kind::Server
+  end
+
+  it "defines #status" do
+    span = OpenTelemetry::API::Span.new("span")
+    span.status.should be_a(OpenTelemetry::API::Status)
+    span.status.code.value.should eq 0
+  end
+
+  it "defines #status=" do
+    span = OpenTelemetry::API::Span.new("span")
+    new_status = OpenTelemetry::API::Status.new
+    new_status.code = OpenTelemetry::API::Status::StatusCode::Ok
+    span.status = new_status
+    span.status.should be_a(OpenTelemetry::API::Status)
+    span.status.code.value.should eq 1
+  end
+
+  it "defines #is_recording" do
+    span = OpenTelemetry::API::Span.new("span")
+    span.is_recording.should be_true
+  end
+
+  it "defines #is_recording=" do
+    span = OpenTelemetry::API::Span.new("span")
+    span.is_recording = false
+    span.is_recording.should be_false
+  end
+
+  it "defines #recording?" do
+    span = OpenTelemetry::API::Span.new("span")
+    span.recording?.should be_nil
+  end
+
+  it "defines #[]" do
+    span = OpenTelemetry::API::Span.new("span")
+    span["key"].should be_nil
+  end
+
+  it "defines #get_attribute" do
+    span = OpenTelemetry::API::Span.new("span")
+    span.get_attribute("key").should be_nil
+  end
+
+  it "defines #[]=" do
+    span = OpenTelemetry::API::Span.new("span")
+    (span["key"] = "value").should be_nil
+  end
+
+  it "defines #set_attribute" do
+    span = OpenTelemetry::API::Span.new("span")
+    span.set_attribute("key", "value").should be_nil
+  end
+
+  it "defines #add_event" do
+    span = OpenTelemetry::API::Span.new("span")
+    span.add_event("event").should be_nil
+
+    span.add_event("event2") do |event|
+      event.@name.should eq "event2"
     end
   end
 end

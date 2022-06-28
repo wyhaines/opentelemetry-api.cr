@@ -1,5 +1,5 @@
 name: opentelemetry-api
-version: 0.3.4
+version: 0.5.0
 
 authors:
   - Kirk Haines <wyhaines@gmail.com>
@@ -9,8 +9,6 @@ crystal: ">1.1.0"
 license: "Apache 2.0"
 
 dependencies:
-  db:
-    github: crystal-lang/crystal-db
   splay_tree_map:
     github: wyhaines/splay_tree_map.cr
   nbchannel:
@@ -22,10 +20,6 @@ dependencies:
   time-ext:
     github: wyhaines/time-ext.cr
     branch: main
-  protobuf:
-    github: jeromegn/protobuf.cr
-  retriable:
-    github: Sija/retriable.cr
   debug:
     github: Sija/debug.cr
 
