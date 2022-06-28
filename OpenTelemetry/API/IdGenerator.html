@@ -13,7 +13,7 @@
 <script type="text/javascript" src="../../js/doc.js"></script>
 
   <meta name="repository-name" content="opentelemetry-api">
-  <title>OpenTelemetry::AnyAttribute::Type - opentelemetry-api 0.5.0</title>
+  <title>OpenTelemetry::API::IdGenerator - opentelemetry-api 0.5.0</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "../../";
   </script>
@@ -56,12 +56,12 @@
       
         <ul>
   
-  <li class="parent open current" data-id="opentelemetry-api/OpenTelemetry/AnyAttribute" data-name="opentelemetry::anyattribute">
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/AnyAttribute" data-name="opentelemetry::anyattribute">
       <a href="../../OpenTelemetry/AnyAttribute.html">AnyAttribute</a>
       
         <ul>
   
-  <li class=" current" data-id="opentelemetry-api/OpenTelemetry/AnyAttribute/Type" data-name="opentelemetry::anyattribute::type">
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/AnyAttribute/Type" data-name="opentelemetry::anyattribute::type">
       <a href="../../OpenTelemetry/AnyAttribute/Type.html">Type</a>
       
     </li>
@@ -76,7 +76,7 @@
       
     </li>
   
-  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/API" data-name="opentelemetry::api">
+  <li class="parent open current" data-id="opentelemetry-api/OpenTelemetry/API" data-name="opentelemetry::api">
       <a href="../../OpenTelemetry/API.html">API</a>
       
         <ul>
@@ -201,7 +201,7 @@
       
     </li>
   
-  <li class=" " data-id="opentelemetry-api/OpenTelemetry/API/IdGenerator" data-name="opentelemetry::api::idgenerator">
+  <li class=" current" data-id="opentelemetry-api/OpenTelemetry/API/IdGenerator" data-name="opentelemetry::api::idgenerator">
       <a href="../../OpenTelemetry/API/IdGenerator.html">IdGenerator</a>
       
     </li>
@@ -315,25 +315,17 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">alias</span> OpenTelemetry::AnyAttribute::Type
+  <span class="kind">struct</span> OpenTelemetry::API::IdGenerator
 
 </h1>
 
 
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../../OpenTelemetry/API/IdGenerator.html">OpenTelemetry::API::IdGenerator</a></li><li class="superclass"><a href="../../OpenTelemetry/API/AbstractIdGenerator.html">OpenTelemetry::API::AbstractIdGenerator</a></li><li class="superclass">Struct</li><li class="superclass">Value</li><li class="superclass">Object</li></ul>
 
 
 
 
 
-  <h2>
-    <a id="alias-definition" class="anchor" href="#alias-definition">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Alias Definition
-  </h2>
-  <code><a href="../../OpenTelemetry/Attribute.html">OpenTelemetry::Attribute(Array(Bool))</a> | <a href="../../OpenTelemetry/Attribute.html">OpenTelemetry::Attribute(Array(Float64))</a> | <a href="../../OpenTelemetry/Attribute.html">OpenTelemetry::Attribute(Array(Int32))</a> | <a href="../../OpenTelemetry/Attribute.html">OpenTelemetry::Attribute(Array(Int64))</a> | <a href="../../OpenTelemetry/Attribute.html">OpenTelemetry::Attribute(Array(String))</a> | <a href="../../OpenTelemetry/Attribute.html">OpenTelemetry::Attribute(Bool)</a> | <a href="../../OpenTelemetry/Attribute.html">OpenTelemetry::Attribute(Float64)</a> | <a href="../../OpenTelemetry/Attribute.html">OpenTelemetry::Attribute(Int32)</a> | <a href="../../OpenTelemetry/Attribute.html">OpenTelemetry::Attribute(Int64)</a> | <a href="../../OpenTelemetry/Attribute.html">OpenTelemetry::Attribute(String)</a></code>
 
 
 
@@ -356,7 +348,7 @@
   </h2>
   
     
-      anyattribute.cr
+      api/id_generator.cr
     
     <br/>
   
@@ -365,9 +357,85 @@
 
 
 
+  <h2>
+    <a id="constructors" class="anchor" href="#constructors">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructors
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28variant%3AString%7CSymbol%3D%22unique%22%29-class-method" class="signature"><strong>.new</strong>(variant : String | Symbol = <span class="s">&quot;unique&quot;</span>)</a>
+        
+      </li>
+    
+  </ul>
 
 
 
+  <h2>
+    <a id="class-method-summary" class="anchor" href="#class-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#generator%3AOpenTelemetry%3A%3AAPI%3A%3AIdGenerator%3A%3ABase-class-method" class="signature"><strong>.generator</strong> : OpenTelemetry::API::IdGenerator::Base</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#generator%3D%28generator%3AOpenTelemetry%3A%3AAPI%3A%3AIdGenerator%3A%3ABase%29-class-method" class="signature"><strong>.generator=</strong>(generator : OpenTelemetry::API::IdGenerator::Base)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#span_id-class-method" class="signature"><strong>.span_id</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#trace_id-class-method" class="signature"><strong>.trace_id</strong></a>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <h2>
+    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#generator%3AOpenTelemetry%3A%3AAPI%3A%3AIdGenerator%3A%3ABase-instance-method" class="signature"><strong>#generator</strong> : OpenTelemetry::API::IdGenerator::Base</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#span_id-instance-method" class="signature"><strong>#span_id</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#trace_id-instance-method" class="signature"><strong>#trace_id</strong></a>
+        
+      </li>
+    
+  </ul>
 
 
 
@@ -375,12 +443,236 @@
 
 <div class="methods-inherited">
   
+    
+
+  <h3>Instance methods inherited from struct <code><a href="../../OpenTelemetry/API/AbstractIdGenerator.html">OpenTelemetry::API::AbstractIdGenerator</a></code></h3>
+  
+  
+    <a href="../../OpenTelemetry/API/AbstractIdGenerator.html#generator%3AAbstractIdGenerator%3A%3AAbstractBase-instance-method" class="tooltip">
+      <span>generator : AbstractIdGenerator::AbstractBase</span>
+    generator</a>, 
+    
+  
+    <a href="../../OpenTelemetry/API/AbstractIdGenerator.html#span_id-instance-method" class="tooltip">
+      <span>span_id</span>
+    span_id</a>, 
+    
+  
+    <a href="../../OpenTelemetry/API/AbstractIdGenerator.html#trace_id-instance-method" class="tooltip">
+      <span>trace_id</span>
+    trace_id</a>
+    
+  
+
+
+    
+
+  <h3>Constructor methods inherited from struct <code><a href="../../OpenTelemetry/API/AbstractIdGenerator.html">OpenTelemetry::API::AbstractIdGenerator</a></code></h3>
+  
+  
+    <a href="../../OpenTelemetry/API/AbstractIdGenerator.html#new%28variant%3AString%7CSymbol%3D%22unique%22%29-class-method" class="tooltip">
+      <span>new(variant : String | Symbol = <span class="s">&quot;unique&quot;</span>)</span>
+    new</a>
+    
+  
+
+
+    
+
+  <h3>Class methods inherited from struct <code><a href="../../OpenTelemetry/API/AbstractIdGenerator.html">OpenTelemetry::API::AbstractIdGenerator</a></code></h3>
+  
+  
+    <a href="../../OpenTelemetry/API/AbstractIdGenerator.html#span_id-class-method" class="tooltip">
+      <span>span_id</span>
+    span_id</a>, 
+    
+  
+    <a href="../../OpenTelemetry/API/AbstractIdGenerator.html#trace_id-class-method" class="tooltip">
+      <span>trace_id</span>
+    trace_id</a>
+    
+  
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
 </div>
 
 
+  <h2>
+    <a id="constructor-detail" class="anchor" href="#constructor-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructor Detail
+  </h2>
+  
+    <div class="entry-detail" id="new(variant:String|Symbol=&quot;unique&quot;)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(variant : String | Symbol = <span class="s">&quot;unique&quot;</span>)
+
+        <a class="method-permalink" href="#new%28variant%3AString%7CSymbol%3D%22unique%22%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
 
 
 
+  <h2>
+    <a id="class-method-detail" class="anchor" href="#class-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="generator:OpenTelemetry::API::IdGenerator::Base-class-method">
+      <div class="signature">
+        
+        def self.<strong>generator</strong> : <a href="../../OpenTelemetry/API/AbstractIdGenerator/Base.html">OpenTelemetry::API::IdGenerator::Base</a>
+
+        <a class="method-permalink" href="#generator%3AOpenTelemetry%3A%3AAPI%3A%3AIdGenerator%3A%3ABase-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="generator=(generator:OpenTelemetry::API::IdGenerator::Base)-class-method">
+      <div class="signature">
+        
+        def self.<strong>generator=</strong>(generator : <a href="../../OpenTelemetry/API/AbstractIdGenerator/Base.html">OpenTelemetry::API::IdGenerator::Base</a>)
+
+        <a class="method-permalink" href="#generator%3D%28generator%3AOpenTelemetry%3A%3AAPI%3A%3AIdGenerator%3A%3ABase%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="span_id-class-method">
+      <div class="signature">
+        
+        def self.<strong>span_id</strong>
+
+        <a class="method-permalink" href="#span_id-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="trace_id-class-method">
+      <div class="signature">
+        
+        def self.<strong>trace_id</strong>
+
+        <a class="method-permalink" href="#trace_id-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+
+  <h2>
+    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="generator:OpenTelemetry::API::IdGenerator::Base-instance-method">
+      <div class="signature">
+        
+        def <strong>generator</strong> : <a href="../../OpenTelemetry/API/AbstractIdGenerator/Base.html">OpenTelemetry::API::IdGenerator::Base</a>
+
+        <a class="method-permalink" href="#generator%3AOpenTelemetry%3A%3AAPI%3A%3AIdGenerator%3A%3ABase-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="span_id-instance-method">
+      <div class="signature">
+        
+        def <strong>span_id</strong>
+
+        <a class="method-permalink" href="#span_id-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="trace_id-instance-method">
+      <div class="signature">
+        
+        def <strong>trace_id</strong>
+
+        <a class="method-permalink" href="#trace_id-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
 
 
 

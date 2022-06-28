@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 1.3.2">
+<meta name="crystal_docs.project_version" content="0.5.0">
+<meta name="crystal_docs.project_name" content="opentelemetry-api">
+
+
+
+<link href="../../css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../../js/doc.js"></script>
+
+  <meta name="repository-name" content="opentelemetry-api">
+  <title>OpenTelemetry::API::AbstractContext - opentelemetry-api 0.5.0</title>
+  <script type="text/javascript">
+    CrystalDocs.base_path = "../../";
+  </script>
+</head>
+<body>
+
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="project-summary">
+      <h1 class="project-name">
+        <a href="../../index.html">
+          opentelemetry-api
+        </a>
+      </h1>
+
+      <span class="project-version">
+        0.5.0
+      </span>
+    </div>
+  </div>
+
+  <div class="search-results hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class="parent open current" data-id="opentelemetry-api/OpenTelemetry" data-name="opentelemetry">
+      <a href="../../OpenTelemetry.html">OpenTelemetry</a>
+      
+        <ul>
+  
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/AnyAttribute" data-name="opentelemetry::anyattribute">
+      <a href="../../OpenTelemetry/AnyAttribute.html">AnyAttribute</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/AnyAttribute/Type" data-name="opentelemetry::anyattribute::type">
+      <a href="../../OpenTelemetry/AnyAttribute/Type.html">Type</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/AnyValue" data-name="opentelemetry::anyvalue">
+      <a href="../../OpenTelemetry/AnyValue.html">AnyValue</a>
+      
+    </li>
+  
+  <li class="parent open current" data-id="opentelemetry-api/OpenTelemetry/API" data-name="opentelemetry::api">
+      <a href="../../OpenTelemetry/API.html">API</a>
+      
+        <ul>
+  
+  <li class="parent open current" data-id="opentelemetry-api/OpenTelemetry/API/AbstractContext" data-name="opentelemetry::api::abstractcontext">
+      <a href="../../OpenTelemetry/API/AbstractContext.html">AbstractContext</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/API/AbstractContext/AbstractKey" data-name="opentelemetry::api::abstractcontext::abstractkey">
+      <a href="../../OpenTelemetry/API/AbstractContext/AbstractKey.html">AbstractKey</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/API/AbstractContext/ContextContainer" data-name="opentelemetry::api::abstractcontext::contextcontainer">
+      <a href="../../OpenTelemetry/API/AbstractContext/ContextContainer.html">ContextContainer</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/API/AbstractEvent" data-name="opentelemetry::api::abstractevent">
+      <a href="../../OpenTelemetry/API/AbstractEvent.html">AbstractEvent</a>
+      
+    </li>
+  
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/API/AbstractIdGenerator" data-name="opentelemetry::api::abstractidgenerator">
+      <a href="../../OpenTelemetry/API/AbstractIdGenerator.html">AbstractIdGenerator</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/API/AbstractIdGenerator/AbstractBase" data-name="opentelemetry::api::abstractidgenerator::abstractbase">
+      <a href="../../OpenTelemetry/API/AbstractIdGenerator/AbstractBase.html">AbstractBase</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/API/AbstractIdGenerator/Base" data-name="opentelemetry::api::abstractidgenerator::base">
+      <a href="../../OpenTelemetry/API/AbstractIdGenerator/Base.html">Base</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/API/AbstractResource" data-name="opentelemetry::api::abstractresource">
+      <a href="../../OpenTelemetry/API/AbstractResource.html">AbstractResource</a>
+      
+    </li>
+  
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/API/AbstractSpan" data-name="opentelemetry::api::abstractspan">
+      <a href="../../OpenTelemetry/API/AbstractSpan.html">AbstractSpan</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/API/AbstractSpan/Kind" data-name="opentelemetry::api::abstractspan::kind">
+      <a href="../../OpenTelemetry/API/AbstractSpan/Kind.html">Kind</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/API/AbstractSpanContext" data-name="opentelemetry::api::abstractspancontext">
+      <a href="../../OpenTelemetry/API/AbstractSpanContext.html">AbstractSpanContext</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/API/AbstractSpanContext/AbstractConfig" data-name="opentelemetry::api::abstractspancontext::abstractconfig">
+      <a href="../../OpenTelemetry/API/AbstractSpanContext/AbstractConfig.html">AbstractConfig</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/API/AbstractStatus" data-name="opentelemetry::api::abstractstatus">
+      <a href="../../OpenTelemetry/API/AbstractStatus.html">AbstractStatus</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/API/AbstractStatus/StatusCode" data-name="opentelemetry::api::abstractstatus::statuscode">
+      <a href="../../OpenTelemetry/API/AbstractStatus/StatusCode.html">StatusCode</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/API/AbstractTextMapPropagator" data-name="opentelemetry::api::abstracttextmappropagator">
+      <a href="../../OpenTelemetry/API/AbstractTextMapPropagator.html">AbstractTextMapPropagator</a>
+      
+    </li>
+  
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/API/Context" data-name="opentelemetry::api::context">
+      <a href="../../OpenTelemetry/API/Context.html">Context</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/API/Context/Key" data-name="opentelemetry::api::context::key">
+      <a href="../../OpenTelemetry/API/Context/Key.html">Key</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/API/Event" data-name="opentelemetry::api::event">
+      <a href="../../OpenTelemetry/API/Event.html">Event</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/API/IdGenerator" data-name="opentelemetry::api::idgenerator">
+      <a href="../../OpenTelemetry/API/IdGenerator.html">IdGenerator</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/API/Resource" data-name="opentelemetry::api::resource">
+      <a href="../../OpenTelemetry/API/Resource.html">Resource</a>
+      
+    </li>
+  
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/API/Span" data-name="opentelemetry::api::span">
+      <a href="../../OpenTelemetry/API/Span.html">Span</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/API/Span/Kind" data-name="opentelemetry::api::span::kind">
+      <a href="../../OpenTelemetry/API/Span/Kind.html">Kind</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/API/SpanContext" data-name="opentelemetry::api::spancontext">
+      <a href="../../OpenTelemetry/API/SpanContext.html">SpanContext</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/API/SpanContext/Config" data-name="opentelemetry::api::spancontext::config">
+      <a href="../../OpenTelemetry/API/SpanContext/Config.html">Config</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/API/Status" data-name="opentelemetry::api::status">
+      <a href="../../OpenTelemetry/API/Status.html">Status</a>
+      
+        <ul>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/API/Status/StatusCode" data-name="opentelemetry::api::status::statuscode">
+      <a href="../../OpenTelemetry/API/Status/StatusCode.html">StatusCode</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/API/TextMapPropagator" data-name="opentelemetry::api::textmappropagator">
+      <a href="../../OpenTelemetry/API/TextMapPropagator.html">TextMapPropagator</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/API/TraceFlags" data-name="opentelemetry::api::traceflags">
+      <a href="../../OpenTelemetry/API/TraceFlags.html">TraceFlags</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Attribute" data-name="opentelemetry::attribute(k)">
+      <a href="../../OpenTelemetry/Attribute.html">Attribute</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Context" data-name="opentelemetry::context">
+      <a href="../../OpenTelemetry/Context.html">Context</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Sendable" data-name="opentelemetry::sendable">
+      <a href="../../OpenTelemetry/Sendable.html">Sendable</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/ValueArrays" data-name="opentelemetry::valuearrays">
+      <a href="../../OpenTelemetry/ValueArrays.html">ValueArrays</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/ValueType" data-name="opentelemetry::valuetype">
+      <a href="../../OpenTelemetry/ValueType.html">ValueType</a>
+      
+    </li>
+  
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/ValueTypes" data-name="opentelemetry::valuetypes">
+      <a href="../../OpenTelemetry/ValueTypes.html">ValueTypes</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">abstract struct</span> OpenTelemetry::API::AbstractContext
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../../OpenTelemetry/API/AbstractContext.html">OpenTelemetry::API::AbstractContext</a></li><li class="superclass">Struct</li><li class="superclass">Value</li><li class="superclass">Object</li></ul>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="direct-known-subclasses" class="anchor" href="#direct-known-subclasses">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Direct Known Subclasses
+  </h2>
+  <ul class="other-types-list">
+    
+      <li class="other-type"><a href="../../OpenTelemetry/API/Context.html">OpenTelemetry::API::Context</a></li>
+    
+  </ul>
+
+
+
+
+
+
+  <h2>
+    <a id="defined-in" class="anchor" href="#defined-in">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Defined in:
+  </h2>
+  
+    
+      api/abstract_context.cr
+    
+    <br/>
+  
+    
+      api/context/abstract_key.cr
+    
+    <br/>
+  
+
+
+
+
+
+  <h2>
+    <a id="constructors" class="anchor" href="#constructors">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructors
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28entries%3AContextContainer%29-class-method" class="signature"><strong>.new</strong>(entries : ContextContainer)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new%28entries%29-class-method" class="signature"><strong>.new</strong>(entries)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new-class-method" class="signature"><strong>.new</strong></a>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <h2>
+    <a id="class-method-summary" class="anchor" href="#class-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#%5B%5D%28key%29-class-method" class="signature"><strong>.[]</strong>(key)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%5B%5D%3D%28key%2Cvalue%29-class-method" class="signature"><strong>.[]=</strong>(key, value)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%5B%5D%3F%28key%29-class-method" class="signature"><strong>.[]?</strong>(key)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#attach%28context%3AContext%29-class-method" class="signature"><strong>.attach</strong>(context : Context)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#attach%28entries%29-class-method" class="signature"><strong>.attach</strong>(entries)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#clear-class-method" class="signature"><strong>.clear</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#create_key%28name%29-class-method" class="signature"><strong>.create_key</strong>(name)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#create_key-class-method" class="signature"><strong>.create_key</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#current-class-method" class="signature"><strong>.current</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#detach%28token%29-class-method" class="signature"><strong>.detach</strong>(token)</a>
+        
+          <div class="summary"><p>Restores the previous Context associated with the current Fiber.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#set_value%28key%2Cvalue%29-class-method" class="signature"><strong>.set_value</strong>(key, value)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#stack-class-method" class="signature"><strong>.stack</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#value%28key%29-class-method" class="signature"><strong>.value</strong>(key)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#value%3F%28key%29-class-method" class="signature"><strong>.value?</strong>(key)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#with%28key%2Cvalues%29-class-method" class="signature"><strong>.with</strong>(key, values)</a>
+        
+          <div class="summary"><p>Execute a block in a new context with key set to value.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#with%28context%3AContext%29-class-method" class="signature"><strong>.with</strong>(context : Context)</a>
+        
+          <div class="summary"><p>Executes a block with ctx as the current context.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#with%28values%29-class-method" class="signature"><strong>.with</strong>(values)</a>
+        
+          <div class="summary"><p>@param [String] key The lookup key @param [Hash] values Will be merged with values of the current context  and returned in a new context @param [Callable] Block to execute in a new context @yield [context, values] Yields the newly created context and values   to the block</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <h2>
+    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#%5B%5D%28key%29-instance-method" class="signature"><strong>#[]</strong>(key)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%5B%5D%3D%28key%2Cvalue%29-instance-method" class="signature"><strong>#[]=</strong>(key, value)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%5B%5D%3F%28key%29-instance-method" class="signature"><strong>#[]?</strong>(key)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#entries-instance-method" class="signature"><strong>#entries</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#merge%28other_entries%29-instance-method" class="signature"><strong>#merge</strong>(other_entries)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#object_id-instance-method" class="signature"><strong>#object_id</strong></a>
+        
+          <div class="summary"><p>This is assumed to be implemented as a getter with a default value of <code>CSUUID.unique</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#set_value%28key%2Cvalue%29-instance-method" class="signature"><strong>#set_value</strong>(key, value)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#value%28key%29-instance-method" class="signature"><strong>#value</strong>(key)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#value%3F%28key%29-instance-method" class="signature"><strong>#value?</strong>(key)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+</div>
+
+
+  <h2>
+    <a id="constructor-detail" class="anchor" href="#constructor-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructor Detail
+  </h2>
+  
+    <div class="entry-detail" id="new(entries:ContextContainer)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(entries : <a href="../../OpenTelemetry/API/AbstractContext/ContextContainer.html">ContextContainer</a>)
+
+        <a class="method-permalink" href="#new%28entries%3AContextContainer%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(entries)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(entries)
+
+        <a class="method-permalink" href="#new%28entries%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>
+
+        <a class="method-permalink" href="#new-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+
+  <h2>
+    <a id="class-method-detail" class="anchor" href="#class-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="[](key)-class-method">
+      <div class="signature">
+        
+        def self.<strong>[]</strong>(key)
+
+        <a class="method-permalink" href="#%5B%5D%28key%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="[]=(key,value)-class-method">
+      <div class="signature">
+        
+        def self.<strong>[]=</strong>(key, value)
+
+        <a class="method-permalink" href="#%5B%5D%3D%28key%2Cvalue%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="[]?(key)-class-method">
+      <div class="signature">
+        
+        def self.<strong>[]?</strong>(key)
+
+        <a class="method-permalink" href="#%5B%5D%3F%28key%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="attach(context:Context)-class-method">
+      <div class="signature">
+        
+        def self.<strong>attach</strong>(context : <a href="../../OpenTelemetry/API/Context.html">Context</a>)
+
+        <a class="method-permalink" href="#attach%28context%3AContext%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="attach(entries)-class-method">
+      <div class="signature">
+        
+        def self.<strong>attach</strong>(entries)
+
+        <a class="method-permalink" href="#attach%28entries%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="clear-class-method">
+      <div class="signature">
+        
+        def self.<strong>clear</strong>
+
+        <a class="method-permalink" href="#clear-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="create_key(name)-class-method">
+      <div class="signature">
+        
+        def self.<strong>create_key</strong>(name)
+
+        <a class="method-permalink" href="#create_key%28name%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="create_key-class-method">
+      <div class="signature">
+        
+        def self.<strong>create_key</strong>
+
+        <a class="method-permalink" href="#create_key-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="current-class-method">
+      <div class="signature">
+        
+        def self.<strong>current</strong>
+
+        <a class="method-permalink" href="#current-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="detach(token)-class-method">
+      <div class="signature">
+        
+        def self.<strong>detach</strong>(token)
+
+        <a class="method-permalink" href="#detach%28token%29-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Restores the previous Context associated with the current Fiber.
+The supplied token is used to check if the call to detach is balanced
+with a corresponding attach call. A warning is logged if the
+calls are unbalanced.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="set_value(key,value)-class-method">
+      <div class="signature">
+        
+        def self.<strong>set_value</strong>(key, value)
+
+        <a class="method-permalink" href="#set_value%28key%2Cvalue%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="stack-class-method">
+      <div class="signature">
+        
+        def self.<strong>stack</strong>
+
+        <a class="method-permalink" href="#stack-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="value(key)-class-method">
+      <div class="signature">
+        
+        def self.<strong>value</strong>(key)
+
+        <a class="method-permalink" href="#value%28key%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="value?(key)-class-method">
+      <div class="signature">
+        
+        def self.<strong>value?</strong>(key)
+
+        <a class="method-permalink" href="#value%3F%28key%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="with(key,values)-class-method">
+      <div class="signature">
+        
+        def self.<strong>with</strong>(key, values)
+
+        <a class="method-permalink" href="#with%28key%2Cvalues%29-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Execute a block in a new context with key set to value. Restores the
+previous context after the block executes.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="with(context:Context)-class-method">
+      <div class="signature">
+        
+        def self.<strong>with</strong>(context : <a href="../../OpenTelemetry/API/Context.html">Context</a>)
+
+        <a class="method-permalink" href="#with%28context%3AContext%29-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Executes a block with ctx as the current context. It restores
+the previous context upon exiting.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="with(values)-class-method">
+      <div class="signature">
+        
+        def self.<strong>with</strong>(values)
+
+        <a class="method-permalink" href="#with%28values%29-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>@param [String] key The lookup key
+@param [Hash] values Will be merged with values of the current context
+and returned in a new context
+@param [Callable] Block to execute in a new context
+@yield [context, values] Yields the newly created context and values
+to the block</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+
+  <h2>
+    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="[](key)-instance-method">
+      <div class="signature">
+        abstract 
+        def <strong>[]</strong>(key)
+
+        <a class="method-permalink" href="#%5B%5D%28key%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="[]=(key,value)-instance-method">
+      <div class="signature">
+        abstract 
+        def <strong>[]=</strong>(key, value)
+
+        <a class="method-permalink" href="#%5B%5D%3D%28key%2Cvalue%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="[]?(key)-instance-method">
+      <div class="signature">
+        abstract 
+        def <strong>[]?</strong>(key)
+
+        <a class="method-permalink" href="#%5B%5D%3F%28key%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="entries-instance-method">
+      <div class="signature">
+        abstract 
+        def <strong>entries</strong>
+
+        <a class="method-permalink" href="#entries-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="merge(other_entries)-instance-method">
+      <div class="signature">
+        abstract 
+        def <strong>merge</strong>(other_entries)
+
+        <a class="method-permalink" href="#merge%28other_entries%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="object_id-instance-method">
+      <div class="signature">
+        abstract 
+        def <strong>object_id</strong>
+
+        <a class="method-permalink" href="#object_id-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>This is assumed to be implemented as a getter with
+a default value of <code>CSUUID.unique</code>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="set_value(key,value)-instance-method">
+      <div class="signature">
+        abstract 
+        def <strong>set_value</strong>(key, value)
+
+        <a class="method-permalink" href="#set_value%28key%2Cvalue%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="value(key)-instance-method">
+      <div class="signature">
+        abstract 
+        def <strong>value</strong>(key)
+
+        <a class="method-permalink" href="#value%28key%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="value?(key)-instance-method">
+      <div class="signature">
+        abstract 
+        def <strong>value?</strong>(key)
+
+        <a class="method-permalink" href="#value%3F%28key%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>

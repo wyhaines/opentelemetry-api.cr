@@ -13,7 +13,7 @@
 <script type="text/javascript" src="../js/doc.js"></script>
 
   <meta name="repository-name" content="opentelemetry-api">
-  <title>OpenTelemetry::Sendable - opentelemetry-api 0.5.0</title>
+  <title>OpenTelemetry::API - opentelemetry-api 0.5.0</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "../";
   </script>
@@ -76,7 +76,7 @@
       
     </li>
   
-  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/API" data-name="opentelemetry::api">
+  <li class="parent open current" data-id="opentelemetry-api/OpenTelemetry/API" data-name="opentelemetry::api">
       <a href="../OpenTelemetry/API.html">API</a>
       
         <ul>
@@ -281,7 +281,7 @@
       
     </li>
   
-  <li class=" current" data-id="opentelemetry-api/OpenTelemetry/Sendable" data-name="opentelemetry::sendable">
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/Sendable" data-name="opentelemetry::sendable">
       <a href="../OpenTelemetry/Sendable.html">Sendable</a>
       
     </li>
@@ -315,7 +315,7 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">module</span> OpenTelemetry::Sendable
+  <span class="kind">module</span> OpenTelemetry::API
 
 </h1>
 
@@ -333,24 +333,6 @@
 
 
 
-  <h2>
-    <a id="direct-including-types" class="anchor" href="#direct-including-types">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Direct including types
-  </h2>
-  <ul class="other-types-list">
-    
-      <li class="other-type"><a href="../OpenTelemetry/API/AbstractResource.html">OpenTelemetry::API::AbstractResource</a></li>
-    
-      <li class="other-type"><a href="../OpenTelemetry/API/AbstractSpan.html">OpenTelemetry::API::AbstractSpan</a></li>
-    
-      <li class="other-type"><a href="../OpenTelemetry/API/Span.html">OpenTelemetry::API::Span</a></li>
-    
-  </ul>
-
 
 
 
@@ -364,50 +346,162 @@
   </h2>
   
     
-      api/sendable.cr
+      api/abstract_context.cr
+    
+    <br/>
+  
+    
+      api/abstract_event.cr
+    
+    <br/>
+  
+    
+      api/abstract_id_generator.cr
+    
+    <br/>
+  
+    
+      api/abstract_resource.cr
+    
+    <br/>
+  
+    
+      api/abstract_span.cr
+    
+    <br/>
+  
+    
+      api/abstract_span_context.cr
+    
+    <br/>
+  
+    
+      api/abstract_status.cr
+    
+    <br/>
+  
+    
+      api/abstract_text_map_propagator.cr
+    
+    <br/>
+  
+    
+      api/context.cr
+    
+    <br/>
+  
+    
+      api/context/abstract_key.cr
+    
+    <br/>
+  
+    
+      api/context/key.cr
+    
+    <br/>
+  
+    
+      api/event.cr
+    
+    <br/>
+  
+    
+      api/id_generator.cr
+    
+    <br/>
+  
+    
+      api/id_generator/abstract_base.cr
+    
+    <br/>
+  
+    
+      api/id_generator/base.cr
+    
+    <br/>
+  
+    
+      api/resource.cr
+    
+    <br/>
+  
+    
+      api/span.cr
+    
+    <br/>
+  
+    
+      api/span/abstract_kind.cr
+    
+    <br/>
+  
+    
+      api/span/kind.cr
+    
+    <br/>
+  
+    
+      api/span_context.cr
+    
+    <br/>
+  
+    
+      api/span_context/abstract_config.cr
+    
+    <br/>
+  
+    
+      api/span_context/config.cr
+    
+    <br/>
+  
+    
+      api/status.cr
+    
+    <br/>
+  
+    
+      api/text_map_propagator.cr
+    
+    <br/>
+  
+    
+      api/trace_flags.cr
+    
+    <br/>
+  
+    
+      api/version.cr
     
     <br/>
   
 
 
 
-
-
-
-
-
-
-  <h2>
-    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
+  
+    <h2>
+      <a id="constant-summary" class="anchor" href="#constant-summary">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>
-    Instance Method Summary
-  </h2>
-  <ul class="list-summary">
+      Constant Summary
+    </h2>
+  
+  <dl>
     
-      <li class="entry-summary">
-        <a href="#size-instance-method" class="signature"><strong>#size</strong></a>
-        
-      </li>
+      <dt class="entry-const" id="VERSION">
+        <strong>VERSION</strong> = <code><span class="s">&quot;0.5.0&quot;</span></code>
+      </dt>
+      
     
-      <li class="entry-summary">
-        <a href="#to_json%28json%3AJSON%3A%3ABuilder%29-instance-method" class="signature"><strong>#to_json</strong>(json : JSON::Builder)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#to_json-instance-method" class="signature"><strong>#to_json</strong></a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#to_protobuf-instance-method" class="signature"><strong>#to_protobuf</strong></a>
-        
-      </li>
-    
-  </ul>
+  </dl>
+
+
+
+
+
+
 
 
 
@@ -421,72 +515,6 @@
 
 
 
-
-  <h2>
-    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Instance Method Detail
-  </h2>
-  
-    <div class="entry-detail" id="size-instance-method">
-      <div class="signature">
-        
-        def <strong>size</strong>
-
-        <a class="method-permalink" href="#size-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="to_json(json:JSON::Builder)-instance-method">
-      <div class="signature">
-        abstract 
-        def <strong>to_json</strong>(json : JSON::Builder)
-
-        <a class="method-permalink" href="#to_json%28json%3AJSON%3A%3ABuilder%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="to_json-instance-method">
-      <div class="signature">
-        abstract 
-        def <strong>to_json</strong>
-
-        <a class="method-permalink" href="#to_json-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="to_protobuf-instance-method">
-      <div class="signature">
-        abstract 
-        def <strong>to_protobuf</strong>
-
-        <a class="method-permalink" href="#to_protobuf-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
 
 
 

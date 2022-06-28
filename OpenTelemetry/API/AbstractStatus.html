@@ -13,7 +13,7 @@
 <script type="text/javascript" src="../../js/doc.js"></script>
 
   <meta name="repository-name" content="opentelemetry-api">
-  <title>OpenTelemetry::AnyAttribute::Type - opentelemetry-api 0.5.0</title>
+  <title>OpenTelemetry::API::AbstractStatus - opentelemetry-api 0.5.0</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "../../";
   </script>
@@ -56,12 +56,12 @@
       
         <ul>
   
-  <li class="parent open current" data-id="opentelemetry-api/OpenTelemetry/AnyAttribute" data-name="opentelemetry::anyattribute">
+  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/AnyAttribute" data-name="opentelemetry::anyattribute">
       <a href="../../OpenTelemetry/AnyAttribute.html">AnyAttribute</a>
       
         <ul>
   
-  <li class=" current" data-id="opentelemetry-api/OpenTelemetry/AnyAttribute/Type" data-name="opentelemetry::anyattribute::type">
+  <li class=" " data-id="opentelemetry-api/OpenTelemetry/AnyAttribute/Type" data-name="opentelemetry::anyattribute::type">
       <a href="../../OpenTelemetry/AnyAttribute/Type.html">Type</a>
       
     </li>
@@ -76,7 +76,7 @@
       
     </li>
   
-  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/API" data-name="opentelemetry::api">
+  <li class="parent open current" data-id="opentelemetry-api/OpenTelemetry/API" data-name="opentelemetry::api">
       <a href="../../OpenTelemetry/API.html">API</a>
       
         <ul>
@@ -161,7 +161,7 @@
       
     </li>
   
-  <li class="parent " data-id="opentelemetry-api/OpenTelemetry/API/AbstractStatus" data-name="opentelemetry::api::abstractstatus">
+  <li class="parent open current" data-id="opentelemetry-api/OpenTelemetry/API/AbstractStatus" data-name="opentelemetry::api::abstractstatus">
       <a href="../../OpenTelemetry/API/AbstractStatus.html">AbstractStatus</a>
       
         <ul>
@@ -315,9 +315,17 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">alias</span> OpenTelemetry::AnyAttribute::Type
+  <span class="kind">abstract struct</span> OpenTelemetry::API::AbstractStatus
 
 </h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../../OpenTelemetry/API/AbstractStatus.html">OpenTelemetry::API::AbstractStatus</a></li><li class="superclass">Struct</li><li class="superclass">Value</li><li class="superclass">Object</li></ul>
+
+
+
+
+
 
 
 
@@ -326,20 +334,18 @@
 
 
   <h2>
-    <a id="alias-definition" class="anchor" href="#alias-definition">
+    <a id="direct-known-subclasses" class="anchor" href="#direct-known-subclasses">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>
-    Alias Definition
+    Direct Known Subclasses
   </h2>
-  <code><a href="../../OpenTelemetry/Attribute.html">OpenTelemetry::Attribute(Array(Bool))</a> | <a href="../../OpenTelemetry/Attribute.html">OpenTelemetry::Attribute(Array(Float64))</a> | <a href="../../OpenTelemetry/Attribute.html">OpenTelemetry::Attribute(Array(Int32))</a> | <a href="../../OpenTelemetry/Attribute.html">OpenTelemetry::Attribute(Array(Int64))</a> | <a href="../../OpenTelemetry/Attribute.html">OpenTelemetry::Attribute(Array(String))</a> | <a href="../../OpenTelemetry/Attribute.html">OpenTelemetry::Attribute(Bool)</a> | <a href="../../OpenTelemetry/Attribute.html">OpenTelemetry::Attribute(Float64)</a> | <a href="../../OpenTelemetry/Attribute.html">OpenTelemetry::Attribute(Int32)</a> | <a href="../../OpenTelemetry/Attribute.html">OpenTelemetry::Attribute(Int64)</a> | <a href="../../OpenTelemetry/Attribute.html">OpenTelemetry::Attribute(String)</a></code>
-
-
-
-
-
-
+  <ul class="other-types-list">
+    
+      <li class="other-type"><a href="../../OpenTelemetry/API/Status.html">OpenTelemetry::API::Status</a></li>
+    
+  </ul>
 
 
 
@@ -356,7 +362,7 @@
   </h2>
   
     
-      anyattribute.cr
+      api/abstract_status.cr
     
     <br/>
   
@@ -365,9 +371,97 @@
 
 
 
+  <h2>
+    <a id="constructors" class="anchor" href="#constructors">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructors
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28code%3DStatusCode%3A%3AUnset%2Cmessage%3D%22%22%29-class-method" class="signature"><strong>.new</strong>(code = <span class="t">StatusCode</span><span class="t">::</span><span class="t">Unset</span>, message = <span class="s">&quot;&quot;</span>)</a>
+        
+      </li>
+    
+  </ul>
 
 
 
+
+
+  <h2>
+    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#code-instance-method" class="signature"><strong>#code</strong></a>
+        
+          <div class="summary"><p>This is assumed to be implemented as a property in the SDK.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#code%3D%28code%3AStatusCode%29-instance-method" class="signature"><strong>#code=</strong>(code : StatusCode)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#error%21%28message%3Dnil%29-instance-method" class="signature"><strong>#error!</strong>(message = <span class="n">nil</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#message-instance-method" class="signature"><strong>#message</strong></a>
+        
+          <div class="summary"><p>This is assumed to be implemented as a property in the SDK.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#message%3D%28message%3AString%29-instance-method" class="signature"><strong>#message=</strong>(message : String)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#ok%21%28message%3Dnil%29-instance-method" class="signature"><strong>#ok!</strong>(message = <span class="n">nil</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#pb_status_code-instance-method" class="signature"><strong>#pb_status_code</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_json%28json%3AJSON%3A%3ABuilder%29-instance-method" class="signature"><strong>#to_json</strong>(json : JSON::Builder)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_json-instance-method" class="signature"><strong>#to_json</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_protobuf-instance-method" class="signature"><strong>#to_protobuf</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#unset%21%28message%3Dnil%29-instance-method" class="signature"><strong>#unset!</strong>(message = <span class="n">nil</span>)</a>
+        
+      </li>
+    
+  </ul>
 
 
 
@@ -375,12 +469,240 @@
 
 <div class="methods-inherited">
   
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
 </div>
 
 
+  <h2>
+    <a id="constructor-detail" class="anchor" href="#constructor-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructor Detail
+  </h2>
+  
+    <div class="entry-detail" id="new(code=StatusCode::Unset,message=&quot;&quot;)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(code = <span class="t">StatusCode</span><span class="t">::</span><span class="t">Unset</span>, message = <span class="s">&quot;&quot;</span>)
+
+        <a class="method-permalink" href="#new%28code%3DStatusCode%3A%3AUnset%2Cmessage%3D%22%22%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
 
 
 
+
+
+  <h2>
+    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="code-instance-method">
+      <div class="signature">
+        abstract 
+        def <strong>code</strong>
+
+        <a class="method-permalink" href="#code-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>This is assumed to be implemented as a property in the SDK.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="code=(code:StatusCode)-instance-method">
+      <div class="signature">
+        abstract 
+        def <strong>code=</strong>(code : <a href="../../OpenTelemetry/API/AbstractStatus/StatusCode.html">StatusCode</a>)
+
+        <a class="method-permalink" href="#code%3D%28code%3AStatusCode%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="error!(message=nil)-instance-method">
+      <div class="signature">
+        abstract 
+        def <strong>error!</strong>(message = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#error%21%28message%3Dnil%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="message-instance-method">
+      <div class="signature">
+        abstract 
+        def <strong>message</strong>
+
+        <a class="method-permalink" href="#message-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>This is assumed to be implemented as a property in the SDK.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="message=(message:String)-instance-method">
+      <div class="signature">
+        abstract 
+        def <strong>message=</strong>(message : String)
+
+        <a class="method-permalink" href="#message%3D%28message%3AString%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="ok!(message=nil)-instance-method">
+      <div class="signature">
+        abstract 
+        def <strong>ok!</strong>(message = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#ok%21%28message%3Dnil%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="pb_status_code-instance-method">
+      <div class="signature">
+        abstract 
+        def <strong>pb_status_code</strong>
+
+        <a class="method-permalink" href="#pb_status_code-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_json(json:JSON::Builder)-instance-method">
+      <div class="signature">
+        abstract 
+        def <strong>to_json</strong>(json : JSON::Builder)
+
+        <a class="method-permalink" href="#to_json%28json%3AJSON%3A%3ABuilder%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_json-instance-method">
+      <div class="signature">
+        abstract 
+        def <strong>to_json</strong>
+
+        <a class="method-permalink" href="#to_json-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_protobuf-instance-method">
+      <div class="signature">
+        abstract 
+        def <strong>to_protobuf</strong>
+
+        <a class="method-permalink" href="#to_protobuf-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="unset!(message=nil)-instance-method">
+      <div class="signature">
+        abstract 
+        def <strong>unset!</strong>(message = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#unset%21%28message%3Dnil%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
 
 
 
