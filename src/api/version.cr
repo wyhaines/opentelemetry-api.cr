@@ -1,5 +1,7 @@
 module OpenTelemetry
-  {% begin %}
-  VERSION = {{ read_file("#{__DIR__}/../../VERSION").chomp }}
-  {% end %}
+  module API
+    {% begin %}
+    VERSION = {{ read_file("#{__DIR__}/../../VERSION").chomp }}
+    {% end %}
+  end
 end
