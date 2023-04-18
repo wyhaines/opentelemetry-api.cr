@@ -18,7 +18,7 @@ module OpenTelemetry
         # !!MATCH.match id
       end
 
-      def self.build(name = "")
+      def self.build(name = "", &)
         span = new(name)
         yield span
 

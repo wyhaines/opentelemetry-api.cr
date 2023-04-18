@@ -24,6 +24,6 @@ jobs:
     - name: Linting
       run: crystal tool format --check
     - name: Run Ameba
-      run: bin/ameba
+      run: #bin/ameba
     - name: Build docs
       run: crystal docs

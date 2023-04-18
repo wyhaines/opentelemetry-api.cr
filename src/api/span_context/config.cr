@@ -9,6 +9,7 @@ module OpenTelemetry
         property parent_id : Slice(UInt8)? = nil
         property trace_flags : TraceFlags
         property trace_state : Hash(String, String) = {} of String => String
+        # ameba:disable Style/QueryBoolMethods
         property remote : Bool = false
 
         def initialize(@trace_id, @span_id, @parent_id = nil)
