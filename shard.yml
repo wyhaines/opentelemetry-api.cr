@@ -1,5 +1,5 @@
 name: opentelemetry-api
-version: 0.5.0
+version: 0.5.1
 
 authors:
   - Kirk Haines <wyhaines@gmail.com>
@@ -13,13 +13,10 @@ dependencies:
     github: wyhaines/splay_tree_map.cr
   nbchannel:
     github: wyhaines/nbchannel.cr
-    branch: main
   csuuid:
     github: wyhaines/csuuid.cr
-    branch: main
   time-ext:
     github: wyhaines/time-ext.cr
-    branch: main
   debug:
     github: Sija/debug.cr
 
