@@ -22,15 +22,6 @@ module OpenTelemetry
       def initialize(@trace_id, @span_id, @parent_id, @trace_flags, @trace_state, @remote = false)
       end
 
-      def initialize(inherited_context : SpanContext)
-        @trace_id = inherited_context.trace_id
-        @trace_state = inherited_context.trace_state
-        @trace_flags = inherited_context.trace_flags
-        @remote = inherited_context.remote
-        @span_id = Slice(UInt8).new(8, 0)
-        @parent_id = inherited_context.span_id
-      end
-
       def initialize(configuration : Config)
         initialize(
           configuration.trace_id,
@@ -39,6 +30,15 @@ module OpenTelemetry
           configuration.trace_flags,
           configuration.trace_state,
           configuration.remote)
+      end
+
+      def initialize(inherited_context : SpanContext)
+        @trace_id = inherited_context.trace_id
+        @trace_state = inherited_context.trace_state
+        @trace_flags = inherited_context.trace_flags
+        @remote = inherited_context.remote
+        @span_id = Slice(UInt8).new(8, 0)
+        @parent_id = inherited_context.span_id
       end
 
       # Returns true is the trace id and span id are non-zero
