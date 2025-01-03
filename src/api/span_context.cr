@@ -7,10 +7,9 @@ module OpenTelemetry
       property span_id : Slice(UInt8)
       property parent_id : Slice(UInt8)? = nil
       property trace_flags : TraceFlags = TraceFlags::Sampled
-      # TODO: We're currenty playing fast and loose with TraceState. TraceState, per the spec,
+      # NOTE: We're currenty playing fast and loose with TraceState. TraceState, per the spec,
       # should be immutable, however, so this will need to be revised.
       property trace_state : Hash(String, String) = {} of String => String
-      # ameba:disable Style/QueryBoolMethods
       property remote : Bool = false
 
       def initialize

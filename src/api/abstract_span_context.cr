@@ -27,7 +27,7 @@ module OpenTelemetry
       abstract def trace_flags : TraceFlags
       abstract def trace_flags=(trace_flags : TraceFlags)
 
-      # TODO: We're currenty playing fast and loose with TraceState. TraceState, per the spec,
+      # NOTE: We're currenty playing fast and loose with TraceState. TraceState, per the spec,
       # should be immutable, however, so this will need to be revised.
       # This is probably going to be a property
       abstract def trace_state : Hash(String, String)

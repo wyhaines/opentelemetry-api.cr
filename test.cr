@@ -21,9 +21,9 @@ provider = OpenTelemetry::TraceProvider.new(
 iter.times do |iteration|
   count.times do
     spawn do
-      trace = provider.trace do |t|
+      trace = provider.trace do |trace_config|
         # All inherited config can be overridden here, if desired.
-        t.service_name = "#{t.service_name} -- run #{iteration}"
+        trace_config.service_name = "#{t.service_name} -- run #{iteration}"
       end
 
       trace.in_span("request") do |span|

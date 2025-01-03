@@ -25,7 +25,6 @@ module OpenTelemetry
       property context : SpanContext = SpanContext.new
       property kind : Kind = Kind::Internal
       property status : Status = Status.new
-      # ameba:disable Style/QueryBoolMethods
       property is_recording : Bool = true
 
       MATCH = /(?<span_id>[A-Fa-f0-9]{16})/
